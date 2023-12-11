@@ -28,7 +28,7 @@ type WorkerResponse struct {
 
 var creatworkerq sync.Once
 
-func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, cb func(WorkerResponse)) (string, error) {
+func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, requestId string, cb func(WorkerResponse)) (string, error) {
 
 	creatworkerq.Do(func() {
 
@@ -73,8 +73,6 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, cb func(WorkerResponse)) 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	corrId := randomString(32)
-
 	err = r.Ch.PublishWithContext(ctx,
 		"",               // exchange
 		r.WorkerReqQName, // routing key
@@ -82,7 +80,7 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, cb func(WorkerResponse)) 
 		false,            // immediate
 		amqp.Publishing{
 			ContentType:   "application/json",
-			CorrelationId: corrId,
+			CorrelationId: requestId,
 			ReplyTo:       r.WorkerResQName,
 			Body:          msg,
 		})
@@ -93,7 +91,7 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, cb func(WorkerResponse)) 
 
 	go func() {
 		for d := range msgs {
-			if corrId == d.CorrelationId {
+			if requestId == d.CorrelationId {
 				if cb != nil {
 					var res WorkerResponse
 					if err := json.Unmarshal(d.Body, &res); err != nil {
@@ -106,6 +104,6 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, cb func(WorkerResponse)) 
 		}
 	}()
 
-	return corrId, nil
+	return requestId, nil
 
 }

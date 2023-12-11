@@ -16,9 +16,9 @@ type RabbitAMQPClient struct {
 	TracExName     string // exchange name for tracker
 	MailReqQName   string // routing key for sending mail
 	MailResQName   string
-	SMSReqQName    string // routing key for sending mail
+	SMSReqQName    string // routing key for sending SMS
 	SMSResQName    string
-	WorkerReqQName string // routing key for sending mail
+	WorkerReqQName string // routing key for sending worker request
 	WorkerResQName string
 }
 
