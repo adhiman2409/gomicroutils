@@ -15,15 +15,23 @@ import (
 type WorkerRequest struct {
 	RequestId   string   `json:"request_id"`
 	RequestType string   `json:"request_type"`
+	Angle       int64    `json:"angle,omitempty"`
+	ImageType   string   `json:"image_type,omitempty"`
 	PageNumbers []int    `json:"page_numbers,omitempty"`
 	Ranges      []string `json:"ranges,omitempty"`
 }
 
 type WorkerResponse struct {
-	Status      bool   `json:"status"`
-	RequestId   string `json:"request_id"`
-	RequestType string `json:"request_type"`
-	Message     string `json:"message"`
+	RequestId        string  `json:"request_id"`
+	RequestType      string  `json:"request_type"`
+	IsProcessed      bool    `json:"is_processed"`
+	IsError          bool    `json:"is_error"`
+	OriginalSize     int64   `json:"original_size_in_bytes,omitempty"`
+	OptimizedSize    int64   `json:"optimized_size_in_bytes,omitempty"`
+	CompressionRatio float64 `json:"compression_ratio,omitempty"`
+	ProcessingTime   float64 `json:"processing_time_in_ms,omitempty"`
+	OutputFileName   string  `json:"output_file_name,omitempty"`
+	Message          string  `json:"message,omitempty"`
 }
 
 var creatworkerq sync.Once
