@@ -22,16 +22,19 @@ type WorkerRequest struct {
 }
 
 type WorkerResponse struct {
-	RequestId        string  `json:"request_id"`
-	RequestType      string  `json:"request_type"`
-	IsProcessed      bool    `json:"is_processed"`
-	IsError          bool    `json:"is_error"`
-	OriginalSize     int64   `json:"original_size_in_bytes,omitempty"`
-	OptimizedSize    int64   `json:"optimized_size_in_bytes,omitempty"`
-	CompressionRatio float64 `json:"compression_ratio,omitempty"`
-	ProcessingTime   float64 `json:"processing_time_in_ms,omitempty"`
-	OutputFileName   string  `json:"output_file_name,omitempty"`
-	Message          string  `json:"message,omitempty"`
+	RequestId         string   `json:"request_id"`
+	RequestType       string   `json:"request_type"`
+	IsProcessed       bool     `json:"is_processed"`
+	IsError           bool     `json:"is_error"`
+	OriginalSize      int64    `json:"original_size_in_bytes,omitempty"`
+	OptimizedSize     int64    `json:"optimized_size_in_bytes,omitempty"`
+	CompressionRatio  float64  `json:"compression_ratio,omitempty"`
+	ProcessingTime    float64  `json:"processing_time_in_ms,omitempty"`
+	OutputFileName    string   `json:"output_file_name,omitempty"`
+	OutputZipFileName string   `json:"output_zip_file_name,omitempty"`
+	OutputFileList    []string `json:"output_file_list,omitempty"`
+	MergedFileSize    int64    `json:"merged_file_size,omitempty"`
+	Message           string   `json:"message,omitempty"`
 }
 
 var creatworkerq sync.Once
