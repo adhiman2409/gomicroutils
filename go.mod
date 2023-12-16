@@ -6,6 +6,7 @@ require (
 	github.com/gorilla/mux v1.8.1
 	github.com/rabbitmq/amqp091-go v1.9.0
 	github.com/rs/xid v1.5.0
+	go.mongodb.org/mongo-driver v1.13.1
 	go.uber.org/zap v1.26.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.31.0
