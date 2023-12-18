@@ -32,6 +32,7 @@ type DocumentEntry struct {
 	MarkedDeleted       bool               `bson:"marked_deleted"`
 	OriginalSize        int64              `bson:"original_size_in_bytes"`
 	OptimizedSize       int64              `bson:"optimized_size_in_bytes"`
+	MergedFileSize      int64              `bson:"merged_file_size"`
 	CompressionRatio    float64            `bson:"compression_ratio"`
 	ProcessingTime      float64            `bson:"processing_time_in_ms"`
 	ImageType           string             `bson:"image_type"`
