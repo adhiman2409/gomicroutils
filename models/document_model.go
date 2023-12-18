@@ -22,6 +22,9 @@ type DocumentEntry struct {
 	NumberOfOutPutFiles int64              `bson:"number_of_output_files"`
 	OutputFileList      []string           `bson:"output_file_list"`
 	IsProcessed         bool               `bson:"is_processed"`
+	IsProcessing        bool               `bson:"is_processing"`
+	IsError             bool               `bson:"is_error"`
+	ErrorMessage        string             `bson:"error_message"`
 	UserId              string             `bson:"user_id"`
 	Year                string             `bson:"year"`
 	Month               string             `bson:"month"`
