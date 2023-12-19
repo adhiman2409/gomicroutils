@@ -104,7 +104,7 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, requestId string, cb func
 
 	go func() {
 		for d := range msgs {
-			fmt.Println("received response")
+			fmt.Printf("received response requestId =%s  d.CorrelationId=%s", requestId, d.CorrelationId)
 			if requestId == d.CorrelationId {
 				if cb != nil {
 					var res WorkerResponse
