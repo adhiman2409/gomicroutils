@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"log"
+	"fmt"
 	"os"
 	"sync"
 	"time"
@@ -57,7 +57,7 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, requestId string, cb func
 			nil,   // arguments
 		)
 		if err != nil {
-			log.Println("Unable to create worker queue ", err)
+			fmt.Println("Unable to create worker queue ", err)
 		}
 		r.WorkerReqQName = rqname
 		r.WorkerResQName = q.Name
@@ -77,12 +77,14 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, requestId string, cb func
 		nil,              // args
 	)
 	if err != nil {
-		log.Println("Failed to register a consumer ", err)
+		fmt.Println("Failed to register a consumer ", err)
 		return "", err
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 6*time.Minute)
 	defer cancel()
+
+	fmt.Println("Publishing worker request" + " " + string(msg))
 
 	err = r.Ch.PublishWithContext(ctx,
 		"",               // exchange
@@ -96,17 +98,18 @@ func (r *RabbitAMQPClient) SendWorkRequest(msg []byte, requestId string, cb func
 			Body:          msg,
 		})
 	if err != nil {
-		log.Println("Failed to publish a message")
+		fmt.Println("Failed to publish a message")
 		return "", err
 	}
 
 	go func() {
 		for d := range msgs {
+			fmt.Println("received response")
 			if requestId == d.CorrelationId {
 				if cb != nil {
 					var res WorkerResponse
 					if err := json.Unmarshal(d.Body, &res); err != nil {
-						log.Println("unble to invoke worker response callback function")
+						fmt.Println("unble to invoke worker response callback function")
 					}
 					cb(res)
 				}
