@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"log"
+	"fmt"
 	"os"
 	"sync"
 
@@ -48,13 +48,14 @@ func (a *RabbitAMQPClient) SendWorkerResponse(r WorkerResponse) error {
 			nil,     // arguments
 		)
 		if err != nil {
-			log.Panic("unable to declare exchange for worker response topic")
+			fmt.Println("unable to declare exchange for worker response topic")
 		}
 		a.WorkerResponseEx = wexName
 	})
 
 	req, err := json.Marshal(r)
 	if err != nil {
+		fmt.Println("Error in marshaling message " + err.Error())
 		return err
 	}
 
@@ -64,6 +65,7 @@ func (a *RabbitAMQPClient) SendWorkerResponse(r WorkerResponse) error {
 func (a *RabbitAMQPClient) sendResponse(p []byte) error {
 
 	if a.WorkerResponseEx == "" {
+		fmt.Println("worker response exchange not found")
 		return errors.New("worker response exchange not found")
 	}
 
@@ -77,7 +79,9 @@ func (a *RabbitAMQPClient) sendResponse(p []byte) error {
 			Body:        p,
 		})
 	if err != nil {
+		fmt.Println("worker response publish error " + err.Error())
 		return err
 	}
+	fmt.Println("worker response sent successfully")
 	return nil
 }

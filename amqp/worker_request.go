@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"os"
 	"sync"
@@ -57,6 +58,7 @@ func (a *RabbitAMQPClient) SendWorkerRequest(r WorkerRequest) error {
 func (a *RabbitAMQPClient) sendRequest(p []byte) error {
 
 	if a.WorkerRequestEx == "" {
+		fmt.Println("worker request exchange not found")
 		return errors.New("worker request exchange not found")
 	}
 
@@ -70,7 +72,9 @@ func (a *RabbitAMQPClient) sendRequest(p []byte) error {
 			Body:        p,
 		})
 	if err != nil {
+		fmt.Println("worker request publish error")
 		return err
 	}
+	fmt.Println("worker request send successfully")
 	return nil
 }
