@@ -10,16 +10,16 @@ import (
 )
 
 type RabbitAMQPClient struct {
-	Conn           *amqp.Connection
-	Ch             *amqp.Channel
-	LogExName      string // exchange name for logs
-	TracExName     string // exchange name for tracker
-	MailReqQName   string // routing key for sending mail
-	MailResQName   string
-	SMSReqQName    string // routing key for sending SMS
-	SMSResQName    string
-	WorkerReqQName string // routing key for sending worker request
-	WorkerResQName string
+	Conn             *amqp.Connection
+	Ch               *amqp.Channel
+	LogExName        string // exchange name for logs
+	TracExName       string // exchange name for tracker
+	WorkerRequestEx  string // exchange name for Worker Request
+	WorkerResponseEx string // exchange name for Worker Response
+	MailReqQName     string // routing key for sending mail
+	MailResQName     string
+	SMSReqQName      string // routing key for sending SMS
+	SMSResQName      string
 }
 
 var once sync.Once
