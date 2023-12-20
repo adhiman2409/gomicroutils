@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"sync"
+	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )
@@ -32,9 +33,8 @@ func (a *RabbitAMQPClient) SendWorkerRequest(r WorkerRequest) error {
 			wexName = "worker_request_topic"
 		}
 
-		err := a.Ch.ExchangeDeclare(
+		q, err := a.Ch.QueueDeclare(
 			wexName, // name
-			"topic", // type
 			true,    // durable
 			false,   // auto-deleted
 			false,   // internal
@@ -44,7 +44,7 @@ func (a *RabbitAMQPClient) SendWorkerRequest(r WorkerRequest) error {
 		if err != nil {
 			log.Panic("unable to declare exchange for worker request topic")
 		}
-		a.WorkerRequestEx = wexName
+		a.WorkerRequestQ = q.Name
 	})
 
 	req, err := json.Marshal(r)
@@ -57,19 +57,23 @@ func (a *RabbitAMQPClient) SendWorkerRequest(r WorkerRequest) error {
 
 func (a *RabbitAMQPClient) sendRequest(p []byte) error {
 
-	if a.WorkerRequestEx == "" {
-		fmt.Println("worker request exchange not found")
-		return errors.New("worker request exchange not found")
+	if a.WorkerRequestQ == "" {
+		fmt.Println("worker request queue not found")
+		return errors.New("worker request queue not found")
 	}
 
-	err := a.Ch.PublishWithContext(context.Background(),
-		a.WorkerRequestEx, // exchange
-		"",                // routing key
-		false,             // mandatory
-		false,             // immediate
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	err := a.Ch.PublishWithContext(ctx,
+		"",               // exchange
+		a.WorkerRequestQ, // routing key
+		false,            // mandatory
+		false,            // immediate
 		amqp.Publishing{
-			ContentType: "application/json",
-			Body:        p,
+			DeliveryMode: amqp.Persistent,
+			ContentType:  "application/json",
+			Body:         p,
 		})
 	if err != nil {
 		fmt.Println("worker request publish error")

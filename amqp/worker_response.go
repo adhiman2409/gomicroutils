@@ -38,9 +38,8 @@ func (a *RabbitAMQPClient) SendWorkerResponse(r WorkerResponse) error {
 			wexName = "worker_response_topic"
 		}
 
-		err := a.Ch.ExchangeDeclare(
+		q, err := a.Ch.QueueDeclare(
 			wexName, // name
-			"topic", // type
 			true,    // durable
 			false,   // auto-deleted
 			false,   // internal
@@ -50,7 +49,7 @@ func (a *RabbitAMQPClient) SendWorkerResponse(r WorkerResponse) error {
 		if err != nil {
 			fmt.Println("unable to declare exchange for worker response topic")
 		}
-		a.WorkerResponseEx = wexName
+		a.WorkerResponseQ = q.Name
 	})
 
 	req, err := json.Marshal(r)
@@ -64,19 +63,20 @@ func (a *RabbitAMQPClient) SendWorkerResponse(r WorkerResponse) error {
 
 func (a *RabbitAMQPClient) sendResponse(p []byte) error {
 
-	if a.WorkerResponseEx == "" {
-		fmt.Println("worker response exchange not found")
-		return errors.New("worker response exchange not found")
+	if a.WorkerResponseQ == "" {
+		fmt.Println("worker response queue not found")
+		return errors.New("worker response queue not found")
 	}
 
 	err := a.Ch.PublishWithContext(context.Background(),
-		a.WorkerResponseEx, // exchange
-		"",                 // routing key
-		false,              // mandatory
-		false,              // immediate
+		"",                // exchange
+		a.WorkerResponseQ, // routing key
+		false,             // mandatory
+		false,             // immediate
 		amqp.Publishing{
-			ContentType: "application/json",
-			Body:        p,
+			DeliveryMode: amqp.Persistent,
+			ContentType:  "application/json",
+			Body:         p,
 		})
 	if err != nil {
 		fmt.Println("worker response publish error " + err.Error())
