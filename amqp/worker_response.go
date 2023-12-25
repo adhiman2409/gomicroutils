@@ -14,6 +14,9 @@ import (
 type WorkerResponse struct {
 	RequestId         string   `json:"request_id"`
 	RequestType       string   `json:"request_type"`
+	Year              string   `json:"year,omitempty"`
+	Month             string   `json:"month,omitempty"`
+	Day               string   `json:"day,omitempty"`
 	IsProcessed       bool     `json:"is_processed"`
 	IsError           bool     `json:"is_error"`
 	OriginalSize      int64    `json:"original_size_in_bytes,omitempty"`
