@@ -3,6 +3,7 @@ package grpcclient
 import (
 	"context"
 	"errors"
+	"fmt"
 
 	"github.com/adhiman2409/gomicroutils/genproto/auth"
 )
@@ -15,6 +16,7 @@ func (a *GrpcClient) Verify(accessToken string, routeName string) (AuthInfo, err
 	}
 	res, err := a.client.Verify(context.Background(), &req)
 	if err != nil {
+		fmt.Println(err.Error())
 		return AuthInfo{}, err
 	}
 
@@ -27,6 +29,7 @@ func (a *GrpcClient) Verify(accessToken string, routeName string) (AuthInfo, err
 			Role:        res.Role,
 		}, nil
 	} else {
+		fmt.Println(err.Error())
 		return AuthInfo{}, errors.New(res.Message)
 	}
 }
