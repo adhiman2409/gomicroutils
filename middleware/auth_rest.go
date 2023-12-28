@@ -32,8 +32,8 @@ func RequestAuth(next http.Handler) http.Handler {
 		jwtToken := authHeader[1]
 		claims, err := grpcclient.GetAuthClient().Verify(jwtToken, mux.CurrentRoute(r).GetName())
 		if err != nil {
+			fmt.Println("Token Error: " + err.Error())
 			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
-			fmt.Println("Token auth error " + err.Error())
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return
 		}

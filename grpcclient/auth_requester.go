@@ -29,7 +29,6 @@ func (a *GrpcClient) Verify(accessToken string, routeName string) (AuthInfo, err
 			Role:        res.Role,
 		}, nil
 	} else {
-		fmt.Println(err.Error())
 		return AuthInfo{}, errors.New(res.Message)
 	}
 }
