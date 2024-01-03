@@ -3,6 +3,7 @@ package amqp
 import (
 	"fmt"
 	"log"
+	"os"
 	"sync"
 	"time"
 
@@ -53,8 +54,12 @@ func connectRabbit() (*amqp.Connection, error) {
 	var connection *amqp.Connection
 
 	//don't continue until rabbit is ready
+	addr := os.Getenv("AMQP_ADDR")
+	if addr == "" {
+		addr = "amqp://guest:guest@rabbitmq"
+	}
 	for {
-		c, err := amqp.Dial("amqp://guest:guest@rabbitmq")
+		c, err := amqp.Dial(addr)
 		if err != nil {
 			fmt.Println("RabbitMQ not ready yet...")
 			counts++
