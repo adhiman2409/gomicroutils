@@ -12,8 +12,11 @@ message VerifyRequest {
 message VerifyResponse {
   bool isAuthorised = 1;
   string message = 2;
-  string userName = 3;
+  string name = 3;
   string emailId = 4;
   string phoneNumber = 5;
-  string role = 6;
+  string tenant = 6;
+  string domain = 7;
+  string department = 8;
+  repeated string roles = 9;
 }

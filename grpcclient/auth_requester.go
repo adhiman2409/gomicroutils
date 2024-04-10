@@ -23,10 +23,13 @@ func (a *GrpcClient) Verify(accessToken string, routeName string) (AuthInfo, err
 	if res.IsAuthorised {
 		return AuthInfo{
 			Authorised:  true,
-			Name:        res.UserName,
+			Tenant:      res.Tenant,
+			Domain:      res.Domain,
+			Department:  res.Department,
+			Name:        res.Name,
 			EmailId:     res.EmailId,
 			PhoneNumber: res.PhoneNumber,
-			Role:        res.Role,
+			Roles:       res.Roles,
 		}, nil
 	} else {
 		return AuthInfo{}, errors.New(res.Message)

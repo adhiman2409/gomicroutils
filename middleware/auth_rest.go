@@ -15,10 +15,13 @@ func RequestAuth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ai := grpcclient.AuthInfo{
 			Authorised:  false,
+			Tenant:      "",
+			Domain:      "",
+			Department:  "",
 			Name:        "",
 			EmailId:     "",
 			PhoneNumber: "",
-			Role:        "",
+			Roles:       []string{"anonymous"},
 		}
 		byteArray, _ := json.Marshal(ai)
 
@@ -42,7 +45,10 @@ func RequestAuth(next http.Handler) http.Handler {
 		ai.Name = claims.Name
 		ai.EmailId = claims.EmailId
 		ai.PhoneNumber = claims.PhoneNumber
-		ai.Role = claims.Role
+		ai.Roles = claims.Roles
+		ai.Department = claims.Department
+		ai.Domain = claims.Domain
+		ai.Tenant = claims.Tenant
 
 		byteArray, _ = json.Marshal(ai)
 
