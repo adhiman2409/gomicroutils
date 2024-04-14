@@ -8,5 +8,5 @@ type AuthInfo struct {
 	Name        string
 	EmailId     string
 	PhoneNumber string
-	Roles       []string
+	Role        string
 }

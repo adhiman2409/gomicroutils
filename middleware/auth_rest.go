@@ -21,7 +21,7 @@ func RequestAuth(next http.Handler) http.Handler {
 			Name:        "",
 			EmailId:     "",
 			PhoneNumber: "",
-			Roles:       []string{"anonymous"},
+			Role:        "anonymous",
 		}
 		byteArray, _ := json.Marshal(ai)
 
@@ -45,7 +45,7 @@ func RequestAuth(next http.Handler) http.Handler {
 		ai.Name = claims.Name
 		ai.EmailId = claims.EmailId
 		ai.PhoneNumber = claims.PhoneNumber
-		ai.Roles = claims.Roles
+		ai.Role = claims.Role
 		ai.Department = claims.Department
 		ai.Domain = claims.Domain
 		ai.Tenant = claims.Tenant
