@@ -18,5 +18,5 @@ message VerifyResponse {
   string tenant = 6;
   string domain = 7;
   string department = 8;
-  repeated string roles = 9;
+  string role = 9;
 }
