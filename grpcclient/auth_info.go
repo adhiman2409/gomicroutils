@@ -1,5 +1,10 @@
 package grpcclient
 
+import (
+	"encoding/json"
+	"net/http"
+)
+
 type AuthInfo struct {
 	Authorised  bool
 	Tenant      string
@@ -9,4 +14,23 @@ type AuthInfo struct {
 	EmailId     string
 	PhoneNumber string
 	Role        string
+}
+
+func GetAuthInfo(r *http.Request) AuthInfo {
+	authInfo := AuthInfo{
+		Authorised:  false,
+		Tenant:      "",
+		Domain:      "",
+		Department:  "",
+		Name:        "",
+		EmailId:     "",
+		PhoneNumber: "",
+		Role:        "anonymous",
+	}
+	claims := r.Context().Value("claims")
+	claimsString, ok := claims.(string)
+	if ok {
+		json.Unmarshal([]byte(claimsString), &authInfo)
+	}
+	return authInfo
 }
