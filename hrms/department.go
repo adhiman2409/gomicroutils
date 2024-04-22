@@ -13,6 +13,7 @@ type Department struct {
 	OrgId       string             `bson:"org_id"`
 	Name        string             `bson:"name"`
 	AdminId     string             `bson:"admin_id"`
+	AdminName   string             `bson:"admin_name"`
 	Description string             `bson:"description"`
 	IsActive    bool               `bson:"is_active"`
 	CreatedBy   string             `bson:"created_by"`

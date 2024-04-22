@@ -13,6 +13,7 @@ type Organization struct {
 	Domain         string             `bson:"domain"`
 	Name           string             `bson:"name"`
 	AdminId        string             `bson:"admin_id"`
+	AdminName      string             `bson:"admin_name"`
 	EmailId        string             `bson:"email_id"`
 	PhoneNumber    string             `bson:"phone_number"`
 	Status         string             `bson:"status"`
