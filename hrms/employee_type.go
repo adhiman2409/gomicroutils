@@ -6,9 +6,9 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-const ORG_COLLECTION_PERMISSIONS = "permissions"
+const ORG_COLLECTION_EMPLOYEE_TYPE = "employee-types"
 
-type Permission struct {
+type EmployeeType struct {
 	ID          primitive.ObjectID `bson:"_id"`
 	OrgId       string             `bson:"org_id"`
 	DepId       string             `bson:"dep_id"`

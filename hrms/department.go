@@ -12,6 +12,7 @@ type Department struct {
 	ID          primitive.ObjectID `bson:"_id"`
 	OrgId       string             `bson:"org_id"`
 	Name        string             `bson:"name"`
+	Alias       string             `bson:"alias"`
 	AdminId     string             `bson:"admin_id"`
 	AdminName   string             `bson:"admin_name"`
 	Description string             `bson:"description"`
