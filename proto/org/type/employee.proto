@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package org;
+
+option go_package = "genproto/org";
+
+message EmployeeRequest {
+  string requestType = 1;
+  string employeeId = 2;
+  string departmentId = 3;
+  string name = 4;
+  string role = 5;
+  string imgUrl = 6;
+}
+
+message EmployeeResponse {
+  bool isError = 1;
+  string message = 2;
+}
