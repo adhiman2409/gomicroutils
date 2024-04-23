@@ -37,7 +37,7 @@ func StartOrgClient() {
 	}
 
 	//read client cert
-	clientCert, err := tls.LoadX509KeyPair("/app/cert/org-client-cert.pem", "/app/cert/org-client-key.pem")
+	clientCert, err := tls.LoadX509KeyPair("/app/cert/client-cert.pem", "/app/cert/client-key.pem")
 	if err != nil {
 		log.Fatal(err)
 	}
