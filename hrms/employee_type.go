@@ -11,7 +11,9 @@ const ORG_COLLECTION_EMPLOYEE_TYPE = "employee-types"
 type EmployeeType struct {
 	ID          primitive.ObjectID `bson:"_id"`
 	OrgId       string             `bson:"org_id"`
+	OrgName     string             `bson:"org_name"`
 	DepId       string             `bson:"dep_id"`
+	DepName     string             `bson:"dep_name"`
 	Title       string             `bson:"title"`
 	IsActive    bool               `bson:"is_active"`
 	Description string             `bson:"description"`

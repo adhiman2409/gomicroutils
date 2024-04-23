@@ -11,6 +11,7 @@ const ORG_COLLECTION_DEPARTMENTS = "departments"
 type Department struct {
 	ID          primitive.ObjectID `bson:"_id"`
 	OrgId       string             `bson:"org_id"`
+	OrgName     string             `bson:"org_name"`
 	Name        string             `bson:"name"`
 	Alias       string             `bson:"alias"`
 	AdminId     string             `bson:"admin_id"`
