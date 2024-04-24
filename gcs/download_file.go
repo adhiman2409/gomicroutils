@@ -13,7 +13,7 @@ import (
 )
 
 // Download gets a file from GCS bucket, Takes file path as a path param from request
-func (a *StorageConnection) DownloadGCSFile(w http.ResponseWriter, r *http.Request, domain string) error {
+func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request, domain string) error {
 
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
