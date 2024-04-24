@@ -2,14 +2,13 @@ package gcs
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/http"
 	"strings"
-
-	"github.com/adhiman2409/gomicroutils/errs"
 )
 
-func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUploadResponse, *errs.RestError) {
+func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUploadResponse, error) {
 	department := r.FormValue("department")
 	eid := r.FormValue("eid")
 	documentType := r.FormValue("dtype")
@@ -17,13 +16,13 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 	err := r.ParseMultipartForm(50 << 20) // Max Size Limit is 50 MB
 	if err != nil {
 		fmt.Println("Error ", err.Error())
-		return FileUploadResponse{}, errs.NewBadRequestError(err.Error() + " or file size is > 50 mb")
+		return FileUploadResponse{}, errors.New("size is > 50 mb")
 	}
 
 	f, fh, err := r.FormFile("file")
 	if err != nil {
 		fmt.Println("Error ", err.Error())
-		return FileUploadResponse{}, errs.NewBadRequestError(err.Error() + " file read error")
+		return FileUploadResponse{}, errors.New("file read error")
 	}
 	defer f.Close()
 
@@ -35,7 +34,7 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 
 	if err = a.UploadFileToGCSBucket(context.Background(), fh, filepath); err != nil {
 		fmt.Println("Error ", err.Error())
-		return FileUploadResponse{}, errs.UnexpectedError("unable to process input file")
+		return FileUploadResponse{}, errors.New("unable to process input file")
 	}
 
 	info := FileUploadResponse{
