@@ -6,6 +6,10 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+const EMPLOYEE_COLLECTION_PERSONAL = "employee-personal"
+const EMPLOYEE_COLLECTION_PROFESSIONAL = "employee-professional"
+const EMPLOYEE_COLLECTION_DOCUMENTS = "employee-documents"
+const EMPLOYEE_COLLECTION_SUMMARY = "employee-summary"
 const ORG_COLLECTION_EMPLOYEE_TYPE = "employee-types"
 
 type EmployeeType struct {
@@ -20,4 +24,11 @@ type EmployeeType struct {
 	CreatedBy   string             `bson:"created_by"`
 	CreatedAt   time.Time          `bson:"created_at"`
 	UpdatedAt   time.Time          `bson:"updated_at"`
+}
+
+type EmployeeSummary struct {
+	EmpId  string `bson:"emp_id"`
+	Name   string `bson:"name"`
+	Role   string `bson:"role"`
+	ImgURL string `bson:"img_url"`
 }

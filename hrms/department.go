@@ -8,13 +8,6 @@ import (
 
 const ORG_COLLECTION_DEPARTMENTS = "departments"
 
-type EmployeeSummary struct {
-	EmpId  string `bson:"emp_id"`
-	Name   string `bson:"name"`
-	Role   string `bson:"role"`
-	ImgURL string `bson:"img_url"`
-}
-
 type Department struct {
 	ID             primitive.ObjectID `bson:"_id"`
 	OrgId          string             `bson:"org_id"`
