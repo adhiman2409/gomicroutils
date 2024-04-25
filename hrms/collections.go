@@ -25,6 +25,11 @@ func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	return db.Collection(ORG_COLLECTION_ORGANIZATION)
 }
 
+func GetOrgAuthCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_AUTH)
+}
+
 func GetOrgDepartmentCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_DEPARTMENTS)
