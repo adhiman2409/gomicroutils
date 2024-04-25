@@ -19,10 +19,11 @@ func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request,
 	defer cancel()
 	department := mux.Vars(r)["department"]
 	eid := mux.Vars(r)["eid"]
+	category := r.FormValue("category")
 	documentType := mux.Vars(r)["dtype"]
 	filename := mux.Vars(r)["filename"]
 	nd := strings.Replace(domain, ".", "_", -1)
-	filePath := fmt.Sprintf("%s/%s/%s/%s", department, eid, documentType, filename)
+	filePath := fmt.Sprintf("%s/%s/%s/%s/%s", department, eid, category, documentType, filename)
 
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
 	if err != nil {

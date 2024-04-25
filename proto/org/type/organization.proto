@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package org;
+
+option go_package = "genproto/org";
+
+message InitOrgRequest {
+  string id = 1;
+	string domain = 2;
+	string orgName = 3;
+	string adminEmailId = 4;
+	string adminPhoneNumber = 5;
+	string adminName = 6;
+	string department = 7;
+	bool emailVerified = 8;
+	string password = 9;
+	string role = 10;
+	bool firstLoginPending = 11;
+	string status = 12;
+}
+
+message InitOrgResponse {
+  bool isError = 1;
+  string message = 2;
+}

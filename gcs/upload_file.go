@@ -17,6 +17,7 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	department := r.FormValue("department")
 	eid := r.FormValue("eid")
+	category := r.FormValue("category")
 	documentType := r.FormValue("dtype")
 
 	err := r.ParseMultipartForm(50 << 20) // Max Size Limit is 50 MB
@@ -36,7 +37,7 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 
 	nd := strings.Replace(domain, ".", "_", -1)
 
-	filepath := fmt.Sprintf("%s/%s/%s/%s", department, eid, documentType, fname)
+	filepath := fmt.Sprintf("%s/%s/%s/%s/%s", department, eid, category, documentType, fname)
 
 	wc := a.Client.Bucket(nd).UserProject(pid).Object(filepath).NewWriter(context.Background())
 	if _, err = io.Copy(wc, f); err != nil {
@@ -48,9 +49,13 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 	}
 
 	info := FileUploadResponse{
-		Name:         fname,
-		Path:         filepath,
-		DocumentType: documentType,
+		EID:         eid,
+		Domain:      domain,
+		Department:  department,
+		DocName:     fname,
+		DocCategory: category,
+		DocType:     documentType,
+		DocPath:     filepath,
 	}
 	return info, nil
 }
