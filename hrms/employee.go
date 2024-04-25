@@ -6,12 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-const EMPLOYEE_COLLECTION_PERSONAL = "employee-personal"
-const EMPLOYEE_COLLECTION_PROFESSIONAL = "employee-professional"
-const EMPLOYEE_COLLECTION_DOCUMENTS = "employee-documents"
-const EMPLOYEE_COLLECTION_SUMMARY = "employee-summary"
-const ORG_COLLECTION_EMPLOYEE_TYPE = "employee-types"
-
 type EmployeeType struct {
 	ID          primitive.ObjectID `bson:"_id"`
 	OrgId       string             `bson:"org_id"`

@@ -6,8 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-const ORG_COLLECTION_ORGANIZATION = "organization"
-
 type Organization struct {
 	ID               primitive.ObjectID `bson:"_id"`
 	Domain           string             `bson:"domain"`
