@@ -7,6 +7,5 @@ import "proto/org/type/employee.proto";
 option go_package = "genproto/org";
 
 service OrgService {
-    rpc InitOrganization(InitOrgRequest) returns (InitOrgResponse) {}
     rpc OrgEmployee(EmployeeRequest) returns (EmployeeResponse) {}
 }
