@@ -3,9 +3,11 @@ syntax = "proto3";
 package org;
 
 import "proto/org/type/employee.proto";
+import "proto/org/type/organization.proto";
 
 option go_package = "genproto/org";
 
 service OrgService {
+    rpc InitOrganization(InitOrgRequest) returns (InitOrgResponse) {}
     rpc OrgEmployee(EmployeeRequest) returns (EmployeeResponse) {}
 }
