@@ -6,8 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-const ORG_COLLECTION_ROLES = "roles"
-
 type Role struct {
 	ID          primitive.ObjectID `bson:"_id"`
 	DepId       string             `bson:"dep_id"`
