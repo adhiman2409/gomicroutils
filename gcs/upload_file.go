@@ -4,11 +4,17 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
+	"os"
 	"strings"
+
+	"github.com/google/martian/v3/log"
 )
 
 func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUploadResponse, error) {
+
+	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	department := r.FormValue("department")
 	eid := r.FormValue("eid")
 	documentType := r.FormValue("dtype")
@@ -30,11 +36,15 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 
 	nd := strings.Replace(domain, ".", "_", -1)
 
-	filepath := fmt.Sprintf("unirms/%s/%s/%s/%s/%s", nd, department, eid, documentType, fname)
+	filepath := fmt.Sprintf("%s/%s/%s/%s", department, eid, documentType, fname)
 
-	if err = a.UploadFileToGCSBucket(context.Background(), fh, filepath); err != nil {
-		fmt.Println("Error ", err.Error())
-		return FileUploadResponse{}, errors.New("unable to process input file")
+	wc := a.Client.Bucket(nd).UserProject(pid).Object(filepath).NewWriter(context.Background())
+	if _, err = io.Copy(wc, f); err != nil {
+		log.Errorf("file upload error: %v", err)
+		return FileUploadResponse{}, err
+	}
+	if err := wc.Close(); err != nil {
+		return FileUploadResponse{}, err
 	}
 
 	info := FileUploadResponse{

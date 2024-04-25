@@ -14,7 +14,7 @@ import (
 
 // Download gets a file from GCS bucket, Takes file path as a path param from request
 func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request, domain string) error {
-
+	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	department := mux.Vars(r)["department"]
@@ -22,11 +22,9 @@ func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request,
 	documentType := mux.Vars(r)["dtype"]
 	filename := mux.Vars(r)["filename"]
 	nd := strings.Replace(domain, ".", "_", -1)
-	filePath := fmt.Sprintf("unirms/%s/%s/%s/%s/%s", nd, department, eid, documentType, filename)
+	filePath := fmt.Sprintf("%s/%s/%s/%s", department, eid, documentType, filename)
 
-	b := os.Getenv("GOOGLE_STORAGE_BUCKET")
-	pid := os.Getenv("GOOGLE_PROJECT_ID")
-	reader, err := a.Client.Bucket(b).UserProject(pid).Object(filePath).NewReader(clientCtx)
+	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
 	if err != nil {
 		fmt.Println("Error ", err.Error())
 		return err
