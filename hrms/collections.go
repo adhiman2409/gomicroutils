@@ -11,6 +11,7 @@ const ORG_COLLECTION_DEPARTMENTS = "org-departments"
 const ORG_COLLECTION_DOCUMENTS = "org-documents"
 const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
+const ORG_COLLECTION_AUTH = "auth"
 
 const DEPARTMENT_COLLECTION_ROLES = "department-roles"
 
