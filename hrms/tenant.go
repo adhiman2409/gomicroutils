@@ -15,6 +15,7 @@ type Tenant struct {
 	AdminPhoneNumber  string             `bson:"admin_phone_number"`
 	AdminName         string             `bson:"admin_name"`
 	Department        string             `bson:"department"`
+	Designation       string             `bson:"designation"`
 	EmailVerified     bool               `bson:"email_verified"`
 	Password          string             `bson:"password"`
 	Role              string             `bson:"role"`
