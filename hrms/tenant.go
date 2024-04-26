@@ -8,6 +8,7 @@ import (
 
 type Tenant struct {
 	ID                primitive.ObjectID `bson:"_id"`
+	EID               string             `bson:"eid"`
 	Domain            string             `bson:"domain"`
 	OrgName           string             `bson:"org_name"`
 	AdminEmailId      string             `bson:"admin_email_id"`
