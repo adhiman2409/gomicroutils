@@ -19,10 +19,3 @@ type EmployeeType struct {
 	CreatedAt   time.Time          `bson:"created_at"`
 	UpdatedAt   time.Time          `bson:"updated_at"`
 }
-
-type EmployeeSummary struct {
-	EmpId  string `bson:"emp_id"`
-	Name   string `bson:"name"`
-	Role   string `bson:"role"`
-	ImgURL string `bson:"img_url"`
-}

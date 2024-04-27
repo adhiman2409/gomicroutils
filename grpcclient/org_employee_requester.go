@@ -11,14 +11,14 @@ import (
 func (a *OrgClient) OrgAddEmployee(e OrgEmployeeInfo) (string, error) {
 
 	req := org.EmployeeRequest{
-		RequestType:  "add",
-		Domain:       e.Domain,
-		EmployeeId:   e.EmployeeId,
-		DepartmentId: e.DepartmentId,
-		Designation:  e.Designation,
-		Name:         e.Name,
-		Role:         e.Role,
-		ImgUrl:       e.ImgUrl,
+		RequestType:     "add",
+		Domain:          e.Domain,
+		EmployeeId:      e.EmployeeId,
+		Department:      e.Department,
+		Designation:     e.Designation,
+		Name:            e.Name,
+		Status:          e.Status,
+		ProfileImageURL: e.ProfileImageURL,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {
@@ -36,14 +36,14 @@ func (a *OrgClient) OrgAddEmployee(e OrgEmployeeInfo) (string, error) {
 func (a *OrgClient) OrgRemoveEmployee(e OrgEmployeeInfo) (string, error) {
 
 	req := org.EmployeeRequest{
-		RequestType:  "remove",
-		Domain:       e.Domain,
-		EmployeeId:   e.EmployeeId,
-		DepartmentId: e.DepartmentId,
-		Designation:  e.Designation,
-		Name:         e.Name,
-		Role:         e.Role,
-		ImgUrl:       e.ImgUrl,
+		RequestType:     "remove",
+		Domain:          e.Domain,
+		EmployeeId:      e.EmployeeId,
+		Department:      e.Department,
+		Designation:     e.Designation,
+		Name:            e.Name,
+		Status:          e.Status,
+		ProfileImageURL: e.ProfileImageURL,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {
@@ -61,14 +61,14 @@ func (a *OrgClient) OrgRemoveEmployee(e OrgEmployeeInfo) (string, error) {
 func (a *OrgClient) OrgUpdateEmployee(e OrgEmployeeInfo) (string, error) {
 
 	req := org.EmployeeRequest{
-		RequestType:  "update",
-		Domain:       e.Domain,
-		EmployeeId:   e.EmployeeId,
-		DepartmentId: e.DepartmentId,
-		Designation:  e.Designation,
-		Name:         e.Name,
-		Role:         e.Role,
-		ImgUrl:       e.ImgUrl,
+		RequestType:     "update",
+		Domain:          e.Domain,
+		EmployeeId:      e.EmployeeId,
+		Department:      e.Department,
+		Designation:     e.Designation,
+		Name:            e.Name,
+		Status:          e.Status,
+		ProfileImageURL: e.ProfileImageURL,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {
