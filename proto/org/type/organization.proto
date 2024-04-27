@@ -6,17 +6,19 @@ option go_package = "genproto/org";
 
 message InitOrgRequest {
   	string id = 1;
-	string domain = 2;
-	string orgName = 3;
-	string adminEmailId = 4;
-	string adminPhoneNumber = 5;
-	string adminName = 6;
-	string department = 7;
-	bool emailVerified = 8;
-	string password = 9;
-	string role = 10;
-	bool firstLoginPending = 11;
-	string status = 12;
+		string eid = 2;
+		string domain = 3;
+		string orgName = 4;
+		string adminEmailId = 5;
+		string adminPhoneNumber = 6;
+		string adminName = 7;
+		string department = 8;
+		string description = 9;
+		bool emailVerified = 10;
+		string password = 11;
+		string role = 12;
+		bool firstLoginPending = 13;
+		string status = 14;
 }
 
 message InitOrgResponse {
