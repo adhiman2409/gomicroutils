@@ -12,14 +12,14 @@ func (a *OrgClient) InitOrganization(e OrgInitInfo) (string, error) {
 
 	req := org.InitOrgRequest{
 		Id:                e.Id,
-		Eid: e.EID,
+		Eid:               e.EID,
 		Domain:            e.Domain,
 		OrgName:           e.OrgName,
 		AdminEmailId:      e.AdminEmailId,
 		AdminPhoneNumber:  e.AdminPhoneNumber,
 		AdminName:         e.AdminName,
 		Department:        e.Department,
-		De
+		Designation:       e.Designation,
 		EmailVerified:     e.EmailVerified,
 		Password:          e.Password,
 		Role:              e.Role,
