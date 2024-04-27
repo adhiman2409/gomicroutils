@@ -13,7 +13,7 @@ message InitOrgRequest {
 		string adminPhoneNumber = 6;
 		string adminName = 7;
 		string department = 8;
-		string description = 9;
+		string designation = 9;
 		bool emailVerified = 10;
 		string password = 11;
 		string role = 12;
