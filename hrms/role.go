@@ -8,8 +8,7 @@ import (
 
 type Role struct {
 	ID          primitive.ObjectID `bson:"_id"`
-	DepId       string             `bson:"dep_id"`
-	DepName     string             `bson:"dep_name"`
+	OrgId       string             `bson:"org_id"`
 	Title       string             `bson:"title"`
 	IsActive    bool               `bson:"is_active"`
 	Description string             `bson:"description"`
