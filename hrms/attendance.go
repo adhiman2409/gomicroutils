@@ -9,6 +9,7 @@ import (
 type Attendance struct {
 	ID                      primitive.ObjectID `bson:"_id"`
 	OrgId                   string             `bson:"org_id"`
+	OrgName                 string             `bson:"org_name"`
 	CaptureCheckInLocation  bool               `bson:"capture_check_in_location"`
 	EnforceLocationCheckIn  bool               `bson:"enforce_location_check_in"`
 	EnforceLocationCheckOut bool               `bson:"enforce_location_check_out"`
@@ -19,7 +20,7 @@ type Attendance struct {
 	OrgCheckInTime          string             `bson:"org_check_in_time"`
 	OrgCheckOutTime         string             `bson:"org_check_out_time"`
 	CheckinMarginInMin      int32              `bson:"check_in_margin_in_min"`
-	WorkingHours            float32            `bson:"working_hours"`
+	OfficeHours             float32            `bson:"office_hours"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }
