@@ -12,6 +12,7 @@ const ORG_COLLECTION_DOCUMENTS = "org-documents"
 const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
 const ORG_COLLECTION_AUTH = "auth"
+const ORG_COLLECTION_EMPLOYEE_ATTENDANCE = "org-attendance"
 
 const ORG_COLLECTION_ROLES = "org-roles"
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
@@ -54,6 +55,11 @@ func GetOrgPermissionsCollection(client *mongo.Client, domain string) *mongo.Col
 func GetOrgEmployeeTypeCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_EMPLOYEE_TYPE)
+}
+
+func GetOrgEmployeeAttendanceCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_EMPLOYEE_ATTENDANCE)
 }
 
 func GetEmpPersonalCollection(client *mongo.Client, domain string) *mongo.Collection {
