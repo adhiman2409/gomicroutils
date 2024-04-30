@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package attendance;
+package org;
 
-option go_package = "genproto/attendance";
+option go_package = "genproto/org";
 
 message AttendanceRequest{
     string orgName = 1;
