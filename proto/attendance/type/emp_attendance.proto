@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package attendance;
+
+option go_package = "genproto/attendance";
+
+message AttendanceRequest{
+    string orgName = 1;
+}
+
+message AttendanceResponse{
+	string orgId = 1;
+	string orgName = 2;
+	bool captureCheckInLocation = 3;
+	bool enforceLocationCheckIn = 4;
+	bool enforceLocationCheckOut = 5;
+    double requiredLat = 6;
+	double requiredLng = 7;
+	bool flexiHoursEnabled = 8;
+	int32 flexiHourWindowInMin = 9;
+	string orgCheckInTime = 10;
+	string orgCheckOutTime = 11;
+	int32 checkInMarginInMin = 12;
+	float officeHours = 13;
+}

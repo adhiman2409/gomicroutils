@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package attendance;
+
+import "proto/attendance/type/emp_attendance.proto";
+
+option go_package = "genproto/attendance";
+
+service AttendanceInfo {
+    rpc GetAttendanceInfo(AttendanceRequest) returns (AttendanceResponse) {}
+}
