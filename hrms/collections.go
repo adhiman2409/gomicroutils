@@ -21,6 +21,7 @@ const EMPLOYEE_COLLECTION_PERSONAL = "employee-personal"
 const EMPLOYEE_COLLECTION_PROFESSIONAL = "employee-professional"
 const EMPLOYEE_COLLECTION_DOCUMENTS = "employee-documents"
 const EMPLOYEE_COLLECTION_SUMMARY = "employee-summary"
+const EMPLOYEE_COLLECTION_ATTENDANCE = "employee-attendance"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -80,6 +81,11 @@ func GetEmpDocumentCollection(client *mongo.Client, domain string) *mongo.Collec
 func GetEmpSummaryCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_SUMMARY)
+}
+
+func GetEmpAttendanceCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_ATTENDANCE)
 }
 
 func GetDocumentCollection(client *mongo.Client, domain string) *mongo.Collection {
