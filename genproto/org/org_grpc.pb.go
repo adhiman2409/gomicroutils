@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	OrgService_InitOrganization_FullMethodName  = "/org.OrgService/InitOrganization"
-	OrgService_OrgEmployee_FullMethodName       = "/org.OrgService/OrgEmployee"
-	OrgService_GetAttendanceInfo_FullMethodName = "/org.OrgService/GetAttendanceInfo"
+	OrgService_InitOrganization_FullMethodName     = "/org.OrgService/InitOrganization"
+	OrgService_OrgEmployee_FullMethodName          = "/org.OrgService/OrgEmployee"
+	OrgService_GetOrgAttendanceConf_FullMethodName = "/org.OrgService/GetOrgAttendanceConf"
+	OrgService_GetDepAttendanceConf_FullMethodName = "/org.OrgService/GetDepAttendanceConf"
 )
 
 // OrgServiceClient is the client API for OrgService service.
@@ -30,7 +31,8 @@ const (
 type OrgServiceClient interface {
 	InitOrganization(ctx context.Context, in *InitOrgRequest, opts ...grpc.CallOption) (*InitOrgResponse, error)
 	OrgEmployee(ctx context.Context, in *EmployeeRequest, opts ...grpc.CallOption) (*EmployeeResponse, error)
-	GetAttendanceInfo(ctx context.Context, in *AttendanceRequest, opts ...grpc.CallOption) (*AttendanceResponse, error)
+	GetOrgAttendanceConf(ctx context.Context, in *OrgAttendanceRequest, opts ...grpc.CallOption) (*OrgAttendanceResponse, error)
+	GetDepAttendanceConf(ctx context.Context, in *DepAttendanceRequest, opts ...grpc.CallOption) (*DepAttendanceResponse, error)
 }
 
 type orgServiceClient struct {
@@ -59,9 +61,18 @@ func (c *orgServiceClient) OrgEmployee(ctx context.Context, in *EmployeeRequest,
 	return out, nil
 }
 
-func (c *orgServiceClient) GetAttendanceInfo(ctx context.Context, in *AttendanceRequest, opts ...grpc.CallOption) (*AttendanceResponse, error) {
-	out := new(AttendanceResponse)
-	err := c.cc.Invoke(ctx, OrgService_GetAttendanceInfo_FullMethodName, in, out, opts...)
+func (c *orgServiceClient) GetOrgAttendanceConf(ctx context.Context, in *OrgAttendanceRequest, opts ...grpc.CallOption) (*OrgAttendanceResponse, error) {
+	out := new(OrgAttendanceResponse)
+	err := c.cc.Invoke(ctx, OrgService_GetOrgAttendanceConf_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *orgServiceClient) GetDepAttendanceConf(ctx context.Context, in *DepAttendanceRequest, opts ...grpc.CallOption) (*DepAttendanceResponse, error) {
+	out := new(DepAttendanceResponse)
+	err := c.cc.Invoke(ctx, OrgService_GetDepAttendanceConf_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +85,8 @@ func (c *orgServiceClient) GetAttendanceInfo(ctx context.Context, in *Attendance
 type OrgServiceServer interface {
 	InitOrganization(context.Context, *InitOrgRequest) (*InitOrgResponse, error)
 	OrgEmployee(context.Context, *EmployeeRequest) (*EmployeeResponse, error)
-	GetAttendanceInfo(context.Context, *AttendanceRequest) (*AttendanceResponse, error)
+	GetOrgAttendanceConf(context.Context, *OrgAttendanceRequest) (*OrgAttendanceResponse, error)
+	GetDepAttendanceConf(context.Context, *DepAttendanceRequest) (*DepAttendanceResponse, error)
 	mustEmbedUnimplementedOrgServiceServer()
 }
 
@@ -88,8 +100,11 @@ func (UnimplementedOrgServiceServer) InitOrganization(context.Context, *InitOrgR
 func (UnimplementedOrgServiceServer) OrgEmployee(context.Context, *EmployeeRequest) (*EmployeeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrgEmployee not implemented")
 }
-func (UnimplementedOrgServiceServer) GetAttendanceInfo(context.Context, *AttendanceRequest) (*AttendanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAttendanceInfo not implemented")
+func (UnimplementedOrgServiceServer) GetOrgAttendanceConf(context.Context, *OrgAttendanceRequest) (*OrgAttendanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOrgAttendanceConf not implemented")
+}
+func (UnimplementedOrgServiceServer) GetDepAttendanceConf(context.Context, *DepAttendanceRequest) (*DepAttendanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDepAttendanceConf not implemented")
 }
 func (UnimplementedOrgServiceServer) mustEmbedUnimplementedOrgServiceServer() {}
 
@@ -140,20 +155,38 @@ func _OrgService_OrgEmployee_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OrgService_GetAttendanceInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AttendanceRequest)
+func _OrgService_GetOrgAttendanceConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OrgAttendanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrgServiceServer).GetAttendanceInfo(ctx, in)
+		return srv.(OrgServiceServer).GetOrgAttendanceConf(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OrgService_GetAttendanceInfo_FullMethodName,
+		FullMethod: OrgService_GetOrgAttendanceConf_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrgServiceServer).GetAttendanceInfo(ctx, req.(*AttendanceRequest))
+		return srv.(OrgServiceServer).GetOrgAttendanceConf(ctx, req.(*OrgAttendanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OrgService_GetDepAttendanceConf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DepAttendanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrgServiceServer).GetDepAttendanceConf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OrgService_GetDepAttendanceConf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrgServiceServer).GetDepAttendanceConf(ctx, req.(*DepAttendanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -174,8 +207,12 @@ var OrgService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _OrgService_OrgEmployee_Handler,
 		},
 		{
-			MethodName: "GetAttendanceInfo",
-			Handler:    _OrgService_GetAttendanceInfo_Handler,
+			MethodName: "GetOrgAttendanceConf",
+			Handler:    _OrgService_GetOrgAttendanceConf_Handler,
+		},
+		{
+			MethodName: "GetDepAttendanceConf",
+			Handler:    _OrgService_GetDepAttendanceConf_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

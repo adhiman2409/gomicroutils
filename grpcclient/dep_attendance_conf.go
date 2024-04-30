@@ -1,8 +1,8 @@
 package grpcclient
 
-type AttendanceInfo struct {
-	OrgId                   string
-	OrgName                 string
+type DepAttendanceConf struct {
+	DepId                   string
+	Department              string
 	CaptureCheckInLocation  bool
 	EnforceLocationCheckIn  bool
 	EnforceLocationCheckOut bool

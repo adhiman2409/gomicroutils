@@ -4,12 +4,14 @@ package org;
 
 import "proto/org/type/employee.proto";
 import "proto/org/type/organization.proto";
-import "proto/org/type/attendance.proto";
+import "proto/org/type/org_attendance.proto";
+import "proto/org/type/dep_attendance.proto";
 
 option go_package = "genproto/org";
 
 service OrgService {
     rpc InitOrganization(InitOrgRequest) returns (InitOrgResponse) {}
     rpc OrgEmployee(EmployeeRequest) returns (EmployeeResponse) {}
-    rpc GetAttendanceInfo(AttendanceRequest) returns (AttendanceResponse) {}
+    rpc GetOrgAttendanceConf(OrgAttendanceRequest) returns (OrgAttendanceResponse) {}
+    rpc GetDepAttendanceConf(DepAttendanceRequest) returns (DepAttendanceResponse) {}
 }

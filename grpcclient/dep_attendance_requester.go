@@ -7,19 +7,19 @@ import (
 	"github.com/adhiman2409/gomicroutils/genproto/org"
 )
 
-func (a *OrgClient) GetOrgAttendanceConf(orgName, domain string) (OrgAttendanceConf, error) {
-	req := org.OrgAttendanceRequest{
-		OrgName: orgName,
+func (a *OrgClient) GetDepAttendanceConf(depName, domain string) (DepAttendanceConf, error) {
+	req := org.DepAttendanceRequest{
+		DepName: depName,
 		Domain:  domain,
 	}
-	res, err := a.client.GetOrgAttendanceConf(context.Background(), &req)
+	res, err := a.client.GetDepAttendanceConf(context.Background(), &req)
 	if err != nil {
 		fmt.Println(err.Error())
-		return OrgAttendanceConf{}, err
+		return DepAttendanceConf{}, err
 	}
-	attendanceInfo := OrgAttendanceConf{
-		OrgId:                   res.OrgId,
-		OrgName:                 res.OrgName,
+	attendanceInfo := DepAttendanceConf{
+		DepId:                   res.DepId,
+		Department:              res.DepName,
 		CaptureCheckInLocation:  res.CaptureCheckInLocation,
 		EnforceLocationCheckIn:  res.EnforceLocationCheckIn,
 		EnforceLocationCheckOut: res.EnforceLocationCheckOut,
