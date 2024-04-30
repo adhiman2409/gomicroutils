@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type AttendanceConf struct {
+type OrgAttendanceConf struct {
 	ID                      primitive.ObjectID `bson:"_id"`
 	OrgId                   string             `bson:"org_id"`
 	OrgName                 string             `bson:"org_name"`

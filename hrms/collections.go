@@ -12,16 +12,17 @@ const ORG_COLLECTION_DOCUMENTS = "org-documents"
 const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
 const ORG_COLLECTION_AUTH = "auth"
-const ORG_COLLECTION_ATTENDANCE_CONF = "org-attendance_conf"
+const ORG_COLLECTION_ATTENDANCE_CONF = "org-attendance-conf"
 
 const ORG_COLLECTION_ROLES = "org-roles"
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
+const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
 
 const EMPLOYEE_COLLECTION_PERSONAL = "employee-personal"
 const EMPLOYEE_COLLECTION_PROFESSIONAL = "employee-professional"
 const EMPLOYEE_COLLECTION_DOCUMENTS = "employee-documents"
 const EMPLOYEE_COLLECTION_SUMMARY = "employee-summary"
-const EMPLOYEE_COLLECTION_ATTENDANCE_CONF = "employee-attendance_conf"
+const EMPLOYEE_COLLECTION_ATTENDANCE_CONF = "employee-attendance-conf"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -96,4 +97,9 @@ func GetDocumentCollection(client *mongo.Client, domain string) *mongo.Collectio
 func GetDepDesignationCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(DEPARTMENT_COLLECTION_DESIGNATIONS)
+}
+
+func GetDepAttendanceConfCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(DEPARTMENT_COLLECTION_ATTENDANCE_CONF)
 }
