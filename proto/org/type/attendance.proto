@@ -6,6 +6,7 @@ option go_package = "genproto/org";
 
 message AttendanceRequest{
     string orgName = 1;
+	string domain = 2;
 }
 
 message AttendanceResponse{

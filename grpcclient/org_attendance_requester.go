@@ -7,9 +7,10 @@ import (
 	"github.com/adhiman2409/gomicroutils/genproto/org"
 )
 
-func (a *OrgClient) GetAttendanceInfo(orgName string) (AttendanceInfo, error) {
+func (a *OrgClient) GetAttendanceInfo(orgName, domain string) (AttendanceInfo, error) {
 	req := org.AttendanceRequest{
 		OrgName: orgName,
+		Domain:  domain,
 	}
 	res, err := a.client.GetAttendanceInfo(context.Background(), &req)
 	if err != nil {
