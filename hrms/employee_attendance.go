@@ -9,7 +9,7 @@ import (
 type EmpAttendance struct {
 	ID                      primitive.ObjectID `bson:"_id"`
 	EID                     string             `bson:"eid"`
-	DepartmentId            string             `bson:"department_id"`
+	Department              string             `bson:"department"`
 	ApplyOrgDefaultRules    bool               `bson:"apply_org_default_rules"`
 	CaptureCheckInLocation  bool               `bson:"capture_check_in_location"`
 	EnforceLocationCheckIn  bool               `bson:"enforce_location_check_in"`
