@@ -6,11 +6,10 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type EmpAttendance struct {
+type AttendanceConf struct {
 	ID                      primitive.ObjectID `bson:"_id"`
-	EID                     string             `bson:"eid"`
-	Department              string             `bson:"department"`
-	ApplyOrgDefaultRules    bool               `bson:"apply_org_default_rules"`
+	OrgId                   string             `bson:"org_id"`
+	OrgName                 string             `bson:"org_name"`
 	CaptureCheckInLocation  bool               `bson:"capture_check_in_location"`
 	EnforceLocationCheckIn  bool               `bson:"enforce_location_check_in"`
 	EnforceLocationCheckOut bool               `bson:"enforce_location_check_out"`

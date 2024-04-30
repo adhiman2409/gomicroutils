@@ -12,7 +12,7 @@ const ORG_COLLECTION_DOCUMENTS = "org-documents"
 const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
 const ORG_COLLECTION_AUTH = "auth"
-const ORG_COLLECTION_ATTENDANCE = "org-attendance"
+const ORG_COLLECTION_ATTENDANCE_CONF = "org-attendance_conf"
 
 const ORG_COLLECTION_ROLES = "org-roles"
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
@@ -21,7 +21,7 @@ const EMPLOYEE_COLLECTION_PERSONAL = "employee-personal"
 const EMPLOYEE_COLLECTION_PROFESSIONAL = "employee-professional"
 const EMPLOYEE_COLLECTION_DOCUMENTS = "employee-documents"
 const EMPLOYEE_COLLECTION_SUMMARY = "employee-summary"
-const EMPLOYEE_COLLECTION_ATTENDANCE = "employee-attendance"
+const EMPLOYEE_COLLECTION_ATTENDANCE_CONF = "employee-attendance_conf"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -58,9 +58,9 @@ func GetOrgEmployeeTypeCollection(client *mongo.Client, domain string) *mongo.Co
 	return db.Collection(ORG_COLLECTION_EMPLOYEE_TYPE)
 }
 
-func GetOrgAttendanceCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetOrgAttendanceConfCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(ORG_COLLECTION_ATTENDANCE)
+	return db.Collection(ORG_COLLECTION_ATTENDANCE_CONF)
 }
 
 func GetEmpPersonalCollection(client *mongo.Client, domain string) *mongo.Collection {
@@ -83,9 +83,9 @@ func GetEmpSummaryCollection(client *mongo.Client, domain string) *mongo.Collect
 	return db.Collection(EMPLOYEE_COLLECTION_SUMMARY)
 }
 
-func GetEmpAttendanceCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetEmpAttendanceConfCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(EMPLOYEE_COLLECTION_ATTENDANCE)
+	return db.Collection(EMPLOYEE_COLLECTION_ATTENDANCE_CONF)
 }
 
 func GetDocumentCollection(client *mongo.Client, domain string) *mongo.Collection {
