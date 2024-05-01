@@ -13,5 +13,7 @@ type DepAttendanceConf struct {
 	OrgCheckInTime          string
 	OrgCheckOutTime         string
 	CheckinMarginInMin      int32
-	OfficeHours             float32
+	DailyWorkingHours       float32
+	WorkingDaysPerWeek      float32
+	WeeklyOffDays           []string
 }

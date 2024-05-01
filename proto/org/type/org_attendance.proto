@@ -22,5 +22,7 @@ message OrgAttendanceResponse{
 	string orgCheckInTime = 10;
 	string orgCheckOutTime = 11;
 	int32 checkInMarginInMin = 12;
-	float officeHours = 13;
+	float dailyWorkingHours = 13;
+	float workingDaysPerWeek = 14;
+	repeated string weeklyOffDays = 15;
 }

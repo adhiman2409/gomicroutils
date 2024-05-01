@@ -30,7 +30,9 @@ func (a *OrgClient) GetDepAttendanceConf(depName, domain string) (DepAttendanceC
 		OrgCheckInTime:          res.OrgCheckInTime,
 		OrgCheckOutTime:         res.OrgCheckOutTime,
 		CheckinMarginInMin:      res.CheckInMarginInMin,
-		OfficeHours:             res.OfficeHours,
+		WorkingDaysPerWeek:      res.WorkingDaysPerWeek,
+		WeeklyOffDays:           res.WeeklyOffDays,
+		DailyWorkingHours:       res.DailyWorkingHours,
 	}
 	return attendanceInfo, nil
 }
