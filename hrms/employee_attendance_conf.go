@@ -21,7 +21,9 @@ type EmpAttendanceConf struct {
 	OrgCheckInTime          string             `bson:"org_check_in_time"`
 	OrgCheckOutTime         string             `bson:"org_check_out_time"`
 	CheckinMarginInMin      int32              `bson:"check_in_margin_in_min"`
-	OfficeHours             float32            `bson:"office_hours"`
+	WorkingDaysPerWeek      float32            `bson:"working_days_per_week"`
+	WeeklyOffDays           []string           `bson:"weekly_off_days"`
+	DailyWorkingHours       float32            `bson:"daily_working_hours"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }
