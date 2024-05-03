@@ -24,10 +24,16 @@ const EMPLOYEE_COLLECTION_DOCUMENTS = "employee-documents"
 const EMPLOYEE_COLLECTION_SUMMARY = "employee-summary"
 const EMPLOYEE_COLLECTION_ATTENDANCE_CONF = "employee-attendance-conf"
 const EMPLOYEE_COLLECTION_ATTENDANCE = "employee-attendance"
+const EMPLOYEE_COLLECTION_PROCESSED = "employee-processed"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_ORGANIZATION)
+}
+
+func GetEmpProcessedCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_PROCESSED)
 }
 
 func GetOrgAuthCollection(client *mongo.Client, domain string) *mongo.Collection {
