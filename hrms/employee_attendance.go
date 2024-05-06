@@ -38,3 +38,8 @@ type EmployeeAttendance struct {
 	IsWeeklyOffDay          bool               `bson:"is_weekly_off_day"`
 	Remarks                 string             `bson:"remarks"`
 }
+
+type DailyAttendanceObject struct {
+	EID         string `bson:"eid"`
+	IsProcessed bool   `bson:"is_processed"`
+}
