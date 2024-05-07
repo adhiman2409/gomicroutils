@@ -16,6 +16,7 @@ import (
 type WorkerRequest struct {
 	RequestId   string   `json:"request_id"`
 	RequestType string   `json:"request_type"`
+	Domain      string   `json:"domain,omitempty"`
 	Angle       int64    `json:"angle,omitempty"`
 	ImageType   string   `json:"image_type,omitempty"`
 	PageNumbers []int    `json:"page_numbers,omitempty"`

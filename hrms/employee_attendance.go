@@ -39,7 +39,7 @@ type EmployeeAttendance struct {
 	Remarks                 string             `bson:"remarks"`
 }
 
-type ProcessedEmployees struct {
-	EID       string `bson:"eid"`
-	Processed bool   `bson:"processed"`
+type DailyAttendanceObject struct {
+	EID         string `bson:"eid"`
+	IsProcessed bool   `bson:"is_processed"`
 }

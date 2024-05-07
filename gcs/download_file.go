@@ -19,7 +19,7 @@ func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request,
 	defer cancel()
 	department := mux.Vars(r)["department"]
 	eid := mux.Vars(r)["eid"]
-	category := r.FormValue("category")
+	category := mux.Vars(r)["category"]
 	documentType := mux.Vars(r)["dtype"]
 	filename := mux.Vars(r)["filename"]
 	nd := strings.Replace(domain, ".", "_", -1)
