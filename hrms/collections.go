@@ -29,6 +29,8 @@ const EMPLOYEE_COLLECTION_ATTENDANCE = "employee-attendance"
 const EMPLOYEE_COLLECTION_DAILY_ATN_OBJECT = "employee-daily-atn-object"
 const EMPLOYEE_COLLECTION_LEAVES_CONF = "employee-leaves-conf"
 const EMPLOYEE_COLLECTION_LEAVES = "employee-leaves"
+const EMPLOYEE_COLLECTION_LEAVE = "employee-leave"
+const EMPLOYEE_COLLECTION_LEAVE_STATUS = "employee-leave-status"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -143,4 +145,14 @@ func GetDepAttendanceConfCollection(client *mongo.Client, domain string) *mongo.
 func GetOrgHolidaysCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_HOLIDAYS)
+}
+
+func GetEmpLeaveCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_LEAVE)
+}
+
+func GetEmpLeaveStatusCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_LEAVE_STATUS)
 }
