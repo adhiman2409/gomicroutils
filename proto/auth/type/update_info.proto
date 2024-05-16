@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "genproto/auth";
+
+message InfoUpdateRequest {
+  string id = 1;
+  string imageURL = 2;
+  string role = 3;
+  string designation = 4;
+  string department = 5;
+}
+
+message InfoUpdateResponse {
+  bool isError = 1;
+  string message = 2;
+}

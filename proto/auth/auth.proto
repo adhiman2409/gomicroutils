@@ -3,9 +3,11 @@ syntax = "proto3";
 package auth;
 
 import "proto/auth/type/verify.proto";
+import "proto/auth/type/update_info.proto";
 
 option go_package = "genproto/auth";
 
 service AuthService {
     rpc Verify(VerifyRequest) returns (VerifyResponse) {}
+    rpc UpdateInfo(InfoUpdateRequest) returns (VerifyResponse) {}
 }
