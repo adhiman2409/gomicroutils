@@ -19,6 +19,7 @@ type Tenant struct {
 	EmailVerified     bool               `bson:"email_verified"`
 	Password          string             `bson:"password"`
 	Role              string             `bson:"role"`
+	ImageURL          string             `bson:"image_url"`
 	FirstLoginPending bool               `bson:"first_login_pending"`
 	Status            string             `bson:"status"`
 	RefreshToken      string             `bson:"refresh_token"`

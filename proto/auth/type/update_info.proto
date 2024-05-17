@@ -10,6 +10,7 @@ message InfoUpdateRequest {
   string role = 3;
   string designation = 4;
   string department = 5;
+  string domain = 6;
 }
 
 message InfoUpdateResponse {

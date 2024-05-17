@@ -7,7 +7,7 @@ import (
 	"github.com/adhiman2409/gomicroutils/genproto/auth"
 )
 
-func (a *GrpcClient) UpdateInfo(id, department, designation, imageURL, role string) (string, error) {
+func (a *GrpcClient) UpdateInfo(id, imageURL, role, designation, department, domain string) (string, error) {
 
 	req := auth.InfoUpdateRequest{
 		Id:          id,
@@ -15,6 +15,7 @@ func (a *GrpcClient) UpdateInfo(id, department, designation, imageURL, role stri
 		Role:        role,
 		Designation: designation,
 		Department:  department,
+		Domain:      domain,
 	}
 	res, err := a.client.UpdateInfo(context.Background(), &req)
 	if err != nil {
