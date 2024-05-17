@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type EmployeeQualification struct {
+type QualificationInfo struct {
 	ID                         primitive.ObjectID `bson:"_id"`
 	EID                        string             `bson:"eid"`
 	SecondarySchoolName        string             `bson:"secondary_school_name"`
