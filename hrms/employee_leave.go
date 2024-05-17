@@ -14,14 +14,14 @@ type EmployeeLeave struct {
 }
 
 type LeaveStats struct {
-	LeaveType            string `bson:"leave_type"`
-	Year                 string `bson:"year"`
-	CarryForwardLeaves   int32  `bson:"carry_forward_leaves"`
-	EarnedLeavesThisYear int32  `bson:"earned_leaves_this_year"`
-	TotalLeaves          int32  `bson:"total_leaves"`
-	AvailableLeaves      int32  `bson:"available_leaves"`
-	ConsumedLeaves       int32  `bson:"consumed_leaves"`
-	AppliedLeaves        int32  `bson:"applied_leaves"`
+	LeaveType            string  `bson:"leave_type"`
+	Year                 string  `bson:"year"`
+	CarryForwardLeaves   float32 `bson:"carry_forward_leaves"`
+	EarnedLeavesThisYear float32 `bson:"earned_leaves_this_year"`
+	TotalLeaves          float32 `bson:"total_leaves"`
+	AvailableLeaves      float32 `bson:"available_leaves"`
+	ConsumedLeaves       float32 `bson:"consumed_leaves"`
+	AppliedLeaves        float32 `bson:"applied_leaves"`
 }
 
 type EmployeeLeaveStatus struct {
@@ -56,15 +56,15 @@ type EmployeeLeaveObj struct {
 	LeaveType                    string             `bson:"leave_type"`
 	LeaveStatus                  string             `bson:"leave_status"`
 	ISBulkLeave                  bool               `bson:"is_bulk_leave"`
-	RequiredNoticeDays           int32              `bson:"required_notice_days"`
-	ActualNoticeDays             int32              `bson:"actual_notice_days"`
+	RequiredNoticeDays           float32            `bson:"required_notice_days"`
+	ActualNoticeDays             float32            `bson:"actual_notice_days"`
 	LeaveStartDate               string             `bson:"leave_start_date"`
 	LeaveEndDate                 string             `bson:"leave_end_date"`
 	IncludeNonWorkingDays        bool               `bson:"include_non_working_days"`
-	TotalAppliedLeaves           int32              `bson:"total_applied_leaves"`
-	TotalOutOfOfficeDays         int32              `bson:"total_out_of_office_days"`
+	TotalAppliedLeaves           float32            `bson:"total_applied_leaves"`
+	TotalOutOfOfficeDays         float32            `bson:"total_out_of_office_days"`
 	IncludeWithoutPayLeave       bool               `bson:"include_without_pay_leave"`
-	TotalWithouPayLeaves         int32              `bson:"total_without_pay_leaves"`
+	TotalWithouPayLeaves         float32            `bson:"total_without_pay_leaves"`
 	PrimaryApproverId            string             `bson:"primary_approver_id"`
 	PrimaryApproverName          string             `bson:"primary_approver_name"`
 	PrimaryApproverDesignation   string             `bson:"primary_approver_designation"`
@@ -76,7 +76,7 @@ type EmployeeLeaveObj struct {
 	PrimaryLeaveApprovalDate     string             `bson:"primary_leave_approval_date"`
 	SecondaryLeaveApprovalDate   string             `bson:"secondary_leave_approval_date"`
 	IncludeWithdrawalLeaves      bool               `bson:"include_withdrawal_leaves"`
-	TotalApprovedLeaves          int32              `bson:"total_approved_leaves"`
+	TotalApprovedLeaves          float32            `bson:"total_approved_leaves"`
 	Leaves                       []Leave            `bson:"leave"`
 	Remarks                      string             `bson:"remarks"`
 }
