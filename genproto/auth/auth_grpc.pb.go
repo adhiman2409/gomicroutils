@@ -28,7 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
 	Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*VerifyResponse, error)
-	UpdateInfo(ctx context.Context, in *InfoUpdateRequest, opts ...grpc.CallOption) (*VerifyResponse, error)
+	UpdateInfo(ctx context.Context, in *InfoUpdateRequest, opts ...grpc.CallOption) (*InfoUpdateResponse, error)
 }
 
 type authServiceClient struct {
@@ -48,8 +48,8 @@ func (c *authServiceClient) Verify(ctx context.Context, in *VerifyRequest, opts 
 	return out, nil
 }
 
-func (c *authServiceClient) UpdateInfo(ctx context.Context, in *InfoUpdateRequest, opts ...grpc.CallOption) (*VerifyResponse, error) {
-	out := new(VerifyResponse)
+func (c *authServiceClient) UpdateInfo(ctx context.Context, in *InfoUpdateRequest, opts ...grpc.CallOption) (*InfoUpdateResponse, error) {
+	out := new(InfoUpdateResponse)
 	err := c.cc.Invoke(ctx, AuthService_UpdateInfo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -62,7 +62,7 @@ func (c *authServiceClient) UpdateInfo(ctx context.Context, in *InfoUpdateReques
 // for forward compatibility
 type AuthServiceServer interface {
 	Verify(context.Context, *VerifyRequest) (*VerifyResponse, error)
-	UpdateInfo(context.Context, *InfoUpdateRequest) (*VerifyResponse, error)
+	UpdateInfo(context.Context, *InfoUpdateRequest) (*InfoUpdateResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -73,7 +73,7 @@ type UnimplementedAuthServiceServer struct {
 func (UnimplementedAuthServiceServer) Verify(context.Context, *VerifyRequest) (*VerifyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Verify not implemented")
 }
-func (UnimplementedAuthServiceServer) UpdateInfo(context.Context, *InfoUpdateRequest) (*VerifyResponse, error) {
+func (UnimplementedAuthServiceServer) UpdateInfo(context.Context, *InfoUpdateRequest) (*InfoUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateInfo not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
