@@ -31,6 +31,7 @@ const EMPLOYEE_COLLECTION_ATTENDANCE = "employee-attendance"
 const EMPLOYEE_COLLECTION_DAILY_ATN_OBJECT = "employee-daily-atn-object"
 const EMPLOYEE_COLLECTION_LEAVES = "employee-leaves"
 const EMPLOYEE_COLLECTION_LEAVE_STATUS = "employee-leave-status"
+const EMPLOYEE_COLLECTION_QUALIFICATION = "employee-qualification"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -155,4 +156,9 @@ func GetOrgMarqueCollection(client *mongo.Client, domain string) *mongo.Collecti
 func GetOrgPostCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_POST)
+}
+
+func GetEmpQualificationCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_QUALIFICATION)
 }
