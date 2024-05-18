@@ -22,6 +22,7 @@ type LeaveStats struct {
 	AvailableLeaves      float32 `bson:"available_leaves"`
 	ConsumedLeaves       float32 `bson:"consumed_leaves"`
 	AppliedLeaves        float32 `bson:"applied_leaves"`
+	DaysPendingToUnlock  float32 `bson:"days_pending_to_unlock"`
 }
 
 type EmployeeLeaveStatus struct {
