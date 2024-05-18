@@ -14,15 +14,15 @@ type EmployeeLeave struct {
 }
 
 type LeaveStats struct {
-	LeaveType            string  `bson:"leave_type"`
-	Year                 string  `bson:"year"`
-	CarryForwardLeaves   float32 `bson:"carry_forward_leaves"`
-	EarnedLeavesThisYear float32 `bson:"earned_leaves_this_year"`
-	TotalLeaves          float32 `bson:"total_leaves"`
-	AvailableLeaves      float32 `bson:"available_leaves"`
-	ConsumedLeaves       float32 `bson:"consumed_leaves"`
-	AppliedLeaves        float32 `bson:"applied_leaves"`
-	DaysPendingToUnlock  float32 `bson:"days_pending_to_unlock"`
+	LeaveType                  string  `bson:"leave_type"`
+	Year                       string  `bson:"year"`
+	CarryForwardLeaves         float32 `bson:"carry_forward_leaves"`
+	EarnedLeavesThisYear       float32 `bson:"earned_leaves_this_year"`
+	TotalLeaves                float32 `bson:"total_leaves"`
+	AvailableLeaves            float32 `bson:"available_leaves"`
+	ConsumedLeaves             float32 `bson:"consumed_leaves"`
+	AppliedLeaves              float32 `bson:"applied_leaves"`
+	ApplicableAfterWorkingDays int32   `bson:"applicable_after_working_days"`
 }
 
 type EmployeeLeaveStatus struct {
