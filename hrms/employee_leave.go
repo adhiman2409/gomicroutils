@@ -25,7 +25,7 @@ type LeaveStats struct {
 	ApplicableAfterWorkingDays int32   `bson:"applicable_after_working_days"`
 }
 
-type EmployeeLeaveStatus struct {
+type EmployeeLeaveStats struct {
 	ID             primitive.ObjectID `bson:"_id"`
 	EmployeeId     string             `bson:"employee_id"`
 	FullName       string             `bson:"full_name"`
