@@ -33,6 +33,8 @@ const EMPLOYEE_COLLECTION_LEAVES = "employee-leaves"
 const EMPLOYEE_COLLECTION_LEAVE_STATS = "employee-leave-stats"
 const EMPLOYEE_COLLECTION_QUALIFICATION = "employee-qualification"
 
+const INVENTORY = "inventory"
+
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_ORGANIZATION)
@@ -161,4 +163,9 @@ func GetOrgPostCollection(client *mongo.Client, domain string) *mongo.Collection
 func GetEmpQualificationCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_QUALIFICATION)
+}
+
+func GetInventoryCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(INVENTORY)
 }
