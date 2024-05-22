@@ -19,6 +19,9 @@ const ORG_COLLECTION_MARQUE = "org-marque"
 const ORG_COLLECTION_POST = "org-post"
 const ORG_COLLECTION_ROLES = "org-roles"
 const ORG_COLLECTION_INVENTORY = "org-inventory"
+const ORG_COLLECTION_INVENTORY_MANAGER = "org-inventory-manager"
+const ORG_COLLECTION_INVENTORY_STORE = "org-inventory-store"
+const ORG_COLLECTION_INVENTORY_BUCKET = "org-inventory-bucket"
 
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
@@ -163,6 +166,21 @@ func GetOrgPostCollection(client *mongo.Client, domain string) *mongo.Collection
 func GetEmpQualificationCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_QUALIFICATION)
+}
+
+func GetOrgInventoryManagerCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_INVENTORY_MANAGER)
+}
+
+func GetOrgInventoryStoreCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_INVENTORY_STORE)
+}
+
+func GetOrgInventoryBucketCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_INVENTORY_BUCKET)
 }
 
 func GetOrgInventoryCollection(client *mongo.Client, domain string) *mongo.Collection {

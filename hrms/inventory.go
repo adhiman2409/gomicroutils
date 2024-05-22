@@ -8,6 +8,9 @@ import (
 
 type Inventory struct {
 	ID 							primitive.ObjectID	`bson:"_id"`
+	StoreID						string				`bson:"store_id"`
+	BucketID					string				`bson:"bucket_id"`
+	ManagerID					string				`bson:"manager_id"`
 	ProductCode 				string				`bson:"product_code"`
 	ProductName					string				`bson:"product_name"`
 	ProductDescription  		string 				`bson:"product_description"`
