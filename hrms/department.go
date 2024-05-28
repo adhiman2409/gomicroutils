@@ -11,6 +11,7 @@ type EmployeeInfo struct {
 	FullName        string `bson:"full_name"`
 	Department      string `bson:"department"`
 	Designation     string `bson:"designation"`
+	EmailID         string `bson:"email_id"`
 	Status          string `bson:"status"`
 	ProfileImageURL string `bson:"profile_image_url"`
 }
