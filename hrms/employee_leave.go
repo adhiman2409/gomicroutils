@@ -1,6 +1,10 @@
 package hrms
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type EmployeeLeave struct {
 	ID          primitive.ObjectID `bson:"_id"`
@@ -23,6 +27,7 @@ type LeaveStats struct {
 	ConsumedLeaves             float32 `bson:"consumed_leaves"`
 	AppliedLeaves              float32 `bson:"applied_leaves"`
 	ApplicableAfterWorkingDays int32   `bson:"applicable_after_working_days"`
+	BulkLeaveNoticeInDays      int     `json:"bulk_leave_notice_in_days"`
 }
 
 type EmployeeLeaveStats struct {
@@ -80,4 +85,6 @@ type EmployeeLeaveObj struct {
 	TotalApprovedLeaves          float32            `bson:"total_approved_leaves"`
 	Leaves                       []Leave            `bson:"leave"`
 	Remarks                      string             `bson:"remarks"`
+	CreatedAt                    time.Time          `bson:"created_at"`
+	UpdatedAt                    time.Time          `bson:"updated_at"`
 }
