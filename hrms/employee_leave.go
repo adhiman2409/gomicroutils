@@ -27,7 +27,7 @@ type LeaveStats struct {
 	ConsumedLeaves             float32 `bson:"consumed_leaves"`
 	AppliedLeaves              float32 `bson:"applied_leaves"`
 	ApplicableAfterWorkingDays int32   `bson:"applicable_after_working_days"`
-	BulkLeaveNoticeInDays      int     `json:"bulk_leave_notice_in_days"`
+	BulkLeaveNoticeInDays      int     `bson:"bulk_leave_notice_in_days"`
 }
 
 type EmployeeLeaveStats struct {
@@ -57,7 +57,6 @@ type EmployeeLeaveObj struct {
 	ID                           primitive.ObjectID `bson:"_id"`
 	EmployeeId                   string             `bson:"employee_id"`
 	FullName                     string             `bson:"full_name"`
-	PhoneNumber                  string             `bson:"phone_number"`
 	EmailId                      string             `bson:"email_id"`
 	LeaveType                    string             `bson:"leave_type"`
 	LeaveStatus                  string             `bson:"leave_status"`
