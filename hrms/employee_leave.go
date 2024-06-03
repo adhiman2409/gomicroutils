@@ -47,6 +47,7 @@ type Leave struct {
 	Year                string `bson:"year"`
 	LeaveType           string `bson:"leave_type"`
 	LeaveStatus         string `bson:"leave_status"`
+	LeaveDuration       string `bson:"leave_duration"`
 	IsWithoutPayLeave   bool   `bson:"is_without_pay_leave"`
 	LeaveWithdrawalDate string `bson:"leave_withdrawal_date"`
 	LeaveApprovalDate   string `bson:"leave_approval_date"`
@@ -65,6 +66,7 @@ type EmployeeLeaveObj struct {
 	ActualNoticeDays             float32            `bson:"actual_notice_days"`
 	LeaveStartDate               string             `bson:"leave_start_date"`
 	LeaveEndDate                 string             `bson:"leave_end_date"`
+	LeaveDuration                string             `bson:"leave_duration"`
 	IncludeNonWorkingDays        bool               `bson:"include_non_working_days"`
 	TotalAppliedLeaves           float32            `bson:"total_applied_leaves"`
 	TotalOutOfOfficeDays         float32            `bson:"total_out_of_office_days"`
