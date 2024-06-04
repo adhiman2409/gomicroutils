@@ -67,6 +67,7 @@ type EmployeeLeaveObj struct {
 	LeaveStartDate               string             `bson:"leave_start_date"`
 	LeaveEndDate                 string             `bson:"leave_end_date"`
 	LeaveDuration                string             `bson:"leave_duration"`
+	AmountOfLeaves               string             `bson:"amount_of_leaves"`
 	IncludeNonWorkingDays        bool               `bson:"include_non_working_days"`
 	TotalAppliedLeaves           float32            `bson:"total_applied_leaves"`
 	TotalOutOfOfficeDays         float32            `bson:"total_out_of_office_days"`
