@@ -14,6 +14,7 @@ type Post struct {
 	ProfileImage string             `bson:"profile_image"`
 	Important    bool               `bson:"important"`
 	PostedBy     string             `bson:"posted_by"`
+	IsEmpty      bool               `bson:"is_empty"`
 	Designation  string             `bson:"designation"`
 	Date         string             `bson:"date"`
 	CreatedAt    time.Time          `bson:"created_at"`
