@@ -60,8 +60,9 @@ func (a *StorageConnection) DownloadStaticFile(w http.ResponseWriter, r *http.Re
 
 	filename := mux.Vars(r)["filename"]
 	nd := strings.Replace(domain, ".", "_", -1)
+	filepathwithname := "static/" + filename
 
-	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filename).NewReader(clientCtx)
+	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
 	if err != nil {
 		fmt.Println("Error ", err.Error())
 		return err
