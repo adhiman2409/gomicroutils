@@ -15,6 +15,7 @@ type EmpDocumentInfo struct {
 	DocCategory string             `bson:"doc_category"`
 	DocType     string             `bson:"doc_type"`
 	DocPath     string             `bson:"doc_path"`
+	IsVerified  string             `bson:"is_verified"`
 	RegexText   string             `bson:"regex_text"`
 	CreatedBy   string             `bson:"created_by"`
 	CreatedAt   time.Time          `bson:"created_at"`
