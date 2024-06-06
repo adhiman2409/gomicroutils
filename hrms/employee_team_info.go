@@ -13,4 +13,5 @@ type EmployeeTeamInfo struct {
 	Department   string             `bson:"department"`
 	Designation  string             `bson:"designation"`
 	Role         string             `bson:"role"`
+	ImgURL       string             `bson:"img_url"`
 }
