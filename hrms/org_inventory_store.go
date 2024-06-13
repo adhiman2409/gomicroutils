@@ -8,9 +8,7 @@ import (
 
 type InventoryStore struct {
 	ID					primitive.ObjectID 			`bson:"_id"`
-	ManagerID			string						`bson:"manager_id"`
-	ManagerName			string						`bson:"manager_name"`
-	ManagerEmail		string						`bson:"manager_email"`
+	DepartmentID		string					`bson:"department_id"`
 	Department			string						`bson:"department"`
 	Team				string						`bson:"team"`
 	Project				string						`bson:"project"`
