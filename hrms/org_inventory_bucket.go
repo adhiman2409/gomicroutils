@@ -11,6 +11,7 @@ type StoreBucket struct {
 	StoreID				string					`bson:"store_id"`
 	DepartmentID		string					`bson:"department_id"`
 	Department			string					`bson:"department"`
+	BucketName			string					`bson:"bucket_name"`
 	StoreName			string					`bson:"store_name"`
 	Category			string					`bson:"category"`
 	Description			string					`bson:"description"`
