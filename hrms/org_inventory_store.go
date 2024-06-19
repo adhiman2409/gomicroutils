@@ -18,8 +18,8 @@ type InventoryStore struct {
 	CreatedAt			time.Time					`bson:"created_at"`
 	Status				string						`bson:"status"`
 	IsActive			bool						`bson:"is_active"`
-	OpenTime			time.Time					`bson:"open_time"`
-	ClosingTime			time.Time					`bson:"closing_time"`
+	OpenTime			string						`bson:"open_time"`
+	ClosingTime			string						`bson:"closing_time"`
 	Buckets				int32						`bson:"buckets"`
 	UpdatedAt			time.Time					`bson:"updated_at"`		
 }
