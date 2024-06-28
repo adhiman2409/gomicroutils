@@ -33,7 +33,7 @@ type Inventory struct {
 	IsActive					bool				`bson:"is_active"`
 	IsConsumeable				bool				`bson:"is_consumeable"`
 	ShelfLifeInDays				int32				`bson:"shelf_life_in_days"`
-	ExpiryDate					time.Time			`bson:"expiry_date"`
+	ExpiryDate					string				`bson:"expiry_date"`
 	Type						string				`bson:"type"`
 	Remarks						string				`bson:"remarks"`
 }
