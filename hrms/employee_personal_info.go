@@ -17,6 +17,12 @@ type Address struct {
 	GoogleLocationCode string  `bson:"google_location_code"`
 }
 
+type FamilyInfo struct {
+	Name        string `bson:"name"`
+	DOB         string `bson:"dob"`
+	PhoneNumber string `bson:"phone_number"`
+	Relation    string `bson:"relation"`
+}
 type EmpPersonalInfo struct {
 	ID                   primitive.ObjectID `bson:"_id"`
 	EmployeeId           string             `bson:"employee_id"`
@@ -39,6 +45,7 @@ type EmpPersonalInfo struct {
 	PassportNumber       string             `bson:"passport_number"`
 	PermanentAddress     Address            `bson:"permanent_address"`
 	CommunicationAddress Address            `bson:"communication_address"`
+	FamilyInfo           []FamilyInfo       `bson:"family_info"`
 	BothAddressSame      bool               `bson:"both_address_same"`
 	RegexText            string             `bson:"regex_text"`
 	CreatedBy            string             `bson:"created_by"`

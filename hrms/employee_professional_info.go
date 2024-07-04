@@ -19,6 +19,8 @@ type EmpProfessionalInfo struct {
 	EmploymentStatus      string             `bson:"employment_status"`
 	OfficeLocation        string             `bson:"office_location"`
 	WorkLocation          string             `bson:"work_location"`
+	CIBILScore            string             `bson:"cibil_score"`
+	ClientInfo            Client             `bson:"client_info"`
 	WorkAddress           Address            `bson:"work_address"`
 	ReportingManagerName  string             `bson:"reporting_manager"`
 	ReportingManagerId    string             `bson:"reporting_manager_id"`
