@@ -23,6 +23,7 @@ const ORG_COLLECTION_INVENTORY_DEPARTMENT = "org-inventory-department"
 const ORG_COLLECTION_INVENTORY_STORE = "org-inventory-store"
 const ORG_COLLECTION_INVENTORY_BUCKET = "org-inventory-bucket"
 const ORG_COLLECTION_CLIENT = "org-client"
+const ORG_COLLECTION_POLICY = "org-policy"
 
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
@@ -197,4 +198,9 @@ func GetEmpCertAndTrainingCollection(client *mongo.Client, domain string) *mongo
 func GetOrgClientCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_CLIENT)
+}
+
+func GetOrgPolicyCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_POLICY)
 }
