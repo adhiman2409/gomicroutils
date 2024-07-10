@@ -89,3 +89,40 @@ func (a *StorageConnection) DownloadStaticFile(w http.ResponseWriter, r *http.Re
 
 	return nil
 }
+
+func (a *StorageConnection) DownloadPolicy(w http.ResponseWriter, r *http.Request, domain string) error {
+	pid := os.Getenv("GOOGLE_PROJECT_ID")
+	clientCtx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	filename := mux.Vars(r)["filename"]
+	nd := strings.Replace(domain, ".", "_", -1)
+	filepathwithname := "policies/" + filename
+
+	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return err
+	}
+	defer reader.Close()
+	contentType := reader.Attrs.ContentType
+	size := strconv.FormatInt(reader.Attrs.Size, 10)
+	content, err := io.ReadAll(reader)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return err
+	}
+	w.Header().Set("Content-Type", contentType)
+	disposition := "attachment"
+	if filename == "thumbnail.jpg" {
+		disposition = "inline"
+	}
+	w.Header().Set("Content-Disposition", disposition+"; filename="+filename)
+	w.Header().Set("Content-Length", size)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
+
+	return nil
+}
