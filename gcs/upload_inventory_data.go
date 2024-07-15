@@ -15,13 +15,14 @@ import (
 func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) (InventoryFileUploadResponse, error) {
 
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
-	department := r.FormValue("inventory_name")
+	department := "inventory"
 	bucket_id := r.FormValue("bucket_id")
 	store_id := r.FormValue("store_id")
 	documentType := r.FormValue("dtype")
 
-	filePathArr := make([]string,10)
-	fNameArr := make([]string,10)
+	var productPathArr []string
+	var invoicePathArr []string
+	var fNameArr [] string 
 	
 	err := r.ParseMultipartForm(50 << 20) // Max Size Limit is 50 MB
 	if err != nil {
@@ -43,7 +44,7 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 		nd := strings.Replace(domain, ".", "_", -1)
 
 		filepath := fmt.Sprintf("%s/%s/%s/%s/%s", department, bucket_id, store_id, documentType, fname)
-		filePathArr = append(filePathArr, filepath)
+		productPathArr = append(productPathArr, filepath)
 
 		wc := a.Client.Bucket(nd).UserProject(pid).Object(filepath).NewWriter(context.Background())
 		if _, err = io.Copy(wc, f); err != nil {
@@ -61,7 +62,7 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 			fmt.Println("Error ", err.Error())
 			return InventoryFileUploadResponse{}, errors.New("file read error")
 		}
-		defer f.Close()
+		f.Close()
 
 		fname := store_id + "_"+bucket_id + "_" + fh.Filename
 		fNameArr = append(fNameArr, fname)
@@ -69,7 +70,7 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 		nd := strings.Replace(domain, ".", "_", -1)
 
 		filepath := fmt.Sprintf("%s/%s/%s/%s/%s", department, bucket_id, store_id, documentType, fname)
-		filePathArr = append(filePathArr, filepath)
+		invoicePathArr = append(invoicePathArr, filepath)
 
 		wc := a.Client.Bucket(nd).UserProject(pid).Object(filepath).NewWriter(context.Background())
 		if _, err = io.Copy(wc, f); err != nil {
@@ -88,7 +89,8 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 		Department:  department,
 		DocName:     fNameArr,
 		DocType:     documentType,
-		DocPath:     filePathArr,
+		ProductImagePathArr:     productPathArr,
+		InvoicePathArr:     invoicePathArr,
 	}
 	return info, nil
 }
