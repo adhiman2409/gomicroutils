@@ -39,6 +39,7 @@ const EMPLOYEE_COLLECTION_LEAVES = "employee-leaves"
 const EMPLOYEE_COLLECTION_LEAVE_STATS = "employee-leave-stats"
 const EMPLOYEE_COLLECTION_QUALIFICATION = "employee-qualification"
 const EMPLOYEE_COLLECTION_CERTIFICATE_AND_TRAINING = "employee-cert-and-training"
+const EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION = "employee-attendance-regularization"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -203,4 +204,9 @@ func GetOrgClientCollection(client *mongo.Client, domain string) *mongo.Collecti
 func GetOrgPolicyCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_POLICY)
+}
+
+func GetEmpAttendanceRegularizationCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION)
 }
