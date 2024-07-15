@@ -15,7 +15,7 @@ type EmpAttendanceRegularization struct {
 	CheckInTime         string             `bson:"check_in_time"`
 	CheckOutTime        string             `bson:"check_out_time"`
 	Reason              string             `bson:"reason"`
-	Status              bool               `bson:"status"`
+	Status              string             `bson:"status"`
 	RegularizationCount int                `bson:"regularization_count"`
 	CreatedAt           time.Time          `bson:"created_at"`
 	UpdatedAt           time.Time          `bson:"updated_at"`
