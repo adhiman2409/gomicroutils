@@ -19,6 +19,7 @@ const ORG_COLLECTION_MARQUE = "org-marque"
 const ORG_COLLECTION_POST = "org-post"
 const ORG_COLLECTION_ROLES = "org-roles"
 const ORG_COLLECTION_INVENTORY = "org-inventory"
+const ORG_COLLECTION_ASSIGN_ASSET = "org-assign-asset"
 const ORG_COLLECTION_INVENTORY_DEPARTMENT = "org-inventory-department"
 const ORG_COLLECTION_INVENTORY_STORE = "org-inventory-store"
 const ORG_COLLECTION_INVENTORY_BUCKET = "org-inventory-bucket"
@@ -188,6 +189,11 @@ func GetOrgInventoryBucketCollection(client *mongo.Client, domain string) *mongo
 func GetOrgInventoryCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_INVENTORY)
+}
+
+func GetOrgAssignAssetCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_ASSIGN_ASSET)
 }
 
 func GetEmpCertAndTrainingCollection(client *mongo.Client, domain string) *mongo.Collection {
