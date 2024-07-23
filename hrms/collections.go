@@ -43,6 +43,7 @@ const EMPLOYEE_COLLECTION_CERTIFICATE_AND_TRAINING = "employee-cert-and-training
 const EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION = "employee-attendance-regularization"
 
 const TICKET_CONF = "ticket-conf"
+const TICKET = "ticket"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -222,4 +223,9 @@ func GetEmpAttendanceRegularizationCollection(client *mongo.Client, domain strin
 func GetTicketConfCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(TICKET_CONF)
+}
+
+func GetTicketCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TICKET)
 }
