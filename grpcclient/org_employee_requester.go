@@ -19,6 +19,7 @@ func (a *OrgClient) OrgAddEmployee(e OrgEmployeeInfo) (string, error) {
 		Name:            e.Name,
 		Status:          e.Status,
 		ProfileImageURL: e.ProfileImageURL,
+		EmailId:         e.EmailId,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {
@@ -44,6 +45,7 @@ func (a *OrgClient) OrgRemoveEmployee(e OrgEmployeeInfo) (string, error) {
 		Name:            e.Name,
 		Status:          e.Status,
 		ProfileImageURL: e.ProfileImageURL,
+		EmailId:         e.EmailId,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {
@@ -69,6 +71,7 @@ func (a *OrgClient) OrgUpdateEmployee(e OrgEmployeeInfo) (string, error) {
 		Name:            e.Name,
 		Status:          e.Status,
 		ProfileImageURL: e.ProfileImageURL,
+		EmailId:         e.EmailId,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {
