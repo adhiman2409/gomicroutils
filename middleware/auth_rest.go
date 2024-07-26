@@ -33,7 +33,8 @@ func RequestAuth(next http.Handler) http.Handler {
 			return
 		}
 		jwtToken := authHeader[1]
-		claims, err := grpcclient.GetAuthClient().Verify(jwtToken, mux.CurrentRoute(r).GetName())
+		api := mux.CurrentRoute(r).GetName()
+		claims, err := grpcclient.GetAuthClient().Verify(jwtToken, api)
 		if err != nil {
 			fmt.Println("Token Error: " + err.Error())
 			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
@@ -54,7 +55,7 @@ func RequestAuth(next http.Handler) http.Handler {
 
 		ctx := context.WithValue(r.Context(), "claims", string(byteArray))
 
-		fmt.Println("User Authorized " + claims.EmailId)
+		fmt.Printf("%+v User Authorized for api %s\n", ai, api)
 
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
