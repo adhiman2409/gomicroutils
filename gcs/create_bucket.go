@@ -26,10 +26,6 @@ func (a *StorageConnection) CreateBucket(domain string) error {
 			return fmt.Errorf("bucket name entered is empty %v", bucketName)
 		}
 		attrs, err := buckets.Next()
-		if attrs.Name == bucketName {
-			log.Printf("Bucket %v exists.\n", bucketName)
-			return nil
-		}
 		// Assume bucket not found if at Iterator end and create
 		if err == iterator.Done {
 			// Create bucket
@@ -44,6 +40,9 @@ func (a *StorageConnection) CreateBucket(domain string) error {
 		if err != nil {
 			return fmt.Errorf("issues setting up bucket(%q).objects(): %v. double check project id", attrs.Name, err)
 		}
-
+		if attrs.Name == bucketName {
+			log.Printf("Bucket %v exists.\n", bucketName)
+			return nil
+		}
 	}
 }
