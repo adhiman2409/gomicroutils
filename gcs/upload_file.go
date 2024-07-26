@@ -7,7 +7,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/google/martian/v3/log"
 )
@@ -35,7 +34,7 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 
 	fname := eid + "_" + fh.Filename
 
-	nd := strings.Replace(domain, ".", "_", -1)
+	nd := GetUpdatedDomain(domain)
 
 	filepath := fmt.Sprintf("%s/%s/%s/%s/%s", department, eid, category, documentType, fname)
 

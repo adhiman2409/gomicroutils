@@ -7,7 +7,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/google/martian/v3/log"
 )
@@ -32,7 +31,7 @@ func (a *StorageConnection) UploadPolicy(r *http.Request, domain string) (FileUp
 	folderName := "policies"
 	fname := fh.Filename
 
-	nd := strings.Replace(domain, ".", "_", -1)
+	nd := GetUpdatedDomain(domain)
 
 	filepath := fmt.Sprintf("%s/%s", folderName, fname)
 

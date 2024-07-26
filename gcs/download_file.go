@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -22,7 +21,7 @@ func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request,
 	category := mux.Vars(r)["category"]
 	documentType := mux.Vars(r)["dtype"]
 	filename := mux.Vars(r)["filename"]
-	nd := strings.Replace(domain, ".", "_", -1)
+	nd := GetUpdatedDomain(domain)
 	filePath := fmt.Sprintf("%s/%s/%s/%s/%s", department, eid, category, documentType, filename)
 
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
@@ -59,7 +58,7 @@ func (a *StorageConnection) DownloadStaticFile(w http.ResponseWriter, r *http.Re
 	defer cancel()
 
 	filename := mux.Vars(r)["filename"]
-	nd := strings.Replace(domain, ".", "_", -1)
+	nd := GetUpdatedDomain(domain)
 	filepathwithname := "static/" + filename
 
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
@@ -96,7 +95,7 @@ func (a *StorageConnection) DownloadPolicy(w http.ResponseWriter, r *http.Reques
 	defer cancel()
 
 	filename := mux.Vars(r)["filename"]
-	nd := strings.Replace(domain, ".", "_", -1)
+	nd := GetUpdatedDomain(domain)
 	filepathwithname := "policies/" + filename
 
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)

@@ -7,7 +7,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/google/martian/v3/log"
 )
@@ -22,8 +21,8 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 
 	var productPathArr []string
 	var invoicePathArr []string
-	var fNameArr [] string 
-	
+	var fNameArr []string
+
 	err := r.ParseMultipartForm(50 << 20) // Max Size Limit is 50 MB
 	if err != nil {
 		fmt.Println("Error ", err.Error())
@@ -31,17 +30,17 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 	}
 
 	for _, fh := range r.MultipartForm.File["product_images"] {
-		f,  err := fh.Open()
+		f, err := fh.Open()
 		if err != nil {
 			fmt.Println("Error ", err.Error())
 			return InventoryFileUploadResponse{}, errors.New("file read error")
 		}
 		defer f.Close()
 
-		fname := store_id + "_"+bucket_id + "_" + fh.Filename
+		fname := store_id + "_" + bucket_id + "_" + fh.Filename
 		fNameArr = append(fNameArr, fname)
 
-		nd := strings.Replace(domain, ".", "_", -1)
+		nd := GetUpdatedDomain(domain)
 
 		filepath := fmt.Sprintf("%s/%s/%s/%s/%s", department, bucket_id, store_id, documentType, fname)
 		productPathArr = append(productPathArr, filepath)
@@ -57,17 +56,17 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 	}
 
 	for _, fh := range r.MultipartForm.File["invoices"] {
-		f,  err := fh.Open()
+		f, err := fh.Open()
 		if err != nil {
 			fmt.Println("Error ", err.Error())
 			return InventoryFileUploadResponse{}, errors.New("file read error")
 		}
 		f.Close()
 
-		fname := store_id + "_"+bucket_id + "_" + fh.Filename
+		fname := store_id + "_" + bucket_id + "_" + fh.Filename
 		fNameArr = append(fNameArr, fname)
-		
-		nd := strings.Replace(domain, ".", "_", -1)
+
+		nd := GetUpdatedDomain(domain)
 
 		filepath := fmt.Sprintf("%s/%s/%s/%s/%s", department, bucket_id, store_id, documentType, fname)
 		invoicePathArr = append(invoicePathArr, filepath)
@@ -83,14 +82,14 @@ func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) 
 	}
 
 	info := InventoryFileUploadResponse{
-		Domain:      domain,
-		BucketId: 	 bucket_id,
-		StoreId: 	 store_id,
-		Department:  department,
-		DocName:     fNameArr,
-		DocType:     documentType,
-		ProductImagePathArr:     productPathArr,
-		InvoicePathArr:     invoicePathArr,
+		Domain:              domain,
+		BucketId:            bucket_id,
+		StoreId:             store_id,
+		Department:          department,
+		DocName:             fNameArr,
+		DocType:             documentType,
+		ProductImagePathArr: productPathArr,
+		InvoicePathArr:      invoicePathArr,
 	}
 	return info, nil
 }
