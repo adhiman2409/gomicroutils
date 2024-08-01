@@ -14,7 +14,7 @@ import (
 func (a *StorageConnection) UploadInventoryData(r *http.Request, domain string) (InventoryFileUploadResponse, error) {
 
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
-	department := "inventory"
+	department := "Inventory"
 	bucket_id := r.FormValue("bucket_id")
 	store_id := r.FormValue("store_id")
 	documentType := r.FormValue("dtype")
