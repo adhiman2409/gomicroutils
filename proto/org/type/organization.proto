@@ -19,6 +19,7 @@ message InitOrgRequest {
 		string role = 12;
 		bool firstLoginPending = 13;
 		string status = 14;
+		bool useGoogleOAuth = 15;
 }
 
 message InitOrgResponse {

@@ -15,4 +15,5 @@ type OrgInitInfo struct {
 	Role              string
 	FirstLoginPending bool
 	Status            string
+	UseGoogleOAuth    bool
 }
