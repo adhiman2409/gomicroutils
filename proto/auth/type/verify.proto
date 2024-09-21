@@ -19,4 +19,5 @@ message VerifyResponse {
   string domain = 7;
   string department = 8;
   string role = 9;
+  string orgName = 10;
 }

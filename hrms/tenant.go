@@ -11,12 +11,13 @@ type Tenant struct {
 	EID               string             `bson:"eid"`
 	Domain            string             `bson:"domain"`
 	OrgName           string             `bson:"org_name"`
-	AdminEmailId      string             `bson:"admin_email_id"`
-	AdminPhoneNumber  string             `bson:"admin_phone_number"`
-	AdminName         string             `bson:"admin_name"`
+	EmailId           string             `bson:"email_id"`
+	PhoneNumber       string             `bson:"phone_number"`
+	Name              string             `bson:"name"`
 	Department        string             `bson:"department"`
 	Designation       string             `bson:"designation"`
 	EmailVerified     bool               `bson:"email_verified"`
+	UseGoogleOAuth    bool               `json:"use_google__oauth"`
 	Password          string             `bson:"password"`
 	Role              string             `bson:"role"`
 	ImageURL          string             `bson:"image_url"`

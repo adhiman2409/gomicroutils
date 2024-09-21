@@ -14,6 +14,7 @@ type AuthInfo struct {
 	EmailId     string
 	PhoneNumber string
 	Role        string
+	OrgName     string
 }
 
 func GetAuthInfo(r *http.Request) AuthInfo {
