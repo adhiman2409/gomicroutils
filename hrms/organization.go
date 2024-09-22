@@ -22,6 +22,7 @@ type Organization struct {
 	CountryCode      string             `bson:"country_code"`
 	Description      string             `bson:"description"`
 	SocialAccounts   []string           `bson:"social_accounts"`
+	UseGoogleAuth    bool               `bson:"use_google_auth"`
 	Website          string             `bson:"website"`
 	CreatedBy        string             `bson:"created_by"`
 	CreatedAt        time.Time          `bson:"created_at"`
