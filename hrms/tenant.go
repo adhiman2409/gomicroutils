@@ -17,7 +17,7 @@ type Tenant struct {
 	Department        string             `bson:"department"`
 	Designation       string             `bson:"designation"`
 	EmailVerified     bool               `bson:"email_verified"`
-	UseGoogleOAuth    bool               `json:"use_google__oauth"`
+	UseGoogleOAuth    bool               `bson:"use_google_oauth"`
 	Password          string             `bson:"password"`
 	Role              string             `bson:"role"`
 	ImageURL          string             `bson:"image_url"`
