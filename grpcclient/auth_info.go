@@ -27,6 +27,7 @@ func GetAuthInfo(r *http.Request) AuthInfo {
 		EmailId:     "",
 		PhoneNumber: "",
 		Role:        "anonymous",
+		OrgName:     "",
 	}
 	claims := r.Context().Value("claims")
 	claimsString, ok := claims.(string)
