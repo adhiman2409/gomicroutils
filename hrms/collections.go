@@ -25,6 +25,7 @@ const ORG_COLLECTION_INVENTORY_STORE = "org-inventory-store"
 const ORG_COLLECTION_INVENTORY_BUCKET = "org-inventory-bucket"
 const ORG_COLLECTION_CLIENT = "org-client"
 const ORG_COLLECTION_POLICY = "org-policy"
+const ORG_COLLECTION_POLICY_STATS = "org-policy-stats"
 
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
@@ -213,6 +214,11 @@ func GetOrgClientCollection(client *mongo.Client, domain string) *mongo.Collecti
 func GetOrgPolicyCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_POLICY)
+}
+
+func GetOrgPolicyStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_POLICY_STATS)
 }
 
 func GetEmpAttendanceRegularizationCollection(client *mongo.Client, domain string) *mongo.Collection {

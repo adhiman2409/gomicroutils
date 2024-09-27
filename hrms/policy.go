@@ -13,3 +13,11 @@ type Policy struct {
 	UploadedAt     time.Time          `bson:"uploaded_at"`
 	Views          []string           `bson:"views"`
 }
+
+type PolicyViewStats struct {
+	ID         primitive.ObjectID `bson:"_id"`
+	PolicyId   string             `bson:"policy_id"`
+	PolicyName string             `bson:"policy_name"`
+	EmployeeId string             `bson:"employee_id"`
+	ViewedAt   time.Time          `bson:"viewed_at"`
+}
