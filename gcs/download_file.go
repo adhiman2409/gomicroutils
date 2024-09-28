@@ -2,6 +2,7 @@ package gcs
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -43,6 +44,45 @@ func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request,
 		disposition = "inline"
 	}
 	w.Header().Set("Content-Disposition", disposition+"; filename="+filename)
+	w.Header().Set("Content-Length", size)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
+
+	return nil
+}
+
+// Download gets a file from GCS bucket, Takes file path as a path param from request
+func (a *StorageConnection) DownloadImage(w http.ResponseWriter, r *http.Request) error {
+	pid := os.Getenv("GOOGLE_PROJECT_ID")
+	clientCtx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	var req ImageDownloadRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		return err
+	}
+
+	nd := GetUpdatedDomain(req.Domain)
+	filePath := fmt.Sprintf("%s/%s/%s/%s/%s", req.Department, req.EID, req.Category, req.IType, req.Name)
+
+	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return err
+	}
+	defer reader.Close()
+	contentType := reader.Attrs.ContentType
+	size := strconv.FormatInt(reader.Attrs.Size, 10)
+	content, err := io.ReadAll(reader)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return err
+	}
+	w.Header().Set("Content-Type", contentType)
+	disposition := "inline"
+	w.Header().Set("Content-Disposition", disposition+"; filename="+req.Name)
 	w.Header().Set("Content-Length", size)
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
