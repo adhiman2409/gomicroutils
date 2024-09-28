@@ -36,6 +36,8 @@ type EmployeeAttendance struct {
 	IsOnLeave               bool               `bson:"is_on_leave"`
 	IsWorkingDay            bool               `bson:"is_working_day"`
 	IsWeeklyOffDay          bool               `bson:"is_weekly_off_day"`
+	IsFullDayLWP            bool               `bson:"is_full_day_lwp"`
+	IsHalfDayLWP            bool               `bson:"is_half_day_lwp"`
 	DailyCheckInStats       []DailyCheckInStat `bson:"daily_checkin_stats"`
 	Remarks                 string             `bson:"remarks"`
 }
