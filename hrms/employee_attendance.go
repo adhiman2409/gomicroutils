@@ -36,10 +36,17 @@ type EmployeeAttendance struct {
 	IsOnLeave               bool               `bson:"is_on_leave"`
 	IsWorkingDay            bool               `bson:"is_working_day"`
 	IsWeeklyOffDay          bool               `bson:"is_weekly_off_day"`
+	DailyCheckInStats       []DailyCheckInStat `bson:"daily_checkin_stats"`
 	Remarks                 string             `bson:"remarks"`
 }
 
 type DailyAttendanceObject struct {
 	EID         string `bson:"eid"`
 	IsProcessed bool   `bson:"is_processed"`
+}
+
+type DailyCheckInStat struct {
+	CheckInTime  string  `json:"check_in_time"`
+	CheckOutTime string  `json:"check_out_time"`
+	WorkingHours float32 `json:"working_hours"`
 }
