@@ -1,6 +1,8 @@
 package hrms
 
 import (
+	"time"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -38,6 +40,8 @@ type EmployeeAttendance struct {
 	IsWeeklyOffDay          bool               `bson:"is_weekly_off_day"`
 	IsFullDayLWP            bool               `bson:"is_full_day_lwp"`
 	IsHalfDayLWP            bool               `bson:"is_half_day_lwp"`
+	OrgCheckInTimeInTicks   time.Time          `bson:"org_check_in_time_in_ticks"`
+	OrgCheckOutTimeInTicks  time.Time          `bson:"org_check_out_time_in_ticks"`
 	DailyCheckInStats       []DailyCheckInStat `bson:"daily_checkin_stats"`
 	Remarks                 string             `bson:"remarks"`
 }
