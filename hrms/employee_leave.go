@@ -37,8 +37,8 @@ type EmployeeLeaveStats struct {
 	EmployeeId     string             `bson:"employee_id"`
 	FullName       string             `bson:"full_name"`
 	PhoneNumber    string             `bson:"phone_number"`
-	Gender         string             `bson:"gender"`
-	IsMarried      string             `bson:"is_married"`
+	IsMale         bool               `bson:"is_male"`
+	IsMarried      bool               `bson:"is_married"`
 	EmailId        string             `bson:"email_id"`
 	EmpJoiningDate string             `bson:"emp_joining_date"`
 	Year           string             `bson:"year"`
