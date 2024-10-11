@@ -18,6 +18,7 @@ type EmployeeLeave struct {
 }
 
 type LeaveStats struct {
+	IsActive                   bool    `bson:"is_active"`
 	LeaveType                  string  `bson:"leave_type"`
 	Year                       string  `bson:"year"`
 	CarryForwardLeaves         float32 `bson:"carry_forward_leaves"`
@@ -27,6 +28,7 @@ type LeaveStats struct {
 	ConsumedLeaves             float32 `bson:"consumed_leaves"`
 	AppliedLeaves              float32 `bson:"applied_leaves"`
 	ApplicableAfterWorkingDays int32   `bson:"applicable_after_working_days"`
+	ActivationDate             string  `bson:"activation_date"`
 	BulkLeaveNoticeInDays      int     `bson:"bulk_leave_notice_in_days"`
 }
 
@@ -35,6 +37,7 @@ type EmployeeLeaveStats struct {
 	EmployeeId     string             `bson:"employee_id"`
 	FullName       string             `bson:"full_name"`
 	PhoneNumber    string             `bson:"phone_number"`
+	Gender         string             `bson:"gender"`
 	EmailId        string             `bson:"email_id"`
 	EmpJoiningDate string             `bson:"emp_joining_date"`
 	Year           string             `bson:"year"`
