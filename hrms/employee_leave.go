@@ -80,7 +80,7 @@ type EmployeeLeaveObj struct {
 	PrimaryApproverId            string             `bson:"primary_approver_id"`
 	PrimaryApproverName          string             `bson:"primary_approver_name"`
 	PrimaryApproverDesignation   string             `bson:"primary_approver_designation"`
-	IsApprovedByPrimary          bool               `bson:"is_approved_by_primary"`
+	IsApprovedByPrimary          bool               `son:"is_approved_by_primary"`
 	SecondaryApproverId          string             `bson:"secondary_approver_id"`
 	SecondaryApproverName        string             `bson:"secondary_approver_name"`
 	SecondaryApproverDesignation string             `bson:"secondary_approver_designation"`
@@ -88,6 +88,7 @@ type EmployeeLeaveObj struct {
 	LeveApplicationDate          string             `bson:"leave_application_date"`
 	PrimaryLeaveApprovalDate     string             `bson:"primary_leave_approval_date"`
 	SecondaryLeaveApprovalDate   string             `bson:"secondary_leave_approval_date"`
+	RejectionDate                string             `bson:"rejection_date"`
 	IncludeWithdrawalLeaves      bool               `bson:"include_withdrawal_leaves"`
 	TotalApprovedLeaves          float32            `bson:"total_approved_leaves"`
 	Leaves                       []Leave            `bson:"leave"`
