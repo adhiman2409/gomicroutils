@@ -26,6 +26,9 @@ const ORG_COLLECTION_INVENTORY_BUCKET = "org-inventory-bucket"
 const ORG_COLLECTION_CLIENT = "org-client"
 const ORG_COLLECTION_POLICY = "org-policy"
 const ORG_COLLECTION_POLICY_STATS = "org-policy-stats"
+const ORG_COLLECTION_SALARY_COMPONENTS = "org-salary_components"
+const ORG_COLLECTION_SALARY_GROUPS = "org-salary_groups"
+const ORG_COLLECTION_SALARY_STRUCTURES = "org-salary_structures"
 
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
@@ -214,6 +217,21 @@ func GetOrgClientCollection(client *mongo.Client, domain string) *mongo.Collecti
 func GetOrgPolicyCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_POLICY)
+}
+
+func GetOrgSalaryComponentsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_SALARY_COMPONENTS)
+}
+
+func GetOrgSalaryStructuresCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_SALARY_STRUCTURES)
+}
+
+func GetOrgSalaryGroupsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_SALARY_GROUPS)
 }
 
 func GetOrgPolicyStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
