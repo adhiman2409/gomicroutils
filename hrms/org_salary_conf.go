@@ -30,7 +30,7 @@ type OrgSalaryComponentGroup struct {
 	TotalAmount      float32              `bson:"total_amount"`
 }
 
-type OrgSalaryStrucutre struct {
+type OrgSalaryStructure struct {
 	ID                    primitive.ObjectID        `bson:"_id"`
 	OrgName               string                    `bson:"org_name"`
 	SalaryComponentGroups []OrgSalaryComponentGroup `bson:"salary_component_groups"`
