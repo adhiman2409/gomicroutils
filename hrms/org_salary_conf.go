@@ -5,19 +5,20 @@ import (
 )
 
 type OrgSalaryComponent struct {
-	ID                   primitive.ObjectID `bson:"_id"`
-	ComponentName        string             `bson:"component_name"`
-	Abbrivation          string             `bson:"abbrivation"`
-	Description          string             `bson:"description"`
-	IsTaxableComponent   bool               `bson:"is_taxable_component"`
-	IsCreditComponent    bool               `bson:"is_credit_component"`
-	Formula              string             `bson:"formula"`
-	Cycle                string             `bson:"cycle"` //once, monthly, Biannual, Annual
-	IsPaidDayDepandant   bool               `bson:"is_paid_day_depandant"`
-	AmountBasedOnFormula bool               `bson:"amount_based_on_formula"`
-	CalculatedAmount     float32            `bson:"calculated_amount"`
-	StaticAmount         float32            `bson:"static_amount"`
-	FinalAmount          float32            `bson:"final_amount"`
+	ID                        primitive.ObjectID `bson:"_id"`
+	ComponentName             string             `bson:"component_name"`
+	Abbrivation               string             `bson:"abbrivation"`
+	Description               string             `bson:"description"`
+	IsTaxableComponent        bool               `bson:"is_taxable_component"`
+	IsCreditComponent         bool               `bson:"is_credit_component"`
+	Formula                   string             `bson:"formula"`
+	Cycle                     string             `bson:"cycle"` //once, monthly, Biannual, Annual
+	IsPaidDayDepandant        bool               `bson:"is_paid_day_depandant"`
+	AmountBasedOnFormula      bool               `bson:"amount_based_on_formula"`
+	AbbrivationsUsedInFormula []string           `bson:"abbrivations_used_in_formula"`
+	CalculatedAmount          float32            `bson:"calculated_amount"`
+	StaticAmount              float32            `bson:"static_amount"`
+	FinalAmount               float32            `bson:"final_amount"`
 }
 
 type OrgSalaryComponentGroup struct {

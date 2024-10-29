@@ -19,7 +19,7 @@ func NewStorageConnection() *StorageConnection {
 	if keyfilename == "" {
 		keyfilename = "prodkeyfile.json"
 	}
-	keyfilepath := "./app/cert/" + keyfilename
+	keyfilepath := "/app/cert/" + keyfilename
 	storageClient, err := storage.NewClient(context.Background(), option.WithCredentialsFile(keyfilepath))
 	if err != nil {
 		log.Printf("failed to create gcs client error:%s", err.Error())
