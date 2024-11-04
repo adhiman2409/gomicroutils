@@ -34,5 +34,6 @@ type OrgSalaryComponentGroup struct {
 type OrgSalaryStructure struct {
 	ID                    primitive.ObjectID        `bson:"_id"`
 	OrgName               string                    `bson:"org_name"`
+	Name                  string                    `bson:"name"`
 	SalaryComponentGroups []OrgSalaryComponentGroup `bson:"salary_component_groups"`
 }
