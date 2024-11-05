@@ -65,7 +65,8 @@ type OfferLetter struct {
 	TravelAllowanceAmount       float64            `bson:"travel_allowance_amount"`
 	TravelAllowanceTitle        string             `bson:"travel_allowance_title"`
 	SalaryStructureName         string             `bson:"salary_structure_name"`
-	OfferTemplateName           string             `bson:"offer_template_path"`
+	OfferTemplateName           string             `bson:"offer_template_name"`
+	OfferTemplateData           map[string]string  `bson:"offer_template_data"`
 	CurrentStatus               string             `bson:"current_status"`
 	AcceptanceDate              string             `bson:"acceptance_date"`
 	CandidateJoiningDate        string             `bson:"candidate_joining_date"`
@@ -73,6 +74,12 @@ type OfferLetter struct {
 	ReviewerId                  string             `bson:"reviewer_id"`
 	ReviewerName                string             `bson:"reviewer_name"`
 	IsReviewed                  bool               `bson:"is_reviewed"`
+	ApproverId                  string             `bson:"approver_id"`
+	ApproverName                string             `bson:"approver_name"`
+	IsApproved                  bool               `bson:"is_approved"`
+	SignatoryId                 string             `bson:"signatory_id"`
+	SignatoryName               string             `bson:"signatory_name"`
+	SignatoryDesignation        string             `bson:"signatory_designation"`
 	ReviewedDate                string             `bson:"reviewed_date"`
 	ReviewRemarks               []string           `bson:"review_remarks"`
 	RecruiterId                 string             `bson:"recruiter_id"`
