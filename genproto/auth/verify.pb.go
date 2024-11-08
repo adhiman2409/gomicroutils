@@ -194,6 +194,314 @@ func (x *VerifyResponse) GetOrgName() string {
 	return ""
 }
 
+type EmailTokenRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	TenantId  string `protobuf:"bytes,1,opt,name=tenantId,proto3" json:"tenantId,omitempty"`
+	Domain    string `protobuf:"bytes,2,opt,name=domain,proto3" json:"domain,omitempty"`
+	SubDomain string `protobuf:"bytes,3,opt,name=subDomain,proto3" json:"subDomain,omitempty"`
+	EmailId   string `protobuf:"bytes,4,opt,name=emailId,proto3" json:"emailId,omitempty"`
+	SecretId  string `protobuf:"bytes,5,opt,name=secretId,proto3" json:"secretId,omitempty"`
+	Name      string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *EmailTokenRequest) Reset() {
+	*x = EmailTokenRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_auth_type_verify_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EmailTokenRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmailTokenRequest) ProtoMessage() {}
+
+func (x *EmailTokenRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_auth_type_verify_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmailTokenRequest.ProtoReflect.Descriptor instead.
+func (*EmailTokenRequest) Descriptor() ([]byte, []int) {
+	return file_proto_auth_type_verify_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *EmailTokenRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *EmailTokenRequest) GetDomain() string {
+	if x != nil {
+		return x.Domain
+	}
+	return ""
+}
+
+func (x *EmailTokenRequest) GetSubDomain() string {
+	if x != nil {
+		return x.SubDomain
+	}
+	return ""
+}
+
+func (x *EmailTokenRequest) GetEmailId() string {
+	if x != nil {
+		return x.EmailId
+	}
+	return ""
+}
+
+func (x *EmailTokenRequest) GetSecretId() string {
+	if x != nil {
+		return x.SecretId
+	}
+	return ""
+}
+
+func (x *EmailTokenRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type EmailTokenResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Token        string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	IsError      bool   `protobuf:"varint,2,opt,name=isError,proto3" json:"isError,omitempty"`
+	ErrorMessage string `protobuf:"bytes,3,opt,name=errorMessage,proto3" json:"errorMessage,omitempty"`
+}
+
+func (x *EmailTokenResponse) Reset() {
+	*x = EmailTokenResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_auth_type_verify_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EmailTokenResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmailTokenResponse) ProtoMessage() {}
+
+func (x *EmailTokenResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_auth_type_verify_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmailTokenResponse.ProtoReflect.Descriptor instead.
+func (*EmailTokenResponse) Descriptor() ([]byte, []int) {
+	return file_proto_auth_type_verify_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *EmailTokenResponse) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+func (x *EmailTokenResponse) GetIsError() bool {
+	if x != nil {
+		return x.IsError
+	}
+	return false
+}
+
+func (x *EmailTokenResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+type VerifyEmailTokenRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Token  string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Domain string `protobuf:"bytes,2,opt,name=domain,proto3" json:"domain,omitempty"`
+}
+
+func (x *VerifyEmailTokenRequest) Reset() {
+	*x = VerifyEmailTokenRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_auth_type_verify_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VerifyEmailTokenRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyEmailTokenRequest) ProtoMessage() {}
+
+func (x *VerifyEmailTokenRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_auth_type_verify_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyEmailTokenRequest.ProtoReflect.Descriptor instead.
+func (*VerifyEmailTokenRequest) Descriptor() ([]byte, []int) {
+	return file_proto_auth_type_verify_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *VerifyEmailTokenRequest) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+func (x *VerifyEmailTokenRequest) GetDomain() string {
+	if x != nil {
+		return x.Domain
+	}
+	return ""
+}
+
+type VerifyEmailTokenResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	TenantId     string `protobuf:"bytes,1,opt,name=tenantId,proto3" json:"tenantId,omitempty"`
+	Domain       string `protobuf:"bytes,2,opt,name=domain,proto3" json:"domain,omitempty"`
+	SubDomain    string `protobuf:"bytes,3,opt,name=subDomain,proto3" json:"subDomain,omitempty"`
+	EmailId      string `protobuf:"bytes,4,opt,name=emailId,proto3" json:"emailId,omitempty"`
+	SecretId     string `protobuf:"bytes,5,opt,name=secretId,proto3" json:"secretId,omitempty"`
+	Name         string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
+	IsError      bool   `protobuf:"varint,7,opt,name=isError,proto3" json:"isError,omitempty"`
+	ErrorMessage string `protobuf:"bytes,8,opt,name=errorMessage,proto3" json:"errorMessage,omitempty"`
+}
+
+func (x *VerifyEmailTokenResponse) Reset() {
+	*x = VerifyEmailTokenResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_auth_type_verify_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VerifyEmailTokenResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyEmailTokenResponse) ProtoMessage() {}
+
+func (x *VerifyEmailTokenResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_auth_type_verify_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyEmailTokenResponse.ProtoReflect.Descriptor instead.
+func (*VerifyEmailTokenResponse) Descriptor() ([]byte, []int) {
+	return file_proto_auth_type_verify_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *VerifyEmailTokenResponse) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *VerifyEmailTokenResponse) GetDomain() string {
+	if x != nil {
+		return x.Domain
+	}
+	return ""
+}
+
+func (x *VerifyEmailTokenResponse) GetSubDomain() string {
+	if x != nil {
+		return x.SubDomain
+	}
+	return ""
+}
+
+func (x *VerifyEmailTokenResponse) GetEmailId() string {
+	if x != nil {
+		return x.EmailId
+	}
+	return ""
+}
+
+func (x *VerifyEmailTokenResponse) GetSecretId() string {
+	if x != nil {
+		return x.SecretId
+	}
+	return ""
+}
+
+func (x *VerifyEmailTokenResponse) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *VerifyEmailTokenResponse) GetIsError() bool {
+	if x != nil {
+		return x.IsError
+	}
+	return false
+}
+
+func (x *VerifyEmailTokenResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
 var File_proto_auth_type_verify_proto protoreflect.FileDescriptor
 
 var file_proto_auth_type_verify_proto_rawDesc = []byte{
@@ -221,9 +529,46 @@ var file_proto_auth_type_verify_proto_rawDesc = []byte{
 	0x64, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x72, 0x6f,
 	0x6c, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x72, 0x6f, 0x6c, 0x65, 0x12, 0x18,
 	0x0a, 0x07, 0x6f, 0x72, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x6f, 0x72, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x42, 0x0f, 0x5a, 0x0d, 0x67, 0x65, 0x6e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x07, 0x6f, 0x72, 0x67, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0xaf, 0x01, 0x0a, 0x11, 0x45, 0x6d, 0x61,
+	0x69, 0x6c, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a,
+	0x0a, 0x08, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x08, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x6f,
+	0x6d, 0x61, 0x69, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x64, 0x6f, 0x6d, 0x61,
+	0x69, 0x6e, 0x12, 0x1c, 0x0a, 0x09, 0x73, 0x75, 0x62, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x75, 0x62, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e,
+	0x12, 0x18, 0x0a, 0x07, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x49, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65,
+	0x63, 0x72, 0x65, 0x74, 0x49, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65,
+	0x63, 0x72, 0x65, 0x74, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x68, 0x0a, 0x12, 0x45, 0x6d,
+	0x61, 0x69, 0x6c, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x18, 0x0a, 0x07, 0x69, 0x73, 0x45, 0x72, 0x72, 0x6f,
+	0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x69, 0x73, 0x45, 0x72, 0x72, 0x6f, 0x72,
+	0x12, 0x22, 0x0a, 0x0c, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x22, 0x47, 0x0a, 0x17, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x45, 0x6d,
+	0x61, 0x69, 0x6c, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
+	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x22, 0xf4, 0x01,
+	0x0a, 0x18, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x54, 0x6f, 0x6b,
+	0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x74, 0x65,
+	0x6e, 0x61, 0x6e, 0x74, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x74, 0x65,
+	0x6e, 0x61, 0x6e, 0x74, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x12, 0x1c,
+	0x0a, 0x09, 0x73, 0x75, 0x62, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x09, 0x73, 0x75, 0x62, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x12, 0x18, 0x0a, 0x07,
+	0x65, 0x6d, 0x61, 0x69, 0x6c, 0x49, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x65,
+	0x6d, 0x61, 0x69, 0x6c, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74,
+	0x49, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74,
+	0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x69, 0x73, 0x45, 0x72, 0x72, 0x6f,
+	0x72, 0x18, 0x07, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x69, 0x73, 0x45, 0x72, 0x72, 0x6f, 0x72,
+	0x12, 0x22, 0x0a, 0x0c, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x42, 0x0f, 0x5a, 0x0d, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2f, 0x61, 0x75, 0x74, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -238,10 +583,14 @@ func file_proto_auth_type_verify_proto_rawDescGZIP() []byte {
 	return file_proto_auth_type_verify_proto_rawDescData
 }
 
-var file_proto_auth_type_verify_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_auth_type_verify_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proto_auth_type_verify_proto_goTypes = []interface{}{
-	(*VerifyRequest)(nil),  // 0: auth.VerifyRequest
-	(*VerifyResponse)(nil), // 1: auth.VerifyResponse
+	(*VerifyRequest)(nil),            // 0: auth.VerifyRequest
+	(*VerifyResponse)(nil),           // 1: auth.VerifyResponse
+	(*EmailTokenRequest)(nil),        // 2: auth.EmailTokenRequest
+	(*EmailTokenResponse)(nil),       // 3: auth.EmailTokenResponse
+	(*VerifyEmailTokenRequest)(nil),  // 4: auth.VerifyEmailTokenRequest
+	(*VerifyEmailTokenResponse)(nil), // 5: auth.VerifyEmailTokenResponse
 }
 var file_proto_auth_type_verify_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -281,6 +630,54 @@ func file_proto_auth_type_verify_proto_init() {
 				return nil
 			}
 		}
+		file_proto_auth_type_verify_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EmailTokenRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_auth_type_verify_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EmailTokenResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_auth_type_verify_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VerifyEmailTokenRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_auth_type_verify_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VerifyEmailTokenResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -288,7 +685,7 @@ func file_proto_auth_type_verify_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_auth_type_verify_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

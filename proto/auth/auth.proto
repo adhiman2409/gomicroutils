@@ -10,4 +10,6 @@ option go_package = "genproto/auth";
 service AuthService {
     rpc Verify(VerifyRequest) returns (VerifyResponse) {}
     rpc UpdateInfo(InfoUpdateRequest) returns (InfoUpdateResponse) {}
+    rpc GetNewEmailToken(EmailTokenRequest) returns (EmailTokenResponse) {}
+    rpc VerifyEmailToken(VerifyEmailTokenRequest) returns (VerifyEmailTokenResponse) {}
 }

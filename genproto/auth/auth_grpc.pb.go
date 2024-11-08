@@ -19,8 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	AuthService_Verify_FullMethodName     = "/auth.AuthService/Verify"
-	AuthService_UpdateInfo_FullMethodName = "/auth.AuthService/UpdateInfo"
+	AuthService_Verify_FullMethodName           = "/auth.AuthService/Verify"
+	AuthService_UpdateInfo_FullMethodName       = "/auth.AuthService/UpdateInfo"
+	AuthService_GetNewEmailToken_FullMethodName = "/auth.AuthService/GetNewEmailToken"
+	AuthService_VerifyEmailToken_FullMethodName = "/auth.AuthService/VerifyEmailToken"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -29,6 +31,8 @@ const (
 type AuthServiceClient interface {
 	Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*VerifyResponse, error)
 	UpdateInfo(ctx context.Context, in *InfoUpdateRequest, opts ...grpc.CallOption) (*InfoUpdateResponse, error)
+	GetNewEmailToken(ctx context.Context, in *EmailTokenRequest, opts ...grpc.CallOption) (*EmailTokenResponse, error)
+	VerifyEmailToken(ctx context.Context, in *VerifyEmailTokenRequest, opts ...grpc.CallOption) (*VerifyEmailTokenResponse, error)
 }
 
 type authServiceClient struct {
@@ -57,12 +61,32 @@ func (c *authServiceClient) UpdateInfo(ctx context.Context, in *InfoUpdateReques
 	return out, nil
 }
 
+func (c *authServiceClient) GetNewEmailToken(ctx context.Context, in *EmailTokenRequest, opts ...grpc.CallOption) (*EmailTokenResponse, error) {
+	out := new(EmailTokenResponse)
+	err := c.cc.Invoke(ctx, AuthService_GetNewEmailToken_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) VerifyEmailToken(ctx context.Context, in *VerifyEmailTokenRequest, opts ...grpc.CallOption) (*VerifyEmailTokenResponse, error) {
+	out := new(VerifyEmailTokenResponse)
+	err := c.cc.Invoke(ctx, AuthService_VerifyEmailToken_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility
 type AuthServiceServer interface {
 	Verify(context.Context, *VerifyRequest) (*VerifyResponse, error)
 	UpdateInfo(context.Context, *InfoUpdateRequest) (*InfoUpdateResponse, error)
+	GetNewEmailToken(context.Context, *EmailTokenRequest) (*EmailTokenResponse, error)
+	VerifyEmailToken(context.Context, *VerifyEmailTokenRequest) (*VerifyEmailTokenResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -75,6 +99,12 @@ func (UnimplementedAuthServiceServer) Verify(context.Context, *VerifyRequest) (*
 }
 func (UnimplementedAuthServiceServer) UpdateInfo(context.Context, *InfoUpdateRequest) (*InfoUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateInfo not implemented")
+}
+func (UnimplementedAuthServiceServer) GetNewEmailToken(context.Context, *EmailTokenRequest) (*EmailTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNewEmailToken not implemented")
+}
+func (UnimplementedAuthServiceServer) VerifyEmailToken(context.Context, *VerifyEmailTokenRequest) (*VerifyEmailTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyEmailToken not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -125,6 +155,42 @@ func _AuthService_UpdateInfo_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_GetNewEmailToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EmailTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GetNewEmailToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GetNewEmailToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GetNewEmailToken(ctx, req.(*EmailTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_VerifyEmailToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyEmailTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).VerifyEmailToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_VerifyEmailToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).VerifyEmailToken(ctx, req.(*VerifyEmailTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -139,6 +205,14 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateInfo",
 			Handler:    _AuthService_UpdateInfo_Handler,
+		},
+		{
+			MethodName: "GetNewEmailToken",
+			Handler:    _AuthService_GetNewEmailToken_Handler,
+		},
+		{
+			MethodName: "VerifyEmailToken",
+			Handler:    _AuthService_VerifyEmailToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
