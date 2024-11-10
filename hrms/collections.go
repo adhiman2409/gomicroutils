@@ -47,6 +47,15 @@ const EMPLOYEE_COLLECTION_QUALIFICATION = "employee-qualification"
 const EMPLOYEE_COLLECTION_CERTIFICATE_AND_TRAINING = "employee-cert-and-training"
 const EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION = "employee-attendance-regularization"
 
+const JOBMGR_COLLECTION_JOBS = "jobmgr-jobs"
+const JOBMGR_COLLECTION_APPLICATIONS = "jobmgr-applications"
+const JOBMGR_COLLECTION_JOB_COUNTER = "jobmgr-job-counter"
+const JOBMGR_COLLECTION_APPLICATION_COUNTER = "jobmgr-application-counter"
+const JOBMGR_COLLECTION_CANDIDATE_COUNTER = "jobmgr-candidate-counter"
+const JOBMGR_COLLECTION_ALLOCATION_TABLE = "jobmgr-allocation-table"
+const JOBMGR_COLLECTION_DAILY_STATS = "jobmgr-daily-stats"
+const JOBMGR_COLLECTION_CALCULATED_STATS = "jobmgr-calculated-stats"
+
 const TICKET_CONF = "ticket-conf"
 const TICKET = "ticket"
 
@@ -248,6 +257,46 @@ func GetOrgPolicyStatsCollection(client *mongo.Client, domain string) *mongo.Col
 func GetEmpAttendanceRegularizationCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION)
+}
+
+func GetJobMgrJobsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_JOBS)
+}
+
+func GetJobMgrApplicationsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_APPLICATIONS)
+}
+
+func GetJobMgrJobCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_JOB_COUNTER)
+}
+
+func GetJobMgrApplicationCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_APPLICATION_COUNTER)
+}
+
+func GetJobMgrCandiateCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_CANDIDATE_COUNTER)
+}
+
+func GetJobMgrAllocationTableCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_ALLOCATION_TABLE)
+}
+
+func GetJobMgrDailyStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_DAILY_STATS)
+}
+
+func GetJobMgrCalculatedStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_CALCULATED_STATS)
 }
 
 func GetTicketConfCollection(client *mongo.Client, domain string) *mongo.Collection {
