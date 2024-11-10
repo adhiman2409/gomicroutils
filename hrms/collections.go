@@ -280,12 +280,12 @@ func GetJobMgrApplicationCounterCollection(client *mongo.Client, domain string) 
 	return db.Collection(JOBMGR_COLLECTION_APPLICATION_COUNTER)
 }
 
-func GetJobMgrCandiatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetJobMgrCandidatesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(JOBMGR_COLLECTION_CANDIDATES)
 }
 
-func GetJobMgrCandiateCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetJobMgrCandidateCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(JOBMGR_COLLECTION_CANDIDATE_COUNTER)
 }
