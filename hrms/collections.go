@@ -50,6 +50,7 @@ const EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION = "employee-attendance-regul
 const JOBMGR_COLLECTION_JOBS = "jobmgr-jobs"
 const JOBMGR_COLLECTION_APPLICATIONS = "jobmgr-applications"
 const JOBMGR_COLLECTION_JOB_COUNTER = "jobmgr-job-counter"
+const JOBMGR_COLLECTION_CANDIDATES = "jobmgr-candidates"
 const JOBMGR_COLLECTION_APPLICATION_COUNTER = "jobmgr-application-counter"
 const JOBMGR_COLLECTION_CANDIDATE_COUNTER = "jobmgr-candidate-counter"
 const JOBMGR_COLLECTION_ALLOCATION_TABLE = "jobmgr-allocation-table"
@@ -277,6 +278,11 @@ func GetJobMgrJobCounterCollection(client *mongo.Client, domain string) *mongo.C
 func GetJobMgrApplicationCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(JOBMGR_COLLECTION_APPLICATION_COUNTER)
+}
+
+func GetJobMgrCandiatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_CANDIDATES)
 }
 
 func GetJobMgrCandiateCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
