@@ -4,7 +4,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type Recruiter struct {
+type RecruiterInfo struct {
 	Id   string `bson:"id"`
 	Name string `bson:"name"`
 }
@@ -12,5 +12,5 @@ type Recruiter struct {
 type AllocationEntry struct {
 	ID         primitive.ObjectID `bson:"_id"`
 	NextIndex  int64              `bson:"index"`
-	Recruiters []Recruiter        `bson:"recruiters"`
+	Recruiters []RecruiterInfo    `bson:"recruiters"`
 }
