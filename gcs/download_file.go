@@ -14,6 +14,10 @@ import (
 // Download gets a file from GCS bucket, Takes file path as a path param from request
 func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request, domain string) error {
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
+	inline := false
+	if os.Getenv("DOWNLOAD_INLINE") == "true" {
+		inline = true
+	}
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	department := mux.Vars(r)["department"]
@@ -40,6 +44,9 @@ func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request,
 	w.Header().Set("Content-Type", contentType)
 	disposition := "attachment"
 	if filename == "thumbnail.jpg" {
+		disposition = "inline"
+	}
+	if inline {
 		disposition = "inline"
 	}
 	w.Header().Set("Content-Disposition", disposition+"; filename="+filename)
