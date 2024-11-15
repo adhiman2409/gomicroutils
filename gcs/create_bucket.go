@@ -15,16 +15,35 @@ func (a *StorageConnection) CreateBucket(domain string) error {
 
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
 
-	bucketName := GetUpdatedDomain(domain)
+	dataBucketName := GetUpdatedDomain(domain)
+
+	if dataBucketName == "" {
+		return fmt.Errorf("bucket name entered is empty %v", dataBucketName)
+	}
+
+	err := a.CreateGCSBucket(ctx, pid, dataBucketName)
+	if err != nil {
+		return err
+	}
+
+	financeBucketName := GetUpdatedFinanceDomain(domain)
+
+	err = a.CreateGCSBucket(ctx, pid, financeBucketName)
+	if err != nil {
+		return err
+	}
+
+	return nil
+
+}
+
+func (a *StorageConnection) CreateGCSBucket(ctx context.Context, pid, bucketName string) error {
 
 	// Setup client bucket to work from
 	bucket := a.Client.Bucket(bucketName)
 
 	buckets := a.Client.Buckets(ctx, pid)
 	for {
-		if bucketName == "" {
-			return fmt.Errorf("bucket name entered is empty %v", bucketName)
-		}
 		attrs, err := buckets.Next()
 		// Assume bucket not found if at Iterator end and create
 		if err == iterator.Done {
