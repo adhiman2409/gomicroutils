@@ -20,6 +20,7 @@ func (a *StorageConnection) DownloadSalarySlip(w http.ResponseWriter, employeeId
 
 	nd := GetUpdatedFinanceDomain(domain)
 	filepathwithname := "SalarySlips/" + employeeId + "/" + year + "/" + "Salary_Slip_" + employeeId + "_" + year + "_" + month + ".pdf"
+	fmt.Println("filepathwithname ", filepathwithname)
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
 	if err != nil {
 		fmt.Println("Error ", err.Error())
