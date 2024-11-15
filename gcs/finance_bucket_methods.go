@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 
 	"cloud.google.com/go/storage"
 	"google.golang.org/api/iterator"
@@ -67,7 +68,9 @@ func (a *StorageConnection) GetSalarySlipsByEID(employeeId, domain string) ([]st
 			fmt.Printf("GetSalarySlipsByEID Error: %v\n", err)
 			continue
 		}
-		res = append(res, attrs.Name)
+		if strings.Contains(attrs.Name, ".pdf") {
+			res = append(res, attrs.Name)
+		}
 	}
 	return res, nil
 
