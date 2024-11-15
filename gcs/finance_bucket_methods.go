@@ -12,7 +12,7 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-func (a *StorageConnection) DownloadSalarySlip(w http.ResponseWriter, employeeId, month, year, domain string) error {
+func (a *StorageConnection) DownloadSalarySlip(w http.ResponseWriter, employeeId, year, month, domain string) error {
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
