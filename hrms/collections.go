@@ -57,6 +57,8 @@ const JOBMGR_COLLECTION_ALLOCATION_TABLE = "jobmgr-allocation-table"
 const JOBMGR_COLLECTION_DAILY_STATS = "jobmgr-daily-stats"
 const JOBMGR_COLLECTION_CALCULATED_STATS = "jobmgr-calculated-stats"
 
+const WORKER_COLLECTION_DOMAINS = "worker-domains"
+
 const TICKET_CONF = "ticket-conf"
 const TICKET = "ticket"
 
@@ -313,4 +315,9 @@ func GetTicketConfCollection(client *mongo.Client, domain string) *mongo.Collect
 func GetTicketCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(TICKET)
+}
+
+func GetWorkerDomainCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(WORKER_COLLECTION_DOMAINS)
 }
