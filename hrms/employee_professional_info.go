@@ -15,9 +15,9 @@ type EmpProfessionalInfo struct {
 	Role                  string             `bson:"role"`
 	EmailId               string             `bson:"email_id"`
 	JoiningDate           string             `bson:"joining_date"`
-	JoiningDay            string             `bson:"joining_day"`
-	JoiningMonth          string             `bson:"joining_month"`
-	JoiningYear           string             `bson:"joining_year"`
+	JoiningDay            int64              `bson:"joining_day"`
+	JoiningMonth          int64              `bson:"joining_month"`
+	JoiningYear           int64              `bson:"joining_year"`
 	ReleavingDate         string             `bson:"releaving_date"`
 	EmploymentStatus      string             `bson:"employment_status"`
 	OfficeLocation        string             `bson:"office_location"`
