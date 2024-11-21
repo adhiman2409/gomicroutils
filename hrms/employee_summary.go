@@ -17,6 +17,10 @@ type EmployeeSummary struct {
 	Department            string             `bson:"department"`
 	Designation           string             `bson:"designation"`
 	Role                  string             `bson:"role"`
+	JoiningDate           string             `bson:"joining_date"`
+	JoiningDay            string             `bson:"joining_day"`
+	JoiningMonth          string             `bson:"joining_month"`
+	JoiningYear           string             `bson:"joining_year"`
 	EmploymentStatus      string             `bson:"employment_status"`
 	OfficeLocation        string             `bson:"office_location"`
 	WorkLocation          string             `bson:"work_location"`
