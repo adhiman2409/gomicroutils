@@ -33,16 +33,20 @@ type LeaveStats struct {
 }
 
 type EmployeeLeaveStats struct {
-	ID             primitive.ObjectID `bson:"_id"`
-	EmployeeId     string             `bson:"employee_id"`
-	FullName       string             `bson:"full_name"`
-	PhoneNumber    string             `bson:"phone_number"`
-	IsMale         bool               `bson:"is_male"`
-	IsMarried      bool               `bson:"is_married"`
-	EmailId        string             `bson:"email_id"`
-	EmpJoiningDate string             `bson:"emp_joining_date"`
-	Year           string             `bson:"year"`
-	LeavesStats    []LeaveStats       `bson:"leaves_stats"`
+	ID               primitive.ObjectID `bson:"_id"`
+	EmployeeId       string             `bson:"employee_id"`
+	FullName         string             `bson:"full_name"`
+	PhoneNumber      string             `bson:"phone_number"`
+	IsMale           bool               `bson:"is_male"`
+	IsMarried        bool               `bson:"is_married"`
+	EmailId          string             `bson:"email_id"`
+	EmpJoiningDate   string             `bson:"emp_joining_date"`
+	TenureInDays     int64              `bson:"tenure_in_days"`
+	TotalWorkingDays int64              `bson:"total_working_days"`
+	TotalAbsentDays  int64              `bson:"total_absent_days"`
+	TotalPresentDays int64              `bson:"total_present_days"`
+	Year             string             `bson:"year"`
+	LeavesStats      []LeaveStats       `bson:"leaves_stats"`
 }
 
 type Leave struct {
