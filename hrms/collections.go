@@ -56,6 +56,7 @@ const JOBMGR_COLLECTION_CANDIDATE_COUNTER = "jobmgr-candidate-counter"
 const JOBMGR_COLLECTION_ALLOCATION_TABLE = "jobmgr-allocation-table"
 const JOBMGR_COLLECTION_DAILY_STATS = "jobmgr-daily-stats"
 const JOBMGR_COLLECTION_CALCULATED_STATS = "jobmgr-calculated-stats"
+const JOBMGR_COLLECTION_ERROR_RECORDS = "jobmgr-error-records"
 
 const WORKER_COLLECTION_DOMAINS = "worker-domains"
 
@@ -305,6 +306,11 @@ func GetJobMgrDailyStatsCollection(client *mongo.Client, domain string) *mongo.C
 func GetJobMgrCalculatedStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(JOBMGR_COLLECTION_CALCULATED_STATS)
+}
+
+func GetJobMgrErrorRecordsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_ERROR_RECORDS)
 }
 
 func GetTicketConfCollection(client *mongo.Client, domain string) *mongo.Collection {
