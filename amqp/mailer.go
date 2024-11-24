@@ -6,7 +6,6 @@ import (
 	"errors"
 	"log"
 	"math/rand"
-	"os"
 	"sync"
 	"time"
 
@@ -31,14 +30,9 @@ type MailResponse struct {
 
 var createmailq sync.Once
 
-func (r *RabbitAMQPClient) SendMail(msg []byte, cb func(MailResponse)) (string, error) {
+func (r *RabbitAMQPClient) SendMail(msg []byte, domain string, cb func(MailResponse)) (string, error) {
 
 	createmailq.Do(func() {
-
-		rqname := os.Getenv("MAIL_QUEUE_NAME")
-		if rqname == "" {
-			rqname = "mail_queue"
-		}
 
 		q, err := r.Ch.QueueDeclare(
 			"",    // name
@@ -51,7 +45,7 @@ func (r *RabbitAMQPClient) SendMail(msg []byte, cb func(MailResponse)) (string, 
 		if err != nil {
 			log.Println("Unable to create mail queue ", err)
 		}
-		r.MailReqQName = rqname
+		r.MailReqQName = domain
 		r.MailResQName = q.Name
 	})
 
