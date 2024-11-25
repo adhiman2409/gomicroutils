@@ -28,8 +28,8 @@ type RewardInfo struct {
 	BadgeInfo      string             `bson:"badge_info"`
 	ImageURL       string             `bson:"image_url"`
 	Remarks        string             `bson:"remarks"`
-	GreetingsCount int64              `bson:"Greetings_count"`
-	Greetings      []Greeting         `bson:"Greetings"`
+	GreetingsCount int64              `bson:"greetings_count"`
+	Greetings      []Greeting         `bson:"greetings"`
 	CreatedAt      string             `bson:"created_at"`
 	CreatedBy      string             `bson:"created_by"`
 }
