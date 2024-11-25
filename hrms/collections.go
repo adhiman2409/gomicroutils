@@ -46,6 +46,7 @@ const EMPLOYEE_COLLECTION_LEAVE_STATS = "employee-leave-stats"
 const EMPLOYEE_COLLECTION_QUALIFICATION = "employee-qualification"
 const EMPLOYEE_COLLECTION_CERTIFICATE_AND_TRAINING = "employee-cert-and-training"
 const EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION = "employee-attendance-regularization"
+const EMPLOYEE_COLLECTION_CONGRATULATION = "employee-congratulations"
 
 const JOBMGR_COLLECTION_JOBS = "jobmgr-jobs"
 const JOBMGR_COLLECTION_APPLICATIONS = "jobmgr-applications"
@@ -261,6 +262,11 @@ func GetOrgPolicyStatsCollection(client *mongo.Client, domain string) *mongo.Col
 func GetEmpAttendanceRegularizationCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_ATTENDANCE_REGULARIZATION)
+}
+
+func GetEmpCongratulationCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_CONGRATULATION)
 }
 
 func GetJobMgrJobsCollection(client *mongo.Client, domain string) *mongo.Collection {
