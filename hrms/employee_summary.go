@@ -27,7 +27,7 @@ type EmployeeSummary struct {
 	ReportingManagerName  string             `bson:"reporting_manager"`
 	ReportingManagerId    string             `bson:"reporting_manager_id"`
 	ReportingManagerEmail string             `bson:"reporting_manager_email"`
-	CongratulationCount   int64              `bson:"congratulation_count"`
+	NewJoineeRewardId     string             `bson:"new_joinee_reward_id"`
 	ImgURL                string             `bson:"img_url"`
 	RegexText             string             `bson:"regex_text"`
 	CreatedBy             string             `bson:"created_by"`
