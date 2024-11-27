@@ -27,6 +27,7 @@ type TicketConfig struct {
 	NumberOfOpenTickets           int64              `bson:"number_of_open_tickets"`
 	NumberOfClosedTickets         int64              `bson:"number_of_closed_tickets"`
 	AverageTicketCloserTimeInDays int64              `bson:"average_ticket_closer_time_in_days"`
+	NotifyNewTicketOnEmail        bool               `bson:"notify_new_ticket_on_email"`
 	CreatedAt                     time.Time          `bson:"created_at"`
 	UpdatedAt                     time.Time          `bson:"updated_at"`
 }
@@ -63,7 +64,7 @@ type Ticket struct {
 	CloseYear            int                `bson:"close_year"`
 	CloseDurationInDays  int                `bson:"close_duration_in_days"`
 	NotificationActive   bool               `bson:"notification_active"`
-	SendUpdatesViaEmail  bool               `bson:"send_updates_via_email"`
+	SendUpdatesOnEmail   bool               `bson:"send_updates_on_email"`
 	Rating               float32            `bson:"rating"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
