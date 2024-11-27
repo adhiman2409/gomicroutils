@@ -62,6 +62,8 @@ type Ticket struct {
 	CloseMonth           int                `bson:"close_month"`
 	CloseYear            int                `bson:"close_year"`
 	CloseDurationInDays  int                `bson:"close_duration_in_days"`
+	NotificationActive   bool               `bson:"notification_active"`
+	SendUpdatesViaEmail  bool               `bson:"send_updates_via_email"`
 	Rating               float32            `bson:"rating"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
