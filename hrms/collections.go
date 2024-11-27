@@ -61,8 +61,9 @@ const JOBMGR_COLLECTION_ERROR_RECORDS = "jobmgr-error-records"
 
 const WORKER_COLLECTION_DOMAINS = "worker-domains"
 
-const TICKET_CONF = "ticket-conf"
-const TICKET = "ticket"
+const TICKET_COLLECTION_TICKET_CONFIGS = "ticket-ticket-configs"
+const TICKET_COLLECTION_TICKETS = "ticket-tickets"
+const TICKET_COLLECTION_TICKET_COUNTER = "ticket-ticket-counter"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -319,14 +320,19 @@ func GetJobMgrErrorRecordsCollection(client *mongo.Client, domain string) *mongo
 	return db.Collection(JOBMGR_COLLECTION_ERROR_RECORDS)
 }
 
-func GetTicketConfCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetTicketTicketConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(TICKET_CONF)
+	return db.Collection(TICKET_COLLECTION_TICKET_CONFIGS)
 }
 
-func GetTicketCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetTicketTicketsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(TICKET)
+	return db.Collection(TICKET_COLLECTION_TICKETS)
+}
+
+func GetTicketTicketCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TICKET_COLLECTION_TICKET_COUNTER)
 }
 
 func GetWorkerDomainCollection(client *mongo.Client, domain string) *mongo.Collection {
