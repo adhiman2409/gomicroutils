@@ -25,9 +25,13 @@ type TicketConfig struct {
 	Queries                       []Query            `bson:"queries"`
 	TotalNumberOfTickets          int64              `bson:"total_number_of_tickets"`
 	NumberOfOpenTickets           int64              `bson:"number_of_open_tickets"`
+	NumberOfReopenTickets         int64              `bson:"number_of_reopen_tickets"`
 	NumberOfClosedTickets         int64              `bson:"number_of_closed_tickets"`
 	AverageTicketCloserTimeInDays int64              `bson:"average_ticket_closer_time_in_days"`
 	NotifyNewTicketOnEmail        bool               `bson:"notify_new_ticket_on_email"`
+	LockClosedTicketsAfterDays    int64              `bson:"lock_closed_tickets_after_days"`
+	SendFeedbackReminders         bool               `bson:"send_feedback_remonders"`
+	SendFeedbackReminderAfterDays int64              `bson:"send_feedback_remonder_after_days"`
 	CreatedAt                     time.Time          `bson:"created_at"`
 	UpdatedAt                     time.Time          `bson:"updated_at"`
 }
@@ -65,7 +69,11 @@ type Ticket struct {
 	CloseDurationInDays  int                `bson:"close_duration_in_days"`
 	NotificationActive   bool               `bson:"notification_active"`
 	SendUpdatesOnEmail   bool               `bson:"send_updates_on_email"`
+	FeedbackRemarks      string             `bson:"feedback_remarks"`
 	Rating               float32            `bson:"rating"`
+	RatingDate           string             `bson:"rating_date"`
+	ReminderMailSent     bool               `bson:"reminder_mail_sent"`
+	IsLocked             bool               `bson:"is_locked"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
 }
