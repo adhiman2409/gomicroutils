@@ -6,22 +6,37 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type Query struct {
+	Title     string `bson:"title"`
+	SLAInDays int64  `bson:"sla_in_days"`
+	Remarks   string `bson:"remarks"`
+}
+
 type TicketConfig struct {
-	ID                     primitive.ObjectID `bson:"_id"`
-	DepartmentName         string             `bson:"dept_name"`
-	PrimaryEmployeeId      string             `bson:"primary_emp_id"`
-	PrimaryEmployeeName    string             `bson:"primary_emp_name"`
-	PrimaryEmployeeEmail   string             `bson:"primary_emp_email"`
-	SecondaryEmployeeId    string             `bson:"secondary_emp_id"`
-	SecondaryEmployeeName  string             `bson:"secondary_emp_name"`
-	SecondaryEmployeeEmail string             `bson:"secondary_emp_email"`
-	Queries                []string           `bson:"queries"`
+	ID                            primitive.ObjectID `bson:"_id"`
+	DepartmentName                string             `bson:"dept_name"`
+	PrimaryEmployeeId             string             `bson:"primary_emp_id"`
+	PrimaryEmployeeName           string             `bson:"primary_emp_name"`
+	PrimaryEmployeeEmail          string             `bson:"primary_emp_email"`
+	SecondaryEmployeeId           string             `bson:"secondary_emp_id"`
+	SecondaryEmployeeName         string             `bson:"secondary_emp_name"`
+	SecondaryEmployeeEmail        string             `bson:"secondary_emp_email"`
+	IsSecondaryActive             bool               `bson:"is_secondary_active"`
+	Queries                       []Query            `bson:"queries"`
+	TotalNumberOfTickets          int64              `bson:"total_number_of_tickets"`
+	NumberOfOpenTickets           int64              `bson:"number_of_open_tickets"`
+	NumberOfClosedTickets         int64              `bson:"number_of_closed_tickets"`
+	AverageTicketCloserTimeInDays int64              `bson:"average_ticket_closer_time_in_days"`
+	CreatedAt                     time.Time          `bson:"created_at"`
+	UpdatedAt                     time.Time          `bson:"updated_at"`
 }
 
 type Ticket struct {
 	ID                   primitive.ObjectID `bson:"_id"`
 	TicketID             string             `bson:"ticket_id"`
 	Title                string             `bson:"title"`
+	QuerySLAInDays       int64              `bson:"query_sla_in_days"`
+	QueryRemarks         string             `bson:"query_remarks"`
 	Description          string             `bson:"description"`
 	ReporteeId           string             `bson:"reportee_id"`
 	ReporteeEmailId      string             `bson:"reportee_emailId"`
