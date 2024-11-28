@@ -54,7 +54,6 @@ type Ticket struct {
 	CurrentAssigneeName  string             `bson:"current_assignee_name"`
 	CurrentAssigneeId    string             `bson:"current_assignee_id"`
 	CurrentAssigneeEmail string             `bson:"current_assignee_email"`
-	IsViewed             bool               `bson:"is_viewed"`
 	Status               string             `bson:"status"`
 	PriorityLevel        string             `bson:"priority_level"`
 	TicketType           string             `bson:"ticket_type"`
