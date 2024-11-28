@@ -78,10 +78,10 @@ type Ticket struct {
 }
 
 type Comment struct {
-	TicketID       string    `bson:"ticket_id"`
-	UserID         string    `bson:"user_id"`
-	Username       string    `bson:"user_name"`
-	Message        string    `bson:"message"`
-	AttachmentURLs []string  `bson:"attachment_urls"`
-	CreatedAt      time.Time `bson:"created_at"`
+	TicketID       string   `bson:"ticket_id"`
+	UserID         string   `bson:"user_id"`
+	Username       string   `bson:"user_name"`
+	Message        string   `bson:"message"`
+	AttachmentURLs []string `bson:"attachment_urls"`
+	CreatedAt      string   `bson:"created_at"`
 }
