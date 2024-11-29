@@ -85,3 +85,9 @@ type Comment struct {
 	AttachmentURLs []string `bson:"attachment_urls"`
 	CreatedAt      string   `bson:"created_at"`
 }
+
+type TicketIdCounter struct {
+	ID      primitive.ObjectID `bson:"_id"`
+	Prefix  string             `bson:"prefix"`
+	Counter int64              `bson:"counter"`
+}
