@@ -14,7 +14,7 @@ type Query struct {
 
 type TicketConfig struct {
 	ID                            primitive.ObjectID `bson:"_id"`
-	DepartmentName                string             `bson:"dept_name"`
+	DepartmentName                string             `bson:"department_name"`
 	PrimaryEmployeeId             string             `bson:"primary_emp_id"`
 	PrimaryEmployeeName           string             `bson:"primary_emp_name"`
 	PrimaryEmployeeEmail          string             `bson:"primary_emp_email"`
