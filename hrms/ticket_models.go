@@ -30,8 +30,8 @@ type TicketConfig struct {
 	AverageTicketCloserTimeInDays int64              `bson:"average_ticket_closer_time_in_days"`
 	NotifyNewTicketOnEmail        bool               `bson:"notify_new_ticket_on_email"`
 	LockClosedTicketsAfterDays    int64              `bson:"lock_closed_tickets_after_days"`
-	SendFeedbackReminders         bool               `bson:"send_feedback_remonders"`
-	SendFeedbackReminderAfterDays int64              `bson:"send_feedback_remonder_after_days"`
+	SendFeedbackReminders         bool               `bson:"send_feedback_reminders"`
+	SendFeedbackReminderAfterDays int64              `bson:"send_feedback_reminder_after_days"`
 	CreatedAt                     time.Time          `bson:"created_at"`
 	UpdatedAt                     time.Time          `bson:"updated_at"`
 }
