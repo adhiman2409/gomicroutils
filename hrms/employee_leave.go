@@ -46,6 +46,7 @@ type EmployeeLeaveStats struct {
 	TotalAbsentDays          int64              `bson:"total_absent_days"`
 	TotalPresentDays         int64              `bson:"total_present_days"`
 	AttendanceStatsUpdatedOn string             `bson:"attendance_stats_updated_on"`
+	LeaveStatsUpdatedOn      string             `bson:"leave_stats_updated_on"`
 	Year                     string             `bson:"year"`
 	LeavesStats              []LeaveStats       `bson:"leaves_stats"`
 }
