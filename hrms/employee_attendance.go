@@ -37,8 +37,8 @@ type EmployeeAttendance struct {
 	IsWorkingDay            bool               `bson:"is_working_day"`
 	IsHoliday               bool               `bson:"is_holiday"`
 	IsWeeklyOffDay          bool               `bson:"is_weekly_off_day"`
-	IsFullDayLWP            bool               `bson:"is_full_day_lwp"`
-	IsHalfDayLWP            bool               `bson:"is_half_day_lwp"`
+	IsFullDayLOP            bool               `bson:"is_full_day_lop"`
+	IsHalfDayLOP            bool               `bson:"is_half_day_lop"`
 	SentCheckInMail         bool               `bson:"sent_check_in_mail"`
 	SentCheckOutMail        bool               `bson:"sent_check_out_mail"`
 	OrgCheckInTimeInTicks   int64              `bson:"org_check_in_time_in_ticks"`
