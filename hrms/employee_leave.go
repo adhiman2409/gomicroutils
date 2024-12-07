@@ -41,10 +41,10 @@ type EmployeeLeaveStats struct {
 	IsMarried                bool               `bson:"is_married"`
 	EmailId                  string             `bson:"email_id"`
 	EmpJoiningDate           string             `bson:"emp_joining_date"`
-	TenureInDays             int64              `bson:"tenure_in_days"`
-	TotalWorkingDays         int64              `bson:"total_working_days"`
-	TotalAbsentDays          int64              `bson:"total_absent_days"`
-	TotalPresentDays         int64              `bson:"total_present_days"`
+	TenureInDays             float32            `bson:"tenure_in_days"`
+	TotalWorkingDays         float32            `bson:"total_working_days"`
+	TotalAbsentDays          float32            `bson:"total_absent_days"`
+	TotalPresentDays         float32            `bson:"total_present_days"`
 	AttendanceStatsUpdatedOn string             `bson:"attendance_stats_updated_on"`
 	LeaveStatsUpdatedOn      string             `bson:"leave_stats_updated_on"`
 	Year                     string             `bson:"year"`
