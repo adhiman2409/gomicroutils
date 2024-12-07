@@ -34,6 +34,7 @@ type EmployeeAttendance struct {
 	IsDelayedCheckIn        bool               `bson:"is_delayed_check_in"`
 	IsEarlyCheckOut         bool               `bson:"is_early_check_out"`
 	IsOnLeave               bool               `bson:"is_on_leave"`
+	IsHalfDayLeave          bool               `bson:"is_half_day_leave"`
 	IsWorkingDay            bool               `bson:"is_working_day"`
 	IsHoliday               bool               `bson:"is_holiday"`
 	IsWeeklyOffDay          bool               `bson:"is_weekly_off_day"`
