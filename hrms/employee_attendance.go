@@ -47,7 +47,11 @@ type EmployeeAttendance struct {
 	DailyCheckInStats       []DailyCheckInStat `bson:"daily_checkin_stats"`
 	IsLocked                bool               `bson:"is_locked"`
 	IsExpired               bool               `bson:"is_expired"`
+	IsRegularized           bool               `bson:"is_regularized"`
+	RegularizedOn           string             `bson:"regularized_on"`
+	RegularizedBy           string             `bson:"regularized_by"`
 	Remarks                 string             `bson:"remarks"`
+	CreatedAt               int64              `bson:"createdAt"`
 }
 
 type DailyAttendanceObject struct {
