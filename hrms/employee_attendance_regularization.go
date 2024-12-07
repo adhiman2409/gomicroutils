@@ -10,6 +10,7 @@ type EmpAttendanceRegularization struct {
 	ID                  primitive.ObjectID `bson:"_id"`
 	EID                 string             `bson:"eid"`
 	Domain              string             `bson:"domain"`
+	IsLOPRegularization bool               `bson:"is_lop_regularization"`
 	StartDate           string             `bson:"start_date"`
 	EndDate             string             `bson:"end_date"`
 	CheckInTime         string             `bson:"check_in_time"`
