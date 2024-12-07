@@ -12,6 +12,7 @@ type EmpAttendanceRegularization struct {
 	Domain              string             `bson:"domain"`
 	StartDate           string             `bson:"start_date"`
 	EndDate             string             `bson:"end_date"`
+	IsLOPRegularization bool               `bson:"is_lop_regularization"`
 	CheckInTime         string             `bson:"check_in_time"`
 	CheckOutTime        string             `bson:"check_out_time"`
 	Reason              string             `bson:"reason"`
