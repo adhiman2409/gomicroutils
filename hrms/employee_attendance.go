@@ -30,7 +30,7 @@ type EmployeeAttendance struct {
 	CheckInTime             string             `bson:"check_in_time"`
 	IsCheckedOut            bool               `bson:"is_checked_out"`
 	CheckOutTime            string             `bson:"check_in_out"`
-	WorkingHours            float32            `bson:"working_hours"`
+	TotalWorkingHours       float32            `bson:"total_working_hours"`
 	IsDelayedCheckIn        bool               `bson:"is_delayed_check_in"`
 	IsEarlyCheckOut         bool               `bson:"is_early_check_out"`
 	IsOnLeave               bool               `bson:"is_on_leave"`
