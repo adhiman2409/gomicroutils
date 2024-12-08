@@ -10,6 +10,8 @@ type EmpAttendanceRegularization struct {
 	ID                primitive.ObjectID `bson:"_id"`
 	EmployeeId        string             `bson:"employee_id"`
 	EmployeeName      string             `bson:"employee_name"`
+	EmployeeEmail     string             `bson:"employee_email"`
+	Department        string             `bson:"department"`
 	Domain            string             `bson:"domain"`
 	Day               int32              `bson:"day"`
 	Month             int32              `bson:"month"`
