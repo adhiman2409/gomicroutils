@@ -86,7 +86,7 @@ type EmployeeLeaveObj struct {
 	PrimaryApproverId            string             `bson:"primary_approver_id"`
 	PrimaryApproverName          string             `bson:"primary_approver_name"`
 	PrimaryApproverDesignation   string             `bson:"primary_approver_designation"`
-	IsApprovedByPrimary          bool               `son:"is_approved_by_primary"`
+	IsApprovedByPrimary          bool               `bson:"is_approved_by_primary"`
 	SecondaryApproverId          string             `bson:"secondary_approver_id"`
 	SecondaryApproverName        string             `bson:"secondary_approver_name"`
 	SecondaryApproverDesignation string             `bson:"secondary_approver_designation"`
