@@ -18,6 +18,9 @@ type EmpAttendanceRegularization struct {
 	Year              int32              `bson:"year"`
 	CheckInTime       string             `bson:"check_in_time"`
 	CheckOutTime      string             `bson:"check_out_time"`
+	OldWorkingHours   float32            `bson:"old_working_hours"`
+	NewWorkingHours   float32            `bson:"new_working_hours"`
+	TotalWorkingHours float32            `bson:"total_working_hours"`
 	IsHalfDay         bool               `bson:"is_half_day"`
 	EmployeeRemarks   string             `bson:"employee_remarks"`
 	Status            string             `bson:"status"`
