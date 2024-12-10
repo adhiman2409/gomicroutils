@@ -18,16 +18,15 @@ type Address struct {
 }
 
 type FamilyInfo struct {
-	ID                      primitive.ObjectID `bson:"_id"`
-	EmployeeId              string             `bson:"employee_id"`
-	EmployeeName            string             `bson:"employee_name"`
-	FamilyMemberName        string             `bson:"family_member_name"`
-	FamilyMemberDOB         string             `bson:"family_member_dob"`
-	FamilyMemberGender      string             `bson:"family_member_gender"`
-	FamilyMemberPhoneNumber string             `bson:"family_member_phone_number"`
-	FamilyMemberRelation    string             `bson:"family_member_relation"`
-	CoveredInCorporateIns   bool               `bson:"covered_in_corporate_ins"`
-	InsuranceCardURL        string             `bson:"insurnace_card_url"`
+	EmployeeId              string `bson:"employee_id"`
+	EmployeeName            string `bson:"employee_name"`
+	FamilyMemberName        string `bson:"family_member_name"`
+	FamilyMemberDOB         string `bson:"family_member_dob"`
+	FamilyMemberGender      string `bson:"family_member_gender"`
+	FamilyMemberPhoneNumber string `bson:"family_member_phone_number"`
+	FamilyMemberRelation    string `bson:"family_member_relation"`
+	CoveredInCorporateIns   bool   `bson:"covered_in_corporate_ins"`
+	InsuranceCardURL        string `bson:"insurnace_card_url"`
 }
 type EmpPersonalInfo struct {
 	ID                   primitive.ObjectID `bson:"_id"`
