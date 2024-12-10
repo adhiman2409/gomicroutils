@@ -15,7 +15,6 @@ type Post struct {
 	Important    bool               `bson:"important"`
 	PostedBy     string             `bson:"posted_by"`
 	PostedById   string             `bson:"posted_by_id"`
-	PostedByName string             `bson:"posted_by_name"`
 	IsEmpty      bool               `bson:"is_empty"`
 	Designation  string             `bson:"designation"`
 	Date         string             `bson:"date"`
