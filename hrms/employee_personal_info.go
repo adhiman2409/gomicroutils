@@ -18,6 +18,7 @@ type Address struct {
 }
 
 type FamilyInfo struct {
+	FamilyMemberId           string `bson:"family_member_id"`
 	EmployeeId               string `bson:"employee_id"`
 	EmployeeName             string `bson:"employee_name"`
 	FamilyMemberName         string `bson:"family_member_name"`
