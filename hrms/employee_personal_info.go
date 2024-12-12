@@ -27,6 +27,7 @@ type FamilyInfo struct {
 	FamilyMemberAadharNumber string `bson:"family_member_aadhar_number"`
 	FamilyMemberRelation     string `bson:"family_member_relation"`
 	CoveredInCorporateIns    bool   `bson:"covered_in_corporate_ins"`
+	InsurancePolicyId        string `bson:"insurance_policy_id"`
 	InsuranceCardURL         string `bson:"insurnace_card_url"`
 	UpdateAt                 string `bson:"updated_at"`
 	UpdateBy                 string `bson:"updated_by"`
