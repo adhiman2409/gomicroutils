@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"math/rand"
 	"sync"
@@ -102,6 +103,8 @@ func (r *RabbitAMQPClient) SendMail(msg []byte, domain string, cb func(MailRespo
 			}
 		}
 	}()
+
+	fmt.Println("Mail request sent on queue", r.MailReqQName)
 
 	return corrId, nil
 
