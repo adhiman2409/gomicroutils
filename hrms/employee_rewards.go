@@ -3,11 +3,12 @@ package hrms
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Greeting struct {
-	EmployeeId string `bson:"employee_id"`
-	Name       string `bson:"name"`
-	ImageURL   string `bson:"image_url"`
-	Remarks    string `bson:"remarks"`
-	CreatedAt  string `bson:"created_at"`
+	EmployeeId   string `bson:"employee_id"`
+	Name         string `bson:"name"`
+	ImageURL     string `bson:"image_url"`
+	Remarks      string `bson:"remarks"`
+	GreetingType string `bson:"greeting_type"`
+	CreatedAt    string `bson:"created_at"`
 }
 
 type RewardInfo struct {
