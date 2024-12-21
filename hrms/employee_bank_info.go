@@ -7,7 +7,7 @@ type BankInfo struct {
 	EmployeeId      string             `bson:"employee_id"`
 	FullName        string             `bson:"full_name"`
 	BankName        string             `bson:"bank_name"`
-	AccountNUmber   string             `bson:"account_number"`
+	AccountNumber   string             `bson:"account_number"`
 	IsSalaryAccount bool               `bson:"is_salary_account"`
 	IFSC            string             `bson:"ifsc"`
 	ChequeURL       string             `bson:"cheque_url"`
