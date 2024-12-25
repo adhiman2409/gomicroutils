@@ -24,6 +24,7 @@ type EmpAttendanceConf struct {
 	WorkingDaysPerWeek      float32            `bson:"working_days_per_week"`
 	WeeklyOffDays           []string           `bson:"weekly_off_days"`
 	DailyWorkingHours       float32            `bson:"daily_working_hours"`
+	EmploymentStatus        string             `bson:"employment_status"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }
