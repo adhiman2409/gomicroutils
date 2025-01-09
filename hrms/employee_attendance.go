@@ -30,6 +30,10 @@ type EmployeeAttendance struct {
 	CheckInTime             string             `bson:"check_in_time"`
 	IsCheckedOut            bool               `bson:"is_checked_out"`
 	CheckOutTime            string             `bson:"check_in_out"`
+	EnforceAttendanceSource bool               `bson:"enforce_attendance_source"`
+	AttendanceSource        string             `bson:"attendance_source"`
+	CheckInSource           string             `bson:"check_in_source"`
+	CheckOutSource          string             `bson:"check_out_source"`
 	TotalWorkingHours       float32            `bson:"total_working_hours"`
 	IsDelayedCheckIn        bool               `bson:"is_delayed_check_in"`
 	IsEarlyCheckOut         bool               `bson:"is_early_check_out"`
@@ -61,9 +65,9 @@ type DailyAttendanceObject struct {
 }
 
 type DailyCheckInStat struct {
-	CheckInTime    string  `json:"check_in_time"`
-	CheckInSource  string  `json:"check_in_source"`
-	CheckOutTime   string  `json:"check_out_time"`
-	CheckOutSource string  `json:"check_out_source"`
-	WorkingHours   float32 `json:"working_hours"`
+	CheckInTime    string  `bson:"check_in_time"`
+	CheckOutTime   string  `bson:"check_out_time"`
+	CheckInSource  string  `bson:"check_in_source"`
+	CheckOutSource string  `bson:"check_out_source"`
+	WorkingHours   float32 `bson:"working_hours"`
 }
