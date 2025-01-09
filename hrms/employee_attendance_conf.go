@@ -35,9 +35,9 @@ type EmpAttendanceConf struct {
 }
 
 type EmpShiftTimings struct {
-	Day               int     `bson:"day"`
-	Month             int     `bson:"month"`
-	Year              int     `bson:"year"`
+	Day               string  `bson:"day"`
+	Month             string  `bson:"month"`
+	Year              string  `bson:"year"`
 	IsOverlappedShift bool    `bson:"is_overlapped_shift"`
 	NumberOfShifts    int     `bson:"number_of_shifts"`
 	Shifts            []Shift `bson:"shifts"`
