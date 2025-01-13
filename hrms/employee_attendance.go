@@ -44,8 +44,8 @@ type EmployeeAttendance struct {
 	IsWeeklyOffDay          bool               `bson:"is_weekly_off_day"`
 	IsFullDayLOP            bool               `bson:"is_full_day_lop"`
 	IsHalfDayLOP            bool               `bson:"is_half_day_lop"`
-	IsWorkingInShifts       bool               `bson:"is_working_in_shifts"`
-	NumberOfShifts          int                `bson:"number_of_shifts"`
+	IsWorkingInShift        bool               `bson:"is_working_in_shift"`
+	IsNightShift            bool               `bson:"is_night_shifts"`
 	Shifts                  []Shift            `bson:"shifts"`
 	SentCheckInMail         bool               `bson:"sent_check_in_mail"`
 	SentCheckOutMail        bool               `bson:"sent_check_out_mail"`
