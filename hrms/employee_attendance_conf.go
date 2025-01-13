@@ -48,7 +48,9 @@ type EmpShiftTimings struct {
 }
 
 type Shift struct {
-	ShiftType       string `bson:"shift_type"`
-	OrgCheckInTime  string `bson:"check_in_time"`
-	OrgCheckOutTime string `bson:"check_out_time"`
+	ShiftType              string `bson:"shift_type"`
+	OrgCheckInTime         string `bson:"check_in_time"`
+	OrgCheckOutTime        string `bson:"check_out_time"`
+	OrgCheckInTimeInTicks  int64  `bson:"org_check_in_time_in_ticks"`
+	OrgCheckOutTimeInTicks int64  `bson:"org_check_out_time_in_ticks"`
 }
