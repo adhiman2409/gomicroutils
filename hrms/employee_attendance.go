@@ -71,5 +71,9 @@ type DailyCheckInStat struct {
 	CheckOutTime   string  `bson:"check_out_time"`
 	CheckInSource  string  `bson:"check_in_source"`
 	CheckOutSource string  `bson:"check_out_source"`
+	CheckInLat     float64 `bson:"check_in_lat"`
+	CheckInLng     float64 `bson:"check_in_lng"`
+	CheckOutLat    float64 `bson:"check_out_lat"`
+	CheckOutLng    float64 `bson:"check_out_lng"`
 	WorkingHours   float32 `bson:"working_hours"`
 }
