@@ -39,8 +39,8 @@ type EmpShiftTimings struct {
 	Month             string  `bson:"month"`
 	Year              string  `bson:"year"`
 	Weekday           string  `bson:"weekday"`
+	ShiftType         string  `bson:"shift_type"`
 	IsOverlappedShift bool    `bson:"is_overlapped_shift"`
-	NumberOfShifts    int     `bson:"number_of_shifts"`
 	Shifts            []Shift `bson:"shifts"`
 	IsWorkingDay      bool    `bson:"is_working_day"`
 	IsWeeklyOffDay    bool    `bson:"is_weekly_off_day"`
@@ -48,7 +48,6 @@ type EmpShiftTimings struct {
 }
 
 type Shift struct {
-	ShiftType              string `bson:"shift_type"`
 	OrgCheckInTime         string `bson:"check_in_time"`
 	OrgCheckOutTime        string `bson:"check_out_time"`
 	OrgCheckInTimeInTicks  int64  `bson:"org_check_in_time_in_ticks"`
