@@ -27,29 +27,21 @@ type EmpAttendanceConf struct {
 	WeeklyOffDays           []string           `bson:"weekly_off_days"`
 	DailyWorkingHours       float32            `bson:"daily_working_hours"`
 	EmploymentStatus        string             `bson:"employment_status"`
-	IsWorkingInShifts       bool               `bson:"is_working_in_shifts"`
-	CurrentShiftTimings     []EmpShiftTimings  `bson:"current_shift_timings"`
-	NextShiftTimings        []EmpShiftTimings  `bson:"next_shift_timings"`
+	ShiftTimings            []EmpShiftTimings  `bson:"shift_timings"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }
 
 type EmpShiftTimings struct {
-	Day               string  `bson:"day"`
-	Month             string  `bson:"month"`
-	Year              string  `bson:"year"`
-	Weekday           string  `bson:"weekday"`
-	ShiftType         string  `bson:"shift_type"`
-	IsOverlappedShift bool    `bson:"is_overlapped_shift"`
-	Shifts            []Shift `bson:"shifts"`
-	IsWorkingDay      bool    `bson:"is_working_day"`
-	IsWeeklyOffDay    bool    `bson:"is_weekly_off_day"`
-	IsHoliday         bool    `bson:"is_holiday"`
-}
-
-type Shift struct {
-	OrgCheckInTime         string `bson:"check_in_time"`
-	OrgCheckOutTime        string `bson:"check_out_time"`
-	OrgCheckInTimeInTicks  int64  `bson:"org_check_in_time_in_ticks"`
-	OrgCheckOutTimeInTicks int64  `bson:"org_check_out_time_in_ticks"`
+	Day               string    `bson:"day"`
+	Month             string    `bson:"month"`
+	Year              string    `bson:"year"`
+	Weekday           string    `bson:"weekday"`
+	ShiftType         ShiftType `bson:"shift_type"`
+	IsOverlappedShift bool      `bson:"is_overlapped_shift"`
+	OrgCheckInTime    string    `bson:"org_check_in_time"`
+	OrgCheckOutTime   string    `bson:"org_check_out_time"`
+	IsWorkingDay      bool      `bson:"is_working_day"`
+	IsWeeklyOffDay    bool      `bson:"is_weekly_off_day"`
+	IsHoliday         bool      `bson:"is_holiday"`
 }
