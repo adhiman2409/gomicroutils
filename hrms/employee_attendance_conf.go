@@ -28,6 +28,7 @@ type EmpAttendanceConf struct {
 	DailyWorkingHours       float32            `bson:"daily_working_hours"`
 	EmploymentStatus        string             `bson:"employment_status"`
 	ShiftTimings            []EmpShiftTimings  `bson:"shift_timings"`
+	NextShiftTimingsIndex   int32              `bson:"next_shift_timings_index"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }
