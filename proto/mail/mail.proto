@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package mail;
+
+import "proto/mail/type/send_mail.proto";
+
+option go_package = "genproto/mail";
+
+service MailService {
+    rpc SendMail(MailRequest) returns (MailResponse) {}
+}

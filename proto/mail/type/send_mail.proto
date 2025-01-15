@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package mail;
+
+option go_package = "genproto/mail";
+
+import "google/protobuf/any.proto";
+
+message MailRequest {
+  string from = 1;
+  string to = 2;
+  string subject = 3;
+  map<string, google.protobuf.Any> dataMap = 4;
+  string templateName = 5;
+  bool ackRequired = 6;
+  string priority = 7;
+  string domain = 8;
+}
+
+message MailResponse {
+  bool status = 1;
+  string message = 2;
+  string correlationId = 3;
+}
