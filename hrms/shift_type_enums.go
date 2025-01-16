@@ -5,13 +5,14 @@ type ShiftType int
 const (
 	Regular ShiftType = iota + 1
 	Morning
-	Afternoon
 	Evening
 	Night
+	WeeklyOff
+	Holiday
 )
 
 func (r ShiftType) String() string {
-	return [...]string{"Regular", "Morning", "Afternoon", "Evening", "Night"}[r-1]
+	return [...]string{"Regular", "Morning", "Evening", "Night", "WeeklyOff", "Holiday"}[r-1]
 }
 
 func (r ShiftType) EnumIndex() int {
@@ -19,18 +20,20 @@ func (r ShiftType) EnumIndex() int {
 }
 
 func GetAllShiftType() []string {
-	return []string{"Regular", "Morning", "Afternoon", "Evening", "Night"}
+	return []string{"Regular", "Morning", "Evening", "Night", "WeeklyOff", "Holiday"}
 }
 
 func ShiftTypeFromString(s string) ShiftType {
 	if s == "Morning" {
 		return Morning
-	} else if s == "Afternoon" {
-		return Afternoon
 	} else if s == "Evening" {
 		return Evening
 	} else if s == "Night" {
 		return Night
+	} else if s == "WeeklyOff" {
+		return WeeklyOff
+	} else if s == "Holiday" {
+		return Holiday
 	} else {
 		return Regular
 	}

@@ -1,6 +1,6 @@
 package hrms
 
-type Holiday struct {
+type HolidayEntry struct {
 	SNo         string `json:"sno"`
 	Date        string `json:"date"`
 	Day         string `json:"day"`
