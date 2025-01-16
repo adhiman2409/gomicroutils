@@ -22,6 +22,7 @@ type EmployeeSummary struct {
 	JoiningMonth           int64              `bson:"joining_month"`
 	JoiningYear            int64              `bson:"joining_year"`
 	EmploymentStatus       string             `bson:"employment_status"`
+	IsRotationalShift      bool               `bson:"is_rotational_shift"`
 	OfficeLocation         string             `bson:"office_location"`
 	WorkLocation           string             `bson:"work_location"`
 	ReportingManagerName   string             `bson:"reporting_manager"`
