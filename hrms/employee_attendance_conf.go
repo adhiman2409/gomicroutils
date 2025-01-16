@@ -45,4 +45,6 @@ type EmpShiftTimings struct {
 	IsWorkingDay      bool      `bson:"is_working_day"`
 	IsWeeklyOffDay    bool      `bson:"is_weekly_off_day"`
 	IsHoliday         bool      `bson:"is_holiday"`
+	Color             string    `bson:"color"`
+	TextColor         string    `bson:"text_color"`
 }
