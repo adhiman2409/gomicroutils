@@ -1,14 +1,10 @@
 package grpcclient
 
 import (
-	"crypto/tls"
-	"crypto/x509"
 	"log"
-	"os"
 
 	"github.com/adhiman2409/gomicroutils/genproto/auth"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials"
 )
 
 type GrpcClient struct {
@@ -22,37 +18,21 @@ func GetAuthClient() *GrpcClient {
 	return grpcClient
 }
 
+func StopGrpcClient() {
+	grpcClient.conn.Close()
+}
+
 func StartAuthClient() {
 
-	// read ca's cert
-	caCert, err := os.ReadFile("/app/cert/ca-cert.pem")
+	tlsCredentials, err := loadTLSCredentials()
 	if err != nil {
-		log.Fatal(caCert)
+		log.Fatal("cannot load TLS credentials: ", err)
 	}
-
-	// create cert pool and append ca's cert
-	certPool := x509.NewCertPool()
-	if ok := certPool.AppendCertsFromPEM(caCert); !ok {
-		log.Fatal(err)
-	}
-
-	//read client cert
-	clientCert, err := tls.LoadX509KeyPair("/app/cert/client-cert.pem", "/app/cert/client-key.pem")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	config := &tls.Config{
-		Certificates: []tls.Certificate{clientCert},
-		RootCAs:      certPool,
-	}
-
-	tlsCredential := credentials.NewTLS(config)
 
 	// create client connection
 	conn, err := grpc.Dial(
 		"auth-srv:50051",
-		grpc.WithTransportCredentials(tlsCredential),
+		grpc.WithTransportCredentials(tlsCredentials),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -64,8 +44,4 @@ func StartAuthClient() {
 		conn:   conn,
 		client: client,
 	}
-}
-
-func StopGrpcClient() {
-	grpcClient.conn.Close()
 }
