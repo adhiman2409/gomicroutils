@@ -39,6 +39,7 @@ type EmployeeAssetInfo struct {
 	AssetImages               []string           `bson:"asset_images"`
 	AssetDocuments            []string           `bson:"asset_documents"`
 	ImagesUpdatedOn           string             `bson:"image_updated_on"`
+	PriceInINR                float64            `bson:"price_in_inr"`
 	AssetAggrementStatus      string             `bson:"asset_aggrement_status"`
 	TermsAndConditions        string             `bson:"terms_and_conditions"`
 	EmployeeConsentStatus     string             `bson:"employee_consent_status"`
