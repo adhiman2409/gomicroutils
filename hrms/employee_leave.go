@@ -33,22 +33,23 @@ type LeaveStats struct {
 }
 
 type EmployeeLeaveStats struct {
-	ID                       primitive.ObjectID `bson:"_id"`
-	EmployeeId               string             `bson:"employee_id"`
-	FullName                 string             `bson:"full_name"`
-	PhoneNumber              string             `bson:"phone_number"`
-	IsMale                   bool               `bson:"is_male"`
-	IsMarried                bool               `bson:"is_married"`
-	EmailId                  string             `bson:"email_id"`
-	EmpJoiningDate           string             `bson:"emp_joining_date"`
-	TenureInDays             float32            `bson:"tenure_in_days"`
-	TotalWorkingDays         float32            `bson:"total_working_days"`
-	TotalAbsentDays          float32            `bson:"total_absent_days"`
-	TotalPresentDays         float32            `bson:"total_present_days"`
-	AttendanceStatsUpdatedOn string             `bson:"attendance_stats_updated_on"`
-	LeaveStatsUpdatedOn      string             `bson:"leave_stats_updated_on"`
-	Year                     string             `bson:"year"`
-	LeavesStats              []LeaveStats       `bson:"leaves_stats"`
+	ID                               primitive.ObjectID `bson:"_id"`
+	EmployeeId                       string             `bson:"employee_id"`
+	FullName                         string             `bson:"full_name"`
+	PhoneNumber                      string             `bson:"phone_number"`
+	IsMale                           bool               `bson:"is_male"`
+	IsMarried                        bool               `bson:"is_married"`
+	EmailId                          string             `bson:"email_id"`
+	EmpJoiningDate                   string             `bson:"emp_joining_date"`
+	TenureInDays                     float32            `bson:"tenure_in_days"`
+	TotalWorkingDays                 float32            `bson:"total_working_days"`
+	TotalAbsentDays                  float32            `bson:"total_absent_days"`
+	TotalPresentDays                 float32            `bson:"total_present_days"`
+	AttendanceStatsUpdatedOn         string             `bson:"attendance_stats_updated_on"`
+	LeaveStatsUpdatedOn              string             `bson:"leave_stats_updated_on"`
+	RegularizationReminderMailSentOn string             `bson:"regularization_reminder_mail_sent_on"`
+	Year                             string             `bson:"year"`
+	LeavesStats                      []LeaveStats       `bson:"leaves_stats"`
 }
 
 type Leave struct {
