@@ -32,6 +32,8 @@ type LeaveStats struct {
 	BulkLeaveNoticeInDays             int     `bson:"bulk_leave_notice_in_days"`
 	WorkingDaysRemainingForActivation int32   `bson:"working_days_remaining_for_activation"`
 	WorkingDaysRemainingForNextBatch  int32   `bson:"working_days_remaining_for_next_batch"`
+	LeavesEligibleForEncashment       float32 `bson:"leaves_eligible_for_encashment"`
+	LeavesEligibleForCarryForward     float32 `bson:"leaves_eligible_for_carry_forward"`
 }
 
 type EmployeeLeaveStats struct {
@@ -49,6 +51,7 @@ type EmployeeLeaveStats struct {
 	TotalPresentDays                 float32            `bson:"total_present_days"`
 	AttendanceStatsUpdatedOn         string             `bson:"attendance_stats_updated_on"`
 	LeaveStatsUpdatedOn              string             `bson:"leave_stats_updated_on"`
+	EarnedLeaveCycleInDays           int32              `bson:"earned_leave_cycle_in_days"`
 	RegularizationReminderMailSentOn string             `bson:"regularization_reminder_mail_sent_on"`
 	Year                             string             `bson:"year"`
 	LeavesStats                      []LeaveStats       `bson:"leaves_stats"`
