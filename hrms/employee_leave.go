@@ -18,18 +18,20 @@ type EmployeeLeave struct {
 }
 
 type LeaveStats struct {
-	IsActive                   bool    `bson:"is_active"`
-	LeaveType                  string  `bson:"leave_type"`
-	Year                       string  `bson:"year"`
-	CarryForwardLeaves         float32 `bson:"carry_forward_leaves"`
-	EarnedLeavesThisYear       float32 `bson:"earned_leaves_this_year"`
-	TotalLeaves                float32 `bson:"total_leaves"`
-	AvailableLeaves            float32 `bson:"available_leaves"`
-	ConsumedLeaves             float32 `bson:"consumed_leaves"`
-	AppliedLeaves              float32 `bson:"applied_leaves"`
-	ApplicableAfterWorkingDays int32   `bson:"applicable_after_working_days"`
-	ActivationDate             string  `bson:"activation_date"`
-	BulkLeaveNoticeInDays      int     `bson:"bulk_leave_notice_in_days"`
+	IsActive                          bool    `bson:"is_active"`
+	LeaveType                         string  `bson:"leave_type"`
+	Year                              string  `bson:"year"`
+	CarryForwardLeaves                float32 `bson:"carry_forward_leaves"`
+	EarnedLeavesThisYear              float32 `bson:"earned_leaves_this_year"`
+	TotalLeaves                       float32 `bson:"total_leaves"`
+	AvailableLeaves                   float32 `bson:"available_leaves"`
+	ConsumedLeaves                    float32 `bson:"consumed_leaves"`
+	AppliedLeaves                     float32 `bson:"applied_leaves"`
+	ApplicableAfterWorkingDays        int32   `bson:"applicable_after_working_days"`
+	ActivationDate                    string  `bson:"activation_date"`
+	BulkLeaveNoticeInDays             int     `bson:"bulk_leave_notice_in_days"`
+	WorkingDaysRemainingForActivation int32   `bson:"working_days_remaining_for_activation"`
+	WorkingDaysRemainingForNextBatch  int32   `bson:"working_days_remaining_for_next_batch"`
 }
 
 type EmployeeLeaveStats struct {
