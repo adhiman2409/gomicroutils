@@ -11,6 +11,7 @@ type Address struct {
 	AddressLine2       string  `bson:"address_line_2"`
 	State              string  `bson:"state"`
 	City               string  `bson:"city"`
+	Country            string  `bson:"country"`
 	Zipcode            string  `bson:"zipcode"`
 	Lat                float64 `bson:"lat"`
 	Lng                float64 `bson:"lng"`
