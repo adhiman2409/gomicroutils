@@ -57,8 +57,6 @@ func RequestAuth(next http.Handler) http.Handler {
 
 		ctx := context.WithValue(r.Context(), "claims", string(byteArray))
 
-		fmt.Printf("%+v User Authorized for api %s\n", ai, api)
-
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
