@@ -7,29 +7,33 @@ import (
 )
 
 type Reimbursement struct {
-	EmployeeId      string    `bson:"employee_id"`
-	Category        string    `bson:"category"`
-	Day             string    `bson:"day"`
-	Month           string    `bson:"month"`
-	Year            string    `bson:"year"`
-	BillDate        string    `bson:"bill_date"`
-	BillAmount      float32   `bson:"bill_amount"`
-	BillNumber      string    `bson:"bill_number"`
-	PaidTo          string    `bson:"paid_to"`
-	IsBillable      bool      `bson:"is_billable"`
-	BillableCompany string    `bson:"billable_company"`
-	ApprovedAmount  float32   `bson:"approved_amount"`
-	Remarks         string    `bson:"remarks"`
-	DocURL          string    `bson:"doc_url"`
-	Approved        bool      `bson:"approved"`
-	ApprovedBy      string    `bson:"approved_by"`
-	ApprovedOn      time.Time `bson:"approved_on"`
-	Rejected        bool      `bson:"rejected"`
-	RejectedBy      string    `bson:"rejected_by"`
-	RejectedOn      time.Time `bson:"rejected_on"`
-	RejectionReason string    `bson:"rejection_reason"`
-	CreatedAt       time.Time `bson:"created_at"`
-	UpdatedAt       time.Time `bson:"updated_at"`
+	EmployeeId          string    `bson:"employee_id"`
+	Category            string    `bson:"category"`
+	Day                 string    `bson:"day"`
+	Month               string    `bson:"month"`
+	Year                string    `bson:"year"`
+	NeedBothApproval    bool      `bson:"need_both_approval"`
+	BillDate            string    `bson:"bill_date"`
+	BillAmount          float32   `bson:"bill_amount"`
+	BillNumber          string    `bson:"bill_number"`
+	PaidTo              string    `bson:"paid_to"`
+	IsBillable          bool      `bson:"is_billable"`
+	BillableCompany     string    `bson:"billable_company"`
+	ApprovedAmount      float32   `bson:"approved_amount"`
+	Remarks             string    `bson:"remarks"`
+	DocURL              string    `bson:"doc_url"`
+	PrimaryApproved     bool      `bson:"primary_approved"`
+	PrimaryApprovedOn   time.Time `bson:"primary_approved_on"`
+	SecondaryApproved   bool      `bson:"secondary_approved"`
+	SecondaryApprovedOn time.Time `bson:"secondary_approved_on"`
+	PrimaryRejected     bool      `bson:"primary_rejected"`
+	PrimaryRejectedOn   time.Time `bson:"primary_rejected_on"`
+	SecondaryRejected   bool      `bson:"secondary_rejected"`
+	SecondaryRejectedOn time.Time `bson:"secondary_rejected_on"`
+	RejectionReason     string    `bson:"rejection_reason"`
+	Status              string    `bson:"status"`
+	CreatedAt           time.Time `bson:"created_at"`
+	UpdatedAt           time.Time `bson:"updated_at"`
 }
 
 type ReimbursementObj struct {
@@ -60,8 +64,11 @@ type ReimbursementObj struct {
 	RejectionDate                string             `bson:"rejection_date"`
 	TotalApprovedAmount          float32            `bson:"total_approved_amount"`
 	Reimbursements               []Reimbursement    `bson:"reimbursements"`
+	ReimbursementPaid            bool               `bson:"reimbursement_paid"`
+	ReimbursementPaidOn          time.Time          `bson:"reimbursement_paid_on"`
+	MailSentToFinance            bool               `bson:"mail_sent_to_finance"`
+	MailSentToFinanceOn          time.Time          `bson:"mail_sent_to_finance_on"`
 	Remarks                      string             `bson:"remarks"`
-	DocURL                       string             `bson:"doc_url"`
 	CreatedAt                    time.Time          `bson:"created_at"`
 	UpdatedAt                    time.Time          `bson:"updated_at"`
 }
