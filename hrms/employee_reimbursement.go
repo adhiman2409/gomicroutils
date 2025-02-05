@@ -46,7 +46,6 @@ type ReimbursementObj struct {
 	ReimbursementType            string             `bson:"reimbursement_type"`
 	Title                        string             `bson:"title"`
 	ReimbursementStatus          string             `bson:"reimbursement_status"`
-	RequiredNoticeDays           float32            `bson:"required_notice_days"`
 	StartDate                    string             `bson:"start_date"`
 	EndDate                      string             `bson:"end_date"`
 	TotalAmount                  float32            `bson:"total_amount"`
