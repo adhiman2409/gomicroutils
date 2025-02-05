@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type Reimbursment struct {
+type Reimbursement struct {
 	EmployeeId      string    `bson:"employee_id"`
 	Category        string    `bson:"category"`
 	Day             string    `bson:"day"`
@@ -32,16 +32,16 @@ type Reimbursment struct {
 	UpdatedAt       time.Time `bson:"updated_at"`
 }
 
-type ReimbursmentObj struct {
+type ReimbursementObj struct {
 	ID                           primitive.ObjectID `bson:"_id"`
 	EmployeeId                   string             `bson:"employee_id"`
 	FullName                     string             `bson:"full_name"`
 	EmailId                      string             `bson:"email_id"`
 	Designation                  string             `bson:"designation"`
-	ReimbursmentId               string             `bson:"reimbursment_id"`
-	ReimbursmentType             string             `bson:"reimbursment_type"`
+	ReimbursementId              string             `bson:"reimbursement_id"`
+	ReimbursementType            string             `bson:"reimbursement_type"`
 	Title                        string             `bson:"title"`
-	ReimbursmentStatus           string             `bson:"reimbursment_status"`
+	ReimbursementStatus          string             `bson:"reimbursement_status"`
 	RequiredNoticeDays           float32            `bson:"required_notice_days"`
 	StartDate                    string             `bson:"start_date"`
 	EndDate                      string             `bson:"end_date"`
@@ -59,7 +59,7 @@ type ReimbursmentObj struct {
 	SecondaryApprovalDate        string             `bson:"secondary_approval_date"`
 	RejectionDate                string             `bson:"rejection_date"`
 	TotalApprovedAmount          float32            `bson:"total_approved_amount"`
-	Reimbursments                []Reimbursment     `bson:"reimbursments"`
+	Reimbursements               []Reimbursement    `bson:"reimbursements"`
 	Remarks                      string             `bson:"remarks"`
 	DocURL                       string             `bson:"doc_url"`
 	CreatedAt                    time.Time          `bson:"created_at"`

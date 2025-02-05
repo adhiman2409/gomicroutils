@@ -51,8 +51,8 @@ const EMPLOYEE_COLLECTION_REWARD = "employee-rewards"
 const EMPLOYEE_COLLECTION_ASSET = "employee-assets"
 const EMPLOYEE_COLLECTION_BANK = "employee-banks"
 const EMPLOYEE_COLLECTION_ASSET_COUNTER = "employee-asset-counter"
-const EMPLOYEE_COLLECTION_REIMBURSMENT_COUNTER = "employee-reimbursment-counter"
-const EMPLOYEE_COLLECTION_REIMBURSMENT = "employee-reimbursments"
+const EMPLOYEE_COLLECTION_REIMBURSEMENT_COUNTER = "employee-reimbursement-counter"
+const EMPLOYEE_COLLECTION_REIMBURSEMENT = "employee-reimbursements"
 
 const JOBMGR_COLLECTION_JOBS = "jobmgr-jobs"
 const JOBMGR_COLLECTION_APPLICATIONS = "jobmgr-applications"
@@ -296,14 +296,14 @@ func GetEmpAssetCounterCollection(client *mongo.Client, domain string) *mongo.Co
 	return db.Collection(EMPLOYEE_COLLECTION_ASSET_COUNTER)
 }
 
-func GetEmpReimbursmentCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetEmpReimbursementCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(EMPLOYEE_COLLECTION_REIMBURSMENT_COUNTER)
+	return db.Collection(EMPLOYEE_COLLECTION_REIMBURSEMENT_COUNTER)
 }
 
-func GetEmpReimbursmentCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetEmpReimbursementCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(EMPLOYEE_COLLECTION_REIMBURSMENT)
+	return db.Collection(EMPLOYEE_COLLECTION_REIMBURSEMENT)
 }
 
 func GetJobMgrJobsCollection(client *mongo.Client, domain string) *mongo.Collection {
