@@ -20,28 +20,30 @@ type ExpenseIdCounter struct {
 }
 
 type Expense struct {
-	ID              primitive.ObjectID `bson:"_id"`
-	ExpenseId       string             `bson:"expense_id"`
-	EmployeeId      string             `bson:"employee_id"`
-	ExpenseState    ExpenseState       `bson:"expense_state"`
-	Category        string             `bson:"category"`
-	SubCategory     string             `bson:"sub_category"`
-	Day             string             `bson:"day"`
-	Month           string             `bson:"month"`
-	Year            string             `bson:"year"`
-	BillDate        string             `bson:"bill_date"`
-	BillAmount      float32            `bson:"bill_amount"`
-	BillNumber      string             `bson:"bill_number"`
-	PaidTo          string             `bson:"paid_to"`
-	IsBillable      bool               `bson:"is_billable"`
-	BillableProject string             `bson:"billable_project"`
-	ApprovedAmount  float32            `bson:"approved_amount"`
-	EmployeeRemarks string             `bson:"employee_remarks"`
-	ApproverRemarks string             `bson:"approver_remarks"`
-	ReimbursementId string             `bson:"reimbursement_id"`
-	DocURL          string             `bson:"doc_url"`
-	CreatedAt       time.Time          `bson:"created_at"`
-	UpdatedAt       time.Time          `bson:"updated_at"`
+	ID               primitive.ObjectID `bson:"_id"`
+	ExpenseId        string             `bson:"expense_id"`
+	EmployeeId       string             `bson:"employee_id"`
+	ExpenseState     ExpenseState       `bson:"expense_state"`
+	Category         string             `bson:"category"`
+	SubCategory      string             `bson:"sub_category"`
+	Day              string             `bson:"day"`
+	Month            string             `bson:"month"`
+	Year             string             `bson:"year"`
+	BillDate         string             `bson:"bill_date"`
+	BillAmount       float32            `bson:"bill_amount"`
+	BillCurrency     string             `bson:"bill_currency"`
+	BillNumber       string             `bson:"bill_number"`
+	PaidTo           string             `bson:"paid_to"`
+	IsBillable       bool               `bson:"is_billable"`
+	BillableProject  string             `bson:"billable_project"`
+	ApprovedAmount   float32            `bson:"approved_amount"`
+	ConversionFactor float32            `bson:"conversion_factor"`
+	EmployeeRemarks  string             `bson:"employee_remarks"`
+	ApproverRemarks  string             `bson:"approver_remarks"`
+	ReimbursementId  string             `bson:"reimbursement_id"`
+	DocURL           string             `bson:"doc_url"`
+	CreatedAt        time.Time          `bson:"created_at"`
+	UpdatedAt        time.Time          `bson:"updated_at"`
 }
 
 type Reimbursement struct {
