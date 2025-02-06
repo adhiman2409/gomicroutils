@@ -36,7 +36,6 @@ type Expense struct {
 	IsBillable      bool               `json:"is_billable"`
 	BillableProject string             `json:"billable_project"`
 	ApprovedAmount  float32            `json:"approved_amount"`
-	RejectReason    string             `json:"reject_reason"`
 	EmployeeRemarks string             `json:"employee_remarks"`
 	ApproverRemarks string             `json:"approver_remarks"`
 	ReimbursementId string             `json:"reimbursement_id"`
