@@ -52,6 +52,8 @@ const EMPLOYEE_COLLECTION_ASSET = "employee-assets"
 const EMPLOYEE_COLLECTION_BANK = "employee-banks"
 const EMPLOYEE_COLLECTION_ASSET_COUNTER = "employee-asset-counter"
 
+const REIMBURSEMENT_COLLECTION_EXPENSE_COUNTER = "reimbursement-expense-counter"
+const REIMBURSEMENT_COLLECTION_EXPENSE = "reimbursement-expenses"
 const REIMBURSEMENT_COLLECTION_REIMBURSEMENT_COUNTER = "reimbursement-reimbursement-counter"
 const REIMBURSEMENT_COLLECTION_REIMBURSEMENT = "reimbursement-reimbursements"
 
@@ -295,6 +297,16 @@ func GetEmpBankCollection(client *mongo.Client, domain string) *mongo.Collection
 func GetEmpAssetCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_ASSET_COUNTER)
+}
+
+func GetExpenseCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REIMBURSEMENT_COLLECTION_EXPENSE_COUNTER)
+}
+
+func GetExpenseCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REIMBURSEMENT_COLLECTION_EXPENSE)
 }
 
 func GetReimbursementCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
