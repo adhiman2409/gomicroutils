@@ -20,34 +20,29 @@ type ExpenseIdCounter struct {
 }
 
 type Expense struct {
-	ID                     primitive.ObjectID `bson:"_id"`
-	ExpenseId              string             `json:"expense_id"`
-	EmployeeId             string             `json:"employee_id"`
-	Category               string             `json:"category"`
-	SubCategory            string             `json:"sub_category"`
-	Day                    string             `json:"day"`
-	Month                  string             `json:"month"`
-	Year                   string             `json:"year"`
-	BillDate               string             `json:"bill_date"`
-	BillAmount             float32            `json:"bill_amount"`
-	BillNumber             string             `json:"bill_number"`
-	PaidTo                 string             `json:"paid_to"`
-	IsBillable             bool               `json:"is_billable"`
-	BillableProject        string             `json:"billable_project"`
-	IsApproved             bool               `json:"is_approved"`
-	ApprovedAmount         float32            `json:"approved_amount"`
-	ApprovedOn             string             `json:"approved_on"`
-	IsRejected             bool               `json:"is_rejected"`
-	RejectedOn             string             `json:"rejected_on"`
-	RejectReason           string             `json:"reject_reason"`
-	IsPaid                 bool               `json:"is_paid"`
-	PaidOn                 string             `json:"paid_on"`
-	Remarks                string             `json:"remarks"`
-	IsAddedToReimbursement bool               `json:"is_added_to_reimbursement"`
-	ReimbursementId        string             `json:"reimbursement_id"`
-	DocURL                 string             `json:"doc_url"`
-	CreatedAt              time.Time          `json:"created_at"`
-	UpdatedAt              time.Time          `json:"updated_at"`
+	ID              primitive.ObjectID `bson:"_id"`
+	ExpenseId       string             `json:"expense_id"`
+	EmployeeId      string             `json:"employee_id"`
+	ExpenseState    ExpenseState       `json:"expense_state"`
+	Category        string             `json:"category"`
+	SubCategory     string             `json:"sub_category"`
+	Day             string             `json:"day"`
+	Month           string             `json:"month"`
+	Year            string             `json:"year"`
+	BillDate        string             `json:"bill_date"`
+	BillAmount      float32            `json:"bill_amount"`
+	BillNumber      string             `json:"bill_number"`
+	PaidTo          string             `json:"paid_to"`
+	IsBillable      bool               `json:"is_billable"`
+	BillableProject string             `json:"billable_project"`
+	ApprovedAmount  float32            `json:"approved_amount"`
+	RejectReason    string             `json:"reject_reason"`
+	EmployeeRemarks string             `json:"employee_remarks"`
+	ApproverRemarks string             `json:"approver_remarks"`
+	ReimbursementId string             `json:"reimbursement_id"`
+	DocURL          string             `json:"doc_url"`
+	CreatedAt       time.Time          `json:"created_at"`
+	UpdatedAt       time.Time          `json:"updated_at"`
 }
 
 type Reimbursement struct {
