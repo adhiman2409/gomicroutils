@@ -55,7 +55,7 @@ type Reimbursement struct {
 	Designation                  string             `bson:"designation"`
 	ReimbursementId              string             `bson:"reimbursement_id"`
 	Title                        string             `bson:"title"`
-	ReimbursementStatus          string             `bson:"reimbursement_status"`
+	ReimbursementState           ReimbursementState `bson:"reimbursement_state"`
 	Month                        string             `bson:"month"`
 	Year                         string             `bson:"year"`
 	TotalAmount                  float32            `bson:"total_amount"`
