@@ -37,6 +37,7 @@ type Expense struct {
 	IsBillable       bool               `bson:"is_billable"`
 	BillableProject  string             `bson:"billable_project"`
 	ApprovedAmount   float32            `bson:"approved_amount"`
+	RejectedAmount   float32            `bson:"rejected_amount"`
 	ConversionFactor float32            `bson:"conversion_factor"`
 	EmployeeRemarks  string             `bson:"employee_remarks"`
 	ApproverRemarks  string             `bson:"approver_remarks"`
