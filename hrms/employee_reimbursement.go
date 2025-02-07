@@ -56,8 +56,8 @@ type Reimbursement struct {
 	ReimbursementId              string             `bson:"reimbursement_id"`
 	Title                        string             `bson:"title"`
 	ReimbursementStatus          string             `bson:"reimbursement_status"`
-	StartDate                    string             `bson:"start_date"`
-	EndDate                      string             `bson:"end_date"`
+	Month                        string             `bson:"month"`
+	Year                         string             `bson:"year"`
 	TotalAmount                  float32            `bson:"total_amount"`
 	PrimaryApproverId            string             `bson:"primary_approver_id"`
 	PrimaryApproverName          string             `bson:"primary_approver_name"`
@@ -72,6 +72,7 @@ type Reimbursement struct {
 	SecondaryApprovalDate        string             `bson:"secondary_approval_date"`
 	RejectionDate                string             `bson:"rejection_date"`
 	TotalApprovedAmount          float32            `bson:"total_approved_amount"`
+	TotalRejectedAmount          float32            `bson:"total_rejected_amount"`
 	Expenses                     []string           `bson:"expenses"`
 	ReimbursementPaid            bool               `bson:"reimbursement_paid"`
 	ReimbursementPaidAmount      float32            `bson:"reimbursement_paid_amount"`
