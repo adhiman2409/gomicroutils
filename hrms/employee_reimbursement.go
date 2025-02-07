@@ -72,7 +72,7 @@ type Reimbursement struct {
 	SecondaryApprovalDate        string             `bson:"secondary_approval_date"`
 	RejectionDate                string             `bson:"rejection_date"`
 	TotalApprovedAmount          float32            `bson:"total_approved_amount"`
-	Expenses                     []Expense          `bson:"expenses"`
+	Expenses                     []string           `bson:"expenses"`
 	ReimbursementPaid            bool               `bson:"reimbursement_paid"`
 	ReimbursementPaidAmount      float32            `bson:"reimbursement_paid_amount"`
 	ReimbursementPaidOn          time.Time          `bson:"reimbursement_paid_on"`
