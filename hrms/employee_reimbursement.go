@@ -20,31 +20,33 @@ type ExpenseIdCounter struct {
 }
 
 type Expense struct {
-	ID               primitive.ObjectID `bson:"_id"`
-	ExpenseId        string             `bson:"expense_id"`
-	EmployeeId       string             `bson:"employee_id"`
-	ExpenseState     ExpenseState       `bson:"expense_state"`
-	Category         string             `bson:"category"`
-	SubCategory      string             `bson:"sub_category"`
-	Day              string             `bson:"day"`
-	Month            string             `bson:"month"`
-	Year             string             `bson:"year"`
-	BillDate         string             `bson:"bill_date"`
-	BillAmount       float32            `bson:"bill_amount"`
-	BillCurrency     string             `bson:"bill_currency"`
-	BillNumber       string             `bson:"bill_number"`
-	PaidTo           string             `bson:"paid_to"`
-	IsBillable       bool               `bson:"is_billable"`
-	BillableProject  string             `bson:"billable_project"`
-	ApprovedAmount   float32            `bson:"approved_amount"`
-	RejectedAmount   float32            `bson:"rejected_amount"`
-	ConversionFactor float32            `bson:"conversion_factor"`
-	EmployeeRemarks  string             `bson:"employee_remarks"`
-	ApproverRemarks  string             `bson:"approver_remarks"`
-	ReimbursementId  string             `bson:"reimbursement_id"`
-	DocURL           string             `bson:"doc_url"`
-	CreatedAt        time.Time          `bson:"created_at"`
-	UpdatedAt        time.Time          `bson:"updated_at"`
+	ID                  primitive.ObjectID `bson:"_id"`
+	ExpenseId           string             `bson:"expense_id"`
+	EmployeeId          string             `bson:"employee_id"`
+	ExpenseState        ExpenseState       `bson:"expense_state"`
+	Category            string             `bson:"category"`
+	SubCategory         string             `bson:"sub_category"`
+	Day                 string             `bson:"day"`
+	Month               string             `bson:"month"`
+	Year                string             `bson:"year"`
+	BillDate            string             `bson:"bill_date"`
+	BillAmount          float32            `bson:"bill_amount"`
+	BillAmountInINR     float32            `bson:"bill_amount_in_inr"`
+	BillCurrency        string             `bson:"bill_currency"`
+	BillNumber          string             `bson:"bill_number"`
+	PaidTo              string             `bson:"paid_to"`
+	IsBillable          bool               `bson:"is_billable"`
+	BillableProject     string             `bson:"billable_project"`
+	ApprovedAmount      float32            `bson:"approved_amount"`
+	ApprovedAmountInINR float32            `bson:"approved_amount_in_inr"`
+	RejectedAmount      float32            `bson:"rejected_amount"`
+	ConversionRate      float32            `bson:"conversion_rate"`
+	EmployeeRemarks     string             `bson:"employee_remarks"`
+	ApproverRemarks     string             `bson:"approver_remarks"`
+	ReimbursementId     string             `bson:"reimbursement_id"`
+	DocURL              string             `bson:"doc_url"`
+	CreatedAt           time.Time          `bson:"created_at"`
+	UpdatedAt           time.Time          `bson:"updated_at"`
 }
 
 type Reimbursement struct {
@@ -72,7 +74,10 @@ type Reimbursement struct {
 	SecondaryApprovalDate        string             `bson:"secondary_approval_date"`
 	RejectionDate                string             `bson:"rejection_date"`
 	TotalApprovedAmount          float32            `bson:"total_approved_amount"`
+	TotalApprovedAmountInINR     float32            `bson:"total_approved_amount_in_inr"`
 	TotalRejectedAmount          float32            `bson:"total_rejected_amount"`
+	TotalRejectedAmountInINR     float32            `bson:"total_rejected_amount_in_inr"`
+	PendingExpenseCount          int                `json:"pending_expense_count"`
 	Expenses                     []string           `bson:"expenses"`
 	ReimbursementPaid            bool               `bson:"reimbursement_paid"`
 	ReimbursementPaidAmount      float32            `bson:"reimbursement_paid_amount"`
