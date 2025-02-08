@@ -77,7 +77,7 @@ type Reimbursement struct {
 	TotalApprovedAmountInINR     float32            `bson:"total_approved_amount_in_inr"`
 	TotalRejectedAmount          float32            `bson:"total_rejected_amount"`
 	TotalRejectedAmountInINR     float32            `bson:"total_rejected_amount_in_inr"`
-	PendingExpenseCount          int                `json:"pending_expense_count"`
+	PendingExpenseCount          int                `bson:"pending_expense_count"`
 	Expenses                     []string           `bson:"expenses"`
 	ReimbursementPaid            bool               `bson:"reimbursement_paid"`
 	ReimbursementPaidAmount      float32            `bson:"reimbursement_paid_amount"`
