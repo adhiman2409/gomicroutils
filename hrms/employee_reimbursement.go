@@ -13,6 +13,13 @@ type ExpenseIdCounter struct {
 	Counter    int64              `bson:"counter"`
 }
 
+type RemarksInfo struct {
+	EmployeeId   string `bson:"employee_id"`
+	EmployeeName string `bson:"employee_name"`
+	DateTime     string `bson:"date_time"`
+	Remark       string `bson:"remark"`
+}
+
 type Expense struct {
 	ID                      primitive.ObjectID `bson:"_id"`
 	ExpenseId               string             `bson:"expense_id"`
@@ -48,7 +55,7 @@ type Expense struct {
 	ReimbursementPaid       bool               `bson:"reimbursement_paid"`
 	ReimbursementPaidAmount float32            `bson:"reimbursement_paid_amount"`
 	ReimbursementPaidOn     time.Time          `bson:"reimbursement_paid_on"`
-	Remarks                 []string           `bson:"remarks"`
+	Remarks                 []RemarksInfo      `bson:"remarks"`
 	DocURL                  string             `bson:"doc_url"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
