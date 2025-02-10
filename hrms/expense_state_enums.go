@@ -3,21 +3,20 @@ package hrms
 type ExpenseState int
 
 const (
-	ECreated ExpenseState = iota + 1
-	ESubmitted
+	EApplied ExpenseState = iota + 1
 	EPrimaryApproved
-	EApproved
-	ERejected
+	EPrimaryRejected
+	ESecondaryApproved
+	ESecondaryRejected
 	EFinanceAccepted
 	EFinanceRejected
-	EOnHold
 	EPaid
 	EUnknown
 )
 
 func (r ExpenseState) String() string {
-	return [...]string{"ECreated", "ESubmitted", "EPrimaryApproved", "EApproved",
-		"ERejected", "EFinanceAccepted", "EFinanceRejected", "EOnHold", "EPaid", "EUnknown"}[r-1]
+	return [...]string{"EApplied", "EPrimaryApproved", "EPrimaryRejected", "ESecondaryApproved",
+		"ESecondaryRejected", "EFinanceAccepted", "EFinanceRejected", "EPaid", "EUnknown"}[r-1]
 }
 
 func (r ExpenseState) EnumIndex() int {
@@ -25,27 +24,25 @@ func (r ExpenseState) EnumIndex() int {
 }
 
 func GetAllExpenseStates() []string {
-	return []string{"ECreated", "ESubmitted", "EPrimaryApproved", "EApproved",
-		"ERejected", "EFinanceAccepted", "EFinanceRejected", "EOnHold", "EPaid", "EUnknown"}
+	return []string{"EApplied", "EPrimaryApproved", "EPrimaryRejected", "ESecondaryApproved",
+		"ESecondaryRejected", "EFinanceAccepted", "EFinanceRejected", "EPaid", "EUnknown"}
 }
 
 func ExpenseStateFromString(s string) ExpenseState {
-	if s == "ECreated" {
-		return ECreated
-	} else if s == "ESubmitted" {
-		return ESubmitted
+	if s == "EApplied" {
+		return EApplied
 	} else if s == "EPrimaryApproved" {
 		return EPrimaryApproved
-	} else if s == "EApproved" {
-		return EApproved
-	} else if s == "ERejected" {
-		return ERejected
+	} else if s == "EPrimaryRejected" {
+		return EPrimaryRejected
+	} else if s == "ESecondaryApproved" {
+		return ESecondaryApproved
+	} else if s == "ESecondaryRejected" {
+		return ESecondaryRejected
 	} else if s == "EFinanceAccepted" {
 		return EFinanceAccepted
 	} else if s == "EFinanceRejected" {
 		return EFinanceRejected
-	} else if s == "EOnHold" {
-		return EOnHold
 	} else if s == "EPaid" {
 		return EPaid
 	} else {
