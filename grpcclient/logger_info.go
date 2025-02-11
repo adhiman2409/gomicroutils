@@ -1,8 +1,7 @@
 package grpcclient
 
 type LogRequest struct {
-	Log    string `json:"log"`
-	Domain string `json:"domain"`
+	Log string `json:"log"`
 }
 
 type LogResponse struct {

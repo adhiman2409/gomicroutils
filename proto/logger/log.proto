@@ -6,7 +6,6 @@ option go_package = "genproto/logger";
 
 message LogRequest {
   string log = 1;
-  string domain = 2;
 }
 
 message LogResponse {
