@@ -121,8 +121,7 @@ func (l *CBLogger) With(f zapcore.Field) *CBLogger {
 	return &CBLogger{nl}
 }
 
-func (c *CBLogger) Info(msg string, fields ...zap.Field) {
-
+func (c *CBLogger) Info(msg, domain string, fields ...zap.Field) {
 	pc, file, line, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
 	if ok {
 		filetok := strings.Split(file, "/")
@@ -132,11 +131,12 @@ func (c *CBLogger) Info(msg string, fields ...zap.Field) {
 		funcname := functok[len(functok)-1]
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
+		fields = append(fields, zap.String("domain", domain))
 	}
 	c.logger.Info(msg, fields...)
 }
 
-func (c *CBLogger) Debug(msg string, fields ...zap.Field) {
+func (c *CBLogger) Debug(msg, domain string, fields ...zap.Field) {
 
 	pc, file, line, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
 	if ok {
@@ -147,12 +147,13 @@ func (c *CBLogger) Debug(msg string, fields ...zap.Field) {
 		funcname := functok[len(functok)-1]
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
+		fields = append(fields, zap.String("domain", domain))
 	}
 	c.logger.Debug(msg, fields...)
 
 }
 
-func (c *CBLogger) Warn(msg string, fields ...zap.Field) {
+func (c *CBLogger) Warn(msg, domain string, fields ...zap.Field) {
 
 	pc, file, line, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
 	if ok {
@@ -163,12 +164,13 @@ func (c *CBLogger) Warn(msg string, fields ...zap.Field) {
 		funcname := functok[len(functok)-1]
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
+		fields = append(fields, zap.String("domain", domain))
 	}
 	c.logger.Warn(msg, fields...)
 
 }
 
-func (c *CBLogger) Error(msg string, fields ...zap.Field) {
+func (c *CBLogger) Error(msg, domain string, fields ...zap.Field) {
 	pc, file, line, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
 	if ok {
 		filetok := strings.Split(file, "/")
@@ -178,13 +180,14 @@ func (c *CBLogger) Error(msg string, fields ...zap.Field) {
 		funcname := functok[len(functok)-1]
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
+		fields = append(fields, zap.String("domain", domain))
 	}
 
 	c.logger.Error(msg, fields...)
 
 }
 
-func (c *CBLogger) Panic(msg string, fields ...zap.Field) {
+func (c *CBLogger) Panic(msg, domain string, fields ...zap.Field) {
 	pc, file, line, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
 	if ok {
 		filetok := strings.Split(file, "/")
@@ -194,13 +197,14 @@ func (c *CBLogger) Panic(msg string, fields ...zap.Field) {
 		funcname := functok[len(functok)-1]
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
+		fields = append(fields, zap.String("domain", domain))
 	}
 
 	c.logger.Panic(msg, fields...)
 
 }
 
-func (c *CBLogger) Fatal(msg string, fields ...zap.Field) {
+func (c *CBLogger) Fatal(msg, domain string, fields ...zap.Field) {
 	pc, file, line, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
 	if ok {
 		filetok := strings.Split(file, "/")
@@ -210,6 +214,7 @@ func (c *CBLogger) Fatal(msg string, fields ...zap.Field) {
 		funcname := functok[len(functok)-1]
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
+		fields = append(fields, zap.String("domain", domain))
 	}
 
 	c.logger.Fatal(msg, fields...)

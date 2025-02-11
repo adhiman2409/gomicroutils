@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/adhiman2409/gomicroutils/errs"
+	"github.com/adhiman2409/gomicroutils/grpcclient"
 	"github.com/adhiman2409/gomicroutils/logger"
 	"github.com/rs/xid"
 	"go.uber.org/zap"
@@ -69,14 +70,14 @@ func RequestLogger(next http.Handler) http.Handler {
 		lrw := newLoggingResponseWriter(w)
 
 		r = r.WithContext(logger.WithCtx(ctx, l))
-
-		defer func(start time.Time) {
+		authInfo := grpcclient.GetAuthInfo(r)
+		defer func(start time.Time, domain string) {
 			l.Info(
 				fmt.Sprintf(
 					"%s request to %s completed",
 					r.Method,
 					r.RequestURI,
-				),
+				), domain,
 				zap.String("method", r.Method),
 				zap.String("url", r.RequestURI),
 				zap.String("user_agent", r.UserAgent()),
@@ -84,7 +85,7 @@ func RequestLogger(next http.Handler) http.Handler {
 				zap.String("err_msg", lrw.errMsg),
 				zap.Duration("elapsed_ms", time.Since(start)),
 			)
-		}(time.Now())
+		}(time.Now(), authInfo.Domain)
 
 		next.ServeHTTP(lrw, r)
 	})
