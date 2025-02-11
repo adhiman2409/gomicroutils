@@ -36,3 +36,8 @@ func GetAuthInfo(r *http.Request) AuthInfo {
 	}
 	return authInfo
 }
+
+func GetCorrelationId(r *http.Request) string {
+	id := r.Context().Value("correlation_id")
+	return id.(string)
+}
