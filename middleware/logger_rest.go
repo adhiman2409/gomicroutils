@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/adhiman2409/gomicroutils/errs"
-	"github.com/adhiman2409/gomicroutils/grpcclient"
 	"github.com/adhiman2409/gomicroutils/logger"
 	"github.com/rs/xid"
 	"go.uber.org/zap"
@@ -49,9 +48,9 @@ func (lrw *loggingResponseWriter) Write(p []byte) (int, error) {
 	return lrw.ResponseWriter.Write(p)
 }
 
-func RequestLogger(next http.Handler, client *grpcclient.LoggerClient) http.Handler {
+func RequestLogger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		l := logger.Get(client)
+		l := logger.Get()
 
 		correlationID := xid.New().String()
 

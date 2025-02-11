@@ -28,10 +28,10 @@ const FUNCTION_SKIP_LEVEL = 1
 
 // Get initializes a zap.Logger instance if it has not been initialized
 // already and returns the same instance for subsequent calls.
-func Get(client *grpcclient.LoggerClient) *CBLogger {
+func Get() *CBLogger {
 	once.Do(func() {
 		stdout := zapcore.AddSync(os.Stdout)
-		msgq := zapcore.AddSync(client)
+		msgq := zapcore.AddSync(grpcclient.GetLoggerClient())
 
 		level := zap.InfoLevel
 		levelEnv := os.Getenv("LOG_LEVEL")
