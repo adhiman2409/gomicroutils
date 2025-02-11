@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package logger;
+
+option go_package = "genproto/logger";
+
+message LogRequest {
+  string log = 1;
+  string domain = 2;
+}
+
+message LogResponse {
+  bool ok = 1;
+}
+
+service LoggerService {
+    rpc SendLog(LogRequest) returns (LogResponse) {}
+}

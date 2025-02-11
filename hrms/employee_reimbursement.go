@@ -24,6 +24,7 @@ type Expense struct {
 	ID                      primitive.ObjectID `bson:"_id"`
 	ExpenseId               string             `bson:"expense_id"`
 	EmployeeId              string             `bson:"employee_id"`
+	EmployeeName            string             `bson:"employee_name"`
 	ExpenseState            ExpenseState       `bson:"expense_state"`
 	Category                string             `bson:"category"`
 	SubCategory             string             `bson:"sub_category"`
