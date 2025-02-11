@@ -9,7 +9,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/adhiman2409/gomicroutils/amqp"
+	"github.com/adhiman2409/gomicroutils/grpcclient"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -28,10 +28,10 @@ const FUNCTION_SKIP_LEVEL = 1
 
 // Get initializes a zap.Logger instance if it has not been initialized
 // already and returns the same instance for subsequent calls.
-func Get() *CBLogger {
+func Get(client *grpcclient.LoggerClient) *CBLogger {
 	once.Do(func() {
 		stdout := zapcore.AddSync(os.Stdout)
-		msgq := zapcore.AddSync(amqp.Get())
+		msgq := zapcore.AddSync(client)
 
 		level := zap.InfoLevel
 		levelEnv := os.Getenv("LOG_LEVEL")
