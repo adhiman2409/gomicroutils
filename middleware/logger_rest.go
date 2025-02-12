@@ -88,7 +88,7 @@ func RequestLogger(next http.Handler) http.Handler {
 					zap.Duration("elapsed_ms", time.Since(start)),
 				)
 				return
-			} else if time.Since(start).Seconds() >= 1.0 && !(strings.Contains(r.RequestURI, "downloadimage")) {
+			} else if time.Since(start).Seconds() >= 1.0 && !(strings.Contains(r.RequestURI, "download")) && !(strings.Contains(r.RequestURI, "upload")) {
 				l.Warn(
 					fmt.Sprintf(
 						"%s request to %s completed",
