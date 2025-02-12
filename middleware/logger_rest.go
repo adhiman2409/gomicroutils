@@ -72,19 +72,36 @@ func RequestLogger(next http.Handler) http.Handler {
 		r = r.WithContext(logger.WithCtx(ctx, l))
 		authInfo := grpcclient.GetAuthInfo(r)
 		defer func(start time.Time, domain string) {
-			l.Info(
-				fmt.Sprintf(
-					"%s request to %s completed",
-					r.Method,
-					r.RequestURI,
-				), domain,
-				zap.String("method", r.Method),
-				zap.String("url", r.RequestURI),
-				zap.String("user_agent", r.UserAgent()),
-				zap.Int("status_code", lrw.statusCode),
-				zap.String("err_msg", lrw.errMsg),
-				zap.Duration("elapsed_ms", time.Since(start)),
-			)
+			if lrw.statusCode >= 300 {
+				l.Error(
+					fmt.Sprintf(
+						"%s request to %s failed",
+						r.Method,
+						r.RequestURI,
+					), domain,
+					zap.String("method", r.Method),
+					zap.String("url", r.RequestURI),
+					zap.String("user_agent", r.UserAgent()),
+					zap.Int("status_code", lrw.statusCode),
+					zap.String("err_msg", lrw.errMsg),
+					zap.Duration("elapsed_ms", time.Since(start)),
+				)
+				return
+			} else if time.Since(start) >= 1.0 {
+				l.Warn(
+					fmt.Sprintf(
+						"%s request to %s completed",
+						r.Method,
+						r.RequestURI,
+					), domain,
+					zap.String("method", r.Method),
+					zap.String("url", r.RequestURI),
+					zap.String("user_agent", r.UserAgent()),
+					zap.Int("status_code", lrw.statusCode),
+					zap.String("err_msg", lrw.errMsg),
+					zap.Duration("elapsed_ms", time.Since(start)),
+				)
+			}
 		}(time.Now(), authInfo.Domain)
 
 		next.ServeHTTP(lrw, r)
