@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/adhiman2409/gomicroutils/grpcclient"
 	"go.uber.org/zap"
@@ -25,6 +26,15 @@ type CBLogger struct {
 var cblog *CBLogger
 
 const FUNCTION_SKIP_LEVEL = 1
+
+func getCurrentISTTime() time.Time {
+	istLocation, err := time.LoadLocation("Asia/Kolkata")
+	if err != nil {
+		return time.Now().Local().Add(time.Hour*time.Duration(5) + time.Minute*time.Duration(30))
+	}
+	// Get current time in IST
+	return time.Now().In(istLocation)
+}
 
 // Get initializes a zap.Logger instance if it has not been initialized
 // already and returns the same instance for subsequent calls.
@@ -77,6 +87,7 @@ func Get() *CBLogger {
 					[]zapcore.Field{
 						zap.String("srv_name", sn),
 						zap.String("srv_tag", st),
+						zap.String("IST", getCurrentISTTime().Format("2006-01-02 15:04:05")),
 					},
 				),
 		)
