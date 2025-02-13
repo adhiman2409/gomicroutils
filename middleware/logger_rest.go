@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/adhiman2409/gomicroutils/errs"
@@ -87,7 +88,10 @@ func RequestLogger(next http.Handler) http.Handler {
 					zap.Duration("elapsed_ms", time.Since(start)),
 				)
 				return
-			} else if time.Since(start).Seconds() >= 2.0 {
+			} else if time.Since(start).Seconds() >= 1.0 {
+				if strings.Contains(r.RequestURI, "/download") || strings.Contains(r.RequestURI, "/upload") {
+					return
+				}
 				l.Warn(
 					fmt.Sprintf(
 						"%s request to %s completed",
