@@ -28,12 +28,7 @@ var cblog *CBLogger
 const FUNCTION_SKIP_LEVEL = 1
 
 func getCurrentISTTime() time.Time {
-	istLocation, err := time.LoadLocation("Asia/Kolkata")
-	if err != nil {
-		return time.Now().Local().Add(time.Hour*time.Duration(5) + time.Minute*time.Duration(30))
-	}
-	// Get current time in IST
-	return time.Now().In(istLocation)
+	return time.Now().Local().Add(time.Hour*time.Duration(5) + time.Minute*time.Duration(30))
 }
 
 // Get initializes a zap.Logger instance if it has not been initialized

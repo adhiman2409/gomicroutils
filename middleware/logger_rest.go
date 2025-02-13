@@ -49,15 +49,6 @@ func (lrw *loggingResponseWriter) Write(p []byte) (int, error) {
 	return lrw.ResponseWriter.Write(p)
 }
 
-func getCurrentISTTime() time.Time {
-	istLocation, err := time.LoadLocation("Asia/Kolkata")
-	if err != nil {
-		return time.Now().Local().Add(time.Hour*time.Duration(5) + time.Minute*time.Duration(30))
-	}
-	// Get current time in IST
-	return time.Now().In(istLocation)
-}
-
 func RequestLogger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		l := logger.Get()
@@ -93,7 +84,7 @@ func RequestLogger(next http.Handler) http.Handler {
 					zap.String("user_agent", r.UserAgent()),
 					zap.Int("status_code", lrw.statusCode),
 					zap.String("err_msg", lrw.errMsg),
-					zap.Duration("elapsed_ms", getCurrentISTTime().Sub(start)),
+					zap.Duration("elapsed_ms", time.Since(start)),
 				)
 				return
 			} else if time.Since(start).Seconds() >= 2.0 {
@@ -108,11 +99,11 @@ func RequestLogger(next http.Handler) http.Handler {
 					zap.String("user_agent", r.UserAgent()),
 					zap.Int("status_code", lrw.statusCode),
 					zap.String("err_msg", lrw.errMsg),
-					zap.Duration("elapsed_ms", getCurrentISTTime().Sub(start)),
+					zap.Duration("elapsed_ms", time.Since(start)),
 				)
 				return
 			}
-		}(getCurrentISTTime(), authInfo.Domain)
+		}(time.Now(), authInfo.Domain)
 
 		next.ServeHTTP(lrw, r)
 	})
