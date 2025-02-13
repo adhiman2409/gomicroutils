@@ -73,13 +73,19 @@ func RequestLogger(next http.Handler) http.Handler {
 		r = r.WithContext(logger.WithCtx(ctx, l))
 		authInfo := grpcclient.GetAuthInfo(r)
 		defer func(start time.Time, domain string) {
+
+			d := domain
+			if d == "" && strings.Contains(r.RequestURI, "/downloadimage") {
+				uri := strings.Split(r.RequestURI, "/downloadimage/")[1]
+				d = strings.Split(uri, "/")[0]
+			}
 			if lrw.statusCode >= 400 {
 				l.Error(
 					fmt.Sprintf(
 						"%s request to %s failed",
 						r.Method,
 						r.RequestURI,
-					), domain,
+					), d,
 					zap.String("method", r.Method),
 					zap.String("url", r.RequestURI),
 					zap.String("user_agent", r.UserAgent()),
