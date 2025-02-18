@@ -73,6 +73,9 @@ func RequestLogger(next http.Handler) http.Handler {
 		r = r.WithContext(logger.WithCtx(ctx, l))
 		authInfo := grpcclient.GetAuthInfo(r)
 		defer func(start time.Time, domain string) {
+			if domain == "" {
+				return
+			}
 			if lrw.statusCode >= 400 {
 				l.Error(
 					fmt.Sprintf(
