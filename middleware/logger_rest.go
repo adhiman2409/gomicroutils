@@ -50,6 +50,10 @@ func (lrw *loggingResponseWriter) Write(p []byte) (int, error) {
 	return lrw.ResponseWriter.Write(p)
 }
 
+func getCurrentISTTime() time.Time {
+	return time.Now().Local().Add(time.Hour*time.Duration(5) + time.Minute*time.Duration(30))
+}
+
 func RequestLogger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		l := logger.Get()
@@ -88,6 +92,7 @@ func RequestLogger(next http.Handler) http.Handler {
 					zap.String("user_agent", r.UserAgent()),
 					zap.Int("status_code", lrw.statusCode),
 					zap.String("err_msg", lrw.errMsg),
+					zap.String("IST", getCurrentISTTime().Format("2006-01-02 15:04:05")),
 					zap.Duration("elapsed_ms", time.Since(start)),
 				)
 				return
@@ -106,6 +111,7 @@ func RequestLogger(next http.Handler) http.Handler {
 					zap.String("user_agent", r.UserAgent()),
 					zap.Int("status_code", lrw.statusCode),
 					zap.String("err_msg", lrw.errMsg),
+					zap.String("IST", getCurrentISTTime().Format("2006-01-02 15:04:05")),
 					zap.Duration("elapsed_ms", time.Since(start)),
 				)
 				return

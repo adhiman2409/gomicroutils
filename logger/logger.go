@@ -27,10 +27,6 @@ var cblog *CBLogger
 
 const FUNCTION_SKIP_LEVEL = 1
 
-func getCurrentISTTime() time.Time {
-	return time.Now().Local().Add(time.Hour*time.Duration(5) + time.Minute*time.Duration(30))
-}
-
 // Get initializes a zap.Logger instance if it has not been initialized
 // already and returns the same instance for subsequent calls.
 func Get() *CBLogger {
@@ -82,7 +78,6 @@ func Get() *CBLogger {
 					[]zapcore.Field{
 						zap.String("srv_name", sn),
 						zap.String("srv_tag", st),
-						zap.String("IST", getCurrentISTTime().Format("2006-01-02 15:04:05")),
 					},
 				),
 		)
@@ -138,6 +133,8 @@ func (c *CBLogger) Info(msg, domain string, fields ...zap.Field) {
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
 		fields = append(fields, zap.String("domain", domain))
+		fields = append(fields, zap.String("IST", time.Now().Local().Add(time.Hour*time.Duration(5)+time.Minute*time.Duration(30)).Format("2006-01-02 15:04:05")))
+
 	}
 	c.logger.Info(msg, fields...)
 }
@@ -154,6 +151,7 @@ func (c *CBLogger) Debug(msg, domain string, fields ...zap.Field) {
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
 		fields = append(fields, zap.String("domain", domain))
+		fields = append(fields, zap.String("IST", time.Now().Local().Add(time.Hour*time.Duration(5)+time.Minute*time.Duration(30)).Format("2006-01-02 15:04:05")))
 	}
 	c.logger.Debug(msg, fields...)
 
@@ -171,6 +169,7 @@ func (c *CBLogger) Warn(msg, domain string, fields ...zap.Field) {
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
 		fields = append(fields, zap.String("domain", domain))
+		fields = append(fields, zap.String("IST", time.Now().Local().Add(time.Hour*time.Duration(5)+time.Minute*time.Duration(30)).Format("2006-01-02 15:04:05")))
 	}
 	c.logger.Warn(msg, fields...)
 
@@ -187,6 +186,7 @@ func (c *CBLogger) Error(msg, domain string, fields ...zap.Field) {
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
 		fields = append(fields, zap.String("domain", domain))
+		fields = append(fields, zap.String("IST", time.Now().Local().Add(time.Hour*time.Duration(5)+time.Minute*time.Duration(30)).Format("2006-01-02 15:04:05")))
 	}
 
 	c.logger.Error(msg, fields...)
@@ -204,6 +204,7 @@ func (c *CBLogger) Panic(msg, domain string, fields ...zap.Field) {
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
 		fields = append(fields, zap.String("domain", domain))
+		fields = append(fields, zap.String("IST", time.Now().Local().Add(time.Hour*time.Duration(5)+time.Minute*time.Duration(30)).Format("2006-01-02 15:04:05")))
 	}
 
 	c.logger.Panic(msg, fields...)
@@ -221,6 +222,7 @@ func (c *CBLogger) Fatal(msg, domain string, fields ...zap.Field) {
 		caller := filename + "->" + funcname + ":" + fmt.Sprint(line)
 		fields = append(fields, zap.String("caller", caller))
 		fields = append(fields, zap.String("domain", domain))
+		fields = append(fields, zap.String("IST", time.Now().Local().Add(time.Hour*time.Duration(5)+time.Minute*time.Duration(30)).Format("2006-01-02 15:04:05")))
 	}
 
 	c.logger.Fatal(msg, fields...)
