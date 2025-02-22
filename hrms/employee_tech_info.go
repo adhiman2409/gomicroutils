@@ -1,6 +1,8 @@
 package hrms
 
 import (
+	"time"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -13,17 +15,17 @@ type Experience struct {
 }
 
 type Project struct {
-	ProjectName      string   `bson:"project_name"`
-	ProjectType      string   `bson:"project_type"`
-	IsCurrentProject bool     `bson:"is_current_project"`
-	IsBillable       bool     `bson:"is_billable"`
-	StartDate        string   `bson:"start_date"`
-	EndDate          string   `bson:"end_date"`
-	Description      string   `bson:"description"`
-	CompanyName      string   `bson:"company_name"`
-	ClientName       string   `bson:"client_name"`
-	Skills           []string `bson:"s_skills"`
-	URL              string   `bson:"url"`
+	ProjectName      string    `bson:"project_name"`
+	ProjectType      string    `bson:"project_type"`
+	IsCurrentProject bool      `bson:"is_current_project"`
+	IsBillable       bool      `bson:"is_billable"`
+	StartDate        time.Time `bson:"start_date"`
+	EndDate          time.Time `bson:"end_date"`
+	Description      string    `bson:"description"`
+	CompanyName      string    `bson:"company_name"`
+	ClientName       string    `bson:"client_name"`
+	Skills           []string  `bson:"s_skills"`
+	URL              string    `bson:"url"`
 }
 
 type Achivement struct {
@@ -51,6 +53,7 @@ type EmployeeTechInfo struct {
 	EmployeeId             string             `bson:"employee_id"`
 	About                  string             `bson:"about"`
 	TotalExperinceInMonths int                `bson:"total_experince_in_months"`
+	ReleaseDate            time.Time          `bson:"release_date"`
 	PSkill                 string             `bson:"p_skill"`
 	SSkills                []string           `bson:"s_skills"`
 	Experiences            []Experience       `bson:"experinces"`
