@@ -23,7 +23,6 @@ type Project struct {
 	CompanyName      string   `bson:"company_name"`
 	ClientName       string   `bson:"client_name"`
 	Skills           []string `bson:"s_skills"`
-	Domain           string   `bson:"domain"`
 	URL              string   `bson:"url"`
 }
 
