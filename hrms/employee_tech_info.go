@@ -56,7 +56,7 @@ type EmployeeTechInfo struct {
 	ReleaseDate            time.Time          `bson:"release_date"`
 	PSkill                 string             `bson:"p_skill"`
 	SSkills                []string           `bson:"s_skills"`
-	Experiences            []Experience       `bson:"experinces"`
+	Experiences            []Experience       `bson:"experiences"`
 	Projects               []Project          `bson:"projects"`
 	Achivements            []Achivement       `bson:"achivements"`
 	Awards                 []Award            `bson:"awards"`
