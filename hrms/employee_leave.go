@@ -104,7 +104,7 @@ type EmployeeLeaveObj struct {
 	IncludeWithdrawalLeaves      bool               `bson:"include_withdrawal_leaves"`
 	TotalApprovedLeaves          float32            `bson:"total_approved_leaves"`
 	Leaves                       []Leave            `bson:"leave"`
-	Remarks                      string             `bson:"remarks"`
+	Remarks                      []string           `bson:"remarks"`
 	DocURL                       string             `bson:"doc_url"`
 	CreatedAt                    time.Time          `bson:"created_at"`
 	UpdatedAt                    time.Time          `bson:"updated_at"`
