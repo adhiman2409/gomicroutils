@@ -64,10 +64,13 @@ type EmployeeTechInfo struct {
 }
 
 type Feedback struct {
-	EmployeeId  string `bson:"employee_id"`
-	Day         string `bson:"day"`
-	Year        string `bson:"year"`
-	Month       string `bson:"month"`
-	Title       string `bson:"title"`
-	Description string `bson:"description"`
+	EmployeeId          string `bson:"employee_id"`
+	EmployeeDesignation string `bson:"employee_designation"`
+	Day                 string `bson:"day"`
+	Year                string `bson:"year"`
+	Month               string `bson:"month"`
+	Title               string `bson:"title"`
+	Description         string `bson:"description"`
+	CreatedBy           string `bson:"created_by"`
+	CreatorDesignation  string `bson:"creator_designation"`
 }
