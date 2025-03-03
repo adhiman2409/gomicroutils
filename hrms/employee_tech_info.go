@@ -48,6 +48,18 @@ type Award struct {
 	URL         string `bson:"url"`
 }
 
+type Feedback struct {
+	EmployeeId          string `bson:"employee_id"`
+	EmployeeDesignation string `bson:"employee_designation"`
+	Day                 string `bson:"day"`
+	Year                string `bson:"year"`
+	Month               string `bson:"month"`
+	Title               string `bson:"title"`
+	Description         string `bson:"description"`
+	CreatedBy           string `bson:"created_by"`
+	CreatorDesignation  string `bson:"creator_designation"`
+}
+
 type EmployeeTechInfo struct {
 	ID                     primitive.ObjectID `bson:"_id"`
 	EmployeeId             string             `bson:"employee_id"`
@@ -60,17 +72,6 @@ type EmployeeTechInfo struct {
 	Projects               []Project          `bson:"projects"`
 	Achivements            []Achivement       `bson:"achivements"`
 	Awards                 []Award            `bson:"awards"`
+	Feedbacks              []Feedback         `json:"feedbacks,omitempty"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
-}
-
-type Feedback struct {
-	EmployeeId          string `bson:"employee_id"`
-	EmployeeDesignation string `bson:"employee_designation"`
-	Day                 string `bson:"day"`
-	Year                string `bson:"year"`
-	Month               string `bson:"month"`
-	Title               string `bson:"title"`
-	Description         string `bson:"description"`
-	CreatedBy           string `bson:"created_by"`
-	CreatorDesignation  string `bson:"creator_designation"`
 }
