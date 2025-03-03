@@ -62,3 +62,16 @@ type EmployeeTechInfo struct {
 	Awards                 []Award            `bson:"awards"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
 }
+
+type Feedbacks struct {
+	EmployeeId   string      `bson:"employee_id"`
+	FeedbackList []Feedbacks `bson:"feedback_list"`
+}
+
+type Feedback struct {
+	Day         string `bson:"day"`
+	Year        string `bson:"year"`
+	Month       string `bson:"month"`
+	Title       string `bson:"title"`
+	Description string `bson:"description"`
+}
