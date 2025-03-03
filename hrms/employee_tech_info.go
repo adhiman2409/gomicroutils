@@ -49,7 +49,6 @@ type Award struct {
 }
 
 type Feedback struct {
-	EmployeeId          string `bson:"employee_id"`
 	EmployeeDesignation string `bson:"employee_designation"`
 	Day                 string `bson:"day"`
 	Year                string `bson:"year"`
