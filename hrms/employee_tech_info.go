@@ -63,12 +63,8 @@ type EmployeeTechInfo struct {
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
 }
 
-type Feedbacks struct {
-	EmployeeId   string      `bson:"employee_id"`
-	FeedbackList []Feedbacks `bson:"feedback_list"`
-}
-
 type Feedback struct {
+	EmployeeId  string `bson:"employee_id"`
 	Day         string `bson:"day"`
 	Year        string `bson:"year"`
 	Month       string `bson:"month"`
