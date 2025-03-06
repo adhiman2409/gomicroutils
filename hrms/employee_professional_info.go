@@ -19,6 +19,7 @@ type EmpProfessionalInfo struct {
 	JoiningMonth          int64              `bson:"joining_month"`
 	JoiningYear           int64              `bson:"joining_year"`
 	ReleavingDate         string             `bson:"releaving_date"`
+	ReleavingRemarks      string             `bson:"releaving_remarks"`
 	EmploymentStatus      string             `bson:"employment_status"`
 	IsRotationalShift     bool               `bson:"is_rotational_shift"`
 	OfficeLocation        string             `bson:"office_location"`
