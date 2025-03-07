@@ -4,12 +4,14 @@ import "time"
 
 type PollOption struct {
 	Option    string `bson:"option"`
+	OptionId  string `bson:"option_id"`
 	VoteCount string `bson:"vote_count"`
 }
 
 type Vote struct {
 	EmployeeId string    `bson:"employee_id"`
 	Option     string    `bson:"option"`
+	OptionId   string    `bson:"option_id"`
 	Date       time.Time `bson:"date"`
 }
 
