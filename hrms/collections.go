@@ -17,6 +17,7 @@ const ORG_COLLECTION_HOLIDAYS = "org-holidays"
 const ORG_COLLECTION_LEAVES_CONF = "org-leaves-conf"
 const ORG_COLLECTION_MARQUE = "org-marque"
 const ORG_COLLECTION_POST = "org-post"
+const ORG_COLLECTION_POLL = "org-poll"
 const ORG_COLLECTION_ROLES = "org-roles"
 const ORG_COLLECTION_INVENTORY = "org-inventory"
 const ORG_COLLECTION_ASSIGN_ASSET = "org-assign-asset"
@@ -196,6 +197,11 @@ func GetOrgMarqueCollection(client *mongo.Client, domain string) *mongo.Collecti
 func GetOrgPostCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_POST)
+}
+
+func GetOrgPollCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_POLL)
 }
 
 func GetEmpQualificationCollection(client *mongo.Client, domain string) *mongo.Collection {
