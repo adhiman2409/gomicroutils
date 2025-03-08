@@ -9,7 +9,7 @@ import (
 type PollOption struct {
 	Option    string `bson:"option"`
 	OptionId  string `bson:"option_id"`
-	VoteCount string `bson:"vote_count"`
+	VoteCount int    `bson:"vote_count"`
 }
 
 type Vote struct {
