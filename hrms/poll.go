@@ -24,7 +24,7 @@ type Poll struct {
 	Title             string             `bson:"title"`
 	Content           string             `bson:"content"`
 	Options           []PollOption       `bson:"options"`
-	Votes             []Vote             `bson:"vote"`
+	Votes             []Vote             `bson:"votes"`
 	VoteCount         int                `bson:"vote_count"`
 	StartDateAndTime  time.Time          `bson:"start_date_and_time"`
 	EndDateAndTime    time.Time          `bson:"end_date_and_time"`
