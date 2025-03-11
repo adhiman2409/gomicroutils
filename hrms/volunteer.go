@@ -42,6 +42,7 @@ type VolunteerInfo struct {
 	VolunteerId                  string             `bson:"volunteer_id"`
 	FullName                     string             `bson:"full_name"`
 	FatherName                   string             `bson:"father_name"`
+	About                        string             `bson:"about"`
 	Gender                       string             `bson:"gender"`
 	DOB                          string             `bson:"dob"`
 	PhoneNumber                  string             `bson:"phone_number"`
@@ -57,6 +58,7 @@ type VolunteerInfo struct {
 	PreviousVolunteerExperiences []Experience       `bson:"previous_volunteer_experiences"`
 	VolunteerIntrestAreas        []string           `bson:"volunteer_intrest_areas"`
 	VolunteerStatus              string             `bson:"volunteer_status"`
+	Remarks                      string             `bson:"remarks"`
 	VolunteerAvailability        [7]Availability    `bson:"volunteer_availability"`
 	JoiningDate                  string             `bson:"joining_date"`
 	ImgURL                       string             `bson:"img_url"`
