@@ -19,6 +19,7 @@ type VolunteerInfo struct {
 	EmailIdVerified               bool               `bson:"email_id_verified"`
 	Profession                    string             `bson:"profession"`
 	Address                       Address            `bson:"address"`
+	PersonalIdNumber              string             `bson:"personal_id_number"`
 	PersonalIdType                string             `bson:"personal_id_type"`
 	PersonalIdURL                 string             `bson:"personal_id_url"`
 	IsPreviouslyVolunteered       bool               `bson:"is_previously_volunteered"`
