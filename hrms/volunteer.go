@@ -8,7 +8,7 @@ import (
 
 type VolunteerRequest struct {
 	ID                           primitive.ObjectID `bson:"_id"`
-	VolunteerId                  string             `bson:"volunteer_id"`
+	RequestId                    string             `bson:"request_id"`
 	FullName                     string             `bson:"full_name"`
 	FatherName                   string             `bson:"father_name"`
 	Gender                       string             `bson:"gender"`
