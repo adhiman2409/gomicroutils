@@ -53,7 +53,8 @@ type Availability struct {
 }
 
 type VolunteerIdCounter struct {
-	ID      primitive.ObjectID `bson:"_id"`
-	Prefix  string             `bson:"prefix"`
-	Counter int64              `bson:"counter"`
+	ID                 primitive.ObjectID `bson:"_id"`
+	IsTemporaryCounter bool               `bson:"is_temporary_counter"`
+	Prefix             string             `bson:"prefix"`
+	Counter            int64              `bson:"counter"`
 }
