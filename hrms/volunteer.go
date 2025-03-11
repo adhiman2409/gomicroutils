@@ -32,10 +32,9 @@ type VolunteerInfo struct {
 	IsVolunteerProfileSuspended   bool               `bson:"is_volunteer_profile_suspended"`
 	VolunteerAvailability         [7]Availability    `bson:"volunteer_availability"`
 	JoiningDate                   string             `bson:"joining_date"`
-	ReportingManagerName          string             `bson:"reporting_manager"`
-	ReportingManagerId            string             `bson:"reporting_manager_id"`
-	ReportingManagerEmail         string             `bson:"reporting_manager_email"`
-	NewJoineeRewardId             string             `bson:"new_joinee_reward_id"`
+	ReviewerId                    string             `bson:"reviewer_id"`
+	ReviewerName                  string             `bson:"reviewer_name"`
+	ReviewerRemarks               string             `bson:"reviewer_remarks"`
 	ImgURL                        string             `bson:"img_url"`
 	IsProfileEditingLocked        bool               `bson:"is_profile_editing_locked"`
 	RegexText                     string             `bson:"regex_text"`
