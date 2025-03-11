@@ -74,6 +74,9 @@ const TICKET_COLLECTION_TICKET_CONFIGS = "ticket-ticket-configs"
 const TICKET_COLLECTION_TICKETS = "ticket-tickets"
 const TICKET_COLLECTION_TICKET_COUNTER = "ticket-ticket-counter"
 
+const VOLUNTEER_COLLECTION_VOLUNTEER_COUNTER = "volunteer-volunteer-counter"
+const VOLUNTEER_COLLECTION_VOLUNTEERS = "volunteer-volunteers"
+
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_ORGANIZATION)
@@ -382,6 +385,16 @@ func GetTicketTicketsCollection(client *mongo.Client, domain string) *mongo.Coll
 func GetTicketTicketCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(TICKET_COLLECTION_TICKET_COUNTER)
+}
+
+func GetVolunteerCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(VOLUNTEER_COLLECTION_VOLUNTEER_COUNTER)
+}
+
+func GetVolunteersCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(VOLUNTEER_COLLECTION_VOLUNTEERS)
 }
 
 func GetWorkerDomainCollection(client *mongo.Client, domain string) *mongo.Collection {
