@@ -12,6 +12,8 @@ type Address struct {
 	State              string  `bson:"state"`
 	City               string  `bson:"city"`
 	District           string  `bson:"district"`
+	Village            string  `bson:"village"`
+	Tehsil             string  `bson:"tehsil"`
 	Country            string  `bson:"country"`
 	Zipcode            string  `bson:"zipcode"`
 	Lat                float64 `bson:"lat"`
