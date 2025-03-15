@@ -2,6 +2,8 @@ package hrms
 
 import (
 	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type DocumentInfo struct {
@@ -132,7 +134,7 @@ type RequestVerification struct {
 }
 
 type StudentScholarshipRequest struct {
-	ID                  string                  `bson:"id"`
+	ID                  primitive.ObjectID      `bson:"_id"`
 	StudentId           string                  `bson:"student_id"`
 	RequestId           string                  `bson:"request_id"`
 	RequestStatus       string                  `bson:"request_status"`
