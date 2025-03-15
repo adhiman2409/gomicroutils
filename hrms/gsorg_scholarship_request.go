@@ -131,12 +131,12 @@ type RequestVerification struct {
 	VerificationRemarks        string    `bson:"verification_remarks"`
 }
 
-type StudentScolershipRequest struct {
+type StudentScholarshipRequest struct {
 	ID                  string                  `bson:"id"`
 	StudentId           string                  `bson:"student_id"`
 	RequestId           string                  `bson:"request_id"`
 	RequestStatus       string                  `bson:"request_status"`
-	PersonalInfo        StudentPersonalInfo     `bson:"personal_info"`
+	StudentPersonalInfo StudentPersonalInfo     `bson:"student_personal_info"`
 	ReferrerInfo        ScholarshipReferrerInfo `bson:"referrer_info"`
 	StudentAcademicInfo StudentAcademicInfo     `bson:"student_academic_info"`
 	StudentFeeInfo      StudentFeeInfo          `bson:"student_fee_info"`
