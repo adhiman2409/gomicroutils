@@ -23,8 +23,6 @@ type DocumentInfo struct {
 }
 
 type StudentSchoolInfo struct {
-	SchoolId            string    `bson:"school_id"`
-	StudentId           string    `bson:"student_id"`
 	Name                string    `bson:"name"`
 	Type                string    `bson:"type"`
 	ContactName         string    `bson:"contact_name"`
@@ -42,28 +40,27 @@ type StudentSchoolInfo struct {
 	VerifiedBy          string    `bson:"verified_by"`
 	VerifiedOn          time.Time `bson:"verified_at"`
 	VerificationMode    string    `bson:"verification_mode"`
+	Regex               string    `bson:"regex"`
 	VerificationRemarks string    `bson:"verification_remarks"`
 }
 
 type StudentFeeInfo struct {
-	SchoolId                    string    `bson:"school_id"`
-	MonthlyTotalFee             float64   `bson:"monthly_total_fee"`
-	FeePaymentCycle             string    `bson:"fee_payment_cycle"`
-	FeePaymentLastDate          string    `bson:"fee_payment_last_date"`
-	SchoolBankAccountHolderName string    `bson:"bank_account_holder_name"`
-	BankName                    string    `bson:"bank_name"`
-	BankAccountNumber           string    `bson:"bank_account_number"`
-	BankIFSC                    string    `bson:"ifsc"`
-	CancelledChequeURL          string    `bson:"cancelled_cheque_url"`
-	IsVerified                  bool      `bson:"is_verified"`
-	VerifiedBy                  string    `bson:"verified_by"`
-	VerifiedOn                  time.Time `bson:"verified_at"`
-	VerificationMode            string    `bson:"verification_mode"`
-	VerificationRemarks         string    `bson:"verification_remarks"`
+	MonthlyTotalFee       float64   `bson:"monthly_total_fee"`
+	FeePaymentCycle       string    `bson:"fee_payment_cycle"`
+	FeePaymentLastDate    string    `bson:"fee_payment_last_date"`
+	BankAccountHolderName string    `bson:"bank_account_holder_name"`
+	BankName              string    `bson:"bank_name"`
+	BankAccountNumber     string    `bson:"bank_account_number"`
+	BankIFSC              string    `bson:"ifsc"`
+	CancelledChequeURL    string    `bson:"cancelled_cheque_url"`
+	IsVerified            bool      `bson:"is_verified"`
+	VerifiedBy            string    `bson:"verified_by"`
+	VerifiedOn            time.Time `bson:"verified_at"`
+	VerificationMode      string    `bson:"verification_mode"`
+	VerificationRemarks   string    `bson:"verification_remarks"`
 }
 
 type StudentAcademicInfo struct {
-	StudentId                  string         `bson:"student_id"`
 	AdmissionNumber            string         `bson:"admission_number"`
 	Class                      string         `bson:"academic_class"`
 	Section                    string         `bson:"academic_section"`
@@ -87,7 +84,6 @@ type StudentAcademicInfo struct {
 }
 
 type StudentPersonalInfo struct {
-	StudentId                        string         `bson:"student_id"`
 	StudentName                      string         `bson:"student_name"`
 	Gender                           string         `bson:"gender"`
 	DOB                              string         `bson:"dob"`
@@ -111,7 +107,6 @@ type StudentPersonalInfo struct {
 }
 
 type ScholarshipReferrerInfo struct {
-	StudentId               string `bson:"student_id"`
 	ReferrerId              string `bson:"referrer_id"`
 	Name                    string `bson:"name"`
 	PhoneNumber             string `bson:"phone_number"`
@@ -122,14 +117,16 @@ type ScholarshipReferrerInfo struct {
 }
 
 type RequestVerification struct {
-	StudentId                  string    `bson:"student_id"`
 	IsVerificationInitiated    bool      `bson:"is_verification_initiated"`
 	VerificationInitiationDate string    `bson:"verification_initiation_date"`
 	VerificationMode           string    `bson:"verification_mode"`
 	VeerifierId                string    `bson:"veerifier_id"`
 	VerifierName               string    `bson:"verifier_name"`
-	IsVerificationCompleted    bool      `bson:"is_verification_completed"`
-	VerificationCompletionDate time.Time `bson:"verification_completion_date"`
+	VerifierPhoneNumber        string    `bson:"verifier_phone_number"`
+	VerificationStartDate      time.Time `bson:"verification_start_date"`
+	VerificationStatus         string    `bson:"verification_status"`
+	VerificationEndDate        time.Time `bson:"verification_end_date"`
+	IsVerificationPassed       bool      `bson:"is_verification_passed"`
 	VerificationRemarks        string    `bson:"verification_remarks"`
 }
 
