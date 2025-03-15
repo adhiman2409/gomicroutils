@@ -77,7 +77,7 @@ const TICKET_COLLECTION_TICKET_COUNTER = "ticket-ticket-counter"
 const VOLUNTEER_COLLECTION_VOLUNTEER_COUNTER = "volunteer-volunteer-counter"
 const VOLUNTEER_COLLECTION_REQUESTS = "volunteer-requests"
 const VOLUNTEER_COLLECTION_VOLUNTEERS = "volunteer-volunteers"
-const GSORG_COLLECTION_DONEE_REQUESTS = "gsorg-donee-requests"
+const GSORG_COLLECTION_SCHOLARSHIP_REQUESTS = "gsorg-scholarship-requests"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -399,9 +399,9 @@ func GetVolunteersCollection(client *mongo.Client, domain string) *mongo.Collect
 	return db.Collection(VOLUNTEER_COLLECTION_VOLUNTEERS)
 }
 
-func GetGSOrgDoneeRequestCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetGSOrgScholarshipRequestCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(GSORG_COLLECTION_DONEE_REQUESTS)
+	return db.Collection(GSORG_COLLECTION_SCHOLARSHIP_REQUESTS)
 }
 
 func GetVolunteerRequestsCollection(client *mongo.Client, domain string) *mongo.Collection {
