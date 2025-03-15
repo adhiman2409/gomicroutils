@@ -7,41 +7,45 @@ import (
 )
 
 type DocumentInfo struct {
-	DocName             string    `bson:"doc_name"`
-	DocType             string    `bson:"doc_type"`
-	DocURL              string    `bson:"doc_url"`
-	IsMandotory         bool      `bson:"is_mandatory"`
-	DocStatus           string    `bson:"doc_status"`
-	DocRemarks          string    `bson:"doc_remarks"`
-	IsVerified          bool      `bson:"is_verified"`
-	VerifiedBy          string    `bson:"verified_by"`
-	VerifiedOn          time.Time `bson:"verified_at"`
-	VerificationMode    string    `bson:"verification_mode"`
-	VerificationRemarks string    `bson:"verification_remarks"`
-	CreatedAt           time.Time `bson:"created_at"`
-	UpdatedAt           time.Time `bson:"updated_at"`
+	DocName              string    `bson:"doc_name"`
+	DocType              string    `bson:"doc_type"`
+	DocURL               string    `bson:"doc_url"`
+	IsMandotory          bool      `bson:"is_mandatory"`
+	DocStatus            string    `bson:"doc_status"`
+	DocRemarks           string    `bson:"doc_remarks"`
+	IsVerified           bool      `bson:"is_verified"`
+	VerifiedBy           string    `bson:"verified_by"`
+	VerifiedOn           time.Time `bson:"verified_at"`
+	VerificationMode     string    `bson:"verification_mode"`
+	VerificationStatus   string    `bson:"verification_status"`
+	IsVerificationPassed bool      `bson:"is_verification_passed"`
+	VerificationRemarks  string    `bson:"verification_remarks"`
+	CreatedAt            time.Time `bson:"created_at"`
+	UpdatedAt            time.Time `bson:"updated_at"`
 }
 
 type StudentSchoolInfo struct {
-	Name                string    `bson:"name"`
-	Type                string    `bson:"type"`
-	ContactName         string    `bson:"contact_name"`
-	ContactDesignation  string    `bson:"contact_designation"`
-	ContactPhone        string    `bson:"contact_phone"`
-	ContactEmail        string    `bson:"contact_email"`
-	Address             Address   `bson:"address"`
-	PrincipalName       string    `bson:"principal_name"`
-	PrincipalPhone      string    `bson:"principal_phone"`
-	PrincipalEmail      string    `bson:"principal_email"`
-	PrincipalRemarks    string    `bson:"principal_remarks"`
-	Remarks             string    `bson:"remarks"`
-	Website             string    `bson:"website"`
-	IsVerified          bool      `bson:"is_verified"`
-	VerifiedBy          string    `bson:"verified_by"`
-	VerifiedOn          time.Time `bson:"verified_at"`
-	VerificationMode    string    `bson:"verification_mode"`
-	Regex               string    `bson:"regex"`
-	VerificationRemarks string    `bson:"verification_remarks"`
+	Name                 string    `bson:"name"`
+	Type                 string    `bson:"type"`
+	ContactName          string    `bson:"contact_name"`
+	ContactDesignation   string    `bson:"contact_designation"`
+	ContactPhone         string    `bson:"contact_phone"`
+	ContactEmail         string    `bson:"contact_email"`
+	Address              Address   `bson:"address"`
+	PrincipalName        string    `bson:"principal_name"`
+	PrincipalPhone       string    `bson:"principal_phone"`
+	PrincipalEmail       string    `bson:"principal_email"`
+	PrincipalRemarks     string    `bson:"principal_remarks"`
+	Remarks              string    `bson:"remarks"`
+	Website              string    `bson:"website"`
+	IsVerified           bool      `bson:"is_verified"`
+	VerifiedBy           string    `bson:"verified_by"`
+	VerifiedOn           time.Time `bson:"verified_at"`
+	VerificationMode     string    `bson:"verification_mode"`
+	VerificationStatus   string    `bson:"verification_status"`
+	IsVerificationPassed bool      `bson:"is_verification_passed"`
+	VerificationRemarks  string    `bson:"verification_remarks"`
+	Regex                string    `bson:"regex"`
 }
 
 type StudentFeeInfo struct {
@@ -57,6 +61,8 @@ type StudentFeeInfo struct {
 	VerifiedBy            string    `bson:"verified_by"`
 	VerifiedOn            time.Time `bson:"verified_at"`
 	VerificationMode      string    `bson:"verification_mode"`
+	VerificationStatus    string    `bson:"verification_status"`
+	IsVerificationPassed  bool      `bson:"is_verification_passed"`
 	VerificationRemarks   string    `bson:"verification_remarks"`
 }
 
@@ -78,6 +84,8 @@ type StudentAcademicInfo struct {
 	VerifiedBy                 string         `bson:"verified_by"`
 	VerifiedOn                 time.Time      `bson:"verified_at"`
 	VerificationMode           string         `bson:"verification_mode"`
+	VerificationStatus         string         `bson:"verification_status"`
+	IsVerificationPassed       bool           `bson:"is_verification_passed"`
 	VerificationRemarks        string         `bson:"verification_remarks"`
 	CreatedAt                  time.Time      `bson:"created_at"`
 	UpdatedAt                  time.Time      `bson:"updated_at"`
@@ -103,6 +111,8 @@ type StudentPersonalInfo struct {
 	VerifiedBy                       string         `bson:"verified_by"`
 	VerifiedOn                       time.Time      `bson:"verified_at"`
 	VerificationMode                 string         `bson:"verification_mode"`
+	VerificationStatus               string         `bson:"verification_status"`
+	IsVerificationPassed             bool           `bson:"is_verification_passed"`
 	VerificationRemarks              string         `bson:"verification_remarks"`
 }
 
@@ -122,8 +132,8 @@ type RequestVerification struct {
 	VerifierName          string    `bson:"verifier_name"`
 	VerifierPhoneNumber   string    `bson:"verifier_phone_number"`
 	VerificationStartDate time.Time `bson:"verification_start_date"`
-	VerificationStatus    string    `bson:"verification_status"`
 	VerificationEndDate   time.Time `bson:"verification_end_date"`
+	VerificationStatus    string    `bson:"verification_status"`
 	IsVerificationPassed  bool      `bson:"is_verification_passed"`
 	VerificationRemarks   string    `bson:"verification_remarks"`
 }
