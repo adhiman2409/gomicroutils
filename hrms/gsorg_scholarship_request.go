@@ -117,17 +117,15 @@ type ScholarshipReferrerInfo struct {
 }
 
 type RequestVerification struct {
-	IsVerificationInitiated    bool      `bson:"is_verification_initiated"`
-	VerificationInitiationDate string    `bson:"verification_initiation_date"`
-	VerificationMode           string    `bson:"verification_mode"`
-	VeerifierId                string    `bson:"veerifier_id"`
-	VerifierName               string    `bson:"verifier_name"`
-	VerifierPhoneNumber        string    `bson:"verifier_phone_number"`
-	VerificationStartDate      time.Time `bson:"verification_start_date"`
-	VerificationStatus         string    `bson:"verification_status"`
-	VerificationEndDate        time.Time `bson:"verification_end_date"`
-	IsVerificationPassed       bool      `bson:"is_verification_passed"`
-	VerificationRemarks        string    `bson:"verification_remarks"`
+	VerificationMode      string    `bson:"verification_mode"`
+	VeerifierId           string    `bson:"veerifier_id"`
+	VerifierName          string    `bson:"verifier_name"`
+	VerifierPhoneNumber   string    `bson:"verifier_phone_number"`
+	VerificationStartDate time.Time `bson:"verification_start_date"`
+	VerificationStatus    string    `bson:"verification_status"`
+	VerificationEndDate   time.Time `bson:"verification_end_date"`
+	IsVerificationPassed  bool      `bson:"is_verification_passed"`
+	VerificationRemarks   string    `bson:"verification_remarks"`
 }
 
 type StudentScholarshipRequest struct {
