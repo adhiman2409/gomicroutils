@@ -97,8 +97,8 @@ type MasterDonation struct {
 	Description           string               `bson:"description"`
 	DonationMinAmount     float64              `bson:"donation_min_amount"`
 	DonationMaxAmount     float64              `bson:"donation_max_amount"`
-	IsFixedAmount         bool                 `bson:"is_fixed_amount"`
-	DonationAmount        float64              `bson:"donation_amount"`
+	IsFixedAmountDonation bool                 `bson:"is_fixed_amount_donation"`
+	FixedDonationAmount   float64              `bson:"fixed_donation_amount"`
 	IsTargetBasedDonation bool                 `bson:"is_target_based_donation"`
 	TargetDonationAmount  float64              `bson:"target_donation_amount"`
 	MonthlyTargetAmount   float64              `bson:"monthly_target_amount"`
