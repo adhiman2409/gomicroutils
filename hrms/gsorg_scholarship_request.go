@@ -140,7 +140,6 @@ type RequestVerification struct {
 type StudentScholarshipRequest struct {
 	ID                                 primitive.ObjectID      `bson:"_id"`
 	StudentId                          string                  `bson:"student_id"`
-	RequestId                          string                  `bson:"request_id"`
 	RequestStatus                      string                  `bson:"request_status"`
 	StudentPersonalInfo                StudentPersonalInfo     `bson:"student_personal_info"`
 	ReferrerInfo                       ScholarshipReferrerInfo `bson:"referrer_info"`
