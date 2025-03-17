@@ -127,7 +127,7 @@ type ScholarshipReferrerInfo struct {
 
 type RequestVerification struct {
 	VerificationMode      string    `bson:"verification_mode"`
-	VeerifierId           string    `bson:"veerifier_id"`
+	VerifierId            string    `bson:"verifier_id"`
 	VerifierName          string    `bson:"verifier_name"`
 	VerifierPhoneNumber   string    `bson:"verifier_phone_number"`
 	VerificationStartDate time.Time `bson:"verification_start_date"`
