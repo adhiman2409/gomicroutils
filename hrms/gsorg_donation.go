@@ -100,13 +100,11 @@ type MasterDonation struct {
 	IsFixedAmountDonation bool                 `bson:"is_fixed_amount_donation"`
 	FixedDonationAmount   float64              `bson:"fixed_donation_amount"`
 	IsTargetBasedDonation bool                 `bson:"is_target_based_donation"`
-	TargetDonationAmount  float64              `bson:"target_donation_amount"`
-	MonthlyTargetAmount   float64              `bson:"monthly_target_amount"`
 	TotalDonationAmount   float64              `bson:"total_donation_amount"`
 	TotalDonors           int                  `bson:"total_donors"`
-	TotalAmountPaid       float64              `bson:"total_scholarship_amount_paid"`
-	TotalAmountLeft       float64              `bson:"total_scholarship_amount_left"`
-	TotalAmountUsed       float64              `bson:"total_scholarship_amount_used"`
+	TotalAmountPaid       float64              `bson:"total_amount_paid"`
+	TotalAmountLeft       float64              `bson:"total_amount_left"`
+	TotalAmountUsed       float64              `bson:"total_amount_used"`
 	DonationCategory      string               `bson:"donation_category"`
 	DonationSubCategory   string               `bson:"donation_sub_category"`
 	DonationStatus        string               `bson:"donation_status"`
