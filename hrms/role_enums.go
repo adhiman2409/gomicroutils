@@ -12,12 +12,13 @@ const (
 	TeamMember
 	Candidate
 	Volunteer
+	GSDonor
 	Anonymous
 )
 
 func (r Role) String() string {
 	return [...]string{"Superadmin", "OrgAdmin", "OrgManager", "Recruiter", "Manager",
-		"TeamLead", "TeamMember", "Candidate", "Volunteer", "Anonymous"}[r-1]
+		"TeamLead", "TeamMember", "Candidate", "Volunteer", "GSDonor", "Anonymous"}[r-1]
 }
 
 func (r Role) EnumIndex() int {
@@ -26,7 +27,7 @@ func (r Role) EnumIndex() int {
 
 func GetAllRoles() []string {
 	return []string{"Superadmin", "OrgAdmin", "OrgManager", "Recruiter", "Manager",
-		"TeamLead", "TeamMember", "Candidate", "Volunteer", "Anonymous"}
+		"TeamLead", "TeamMember", "Candidate", "Volunteer", "GSDonor", "Anonymous"}
 }
 
 func RoleEnumFromString(s string) Role {
@@ -48,6 +49,8 @@ func RoleEnumFromString(s string) Role {
 		return Candidate
 	} else if s == "Volunteer" {
 		return Volunteer
+	} else if s == "GSDonor" {
+		return GSDonor
 	} else {
 		return Anonymous
 	}
