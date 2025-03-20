@@ -87,6 +87,7 @@ const GSORG_COLLECTION_DONATIONS = "gsorg-donations"
 const GSORG_COLLECTION_DONATION_PAYMENTS = "gsorg-donation-payments"
 const GSORG_COLLECTION_DONORS = "gsorg-donors"
 const GSORG_COLLECTION_SUBSCRIPTIONS = "gsorg-subscriptions"
+const GSORG_COLLECTION_PAYMENT_ORDERS = "gsorg-payment-orders"
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -451,6 +452,11 @@ func GetGSOrgDonorsCollection(client *mongo.Client, domain string) *mongo.Collec
 func GetGSOrgSubscriptionCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(GSORG_COLLECTION_SUBSCRIPTIONS)
+}
+
+func GetGSOrgPaymentOrdersCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(GSORG_COLLECTION_PAYMENT_ORDERS)
 }
 
 func GetVolunteerRequestsCollection(client *mongo.Client, domain string) *mongo.Collection {
