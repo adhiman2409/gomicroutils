@@ -1,7 +1,5 @@
 package hrms
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
-
 type OrderRequest struct {
 	DonorId            string  `bson:"donor_id"`
 	DonorName          string  `bson:"donor_name"`
@@ -12,19 +10,67 @@ type OrderRequest struct {
 	DonationAmount     float64 `bson:"donation_amount"`
 }
 
-type OrderResponse struct {
-	ID         primitive.ObjectID `bson:"_id"`
-	OrderId    string             `bson:"order_id"`
-	DonationId string             `bson:"donation_id"`
-	DonorId    string             `bson:"donor_id"`
-	Entity     string             `bson:"entity"`
-	Amount     int64              `bson:"amonth"`
-	AmountPaid int64              `bson:"amount_paid"`
-	AmountDue  int64              `bson:"amount_due"`
-	Currency   string             `bson:"currency"`
-	Receipt    string             `bson:"receipt"`
-	OfferId    string             `bson:"offer_id"`
-	Status     string             `bson:"status"`
-	Attempts   int                `bson:"attempts"`
-	CreatedAt  int64              `bson:"created_at"`
+type PaymentEntity struct {
+	ID             string `bson:"id"`
+	Entity         string `bson:"entity"`
+	Amount         int    `bson:"amount"`
+	Currency       string `bson:"currency"`
+	Status         string `bson:"status"`
+	OrderID        string `bson:"order_id"`
+	InvoiceID      string `bson:"invoice_id"`
+	International  bool   `bson:"international"`
+	Method         string `bson:"method"`
+	AmountRefunded int    `bson:"amount_refunded"`
+	RefundStatus   string `bson:"refund_status"`
+	Captured       bool   `bson:"captured"`
+	Description    string `bson:"description"`
+	CardID         string `bson:"card_id"`
+	Bank           string `bson:"bank"`
+	Email          string `bson:"email"`
+	Wallet         string `bson:"wallet"`
+	VPA            string `bson:"vpa"`
+	Contact        string `bson:"contact"`
+	Notes          struct {
+		DonorID    string `bson:"donor_id"`
+		DonationID string `bson:"donation_id"`
+	} `bson:"notes"`
+	ErrorCode string `bson:"error_code"`
+	ErrorDesc string `bson:"error_description"`
+	Fee       int    `bson:"fee"`
+	Tax       int    `bson:"tax"`
+	CreatedAt int64  `bson:"created_at"`
+}
+
+type OrderEntity struct {
+	ID         string `bson:"id"`
+	Entity     string `bson:"entity"`
+	Amount     int    `bson:"amount"`
+	AmountPaid int    `bson:"amount_paid"`
+	AmountDue  int    `bson:"amount_due"`
+	Currency   string `bson:"currency"`
+	Receipt    string `bson:"receipt"`
+	OfferID    string `bson:"offer_id"`
+	Status     string `bson:"status"`
+	Attempts   int    `bson:"attempts"`
+	Notes      struct {
+		DonorID    string `bson:"donor_id"`
+		DonationID string `bson:"donation_id"`
+	} `bson:"notes"`
+	CreatedAt int64 `bson:"created_at"`
+}
+
+type WebhookPayload struct {
+	Entity    string   `bson:"entity"`
+	AccountID string   `bson:"account_id"`
+	Event     string   `bson:"event"`
+	Contains  []string `bson:"contains"`
+	Payload   struct {
+		Payment struct {
+			Entity PaymentEntity `bson:"entity"`
+		} `bson:"payment"`
+		Order struct {
+			Entity OrderEntity `bson:"entity"`
+		} `bson:"order"`
+	} `bson:"payload"`
+	CreatedAt int64 `bson:"created_at"`
 }
