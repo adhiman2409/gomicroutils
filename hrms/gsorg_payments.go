@@ -37,11 +37,18 @@ type PaymentEntity struct {
 		DonorID    string `bson:"donor_id"`
 		DonationID string `bson:"donation_id"`
 	} `bson:"notes"`
-	ErrorCode string `bson:"error_code"`
-	ErrorDesc string `bson:"error_description"`
-	Fee       int    `bson:"fee"`
-	Tax       int    `bson:"tax"`
-	CreatedAt int64  `bson:"created_at"`
+	Fee          int    `bson:"fee"`
+	Tax          int    `bson:"tax"`
+	ErrorCode    string `bson:"error_code"`
+	ErrorDesc    string `bson:"error_description"`
+	ErrorSrc     string `bson:"error_source"`
+	ErrorStep    string `bson:"error_step"`
+	ErrorReason  string `bson:"error_reason"`
+	AcquirerData struct {
+		Code    string `bson:"code"`
+		Message string `bson:"message"`
+	} `bson:"acquirer_data"`
+	CreatedAt int64 `bson:"created_at"`
 }
 
 type OrderEntity struct {
