@@ -89,6 +89,12 @@ const GSORG_COLLECTION_DONORS = "gsorg-donors"
 const GSORG_COLLECTION_SUBSCRIPTIONS = "gsorg-subscriptions"
 const GSORG_COLLECTION_PAYMENT_ORDERS = "gsorg-payment-orders"
 const GSORG_COLLECTION_PAYMENT_PAYMENTS = "gsorg-payment-payments"
+const GSORG_COLLECTION_PROCESSED_EVENTS = "gsorg-processed-events"
+
+func GetGSOrgProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(GSORG_COLLECTION_PROCESSED_EVENTS)
+}
 
 func GetOrgCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
