@@ -92,6 +92,25 @@ const GSORG_COLLECTION_PAYMENT_PAYMENTS = "gsorg-payment-payments"
 const GSORG_COLLECTION_PROCESSED_EVENTS = "gsorg-processed-events"
 const NOTIFICATION_COLLECTION_DEVICES = "notification-devices"
 
+const PAYMENT_COLLECTION_ORDERS = "payment-orders"
+const PAYMENT_COLLECTION_PAYMENTS = "payment-payments"
+const PAYMENT_COLLECTION_PROCESSED_EVENTS = "payment-processed-events"
+
+func GetPaymentOrdersCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_ORDERS)
+}
+
+func GetPaymentPaymentsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_PAYMENTS)
+}
+
+func GetPaymentProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_PROCESSED_EVENTS)
+}
+
 func GetGSOrgProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(GSORG_COLLECTION_PROCESSED_EVENTS)
