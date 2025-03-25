@@ -59,49 +59,62 @@ type Feedback struct {
 	CreatorDesignation  string `bson:"creator_designation"`
 }
 
-// type SeparationDocument struct {
-// 	DocumentName string `bson:"document_name"`
-// 	DocumentURL  string `bson:"document_url"`
-// }
+type SeparationDocument struct {
+	DocumentName string `bson:"document_name"`
+	DocumentURL  string `bson:"document_url"`
+}
 
-// type SeparationInfo struct {
-// 	ResignationDate                   string               `bson:"resignation_date"`
-// 	EmployeeRemarks                   string               `bson:"resignation_remarks"`
-// 	ReportingManagerRemarks           string               `bson:"resignation_remarks"`
-// 	HumanResourceRemarks              string               `bson:"human_resource_remarks"`
-// 	ResignationAcceptanceDate         string               `bson:"resignation_acceptance_date"`
-// 	KnowledgeTransferStartDate        string               `bson:"knowledge_transfer_start_date"`
-// 	KnowledgeTransferEndDate          string               `bson:"knowledge_transfer_end_date"`
-// 	IsKnowledgeTransferCompleted      bool                 `bson:"is_knowledge_transfer_completed"`
-// 	KnowledgeTransferStatus           string               `bson:"knowledge_transfer_status"`
-// 	KnowledgeTransferOwnerId          string               `bson:"knowledge_transfer_owner_id"`
-// 	KnowledgeTransferOwnerName        string               `bson:"knowledge_transfer_owner_name"`
-// 	KnowledgeTransferOwnerDesignation string               `bson:"knowledge_transfer_owner_designation"`
-// 	KnowledgeTransferOwnerRemarks     string               `bson:"knowledge_transfer_owner_remarks"`
-// 	IsNoticePeriodServed              bool                 `bson:"is_notice_period_served"`
-// 	NoticePeriodStartDate             string               `bson:"notice_period_start_date"`
-// 	NoticePeriodEndDate               string               `bson:"notice_period_end_date"`
-// 	IsNoticePeriodExtended            bool                 `bson:"is_notice_period_extended"`
-// 	NoticePeriodExtensionDate         string               `bson:"notice_period_extension_date"`
-// 	IsNoticePeriodBuyoutRequested     bool                 `bson:"is_notice_period_buyout_requested"`
-// 	NoticePeriodBuyoutDays            string               `bson:"notice_period_buyout_days"`
-// 	NoticePeriodBuyoutStatus          string               `bson:"notice_period_buyout_staus"`
-// 	NoticePeriodBuyoutRemarks         string               `bson:"notice_period_buyout_remarks"`
-// 	NoticePeriodBuyoutAcceptanceDate  string               `bson:"notice_period_buyout_acceptance_date"`
-// 	NoticePeriodBuyoutRejectionDate   string               `bson:"notice_period_buyout_rejection_date"`
-// 	NoticePeriodBuyoutAcceptedBy      string               `bson:"notice_period_buyout_accepted_by"`
-// 	NoticePeriodBuyoutRejectedBy      string               `bson:"notice_period_buyout_rejected_by"`
-// 	IsExitInterviewScheduled          bool                 `bson:"is_exit_interview_scheduled"`
-// 	ExitInterviewDate                 string               `bson:"exit_interview_date"`
-// 	ExitInterviewerId                 string               `bson:"exit_interviewer_id"`
-// 	ExitInterviewerName               string               `bson:"exit_interviewer_name"`
-// 	ExitInterviewEmployeeRemarks      string               `bson:"exit_interview_employee_remarks"`
-// 	ExitInterviewerRemarks            string               `bson:"exit_interviewer_remarks"`
-
-// 	SeparationDocuments               []SeparationDocument `bson:"separation_documents"`
-
-// 	ExitDate                          string               `bson:"exit_date"`
-// }
+type SeparationInfo struct {
+	ResignationDate                   string               `bson:"resignation_date"`
+	ResignationStatus                 string               `bson:"resignation_status"`
+	EmployeeRemarks                   string               `bson:"employee_remarks"`
+	ReportingManagerRemarks           string               `bson:"reporting_manager_remarks"`
+	HRRemarks                         string               `bson:"hr_remarks"`
+	PrimaryApproverId                 string               `bson:"primary_approver_id"`
+	PrimaryApproverName               string               `bson:"primary_approver_name"`
+	IsAcceptedByPrimaryApprover       bool                 `bson:"is_accepted_by_primary_approver"`
+	PrimaryApproverAcceptanceDate     string               `bson:"primary_approver_acceptance_date"`
+	SecondaryApproverId               string               `bson:"secondary_approver_id"`
+	SecondaryApproverName             string               `bson:"secondary_approver_name"`
+	SecondaryApproverAcceptanceDate   string               `bson:"secondary_approver_acceptance_date"`
+	IsAcceptedBySecondaryApprover     bool                 `bson:"is_accepted_by_secondary_approver"`
+	ResignationAcceptanceDate         string               `bson:"resignation_acceptance_date"`
+	KnowledgeTransferStartDate        string               `bson:"knowledge_transfer_start_date"`
+	KnowledgeTransferEndDate          string               `bson:"knowledge_transfer_end_date"`
+	IsKnowledgeTransferCompleted      bool                 `bson:"is_knowledge_transfer_completed"`
+	KnowledgeTransferStatus           string               `bson:"knowledge_transfer_status"`
+	KnowledgeTransferOwnerId          string               `bson:"knowledge_transfer_owner_id"`
+	KnowledgeTransferOwnerName        string               `bson:"knowledge_transfer_owner_name"`
+	KnowledgeTransferOwnerDesignation string               `bson:"knowledge_transfer_owner_designation"`
+	KnowledgeTransferOwnerRemarks     string               `bson:"knowledge_transfer_owner_remarks"`
+	IsNoticePeriodServed              bool                 `bson:"is_notice_period_served"`
+	NoticePeriodStartDate             string               `bson:"notice_period_start_date"`
+	NoticePeriodEndDate               string               `bson:"notice_period_end_date"`
+	IsNoticePeriodExtended            bool                 `bson:"is_notice_period_extended"`
+	NoticePeriodExtensionDate         string               `bson:"notice_period_extension_date"`
+	IsNoticePeriodBuyoutRequested     bool                 `bson:"is_notice_period_buyout_requested"`
+	NoticePeriodBuyoutDays            string               `bson:"notice_period_buyout_days"`
+	NoticePeriodBuyoutStatus          string               `bson:"notice_period_buyout_staus"`
+	NoticePeriodBuyoutRemarks         string               `bson:"notice_period_buyout_remarks"`
+	NoticePeriodBuyoutAcceptanceDate  string               `bson:"notice_period_buyout_acceptance_date"`
+	NoticePeriodBuyoutRejectionDate   string               `bson:"notice_period_buyout_rejection_date"`
+	NoticePeriodBuyoutAcceptedBy      string               `bson:"notice_period_buyout_accepted_by"`
+	NoticePeriodBuyoutRejectedBy      string               `bson:"notice_period_buyout_rejected_by"`
+	IsExitInterviewScheduled          bool                 `bson:"is_exit_interview_scheduled"`
+	ExitInterviewDate                 string               `bson:"exit_interview_date"`
+	ExitInterviewerId                 string               `bson:"exit_interviewer_id"`
+	ExitInterviewerName               string               `bson:"exit_interviewer_name"`
+	ExitInterviewEmployeeRemarks      string               `bson:"exit_interview_employee_remarks"`
+	ExitInterviewerRemarks            string               `bson:"exit_interviewer_remarks"`
+	SeparationDocuments               []SeparationDocument `bson:"separation_documents"`
+	RetentionRequestDate              string               `bson:"resignation_request_date"`
+	EmployeeRetentionRemarks          string               `bson:"employee_retention_remarks"`
+	ReportingManagerRetentionRemarks  string               `bson:"reporting_manager_retention_remarks"`
+	HRRetentionRemarks                string               `bson:"hr_retention_remarks"`
+	IsRetentionAcceptedByHR           bool                 `bson:"is_retention_accepted_by_hr"`
+	RetentionAcceptanceDate           string               `bson:"retention_acceptance_date"`
+	ExitDate                          string               `bson:"exit_date"`
+}
 
 type EmployeeTechInfo struct {
 	ID                     primitive.ObjectID `bson:"_id"`
@@ -116,5 +129,7 @@ type EmployeeTechInfo struct {
 	Achivements            []Achivement       `bson:"achivements"`
 	Awards                 []Award            `bson:"awards"`
 	Feedbacks              []Feedback         `json:"feedbacks,omitempty"`
+	Separations            []SeparationInfo   `bson:"separations"`
+	IsSeparationInfoLocked bool               `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
 }
