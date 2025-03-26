@@ -1,6 +1,7 @@
 package grpcclient
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/adhiman2409/gomicroutils/genproto/notification"
@@ -26,11 +27,12 @@ func StartNotificationClient() {
 	}
 
 	// create client connection
-	conn, err := grpc.Dial(
+	conn, err := grpc.NewClient(
 		"notification-srv:50051",
 		grpc.WithTransportCredentials(tlsCredentials),
 	)
 	if err != nil {
+		fmt.Println("Error in dialing:", err)
 		log.Fatal(err)
 	}
 
