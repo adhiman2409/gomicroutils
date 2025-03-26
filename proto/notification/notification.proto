@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package notification;
+
+import "proto/notification/type/send_notification.proto";
+
+option go_package = "genproto/notification";
+
+service NotificationService {
+    rpc SendNotification(NotificationRequest) returns (NotificationResponse) {}
+}

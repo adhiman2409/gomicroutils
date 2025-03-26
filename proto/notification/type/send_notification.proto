@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package notification;
+
+option go_package = "genproto/notification";
+
+message NotificationRequest {
+  string employeeId = 1;
+  string title = 2;
+  string body = 3;
+  string imageURL = 4;
+  map<string, string> dataMap = 5;
+  string domain = 6;
+  string group = 7;
+  string topic = 8;
+  bool broadcastToAll = 9;
+}
+
+message NotificationResponse {
+  bool status = 1;
+  string message = 2;
+}
