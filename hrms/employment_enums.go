@@ -7,11 +7,11 @@ const (
 	ServingNotice
 	OnPIP
 	Suspended
-	Separated
+	Inactive
 )
 
 func (r EmploymentStatus) String() string {
-	return [...]string{"Active", "ServingNotice", "OnPIP", "Suspended", "Separated"}[r-1]
+	return [...]string{"Active", "ServingNotice", "OnPIP", "Suspended", "Inactive"}[r-1]
 }
 
 func (r EmploymentStatus) EnumIndex() int {
@@ -19,7 +19,7 @@ func (r EmploymentStatus) EnumIndex() int {
 }
 
 func GetAllEmploymentStatus() []string {
-	return []string{"Active", "ServingNotice", "OnPIP", "Suspended", "Separated"}
+	return []string{"Active", "ServingNotice", "OnPIP", "Suspended", "Inactive"}
 }
 
 func EmploymentStatusEnumFromString(s string) EmploymentStatus {
@@ -32,6 +32,6 @@ func EmploymentStatusEnumFromString(s string) EmploymentStatus {
 	} else if s == "Suspended" {
 		return Suspended
 	} else {
-		return Separated
+		return Inactive
 	}
 }
