@@ -71,9 +71,9 @@ type LocationWise struct {
 }
 
 type HiringAnalytics struct {
-	Day            string           `bson:"day"`
-	Month          string           `bson:"month"`
-	Year           string           `bson:"year"`
+	Day            int              `bson:"day"`
+	Month          int              `bson:"month"`
+	Year           int              `bson:"year"`
 	JoiningCount   int              `bson:"joining_count"`
 	GenderWise     []GenderWise     `bson:"gender_wise"`
 	DepartmentWise []DepartmentWise `bson:"department_wise"`
@@ -83,9 +83,9 @@ type HiringAnalytics struct {
 }
 
 type ExitAnalytics struct {
-	Day            string           `bson:"day"`
-	Month          string           `bson:"month"`
-	Year           string           `bson:"year"`
+	Day            int              `bson:"day"`
+	Month          int              `bson:"month"`
+	Year           int              `bson:"year"`
 	ExitCount      int              `bson:"exit_count"`
 	GenderWise     []GenderWise     `bson:"gender_wise"`
 	DepartmentWise []DepartmentWise `bson:"department_wise"`
@@ -95,7 +95,9 @@ type ExitAnalytics struct {
 }
 
 type EmploymentAnalytics struct {
-	Day                   string    `bson:"day"`
+	Day                   int       `bson:"day"`
+	Month                 int       `bson:"month"`
+	Year                  int       `bson:"year"`
 	TotalEmployees        int       `bson:"total_employees"`
 	ActiveEmployees       int       `bson:"active_employees"`
 	InactiveEmployees     int       `bson:"inactive_employees"`
@@ -107,9 +109,9 @@ type EmploymentAnalytics struct {
 }
 
 type EmployeeAnalytics struct {
-	Day              string           `bson:"day"`
-	Month            string           `bson:"month"`
-	Year             string           `bson:"year"`
+	Day              int              `bson:"day"`
+	Month            int              `bson:"month"`
+	Year             int              `bson:"year"`
 	EmployeeCount    int              `bson:"employee_count"`
 	BillableCount    int              `bson:"billable_count"`
 	NonBillableCount int              `bson:"non_billable_count"`
@@ -126,9 +128,9 @@ type EmployeeAnalytics struct {
 }
 
 type EventsAnalytics struct {
-	Day         string      `bson:"day"`
-	Month       string      `bson:"month"`
-	Year        string      `bson:"year"`
+	Day         int         `bson:"day"`
+	Month       int         `bson:"month"`
+	Year        int         `bson:"year"`
 	EventsCount int         `bson:"events_count"`
 	EventWise   []EventWise `bson:"event_wise"`
 	UpdatedAt   time.Time   `bson:"updated_at"`
