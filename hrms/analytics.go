@@ -1,69 +1,73 @@
 package hrms
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type GenderWise struct {
-	Gender    string `bson:"gender"`
-	Count     int    `bson:"count"`
-	UpdatedAt string `bson:"updated_at"`
-	CreatedAt string `bson:"created_at"`
+	Gender    string    `bson:"gender"`
+	Count     int       `bson:"count"`
+	UpdatedAt time.Time `bson:"updated_at"`
+	CreatedAt time.Time `bson:"created_at"`
 }
 
 type DepartmentWise struct {
-	Department string `bson:"department"`
-	Count      int    `bson:"count"`
-	UpdatedAt  string `bson:"updated_at"`
-	CreatedAt  string `bson:"created_at"`
+	Department string    `bson:"department"`
+	Count      int       `bson:"count"`
+	UpdatedAt  time.Time `bson:"updated_at"`
+	CreatedAt  time.Time `bson:"created_at"`
 }
 
 type ExperienceWise struct {
-	ExperienceGroup string `bson:"experience_group"`
-	Count           int    `bson:"count"`
-	UpdatedAt       string `bson:"updated_at"`
-	CreatedAt       string `bson:"created_at"`
+	ExperienceGroup string    `bson:"experience_group"`
+	Count           int       `bson:"count"`
+	UpdatedAt       time.Time `bson:"updated_at"`
+	CreatedAt       time.Time `bson:"created_at"`
 }
 
 type AgeWise struct {
-	AgeGroup  string `bson:"age_group"`
-	Count     int    `bson:"count"`
-	UpdatedAt string `bson:"updated_at"`
-	CreatedAt string `bson:"created_at"`
+	AgeGroup  string    `bson:"age_group"`
+	Count     int       `bson:"count"`
+	UpdatedAt time.Time `bson:"updated_at"`
+	CreatedAt time.Time `bson:"created_at"`
 }
 type TenureWise struct {
-	TenureGroup string `bson:"tenure_group"`
-	Count       int    `bson:"count"`
-	UpdatedAt   string `bson:"updated_at"`
-	CreatedAt   string `bson:"created_at"`
+	TenureGroup string    `bson:"tenure_group"`
+	Count       int       `bson:"count"`
+	UpdatedAt   time.Time `bson:"updated_at"`
+	CreatedAt   time.Time `bson:"created_at"`
 }
 
 type ClientWise struct {
-	ClientName string `bson:"client_name"`
-	Count      int    `bson:"count"`
-	UpdatedAt  string `bson:"updated_at"`
-	CreatedAt  string `bson:"created_at"`
+	ClientName string    `bson:"client_name"`
+	Count      int       `bson:"count"`
+	UpdatedAt  time.Time `bson:"updated_at"`
+	CreatedAt  time.Time `bson:"created_at"`
 }
 
 type SkillWise struct {
-	SkillName string `bson:"skill_name"`
-	Count     int    `bson:"count"`
-	UpdatedAt string `bson:"updated_at"`
-	CreatedAt string `bson:"created_at"`
+	SkillName string    `bson:"skill_name"`
+	Count     int       `bson:"count"`
+	UpdatedAt time.Time `bson:"updated_at"`
+	CreatedAt time.Time `bson:"created_at"`
 }
 
 type EventWise struct {
-	EventName string `bson:"event_name"`
-	Count     int    `bson:"count"`
-	UpdatedAt string `bson:"updated_at"`
-	CreatedAt string `bson:"created_at"`
+	EventName string    `bson:"event_name"`
+	Count     int       `bson:"count"`
+	UpdatedAt time.Time `bson:"updated_at"`
+	CreatedAt time.Time `bson:"created_at"`
 }
 
 type LocationWise struct {
-	City      string `bson:"city"`
-	State     string `bson:"state"`
-	Country   string `bson:"country"`
-	Count     int    `bson:"count"`
-	UpdatedAt string `bson:"updated_at"`
-	CreatedAt string `bson:"created_at"`
+	City      string    `bson:"city"`
+	State     string    `bson:"state"`
+	Country   string    `bson:"country"`
+	Count     int       `bson:"count"`
+	UpdatedAt time.Time `bson:"updated_at"`
+	CreatedAt time.Time `bson:"created_at"`
 }
 
 type HiringAnalytics struct {
@@ -73,8 +77,8 @@ type HiringAnalytics struct {
 	GenderWise     []GenderWise     `bson:"gender_wise"`
 	DepartmentWise []DepartmentWise `bson:"department_wise"`
 	ExperienceWise []ExperienceWise `bson:"experience_wise"`
-	UpdatedAt      string           `bson:"updated_at"`
-	CreatedAt      string           `bson:"created_at"`
+	UpdatedAt      time.Time        `bson:"updated_at"`
+	CreatedAt      time.Time        `bson:"created_at"`
 }
 
 type ExitAnalytics struct {
@@ -84,19 +88,19 @@ type ExitAnalytics struct {
 	GenderWise     []GenderWise     `bson:"gender_wise"`
 	DepartmentWise []DepartmentWise `bson:"department_wise"`
 	ExperienceWise []ExperienceWise `bson:"experience_wise"`
-	UpdatedAt      string           `bson:"updated_at"`
-	CreatedAt      string           `bson:"created_at"`
+	UpdatedAt      time.Time        `bson:"updated_at"`
+	CreatedAt      time.Time        `bson:"created_at"`
 }
 
 type EmploymentAnalytics struct {
-	TotalEmployees        int    `bson:"total_employees"`
-	ActiveEmployees       int    `bson:"active_employees"`
-	InactiveEmployees     int    `bson:"inactive_employees"`
-	NoticePeriodEmployees int    `bson:"notice_period_employees"`
-	OnPIPEmployees        int    `bson:"on_pip_employees"`
-	SuspendedEmployees    int    `bson:"suspended_employees"`
-	UpdatedAt             string `bson:"updated_at"`
-	CreatedAt             string `bson:"created_at"`
+	TotalEmployees        int       `bson:"total_employees"`
+	ActiveEmployees       int       `bson:"active_employees"`
+	InactiveEmployees     int       `bson:"inactive_employees"`
+	NoticePeriodEmployees int       `bson:"notice_period_employees"`
+	OnPIPEmployees        int       `bson:"on_pip_employees"`
+	SuspendedEmployees    int       `bson:"suspended_employees"`
+	UpdatedAt             time.Time `bson:"updated_at"`
+	CreatedAt             time.Time `bson:"created_at"`
 }
 
 type EmployeeAnalytics struct {
@@ -113,8 +117,8 @@ type EmployeeAnalytics struct {
 	LocationWise     []LocationWise   `bson:"location_wise"`
 	TenureWise       []TenureWise     `bson:"tenure_wise"`
 	SkillWise        []SkillWise      `bson:"skill_wise"`
-	UpdatedAt        string           `bson:"updated_at"`
-	CreatedAt        string           `bson:"created_at"`
+	UpdatedAt        time.Time        `bson:"updated_at"`
+	CreatedAt        time.Time        `bson:"created_at"`
 }
 
 type EventsAnalytics struct {
@@ -122,8 +126,8 @@ type EventsAnalytics struct {
 	Year        string      `bson:"year"`
 	EventsCount int         `bson:"events_count"`
 	EventWise   []EventWise `bson:"event_wise"`
-	UpdatedAt   string      `bson:"updated_at"`
-	CreatedAt   string      `bson:"created_at"`
+	UpdatedAt   time.Time   `bson:"updated_at"`
+	CreatedAt   time.Time   `bson:"created_at"`
 }
 
 type EAnanlytics struct {
@@ -134,6 +138,6 @@ type EAnanlytics struct {
 	EmploymentAnalytics []EmploymentAnalytics `bson:"employment_analytics"`
 	EmployeeAnalytics   []EmployeeAnalytics   `bson:"employee_analytics"`
 	EventsAnalytics     []EventsAnalytics     `bson:"events_analytics"`
-	UpdatedAt           string                `bson:"updated_at"`
-	CreatedAt           string                `bson:"created_at"`
+	UpdatedAt           time.Time             `bson:"updated_at"`
+	CreatedAt           time.Time             `bson:"created_at"`
 }
