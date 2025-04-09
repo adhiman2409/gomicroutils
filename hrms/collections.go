@@ -96,6 +96,8 @@ const PAYMENT_COLLECTION_ORDERS = "payment-orders"
 const PAYMENT_COLLECTION_PAYMENTS = "payment-payments"
 const PAYMENT_COLLECTION_PROCESSED_EVENTS = "payment-processed-events"
 
+const ANALYTIC_COLLECTION_ANALYTICS = "analytic-analytics"
+
 func GetPaymentOrdersCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_ORDERS)
@@ -109,6 +111,11 @@ func GetPaymentPaymentsCollection(client *mongo.Client, domain string) *mongo.Co
 func GetPaymentProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_PROCESSED_EVENTS)
+}
+
+func GetAnalyticsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ANALYTIC_COLLECTION_ANALYTICS)
 }
 
 func GetGSOrgProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
