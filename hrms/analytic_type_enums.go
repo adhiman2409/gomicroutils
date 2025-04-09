@@ -3,7 +3,7 @@ package hrms
 type AnalyticsType int
 
 const (
-	Hirings ShiftType = iota + 1
+	Hirings AnalyticsType = iota + 1
 	Exits
 	Employees
 	Employments
@@ -22,7 +22,7 @@ func GetAllAnalyticsType() []string {
 	return []string{"Hirings", "Exits", "Employees", "Employments", "Events"}
 }
 
-func AnalyticsTypeFromString(s string) ShiftType {
+func AnalyticsTypeFromString(s string) AnalyticsType {
 	if s == "Hirings" {
 		return Hirings
 	} else if s == "Exits" {
