@@ -71,6 +71,7 @@ type LocationWise struct {
 }
 
 type HiringAnalytics struct {
+	Day            string           `bson:"day"`
 	Month          string           `bson:"month"`
 	Year           string           `bson:"year"`
 	JoiningCount   int              `bson:"joining_count"`
@@ -82,6 +83,7 @@ type HiringAnalytics struct {
 }
 
 type ExitAnalytics struct {
+	Day            string           `bson:"day"`
 	Month          string           `bson:"month"`
 	Year           string           `bson:"year"`
 	ExitCount      int              `bson:"exit_count"`
@@ -93,6 +95,7 @@ type ExitAnalytics struct {
 }
 
 type EmploymentAnalytics struct {
+	Day                   string    `bson:"day"`
 	TotalEmployees        int       `bson:"total_employees"`
 	ActiveEmployees       int       `bson:"active_employees"`
 	InactiveEmployees     int       `bson:"inactive_employees"`
@@ -104,6 +107,7 @@ type EmploymentAnalytics struct {
 }
 
 type EmployeeAnalytics struct {
+	Day              string           `bson:"day"`
 	Month            string           `bson:"month"`
 	Year             string           `bson:"year"`
 	EmployeeCount    int              `bson:"employee_count"`
@@ -122,6 +126,7 @@ type EmployeeAnalytics struct {
 }
 
 type EventsAnalytics struct {
+	Day         string      `bson:"day"`
 	Month       string      `bson:"month"`
 	Year        string      `bson:"year"`
 	EventsCount int         `bson:"events_count"`
