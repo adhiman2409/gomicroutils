@@ -109,22 +109,23 @@ type EmploymentAnalytics struct {
 }
 
 type EmployeeAnalytics struct {
-	Day              int              `bson:"day"`
-	Month            int              `bson:"month"`
-	Year             int              `bson:"year"`
-	EmployeeCount    int              `bson:"employee_count"`
-	BillableCount    int              `bson:"billable_count"`
-	NonBillableCount int              `bson:"non_billable_count"`
-	GenderWise       []GenderWise     `bson:"gender_wise"`
-	DepartmentWise   []DepartmentWise `bson:"department_wise"`
-	ExperienceWise   []ExperienceWise `bson:"experience_wise"`
-	AgeWise          []AgeWise        `bson:"age_wise"`
-	ClientWise       []ClientWise     `bson:"client_wise"`
-	LocationWise     []LocationWise   `bson:"location_wise"`
-	TenureWise       []TenureWise     `bson:"tenure_wise"`
-	SkillWise        []SkillWise      `bson:"skill_wise"`
-	UpdatedAt        time.Time        `bson:"updated_at"`
-	CreatedAt        time.Time        `bson:"created_at"`
+	Day                 int              `bson:"day"`
+	Month               int              `bson:"month"`
+	Year                int              `bson:"year"`
+	EmployeeCount       int              `bson:"employee_count"`
+	BillableCount       int              `bson:"billable_count"`
+	NonBillableCount    int              `bson:"non_billable_count"`
+	WorkFromHomeCount   int              `bson:"work_from_home_count"`
+	WorkFromOfficeCount int              `bson:"work_from_office_count"`
+	ClientWise          []ClientWise     `bson:"client_wise"`
+	LocationWise        []LocationWise   `bson:"location_wise"`
+	TenureWise          []TenureWise     `bson:"tenure_wise"`
+	SkillWise           []SkillWise      `bson:"skill_wise"`
+	DepartmentWise      []DepartmentWise `bson:"department_wise"`
+	ExperienceWise      []ExperienceWise `bson:"experience_wise"`
+	AgeWise             []AgeWise        `bson:"age_wise"`
+	UpdatedAt           time.Time        `bson:"updated_at"`
+	CreatedAt           time.Time        `bson:"created_at"`
 }
 
 type EventsAnalytics struct {
