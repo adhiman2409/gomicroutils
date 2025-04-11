@@ -138,6 +138,12 @@ type HighLight struct {
 	ManagerRemarks  string `bson:"manager_remarks"`
 }
 
+type HRFeedback struct {
+	IsAppericiationEmails bool   `bson:"is_appericiation_emails"`
+	URL                   string `bson:"url"`
+	Remarks               string `bson:"remarks"`
+}
+
 type Appraisal struct {
 	Year                           string       `bson:"year"`
 	AppraisalDurationInMonths      string       `bson:"appraisal_duration_in_months"`
@@ -168,11 +174,12 @@ type Appraisal struct {
 	HighLights                     []HighLight  `bson:"highlights"`
 	Achivements                    []Achivement `bson:"achivements"`
 	Awards                         []Award      `bson:"awards"`
-	Feedbacks                      []Feedback   `bson:"feedbacks"`
+	HRFeedbacks                    []HRFeedback `bson:"hr_feedbacks"`
 	OverallEmployeeRating          string       `bson:"overall_employee_rating"`
 	OverallManagerRating           string       `bson:"overall_manager_rating"`
 	OverallEmployeeRemarks         string       `bson:"overall_employee_remarks"`
 	OverallManagerRemarks          string       `bson:"overall_manager_remarks"`
+	GolesAndExpectionsForNextYear  string       `bson:"goles_and_expections_for_next_year"`
 }
 
 type EmployeeTechInfo struct {
@@ -188,9 +195,9 @@ type EmployeeTechInfo struct {
 	Projects               []Project          `bson:"projects"`
 	Achivements            []Achivement       `bson:"achivements"`
 	Awards                 []Award            `bson:"awards"`
-	Feedbacks              []Feedback         `json:"feedbacks,omitempty"`
-	OldAppraisals          []Appraisal        `json:"old_appraisals,omitempty"`
-	ActiveAppraisal        Appraisal          `json:"active_appraisal,omitempty"`
+	Feedbacks              []Feedback         `bson:"feedbacks,omitempty"`
+	OldAppraisals          []Appraisal        `bson:"old_appraisals,omitempty"`
+	ActiveAppraisal        Appraisal          `bson:"active_appraisal,omitempty"`
 	Separations            []SeparationInfo   `bson:"separations"`
 	IsSeparationInfoLocked bool               `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
