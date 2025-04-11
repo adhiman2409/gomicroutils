@@ -147,7 +147,6 @@ type HRFeedback struct {
 
 type Appraisal struct {
 	Year                           string       `bson:"year"`
-	AppraisalDurationInMonths      string       `bson:"appraisal_duration_in_months"`
 	AppraisalStartDate             string       `bson:"appraisal_start_date"`
 	AppraisalEndDate               string       `bson:"appraisal_end_date"`
 	AppraisalStatus                string       `bson:"appraisal_status"`
@@ -180,7 +179,7 @@ type Appraisal struct {
 	OverallManagerRating           string       `bson:"overall_manager_rating"`
 	OverallEmployeeRemarks         string       `bson:"overall_employee_remarks"`
 	OverallManagerRemarks          string       `bson:"overall_manager_remarks"`
-	GolesAndExpectionsForNextYear  string       `bson:"goles_and_expections_for_next_year"`
+	GoalsAndExpectionsForNextYear  string       `bson:"goals_and_expections_for_next_year"`
 }
 
 type EmployeeTechInfo struct {
