@@ -140,6 +140,7 @@ type HighLight struct {
 
 type HRFeedback struct {
 	IsAppericiationEmails bool   `bson:"is_appericiation_emails"`
+	IsEscalationEmails    bool   `bson:"is_escalation_emails"`
 	URL                   string `bson:"url"`
 	Remarks               string `bson:"remarks"`
 }
