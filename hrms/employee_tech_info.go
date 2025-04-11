@@ -160,7 +160,7 @@ type Appraisal struct {
 	EmployeeDepartment             string       `bson:"employee_department"`
 	EmployeeLocation               string       `bson:"employee_location"`
 	EmployeeDateOfJoining          string       `bson:"employee_date_of_joining"`
-	EmployeeTenureInMonths         string       `bson:"employee_tenure_in_months"`
+	EmployeeTenureInDays           string       `bson:"employee_tenure_in_days"`
 	EmployeeAttendancePercentage   string       `bson:"employee_attendance_percentage"`
 	EmployeeEngineeringManagerName string       `bson:"employee_engineering_manager_name"`
 	EmployeeEngineeringManagerId   string       `bson:"employee_engineering_manager_id"`
