@@ -149,3 +149,61 @@ type EAnanlytics struct {
 	UpdatedAt           time.Time             `bson:"updated_at"`
 	CreatedAt           time.Time             `bson:"created_at"`
 }
+
+type HourlyStats struct {
+	Hour          int `bson:"hour"`
+	CheckInCount  int `bson:"check_in_count"`
+	CheckOutCount int `bson:"check_out_count"`
+}
+
+type LiveAttendanceStats struct {
+	Day                 int             `bson:"day"`
+	Month               int             `bson:"month"`
+	Year                int             `bson:"year"`
+	Weekday             string          `bson:"weekday"`
+	IsWorkingDay        bool            `bson:"is_working_day"`
+	IsWeeklyOff         bool            `bson:"is_weekly_off"`
+	IsHoliday           bool            `bson:"is_holiday"`
+	TotalEmployees      int             `bson:"total_employees"`
+	PresentCount        int             `bson:"present_count"`
+	AbsentCount         int             `bson:"absent_count"`
+	LeaveCount          int             `bson:"leave_count"`
+	CheckInCount        int             `bson:"check_in_count"`
+	CheckOutCount       int             `bson:"check_out_count"`
+	AverageWorkingHours int             `bson:"average_working_hours"`
+	HourlyStats         [24]HourlyStats `bson:"hourly_stats"`
+	UpdatedAt           time.Time       `bson:"updated_at"`
+	CreatedAt           time.Time       `bson:"created_at"`
+}
+
+type LiveLeaveStats struct {
+	Day           int       `bson:"day"`
+	Month         int       `bson:"month"`
+	Year          int       `bson:"year"`
+	AppliedCount  int       `bson:"applied_count"`
+	ApprovedCount int       `bson:"approved_count"`
+	PendingCount  int       `bson:"pending_count"`
+	RejectedCount int       `bson:"rejected_count"`
+	ApprovalRate  int       `bson:"approval_rate"`
+	RejectionRate int       `bson:"rejection_rate"`
+	UpdatedAt     time.Time `bson:"updated_at"`
+	CreatedAt     time.Time `bson:"created_at"`
+}
+
+type AttendanceAnalytics struct {
+	Day         int `bson:"day"`
+	Month       int `bson:"month"`
+	Year        int `bson:"year"`
+	TenureDays  int `bson:"tenure_days"`
+	WorkingDays int `bson:"working_days"`
+	LeaveDays   int `bson:"leave_days"`
+	LOPDays     int `bson:"lop_days"`
+}
+
+type LAnalytics struct {
+	ID                  primitive.ObjectID    `bson:"_id"`
+	NextUpdateType      string                `bson:"next_update_type"`
+	LiveAttendanceStats LiveAttendanceStats   `bson:"live_attendance_stats"`
+	LiveLeaveStats      LiveLeaveStats        `bson:"live_leave_stats"`
+	AttendanceAnalytics []AttendanceAnalytics `bson:"attendance_analytics"`
+}
