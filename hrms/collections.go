@@ -73,6 +73,7 @@ const WORKER_COLLECTION_DOMAINS = "worker-domains"
 const TICKET_COLLECTION_TICKET_CONFIGS = "ticket-ticket-configs"
 const TICKET_COLLECTION_TICKETS = "ticket-tickets"
 const TICKET_COLLECTION_TICKET_COUNTER = "ticket-ticket-counter"
+const TICKET_COLLECTION_TICKET_LEADS = "ticket-ticket-leads"
 
 const VOLUNTEER_COLLECTION_VOLUNTEER_COUNTER = "volunteer-volunteer-counter"
 const VOLUNTEER_COLLECTION_REQUESTS = "volunteer-requests"
@@ -436,6 +437,11 @@ func GetTicketTicketsCollection(client *mongo.Client, domain string) *mongo.Coll
 func GetTicketTicketCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(TICKET_COLLECTION_TICKET_COUNTER)
+}
+
+func GetTicketTicketLeadsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TICKET_COLLECTION_TICKET_LEADS)
 }
 
 func GetVolunteerCounterCollection(client *mongo.Client, domain string) *mongo.Collection {

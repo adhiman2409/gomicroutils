@@ -91,3 +91,18 @@ type TicketIdCounter struct {
 	Prefix  string             `bson:"prefix"`
 	Counter int64              `bson:"counter"`
 }
+
+type Lead struct {
+	ID          primitive.ObjectID `bson:"_id"`
+	Title       string             `bson:"title"`
+	Description string             `bson:"description"`
+	Name        string             `bson:"name"`
+	EmailId     string             `bson:"email_Id"`
+	PhoneNumber string             `bson:"reportee_phone_number"`
+	CompanyName string             `bson:"company_name"`
+	CompanySize string             `bson:"company_size"`
+	Remarks     string             `bson:"remarks"`
+	TicketId    string             `bson:"ticket_id"`
+	CreatedAt   time.Time          `bson:"created_at"`
+	UpdatedAt   time.Time          `bson:"updated_at"`
+}
