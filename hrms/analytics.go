@@ -191,13 +191,14 @@ type LiveLeaveStats struct {
 }
 
 type AttendanceAnalytics struct {
-	Day         int `bson:"day"`
-	Month       int `bson:"month"`
-	Year        int `bson:"year"`
-	TenureDays  int `bson:"tenure_days"`
-	WorkingDays int `bson:"working_days"`
-	LeaveDays   int `bson:"leave_days"`
-	LOPDays     int `bson:"lop_days"`
+	Day            int `bson:"day"`
+	Month          int `bson:"month"`
+	Year           int `bson:"year"`
+	TotalEmployees int `bson:"total_employees"`
+	TenureDays     int `bson:"tenure_days"`
+	WorkingDays    int `bson:"working_days"`
+	LeaveDays      int `bson:"leave_days"`
+	LOPDays        int `bson:"lop_days"`
 }
 
 type LAnalytics struct {
