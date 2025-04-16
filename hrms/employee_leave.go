@@ -36,6 +36,7 @@ type LeaveStats struct {
 	LeavesEligibleForCarryForward     float32 `bson:"leaves_eligible_for_carry_forward"`
 	LeavesEncashedLastYear            float32 `bson:"leaves_encashed_last_year"`
 	LeavesCarryForwardLastYear        float32 `bson:"leaves_carry_forward_last_year"`
+	LastYearEarnedPrivilegeLeave      float32 `bson:"last_year_earned_privilege_leave"`
 }
 
 type EmployeeLeaveStats struct {
