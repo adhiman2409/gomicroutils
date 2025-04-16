@@ -34,6 +34,8 @@ type LeaveStats struct {
 	WorkingDaysRemainingForNextBatch  int32   `bson:"working_days_remaining_for_next_batch"`
 	LeavesEligibleForEncashment       float32 `bson:"leaves_eligible_for_encashment"`
 	LeavesEligibleForCarryForward     float32 `bson:"leaves_eligible_for_carry_forward"`
+	LeavesEncashedLastYear            float32 `bson:"leaves_encashed_last_year"`
+	LeavesCarryForwardLastYear        float32 `bson:"leaves_carry_forward_last_year"`
 }
 
 type EmployeeLeaveStats struct {
