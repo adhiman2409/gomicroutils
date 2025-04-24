@@ -180,6 +180,13 @@ type Appraisal struct {
 	OverallEmployeeRemarks         string       `bson:"overall_employee_remarks"`
 	OverallManagerRemarks          string       `bson:"overall_manager_remarks"`
 	GoalsAndExpectionsForNextYear  string       `bson:"goals_and_expections_for_next_year"`
+	CurrentCTC                     float32      `bson:"current_ctc"`
+	NewCTC                         float32      `bson:"new_ctc"`
+	IncrementPercentage            float32      `bson:"increment_percentage"`
+	IncrementAmount                float32      `bson:"increment_amount"`
+	PromotionDesignation           string       `bson:"promotion_designation"`
+	PerformanceBonusAmount         float32      `bson:"performance_bonus_amount"`
+	PerformanceBonusPercentage     float32      `bson:"performance_bonus_percentage"`
 }
 
 type EmployeeTechInfo struct {
