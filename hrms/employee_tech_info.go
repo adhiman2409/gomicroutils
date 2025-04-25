@@ -188,6 +188,11 @@ type Appraisal struct {
 	PromotionDesignation           string       `bson:"promotion_designation"`
 	ApprovedPLBonusAmount          float32      `bson:"approved_pl_bonus_amount"`
 	ApprovedPLBonusPercentage      float32      `bson:"approved_pl_bonus_percentage"`
+	DateOfCurrentDesignation       string       `bson:"date_of_current_designation"`
+	TotalLeavesAvailed             float32      `bson:"total_leaves_availed"`
+	TotalYearOfExperience          float32      `bson:"total_year_of_experience"`
+	TotalYearOfRelevantExperience  float32      `bson:"total_year_of_relevant_experience"`
+	DesignationAtTheTimeOfJoining  string       `bson:"designation_at_the_time_of_joining"`
 }
 
 type EmployeeTechInfo struct {
