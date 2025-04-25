@@ -121,6 +121,9 @@ type SeparationInfo struct {
 }
 
 type Rating struct {
+	Domain          string `bson:"domain"`
+	Department      string `bson:"department"`
+	Designation     string `bson:"designation"`
 	Title           string `bson:"title"`
 	Description     string `bson:"description"`
 	MinimumScore    string `bson:"minimum_score"`
@@ -132,6 +135,9 @@ type Rating struct {
 }
 
 type HighLight struct {
+	Domain          string `bson:"domain"`
+	Department      string `bson:"department"`
+	Designation     string `bson:"designation"`
 	Title           string `bson:"title"`
 	Description     string `bson:"description"`
 	EmployeeRemarks string `bson:"employee_remarks"`
