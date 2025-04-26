@@ -121,8 +121,10 @@ type SeparationInfo struct {
 }
 
 type QuestionAnswer struct {
+	Domain              string    `bson:"domain"`
 	Department          string    `bson:"department"`
 	Designation         string    `bson:"designation"`
+	EmployeeId          string    `bson:"employee_id"`
 	Title               string    `bson:"title"`
 	Description         string    `bson:"description"`
 	IsMandatory         bool      `bson:"is_mandatory"`
@@ -213,7 +215,6 @@ type Appraisal struct {
 	TotalYearOfExperience          float32          `bson:"total_year_of_experience"`
 	TotalYearOfRelevantExperience  float32          `bson:"total_year_of_relevant_experience"`
 	DesignationAtTheTimeOfJoining  string           `bson:"designation_at_the_time_of_joining"`
-	Domain                         string           `bson:"domain"`
 }
 
 type EmployeeTechInfo struct {
