@@ -120,6 +120,26 @@ type SeparationInfo struct {
 	ExitDate                          string               `bson:"exit_date"`
 }
 
+type QuestionAnswer struct {
+	Domain              string    `bson:"domain"`
+	Department          string    `bson:"department"`
+	Designation         string    `bson:"designation"`
+	Title               string    `bson:"title"`
+	Description         string    `bson:"description"`
+	IsMandatory         bool      `bson:"is_mandatory"`
+	InputType           InputType `bson:"input_type"`
+	MinimumScore        string    `bson:"minimum_score"`
+	MaximumScore        string    `bson:"maximum_score"`
+	EmployeeScore       string    `bson:"employee_score"`
+	ManagerScore        string    `bson:"manager_score"`
+	MultiSelectOptions  []string  `bson:"multi_select_options"`
+	SingleSelectOptions []string  `bson:"single_select_options"`
+	BinaryOptions       []string  `bson:"binary_options"`
+	SelectedOptions     []string  `bson:"selected_options"`
+	EmployeeRemarks     string    `bson:"employee_remarks"`
+	ManagerRemarks      string    `bson:"manager_remarks"`
+}
+
 type Rating struct {
 	Domain          string `bson:"domain"`
 	Department      string `bson:"department"`
@@ -152,53 +172,54 @@ type HRFeedback struct {
 }
 
 type Appraisal struct {
-	Year                           string       `bson:"year"`
-	AppraisalStartDate             string       `bson:"appraisal_start_date"`
-	AppraisalEndDate               string       `bson:"appraisal_end_date"`
-	AppraisalStatus                string       `bson:"appraisal_status"`
-	IsSubmittedByEmployee          bool         `bson:"is_submitted_by_employee"`
-	IsSubmittedByManager           bool         `bson:"is_submitted_by_manager"`
-	IsSubmittedByHR                bool         `bson:"is_submitted_by_hr"`
-	IsSubmittedByClient            bool         `bson:"is_submitted_by_client"`
-	EmployeeId                     string       `bson:"employee_id"`
-	EmployeeName                   string       `bson:"employee_name"`
-	EmployeeDesignation            string       `bson:"employee_designation"`
-	EmployeeDepartment             string       `bson:"employee_department"`
-	EmployeeLocation               string       `bson:"employee_location"`
-	EmployeeDateOfJoining          string       `bson:"employee_date_of_joining"`
-	EmployeeTenureInDays           string       `bson:"employee_tenure_in_days"`
-	EmployeeAttendancePercentage   string       `bson:"employee_attendance_percentage"`
-	EmployeeEngineeringManagerName string       `bson:"employee_engineering_manager_name"`
-	EmployeeEngineeringManagerId   string       `bson:"employee_engineering_manager_id"`
-	EmployeeClientManagerName      string       `bson:"employee_client_manager_name"`
-	EmployeeClientManagerId        string       `bson:"employee_client_manager_id"`
-	EmployeeHRManagerName          string       `bson:"employee_hr_manager_name"`
-	EmployeeHRManagerId            string       `bson:"employee_hr_manager_id"`
-	Projects                       []Project    `bson:"projects"`
-	KeySkills                      []Rating     `bson:"key_skills"`
-	AssesmentsmentRating           []Rating     `bson:"assessment_rating"`
-	HighLights                     []HighLight  `bson:"highlights"`
-	Achivements                    []Achivement `bson:"achivements"`
-	Awards                         []Award      `bson:"awards"`
-	HRFeedbacks                    []HRFeedback `bson:"hr_feedbacks"`
-	OverallEmployeeRating          string       `bson:"overall_employee_rating"`
-	OverallManagerRating           string       `bson:"overall_manager_rating"`
-	OverallEmployeeRemarks         string       `bson:"overall_employee_remarks"`
-	OverallManagerRemarks          string       `bson:"overall_manager_remarks"`
-	GoalsAndExpectionsForNextYear  string       `bson:"goals_and_expections_for_next_year"`
-	CurrentCTC                     float32      `bson:"current_ctc"`
-	CurrentPLBonusAmount           float32      `bson:"current_pl_bonus_amount"`
-	NewCTC                         float32      `bson:"new_ctc"`
-	IncrementPercentage            float32      `bson:"increment_percentage"`
-	IncrementAmount                float32      `bson:"increment_amount"`
-	PromotionDesignation           string       `bson:"promotion_designation"`
-	ApprovedPLBonusAmount          float32      `bson:"approved_pl_bonus_amount"`
-	ApprovedPLBonusPercentage      float32      `bson:"approved_pl_bonus_percentage"`
-	DateOfCurrentDesignation       string       `bson:"date_of_current_designation"`
-	TotalLeavesAvailed             float32      `bson:"total_leaves_availed"`
-	TotalYearOfExperience          float32      `bson:"total_year_of_experience"`
-	TotalYearOfRelevantExperience  float32      `bson:"total_year_of_relevant_experience"`
-	DesignationAtTheTimeOfJoining  string       `bson:"designation_at_the_time_of_joining"`
+	Year                           string           `bson:"year"`
+	AppraisalStartDate             string           `bson:"appraisal_start_date"`
+	AppraisalEndDate               string           `bson:"appraisal_end_date"`
+	AppraisalStatus                string           `bson:"appraisal_status"`
+	IsSubmittedByEmployee          bool             `bson:"is_submitted_by_employee"`
+	IsSubmittedByManager           bool             `bson:"is_submitted_by_manager"`
+	IsSubmittedByHR                bool             `bson:"is_submitted_by_hr"`
+	IsSubmittedByClient            bool             `bson:"is_submitted_by_client"`
+	EmployeeId                     string           `bson:"employee_id"`
+	EmployeeName                   string           `bson:"employee_name"`
+	EmployeeDesignation            string           `bson:"employee_designation"`
+	EmployeeDepartment             string           `bson:"employee_department"`
+	EmployeeLocation               string           `bson:"employee_location"`
+	EmployeeDateOfJoining          string           `bson:"employee_date_of_joining"`
+	EmployeeTenureInDays           string           `bson:"employee_tenure_in_days"`
+	EmployeeAttendancePercentage   string           `bson:"employee_attendance_percentage"`
+	EmployeeEngineeringManagerName string           `bson:"employee_engineering_manager_name"`
+	EmployeeEngineeringManagerId   string           `bson:"employee_engineering_manager_id"`
+	EmployeeClientManagerName      string           `bson:"employee_client_manager_name"`
+	EmployeeClientManagerId        string           `bson:"employee_client_manager_id"`
+	EmployeeHRManagerName          string           `bson:"employee_hr_manager_name"`
+	EmployeeHRManagerId            string           `bson:"employee_hr_manager_id"`
+	Projects                       []Project        `bson:"projects"`
+	KeySkills                      []Rating         `bson:"key_skills"`
+	AssesmentsmentRating           []Rating         `bson:"assessment_rating"`
+	HighLights                     []HighLight      `bson:"highlights"`
+	QuestionAnswers                []QuestionAnswer `bson:"question_answers"`
+	Achivements                    []Achivement     `bson:"achivements"`
+	Awards                         []Award          `bson:"awards"`
+	HRFeedbacks                    []HRFeedback     `bson:"hr_feedbacks"`
+	OverallEmployeeRating          string           `bson:"overall_employee_rating"`
+	OverallManagerRating           string           `bson:"overall_manager_rating"`
+	OverallEmployeeRemarks         string           `bson:"overall_employee_remarks"`
+	OverallManagerRemarks          string           `bson:"overall_manager_remarks"`
+	GoalsAndExpectionsForNextYear  string           `bson:"goals_and_expections_for_next_year"`
+	CurrentCTC                     float32          `bson:"current_ctc"`
+	CurrentPLBonusAmount           float32          `bson:"current_pl_bonus_amount"`
+	NewCTC                         float32          `bson:"new_ctc"`
+	IncrementPercentage            float32          `bson:"increment_percentage"`
+	IncrementAmount                float32          `bson:"increment_amount"`
+	PromotionDesignation           string           `bson:"promotion_designation"`
+	ApprovedPLBonusAmount          float32          `bson:"approved_pl_bonus_amount"`
+	ApprovedPLBonusPercentage      float32          `bson:"approved_pl_bonus_percentage"`
+	DateOfCurrentDesignation       string           `bson:"date_of_current_designation"`
+	TotalLeavesAvailed             float32          `bson:"total_leaves_availed"`
+	TotalYearOfExperience          float32          `bson:"total_year_of_experience"`
+	TotalYearOfRelevantExperience  float32          `bson:"total_year_of_relevant_experience"`
+	DesignationAtTheTimeOfJoining  string           `bson:"designation_at_the_time_of_joining"`
 }
 
 type EmployeeTechInfo struct {
@@ -220,4 +241,40 @@ type EmployeeTechInfo struct {
 	Separations            []SeparationInfo   `bson:"separations"`
 	IsSeparationInfoLocked bool               `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
+}
+
+type InputType int
+
+const (
+	Text InputType = iota + 1
+	Binary
+	StarRating
+	SingleSelect
+	MultiSelect
+)
+
+func (r InputType) String() string {
+	return [...]string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect"}[r-1]
+}
+
+func (r InputType) EnumIndex() int {
+	return int(r)
+}
+
+func GetAllInputTypes() []string {
+	return []string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect"}
+}
+
+func InputTypeFromString(s string) InputType {
+	if s == "Text" {
+		return Text
+	} else if s == "Binary" {
+		return Binary
+	} else if s == "StarRating" {
+		return StarRating
+	} else if s == "SingleSelect" {
+		return SingleSelect
+	} else {
+		return MultiSelect
+	}
 }
