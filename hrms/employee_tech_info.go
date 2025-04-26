@@ -137,8 +137,10 @@ type QuestionAnswer struct {
 	SingleSelectOptions []string  `bson:"single_select_options"`
 	BinaryOptions       []string  `bson:"binary_options"`
 	SelectedOptions     []string  `bson:"selected_options"`
+	Hint                string    `bson:"hint"`
 	EmployeeRemarks     string    `bson:"employee_remarks"`
 	ManagerRemarks      string    `bson:"manager_remarks"`
+	CreatedBy           string    `bson:"created_by"`
 }
 
 type Rating struct {
