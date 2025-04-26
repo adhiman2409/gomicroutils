@@ -121,7 +121,6 @@ type SeparationInfo struct {
 }
 
 type QuestionAnswer struct {
-	Domain              string    `bson:"domain"`
 	Department          string    `bson:"department"`
 	Designation         string    `bson:"designation"`
 	Title               string    `bson:"title"`
@@ -141,9 +140,6 @@ type QuestionAnswer struct {
 }
 
 type Rating struct {
-	Domain          string `bson:"domain"`
-	Department      string `bson:"department"`
-	Designation     string `bson:"designation"`
 	Title           string `bson:"title"`
 	Description     string `bson:"description"`
 	MinimumScore    string `bson:"minimum_score"`
@@ -155,9 +151,6 @@ type Rating struct {
 }
 
 type HighLight struct {
-	Domain          string `bson:"domain"`
-	Department      string `bson:"department"`
-	Designation     string `bson:"designation"`
 	Title           string `bson:"title"`
 	Description     string `bson:"description"`
 	EmployeeRemarks string `bson:"employee_remarks"`
@@ -220,6 +213,7 @@ type Appraisal struct {
 	TotalYearOfExperience          float32          `bson:"total_year_of_experience"`
 	TotalYearOfRelevantExperience  float32          `bson:"total_year_of_relevant_experience"`
 	DesignationAtTheTimeOfJoining  string           `bson:"designation_at_the_time_of_joining"`
+	Domain                         string           `bson:"domain"`
 }
 
 type EmployeeTechInfo struct {
