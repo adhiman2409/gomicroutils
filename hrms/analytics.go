@@ -144,8 +144,19 @@ type EAnanlytics struct {
 	HiringAnalytics     []HiringAnalytics     `bson:"hiring_analytics"`
 	ExitAnalytics       []ExitAnalytics       `bson:"exit_analytics"`
 	EmploymentAnalytics []EmploymentAnalytics `bson:"employment_analytics"`
-	EmployeeAnalytics   []EmployeeAnalytics   `bson:"employee_analytics"`
 	EventsAnalytics     []EventsAnalytics     `bson:"events_analytics"`
+	EmployeeAnalytics   []EmployeeAnalytics   `bson:"employee_analytics"`
+	ImageURL            CompletionStats       `bson:"image_url"`
+	About               CompletionStats       `bson:"about"`
+	PersonalDetails     CompletionStats       `bson:"personal_details"`
+	ProfessionalDetails CompletionStats       `bson:"professional_details"`
+	FamilyDetails       CompletionStats       `bson:"family_details"`
+	BankDetails         CompletionStats       `bson:"bank_details"`
+	KeySkills           CompletionStats       `bson:"key_skills"`
+	Education           CompletionStats       `bson:"education"`
+	Experience          CompletionStats       `bson:"experince"`
+	Projects            CompletionStats       `bson:"projects"`
+	Documents           CompletionStats       `bson:"documents"`
 	UpdatedAt           time.Time             `bson:"updated_at"`
 	CreatedAt           time.Time             `bson:"created_at"`
 }
@@ -222,18 +233,18 @@ type CompletionStats struct {
 	PendingEmployeeList []PendingEmployee `bson:"pending_employee_list"`
 }
 
-type DAnalytics struct {
-	ID                  primitive.ObjectID `bson:"_id"`
-	NextUpdateType      string             `bson:"next_update_type"`
-	ImageURL            CompletionStats    `bson:"image_url"`
-	About               CompletionStats    `bson:"about"`
-	PersonalDetails     CompletionStats    `bson:"personal_details"`
-	ProfessionalDetails CompletionStats    `bson:"professional_details"`
-	FamilyDetails       CompletionStats    `bson:"family_details"`
-	BankDetails         CompletionStats    `bson:"bank_details"`
-	KeySkills           CompletionStats    `bson:"key_skills"`
-	Education           CompletionStats    `bson:"education"`
-	Experience          CompletionStats    `bson:"experince"`
-	Projects            CompletionStats    `bson:"projects"`
-	Documents           CompletionStats    `bson:"documents"`
-}
+// type DAnalytics struct {
+// 	ID                  primitive.ObjectID `bson:"_id"`
+// 	NextUpdateType      string             `bson:"next_update_type"`
+// 	ImageURL            CompletionStats    `bson:"image_url"`
+// 	About               CompletionStats    `bson:"about"`
+// 	PersonalDetails     CompletionStats    `bson:"personal_details"`
+// 	ProfessionalDetails CompletionStats    `bson:"professional_details"`
+// 	FamilyDetails       CompletionStats    `bson:"family_details"`
+// 	BankDetails         CompletionStats    `bson:"bank_details"`
+// 	KeySkills           CompletionStats    `bson:"key_skills"`
+// 	Education           CompletionStats    `bson:"education"`
+// 	Experience          CompletionStats    `bson:"experince"`
+// 	Projects            CompletionStats    `bson:"projects"`
+// 	Documents           CompletionStats    `bson:"documents"`
+// }
