@@ -208,3 +208,32 @@ type LAnalytics struct {
 	LiveLeaveStats      LiveLeaveStats        `bson:"live_leave_stats"`
 	AttendanceAnalytics []AttendanceAnalytics `bson:"attendance_analytics"`
 }
+
+type PendingEmployee struct {
+	EmployeeName  string `bson:"employee_name"`
+	EmployeeId    string `bson:"employee_id"`
+	EmployeeEmail string `bson:"employee_email"`
+}
+
+type CompletionStats struct {
+	TotalEmployees      int               `bson:"total_employees"`
+	FilledCount         int               `bson:"filled_count"`
+	PendingCount        int               `bson:"pending_count"`
+	PendingEmployeeList []PendingEmployee `bson:"pending_employee_list"`
+}
+
+type DAnalytics struct {
+	ID                  primitive.ObjectID `bson:"_id"`
+	NextUpdateType      string             `bson:"next_update_type"`
+	ImageURL            CompletionStats    `bson:"image_url"`
+	About               CompletionStats    `bson:"about"`
+	PersonalDetails     CompletionStats    `bson:"personal_details"`
+	ProfessionalDetails CompletionStats    `bson:"professional_details"`
+	FamilyDetails       CompletionStats    `bson:"family_details"`
+	BankDetails         CompletionStats    `bson:"bank_details"`
+	KeySkills           CompletionStats    `bson:"key_skills"`
+	Education           CompletionStats    `bson:"education"`
+	Experience          CompletionStats    `bson:"experince"`
+	Projects            CompletionStats    `bson:"projects"`
+	Documents           CompletionStats    `bson:"documents"`
+}

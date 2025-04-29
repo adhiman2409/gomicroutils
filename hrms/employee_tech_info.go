@@ -172,7 +172,7 @@ type Appraisal struct {
 	Year                            string           `bson:"year"`
 	AppraisalStartDate              string           `bson:"appraisal_start_date"`
 	AppraisalEndDate                string           `bson:"appraisal_end_date"`
-	AppraisalStatus                 string           `bson:","`
+	AppraisalStatus                 string           `bson:"appraisal_status"`
 	IsSubmittedByEmployee           bool             `bson:"is_submitted_by_employee"`
 	IsSubmittedByManager            bool             `bson:"is_submitted_by_manager"`
 	IsCompletedByManager            bool             `bson:"is_completed_by_manager"`
