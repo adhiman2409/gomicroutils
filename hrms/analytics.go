@@ -227,24 +227,9 @@ type PendingEmployee struct {
 }
 
 type CompletionStats struct {
-	TotalEmployees      int               `bson:"total_employees"`
-	FilledCount         int               `bson:"filled_count"`
-	PendingCount        int               `bson:"pending_count"`
-	PendingEmployeeList []PendingEmployee `bson:"pending_employee_list"`
+	TotalAvtiveEmployees int               `bson:"total_active_employees"`
+	CompletedCount       int               `bson:"completed_count"`
+	PendingCount         int               `bson:"pending_count"`
+	PendingEmployeeList  []PendingEmployee `bson:"pending_employee_list"`
+	UpdatedAt            time.Time         `bson:"updated_at"`
 }
-
-// type DAnalytics struct {
-// 	ID                  primitive.ObjectID `bson:"_id"`
-// 	NextUpdateType      string             `bson:"next_update_type"`
-// 	ImageURL            CompletionStats    `bson:"image_url"`
-// 	About               CompletionStats    `bson:"about"`
-// 	PersonalDetails     CompletionStats    `bson:"personal_details"`
-// 	ProfessionalDetails CompletionStats    `bson:"professional_details"`
-// 	FamilyDetails       CompletionStats    `bson:"family_details"`
-// 	BankDetails         CompletionStats    `bson:"bank_details"`
-// 	KeySkills           CompletionStats    `bson:"key_skills"`
-// 	Education           CompletionStats    `bson:"education"`
-// 	Experience          CompletionStats    `bson:"experince"`
-// 	Projects            CompletionStats    `bson:"projects"`
-// 	Documents           CompletionStats    `bson:"documents"`
-// }
