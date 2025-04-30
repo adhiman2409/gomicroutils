@@ -152,6 +152,7 @@ type EAnanlytics struct {
 	ProfessionalDetails CompletionStats       `bson:"professional_details"`
 	FamilyDetails       CompletionStats       `bson:"family_details"`
 	BankDetails         CompletionStats       `bson:"bank_details"`
+	PrimarySkill        CompletionStats       `bson:"primary_skill"`
 	KeySkills           CompletionStats       `bson:"key_skills"`
 	Education           CompletionStats       `bson:"education"`
 	Experience          CompletionStats       `bson:"experince"`
@@ -221,9 +222,10 @@ type LAnalytics struct {
 }
 
 type PendingEmployee struct {
-	EmployeeName  string `bson:"employee_name"`
-	EmployeeId    string `bson:"employee_id"`
-	EmployeeEmail string `bson:"employee_email"`
+	EmployeeName  string   `bson:"employee_name"`
+	EmployeeId    string   `bson:"employee_id"`
+	EmployeeEmail string   `bson:"employee_email"`
+	PendingItems  []string `bson:"pending_items"`
 }
 
 type CompletionStats struct {
