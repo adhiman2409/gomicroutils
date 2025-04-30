@@ -11,11 +11,8 @@ const (
 	ImageURL
 	About
 	PersonalDetails
-	ProfessionalDetails
-	FamilyDetails
 	BankDetails
-	PrimarySkill
-	KeySkills
+	Skills
 	EducationDetails
 	ExperienceDetails
 	ProjectDetails
@@ -24,7 +21,7 @@ const (
 
 func (r AnalyticsType) String() string {
 	return [...]string{"Hirings", "Exits", "Employees", "Employments", "Events", "ImageURL", "About",
-		"PersonalDetails", "ProfessionalDetails", "FamilyDetails", "BankDetails", "PrimarySkill", "KeySkills", "EducationDetails",
+		"PersonalDetails", "BankDetails", "PrimarySkill", "Skills", "EducationDetails",
 		"ExperienceDetails", "ProjectDetails", "DocumentDetails"}[r-1]
 }
 
@@ -34,7 +31,7 @@ func (r AnalyticsType) EnumIndex() int {
 
 func GetAllAnalyticsType() []string {
 	return []string{"Hirings", "Exits", "Employees", "Employments", "Events", "ImageURL", "About",
-		"PersonalDetails", "ProfessionalDetails", "FamilyDetails", "BankDetails", "PrimarySkill", "KeySkills", "EducationDetails",
+		"PersonalDetails", "BankDetails", "PrimarySkill", "Skills", "EducationDetails",
 		"ExperienceDetails", "ProjectDetails", "DocumentDetails"}
 }
 
@@ -53,14 +50,10 @@ func AnalyticsTypeFromString(s string) AnalyticsType {
 		return About
 	} else if s == "PersonalDetails" {
 		return PersonalDetails
-	} else if s == "ProfessionalDetails" {
-		return ProfessionalDetails
-	} else if s == "FamilyDetails" {
-		return FamilyDetails
 	} else if s == "BankDetails" {
 		return BankDetails
-	} else if s == "KeySkills" {
-		return KeySkills
+	} else if s == "Skills" {
+		return Skills
 	} else if s == "EducationDetails" {
 		return EducationDetails
 	} else if s == "ExperienceDetails" {
@@ -69,8 +62,6 @@ func AnalyticsTypeFromString(s string) AnalyticsType {
 		return ProjectDetails
 	} else if s == "DocumentDetails" {
 		return DocumentDetails
-	} else if s == "PrimarySkill" {
-		return PrimarySkill
 	} else {
 		return Events
 	}
