@@ -149,11 +149,8 @@ type EAnanlytics struct {
 	ImageURL            CompletionStats       `bson:"image_url"`
 	About               CompletionStats       `bson:"about"`
 	PersonalDetails     CompletionStats       `bson:"personal_details"`
-	ProfessionalDetails CompletionStats       `bson:"professional_details"`
-	FamilyDetails       CompletionStats       `bson:"family_details"`
 	BankDetails         CompletionStats       `bson:"bank_details"`
-	PrimarySkill        CompletionStats       `bson:"primary_skill"`
-	KeySkills           CompletionStats       `bson:"key_skills"`
+	Skills              CompletionStats       `bson:"skills"`
 	Education           CompletionStats       `bson:"education"`
 	Experience          CompletionStats       `bson:"experince"`
 	Projects            CompletionStats       `bson:"projects"`
