@@ -152,7 +152,7 @@ type EAnanlytics struct {
 	BankDetails         CompletionStats       `bson:"bank_details"`
 	Skills              CompletionStats       `bson:"skills"`
 	Education           CompletionStats       `bson:"education"`
-	Experience          CompletionStats       `bson:"experince"`
+	Experience          CompletionStats       `bson:"experience"`
 	Projects            CompletionStats       `bson:"projects"`
 	Documents           CompletionStats       `bson:"documents"`
 	UpdatedAt           time.Time             `bson:"updated_at"`
