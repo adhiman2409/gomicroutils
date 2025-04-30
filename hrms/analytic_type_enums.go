@@ -21,7 +21,7 @@ const (
 
 func (r AnalyticsType) String() string {
 	return [...]string{"Hirings", "Exits", "Employees", "Employments", "Events", "ImageURL", "About",
-		"PersonalDetails", "BankDetails", "PrimarySkill", "Skills", "EducationDetails",
+		"PersonalDetails", "BankDetails", "Skills", "EducationDetails",
 		"ExperienceDetails", "ProjectDetails", "DocumentDetails"}[r-1]
 }
 
@@ -31,7 +31,7 @@ func (r AnalyticsType) EnumIndex() int {
 
 func GetAllAnalyticsType() []string {
 	return []string{"Hirings", "Exits", "Employees", "Employments", "Events", "ImageURL", "About",
-		"PersonalDetails", "BankDetails", "PrimarySkill", "Skills", "EducationDetails",
+		"PersonalDetails", "BankDetails", "Skills", "EducationDetails",
 		"ExperienceDetails", "ProjectDetails", "DocumentDetails"}
 }
 
