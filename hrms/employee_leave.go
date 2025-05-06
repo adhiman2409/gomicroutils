@@ -112,3 +112,11 @@ type EmployeeLeaveObj struct {
 	CreatedAt                    time.Time          `bson:"created_at"`
 	UpdatedAt                    time.Time          `bson:"updated_at"`
 }
+
+type LeaveCarryForward struct {
+	ID                primitive.ObjectID `bson:"_id"`
+	EmployeeId        string             `bson:"employee_id"`
+	CarryForwardCount int                `bson:"carry_forward_count"`
+	EncashmentCount   int                `bson:"encashment_count"`
+	Year              string             `bson:"year"`
+}
