@@ -24,7 +24,8 @@ const ORG_COLLECTION_ASSIGN_ASSET = "org-assign-asset"
 const ORG_COLLECTION_INVENTORY_DEPARTMENT = "org-inventory-department"
 const ORG_COLLECTION_INVENTORY_STORE = "org-inventory-store"
 const ORG_COLLECTION_INVENTORY_BUCKET = "org-inventory-bucket"
-const ORG_COLLECTION_CLIENT = "org-client"
+const ORG_COLLECTION_CLIENT_INFO = "org-client-info"
+const ORG_COLLECTION_CLIENT_MEETING_INFO = "org-client-meeting-info"
 const ORG_COLLECTION_CLIENT_HOLIDAYS = "org-client_holidays"
 const ORG_COLLECTION_POLICY = "org-policy"
 const ORG_COLLECTION_POLICY_STATS = "org-policy-stats"
@@ -296,9 +297,14 @@ func GetEmpCertAndTrainingCollection(client *mongo.Client, domain string) *mongo
 	return db.Collection(EMPLOYEE_COLLECTION_CERTIFICATE_AND_TRAINING)
 }
 
-func GetOrgClientCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetOrgClientInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(ORG_COLLECTION_CLIENT)
+	return db.Collection(ORG_COLLECTION_CLIENT_INFO)
+}
+
+func GetOrgClientMeetingInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_CLIENT_MEETING_INFO)
 }
 
 func GetOrgClientHolidaysCollection(client *mongo.Client, domain string) *mongo.Collection {
