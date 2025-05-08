@@ -25,6 +25,9 @@ type ClientInfo struct {
 	ClientType        string              `bson:"client_type"`
 	ClientStatus      string              `bson:"client_status"`
 	ClientDescription string              `bson:"client_description"`
+	IsNDASigned       bool                `bson:"is_nda_signed"`
+	NDASignDate       time.Time           `bson:"nda_sign_date"`
+	NDADocument       string              `bson:"nda_document"`
 	ClientWebsite     string              `bson:"client_website"`
 	ClientAddress     []Address           `bson:"client_address"`
 	ClientContacts    []ClientContactInfo `bson:"client_contacts"`
@@ -44,22 +47,25 @@ type Participant struct {
 }
 
 type ActionItem struct {
-	Items                 []string  `bson:"items"`
-	Status                string    `bson:"status"`
-	IsClientActionItems   string    `bson:"client_action_items"`
-	OwnerId               string    `bson:"owner_id"`
-	OwnerName             string    `bson:"owner_name"`
-	CompletionDateAndTime time.Time `bson:"completion_date_and_time"`
-	ReminderDateAndTime   time.Time `bson:"reminder_date_and_time"`
-	OwnerEmailId          string    `bson:"owner_email_id"`
-	Remarks               string    `bson:"remarks"`
-	Documents             []string  `bson:"documents"`
-	CreatedById           string    `bson:"created_by_id"`
-	CreatedByName         string    `bson:"created_by_name"`
+	Items                  []string  `bson:"items"`
+	Status                 string    `bson:"status"`
+	IsClientActionItem     string    `bson:"client_action_item"`
+	OwnerId                string    `bson:"owner_id"`
+	OwnerName              string    `bson:"owner_name"`
+	OwnerEmailId           string    `bson:"owner_email_id"`
+	SendActionItemsToOwner bool      `bson:"send_action_items_to_owner"`
+	CompletionDateAndTime  time.Time `bson:"completion_date_and_time"`
+	ReminderDateAndTime    time.Time `bson:"reminder_date_and_time"`
+	IsReminderMailSent     bool      `bson:"is_reminder_mail_sent"`
+	Remarks                string    `bson:"remarks"`
+	Documents              []string  `bson:"documents"`
+	CreatedById            string    `bson:"created_by_id"`
+	CreatedByName          string    `bson:"created_by_name"`
 }
 
 type MeetingInfo struct {
 	ID                             primitive.ObjectID `bson:"_id"`
+	MeetingId                      string             `bson:"meeting_id"`
 	ClientId                       string             `bson:"client_id"`
 	ClientName                     string             `bson:"client_name"`
 	MeetingDateAndTime             time.Time          `bson:"meeting_date_and_time"`
@@ -77,6 +83,9 @@ type MeetingInfo struct {
 	NextMeetingDate                time.Time          `bson:"next_meeting_date"`
 	NextMeetingRemarks             time.Time          `bson:"next_meeting_remarks"`
 	NextMeetingReminderDateAndTime time.Time          `bson:"next_meeting_reminder_date_and_time"`
+	IsReminderMailSent             bool               `bson:"is_reminder_mail_sent"`
+	NextMeetingId                  string             `bson:"next_meeting_id"`
+	PreviousMeetingId              string             `bson:"previous_meeting_id"`
 	CreatedBy                      string             `bson:"created_by"`
 	CreatedAt                      time.Time          `bson:"created_at"`
 	UpdatedAt                      time.Time          `bson:"updated_at"`
