@@ -29,6 +29,7 @@ type LeaveStats struct {
 	AppliedLeaves                     float32 `bson:"applied_leaves"`
 	ApplicableAfterWorkingDays        int32   `bson:"applicable_after_working_days"`
 	ActivationDate                    string  `bson:"activation_date"`
+	DeactivationDate                  string  `bson:"deactivation_date"`
 	BulkLeaveNoticeInDays             int     `bson:"bulk_leave_notice_in_days"`
 	WorkingDaysRemainingForActivation int32   `bson:"working_days_remaining_for_activation"`
 	WorkingDaysRemainingForNextBatch  int32   `bson:"working_days_remaining_for_next_batch"`
