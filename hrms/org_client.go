@@ -113,3 +113,9 @@ type ClientContactInfo struct {
 	CreatedAt          time.Time          `bson:"created_at"`
 	UpdatedAt          time.Time          `bson:"updated_at"`
 }
+
+type ClientIdCounter struct {
+	ID      primitive.ObjectID `bson:"_id"`
+	Prefix  string             `bson:"prefix"`
+	Counter int64              `bson:"counter"`
+}

@@ -24,6 +24,7 @@ const ORG_COLLECTION_ASSIGN_ASSET = "org-assign-asset"
 const ORG_COLLECTION_INVENTORY_DEPARTMENT = "org-inventory-department"
 const ORG_COLLECTION_INVENTORY_STORE = "org-inventory-store"
 const ORG_COLLECTION_INVENTORY_BUCKET = "org-inventory-bucket"
+const ORG_COLLECTION_CLIENT_ID_COUNTER = "org-client-id-counter"
 const ORG_COLLECTION_CLIENT_INFO = "org-client-info"
 const ORG_COLLECTION_CLIENT_MEETING_INFO = "org-client-meeting-info"
 const ORG_COLLECTION_CLIENT_HOLIDAYS = "org-client_holidays"
@@ -300,6 +301,11 @@ func GetEmpCertAndTrainingCollection(client *mongo.Client, domain string) *mongo
 func GetOrgClientInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_CLIENT_INFO)
+}
+
+func GetOrgClientIdCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_CLIENT_ID_COUNTER)
 }
 
 func GetOrgClientMeetingInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
