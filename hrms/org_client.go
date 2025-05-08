@@ -19,21 +19,27 @@ type ClientHoliday struct {
 }
 
 type ClientInfo struct {
-	ID                primitive.ObjectID  `bson:"_id"`
-	ClientId          string              `bson:"client_id"`
-	ClientName        string              `bson:"client_name"`
-	ClientType        string              `bson:"client_type"`
-	ClientStatus      string              `bson:"client_status"`
-	ClientDescription string              `bson:"client_description"`
-	IsNDASigned       bool                `bson:"is_nda_signed"`
-	NDASignDate       time.Time           `bson:"nda_sign_date"`
-	NDADocument       string              `bson:"nda_document"`
-	ClientWebsite     string              `bson:"client_website"`
-	ClientAddress     []Address           `bson:"client_address"`
-	ClientContacts    []ClientContactInfo `bson:"client_contacts"`
-	CreatedBy         string              `bson:"created_by"`
-	CreatedAt         time.Time           `bson:"created_at"`
-	UpdatedAt         time.Time           `bson:"updated_at"`
+	ID                  primitive.ObjectID `bson:"_id"`
+	ClientId            string             `bson:"client_id"`
+	ClientName          string             `bson:"client_name"`
+	ClientType          string             `bson:"client_type"`
+	ClientStatus        string             `bson:"client_status"`
+	ClientDescription   string             `bson:"client_description"`
+	IsNDASigned         bool               `bson:"is_nda_signed"`
+	NDASignDate         time.Time          `bson:"nda_sign_date"`
+	NDADocument         string             `bson:"nda_document"`
+	ClientWebsite       string             `bson:"client_website"`
+	PrimaryContactId    string             `bson:"primary_contact_id"`
+	PrimaryContactName  string             `bson:"primary_contact_name"`
+	PrimaryContactEmail string             `bson:"primary_contact_email"`
+	FullAddress         Address            `bson:"full_address"`
+	City                string             `bson:"city"`
+	State               string             `bson:"state"`
+	Country             string             `bson:"country"`
+	Contacts            []string           `bson:"contacts"`
+	CreatedBy           string             `bson:"created_by"`
+	CreatedAt           time.Time          `bson:"created_at"`
+	UpdatedAt           time.Time          `bson:"updated_at"`
 }
 
 type Participant struct {
@@ -94,6 +100,7 @@ type MeetingInfo struct {
 type ClientContactInfo struct {
 	ID                 primitive.ObjectID `bson:"_id"`
 	ClientId           string             `bson:"client_id"`
+	ClientName         string             `bson:"client_name"`
 	ContactName        string             `bson:"contact_name"`
 	ContactEmail       string             `bson:"contact_email"`
 	ContactPhone       string             `bson:"contact_phone"`
@@ -101,6 +108,7 @@ type ClientContactInfo struct {
 	ContactRole        string             `bson:"contact_role"`
 	ContactDescription string             `bson:"contact_description"`
 	CreatedBy          string             `bson:"created_by"`
+	IsPrimaryContact   string             `bson:"is_primary_contact"`
 	ReferencedBy       string             `bson:"referenced_by"`
 	CreatedAt          time.Time          `bson:"created_at"`
 	UpdatedAt          time.Time          `bson:"updated_at"`
