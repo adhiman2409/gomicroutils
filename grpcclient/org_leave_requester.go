@@ -40,6 +40,9 @@ func (a *OrgClient) GetOrgLeaveConf(orgName, domain string) (OrgLeaveObj, error)
 			Description:                 l.GetDescription(),
 			YearStartDate:               l.GetYearStartDate(),
 			YearEndDate:                 l.GetYearEndDate(),
+			IncludeWeeklyOffDays:        l.GetIncludeWeeklyOffDays(),
+			IncludeHolidays:             l.GetIncludeHolidays(),
+			MaxLeaveAllowedCount:        float32(l.GetMaxLeaveAllowedCount()),
 		})
 	}
 	leaveInfoObj := OrgLeaveObj{

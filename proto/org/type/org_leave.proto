@@ -30,6 +30,9 @@ message OrgLeaveConfiguration{
 	string description = 18;
 	string yearStartDate = 19;
 	string yearEndDate = 20;
+	bool IncludeWeeklyOffDays = 21;
+	bool IncludeHolidays = 22;
+	double MaxLeaveAllowedCount = 23;
 }
 
 message OrgLeaveResponse{

@@ -20,6 +20,9 @@ type OrgLeaveConfiguration struct {
 	Description                 string  `bson:"description"`
 	YearStartDate               string  `bson:"year_start_date"`
 	YearEndDate                 string  `bson:"year_end_date"`
+	IncludeWeeklyOffDays        bool    `bson:"include_weekly_off_days"`
+	IncludeHolidays             bool    `bson:"include_holidays"`
+	MaxLeaveAllowedCount        float32 `bson:"max_leave_allowed_count"`
 }
 
 type OrgLeaveObj struct {
