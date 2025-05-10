@@ -30,6 +30,9 @@ type LeaveStats struct {
 	ApplicableAfterWorkingDays        int32   `bson:"applicable_after_working_days"`
 	ActivationDate                    string  `bson:"activation_date"`
 	DeactivationDate                  string  `bson:"deactivation_date"`
+	IncludeWeeklyOffDays              bool    `bson:"include_weekly_off_days"`
+	IncludeHolidays                   bool    `bson:"include_holidays"`
+	MaxLeaveAllowedCount              float32 `bson:"max_leave_allowed_count"`
 	BulkLeaveNoticeInDays             int     `bson:"bulk_leave_notice_in_days"`
 	WorkingDaysRemainingForActivation int32   `bson:"working_days_remaining_for_activation"`
 	WorkingDaysRemainingForNextBatch  int32   `bson:"working_days_remaining_for_next_batch"`

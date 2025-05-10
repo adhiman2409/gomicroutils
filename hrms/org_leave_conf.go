@@ -23,6 +23,9 @@ type OrgLeaveConf struct {
 	ApplicableAfterWorkingDays  int                `bson:"applicable_after_working_days"`
 	DocumentRequired            bool               `bson:"document_required"`
 	WeeklyOffAndHolidayIncluded bool               `bson:"weekly_off_and_holiday_included"`
+	IncludeWeeklyOffDays        bool               `bson:"include_weekly_off_days"`
+	IncludeHolidays             bool               `bson:"include_holidays"`
+	MaxLeaveAllowedCount        float32            `bson:"max_leave_allowed_count"`
 	IsActive                    bool               `bson:"is_active"`
 	Description                 string             `bson:"description"`
 	YearStartDate               string             `bson:"year_start_date"`
