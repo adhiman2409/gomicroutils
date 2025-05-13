@@ -220,6 +220,8 @@ type Appraisal struct {
 	TotalYearOfExperience           float32          `bson:"total_year_of_experience"`
 	TotalYearOfRelevantExperience   float32          `bson:"total_year_of_relevant_experience"`
 	DesignationAtTheTimeOfJoining   string           `bson:"designation_at_the_time_of_joining"`
+	AppraisalLetterURL              string           `bson:"appraisal_letter_url"`
+	IsAppraisalLetterEmailSent      bool             `bson:"is_appraisal_letter_email_sent"`
 }
 
 type VisaInfo struct {
