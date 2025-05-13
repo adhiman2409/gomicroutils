@@ -232,13 +232,14 @@ type VisaInfo struct {
 }
 
 type PassportDetails struct {
-	PassportNumber string     `bson:"passport_number"`
-	IssueDate      string     `bson:"issue_date"`
-	ExpiryDate     string     `bson:"expiry_date"`
-	PlaceOfIssue   string     `bson:"place_of_issue"`
-	PassportStatus string     `bson:"passport_status"`
-	PassportURL    string     `bson:"passport_url"`
-	VisaInfo       []VisaInfo `bson:"visa_info"`
+	IsPassportAvailable bool       `bson:"is_passport_available"`
+	PassportNumber      string     `bson:"passport_number"`
+	IssueDate           string     `bson:"issue_date"`
+	ExpiryDate          string     `bson:"expiry_date"`
+	PlaceOfIssue        string     `bson:"place_of_issue"`
+	PassportStatus      string     `bson:"passport_status"`
+	PassportURL         string     `bson:"passport_url"`
+	VisaInfo            []VisaInfo `bson:"visa_info"`
 }
 
 type EmployeeTechInfo struct {
