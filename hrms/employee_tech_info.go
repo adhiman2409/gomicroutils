@@ -223,19 +223,19 @@ type Appraisal struct {
 }
 
 type VisaInfo struct {
-	VisaType           string `bson:"visa_type"`
-	StartDate          string `bson:"start_date"`
-	EndDate            string `bson:"end_date"`
-	Status             string `bson:"status"`
-	VisaURL            string `bson:"visa_url"`
-	VisaIssuingCountry string `bson:"visa_issuing_country"`
+	VisaType           string    `bson:"visa_type"`
+	StartDate          time.Time `bson:"start_date"`
+	EndDate            time.Time `bson:"end_date"`
+	Status             string    `bson:"status"`
+	VisaURL            string    `bson:"visa_url"`
+	VisaIssuingCountry string    `bson:"visa_issuing_country"`
 }
 
 type PassportDetails struct {
 	IsPassportAvailable bool       `bson:"is_passport_available"`
 	PassportNumber      string     `bson:"passport_number"`
-	IssueDate           string     `bson:"issue_date"`
-	ExpiryDate          string     `bson:"expiry_date"`
+	IssueDate           time.Time  `bson:"issue_date"`
+	ExpiryDate          time.Time  `bson:"expiry_date"`
 	PlaceOfIssue        string     `bson:"place_of_issue"`
 	PassportStatus      string     `bson:"passport_status"`
 	PassportURL         string     `bson:"passport_url"`
