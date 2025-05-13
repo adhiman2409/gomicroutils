@@ -222,6 +222,25 @@ type Appraisal struct {
 	DesignationAtTheTimeOfJoining   string           `bson:"designation_at_the_time_of_joining"`
 }
 
+type VisaInfo struct {
+	VisaType           string `bson:"visa_type"`
+	StartDate          string `bson:"start_date"`
+	EndDate            string `bson:"end_date"`
+	Status             string `bson:"status"`
+	VisaURL            string `bson:"visa_url"`
+	VisaIssuingCountry string `bson:"visa_issuing_country"`
+}
+
+type PassportDetails struct {
+	PassportNumber string     `bson:"passport_number"`
+	IssueDate      string     `bson:"issue_date"`
+	ExpiryDate     string     `bson:"expiry_date"`
+	PlaceOfIssue   string     `bson:"place_of_issue"`
+	PassportStatus string     `bson:"passport_status"`
+	PassportURL    string     `bson:"passport_url"`
+	VisaInfo       []VisaInfo `bson:"visa_info"`
+}
+
 type EmployeeTechInfo struct {
 	ID                     primitive.ObjectID `bson:"_id"`
 	EmployeeId             string             `bson:"employee_id"`
@@ -239,6 +258,7 @@ type EmployeeTechInfo struct {
 	OldAppraisals          []Appraisal        `bson:"old_appraisals,omitempty"`
 	ActiveAppraisal        Appraisal          `bson:"active_appraisal,omitempty"`
 	Separations            []SeparationInfo   `bson:"separations"`
+	PassportDetails        PassportDetails    `bson:"passport_details"`
 	IsSeparationInfoLocked bool               `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
 }
