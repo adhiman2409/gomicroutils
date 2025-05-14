@@ -207,7 +207,7 @@ type Appraisal struct {
 	IsSubmittedByManager            bool             `bson:"is_submitted_by_manager"`
 	IsCompletedByManager            bool             `bson:"is_completed_by_manager"`
 	IsSubmittedByHR                 bool             `bson:"is_submitted_by_hr"`
-	IsSubmittedByDepartmentHead     bool             `bson:"is_submitted_department_head"`
+	IsSubmittedByDepartmentHead     bool             `bson:"is_submitted_by_department_head"`
 	EmployeeId                      string           `bson:"employee_id"`
 	EmployeeName                    string           `bson:"employee_name"`
 	EmployeeEmail                   string           `bson:"employee_email"`
