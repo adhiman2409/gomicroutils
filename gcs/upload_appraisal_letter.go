@@ -15,7 +15,7 @@ import (
 
 func isValidAppraissalLetterFileName(s string) bool {
 	// Pattern: employeeId (alphanumeric or numeric) + _ + 4-digit year
-	pattern := `^[a-zA-Z0-9]+_\d{4}$`
+	pattern := `^[a-zA-Z0-9]+_\d{4}\.pdf$`
 	match, _ := regexp.MatchString(pattern, s)
 	return match
 }
@@ -63,6 +63,7 @@ func (a *StorageConnection) UploadAppraisalLetter(r *http.Request, domain string
 	}
 
 	info := FileUploadResponse{
+		EID:     eid,
 		Domain:  domain,
 		DocName: fname,
 		DocPath: storagePath,

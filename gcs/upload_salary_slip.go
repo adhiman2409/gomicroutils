@@ -15,7 +15,7 @@ import (
 
 func isValidSalarySlipFileName(s string) bool {
 	// Pattern: employeeId (alphanumeric or numeric) + _ + 4-digit year + _ + 2-digit month (01–12)
-	pattern := `^[a-zA-Z0-9]+_\d{4}_(0[1-9]|1[0-2])$`
+	pattern := `^[a-zA-Z0-9]+_\d{4}_(0[1-9]|1[0-2])\.pdf$`
 	match, _ := regexp.MatchString(pattern, s)
 	return match
 }
