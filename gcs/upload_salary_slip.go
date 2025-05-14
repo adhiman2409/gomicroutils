@@ -49,6 +49,7 @@ func (a *StorageConnection) UploadSalarySlip(r *http.Request, domain string) (Fi
 	eid := strings.Split(fname, "_")[0]
 	yearStr := strings.Split(fname, "_")[1]
 	monthStr := strings.Split(fname, "_")[2]
+	monthStr = strings.Split(monthStr, ".")[0]
 
 	nd := GetUpdatedFinanceDomain(domain)
 

@@ -48,6 +48,7 @@ func (a *StorageConnection) UploadAppraisalLetter(r *http.Request, domain string
 
 	eid := strings.Split(fname, "_")[0]
 	yearStr := strings.Split(fname, "_")[1]
+	yearStr = strings.Split(yearStr, ".")[0]
 
 	nd := GetUpdatedFinanceDomain(domain)
 
