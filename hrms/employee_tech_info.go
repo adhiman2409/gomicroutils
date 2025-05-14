@@ -168,6 +168,36 @@ type HRFeedback struct {
 	Remarks               string `bson:"remarks"`
 }
 
+type CompensationInfo struct {
+	CurrentCTC                             float32 `bson:"current_ctc"`
+	CurrentFixedCTC                        float32 `bson:"current_fixed_ctc"`
+	CurrentVariableCTC                     float32 `bson:"current_variable_ctc"`
+	CurrentFixedCTCPercentage              float32 `bson:"current_fixed_ctc_percentage"`
+	CurrentVariableCTCPercentage           float32 `bson:"current_variable_ctc_percentage"`
+	ProposedLastYearVariablePercentage     float32 `bson:"proposed_last_year_variable_percentage"`
+	ProposedCTC                            float32 `bson:"proposed_ctc"`
+	ProposedFixedCTC                       float32 `bson:"proposed_fixed_ctc"`
+	ProposedVariableCTC                    float32 `bson:"proposed_variable_ctc"`
+	ProposedIncrementPercentage            float32 `bson:"proposed_increment_percentage"`
+	ProposedFixedCTCIncrementPercentage    float32 `bson:"proposed_fixed_ctc_increment_percentage"`
+	ProposedVariableCTCIncrementPercentage float32 `bson:"proposed_variable_ctc_increment_percentage"`
+	IncrementRemarks                       string  `bson:"increment_remarks"`
+	ApprovedLastYearVariablePercentage     float32 `bson:"approved_last_year_variable_percentage"`
+	ApprovedCTC                            float32 `bson:"approved_ctc"`
+	ApprovedFixedCTC                       float32 `bson:"approved_fixed_ctc"`
+	ApprovedVariableCTC                    float32 `bson:"approved_variable_ctc"`
+	ApprovedIncrementPercentage            float32 `bson:"approved_increment_percentage"`
+	ApprovedFixedCTCIncrementPercentage    float32 `bson:"approved_fixed_ctc_increment_percentage"`
+	ApprovedVariableCTCIncrementPercentage float32 `bson:"approved_variable_ctc_increment_percentage"`
+	IsPromotionProposed                    bool    `bson:"is_promotion_proposed"`
+	ProposedNewDesignation                 string  `bson:"proposed_new_designation"`
+	IsPromotionApproved                    bool    `bson:"is_promotion_approved"`
+	ApprovedNewDesignation                 string  `bson:"approved_new_designation"`
+	PromotionRemarks                       string  `bson:"promotion_remarks"`
+	IncrementEffectiveDate                 string  `bson:"increment_effective_date"`
+	PromotionEffectiveDate                 string  `bson:"promotion_effective_date"`
+}
+
 type Appraisal struct {
 	Year                            string           `bson:"year"`
 	AppraisalStartDate              string           `bson:"appraisal_start_date"`
@@ -190,8 +220,8 @@ type Appraisal struct {
 	EmployeeEngineeringManagerName  string           `bson:"employee_engineering_manager_name"`
 	EmployeeEngineeringManagerId    string           `bson:"employee_engineering_manager_id"`
 	EmployeeEngineeringManagerEmail string           `bson:"employee_engineering_manager_email"`
-	EmployeeClientManagerName       string           `bson:"employee_client_manager_name"`
-	EmployeeClientManagerId         string           `bson:"employee_client_manager_id"`
+	EmployeeDepartmentHeadName      string           `bson:"employee_department_head_name"`
+	EmployeeDepartmentHeadId        string           `bson:"employee_department_head_id"`
 	EmployeeHRManagerName           string           `bson:"employee_hr_manager_name"`
 	EmployeeHRManagerId             string           `bson:"employee_hr_manager_id"`
 	Projects                        []Project        `bson:"projects"`
@@ -207,14 +237,7 @@ type Appraisal struct {
 	OverallEmployeeRemarks          string           `bson:"overall_employee_remarks"`
 	OverallManagerRemarks           string           `bson:"overall_manager_remarks"`
 	GoalsAndExpectionsForNextYear   string           `bson:"goals_and_expections_for_next_year"`
-	CurrentCTC                      float32          `bson:"current_ctc"`
-	CurrentPLBonusAmount            float32          `bson:"current_pl_bonus_amount"`
-	NewCTC                          float32          `bson:"new_ctc"`
-	IncrementPercentage             float32          `bson:"increment_percentage"`
-	IncrementAmount                 float32          `bson:"increment_amount"`
-	PromotionDesignation            string           `bson:"promotion_designation"`
-	ApprovedPLBonusAmount           float32          `bson:"approved_pl_bonus_amount"`
-	ApprovedPLBonusPercentage       float32          `bson:"approved_pl_bonus_percentage"`
+	CompensationInfo                CompensationInfo `bson:"compensation_info"`
 	DateOfCurrentDesignation        string           `bson:"date_of_current_designation"`
 	TotalLeavesAvailed              float32          `bson:"total_leaves_availed"`
 	TotalYearOfExperience           float32          `bson:"total_year_of_experience"`
@@ -245,27 +268,26 @@ type PassportDetails struct {
 }
 
 type EmployeeTechInfo struct {
-	ID                         primitive.ObjectID `bson:"_id"`
-	EmployeeId                 string             `bson:"employee_id"`
-	About                      string             `bson:"about"`
-	TotalExperinceInMonths     int                `bson:"total_experince_in_months"`
-	ReleaseDate                time.Time          `bson:"release_date"`
-	PSkill                     string             `bson:"p_skill"`
-	IsAppraisalActive          bool               `bson:"is_appraisal_active"`
-	IsAppraisalLetterUploaded  bool               `bson:"is_appraisal_letter_uploaded"`
-	IsAppraisalLetterEmailSent bool               `bson:"is_appraisal_letter_email_sent"`
-	SSkills                    []string           `bson:"s_skills"`
-	Experiences                []Experience       `bson:"experiences"`
-	Projects                   []Project          `bson:"projects"`
-	Achivements                []Achivement       `bson:"achivements"`
-	Awards                     []Award            `bson:"awards"`
-	Feedbacks                  []Feedback         `bson:"feedbacks,omitempty"`
-	OldAppraisals              []Appraisal        `bson:"old_appraisals,omitempty"`
-	ActiveAppraisal            Appraisal          `bson:"active_appraisal,omitempty"`
-	Separations                []SeparationInfo   `bson:"separations"`
-	PassportDetails            PassportDetails    `bson:"passport_details"`
-	IsSeparationInfoLocked     bool               `bson:"is_separation_info_locked"`
-	IsProfileEditingLocked     bool               `bson:"is_profile_editing_locked"`
+	ID                        primitive.ObjectID `bson:"_id"`
+	EmployeeId                string             `bson:"employee_id"`
+	About                     string             `bson:"about"`
+	TotalExperinceInMonths    int                `bson:"total_experince_in_months"`
+	ReleaseDate               time.Time          `bson:"release_date"`
+	PSkill                    string             `bson:"p_skill"`
+	IsAppraisalActive         bool               `bson:"is_appraisal_active"`
+	IsAppraisalLetterUploaded bool               `bson:"is_appraisal_letter_uploaded"`
+	SSkills                   []string           `bson:"s_skills"`
+	Experiences               []Experience       `bson:"experiences"`
+	Projects                  []Project          `bson:"projects"`
+	Achivements               []Achivement       `bson:"achivements"`
+	Awards                    []Award            `bson:"awards"`
+	Feedbacks                 []Feedback         `bson:"feedbacks,omitempty"`
+	OldAppraisals             []Appraisal        `bson:"old_appraisals,omitempty"`
+	ActiveAppraisal           Appraisal          `bson:"active_appraisal,omitempty"`
+	Separations               []SeparationInfo   `bson:"separations"`
+	PassportDetails           PassportDetails    `bson:"passport_details"`
+	IsSeparationInfoLocked    bool               `bson:"is_separation_info_locked"`
+	IsProfileEditingLocked    bool               `bson:"is_profile_editing_locked"`
 }
 
 type InputType int
