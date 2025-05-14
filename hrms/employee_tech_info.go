@@ -245,6 +245,7 @@ type Appraisal struct {
 	DesignationAtTheTimeOfJoining   string           `bson:"designation_at_the_time_of_joining"`
 	IsAppraisalLetterUploaded       bool             `bson:"is_appraisal_letter_uploaded"`
 	IsAppraisalLetterEmailSent      bool             `bson:"is_appraisal_letter_email_sent"`
+	ManagerAppraisalCompletionDate  time.Time        `bson:"manager_appraisal_completion_date"`
 }
 
 type VisaInfo struct {
