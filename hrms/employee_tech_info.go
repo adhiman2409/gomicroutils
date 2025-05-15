@@ -231,8 +231,10 @@ type Appraisal struct {
 	TotalYearOfRelevantExperience   float32          `bson:"total_year_of_relevant_experience"`
 	DesignationAtTheTimeOfJoining   string           `bson:"designation_at_the_time_of_joining"`
 	IsAppraisalLetterUploaded       bool             `bson:"is_appraisal_letter_uploaded"`
-	IsAppraisalLetterEmailSent      bool             `bson:"is_appraisal_letter_email_sent"`
+	IsIncrementLetterEmailSent      bool             `bson:"is_increment_letter_email_sent"`
+	IncrementLetterEmailDate        time.Time        `bson:"increment_letter_email_date"`
 	ManagerAppraisalCompletionDate  time.Time        `bson:"manager_appraisal_completion_date"`
+	NewCompensationApprovalDate     time.Time        `bson:"new_compensation_approval_date"`
 }
 
 type VisaInfo struct {
@@ -263,7 +265,7 @@ type EmployeeTechInfo struct {
 	ReleaseDate               time.Time          `bson:"release_date"`
 	PSkill                    string             `bson:"p_skill"`
 	IsAppraisalActive         bool               `bson:"is_appraisal_active"`
-	IsAppraisalLetterUploaded bool               `bson:"is_appraisal_letter_uploaded"`
+	IsIncrementLetterUploaded bool               `bson:"is_increment_letter_uploaded"`
 	SSkills                   []string           `bson:"s_skills"`
 	Experiences               []Experience       `bson:"experiences"`
 	Projects                  []Project          `bson:"projects"`
