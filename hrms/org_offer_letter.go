@@ -70,8 +70,6 @@ type OfferLetterAnnexure struct {
 	IsCandidate                   bool               `bson:"is_candidate"`
 	CandidateId                   string             `bson:"candidate_id"`
 	CandidateName                 string             `bson:"candidate_name"`
-	EmployeeId                    string             `bson:"employee_id"`
-	EmployeeName                  string             `bson:"employee_name"`
 	Designation                   string             `bson:"designation"`
 	Department                    string             `bson:"department"`
 	EffectiveDate                 string             `bson:"effective_date"`
