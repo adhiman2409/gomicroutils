@@ -169,33 +169,20 @@ type HRFeedback struct {
 }
 
 type CompensationInfo struct {
-	CurrentCTC                             float32 `bson:"current_ctc"`
-	CurrentFixedCTC                        float32 `bson:"current_fixed_ctc"`
-	CurrentVariableCTC                     float32 `bson:"current_variable_ctc"`
-	CurrentFixedCTCPercentage              float32 `bson:"current_fixed_ctc_percentage"`
-	CurrentVariableCTCPercentage           float32 `bson:"current_variable_ctc_percentage"`
-	ProposedLastYearVariablePercentage     float32 `bson:"proposed_last_year_variable_percentage"`
-	ProposedCTC                            float32 `bson:"proposed_ctc"`
-	ProposedFixedCTC                       float32 `bson:"proposed_fixed_ctc"`
-	ProposedVariableCTC                    float32 `bson:"proposed_variable_ctc"`
-	ProposedIncrementPercentage            float32 `bson:"proposed_increment_percentage"`
-	ProposedFixedCTCIncrementPercentage    float32 `bson:"proposed_fixed_ctc_increment_percentage"`
-	ProposedVariableCTCIncrementPercentage float32 `bson:"proposed_variable_ctc_increment_percentage"`
-	IncrementRemarks                       string  `bson:"increment_remarks"`
-	ApprovedLastYearVariablePercentage     float32 `bson:"approved_last_year_variable_percentage"`
-	ApprovedCTC                            float32 `bson:"approved_ctc"`
-	ApprovedFixedCTC                       float32 `bson:"approved_fixed_ctc"`
-	ApprovedVariableCTC                    float32 `bson:"approved_variable_ctc"`
-	ApprovedIncrementPercentage            float32 `bson:"approved_increment_percentage"`
-	ApprovedFixedCTCIncrementPercentage    float32 `bson:"approved_fixed_ctc_increment_percentage"`
-	ApprovedVariableCTCIncrementPercentage float32 `bson:"approved_variable_ctc_increment_percentage"`
-	IsPromotionProposed                    bool    `bson:"is_promotion_proposed"`
-	ProposedNewDesignation                 string  `bson:"proposed_new_designation"`
-	IsPromotionApproved                    bool    `bson:"is_promotion_approved"`
-	ApprovedNewDesignation                 string  `bson:"approved_new_designation"`
-	PromotionRemarks                       string  `bson:"promotion_remarks"`
-	IncrementEffectiveDate                 string  `bson:"increment_effective_date"`
-	PromotionEffectiveDate                 string  `bson:"promotion_effective_date"`
+	CurrentCTC                  float32 `bson:"current_ctc"`
+	CurrentFixedCTC             float32 `bson:"current_fixed_ctc"`
+	CurrentVariableCTC          float32 `bson:"current_variable_ctc"`
+	ProposedIncrementPercentage float32 `bson:"proposed_increment_percentage"`
+	IncrementRemarks            string  `bson:"increment_remarks"`
+	ApprovedCTC                 float32 `bson:"approved_ctc"`
+	ApprovedFixedCTC            float32 `bson:"approved_fixed_ctc"`
+	ApprovedVariableCTC         float32 `bson:"approved_variable_ctc"`
+	ApprovedIncrementPercentage float32 `bson:"approved_increment_percentage"`
+	IsPromotionProposed         bool    `bson:"is_promotion_proposed"`
+	ProposedNewDesignation      string  `bson:"proposed_new_designation"`
+	IsPromotionApproved         bool    `bson:"is_promotion_approved"`
+	ApprovedNewDesignation      string  `bson:"approved_new_designation"`
+	PromotionRemarks            string  `bson:"promotion_remarks"`
 }
 
 type Appraisal struct {
