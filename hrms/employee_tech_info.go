@@ -172,11 +172,17 @@ type CompensationInfo struct {
 	CurrentCTC                  float32 `bson:"current_ctc"`
 	CurrentFixedCTC             float32 `bson:"current_fixed_ctc"`
 	CurrentVariableCTC          float32 `bson:"current_variable_ctc"`
+	CurrentCompanyBenifitsCTC   float32 `bson:"current_company_benefits_ctc"`
+	CurrentPerformanceBonus     float32 `bson:"current_performance_bonus"`
+	CurrentRetentionBonus       float32 `bson:"current_retention_bonus"`
 	ProposedIncrementPercentage float32 `bson:"proposed_increment_percentage"`
 	IncrementRemarks            string  `bson:"increment_remarks"`
 	ApprovedCTC                 float32 `bson:"approved_ctc"`
 	ApprovedFixedCTC            float32 `bson:"approved_fixed_ctc"`
 	ApprovedVariableCTC         float32 `bson:"approved_variable_ctc"`
+	ApprovedCompanyBenifitsCTC  float32 `bson:"approved_company_benefits_ctc"`
+	ApprovedPerformanceBonus    float32 `bson:"approved_performance_bonus"`
+	ApprovedRetentionBonus      float32 `bson:"approved_retention_bonus"`
 	ApprovedIncrementPercentage float32 `bson:"approved_increment_percentage"`
 	IsPromotionProposed         bool    `bson:"is_promotion_proposed"`
 	ProposedNewDesignation      string  `bson:"proposed_new_designation"`
