@@ -5,11 +5,11 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 type IncrementLetterStatus string
 
 const (
-	IncrementLetterStatusDraft     IncrementLetterStatus = "draft"
-	IncrementLetterStatusApproved  IncrementLetterStatus = "approved"
-	IncrementLetterStatusRejected  IncrementLetterStatus = "active"
-	IncrementLetterStatusInactive  IncrementLetterStatus = "inactive"
-	IncrementLetterStatusCancelled IncrementLetterStatus = "expired"
+	IncrementLetterStatusDraft    IncrementLetterStatus = "draft"
+	IncrementLetterStatusApproved IncrementLetterStatus = "approved"
+	IncrementLetterStatusActive   IncrementLetterStatus = "active"
+	IncrementLetterStatusInactive IncrementLetterStatus = "inactive"
+	IncrementLetterStatusExpired  IncrementLetterStatus = "expired"
 )
 
 type IncrementLetterCounter struct {
