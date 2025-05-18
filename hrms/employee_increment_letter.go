@@ -23,7 +23,7 @@ type IncrementLetterCounter struct {
 type IncrementLetter struct {
 	ID                            primitive.ObjectID    `bson:"_id"`
 	DocumentNumber                string                `bson:"document_number"`
-	Year                          string                `bson:"year"`
+	FinancialYear                 string                `bson:"financial_year"`
 	Status                        IncrementLetterStatus `bson:"status"`
 	EmployeeId                    string                `bson:"employee_id"`
 	EmployeeName                  string                `bson:"employee_name"`
@@ -34,6 +34,9 @@ type IncrementLetter struct {
 	AnnualBasicSalary             float32               `bson:"annual_basic_salary"`
 	AnnualHRA                     float32               `bson:"annual_hra"`
 	AnnualSpecialPay              float32               `bson:"annual_special_pay"`
+	AnnualLTA                     float32               `bson:"annual_lta"`
+	AnnualBooksAndPeriodicals     float32               `bson:"annual_books_and_periodicals"`
+	AnnualBroadbandAndMobile      float32               `bson:"annual_broadband_and_mobile"`
 	AnnualGrossSalary             float32               `bson:"annual_gross_salary"`
 	AnnualEmployeeContributionPF  float32               `bson:"annual_employee_contribution_pf"`
 	AnnualNetPay                  float32               `bson:"annual_net_pay"`
@@ -48,6 +51,8 @@ type IncrementLetter struct {
 	AnnualRetentionBonus          float32               `bson:"annual_retention_bonus"`
 	TotalVariableCTC              float32               `bson:"total_variable_ctc"`
 	AnnualEmployerContributionPF  float32               `bson:"annual_employer_contribution_pf"`
+	IsOptedforCorporateNPS        bool                  `bson:"is_opted_for_corporate_nps"`
+	AnnualCorporateNPS            float32               `bson:"annual_corporate_nps"`
 	AnnualGratuity                float32               `bson:"annual_gratuity"`
 	AnnualLeaveEncashment         float32               `bson:"annual_leave_encashment"`
 	AnnualMedicalInsurance        float32               `bson:"annual_medical_insurance"`
