@@ -46,6 +46,7 @@ type IncrementLetter struct {
 	MonthlySpecialPay             float32               `bson:"monthly_special_pay"`
 	MonthlyGrossSalary            float32               `bson:"monthly_gross_salary"`
 	MonthlyEmployeeContributionPF float32               `bson:"monthly_employee_contribution_pf"`
+	MonthlyCorporateNPS           float32               `bson:"monthly_corporate_nps"`
 	MonthlyNetPay                 float32               `bson:"monthly_net_pay"`
 	AnnualPerformanceBonus        float32               `bson:"annual_performance_bonus"`
 	AnnualRetentionBonus          float32               `bson:"annual_retention_bonus"`
