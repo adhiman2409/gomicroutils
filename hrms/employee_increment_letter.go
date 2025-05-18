@@ -37,6 +37,7 @@ type IncrementLetter struct {
 	AnnualLTA                     float32               `bson:"annual_lta"`
 	AnnualBooksAndPeriodicals     float32               `bson:"annual_books_and_periodicals"`
 	AnnualBroadbandAndMobile      float32               `bson:"annual_broadband_and_mobile"`
+	AnnualFoodCoupons             float32               `bson:"annual_food_coupons"`
 	AnnualGrossSalary             float32               `bson:"annual_gross_salary"`
 	AnnualEmployeeContributionPF  float32               `bson:"annual_employee_contribution_pf"`
 	AnnualNetPay                  float32               `bson:"annual_net_pay"`
@@ -44,6 +45,10 @@ type IncrementLetter struct {
 	MonthlyBasicSalary            float32               `bson:"monthly_basic_salary"`
 	MonthlyHRA                    float32               `bson:"monthly_hra"`
 	MonthlySpecialPay             float32               `bson:"monthly_special_pay"`
+	MonthlyLTA                    float32               `bson:"monthly_lta"`
+	MonthlyBooksAndPeriodicals    float32               `bson:"monthly_books_and_periodicals"`
+	MonthlyBroadbandAndMobile     float32               `bson:"monthly_broadband_and_mobile"`
+	MonthlyFoodCoupons            float32               `bson:"monthly_food_coupons"`
 	MonthlyGrossSalary            float32               `bson:"monthly_gross_salary"`
 	MonthlyEmployeeContributionPF float32               `bson:"monthly_employee_contribution_pf"`
 	MonthlyCorporateNPS           float32               `bson:"monthly_corporate_nps"`
