@@ -169,26 +169,36 @@ type HRFeedback struct {
 }
 
 type CompensationInfo struct {
-	CurrentCTC                  float32 `bson:"current_ctc"`
-	CurrentFixedCTC             float32 `bson:"current_fixed_ctc"`
-	CurrentVariableCTC          float32 `bson:"current_variable_ctc"`
-	CurrentCompanyBenifitsCTC   float32 `bson:"current_company_benefits_ctc"`
-	CurrentPerformanceBonus     float32 `bson:"current_performance_bonus"`
-	CurrentRetentionBonus       float32 `bson:"current_retention_bonus"`
-	ProposedIncrementPercentage float32 `bson:"proposed_increment_percentage"`
-	IncrementRemarks            string  `bson:"increment_remarks"`
-	ApprovedCTC                 float32 `bson:"approved_ctc"`
-	ApprovedFixedCTC            float32 `bson:"approved_fixed_ctc"`
-	ApprovedVariableCTC         float32 `bson:"approved_variable_ctc"`
-	ApprovedCompanyBenifitsCTC  float32 `bson:"approved_company_benefits_ctc"`
-	ApprovedPerformanceBonus    float32 `bson:"approved_performance_bonus"`
-	ApprovedRetentionBonus      float32 `bson:"approved_retention_bonus"`
-	ApprovedIncrementPercentage float32 `bson:"approved_increment_percentage"`
-	IsPromotionProposed         bool    `bson:"is_promotion_proposed"`
-	ProposedNewDesignation      string  `bson:"proposed_new_designation"`
-	IsPromotionApproved         bool    `bson:"is_promotion_approved"`
-	ApprovedNewDesignation      string  `bson:"approved_new_designation"`
-	PromotionRemarks            string  `bson:"promotion_remarks"`
+	CurrentCTC                     float32 `json:"current_ctc"`
+	CurrentFixedCTC                float32 `json:"current_fixed_ctc"`
+	CurrentVariableCTC             float32 `json:"current_variable_ctc"`
+	CurrentCompanyBenefitsCTC      float32 `json:"current_company_benefits_ctc"`
+	CurrentPerformanceBonus        float32 `json:"current_performance_bonus"`
+	CurrentRetentionBonus          float32 `json:"current_retention_bonus"`
+	CurrentIsOptedForCorporateNPS  bool    `json:"current_is_opted_for_corporate_nps"`
+	CurrentLTA                     float32 `json:"current_lta"`
+	CurrentBooksAndPeriodicals     float32 `json:"current_books_and_periodicals"`
+	CurrentBroadbandAndMobile      float32 `json:"current_broadband_and_mobile"`
+	CurrentFoodCoupons             float32 `json:"current_food_coupons"`
+	ProposedIncrementPercentage    float32 `json:"proposed_increment_percentage"`
+	IncrementRemarks               string  `json:"increment_remarks"`
+	ApprovedCTC                    float32 `json:"approved_ctc"`
+	ApprovedFixedCTC               float32 `json:"approved_fixed_ctc"`
+	ApprovedVariableCTC            float32 `json:"approved_variable_ctc"`
+	ApprovedCompanyBenefitsCTC     float32 `json:"approved_company_benefits_ctc"`
+	ApprovedPerformanceBonus       float32 `json:"approved_performance_bonus"`
+	ApprovedRetentionBonus         float32 `json:"approved_retention_bonus"`
+	ApprovedIsOptedForCorporateNPS bool    `json:"approved_is_opted_for_corporate_nps"`
+	ApprovedLTA                    float32 `json:"approved_lta"`
+	ApprovedBooksAndPeriodicals    float32 `json:"approved_books_and_periodicals"`
+	ApprovedBroadbandAndMobile     float32 `json:"approved_broadband_and_mobile"`
+	ApprovedFoodCoupons            float32 `json:"approved_food_coupons"`
+	ApprovedIncrementPercentage    float32 `json:"approved_increment_percentage"`
+	IsPromotionProposed            bool    `json:"is_promotion_proposed"`
+	ProposedNewDesignation         string  `json:"proposed_new_designation"`
+	IsPromotionApproved            bool    `json:"is_promotion_approved"`
+	ApprovedNewDesignation         string  `json:"approved_new_designation"`
+	PromotionRemarks               string  `json:"promotion_remarks"`
 }
 
 type Appraisal struct {
