@@ -105,6 +105,7 @@ const PAYMENT_COLLECTION_ORDERS = "payment-orders"
 const PAYMENT_COLLECTION_PAYMENTS = "payment-payments"
 const PAYMENT_COLLECTION_PROCESSED_EVENTS = "payment-processed-events"
 const PAYMENT_COLLECTION_MONTHLY_USER_DATA = "payment-monthly-user-data"
+const ATTENDANCE_COLLECTION_MONTHLY_TIMESHEET = "attendance-monthly-timesheet"
 
 const ANALYTIC_COLLECTION_ANALYTICS = "analytic-analytics"
 
@@ -126,6 +127,11 @@ func GetPaymentProcessedEventsCollection(client *mongo.Client, domain string) *m
 func GetPaymentMonthlyUserDataCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_MONTHLY_USER_DATA)
+}
+
+func GetAttendanceMonthlyTimeSheetCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ATTENDANCE_COLLECTION_MONTHLY_TIMESHEET)
 }
 
 func GetAnalyticsCollection(client *mongo.Client, domain string) *mongo.Collection {
