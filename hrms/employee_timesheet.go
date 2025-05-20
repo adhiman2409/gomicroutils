@@ -33,7 +33,7 @@ type TimeSheet struct {
 	LastCheckOutTime  time.Time        `bson:"last_check_out_time"`
 	TotalWorkingHours float64          `bson:"total_working_hours"`
 	IsHoliday         bool             `bson:"is_holiday"`
-	IsLeave           bool             `bson:"is_leave"`
+	IsOnLeave         bool             `bson:"is_on_leave"`
 	IsWeeklyOffDay    bool             `bson:"is_weekly_off_day"`
 	Entries           []TimeSheetEntry `bson:"entries"`
 }
