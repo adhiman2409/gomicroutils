@@ -31,8 +31,8 @@ type ProjectInfo struct {
 	IsRemoteWorking         bool               `bson:"is_remote_working"`
 	StartDate               string             `bson:"start_date"`
 	EndDate                 string             `bson:"end_date"`
-	ProjectHead             string             `bson:"project_head"`
-	ProjectHeadEmail        string             `bson:"project_head_email"`
+	ProjectHeadId           string             `bson:"project_head_id"`
+	ProjectHeadName         string             `bson:"project_head_name"`
 	ProjectCoordinator      string             `bson:"project_coordinator"`
 	ProjectCoordinatorEmail string             `bson:"project_coordinator_email"`
 	ProjectWorkLocation     string             `bson:"project_work_location"`
