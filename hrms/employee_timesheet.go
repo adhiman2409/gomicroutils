@@ -32,6 +32,7 @@ type TimeSheet struct {
 	FirstCheckInTime  time.Time        `bson:"first_check_in_time"`
 	LastCheckOutTime  time.Time        `bson:"last_check_out_time"`
 	TotalWorkingHours float64          `bson:"total_working_hours"`
+	IsWorkingDay      bool             `bson:"is_working_day"`
 	IsHoliday         bool             `bson:"is_holiday"`
 	IsOnLeave         bool             `bson:"is_on_leave"`
 	IsWeeklyOffDay    bool             `bson:"is_weekly_off_day"`
