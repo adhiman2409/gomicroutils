@@ -24,7 +24,7 @@ type MonthlyTimeSheet struct {
 	Year           int                `bson:"year"`
 	EmployeeID     string             `bson:"employee_id"`
 	ManagerID      string             `bson:"manager_id"`
-	DailyUserCount []TimeSheet        `bson:"daily_timesheet"`
+	DailyTimesheet []TimeSheet        `bson:"daily_timesheet"`
 }
 
 type TimeSheet struct {
