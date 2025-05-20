@@ -42,6 +42,7 @@ type ProjectInfo struct {
 	ProjectHolidayList      []string           `bson:"project_holiday_list"`
 	ProjectDailyWorkingHour string             `bson:"project_daily_working_hour"`
 	ProjectWeeklyOffDay     string             `bson:"project_weekly_off_day"`
+	TeamMembers             []string           `bson:"team_members"`
 	ShiftTypes              []ShiftType        `bson:"shift_types"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
