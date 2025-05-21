@@ -201,6 +201,39 @@ type CompensationInfo struct {
 	PromotionRemarks               string  `bson:"promotion_remarks"`
 }
 
+type CompensationInfoOld struct {
+	CurrentCTC                     float32 `bson:"current_ctc"`
+	CurrentFixedCTC                float32 `bson:"current_fixed_ctc"`
+	CurrentVariableCTC             float32 `bson:"current_variable_ctc"`
+	CurrentCompanyBenefitsCTC      float32 `bson:"current_company_benefits_ctc"`
+	CurrentPerformanceBonus        float32 `bson:"current_performance_bonus"`
+	CurrentRetentionBonus          float32 `bson:"current_retention_bonus"`
+	CurrentIsOptedForCorporateNPS  bool    `bson:"current_is_opted_for_corporate_nps"`
+	CurrentLTA                     float32 `bson:"current_lta"`
+	CurrentBooksAndPeriodicals     float32 `bson:"current_books_and_periodicals"`
+	CurrentBroadbandAndMobile      float32 `bson:"current_broadband_and_mobile"`
+	CurrentFoodCoupons             float32 `bson:"current_food_coupons"`
+	ProposedIncrementPercentage    float32 `bson:"proposed_increment_percentage"`
+	IncrementRemarks               string  `bson:"increment_remarks"`
+	ApprovedCTC                    float32 `bson:"approved_ctc"`
+	ApprovedFixedCTC               float32 `bson:"approved_fixed_ctc"`
+	ApprovedVariableCTC            float32 `bson:"approved_variable_ctc"`
+	ApprovedCompanyBenefitsCTC     float32 `bson:"approved_company_benefits_ctc"`
+	ApprovedPerformanceBonus       float32 `bson:"approved_performance_bonus"`
+	ApprovedRetentionBonus         float32 `bson:"approved_retention_bonus"`
+	ApprovedIsOptedForCorporateNPS bool    `bson:"approved_is_opted_for_corporate_nps"`
+	ApprovedLTA                    float32 `bson:"approved_lta"`
+	ApprovedBooksAndPeriodicals    float32 `bson:"approved_books_and_periodicals"`
+	ApprovedBroadbandAndMobile     float32 `bson:"approved_broadband_and_mobile"`
+	ApprovedFoodCoupons            float32 `bson:"approved_food_coupons"`
+	ApprovedIncrementPercentage    float32 `bson:"approved_increment_percentage"`
+	IsPromotionProposed            bool    `bson:"is_promotion_proposed"`
+	ProposedNewDesignation         string  `bson:"proposed_new_designation"`
+	IsPromotionApproved            bool    `bson:"is_promotion_approved"`
+	ApprovedNewDesignation         string  `bson:"approved_new_designation"`
+	PromotionRemarks               string  `bson:"promotion_remarks"`
+}
+
 type Appraisal struct {
 	Year                            string           `bson:"year"`
 	AppraisalStartDate              string           `bson:"appraisal_start_date"`
@@ -251,6 +284,58 @@ type Appraisal struct {
 	IncrementLetterEmailDate        time.Time        `bson:"increment_letter_email_date"`
 	ManagerAppraisalCompletionDate  time.Time        `bson:"manager_appraisal_completion_date"`
 	NewCompensationApprovalDate     time.Time        `bson:"new_compensation_approval_date"`
+}
+
+type AppraisalOld struct {
+	Year                            string              `bson:"year"`
+	AppraisalStartDate              string              `bson:"appraisal_start_date"`
+	AppraisalEndDate                string              `bson:"appraisal_end_date"`
+	AppraisalStatus                 string              `bson:"appraisal_status"`
+	IsSubmittedByEmployee           bool                `bson:"is_submitted_by_employee"`
+	IsSubmittedByManager            bool                `bson:"is_submitted_by_manager"`
+	IsCompletedByManager            bool                `bson:"is_completed_by_manager"`
+	IsSubmittedByHR                 bool                `bson:"is_submitted_by_hr"`
+	IsSubmittedByDepartmentHead     bool                `bson:"is_submitted_by_department_head"`
+	EmployeeId                      string              `bson:"employee_id"`
+	EmployeeName                    string              `bson:"employee_name"`
+	EmployeeEmail                   string              `bson:"employee_email"`
+	EmployeeDesignation             string              `bson:"employee_designation"`
+	EmployeeDepartment              string              `bson:"employee_department"`
+	EmployeeLocation                string              `bson:"employee_location"`
+	EmployeeDateOfJoining           string              `bson:"employee_date_of_joining"`
+	EmployeeTenureInDays            string              `bson:"employee_tenure_in_days"`
+	EmployeeAttendancePercentage    string              `bson:"employee_attendance_percentage"`
+	EmployeeEngineeringManagerName  string              `bson:"employee_engineering_manager_name"`
+	EmployeeEngineeringManagerId    string              `bson:"employee_engineering_manager_id"`
+	EmployeeEngineeringManagerEmail string              `bson:"employee_engineering_manager_email"`
+	EmployeeDepartmentHeadName      string              `bson:"employee_department_head_name"`
+	EmployeeDepartmentHeadId        string              `bson:"employee_department_head_id"`
+	EmployeeHRManagerName           string              `bson:"employee_hr_manager_name"`
+	EmployeeHRManagerId             string              `bson:"employee_hr_manager_id"`
+	Projects                        []Project           `bson:"projects"`
+	KeySkills                       []Rating            `bson:"key_skills"`
+	AssesmentsmentRating            []Rating            `bson:"assessment_rating"`
+	HighLights                      []HighLight         `bson:"highlights"`
+	QuestionAnswers                 []QuestionAnswer    `bson:"question_answers"`
+	Achivements                     []Achivement        `bson:"achivements"`
+	Awards                          []Award             `bson:"awards"`
+	HRFeedbacks                     []HRFeedback        `bson:"hr_feedbacks"`
+	OverallEmployeeRating           string              `bson:"overall_employee_rating"`
+	OverallManagerRating            string              `bson:"overall_manager_rating"`
+	OverallEmployeeRemarks          string              `bson:"overall_employee_remarks"`
+	OverallManagerRemarks           string              `bson:"overall_manager_remarks"`
+	GoalsAndExpectionsForNextYear   string              `bson:"goals_and_expections_for_next_year"`
+	CompensationInfo                CompensationInfoOld `bson:"compensation_info"`
+	DateOfCurrentDesignation        string              `bson:"date_of_current_designation"`
+	TotalLeavesAvailed              float32             `bson:"total_leaves_availed"`
+	TotalYearOfExperience           float32             `bson:"total_year_of_experience"`
+	TotalYearOfRelevantExperience   float32             `bson:"total_year_of_relevant_experience"`
+	DesignationAtTheTimeOfJoining   string              `bson:"designation_at_the_time_of_joining"`
+	IsAppraisalLetterUploaded       bool                `bson:"is_appraisal_letter_uploaded"`
+	IsIncrementLetterEmailSent      bool                `bson:"is_increment_letter_email_sent"`
+	IncrementLetterEmailDate        time.Time           `bson:"increment_letter_email_date"`
+	ManagerAppraisalCompletionDate  time.Time           `bson:"manager_appraisal_completion_date"`
+	NewCompensationApprovalDate     time.Time           `bson:"new_compensation_approval_date"`
 }
 
 type VisaInfo struct {
