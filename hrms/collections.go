@@ -321,6 +321,11 @@ func GetOrgClientInfoCollection(client *mongo.Client, domain string) *mongo.Coll
 	return db.Collection(ORG_COLLECTION_CLIENT_INFO)
 }
 
+func GetOrgClientProjectInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_CLIENT_PROJECT_INFO)
+}
+
 func GetOrgClientContactInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_CLIENT_CONTACT_INFO)
@@ -329,6 +334,11 @@ func GetOrgClientContactInfoCollection(client *mongo.Client, domain string) *mon
 func GetOrgClientIdCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_CLIENT_ID_COUNTER)
+}
+
+func GetOrgClientProjectIdCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_CLIENT_PROJECT_ID_COUNTER)
 }
 
 func GetOrgClientMeetingInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
