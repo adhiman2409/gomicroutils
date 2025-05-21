@@ -6,6 +6,13 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type ProjectIdCounter struct {
+	ID       primitive.ObjectID `bson:"_id"`
+	ClientId string             `bson:"client_id"`
+	Prefix   string             `bson:"prefix"`
+	Counter  int64              `bson:"counter"`
+}
+
 type ProjectShifts struct {
 	ID                primitive.ObjectID `bson:"_id"`
 	ProjectId         string             `bson:"project_id"`
