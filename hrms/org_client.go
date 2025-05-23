@@ -25,6 +25,7 @@ type ClientInfo struct {
 	ClientType                 string             `bson:"client_type"`
 	ClientStatus               string             `bson:"client_status"`
 	ClientDescription          string             `bson:"client_description"`
+	IsDefault                  bool               `bson:"is_default"`
 	IsNDASigned                bool               `bson:"is_nda_signed"`
 	NDASignDate                time.Time          `bson:"nda_sign_date"`
 	NDADocument                string             `bson:"nda_document"`
