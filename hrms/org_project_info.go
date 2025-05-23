@@ -34,6 +34,7 @@ type ProjectInfo struct {
 	ProjectType             string              `bson:"project_type"`
 	ProjectStatus           string              `bson:"project_status"`
 	IsExternalProject       bool                `bson:"is_external_project"`
+	IsDefault               bool                `bson:"is_default"`
 	IsBillable              bool                `bson:"is_billable"`
 	IsRemoteWorking         bool                `bson:"is_remote_working"`
 	StartDate               string              `bson:"start_date"`
