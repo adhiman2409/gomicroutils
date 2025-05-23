@@ -12,6 +12,9 @@ const (
 )
 
 func (r ShiftType) String() string {
+	if r == 0 {
+		return "Regular"
+	}
 	return [...]string{"Regular", "Morning", "Evening", "Night", "WeeklyOff", "Holiday"}[r-1]
 }
 
