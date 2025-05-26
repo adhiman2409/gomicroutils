@@ -52,7 +52,7 @@ func (a *StorageConnection) DownloadAppraisalLetter(w http.ResponseWriter, emplo
 	defer cancel()
 
 	nd := GetUpdatedFinanceDomain(domain)
-	filepathwithname := "AppraisalLetter/" + employeeId + "/" + year + "/" + "Appraisal_Letter_" + employeeId + "_" + year + ".pdf"
+	filepathwithname := "IncrementLetters/" + employeeId + "/" + year + "/" + "Increment_Letter_" + employeeId + "_" + year + ".pdf"
 	fmt.Println("filepathwithname ", filepathwithname)
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
 	if err != nil {
@@ -85,7 +85,7 @@ func (a *StorageConnection) GetAppraisalLetterByEID(employeeId, domain string) (
 	defer cancel()
 
 	nd := GetUpdatedFinanceDomain(domain)
-	prefix := "AppraisalLetter/" + employeeId + "/"
+	prefix := "IncrementLetters/" + employeeId + "/"
 	delim := ""
 
 	it := a.Client.Bucket(nd).UserProject(pid).Objects(clientCtx, &storage.Query{
