@@ -59,6 +59,7 @@ type EmployeeLeaveStats struct {
 	AttendanceStatsUpdatedOn         string             `bson:"attendance_stats_updated_on"`
 	LeaveStatsUpdatedOn              string             `bson:"leave_stats_updated_on"`
 	EarnedLeaveCycleInDays           int32              `bson:"earned_leave_cycle_in_days"`
+	LastLeavesCreditedOn             string             `bson:"last_leaves_credited_on"`
 	RegularizationReminderMailSentOn string             `bson:"regularization_reminder_mail_sent_on"`
 	Year                             string             `bson:"year"`
 	LeavesStats                      []LeaveStats       `bson:"leaves_stats"`
