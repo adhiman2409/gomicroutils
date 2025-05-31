@@ -41,6 +41,7 @@ type LeaveStats struct {
 	LeavesEncashedLastYear            float32 `bson:"leaves_encashed_last_year"`
 	LeavesCarryForwardLastYear        float32 `bson:"leaves_carry_forward_last_year"`
 	LastYearEarnedPrivilegeLeave      float32 `bson:"last_year_earned_privilege_leave"`
+	LastLeavesCreditedOn              string  `bson:"last_leaves_credited_on"`
 }
 
 type EmployeeLeaveStats struct {
@@ -59,7 +60,6 @@ type EmployeeLeaveStats struct {
 	AttendanceStatsUpdatedOn         string             `bson:"attendance_stats_updated_on"`
 	LeaveStatsUpdatedOn              string             `bson:"leave_stats_updated_on"`
 	EarnedLeaveCycleInDays           int32              `bson:"earned_leave_cycle_in_days"`
-	LastLeavesCreditedOn             string             `bson:"last_leaves_credited_on"`
 	RegularizationReminderMailSentOn string             `bson:"regularization_reminder_mail_sent_on"`
 	Year                             string             `bson:"year"`
 	LeavesStats                      []LeaveStats       `bson:"leaves_stats"`
