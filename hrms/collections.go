@@ -6,6 +6,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+const TEMPLATE_COLLECTION_USERS = "template-users"
+
 const ORG_COLLECTION_ORGANIZATION = "organization"
 const ORG_COLLECTION_DEPARTMENTS = "org-departments"
 const ORG_COLLECTION_DOCUMENTS = "org-documents"
