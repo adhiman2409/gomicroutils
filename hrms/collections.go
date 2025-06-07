@@ -592,3 +592,8 @@ func GetWorkerDomainCollection(client *mongo.Client, domain string) *mongo.Colle
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(WORKER_COLLECTION_DOMAINS)
 }
+
+func GetTemplateUsersCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TEMPLATE_COLLECTION_USERS)
+}
