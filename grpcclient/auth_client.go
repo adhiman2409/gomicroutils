@@ -2,6 +2,7 @@ package grpcclient
 
 import (
 	"log"
+	"os"
 
 	"github.com/adhiman2409/gomicroutils/genproto/auth"
 	"google.golang.org/grpc"
@@ -30,8 +31,12 @@ func StartAuthClient() {
 	}
 
 	// create client connection
+	url := os.Getenv("AUTH_SERVICE_URL")
+	if url == "" {
+		url = "auth-srv:50051" // default URL if not set
+	}
 	conn, err := grpc.Dial(
-		"auth-srv:50051",
+		url,
 		grpc.WithTransportCredentials(tlsCredentials),
 	)
 	if err != nil {
