@@ -6,6 +6,7 @@ require (
 	cloud.google.com/go/storage v1.40.0
 	github.com/google/martian/v3 v3.3.3
 	github.com/gorilla/mux v1.8.1
+	github.com/openzipkin/zipkin-go v0.4.3
 	github.com/rabbitmq/amqp091-go v1.9.0
 	github.com/rs/xid v1.5.0
 	go.mongodb.org/mongo-driver v1.13.1
@@ -31,7 +32,7 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.3 // indirect
-	github.com/klauspost/compress v1.13.6 // indirect
+	github.com/klauspost/compress v1.17.8 // indirect
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.1.2 // indirect
