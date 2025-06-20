@@ -1,6 +1,7 @@
 package tracer
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 
@@ -32,6 +33,7 @@ func NewTracer(domain string) (*zipkin.Tracer, error) {
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println("Using service name:", serviceName, "and port:", servicePortInt, "localEndPointURL:", localEndPointURL)
 	localEndpoint := &model.Endpoint{ServiceName: serviceName, Port: uint16(servicePortInt)}
 
 	// Sampler tells you which traces are going to be sampled or not. In this case we will record 100% (1.00) of traces.
