@@ -22,7 +22,7 @@ func NewTracer(domain string) (*zipkin.Tracer, error) {
 	// Local endpoint represent the local service information
 	serviceName := os.Getenv("ZIPKIN_SERVICE_NAME")
 	if serviceName == "" {
-		serviceName = "-srv"
+		serviceName = "utils-srv"
 	}
 	servicePort := os.Getenv("ZIPKIN_SERVICE_PORT")
 	if servicePort == "" {
