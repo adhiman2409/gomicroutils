@@ -11,12 +11,13 @@ import (
 
 // ZipkinZapMiddleware logs trace/span info with zap after each request
 func ZipkinMiddleware(next http.Handler) http.Handler {
-	t, _ := NewTracer("vms.unirms.com")
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		t, _ := NewTracer("vms.unirms.com")
 		zipkinhttp.NewServerMiddleware(
 			t,
 			zipkinhttp.SpanName(mux.CurrentRoute(r).GetName()),
 			zipkinhttp.ServerTags(map[string]string{"component": "rest-api"}),
-		)(next)
+		)
+		next.ServeHTTP(w, r)
 	})
 }
