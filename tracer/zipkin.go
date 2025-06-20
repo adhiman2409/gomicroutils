@@ -10,16 +10,23 @@ import (
 	zipkinhttp "github.com/openzipkin/zipkin-go/middleware/http"
 )
 
-// ZipkinZapMiddleware logs trace/span info with zap after each request
+// ZipkinMiddleware injects Zipkin tracing into each HTTP request
 func ZipkinMiddleware(t *zipkin.Tracer) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			zipkinhttp.NewServerMiddleware(
+			route := mux.CurrentRoute(r)
+			spanName := "unknown"
+			if route != nil {
+				if name := route.GetName(); name != "" {
+					spanName = name
+				}
+			}
+			middleware := zipkinhttp.NewServerMiddleware(
 				t,
-				zipkinhttp.SpanName(mux.CurrentRoute(r).GetName()),
+				zipkinhttp.SpanName(spanName),
 				zipkinhttp.ServerTags(map[string]string{"component": "rest-api"}),
 			)
-			next.ServeHTTP(w, r)
+			middleware(next).ServeHTTP(w, r)
 		})
 	}
 }
