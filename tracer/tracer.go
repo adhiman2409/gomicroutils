@@ -27,7 +27,7 @@ func NewTracer(domain string) (*zipkin.Tracer, error) {
 	}
 	servicePort := os.Getenv("ZIPKIN_SERVICE_PORT")
 	if servicePort == "" {
-		servicePort = "3000"
+		servicePort = "9411"
 	}
 	servicePortInt, err := strconv.Atoi(servicePort)
 	if err != nil {
