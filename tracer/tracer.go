@@ -15,13 +15,9 @@ const endpointURL = "https://zipkin.unirms.com/api/v2/spans"
 
 var once sync.Once
 
-type PSTracer struct {
-	tracer *zipkin.Tracer
-}
+var tracer *zipkin.Tracer
 
-var pstracer *PSTracer
-
-func GetTracer() *PSTracer {
+func GetTracer() *zipkin.Tracer {
 	once.Do(func() {
 		// The reporter sends traces to zipkin server
 		localEndPointURL := os.Getenv("ZIPKIN_LOCAL_ENDPOINT_URL")
@@ -62,10 +58,8 @@ func GetTracer() *PSTracer {
 			return
 		}
 
-		pstracer = &PSTracer{
-			tracer: t,
-		}
+		tracer = t
 	})
 
-	return pstracer
+	return tracer
 }

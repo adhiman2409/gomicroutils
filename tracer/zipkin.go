@@ -26,7 +26,7 @@ func ZipkinMiddleware() func(http.Handler) http.Handler {
 			}
 			spanName = host + "-" + spanName
 			middleware := zipkinhttp.NewServerMiddleware(
-				GetTracer().tracer,
+				GetTracer(),
 				zipkinhttp.SpanName(spanName),
 				zipkinhttp.ServerTags(map[string]string{"component": "rest-api"}),
 			)
