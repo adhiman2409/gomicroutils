@@ -4,53 +4,68 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"sync"
 
 	"github.com/openzipkin/zipkin-go"
 	"github.com/openzipkin/zipkin-go/model"
 	reporterhttp "github.com/openzipkin/zipkin-go/reporter/http"
 )
 
-const endpointURL = "/api/v2/spans"
+const endpointURL = "https://zipkin.unirms.com/api/v2/spans"
 
-func NewTracer(domain string) (*zipkin.Tracer, error) {
-	// The reporter sends traces to zipkin server
-	localEndPointURL := os.Getenv("ZIPKIN_LOCAL_ENDPOINT_URL")
-	if localEndPointURL == "" {
-		localEndPointURL = "https://" + domain + endpointURL
-	}
-	reporter := reporterhttp.NewReporter(localEndPointURL)
+var once sync.Once
 
-	// Local endpoint represent the local service information
-	serviceName := os.Getenv("ZIPKIN_SERVICE_NAME")
-	if serviceName == "" {
-		serviceName = "utils-srv"
-	}
-	servicePort := os.Getenv("ZIPKIN_SERVICE_PORT")
-	if servicePort == "" {
-		servicePort = "3000"
-	}
-	servicePortInt, err := strconv.Atoi(servicePort)
-	if err != nil {
-		return nil, err
-	}
-	fmt.Println("Using service name:", serviceName, "and port:", servicePortInt, "localEndPointURL:", localEndPointURL)
-	localEndpoint := &model.Endpoint{ServiceName: serviceName, Port: uint16(servicePortInt)}
+type PSTracer struct {
+	tracer *zipkin.Tracer
+}
 
-	// Sampler tells you which traces are going to be sampled or not. In this case we will record 100% (1.00) of traces.
-	sampler, err := zipkin.NewCountingSampler(1)
-	if err != nil {
-		return nil, err
-	}
+var pstracer *PSTracer
 
-	t, err := zipkin.NewTracer(
-		reporter,
-		zipkin.WithSampler(sampler),
-		zipkin.WithLocalEndpoint(localEndpoint),
-		zipkin.WithSharedSpans(true), // Enable shared spans for better trace visibility
-	)
-	if err != nil {
-		return nil, err
-	}
+func GetTracer() *PSTracer {
+	once.Do(func() {
+		// The reporter sends traces to zipkin server
+		localEndPointURL := os.Getenv("ZIPKIN_LOCAL_ENDPOINT_URL")
+		if localEndPointURL == "" {
+			localEndPointURL = endpointURL
+		}
+		reporter := reporterhttp.NewReporter(localEndPointURL)
 
-	return t, err
+		// Local endpoint represent the local service information
+		serviceName := os.Getenv("ZIPKIN_SERVICE_NAME")
+		if serviceName == "" {
+			serviceName = "utils-srv"
+		}
+		servicePort := os.Getenv("ZIPKIN_SERVICE_PORT")
+		if servicePort == "" {
+			servicePort = "3000"
+		}
+		servicePortInt, err := strconv.Atoi(servicePort)
+		if err != nil {
+			return
+		}
+		fmt.Println("Using service name:", serviceName, "and port:", servicePortInt, "localEndPointURL:", localEndPointURL)
+		localEndpoint := &model.Endpoint{ServiceName: serviceName, Port: uint16(servicePortInt)}
+
+		// Sampler tells you which traces are going to be sampled or not. In this case we will record 100% (1.00) of traces.
+		sampler, err := zipkin.NewCountingSampler(1)
+		if err != nil {
+			return
+		}
+
+		t, err := zipkin.NewTracer(
+			reporter,
+			zipkin.WithSampler(sampler),
+			zipkin.WithLocalEndpoint(localEndpoint),
+			zipkin.WithSharedSpans(true), // Enable shared spans for better trace visibility
+		)
+		if err != nil {
+			return
+		}
+
+		pstracer = &PSTracer{
+			tracer: t,
+		}
+	})
+
+	return pstracer
 }

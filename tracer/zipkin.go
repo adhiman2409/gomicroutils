@@ -6,12 +6,11 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/openzipkin/zipkin-go"
 	zipkinhttp "github.com/openzipkin/zipkin-go/middleware/http"
 )
 
 // ZipkinMiddleware injects Zipkin tracing into each HTTP request
-func ZipkinMiddleware(t *zipkin.Tracer) func(http.Handler) http.Handler {
+func ZipkinMiddleware() func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			route := mux.CurrentRoute(r)
@@ -21,8 +20,13 @@ func ZipkinMiddleware(t *zipkin.Tracer) func(http.Handler) http.Handler {
 					spanName = name
 				}
 			}
+			host := r.Host
+			if host == "" {
+				host = "unknown"
+			}
+			spanName = host + "-" + spanName
 			middleware := zipkinhttp.NewServerMiddleware(
-				t,
+				GetTracer().tracer,
 				zipkinhttp.SpanName(spanName),
 				zipkinhttp.ServerTags(map[string]string{"component": "rest-api"}),
 			)
