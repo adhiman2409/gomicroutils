@@ -69,7 +69,7 @@ func GetTracer() *zipkin.Tracer {
 	return tracer
 }
 
-func SSFC(ctx context.Context) (zipkin.Span, context.Context) {
+func SCS(ctx context.Context) (zipkin.Span, context.Context) {
 
 	functionName := "Unknown"
 	pc, _, _, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
@@ -80,6 +80,20 @@ func SSFC(ctx context.Context) (zipkin.Span, context.Context) {
 	}
 
 	span, ctx := GetTracer().StartSpanFromContext(ctx, functionName)
+	return span, ctx
+}
+
+func SCSP(ctx context.Context, prefix string) (zipkin.Span, context.Context) {
+
+	functionName := prefix + "-Unknown"
+	pc, _, _, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
+	if ok {
+		function := runtime.FuncForPC(pc).Name()
+		functok := strings.Split(function, ".")
+		functionName = functok[len(functok)-1]
+	}
+
+	span, ctx := GetTracer().StartSpanFromContext(ctx, prefix+"-"+functionName)
 	return span, ctx
 }
 
