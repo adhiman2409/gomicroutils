@@ -1,9 +1,12 @@
 package tracer
 
 import (
+	"context"
 	"fmt"
 	"os"
+	"runtime"
 	"strconv"
+	"strings"
 	"sync"
 
 	"github.com/openzipkin/zipkin-go"
@@ -12,6 +15,8 @@ import (
 )
 
 const endpointURL = "https://zipkin.unirms.com/api/v2/spans"
+
+const FUNCTION_SKIP_LEVEL = 1
 
 var once sync.Once
 
@@ -62,4 +67,32 @@ func GetTracer() *zipkin.Tracer {
 	})
 
 	return tracer
+}
+
+func SSFC(ctx context.Context) (zipkin.Span, context.Context) {
+
+	functionName := "Unknown"
+	pc, _, _, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
+	if ok {
+		function := runtime.FuncForPC(pc).Name()
+		functok := strings.Split(function, ".")
+		functionName = functok[len(functok)-1]
+	}
+
+	span, ctx := GetTracer().StartSpanFromContext(ctx, functionName)
+	return span, ctx
+}
+
+func STag(span zipkin.Span, key string, value string) {
+	if span == nil {
+		return
+	}
+	span.Tag(key, value)
+}
+
+func SError(span zipkin.Span, err string) {
+	if span == nil || err == "" {
+		return
+	}
+	span.Tag("error", err)
 }
