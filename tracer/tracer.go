@@ -2,7 +2,7 @@ package tracer
 
 import (
 	"context"
-	"fmt"
+	"log"
 	"os"
 	"runtime"
 	"strconv"
@@ -20,7 +20,7 @@ const FUNCTION_SKIP_LEVEL = 1
 
 var once sync.Once
 
-var tracer *zipkin.Tracer
+var T *zipkin.Tracer
 
 func GetTracer() *zipkin.Tracer {
 	once.Do(func() {
@@ -44,7 +44,6 @@ func GetTracer() *zipkin.Tracer {
 		if err != nil {
 			return
 		}
-		fmt.Println("Using service name:", serviceName, "and port:", servicePortInt, "localEndPointURL:", localEndPointURL)
 		localEndpoint := &model.Endpoint{ServiceName: serviceName, Port: uint16(servicePortInt)}
 
 		// Sampler tells you which traces are going to be sampled or not. In this case we will record 100% (1.00) of traces.
@@ -60,17 +59,17 @@ func GetTracer() *zipkin.Tracer {
 			zipkin.WithSharedSpans(true), // Enable shared spans for better trace visibility
 		)
 		if err != nil {
-			return
+			// Log the error and panic to avoid leaving tracer nil
+			panic("failed to initialize zipkin tracer: " + err.Error())
 		}
 
-		tracer = t
+		T = t
 	})
 
-	return tracer
+	return T
 }
 
-func SCS(ctx context.Context) (zipkin.Span, context.Context) {
-
+func SCSP(ctx context.Context, prefix string) (zipkin.Span, context.Context) {
 	functionName := "Unknown"
 	pc, _, _, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
 	if ok {
@@ -79,34 +78,15 @@ func SCS(ctx context.Context) (zipkin.Span, context.Context) {
 		functionName = functok[len(functok)-1]
 	}
 
-	span, ctx := GetTracer().StartSpanFromContext(ctx, functionName)
-	return span, ctx
-}
-
-func SCSP(ctx context.Context, prefix string) (zipkin.Span, context.Context) {
-
-	functionName := prefix + "-Unknown"
-	pc, _, _, ok := runtime.Caller(FUNCTION_SKIP_LEVEL)
-	if ok {
-		function := runtime.FuncForPC(pc).Name()
-		functok := strings.Split(function, ".")
-		functionName = functok[len(functok)-1]
+	parentSpan := zipkin.SpanFromContext(ctx)
+	if parentSpan == nil {
+		// No span found: middleware may not be configured correctly
+		log.Println("No Zipkin span found in context", functionName)
+		span, newCtx := T.StartSpanFromContext(ctx, prefix+"-"+functionName)
+		return span, newCtx
 	}
 
-	span, ctx := GetTracer().StartSpanFromContext(ctx, prefix+"-"+functionName)
-	return span, ctx
-}
-
-func STag(span zipkin.Span, key string, value string) {
-	if span == nil {
-		return
-	}
-	span.Tag(key, value)
-}
-
-func SError(span zipkin.Span, err string) {
-	if span == nil || err == "" {
-		return
-	}
-	span.Tag("error", err)
+	childSpan := T.StartSpan(prefix+"-"+functionName, zipkin.Parent(parentSpan.Context()))
+	newCtx := zipkin.NewContext(ctx, childSpan)
+	return childSpan, newCtx
 }
