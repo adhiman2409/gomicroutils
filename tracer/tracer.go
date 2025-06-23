@@ -84,6 +84,8 @@ func SCSP(ctx context.Context, prefix string) (zipkin.Span, context.Context) {
 		log.Println("No Zipkin span found in context", functionName)
 		span, newCtx := T.StartSpanFromContext(ctx, prefix+"-"+functionName)
 		return span, newCtx
+	} else {
+		log.Println("Zipkin span found in context", functionName)
 	}
 
 	childSpan := T.StartSpan(prefix+"-"+functionName, zipkin.Parent(parentSpan.Context()))
