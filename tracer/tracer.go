@@ -81,7 +81,9 @@ func SCSP(ctx context.Context, prefix string) (zipkin.Span, context.Context) {
 	parentSpan := zipkin.SpanFromContext(ctx)
 	if parentSpan == nil {
 		// No span found: middleware may not be configured correctly
-		log.Println("No Zipkin span found in context", functionName)
+		if functionName != "Verify" {
+			log.Println("No Zipkin span found in context", functionName)
+		}
 		span, newCtx := T.StartSpanFromContext(ctx, prefix+"-"+functionName)
 		return span, newCtx
 	} else {
