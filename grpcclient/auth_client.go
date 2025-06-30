@@ -1,6 +1,7 @@
 package grpcclient
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -40,6 +41,7 @@ func StartAuthClient() {
 		grpc.WithTransportCredentials(tlsCredentials),
 	)
 	if err != nil {
+		fmt.Println("Failed to connect to auth service:", err, url)
 		log.Fatal(err)
 	}
 
