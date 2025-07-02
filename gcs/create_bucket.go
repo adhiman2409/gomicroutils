@@ -43,6 +43,7 @@ func (a *StorageConnection) CreateGCSBucket(ctx context.Context, pid, bucketName
 	bucket := a.Client.Bucket(bucketName)
 
 	buckets := a.Client.Buckets(ctx, pid)
+	fmt.Printf("Checking if bucket %v exists in project %v...\n", bucketName, pid)
 	for {
 		attrs, err := buckets.Next()
 		// Assume bucket not found if at Iterator end and create
@@ -57,6 +58,7 @@ func (a *StorageConnection) CreateGCSBucket(ctx context.Context, pid, bucketName
 			return nil
 		}
 		if err != nil {
+			fmt.Printf("Error checking bucket %v: %v\n", bucketName, err)
 			return fmt.Errorf("issues setting up bucket(%q).objects(): %v. double check project id", attrs.Name, err)
 		}
 		if attrs.Name == bucketName {
