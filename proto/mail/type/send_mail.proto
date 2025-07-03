@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package mail;
 
+import "google/protobuf/any.proto";
+
 option go_package = "genproto/mail";
 
 message MailRequest {
@@ -9,6 +11,17 @@ message MailRequest {
   string to = 2;
   string subject = 3;
   map<string, string> dataMap = 4;
+  string templateName = 5;
+  bool ackRequired = 6;
+  string priority = 7;
+  string domain = 8;
+}
+
+message NewMailRequest {
+  string from = 1;
+  string to = 2;
+  string subject = 3;
+  map<string, google.protobuf.Any> dataMap = 4;
   string templateName = 5;
   bool ackRequired = 6;
   string priority = 7;

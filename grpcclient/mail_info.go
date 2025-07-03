@@ -10,6 +10,16 @@ type MailRequest struct {
 	Priority     string            `json:"priority"`
 }
 
+type NewMailRequest struct {
+	From         string                 `json:"from"`
+	To           string                 `json:"to"`
+	Subject      string                 `json:"subject"`
+	DataMap      map[string]interface{} `json:"data_map"`
+	TemplateName string                 `json:"template_name"`
+	AckRequired  bool                   `json:"ack_required"`
+	Priority     string                 `json:"priority"`
+}
+
 type MailResponse struct {
 	Status        bool   `json:"status"`
 	Message       string `json:"message"`
