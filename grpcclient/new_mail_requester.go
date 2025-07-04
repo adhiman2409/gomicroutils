@@ -11,7 +11,7 @@ import (
 
 func (a *MailClient) NewSendMail(req NewMailRequest, domain string) (MailResponse, error) {
 
-	// Convert req.DataMap (map[string]interface{}) to map[string]*anypb.Any
+	// Convert req.DataMap (map[string]any) to map[string]*anypb.Any
 	dataMap := make(map[string]*anypb.Any)
 	for k, v := range req.DataMap {
 		msg, ok := v.(proto.Message)
