@@ -25,7 +25,11 @@ func GetMailClient() *MailClient {
 
 func loadTLSCredentials() (credentials.TransportCredentials, error) {
 	// Load certificate of the CA who signed server's certificate
-	caCert, err := os.ReadFile("/app/cert/ca-cert.pem")
+	certFileName := os.Getenv("CA_CERT_FILE")
+	if certFileName == "" {
+		certFileName = "ca-cert.pem" // Default path if
+	}
+	caCert, err := os.ReadFile("/app/cert/" + certFileName)
 	if err != nil {
 		return nil, err
 	}
