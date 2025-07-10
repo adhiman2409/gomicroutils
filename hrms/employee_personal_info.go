@@ -63,7 +63,7 @@ type EmpPersonalInfo struct {
 	BothAddressSame           bool               `bson:"both_address_same"`
 	RegexText                 string             `bson:"regex_text"`
 	IsLockedForEdit           bool               `bson:"is_locked_for_edit"`
-	IsfamilyInfoLockedForEdit bool               `bson:"is_family_info_locked_for_edit"`
+	IsFamilyInfoLockedForEdit bool               `bson:"is_family_info_locked_for_edit"`
 	CreatedBy                 string             `bson:"created_by"`
 	CreatedAt                 time.Time          `bson:"created_at"`
 	UpdatedAt                 time.Time          `bson:"updated_at"`
