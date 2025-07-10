@@ -53,6 +53,7 @@ type EmpQualificationInfo struct {
 	DoctorateUniversityAddress    string             `bson:"doctorate_university_Address"`
 	DoctorateAttachmentURL        string             `bson:"doctorate_attachment_url"`
 	IsDoctorateCertVerified       bool               `bson:"is_doctorate_cert_verified"`
+	IsQualificationInfoLocked     bool               `bson:"is_qualification_info_locked"`
 	CreatedAt                     time.Time          `bson:"created_at"`
 	UpdatedAt                     time.Time          `bson:"updated_at"`
 }
