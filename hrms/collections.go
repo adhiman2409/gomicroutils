@@ -113,6 +113,25 @@ const ATTENDANCE_COLLECTION_MONTHLY_TIMESHEET = "attendance-monthly-timesheet"
 
 const ANALYTIC_COLLECTION_ANALYTICS = "analytic-analytics"
 
+const DOCUMENT_COLLECTION_DOCUMENT_LABELS = "document-labels"
+const DOCUMENT_COLLECTION_CATEGORY_LABELS = "category-labels"
+const DOCUMENT_COLLECTION_DOCUMENT_LIST_LABELS = "document-list-labels"
+
+func GetDocumentLabelsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(DOCUMENT_COLLECTION_DOCUMENT_LABELS)
+}
+
+func GetCategoryLabelsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(DOCUMENT_COLLECTION_CATEGORY_LABELS)
+}
+
+func GetDocumentListLabelsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(DOCUMENT_COLLECTION_DOCUMENT_LIST_LABELS)
+}
+
 func GetPaymentOrdersCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_ORDERS)
