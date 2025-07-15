@@ -74,10 +74,18 @@ type DocumentCategory struct {
 	VerificationInfo     VerificationInfo `bson:"verification_info"`
 }
 
+type DocumentAccessList struct {
+	Viewer   []string `bson:"viewer"`
+	Editor   []string `bson:"editor"`
+	Approver []string `bson:"approver"`
+}
+
 type DocumentList struct {
-	Id           primitive.ObjectID `bson:"_id"`
-	Label        string             `bson:"label"`
-	CategoryList []DocumentCategory `bson:"category_list"`
-	CreatedBy    string             `bson:"created_by"`
-	CreatedAt    time.Time          `bson:"created_at"`
+	Id           primitive.ObjectID   `bson:"_id"`
+	Label        string               `bson:"label"`
+	CategoryList []DocumentCategory   `bson:"category_list"`
+	AccessLevel  string               `bson:"access_level"`
+	AccessList   []DocumentAccessList `bson:"access_list"`
+	CreatedBy    string               `bson:"created_by"`
+	CreatedAt    time.Time            `bson:"created_at"`
 }
