@@ -110,11 +110,14 @@ type CandidateDetails struct {
 	Id               primitive.ObjectID        `bson:"_id"`
 	CandidateId      string                    `bson:"candidate_id"`
 	JobId            string                    `bson:"job_id"`
-	Status           string                    `bson:"status"`
+	Status           CandidateStatus           `bson:"status"`
 	PersonalInfo     CandidatePersonalInfo     `bson:"candidate_personal_info"`
 	ProfessionalInfo CandidateProfessionalInfo `bson:"candidate_professional_info"`
 	OfferLetter      CandidateOfferLetter      `bson:"candidate_offer_letter"`
 	DocumentList     DocumentList              `bson:"document_list"`
+	ApproverId       string                    `bson:"approver_id"`
+	ApproverName     string                    `bson:"approver_name"`
+	ApproverEmail    string                    `bson:"approver_email"`
 	Remarks          []string                  `bson:"remarks"`
 	CreatedBy        string                    `bson:"created_by"`
 	CreatedAt        time.Time                 `bson:"created_at"`
