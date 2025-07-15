@@ -55,6 +55,7 @@ type DocumentListLabel struct {
 
 type Document struct {
 	Label                string           `bson:"label"`
+	Description          string           `bson:"description"`
 	URL                  string           `bson:"url"`
 	Status               string           `bson:"status"`
 	AllowedExtTypes      []string         `bson:"allowed_ext_types"`
