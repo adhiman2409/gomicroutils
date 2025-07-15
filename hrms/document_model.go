@@ -49,6 +49,8 @@ type DocumentListLabel struct {
 	Label          string                  `bson:"label"`
 	Description    string                  `bson:"description"`
 	CategoryLabels []DocumentCategoryLabel `bson:"category_labels"`
+	AccessLevel    string                  `bson:"access_level"`
+	AccessList     []DocumentAccessList    `bson:"access_list"`
 	CreatedBy      string                  `bson:"created_by"`
 	CreatedAt      time.Time               `bson:"created_at"`
 }
