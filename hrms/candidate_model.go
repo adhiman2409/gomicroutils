@@ -114,7 +114,7 @@ type CandidateDetails struct {
 	PersonalInfo     CandidatePersonalInfo     `bson:"candidate_personal_info"`
 	ProfessionalInfo CandidateProfessionalInfo `bson:"candidate_professional_info"`
 	OfferLetter      CandidateOfferLetter      `bson:"candidate_offer_letter"`
-	DocumentList     []DocumentList            `bson:"document_list"`
+	DocumentList     DocumentList              `bson:"document_list"`
 	Remarks          []string                  `bson:"remarks"`
 	CreatedBy        string                    `bson:"created_by"`
 	CreatedAt        time.Time                 `bson:"created_at"`
