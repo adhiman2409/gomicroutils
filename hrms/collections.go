@@ -119,6 +119,8 @@ const DOCUMENT_COLLECTION_DOCUMENT_LIST_LABELS = "document-document-list-labels"
 
 const DOCUMENT_COLLECTION_DOCUMENT_LISTS = "document-document-lists"
 
+const CANDIDATE_COLLECTION_CANDIDATE_CANDIDATES = "candidate-candidates"
+
 func GetDocumentListCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(DOCUMENT_COLLECTION_DOCUMENT_LISTS)
@@ -137,6 +139,11 @@ func GetDocumentCategoryLabelsCollection(client *mongo.Client, domain string) *m
 func GetDocumentListLabelsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(DOCUMENT_COLLECTION_DOCUMENT_LIST_LABELS)
+}
+
+func GetCandiateCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(CANDIDATE_COLLECTION_CANDIDATE_CANDIDATES)
 }
 
 func GetPaymentOrdersCollection(client *mongo.Client, domain string) *mongo.Collection {
