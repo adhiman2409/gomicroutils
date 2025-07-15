@@ -6,6 +6,15 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type DocumentStatus string
+
+const (
+	DocumentStatusPending  DocumentStatus = "pending"
+	DocumentStatusUploaded DocumentStatus = "uploaded"
+	DocumentStatusApproved DocumentStatus = "approved"
+	DocumentStatusRejected DocumentStatus = "rejected"
+)
+
 type VerificationStatus string
 
 const (
@@ -59,7 +68,7 @@ type Document struct {
 	Label                string           `bson:"label"`
 	Description          string           `bson:"description"`
 	URL                  string           `bson:"url"`
-	Status               string           `bson:"status"`
+	Status               DocumentStatus   `bson:"status"`
 	AllowedExtTypes      []string         `bson:"allowed_ext_types"`
 	MaxDocSizeInMB       int64            `bson:"max_doc_size_in_mb"`
 	RequiredVerification bool             `bson:"required_verification"`
