@@ -12,7 +12,8 @@ type CandidatePersonalInfo struct {
 	DOB           string `bson:"dob"`
 	PhoneNumber   string `bson:"phone_number"`
 	PersonalEmail string `bson:"personal_email"`
-	Address       string `bson:"address"`
+	AddressLine1  string `bson:"address_line_1"`
+	AddressLine2  string `bson:"address_line_2"`
 	City          string `bson:"city"`
 	State         string `bson:"state"`
 	Country       string `bson:"country"`
