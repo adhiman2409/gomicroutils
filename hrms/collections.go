@@ -141,7 +141,7 @@ func GetDocumentListLabelsCollection(client *mongo.Client, domain string) *mongo
 	return db.Collection(DOCUMENT_COLLECTION_DOCUMENT_LIST_LABELS)
 }
 
-func GetCandiateCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetCandidateCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(CANDIDATE_COLLECTION_CANDIDATE_CANDIDATES)
 }

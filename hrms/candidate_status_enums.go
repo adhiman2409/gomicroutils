@@ -74,6 +74,6 @@ func CandidateStatusFromString(s string) CandidateStatus {
 	case "CandidateNotJoined":
 		return CandidateNotJoined
 	default:
-		return CandidateNotJoined
+		return 0
 	}
 }
