@@ -71,25 +71,31 @@ type MonthlyComponents struct {
 }
 
 type OneTimeComponents struct {
-	JoiningBonus float32 `bson:"joining_bonus"`
-	Relocation   float32 `bson:"relocation"`
+	OneTimeComponents map[string]float32 `bson:"one_time_components"`  // e.g., {"signing_bonus": 50000, "relocation_allowance": 20000}
+	TotalOneTimeValue float32            `bson:"total_one_time_value"` // Total
+}
+
+type StockOptionComponents struct {
+	StockCount                   float32 `bson:"stock_count"`
+	TotalStockValue              float32 `bson:"total_stock_value"`
+	TotalVestingDurationInMonths string  `bson:"total_vesting_duration_in_months"`
+	VestingFrequencyInMonths     string  `bson:"vesting_frequency_in_months"`
+	StockOptionType              string  `bson:"stock_option_type"` // e.g., ESOP, RSU
 }
 
 type AnnexureTemplate struct {
-	TemplateName      string            `bson:"template_name"`
-	DocumentNumber    string            `bson:"document_number"`
-	DocumentDate      string            `bson:"document_date"`
-	AnnualComponents  AnnualComponents  `bson:"annual_components"`
-	MonthlyComponents MonthlyComponents `bson:"monthly_components"`
-	OneTimeComponents OneTimeComponents `bson:"one_time_components"`
+	TemplateName      string                `bson:"template_name"`
+	DocumentNumber    string                `bson:"document_number"`
+	DocumentDate      string                `bson:"document_date"`
+	AnnualComponents  AnnualComponents      `bson:"annual_components"`
+	MonthlyComponents MonthlyComponents     `bson:"monthly_components"`
+	OneTimeComponents OneTimeComponents     `bson:"one_time_components"`
+	StockOptions      StockOptionComponents `bson:"stock_options"`
 }
 
 type OfferCoverLetterTemplate struct {
-	TemplateName   string `bson:"template_name"`
-	DocumentNumber string `bson:"document_number"`
-	DocumentDate   string `bson:"document_date"`
-	ValidFrom      string `bson:"valid_from"`
-	ValidTo        string `bson:"valid_to"`
+	TemplateName string            `bson:"template_name"`
+	DataMap      map[string]string `bson:"data_map"`
 }
 
 type CandidateOfferLetter struct {
