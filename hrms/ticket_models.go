@@ -47,6 +47,7 @@ type Ticket struct {
 	ReporteeEmailId      string             `bson:"reportee_emailId"`
 	ReporteeName         string             `bson:"reportee_name"`
 	ReporteeDepartment   string             `bson:"reportee_department"`
+	ReporteeDomain       string             `bson:"reportee_domain"`
 	Department           string             `bson:"department"`
 	MasterAssigneeId     string             `bson:"master_assignee_id"`
 	MasterAssigneeName   string             `bson:"master_assignee_name"`
