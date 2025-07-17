@@ -33,7 +33,7 @@ type EmployeeSummary struct {
 	ReportingManagerEmail  string             `bson:"reporting_manager_email"`
 	NewJoineeRewardId      string             `bson:"new_joinee_reward_id"`
 	ImgURL                 string             `bson:"img_url"`
-	ReleaseDate            string             `bson:"release_date"`
+	ReleavingDate          string             `bson:"releaving_date"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
 	RegexText              string             `bson:"regex_text"`
 	CreatedBy              string             `bson:"created_by"`
