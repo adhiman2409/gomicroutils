@@ -6,6 +6,24 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type SalaryComponentType string
+
+const (
+	FixedSalaryComponent    SalaryComponentType = "fixed"
+	VariableSalaryComponent SalaryComponentType = "variable"
+	BenefitSalaryComponent  SalaryComponentType = "benefit"
+	OneTimeComponent        SalaryComponentType = "one_time"
+)
+
+type PaymentFrequency string
+
+const (
+	Monthly    PaymentFrequency = "monthly"
+	Quarterly  PaymentFrequency = "quarterly"
+	HalfYearly PaymentFrequency = "half_yearly"
+	Yearly     PaymentFrequency = "yearly"
+)
+
 type CandidatePersonalInfo struct {
 	FullName      string `bson:"full_name"`
 	Gender        string `bson:"gender"`
@@ -25,91 +43,48 @@ type CandidateProfessionalInfo struct {
 	Designation    string `bson:"designation"`
 	Department     string `bson:"department"`
 	EmailId        string `bson:"email_id"`
-	JoiningDate    string `bson:"joining_date"`
 	OfficeLocation string `bson:"office_location"`
 	WorkLocation   string `bson:"work_location"`
 }
 
-type AnnualComponents struct {
-	FixedSalary            float32 `bson:"fixed_salary"`
-	BasicSalary            float32 `bson:"basic_salary"`
-	HRA                    float32 `bson:"hra"`
-	SpecialPay             float32 `bson:"special_pay"`
-	LTA                    float32 `bson:"lta"`
-	BooksAndPeriodicals    float32 `bson:"books_and_periodicals"`
-	BroadbandAndMobile     float32 `bson:"broadband_and_mobile"`
-	FoodCoupons            float32 `bson:"food_coupons"`
-	GrossSalary            float32 `bson:"gross_salary"`
-	EmployeeContributionPF float32 `bson:"employee_contribution_pf"`
-	EmployerContributionPF float32 `bson:"employer_contribution_pf"`
-	IsOptedforCorporateNPS bool    `bson:"is_opted_for_corporate_nps"`
-	CorporateNPS           float32 `bson:"corporate_nps"`
-	Gratuity               float32 `bson:"gratuity"`
-	LeaveEncashment        float32 `bson:"leave_encashment"`
-	MedicalInsurance       float32 `bson:"medical_insurance"`
-	PerformanceBonus       float32 `bson:"performance_bonus"`
-	RetentionBonus         float32 `bson:"retention_bonus"`
-	NetPay                 float32 `bson:"net_pay"`
-	TotalVariableCTC       float32 `bson:"total_variable_ctc"`
-	TotalCompanyBenefits   float32 `bson:"total_company_benefits"`
-	TotalCostToCompany     float32 `bson:"total_cost_to_company"`
+type SalaryComponent struct {
+	ComponentName     string              `bson:"component_name"`
+	ComponentType     SalaryComponentType `bson:"component_type"` // e.g., "fixed", "variable", "benefit"
+	AnnualAmount      float32             `bson:"annual_amount"`
+	PaymentFrequency  PaymentFrequency    `bson:"payment_frequency"`   // e.g., "monthly", "quarterly", "yearly"
+	IsDrivedComponent bool                `bson:"is_drived_component"` // Indicates if the component is derived from CTC
+	DrivedFrom        []string            `bson:"drived_from"`         // Name of the components from which this is derived, if applicable
+	DrivedEquation    string              `bson:"drived_equation"`     // Factor to derive the component from CTC
 }
 
-type MonthlyComponents struct {
-	FixedCTC               float32 `bson:"fixed_salary"`
-	BasicSalary            float32 `bson:"basic_salary"`
-	HRA                    float32 `bson:"hra"`
-	SpecialPay             float32 `bson:"special_pay"`
-	LTA                    float32 `bson:"lta"`
-	BooksAndPeriodicals    float32 `bson:"books_and_periodicals"`
-	BroadbandAndMobile     float32 `bson:"broadband_and_mobile"`
-	FoodCoupons            float32 `bson:"food_coupons"`
-	GrossSalary            float32 `bson:"gross_salary"`
-	EmployeeContributionPF float32 `bson:"employee_contribution_pf"`
-	CorporateNPS           float32 `bson:"corporate_nps"`
-	NetPay                 float32 `bson:"net_pay"`
+type SalaryAnnexure struct {
+	TemplateName       string            `bson:"template_name"`
+	DocumentNumber     string            `bson:"document_number"`
+	DocumentDate       string            `bson:"document_date"`
+	TotalCostToCompany float32           `bson:"total_cost_to_company"`
+	Components         []SalaryComponent `bson:"components"` // List of salary components
 }
 
-type OneTimeComponents struct {
-	OneTimeComponents map[string]float32 `bson:"one_time_components"`  // e.g., {"signing_bonus": 50000, "relocation_allowance": 20000}
-	TotalOneTimeValue float32            `bson:"total_one_time_value"` // Total
-}
-
-type StockOptionComponents struct {
-	StockCount                   float32 `bson:"stock_count"`
-	TotalStockValue              float32 `bson:"total_stock_value"`
-	TotalVestingDurationInMonths string  `bson:"total_vesting_duration_in_months"`
-	VestingFrequencyInMonths     string  `bson:"vesting_frequency_in_months"`
-	StockOptionType              string  `bson:"stock_option_type"` // e.g., ESOP, RSU
-}
-
-type AnnexureTemplate struct {
-	TemplateName      string                `bson:"template_name"`
-	DocumentNumber    string                `bson:"document_number"`
-	DocumentDate      string                `bson:"document_date"`
-	AnnualComponents  AnnualComponents      `bson:"annual_components"`
-	MonthlyComponents MonthlyComponents     `bson:"monthly_components"`
-	OneTimeComponents OneTimeComponents     `bson:"one_time_components"`
-	StockOptions      StockOptionComponents `bson:"stock_options"`
-}
-
-type OfferCoverLetterTemplate struct {
-	TemplateName string            `bson:"template_name"`
-	DataMap      map[string]string `bson:"data_map"`
+type OfferCoverLetter struct {
+	TemplateName   string `bson:"template_name"`
+	DocumentNumber string `bson:"document_number"`
+	DocumentDate   string `bson:"document_date"`
 }
 
 type CandidateOfferLetter struct {
-	DocumentNumber           string                   `bson:"document_number"`
-	DocumentDate             string                   `bson:"document_date"`
-	OfferCoverLetterTemplate OfferCoverLetterTemplate `bson:"cover_letter_template"`
-	AnnexureTemplate         AnnexureTemplate         `bson:"salary_annexure_template"`
-	ValidFrom                string                   `bson:"valid_from"`
-	ValidTo                  string                   `bson:"valid_to"`
-	OfferStatus              string                   `bson:"offer_status"`
-	OfferStatusRemarks       string                   `bson:"offer_status_remarks"`
-	CreatedAt                string                   `bson:"created_at"`
-	UpdatedAt                string                   `bson:"updated_at"`
-	CreatedBy                string                   `bson:"created_by"`
+	DocumentNumber      string           `bson:"document_number"`
+	DocumentDate        string           `bson:"document_date"`
+	OfferCoverLetter    OfferCoverLetter `bson:"cover_letter"`
+	SalaryAnnexure      SalaryAnnexure   `bson:"salary_annexure"`
+	ProposedJoiningDate string           `bson:"proposed_joining_date"`
+	AcceptedJoiningDate string           `bson:"accepted_joining_date"`
+	ValidFrom           string           `bson:"valid_from"`
+	ValidTo             string           `bson:"valid_to"`
+	OfferStatus         string           `bson:"offer_status"`
+	OfferStatusRemarks  string           `bson:"offer_status_remarks"`
+	CreatedAt           string           `bson:"created_at"`
+	UpdatedAt           string           `bson:"updated_at"`
+	CreatedBy           string           `bson:"created_by"`
 }
 
 type CandidateDetails struct {
