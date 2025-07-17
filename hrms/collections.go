@@ -121,6 +121,13 @@ const DOCUMENT_COLLECTION_DOCUMENT_LISTS = "document-document-lists"
 
 const CANDIDATE_COLLECTION_CANDIDATE_CANDIDATES = "candidate-candidates"
 
+const INVENTORY_COLLECTION_INVENTORY_ASSETS = "inventory-assets"
+
+func GetInventoryAssestCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(INVENTORY_COLLECTION_INVENTORY_ASSETS)
+}
+
 func GetDocumentListCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(DOCUMENT_COLLECTION_DOCUMENT_LISTS)

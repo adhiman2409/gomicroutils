@@ -6,17 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type AssetTransitInfo struct {
-	TransitType  string `bson:"asset_handover_type"` // handover, return
-	TransitMode  string `bson:"asset_handover_mode"` // Pickup ByEmployee, Courier, Runner, Deleviry By Hand
-	Remarks      string `bson:"asset_handover_remarks"`
-	StartDate    string `bson:"asset_handover_start_date"`
-	DeliveryDate string `bson:"asset_handover_delivery_date"`
-	TrackingId   string `bson:"asset_handover_tracking_id"`
-	TrackingURL  string `bson:"asset_handover_tracking_url"`
-	InvoiceURL   string `bson:"asset_handover_invoice_url"`
-}
-
 type EmployeeAssetInfo struct {
 	ID                        primitive.ObjectID `bson:"_id"`
 	EmployeeID                string             `bson:"employee_id"`
