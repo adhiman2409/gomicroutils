@@ -34,6 +34,7 @@ type EmpProfessionalInfo struct {
 	ReportingManagerId       string             `bson:"reporting_manager_id"`
 	ReportingManagerEmail    string             `bson:"reporting_manager_email"`
 	IsProfessionalInfoLocked bool               `bson:"is_professional_info_locked"`
+	TimeZone                 string             `bson:"time_zone"`
 	RegexText                string             `bson:"regex_text"`
 	CreatedBy                string             `bson:"created_by"`
 	CreatedAt                time.Time          `bson:"created_at"`
