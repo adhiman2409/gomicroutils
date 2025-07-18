@@ -21,6 +21,7 @@ message InitOrgRequest {
 	string status = 14;
 	bool useGoogleOAuth = 15;
 	string country = 16;
+	string timeZone = 17;
 }
 
 message InitOrgResponse {

@@ -17,4 +17,5 @@ type OrgInitInfo struct {
 	Status            string
 	UseGoogleOAuth    bool
 	Country           string
+	TimeZone          string
 }
