@@ -33,6 +33,8 @@ type EmployeeAssetInfo struct {
 	TermsAndConditions        string             `bson:"terms_and_conditions"`
 	EmployeeConsentStatus     string             `bson:"employee_consent_status"`
 	EmployeeConsentReceivedAt string             `bson:"employee_consent_received_at"`
+	Country                   string             `bson:"country"`
+	State                     string             `bson:"state"`
 	Status                    string             `bson:"status"`
 	Remarks                   []string           `bson:"remarks"`
 	CreatedAt                 time.Time          `bson:"created_at"`

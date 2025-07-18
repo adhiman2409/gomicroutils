@@ -63,6 +63,7 @@ type EmployeeAttendance struct {
 	RegularizedOn              string             `bson:"regularized_on"`
 	RegularizedBy              string             `bson:"regularized_by"`
 	Remarks                    string             `bson:"remarks"`
+	Country                    string             `bson:"country"`
 	TimeZone                   string             `bson:"time_zone"`
 	CreatedAt                  int64              `bson:"createdAt"`
 }

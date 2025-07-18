@@ -12,6 +12,9 @@ type BankInfo struct {
 	IFSC             string             `bson:"ifsc"`
 	ChequeURL        string             `bson:"cheque_url"`
 	IsBankInfoLocked bool               `bson:"is_bank_info_locked"`
+	Country          string             `bson:"country"`
+	State            string             `bson:"state"`
+	ZipCode          string             `bson:"zip_code"`
 	CreatedAt        string             `bson:"created_at"`
 	UpdatedAt        string             `bson:"updated_at"`
 	UpdatedBy        string             `bson:"updated_by"`

@@ -37,5 +37,7 @@ type Poll struct {
 	UnlistDateAndTime time.Time          `bson:"unlist_date_and_time"`
 	CreatedAt         time.Time          `bson:"created_at"`
 	UpdatedAt         time.Time          `bson:"updated_at"`
+	Country           string             `bson:"country"`
+	State             string             `bson:"state"`
 	Remarks           string             `bson:"remarks"`
 }

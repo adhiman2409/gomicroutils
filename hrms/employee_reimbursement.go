@@ -58,6 +58,9 @@ type Expense struct {
 	ReimbursementPaidOn     time.Time          `bson:"reimbursement_paid_on"`
 	Remarks                 []RemarksInfo      `bson:"remarks"`
 	DocURL                  string             `bson:"doc_url"`
+	Country                 string             `bson:"country"`
+	TimeZone                string             `bson:"time_zone"`
+	State                   string             `bson:"state"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }

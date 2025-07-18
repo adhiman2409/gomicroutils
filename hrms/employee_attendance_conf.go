@@ -29,6 +29,7 @@ type EmpAttendanceConf struct {
 	EmploymentStatus        string             `bson:"employment_status"`
 	ShiftTimings            []EmpShiftTimings  `bson:"shift_timings"`
 	NextShiftTimingsIndex   int32              `bson:"next_shift_timings_index"`
+	Country                 string             `bson:"country"`
 	TimeZone                string             `bson:"time_zone"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`

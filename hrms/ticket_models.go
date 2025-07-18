@@ -39,6 +39,8 @@ type TicketConfig struct {
 	LockClosedTicketsAfterDays    int64              `bson:"lock_closed_tickets_after_days"`
 	SendFeedbackReminders         bool               `bson:"send_feedback_reminders"`
 	SendFeedbackReminderAfterDays int64              `bson:"send_feedback_reminder_after_days"`
+	Country                       string             `bson:"country"`
+	TimeZone                      string             `bson:"time_zone"`
 	CreatedAt                     time.Time          `bson:"created_at"`
 	UpdatedAt                     time.Time          `bson:"updated_at"`
 }
@@ -81,6 +83,8 @@ type Ticket struct {
 	RatingDate           string             `bson:"rating_date"`
 	ReminderMailSent     bool               `bson:"reminder_mail_sent"`
 	IsLocked             bool               `bson:"is_locked"`
+	Country              string             `bson:"country"`
+	TimeZone             string             `bson:"time_zone"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
 }

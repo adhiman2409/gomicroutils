@@ -22,6 +22,8 @@ type Post struct {
 	UnlistDateAndTime time.Time          `bson:"unlist_date_and_time"`
 	GreetingsCount    int64              `bson:"greetings_count"`
 	Greetings         []Greeting         `bson:"greetings"`
+	Country           string             `bson:"country"`
+	State             string             `bson:"state"`
 	CreatedAt         time.Time          `bson:"created_at"`
 	UpdatedAt         time.Time          `bson:"updated_at"`
 }

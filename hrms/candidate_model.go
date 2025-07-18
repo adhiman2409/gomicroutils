@@ -100,6 +100,9 @@ type CandidateDetails struct {
 	ApproverName     string                    `bson:"approver_name"`
 	ApproverEmail    string                    `bson:"approver_email"`
 	Remarks          []string                  `bson:"remarks"`
+	Country          string                    `bson:"country"`
+	State            string                    `bson:"state"`
+	TimeZone         string                    `bson:"time_zone"`
 	CreatedBy        string                    `bson:"created_by"`
 	CreatedAt        time.Time                 `bson:"created_at"`
 }

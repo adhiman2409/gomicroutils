@@ -30,6 +30,8 @@ type OrgLeaveConf struct {
 	Description                 string             `bson:"description"`
 	YearStartDate               string             `bson:"year_start_date"`
 	YearEndDate                 string             `bson:"year_end_date"`
+	State                       string             `bson:"state"`
+	Country                     string             `bson:"country"`
 	CreatedBy                   string             `bson:"created_by"`
 	CreatedAt                   time.Time          `bson:"created_at"`
 	UpdatedAt                   time.Time          `bson:"updated_at"`

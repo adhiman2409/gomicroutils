@@ -42,6 +42,8 @@ type LeaveStats struct {
 	LeavesCarryForwardLastYear        float32 `bson:"leaves_carry_forward_last_year"`
 	LastYearEarnedPrivilegeLeave      float32 `bson:"last_year_earned_privilege_leave"`
 	LastLeavesCreditedOn              string  `bson:"last_leaves_credited_on"`
+	Country                           string  `bson:"country"`
+	TimeZone                          string  `bson:"time_zone"`
 }
 
 type EmployeeLeaveStats struct {
@@ -62,6 +64,8 @@ type EmployeeLeaveStats struct {
 	EarnedLeaveCycleInDays           int32              `bson:"earned_leave_cycle_in_days"`
 	RegularizationReminderMailSentOn string             `bson:"regularization_reminder_mail_sent_on"`
 	Year                             string             `bson:"year"`
+	Country                          string             `bson:"country"`
+	TimeZone                         string             `bson:"time_zone"`
 	LeavesStats                      []LeaveStats       `bson:"leaves_stats"`
 }
 
@@ -114,6 +118,8 @@ type EmployeeLeaveObj struct {
 	Leaves                       []Leave            `bson:"leave"`
 	Remarks                      string             `bson:"remarks"`
 	DocURL                       string             `bson:"doc_url"`
+	Country                      string             `bson:"country"`
+	TimeZone                     string             `bson:"time_zone"`
 	CreatedAt                    time.Time          `bson:"created_at"`
 	UpdatedAt                    time.Time          `bson:"updated_at"`
 }
