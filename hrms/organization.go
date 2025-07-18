@@ -20,6 +20,8 @@ type Organization struct {
 	Address          string             `bson:"address"`
 	ZipCode          string             `bson:"zip_code"`
 	CountryCode      string             `bson:"country_code"`
+	Country          string             `bson:"country"`
+	TimeZone         string             `bson:"time_zone"`
 	Description      string             `bson:"description"`
 	SocialAccounts   []string           `bson:"social_accounts"`
 	UseGoogleAuth    bool               `bson:"use_google_auth"`
