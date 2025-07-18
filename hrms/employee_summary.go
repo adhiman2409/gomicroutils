@@ -35,6 +35,7 @@ type EmployeeSummary struct {
 	ImgURL                 string             `bson:"img_url"`
 	ReleavingDate          string             `bson:"releaving_date"`
 	IsProfileEditingLocked bool               `bson:"is_profile_editing_locked"`
+	Country                string             `bson:"country"`
 	TimeZone               string             `bson:"time_zone"`
 	RegexText              string             `bson:"regex_text"`
 	CreatedBy              string             `bson:"created_by"`

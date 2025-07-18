@@ -21,7 +21,7 @@ type Tenant struct {
 	Password           string             `bson:"password"`
 	Role               string             `bson:"role"`
 	Country            string             `bson:"country"`
-	TZone              string             `bson:"t_zone"`
+	TimeZone           string             `bson:"time_zone"`
 	ImageURL           string             `bson:"image_url"`
 	FirstLoginPending  bool               `bson:"first_login_pending"`
 	Status             string             `bson:"status"`
