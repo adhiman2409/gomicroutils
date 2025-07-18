@@ -19,22 +19,22 @@ func (a *OrgClient) GetOrgAttendanceConf(orgName, domain, country string) (OrgAt
 		return OrgAttendanceConf{}, err
 	}
 	attendanceInfo := OrgAttendanceConf{
-		OrgId:                   res.OrgId,
-		OrgName:                 res.OrgName,
-		CaptureCheckInLocation:  res.CaptureCheckInLocation,
-		EnforceLocationCheckIn:  res.EnforceLocationCheckIn,
-		EnforceLocationCheckOut: res.EnforceLocationCheckOut,
-		RequiredLat:             res.RequiredLat,
-		RequiredLng:             res.RequiredLng,
-		FlexiHoursEnabled:       res.FlexiHoursEnabled,
-		FlexiHourWindowInMin:    res.FlexiHourWindowInMin,
-		OrgCheckInTime:          res.OrgCheckInTime,
-		OrgCheckOutTime:         res.OrgCheckOutTime,
-		CheckinMarginInMin:      res.CheckInMarginInMin,
-		WorkingDaysPerWeek:      res.WorkingDaysPerWeek,
-		WeeklyOffDays:           res.WeeklyOffDays,
-		DailyWorkingHours:       res.DailyWorkingHours,
-		Country:                 res.Country,
+		OrgId:                   res.GetOrgId(),
+		OrgName:                 res.GetOrgName(),
+		CaptureCheckInLocation:  res.GetCaptureCheckInLocation(),
+		EnforceLocationCheckIn:  res.GetEnforceLocationCheckIn(),
+		EnforceLocationCheckOut: res.GetEnforceLocationCheckOut(),
+		RequiredLat:             res.GetRequiredLat(),
+		RequiredLng:             res.GetRequiredLng(),
+		FlexiHoursEnabled:       res.GetFlexiHoursEnabled(),
+		FlexiHourWindowInMin:    res.GetFlexiHourWindowInMin(),
+		OrgCheckInTime:          res.GetOrgCheckInTime(),
+		OrgCheckOutTime:         res.GetOrgCheckOutTime(),
+		CheckinMarginInMin:      res.GetCheckInMarginInMin(),
+		WorkingDaysPerWeek:      res.GetWorkingDaysPerWeek(),
+		WeeklyOffDays:           res.GetWeeklyOffDays(),
+		DailyWorkingHours:       res.GetDailyWorkingHours(),
+		Country:                 res.GetCountry(),
 	}
 	return attendanceInfo, nil
 }
