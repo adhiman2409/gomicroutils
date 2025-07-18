@@ -20,6 +20,8 @@ type Tenant struct {
 	UseGoogleOAuth     bool               `bson:"use_google_oauth"`
 	Password           string             `bson:"password"`
 	Role               string             `bson:"role"`
+	Country            string             `bson:"country"`
+	TZone              string             `bson:"t_zone"`
 	ImageURL           string             `bson:"image_url"`
 	FirstLoginPending  bool               `bson:"first_login_pending"`
 	Status             string             `bson:"status"`

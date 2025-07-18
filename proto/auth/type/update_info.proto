@@ -11,6 +11,8 @@ message InfoUpdateRequest {
   string designation = 4;
   string department = 5;
   string domain = 6;
+  string country = 7;
+  string tZone = 8;
 }
 
 message InfoUpdateResponse {

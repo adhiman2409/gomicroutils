@@ -7,4 +7,6 @@ type AuthUpdateInfo struct {
 	Department  string
 	Designation string
 	Domain      string
+	Country     string
+	TZone       string
 }

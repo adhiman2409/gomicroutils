@@ -20,6 +20,8 @@ message VerifyResponse {
   string department = 8;
   string role = 9;
   string orgName = 10;
+  string country = 11;
+  string tZone = 12;
 }
 
 message EmailTokenRequest {

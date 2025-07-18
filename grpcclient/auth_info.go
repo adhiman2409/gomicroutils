@@ -15,6 +15,8 @@ type AuthInfo struct {
 	PhoneNumber string
 	Role        string
 	OrgName     string
+	Country     string
+	TZone       string
 }
 
 func GetAuthInfo(r *http.Request) AuthInfo {
@@ -28,6 +30,8 @@ func GetAuthInfo(r *http.Request) AuthInfo {
 		PhoneNumber: "",
 		Role:        "anonymous",
 		OrgName:     "",
+		Country:     "India",
+		TZone:       "Asia/Kolkata",
 	}
 	claims := r.Context().Value("claims")
 	claimsString, ok := claims.(string)

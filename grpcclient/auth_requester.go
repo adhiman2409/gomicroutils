@@ -31,6 +31,8 @@ func (a *GrpcClient) Verify(accessToken string, routeName string) (AuthInfo, err
 			PhoneNumber: res.PhoneNumber,
 			Role:        res.Role,
 			OrgName:     res.OrgName,
+			Country:     res.Country,
+			TZone:       res.TZone,
 		}, nil
 	} else {
 		return AuthInfo{}, errors.New(res.Message)
