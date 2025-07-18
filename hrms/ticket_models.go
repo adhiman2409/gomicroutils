@@ -12,6 +12,12 @@ type Query struct {
 	Remarks   string `bson:"remarks"`
 }
 
+type EmployeeRef struct {
+	EmployeeID string `bson:"employee_id"`
+	Name       string `bson:"name"`
+	Email      string `bson:"email"`
+}
+
 type TicketConfig struct {
 	ID                            primitive.ObjectID `bson:"_id"`
 	DepartmentName                string             `bson:"department_name"`
@@ -22,6 +28,7 @@ type TicketConfig struct {
 	SecondaryEmployeeName         string             `bson:"secondary_emp_name"`
 	SecondaryEmployeeEmail        string             `bson:"secondary_emp_email"`
 	IsSecondaryActive             bool               `bson:"is_secondary_active"`
+	Resolvers                     []EmployeeRef      `bson:"resolvers"`
 	Queries                       []Query            `bson:"queries"`
 	TotalNumberOfTickets          int64              `bson:"total_number_of_tickets"`
 	NumberOfOpenTickets           int64              `bson:"number_of_open_tickets"`
