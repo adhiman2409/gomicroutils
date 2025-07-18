@@ -1,6 +1,8 @@
 package hrms
 
 import (
+	"time"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -28,8 +30,10 @@ type EmployeeAttendance struct {
 	CheckinMarginInMin         int32              `bson:"check_in_margin_in_min"`
 	IsCheckedIn                bool               `bson:"is_checked_in"`
 	CheckInTime                string             `bson:"check_in_time"`
+	UTCCheckInTime             time.Time          `bson:"utc_check_in_time"`
 	IsCheckedOut               bool               `bson:"is_checked_out"`
 	CheckOutTime               string             `bson:"check_in_out"`
+	UTCCheckOutTime            time.Time          `bson:"utc_check_out_time"`
 	EnforceAttendanceSource    bool               `bson:"enforce_attendance_source"`
 	AttendanceSource           string             `bson:"attendance_source"`
 	CheckInSource              string             `bson:"check_in_source"`
