@@ -14,4 +14,5 @@ type OrgEmployeeShifts struct {
 	OrgCheckOutTime   string             `bson:"org_check_out_time"`
 	Color             string             `bson:"color"`
 	TextColor         string             `bson:"text_color"`
+	Country           string             `bson:"country"`
 }
