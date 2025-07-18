@@ -20,7 +20,7 @@ message InitOrgRequest {
 	bool firstLoginPending = 13;
 	string status = 14;
 	bool useGoogleOAuth = 15;
-	repeated string countries = 16;
+	string country = 16;
 }
 
 message InitOrgResponse {
