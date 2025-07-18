@@ -24,5 +24,7 @@ message DepAttendanceResponse{
 	int32 checkInMarginInMin = 12;
 	float dailyWorkingHours = 13;
 	float workingDaysPerWeek = 14;
-	repeated string weeklyOffDays = 15;
+	string country = 15;
+    string timeZone = 16;
+	repeated string weeklyOffDays = 17;
 }

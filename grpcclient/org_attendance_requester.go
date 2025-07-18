@@ -7,10 +7,11 @@ import (
 	"github.com/adhiman2409/gomicroutils/genproto/org"
 )
 
-func (a *OrgClient) GetOrgAttendanceConf(orgName, domain string) (OrgAttendanceConf, error) {
+func (a *OrgClient) GetOrgAttendanceConf(orgName, domain, country string) (OrgAttendanceConf, error) {
 	req := org.OrgAttendanceRequest{
 		OrgName: orgName,
 		Domain:  domain,
+		Country: country,
 	}
 	res, err := a.client.GetOrgAttendanceConf(context.Background(), &req)
 	if err != nil {
@@ -33,6 +34,7 @@ func (a *OrgClient) GetOrgAttendanceConf(orgName, domain string) (OrgAttendanceC
 		WorkingDaysPerWeek:      res.WorkingDaysPerWeek,
 		WeeklyOffDays:           res.WeeklyOffDays,
 		DailyWorkingHours:       res.DailyWorkingHours,
+		Country:                 res.Country,
 	}
 	return attendanceInfo, nil
 }

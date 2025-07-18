@@ -20,6 +20,7 @@ func (a *OrgClient) OrgAddEmployee(e OrgEmployeeInfo) (string, error) {
 		Status:          e.Status,
 		ProfileImageURL: e.ProfileImageURL,
 		EmailId:         e.EmailId,
+		Country:         e.Country,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {
@@ -72,6 +73,7 @@ func (a *OrgClient) OrgUpdateEmployee(e OrgEmployeeInfo) (string, error) {
 		Status:          e.Status,
 		ProfileImageURL: e.ProfileImageURL,
 		EmailId:         e.EmailId,
+		Country:         e.Country,
 	}
 	res, err := a.client.OrgEmployee(context.Background(), &req)
 	if err != nil {

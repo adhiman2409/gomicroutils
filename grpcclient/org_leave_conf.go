@@ -28,4 +28,5 @@ type OrgLeaveConfiguration struct {
 type OrgLeaveObj struct {
 	OrgName                string
 	OrgLeaveConfigurations []OrgLeaveConfiguration
+	Country                string
 }

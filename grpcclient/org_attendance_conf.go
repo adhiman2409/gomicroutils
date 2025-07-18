@@ -15,5 +15,6 @@ type OrgAttendanceConf struct {
 	CheckinMarginInMin      int32
 	DailyWorkingHours       float32
 	WorkingDaysPerWeek      float32
+	Country                 string
 	WeeklyOffDays           []string
 }

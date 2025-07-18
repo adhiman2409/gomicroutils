@@ -7,10 +7,11 @@ import (
 	"github.com/adhiman2409/gomicroutils/genproto/org"
 )
 
-func (a *OrgClient) GetOrgLeaveConf(orgName, domain string) (OrgLeaveObj, error) {
+func (a *OrgClient) GetOrgLeaveConf(orgName, domain, country string) (OrgLeaveObj, error) {
 	req := org.OrgLeaveRequest{
 		OrgName: orgName,
 		Domain:  domain,
+		Country: country,
 	}
 	res, err := a.client.GetOrgLeaveConf(context.Background(), &req)
 	if err != nil {
@@ -48,6 +49,7 @@ func (a *OrgClient) GetOrgLeaveConf(orgName, domain string) (OrgLeaveObj, error)
 	leaveInfoObj := OrgLeaveObj{
 		OrgName:                res.GetOrgName(),
 		OrgLeaveConfigurations: orgLeaveList,
+		Country:                res.GetCountry(),
 	}
 	return leaveInfoObj, nil
 }

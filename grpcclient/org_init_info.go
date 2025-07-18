@@ -16,4 +16,5 @@ type OrgInitInfo struct {
 	FirstLoginPending bool
 	Status            string
 	UseGoogleOAuth    bool
+	Countries         []string
 }

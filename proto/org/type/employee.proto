@@ -14,6 +14,8 @@ message EmployeeRequest {
   string status = 7;
   string profileImageURL = 8;
   string emailId = 9;
+  string country = 10;
+  string timeZone = 11;
 }
 
 message EmployeeResponse {

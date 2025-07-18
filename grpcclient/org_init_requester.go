@@ -26,6 +26,7 @@ func (a *OrgClient) InitOrganization(e OrgInitInfo) (string, error) {
 		FirstLoginPending: e.FirstLoginPending,
 		Status:            e.Status,
 		UseGoogleOAuth:    e.UseGoogleOAuth,
+		Countries:         e.Countries,
 	}
 	res, err := a.client.InitOrganization(context.Background(), &req)
 	if err != nil {

@@ -9,4 +9,5 @@ type OrgEmployeeInfo struct {
 	Status          string
 	ProfileImageURL string
 	EmailId         string
+	Country         string
 }
