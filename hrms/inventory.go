@@ -73,6 +73,7 @@ type AssetAllocationInfo struct {
 	AllocationDocuments []string  `bson:"allocation_documents"`
 	AllocatedTill       time.Time `bson:"allocated_till"`
 	AllocationType      string    `bson:"allocation_type"` //permanent, temporary
+	Remarks             []string  `bson:"remarks"`
 	Status              string    `bson:"status"`
 	ReturnedAt          time.Time `bson:"returned_at"`
 }
@@ -87,6 +88,7 @@ type AllocationHistory struct {
 	AllocationDocuments []string  `bson:"allocation_documents"`
 	AllocatedTill       time.Time `bson:"allocated_till"`
 	AllocationType      string    `bson:"allocation_type"`
+	Remarks             []string  `bson:"remarks"`
 	Status              string    `bson:"status"`
 	ReturnedAt          time.Time `bson:"returned_at"`
 }
