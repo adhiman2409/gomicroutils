@@ -6,6 +6,12 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type GeoTracking struct {
+	Lat  float64   `bson:"lat"`
+	Lng  float64   `bson:"lng"`
+	Time time.Time `bson:"time"`
+}
+
 type EmployeeAttendance struct {
 	ID                         primitive.ObjectID `bson:"_id"`
 	EID                        string             `bson:"eid"`
@@ -60,6 +66,7 @@ type EmployeeAttendance struct {
 	OrgCheckInTimeInTicks      int64              `bson:"org_check_in_time_in_ticks"`
 	OrgCheckOutTimeInTicks     int64              `bson:"org_check_out_time_in_ticks"`
 	DailyCheckInStats          []DailyCheckInStat `bson:"daily_checkin_stats"`
+	LocationTracking           []GeoTracking      `bson:"location_tracking"`
 	IsLocked                   bool               `bson:"is_locked"`
 	IsExpired                  bool               `bson:"is_expired"`
 	IsRegularized              bool               `bson:"is_regularized"`
