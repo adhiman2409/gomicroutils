@@ -19,6 +19,9 @@ type EmployeeAttendance struct {
 	EnforceLocationCheckOut    bool               `bson:"enforce_location_check_out"`
 	RequiredLat                float64            `bson:"required_lat"`
 	RequiredLng                float64            `bson:"required_lng"`
+	RequiredRadiusInMeters     float64            `bson:"required_radius_in_meters"`
+	GeoTrackingEnabled         bool               `bson:"geo_tracking_enabled"`
+	GeoTrackingIntervalInMin   int32              `bson:"geo_tracking_interval_in_min"`
 	CheckInLat                 float64            `bson:"check_in_lat"`
 	CheckInLng                 float64            `bson:"check_in_lng"`
 	CheckOutLat                float64            `bson:"check_out_lat"`
