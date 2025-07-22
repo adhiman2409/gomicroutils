@@ -64,6 +64,8 @@ type Ticket struct {
 	CurrentAssigneeName  string             `bson:"current_assignee_name"`
 	CurrentAssigneeId    string             `bson:"current_assignee_id"`
 	CurrentAssigneeEmail string             `bson:"current_assignee_email"`
+	CurrentResolvers     []EmployeeRef      `bson:"current_resolvers"`
+	MasterResolvers      []EmployeeRef      `bson:"master_resolvers"`
 	Status               string             `bson:"status"`
 	PriorityLevel        string             `bson:"priority_level"`
 	TicketType           string             `bson:"ticket_type"`
