@@ -30,6 +30,7 @@ type EmpAttendanceConf struct {
 	WeeklyOffDays            []string           `bson:"weekly_off_days"`
 	DailyWorkingHours        float32            `bson:"daily_working_hours"`
 	EmploymentStatus         string             `bson:"employment_status"`
+	GeoLocationScreenShot    string             `bson:"geo_location_screen_shot"`
 	ShiftTimings             []EmpShiftTimings  `bson:"shift_timings"`
 	NextShiftTimingsIndex    int32              `bson:"next_shift_timings_index"`
 	Country                  string             `bson:"country"`
