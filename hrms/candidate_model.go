@@ -38,44 +38,49 @@ type CandidateProfessionalInfo struct {
 	WorkLocation   string `bson:"work_location"`
 }
 
-type SalaryComponent struct {
-	ComponentName     string              `bson:"component_name"`
-	ComponentType     SalaryComponentType `bson:"component_type"` // e.g., "fixed", "variable", "benefit"
-	AnnualAmount      float32             `bson:"annual_amount"`
-	PaymentFrequency  Frequency           `bson:"payment_frequency"`   // e.g., "monthly", "quarterly", "yearly"
-	IsDrivedComponent bool                `bson:"is_drived_component"` // Indicates if the component is derived from CTC
-	DrivedFrom        []string            `bson:"drived_from"`         // Name of the components from which this is derived, if applicable
-	DrivedEquation    string              `bson:"drived_equation"`     // Factor to derive the component from CTC
+type StockOptionComponents struct {
+	StockCount                   float32 `bson:"stock_count"`
+	TotalStockValue              float32 `bson:"total_stock_value"`
+	TotalVestingDurationInMonths string  `bson:"total_vesting_duration_in_months"`
+	VestingFrequencyInMonths     string  `bson:"vesting_frequency_in_months"`
+	StockOptionType              string  `bson:"stock_option_type"` // e.g., ESOP, RSU
 }
 
-type SalaryAnnexure struct {
-	TemplateName       string            `bson:"template_name"`
-	DocumentNumber     string            `bson:"document_number"`
-	DocumentDate       string            `bson:"document_date"`
-	TotalCostToCompany float32           `bson:"total_cost_to_company"`
-	Components         []SalaryComponent `bson:"components"` // List of salary components
+type OfferCoverLetterTemplate struct {
+	TemplateName string            `bson:"template_name"`
+	DataMap      map[string]string `bson:"data_map"`
 }
 
-type OfferCoverLetter struct {
-	TemplateName   string `bson:"template_name"`
-	DocumentNumber string `bson:"document_number"`
-	DocumentDate   string `bson:"document_date"`
+type RemunerationInfo struct {
+	TotalCTC                  float32               `bson:"total_ctc"`
+	AnnualFixedCTC            float32               `bson:"annual_fixed_ctc"`
+	AnnualFixedComponents     map[string]float32    `bson:"annual_fixed_components"`
+	MonthlyFixedCTC           float32               `bson:"monthly_fixed_ctc"`
+	MonthlyFixedComponents    map[string]float32    `bson:"monthly_fixed_components"`
+	AnnualVariableCTC         float32               `bson:"annual_variable_ctc"`
+	AnnualVariableComponents  map[string]float32    `bson:"annual_variable_components"`
+	MonthlyVariableCTC        float32               `bson:"monthly_variable_ctc"`
+	MonthlyVariableComponents map[string]float32    `bson:"monthly_variable_components"`
+	AnnualBenefits            float32               `bson:"annual_benefits"`
+	Benefits                  map[string]float32    `bson:"benefits"` // e.g., {"health_insurance": 5000, "life_insurance": 2000}
+	OneTimePayment            float32               `bson:"one_time_payment"`
+	OneTimeComponents         map[string]float32    `bson:"one_time_components"` // e.g., {"signing_bonus": 50000, "relocation_allowance": 20000}
+	StockOptions              StockOptionComponents `bson:"stock_options"`
 }
 
 type CandidateOfferLetter struct {
-	DocumentNumber      string           `bson:"document_number"`
-	DocumentDate        string           `bson:"document_date"`
-	OfferCoverLetter    OfferCoverLetter `bson:"cover_letter"`
-	SalaryAnnexure      SalaryAnnexure   `bson:"salary_annexure"`
-	ProposedJoiningDate string           `bson:"proposed_joining_date"`
-	AcceptedJoiningDate string           `bson:"accepted_joining_date"`
-	ValidFrom           string           `bson:"valid_from"`
-	ValidTo             string           `bson:"valid_to"`
-	OfferStatus         string           `bson:"offer_status"`
-	OfferStatusRemarks  string           `bson:"offer_status_remarks"`
-	CreatedAt           string           `bson:"created_at"`
-	UpdatedAt           string           `bson:"updated_at"`
-	CreatedBy           string           `bson:"created_by"`
+	DocumentNumber           string                   `bson:"document_number"`
+	DocumentDate             string                   `bson:"document_date"`
+	OfferCoverLetterTemplate OfferCoverLetterTemplate `bson:"cover_letter_template"`
+	RemunerationInfo         RemunerationInfo         `bson:"remuneration_info"`
+	JoiningDate              string                   `bson:"joining_date"`
+	ValidFrom                string                   `bson:"valid_from"`
+	ValidTo                  string                   `bson:"valid_to"`
+	OfferStatus              string                   `bson:"offer_status"`
+	OfferStatusRemarks       string                   `bson:"offer_status_remarks"`
+	CreatedAt                string                   `bson:"created_at"`
+	UpdatedAt                string                   `bson:"updated_at"`
+	CreatedBy                string                   `bson:"created_by"`
 }
 
 type CandidateDetails struct {
