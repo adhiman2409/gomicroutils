@@ -20,7 +20,7 @@ type AssetInfo struct {
 	AssetConfig           AssetConfig           `bson:"asset_config"`
 	Accessories           []string              `bson:"accessories"`
 	ProcurementType       string                `bson:"procurement_type"` // Purchased, Rental, Subscription
-	RenewalFrequency      string                `bson:"renewal_frequency"`
+	RenewalFrequency      Frequency             `bson:"renewal_frequency"`
 	SubscriptionEndDate   time.Time             `bson:"subscription_end_date"`
 	PriceInINR            float64               `bson:"price_in_inr"`
 	Price                 float64               `bson:"price"`
@@ -113,4 +113,48 @@ type AssetTransitInfo struct {
 	InvoiceURL        string    `bson:"invoice_url"`
 	CourierCompany    string    `bson:"courier_company"`
 	CreatedAt         time.Time `bson:"created_at"`
+}
+
+type Frequency int
+
+const (
+	Monthly = iota + 1
+	Quarterly
+	BiYearly
+	Yearly
+	TwoYearly
+	ThreeYearly
+	FourYearly
+	FiveYearly
+)
+
+func (r Frequency) String() string {
+	return [...]string{"Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}[r-1]
+}
+
+func (r Frequency) AssetEnumIndex() int {
+	return int(r)
+}
+
+func GetFrequencyTypes() []string {
+	return []string{"Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}
+}
+
+func AssetFrequencyFromString(s string) Frequency {
+	switch s {
+	case "FiveYearly":
+		return FiveYearly
+	case "FourYearly":
+		return FourYearly
+	case "ThreeYearly":
+		return ThreeYearly
+	case "TwoYearly":
+		return TwoYearly
+	case "Yearly":
+		return Yearly
+	case "Quarterly":
+		return Quarterly
+	default:
+		return Monthly
+	}
 }

@@ -15,15 +15,6 @@ const (
 	OneTimeComponent        SalaryComponentType = "one_time"
 )
 
-type PaymentFrequency string
-
-const (
-	Monthly    PaymentFrequency = "monthly"
-	Quarterly  PaymentFrequency = "quarterly"
-	HalfYearly PaymentFrequency = "half_yearly"
-	Yearly     PaymentFrequency = "yearly"
-)
-
 type CandidatePersonalInfo struct {
 	FullName      string `bson:"full_name"`
 	Gender        string `bson:"gender"`
@@ -51,7 +42,7 @@ type SalaryComponent struct {
 	ComponentName     string              `bson:"component_name"`
 	ComponentType     SalaryComponentType `bson:"component_type"` // e.g., "fixed", "variable", "benefit"
 	AnnualAmount      float32             `bson:"annual_amount"`
-	PaymentFrequency  PaymentFrequency    `bson:"payment_frequency"`   // e.g., "monthly", "quarterly", "yearly"
+	PaymentFrequency  Frequency           `bson:"payment_frequency"`   // e.g., "monthly", "quarterly", "yearly"
 	IsDrivedComponent bool                `bson:"is_drived_component"` // Indicates if the component is derived from CTC
 	DrivedFrom        []string            `bson:"drived_from"`         // Name of the components from which this is derived, if applicable
 	DrivedEquation    string              `bson:"drived_equation"`     // Factor to derive the component from CTC
