@@ -22,6 +22,7 @@ type AssetInfo struct {
 	ProcurementType       string                `bson:"procurement_type"` // Purchased, Rental, Subscription
 	RenewalFrequency      string                `bson:"renewal_frequency"`
 	SubscriptionEndDate   time.Time             `bson:"subscription_end_date"`
+	PriceInINR            float64               `bson:"price_in_inr"`
 	Price                 float64               `bson:"price"`
 	Currency              string                `bson:"currency"` // INR, USD, EUR etc
 	ProcurementDate       time.Time             `bson:"procurement_date"`
