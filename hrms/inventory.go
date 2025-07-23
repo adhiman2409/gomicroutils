@@ -121,7 +121,7 @@ const (
 	Zero    Frequency = iota
 	Monthly           = iota + 1
 	Quarterly
-	BiYearly
+	HalfYearly
 	Yearly
 	TwoYearly
 	ThreeYearly
@@ -130,7 +130,7 @@ const (
 )
 
 func (r Frequency) String() string {
-	return [...]string{"Zero", "Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}[r]
+	return [...]string{"Zero", "Monthly", "Quarterly", "HalfYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}[r]
 }
 
 func (r Frequency) AssetEnumIndex() int {
@@ -138,7 +138,7 @@ func (r Frequency) AssetEnumIndex() int {
 }
 
 func GetFrequencyTypes() []string {
-	return []string{"Zero", "Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}
+	return []string{"Zero", "Monthly", "Quarterly", "HalfYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}
 }
 
 func AssetFrequencyFromString(s string) Frequency {
@@ -151,6 +151,8 @@ func AssetFrequencyFromString(s string) Frequency {
 		return ThreeYearly
 	case "TwoYearly":
 		return TwoYearly
+	case "HalfYearly":
+		return HalfYearly
 	case "Yearly":
 		return Yearly
 	case "Quarterly":
