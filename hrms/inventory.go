@@ -118,7 +118,8 @@ type AssetTransitInfo struct {
 type Frequency int
 
 const (
-	Monthly = iota + 1
+	Zero    Frequency = iota
+	Monthly           = iota + 1
 	Quarterly
 	BiYearly
 	Yearly
@@ -129,7 +130,7 @@ const (
 )
 
 func (r Frequency) String() string {
-	return [...]string{"Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}[r-1]
+	return [...]string{"Zero", "Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}[r]
 }
 
 func (r Frequency) AssetEnumIndex() int {
@@ -137,7 +138,7 @@ func (r Frequency) AssetEnumIndex() int {
 }
 
 func GetFrequencyTypes() []string {
-	return []string{"Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}
+	return []string{"Zero", "Monthly", "Quarterly", "BiYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}
 }
 
 func AssetFrequencyFromString(s string) Frequency {
@@ -154,7 +155,9 @@ func AssetFrequencyFromString(s string) Frequency {
 		return Yearly
 	case "Quarterly":
 		return Quarterly
-	default:
+	case "Monthly":
 		return Monthly
+	default:
+		return Zero
 	}
 }
