@@ -7,32 +7,38 @@ import (
 )
 
 type AssetInfo struct {
-	ID                  primitive.ObjectID    `bson:"_id"`
-	AssetId             string                `bson:"asset_id"`
-	AssetSerialNumber   string                `bson:"asset_serial_number"`
-	AssetCategory       string                `bson:"asset_category"` //Hardware, Software
-	AssetType           string                `bson:"asset_type"`     //laptop, screen, keyboard, mouse etc
-	AssetBrandName      string                `bson:"asset_brand_name"`
-	AssetDescription    string                `bson:"asset_description"`
-	AssetModel          string                `bson:"asset_model"`
-	AssetConfig         AssetConfig           `bson:"asset_config"`
-	Accessories         []string              `bson:"accessories"`
-	ProcurementType     string                `bson:"procurement_type"` // Purchased, Rental, Subscription
-	RenewalFrequency    string                `bson:"renewal_frequency"`
-	SubscriptionEndDate time.Time             `bson:"subscription_end_date"`
-	PriceInINR          float64               `bson:"price_in_inr"`
-	AssetImages         []string              `bson:"asset_images"`
-	AssetDocuments      []string              `bson:"asset_documents"`
-	ImagesUpdatedOn     time.Time             `bson:"image_updated_on"`
-	Status              string                `bson:"status"` // Available, Allocated, Under Maintenance, Retired
-	IsInsured           bool                  `bson:"is_insured"`
-	Remarks             []string              `bson:"remarks"`
-	WarrantyEndDate     time.Time             `bson:"warranty_end_date"`
-	WarrantyProvider    string                `bson:"warranty_provider"`
-	AllocationInfo      []AssetAllocationInfo `bson:"allocation_info"`
-	AllocationHistory   []AllocationHistory   `bson:"allocation_history"`
-	CreatedAt           time.Time             `bson:"created_at"`
-	UpdatedAt           time.Time             `bson:"updated_at"`
+	ID                    primitive.ObjectID    `bson:"_id"`
+	AssetId               string                `bson:"asset_id"`
+	DepartmentId          string                `bson:"department_id"`
+	DepartmentName        string                `bson:"department_name"`
+	AssetSerialNumber     string                `bson:"asset_serial_number"`
+	AssetCategory         string                `bson:"asset_category"` //Hardware, Software
+	AssetType             string                `bson:"asset_type"`     //laptop, screen, keyboard, mouse etc
+	AssetBrandName        string                `bson:"asset_brand_name"`
+	AssetDescription      string                `bson:"asset_description"`
+	AssetModel            string                `bson:"asset_model"`
+	AssetConfig           AssetConfig           `bson:"asset_config"`
+	Accessories           []string              `bson:"accessories"`
+	ProcurementType       string                `bson:"procurement_type"` // Purchased, Rental, Subscription
+	RenewalFrequency      string                `bson:"renewal_frequency"`
+	SubscriptionEndDate   time.Time             `bson:"subscription_end_date"`
+	Price                 float64               `bson:"price"`
+	Currency              string                `bson:"currency"` // INR, USD, EUR etc
+	ProcurementDate       time.Time             `bson:"procurement_date"`
+	ProcurementVendor     string                `bson:"procurement_vendor"`
+	ProcurementInvoiceURL string                `bson:"procurement_invoice_url"`
+	AssetImages           []string              `bson:"asset_images"`
+	AssetDocuments        []string              `bson:"asset_documents"`
+	ImagesUpdatedOn       time.Time             `bson:"image_updated_on"`
+	Status                string                `bson:"status"` // Available, Allocated, Under Maintenance, Retired
+	IsInsured             bool                  `bson:"is_insured"`
+	Remarks               []string              `bson:"remarks"`
+	WarrantyEndDate       time.Time             `bson:"warranty_end_date"`
+	WarrantyProvider      string                `bson:"warranty_provider"`
+	AllocationInfo        []AssetAllocationInfo `bson:"allocation_info"`
+	AllocationHistory     []AllocationHistory   `bson:"allocation_history"`
+	CreatedAt             time.Time             `bson:"created_at"`
+	UpdatedAt             time.Time             `bson:"updated_at"`
 }
 
 type AssetConfig struct {
