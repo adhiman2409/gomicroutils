@@ -130,7 +130,7 @@ const (
 )
 
 func (r Frequency) String() string {
-	return [...]string{"Zero", "Monthly", "Quarterly", "HalfYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}[r]
+	return [...]string{"Zero", "Monthly", "Quarterly", "HalfYearly", "Yearly", "TwoYearly", "ThreeYearly", "FourYearly", "FiveYearly"}[r-1]
 }
 
 func (r Frequency) AssetEnumIndex() int {
