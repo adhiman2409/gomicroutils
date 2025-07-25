@@ -12,9 +12,9 @@ type OrgSalaryComponent struct {
 	IsTaxableComponent        bool               `bson:"is_taxable_component"`
 	IsCreditComponent         bool               `bson:"is_credit_component"`
 	Formula                   string             `bson:"formula"`
-	Cycle                     string             `bson:"cycle"` //once, monthly, Biannual, Annual
-	IsPaidDayDepandant        bool               `bson:"is_paid_day_depandant"`
-	AmountBasedOnFormula      bool               `bson:"amount_based_on_formula"`
+	PaymentFrequency          Frequency          `bson:"payment_frequency"` //once, monthly, Biannual, Annual
+	IsPresentDayDepandant     bool               `bson:"is_present_day_depandant"`
+	IsDrivedComponent         bool               `bson:"is_drived_component"`
 	AbbrivationsUsedInFormula []string           `bson:"abbrivations_used_in_formula"`
 	CalculatedAmount          float32            `bson:"calculated_amount"`
 	StaticAmount              float32            `bson:"static_amount"`

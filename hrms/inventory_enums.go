@@ -49,7 +49,7 @@ func AssetFrequencyFromString(s string) Frequency {
 	}
 }
 
-type InventoryStatus int
+type AssetStatus int
 
 const (
 	Available = iota + 1
@@ -61,11 +61,11 @@ const (
 	Retired
 )
 
-func (r InventoryStatus) String() string {
+func (r AssetStatus) String() string {
 	return [...]string{"Available", "Allocated", "InTransit", "Stolen", "Damaged", "UnderMaintenance", "Retired"}[r-1]
 }
 
-func (r InventoryStatus) AssetEnumIndex() int {
+func (r AssetStatus) AssetEnumIndex() int {
 	return int(r)
 }
 
@@ -73,7 +73,7 @@ func GetStatusTypes() []string {
 	return []string{"Available", "Allocated", "InTransit", "Stolen", "Damaged", "UnderMaintenance", "Retired"}
 }
 
-func AssetStatusFromString(s string) InventoryStatus {
+func AssetStatusFromString(s string) AssetStatus {
 	switch s {
 	case "Available":
 		return Available
