@@ -58,11 +58,12 @@ const (
 	Stolen
 	Damaged
 	UnderMaintenance
+	Returned
 	Retired
 )
 
 func (r AssetStatus) String() string {
-	return [...]string{"Available", "Allocated", "InTransit", "Stolen", "Damaged", "UnderMaintenance", "Retired"}[r-1]
+	return [...]string{"Available", "Allocated", "InTransit", "Stolen", "Damaged", "UnderMaintenance", "Returned", "Retired"}[r-1]
 }
 
 func (r AssetStatus) AssetEnumIndex() int {
@@ -70,7 +71,7 @@ func (r AssetStatus) AssetEnumIndex() int {
 }
 
 func GetStatusTypes() []string {
-	return []string{"Available", "Allocated", "InTransit", "Stolen", "Damaged", "UnderMaintenance", "Retired"}
+	return []string{"Available", "Allocated", "InTransit", "Stolen", "Damaged", "UnderMaintenance", "Returned", "Retired"}
 }
 
 func AssetStatusFromString(s string) AssetStatus {
@@ -87,6 +88,8 @@ func AssetStatusFromString(s string) AssetStatus {
 		return Stolen
 	case "Damaged":
 		return Damaged
+	case "Returned":
+		return Returned
 	default:
 		return Retired
 	}
