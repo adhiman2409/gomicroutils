@@ -31,7 +31,7 @@ type AssetInfo struct {
 	AssetImages           []string              `bson:"asset_images"`
 	AssetDocuments        []string              `bson:"asset_documents"`
 	ImagesUpdatedOn       time.Time             `bson:"image_updated_on"`
-	Status                InventoryStatus       `bson:"status"` // Available, Allocated, Under Maintenance, Retired
+	Status                AssetStatus           `bson:"status"` // Available, Allocated, Under Maintenance, Retired
 	IsInsured             bool                  `bson:"is_insured"`
 	Remarks               []string              `bson:"remarks"`
 	WarrantyEndDate       time.Time             `bson:"warranty_end_date"`
@@ -70,34 +70,34 @@ type AssetInsuranceInfo struct {
 }
 
 type AssetAllocationInfo struct {
-	AssetId             string          `bson:"asset_id"`
-	AssetSerialNumber   string          `bson:"asset_serial_number"`
-	EmployeeID          string          `bson:"employee_id"`
-	EmployeeEmail       string          `bson:"employee_email"`
-	EmployeeName        string          `bson:"employee_name"`
-	EmployementStatus   string          `bson:"employement_status"`
-	AllocatedAt         time.Time       `bson:"allocated_at"`
-	AllocationDocuments []string        `bson:"allocation_documents"`
-	AllocatedTill       time.Time       `bson:"allocated_till"`
-	AllocationType      string          `bson:"allocation_type"` //permanent, temporary
-	Remarks             []string        `bson:"remarks"`
-	Status              InventoryStatus `bson:"status"`
-	ReturnedAt          time.Time       `bson:"returned_at"`
+	AssetId             string      `bson:"asset_id"`
+	AssetSerialNumber   string      `bson:"asset_serial_number"`
+	EmployeeID          string      `bson:"employee_id"`
+	EmployeeEmail       string      `bson:"employee_email"`
+	EmployeeName        string      `bson:"employee_name"`
+	EmployementStatus   string      `bson:"employement_status"`
+	AllocatedAt         time.Time   `bson:"allocated_at"`
+	AllocationDocuments []string    `bson:"allocation_documents"`
+	AllocatedTill       time.Time   `bson:"allocated_till"`
+	AllocationType      string      `bson:"allocation_type"` //permanent, temporary
+	Remarks             []string    `bson:"remarks"`
+	Status              AssetStatus `bson:"status"`
+	ReturnedAt          time.Time   `bson:"returned_at"`
 }
 
 type AllocationHistory struct {
-	AssetId             string          `bson:"asset_id"`
-	AssetSerialNumber   string          `bson:"asset_serial_number"`
-	EmployeeID          string          `bson:"employee_id"`
-	EmployeeEmail       string          `bson:"employee_email"`
-	EmployeeName        string          `bson:"employee_name"`
-	AllocatedAt         time.Time       `bson:"allocated_at"`
-	AllocationDocuments []string        `bson:"allocation_documents"`
-	AllocatedTill       time.Time       `bson:"allocated_till"`
-	AllocationType      string          `bson:"allocation_type"`
-	Remarks             []string        `bson:"remarks"`
-	Status              InventoryStatus `bson:"status"`
-	ReturnedAt          time.Time       `bson:"returned_at"`
+	AssetId             string      `bson:"asset_id"`
+	AssetSerialNumber   string      `bson:"asset_serial_number"`
+	EmployeeID          string      `bson:"employee_id"`
+	EmployeeEmail       string      `bson:"employee_email"`
+	EmployeeName        string      `bson:"employee_name"`
+	AllocatedAt         time.Time   `bson:"allocated_at"`
+	AllocationDocuments []string    `bson:"allocation_documents"`
+	AllocatedTill       time.Time   `bson:"allocated_till"`
+	AllocationType      string      `bson:"allocation_type"`
+	Remarks             []string    `bson:"remarks"`
+	Status              AssetStatus `bson:"status"`
+	ReturnedAt          time.Time   `bson:"returned_at"`
 }
 
 type AssetTransitInfo struct {
