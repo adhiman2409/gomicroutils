@@ -107,8 +107,14 @@ const NOTIFICATION_COLLECTION_DEVICES = "notification-devices"
 
 const PAYMENT_COLLECTION_ORDERS = "payment-orders"
 const PAYMENT_COLLECTION_PAYMENTS = "payment-payments"
+const PAYMENT_COLLECTION_PAYMENT_DETAILS = "payment-payment-details"
+const PAYMENT_COLLECTION_SUBSCRIPTION_DETAILS = "payment-subscription-details"
+const PAYMENT_COLLECTION_TAX_DETAILS = "payment-tax-details"
+const PAYMENT_COLLECTION_DISCOUNT_DETAILS = "payment-discount-details"
+
 const PAYMENT_COLLECTION_PROCESSED_EVENTS = "payment-processed-events"
 const PAYMENT_COLLECTION_MONTHLY_USER_DATA = "payment-monthly-user-data"
+
 const ATTENDANCE_COLLECTION_MONTHLY_TIMESHEET = "attendance-monthly-timesheet"
 
 const ANALYTIC_COLLECTION_ANALYTICS = "analytic-analytics"
@@ -161,6 +167,21 @@ func GetPaymentOrdersCollection(client *mongo.Client, domain string) *mongo.Coll
 func GetPaymentPaymentsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_PAYMENTS)
+}
+
+func GetPaymentSubscriptionDetailsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_SUBSCRIPTION_DETAILS)
+}
+
+func GetPaymentTaxDetailsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_TAX_DETAILS)
+}
+
+func GetPaymentDiscountDetailsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_DISCOUNT_DETAILS)
 }
 
 func GetPaymentProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
