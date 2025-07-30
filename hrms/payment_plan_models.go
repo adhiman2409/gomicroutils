@@ -60,14 +60,14 @@ type SubscriptionDetails struct {
 	Country              string             `bson:"country"`
 	Discount             DiscountDetails    `bson:"discount"`
 	DiscountedAmount     float32            `bson:"discounted_amount"`
-	PaymentFrequency     Frequency          `bson:"payment_frequency"`
-	StartDate            int64              `bson:"start_date"`
-	EndDate              int64              `bson:"end_date"`
+	PaymentFrequency     string             `bson:"payment_frequency"`
+	StartDate            time.Time          `bson:"start_date"`
+	EndDate              time.Time          `bson:"end_date"`
 	Status               string             `bson:"status"`
-	CreatedAt            int64              `bson:"created_at"`
-	UpdatedAt            int64              `bson:"updated_at"`
-	NextBillingDate      int64              `bson:"next_billing_date"`
-	LastBillingDate      int64              `bson:"last_billing_date"`
+	CreatedAt            time.Time          `bson:"created_at"`
+	UpdatedAt            time.Time          `bson:"updated_at"`
+	NextBillingDate      time.Time          `bson:"next_billing_date"`
+	LastBillingDate      time.Time          `bson:"last_billing_date"`
 	PaymentHistory       []PaymentDetails   `bson:"payment_history"`
 	TotalAmount          float32            `bson:"total_amount"`
 	TotalPaidAmount      float32            `bson:"total_paid_amount"`
