@@ -52,7 +52,7 @@ type ProjectInfo struct {
 	ProjectHolidayList      []string            `bson:"project_holiday_list"`
 	ProjectDailyWorkingHour string              `bson:"project_daily_working_hour"`
 	ProjectWeeklyOffDay     string              `bson:"project_weekly_off_day"`
-	ActiveTeamMembers       []ProjectTeamMember `bson:"active_team_members"`
+	TeamMembers             []ProjectTeamMember `bson:"team_members"`
 	ReleasedTeamMembers     []ProjectTeamMember `bson:"released_team_members"`
 	ShiftTypes              []ShiftType         `bson:"shift_types"`
 	CreatedBy               string              `bson:"created_by"`
