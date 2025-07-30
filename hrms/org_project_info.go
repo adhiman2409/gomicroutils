@@ -41,7 +41,9 @@ type ProjectInfo struct {
 	EndDate                 string              `bson:"end_date"`
 	ProjectHeadId           string              `bson:"project_head_id"`
 	ProjectHeadName         string              `bson:"project_head_name"`
-	ProjectCoordinator      string              `bson:"project_coordinator"`
+	ProjectHeadEmail        string              `bson:"project_head_email"`
+	ProjectCoordinatorName  string              `bson:"project_coordinator_name"`
+	ProjectCoordinatorId    string              `bson:"project_coordinator_id"`
 	ProjectCoordinatorEmail string              `bson:"project_coordinator_email"`
 	ProjectWorkLocation     string              `bson:"project_work_location"`
 	ProjectWorkAddresses    []Address           `bson:"project_work_addresses"`
@@ -50,7 +52,8 @@ type ProjectInfo struct {
 	ProjectHolidayList      []string            `bson:"project_holiday_list"`
 	ProjectDailyWorkingHour string              `bson:"project_daily_working_hour"`
 	ProjectWeeklyOffDay     string              `bson:"project_weekly_off_day"`
-	TeamMembers             []ProjectTeamMember `bson:"team_members"`
+	ActiveTeamMembers       []ProjectTeamMember `bson:"active_team_members"`
+	ReleasedTeamMembers     []ProjectTeamMember `bson:"released_team_members"`
 	ShiftTypes              []ShiftType         `bson:"shift_types"`
 	CreatedBy               string              `bson:"created_by"`
 	CreatedAt               time.Time           `bson:"created_at"`
@@ -65,6 +68,7 @@ type ProjectTeamMember struct {
 	EmployeeStatus             string    `bson:"employee_status"`
 	EmployeeJoiningDate        string    `bson:"employee_joining_date"`
 	EmployeeReleavingDate      string    `bson:"employee_releaving_date"`
+	IsReleasedFromProject      bool      `bson:"is_released_from_project"`
 	EmployeeProjectEmail       string    `bson:"employee_project_email"`
 	EmployeeProjectDesignation string    `bson:"employee_project_designation"`
 	EmployeeProjectDepartment  string    `bson:"employee_project_department"`
