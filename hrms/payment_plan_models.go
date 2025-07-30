@@ -60,7 +60,7 @@ type SubscriptionDetails struct {
 	Country              string             `bson:"country"`
 	Discount             DiscountDetails    `bson:"discount"`
 	DiscountedAmount     float32            `bson:"discounted_amount"`
-	PaymentFrequency     string             `bson:"payment_frequency"`
+	PaymentFrequency     Frequency          `bson:"payment_frequency"`
 	StartDate            time.Time          `bson:"start_date"`
 	EndDate              time.Time          `bson:"end_date"`
 	Status               string             `bson:"status"`
