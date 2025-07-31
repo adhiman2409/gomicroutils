@@ -58,6 +58,7 @@ type SubscriptionDetails struct {
 	Amount               float32            `bson:"amount"`
 	Currency             string             `bson:"currency"`
 	Country              string             `bson:"country"`
+	IsDiscounted         bool               `bson:"is_discounted"`
 	Discount             DiscountDetails    `bson:"discount"`
 	DiscountedAmount     float32            `bson:"discounted_amount"`
 	PaymentFrequency     Frequency          `bson:"payment_frequency"`
