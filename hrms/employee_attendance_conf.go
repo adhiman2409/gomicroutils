@@ -6,10 +6,18 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type DelayNotification struct {
+	EmailSent   bool   `bson:"email_sent"`
+	Day         string `bson:"day"`
+	CheckInTime string `bson:"check_in_time"`
+	DelayInMins int32  `bson:"delay_in_mins"`
+}
+
 type DelayedCheckInStats struct {
-	Month               string `bson:"month"`
-	Year                string `bson:"year"`
-	DelayedCheckinCount int32  `bson:"delayed_check_in_count"`
+	DelayedCheckInDays  []DelayNotification `bson:"days"`
+	Month               string              `bson:"month"`
+	Year                string              `bson:"year"`
+	DelayedCheckinCount int32               `bson:"delayed_check_in_count"`
 }
 
 type EmpAttendanceConf struct {
