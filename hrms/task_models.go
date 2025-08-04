@@ -1,6 +1,10 @@
 package hrms
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type TaskState struct {
 	ID          primitive.ObjectID `bson:"_id"`
@@ -11,4 +15,6 @@ type TaskState struct {
 	Icon        string             `bson:"icon"`
 	Order       string             `bson:"order"`
 	Default     bool               `bson:"default"`
+	UpdatedAt   time.Time          `bson:"updated_at"`
+	CreatedAt   time.Time          `bson:"created_at"`
 }
