@@ -9,6 +9,7 @@ import (
 type TaskState struct {
 	ID          primitive.ObjectID `bson:"_id"`
 	ProjectId   string             `bson:"project_id"`
+	StateId     string             `bson:"state_id"`
 	Name        string             `bson:"name"`
 	Color       string             `bson:"color"`
 	Description string             `bson:"description"`
