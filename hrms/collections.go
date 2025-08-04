@@ -129,6 +129,13 @@ const CANDIDATE_COLLECTION_CANDIDATE_CANDIDATES = "candidate-candidates"
 
 const INVENTORY_COLLECTION_INVENTORY_ASSETS = "inventory-assets"
 
+const TASKMGR_COLLECTION_TASKMGR_TASK_STATES = "taskmgr-task-states"
+
+func GetTaskStatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TASKMGR_COLLECTION_TASKMGR_TASK_STATES)
+}
+
 func GetInventoryAssestCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(INVENTORY_COLLECTION_INVENTORY_ASSETS)
