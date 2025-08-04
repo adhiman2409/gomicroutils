@@ -8,6 +8,8 @@ type MailRequest struct {
 	TemplateName string            `json:"template_name"`
 	AckRequired  bool              `json:"ack_required"`
 	Priority     string            `json:"priority"`
+	Cc           []string          `json:"cc"`     // Added CC field for carbon copy recipients
+	Domain       string            `json:"domain"` // Added Domain field for specifying the domain
 }
 
 type NewMailRequest struct {
@@ -18,6 +20,8 @@ type NewMailRequest struct {
 	TemplateName string         `json:"template_name"`
 	AckRequired  bool           `json:"ack_required"`
 	Priority     string         `json:"priority"`
+	Cc           []string       `json:"cc"`     // Added CC field for carbon copy recipients
+	Domain       string         `json:"domain"` // Added Domain field for specifying the domain
 }
 
 type MailResponse struct {

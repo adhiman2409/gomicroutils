@@ -33,6 +33,7 @@ func (a *MailClient) NewSendMail(req NewMailRequest, domain string) (MailRespons
 		TemplateName: req.TemplateName,
 		AckRequired:  req.AckRequired,
 		Priority:     req.Priority,
+		Cc:           req.Cc, // Added CC field for carbon copy recipients
 		Domain:       domain,
 	}
 

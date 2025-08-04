@@ -15,6 +15,7 @@ message MailRequest {
   bool ackRequired = 6;
   string priority = 7;
   string domain = 8;
+  repeated string cc = 9;
 }
 
 message NewMailRequest {
@@ -26,6 +27,7 @@ message NewMailRequest {
   bool ackRequired = 6;
   string priority = 7;
   string domain = 8;
+  repeated string cc = 9;
 }
 
 message MailResponse {

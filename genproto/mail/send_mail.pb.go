@@ -32,6 +32,7 @@ type MailRequest struct {
 	AckRequired   bool                   `protobuf:"varint,6,opt,name=ackRequired,proto3" json:"ackRequired,omitempty"`
 	Priority      string                 `protobuf:"bytes,7,opt,name=priority,proto3" json:"priority,omitempty"`
 	Domain        string                 `protobuf:"bytes,8,opt,name=domain,proto3" json:"domain,omitempty"`
+	Cc            []string               `protobuf:"bytes,9,rep,name=cc,proto3" json:"cc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -122,6 +123,13 @@ func (x *MailRequest) GetDomain() string {
 	return ""
 }
 
+func (x *MailRequest) GetCc() []string {
+	if x != nil {
+		return x.Cc
+	}
+	return nil
+}
+
 type NewMailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	From          string                 `protobuf:"bytes,1,opt,name=from,proto3" json:"from,omitempty"`
@@ -132,6 +140,7 @@ type NewMailRequest struct {
 	AckRequired   bool                   `protobuf:"varint,6,opt,name=ackRequired,proto3" json:"ackRequired,omitempty"`
 	Priority      string                 `protobuf:"bytes,7,opt,name=priority,proto3" json:"priority,omitempty"`
 	Domain        string                 `protobuf:"bytes,8,opt,name=domain,proto3" json:"domain,omitempty"`
+	Cc            []string               `protobuf:"bytes,9,rep,name=cc,proto3" json:"cc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -222,6 +231,13 @@ func (x *NewMailRequest) GetDomain() string {
 	return ""
 }
 
+func (x *NewMailRequest) GetCc() []string {
+	if x != nil {
+		return x.Cc
+	}
+	return nil
+}
+
 type MailResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        bool                   `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
@@ -286,7 +302,7 @@ var File_proto_mail_type_send_mail_proto protoreflect.FileDescriptor
 
 const file_proto_mail_type_send_mail_proto_rawDesc = "" +
 	"\n" +
-	"\x1fproto/mail/type/send_mail.proto\x12\x04mail\x1a\x19google/protobuf/any.proto\"\xbb\x02\n" +
+	"\x1fproto/mail/type/send_mail.proto\x12\x04mail\x1a\x19google/protobuf/any.proto\"\xcb\x02\n" +
 	"\vMailRequest\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x02 \x01(\tR\x02to\x12\x18\n" +
@@ -295,10 +311,11 @@ const file_proto_mail_type_send_mail_proto_rawDesc = "" +
 	"\ftemplateName\x18\x05 \x01(\tR\ftemplateName\x12 \n" +
 	"\vackRequired\x18\x06 \x01(\bR\vackRequired\x12\x1a\n" +
 	"\bpriority\x18\a \x01(\tR\bpriority\x12\x16\n" +
-	"\x06domain\x18\b \x01(\tR\x06domain\x1a:\n" +
+	"\x06domain\x18\b \x01(\tR\x06domain\x12\x0e\n" +
+	"\x02cc\x18\t \x03(\tR\x02cc\x1a:\n" +
 	"\fDataMapEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd7\x02\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe7\x02\n" +
 	"\x0eNewMailRequest\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x02 \x01(\tR\x02to\x12\x18\n" +
@@ -307,7 +324,8 @@ const file_proto_mail_type_send_mail_proto_rawDesc = "" +
 	"\ftemplateName\x18\x05 \x01(\tR\ftemplateName\x12 \n" +
 	"\vackRequired\x18\x06 \x01(\bR\vackRequired\x12\x1a\n" +
 	"\bpriority\x18\a \x01(\tR\bpriority\x12\x16\n" +
-	"\x06domain\x18\b \x01(\tR\x06domain\x1aP\n" +
+	"\x06domain\x18\b \x01(\tR\x06domain\x12\x0e\n" +
+	"\x02cc\x18\t \x03(\tR\x02cc\x1aP\n" +
 	"\fDataMapEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
 	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value:\x028\x01\"f\n" +
