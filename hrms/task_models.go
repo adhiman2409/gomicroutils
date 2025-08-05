@@ -9,9 +9,10 @@ type ProjectStateList struct {
 }
 
 type TaskState struct {
-	StateId     string `bson:"state_id"`
-	Name        string `bson:"name"`
-	Color       string `bson:"color"`
-	Description string `bson:"description"`
-	Icon        string `bson:"icon"`
+	StateId      string `bson:"state_id"`
+	Name         string `bson:"name"`
+	Abbreviation string `bson:"abbreviation"`
+	Color        string `bson:"color"`
+	Description  string `bson:"description"`
+	Icon         string `bson:"icon"`
 }
