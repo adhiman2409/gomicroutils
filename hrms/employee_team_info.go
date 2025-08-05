@@ -9,6 +9,7 @@ type EmployeeTeamInfo struct {
 	EmailId      string             `bson:"email_id"`
 	PhoneNumber  string             `bson:"phone_number"`
 	Status       string             `bson:"status"`
+	NewStatus    string             `bson:"new_status"`
 	EmployeeType string             `bson:"employee_type"`
 	Department   string             `bson:"department"`
 	Designation  string             `bson:"designation"`
