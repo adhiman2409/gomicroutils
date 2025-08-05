@@ -19,7 +19,12 @@ func (a *StorageConnection) DownloadSalarySlip(w http.ResponseWriter, employeeId
 	defer cancel()
 
 	nd := GetUpdatedFinanceDomain(domain)
-	filepathwithname := "SalarySlips/" + employeeId + "/" + year + "/" + "Salary_Slip_" + employeeId + "_" + year + "_" + month + ".pdf"
+	fileName := "Salary_Slip_" + employeeId + "_" + year + "_" + month + ".pdf"
+	if month == "2025" {
+		fileName = "Form_16_" + employeeId + "_2024_2025.pdf"
+	}
+	filepathwithname := "SalarySlips/" + employeeId + "/" + year + "/" + fileName
+
 	fmt.Println("filepathwithname ", filepathwithname)
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
 	if err != nil {
@@ -34,9 +39,10 @@ func (a *StorageConnection) DownloadSalarySlip(w http.ResponseWriter, employeeId
 		fmt.Println("Error ", err.Error())
 		return err
 	}
+
 	w.Header().Set("Content-Type", contentType)
 	disposition := "inline"
-	w.Header().Set("Content-Disposition", disposition+"; filename="+"Salary_Slip_"+employeeId+"_"+year+"_"+month+".pdf")
+	w.Header().Set("Content-Disposition", disposition+"; filename="+fileName)
 	w.Header().Set("Content-Length", size)
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
