@@ -131,9 +131,16 @@ const INVENTORY_COLLECTION_INVENTORY_ASSETS = "inventory-assets"
 
 const TASKMGR_COLLECTION_TASKMGR_TASK_STATES = "taskmgr-task-states"
 
+const POLICYBAZAAR_COLLECTION_EMPLOYEE_INFO = "policybazaar-employee-info"
+
 func GetTaskStatesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(TASKMGR_COLLECTION_TASKMGR_TASK_STATES)
+}
+
+func GetPolicyBazaarEmployeeInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(POLICYBAZAAR_COLLECTION_EMPLOYEE_INFO)
 }
 
 func GetInventoryAssestCollection(client *mongo.Client, domain string) *mongo.Collection {
