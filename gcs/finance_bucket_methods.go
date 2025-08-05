@@ -20,10 +20,12 @@ func (a *StorageConnection) DownloadSalarySlip(w http.ResponseWriter, employeeId
 
 	nd := GetUpdatedFinanceDomain(domain)
 	fileName := "Salary_Slip_" + employeeId + "_" + year + "_" + month + ".pdf"
+
+	filepathwithname := "SalarySlips/" + employeeId + "/" + year + "/" + fileName
 	if month == "2025" {
 		fileName = "Form_16_" + employeeId + "_2024_2025.pdf"
+		filepathwithname = "SalarySlips/" + employeeId + "/2025/" + fileName
 	}
-	filepathwithname := "SalarySlips/" + employeeId + "/" + year + "/" + fileName
 
 	fmt.Println("filepathwithname ", filepathwithname)
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
