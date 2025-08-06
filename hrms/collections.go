@@ -14,6 +14,7 @@ const ORG_COLLECTION_DOCUMENTS = "org-documents"
 const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
 const ORG_COLLECTION_AUTH = "auth"
+const AUTH_COLLECTION_THIRD_PARTY_API_KEYS = "auth-third-party-api-keys"
 const ORG_COLLECTION_ATTENDANCE_CONF = "org-attendance-conf"
 const ORG_COLLECTION_HOLIDAYS = "org-holidays"
 const ORG_COLLECTION_LEAVES_CONF = "org-leaves-conf"
@@ -109,8 +110,10 @@ const PAYMENT_COLLECTION_ORDERS = "payment-orders"
 const PAYMENT_COLLECTION_PAYMENTS = "payment-payments"
 const PAYMENT_COLLECTION_PAYMENT_DETAILS = "payment-payment-details"
 const PAYMENT_COLLECTION_SUBSCRIPTION_DETAILS = "payment-subscription-details"
+const PAYMENT_COLLECTION_SUBSCRIPTION_COUNTER = "payment-subscription-counter"
 const PAYMENT_COLLECTION_TAX_DETAILS = "payment-tax-details"
 const PAYMENT_COLLECTION_DISCOUNT_DETAILS = "payment-discount-details"
+const PAYMENT_COLLECTION_DISCOUNT_COUNTER = "payment-discount-counter"
 
 const PAYMENT_COLLECTION_PROCESSED_EVENTS = "payment-processed-events"
 const PAYMENT_COLLECTION_MONTHLY_USER_DATA = "payment-monthly-user-data"
@@ -195,6 +198,11 @@ func GetPaymentSubscriptionDetailsCollection(client *mongo.Client, domain string
 	return db.Collection(PAYMENT_COLLECTION_SUBSCRIPTION_DETAILS)
 }
 
+func GetPaymentSubscriptionCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_SUBSCRIPTION_COUNTER)
+}
+
 func GetPaymentTaxDetailsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_TAX_DETAILS)
@@ -203,6 +211,11 @@ func GetPaymentTaxDetailsCollection(client *mongo.Client, domain string) *mongo.
 func GetPaymentDiscountDetailsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_DISCOUNT_DETAILS)
+}
+
+func GetPaymentDiscountCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_DISCOUNT_COUNTER)
 }
 
 func GetPaymentProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
@@ -283,6 +296,11 @@ func GetOrgPermissionsCollection(client *mongo.Client, domain string) *mongo.Col
 func GetOrgEmployeeTypeCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_EMPLOYEE_TYPE)
+}
+
+func GetAuthThirdPartyAPIKeysCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(AUTH_COLLECTION_THIRD_PARTY_API_KEYS)
 }
 
 func GetOrgAttendanceConfCollection(client *mongo.Client, domain string) *mongo.Collection {

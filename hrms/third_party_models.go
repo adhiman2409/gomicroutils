@@ -16,6 +16,17 @@ type PolicyBazaarEmployeeInfo struct {
 	LastModified     time.Time                      `bson:"last_modified"`
 }
 
+type ThirdPartyKey struct {
+	Key        string    `bson:"key"`
+	ClientName string    `bson:"client_name"`
+	Title      string    `bson:"title"`
+	IsActive   bool      `bson:"is_active"`
+	Paths      []string  `bson:"paths"`
+	CreatedAt  time.Time `bson:"created_at"`
+	Expiry     time.Time `bson:"expiry"`
+	Remarks    string    `bson:"remarks"`
+}
+
 type PolicyBazaarFamilyMemberInfo struct {
 	Name       string `bson:"name"`
 	RelationID int    `bson:"relation_id"`
