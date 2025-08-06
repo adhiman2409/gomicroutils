@@ -21,8 +21,10 @@ type SidebarItem struct {
 	Delete bool   `json:"delete"`
 }
 
-type UnirmsConfig struct {
-	SidebarItems []SidebarItem `json:"sidebar_items"`
+type EmployeeSidebarConfig struct {
+	Id           primitive.ObjectID `bson:"_id"`
+	EmployeeId   string             `bson:"employee_id"`
+	SidebarItems []SidebarItem      `bson:"sidebar_items"`
 }
 
 type AccessConfig struct {
