@@ -28,13 +28,14 @@ type EmployeeSidebarConfig struct {
 }
 
 type AccessConfig struct {
-	Type   AccessConfigType `bson:"type"`
-	Name   string           `bson:"name"`
-	Id     string           `bson:"id"`
-	Read   bool             `bson:"read"`
-	Insert bool             `bson:"insert"`
-	Update bool             `bson:"update"`
-	Delete bool             `bson:"delete"`
+	Type       AccessConfigType `bson:"type"`
+	Department string           `bson:"department,omitempty"`
+	Role       string           `bson:"role,omitempty"`
+	EmployeeId string           `bson:"employee_id,omitempty"`
+	Read       bool             `bson:"read"`
+	Insert     bool             `bson:"insert"`
+	Update     bool             `bson:"update"`
+	Delete     bool             `bson:"delete"`
 }
 
 type SidebarConfig struct {
