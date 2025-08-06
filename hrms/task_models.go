@@ -11,6 +11,7 @@ type ProjectStateList struct {
 	ProjectId  string             `bson:"project_id"`
 	TaskStates []TaskState        `bson:"task_states"`
 	CreatedAt  time.Time          `bson:"created_at"`
+	Tasks      []Task             `bson:"tasks"`
 }
 
 type TaskState struct {
@@ -27,6 +28,22 @@ type StateIdCounter struct {
 	ProjectId string             `bson:"project_id"`
 	Prefix    string             `bson:"prefix"`
 	Counter   int64              `bson:"counter"`
+}
+
+type Task struct {
+	StateId     string       `bson:"state_id"`
+	Title       string       `bson:"title"`
+	Description string       `bson:"description"`
+	Assignees   string       `bson:"assignees"`
+	AssignedBy  string       `bson:"assigned_by"`
+	StartDate   time.Time    `bson:"start_date"`
+	DueDate     time.Time    `bson:"due_date"`
+	Labels      []string     `bson:"labels"`
+	Priority    TaskPriority `bson:"priority"`
+	Attachment  string       `bson:"attachment"`
+	Remarks     string       `bson:"remarks"`
+	UpdatedAt   time.Time    `bson:"updated_at"`
+	CreatedAt   time.Time    `bson:"created_at"`
 }
 
 type TaskPriority int

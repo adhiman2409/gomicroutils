@@ -19,6 +19,7 @@ type PolicyBazaarEmployeeInfo struct {
 type ThirdPartyKey struct {
 	Key        string    `bson:"key"`
 	ClientName string    `bson:"client_name"`
+	Domain     string    `bson:"domain"`
 	Title      string    `bson:"title"`
 	IsActive   bool      `bson:"is_active"`
 	Paths      []string  `bson:"paths"`
