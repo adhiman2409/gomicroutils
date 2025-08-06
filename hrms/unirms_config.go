@@ -39,6 +39,7 @@ type SidebarConfig struct {
 	Id                       primitive.ObjectID `bson:"_id"`
 	Title                    string             `bson:"title"`
 	Icon                     string             `bson:"icon"`
+	SerialNumber             int                `bson:"serial_number"`
 	DepartmentLevelAccess    []AccessConfig     `bson:"department_level_access"`
 	DepartmentRoleAccess     []AccessConfig     `bson:"department_role_access"`
 	DepartmentEmployeeAccess []AccessConfig     `bson:"department_employee_access"`
