@@ -15,6 +15,8 @@ const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
 const ORG_COLLECTION_AUTH = "auth"
 const AUTH_COLLECTION_THIRD_PARTY_API_KEYS = "auth-third-party-api-keys"
+const AUTH_COLLECTION_ORG_SIDEBAR_CONFIG = "auth-org-sidebar-config"
+const AUTH_COLLECTION_EMPLOYEE_SIDEBAR_CONFIG = "auth-employee-sidebar-config"
 const ORG_COLLECTION_ATTENDANCE_CONF = "org-attendance-conf"
 const ORG_COLLECTION_HOLIDAYS = "org-holidays"
 const ORG_COLLECTION_LEAVES_CONF = "org-leaves-conf"
@@ -301,6 +303,16 @@ func GetOrgEmployeeTypeCollection(client *mongo.Client, domain string) *mongo.Co
 func GetAuthThirdPartyAPIKeysCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(AUTH_COLLECTION_THIRD_PARTY_API_KEYS)
+}
+
+func GetAuthOrgSidebarConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(AUTH_COLLECTION_ORG_SIDEBAR_CONFIG)
+}
+
+func GetAuthEmployeeSidebarConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(AUTH_COLLECTION_EMPLOYEE_SIDEBAR_CONFIG)
 }
 
 func GetOrgAttendanceConfCollection(client *mongo.Client, domain string) *mongo.Collection {

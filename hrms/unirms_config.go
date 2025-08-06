@@ -1,5 +1,7 @@
 package hrms
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type AccessConfigType string
 
 const (
@@ -34,12 +36,12 @@ type AccessConfig struct {
 }
 
 type SidebarConfig struct {
-	Id                       string         `bson:"_id"`
-	Title                    string         `bson:"title"`
-	Icon                     string         `bson:"icon"`
-	DepartmentLevelAccess    []AccessConfig `bson:"department_level_access"`
-	DepartmentRoleAccess     []AccessConfig `bson:"department_role_access"`
-	DepartmentEmployeeAccess []AccessConfig `bson:"department_employee_access"`
-	OrgRoleAccess            []AccessConfig `bson:"org_role_access"`
-	OrgEmployeeAccess        []AccessConfig `bson:"org_employee_access"`
+	Id                       primitive.ObjectID `bson:"_id"`
+	Title                    string             `bson:"title"`
+	Icon                     string             `bson:"icon"`
+	DepartmentLevelAccess    []AccessConfig     `bson:"department_level_access"`
+	DepartmentRoleAccess     []AccessConfig     `bson:"department_role_access"`
+	DepartmentEmployeeAccess []AccessConfig     `bson:"department_employee_access"`
+	OrgRoleAccess            []AccessConfig     `bson:"org_role_access"`
+	OrgEmployeeAccess        []AccessConfig     `bson:"org_employee_access"`
 }
