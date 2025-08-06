@@ -28,3 +28,37 @@ type StateIdCounter struct {
 	Prefix    string             `bson:"prefix"`
 	Counter   int64              `bson:"counter"`
 }
+
+type TaskPriority int
+
+const (
+	Urgent = iota + 1
+	High
+	Medium
+	Low
+)
+
+func (r TaskPriority) String() string {
+	return [...]string{"Urgent", "High", "Medium", "Low"}[r-1]
+}
+
+func (r TaskPriority) TaskPriorityEnumIndex() int {
+	return int(r)
+}
+
+func GetTaskPriorities() []string {
+	return []string{"Urgent", "High", "Medium", "Low"}
+}
+
+func TaskPriorityFromString(s string) TaskPriority {
+	switch s {
+	case "Urgent":
+		return Urgent
+	case "High":
+		return High
+	case "Medium":
+		return Medium
+	default:
+		return Low
+	}
+}
