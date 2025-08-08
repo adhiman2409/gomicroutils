@@ -7,9 +7,12 @@ import (
 )
 
 type GeoTracking struct {
-	Lat  float64   `bson:"lat"`
-	Lng  float64   `bson:"lng"`
-	Time time.Time `bson:"time"`
+	Lat       float64   `bson:"lat"`
+	Lng       float64   `bson:"lng"`
+	Time      time.Time `bson:"time"`
+	EventName string    `bson:"event_name"` // e.g., "checkin", "checkout", "location_update"
+	EventId   string    `bson:"event_id"`   // Unique identifier for the event
+	Remarks   string    `bson:"remarks"`    // Additional information about the event
 }
 
 type EmployeeAttendance struct {
