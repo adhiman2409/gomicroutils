@@ -14,7 +14,9 @@ type PolicyBazaarEmployeeInfo struct {
 	DateOfBirth      string                         `bson:"date_of_birth"`
 	Gender           string                         `bson:"gender"`
 	FamilyMembers    []PolicyBazaarFamilyMemberInfo `bson:"family_members"`
-	LastModified     time.Time                      `bson:"last_modified"`
+	JoinedAt         time.Time                      `bson:"joined_at"`
+	UpdatedAt        time.Time                      `bson:"updated_at"`
+	ExitedAt         time.Time                      `bson:"exited_at"`
 }
 
 type ThirdPartyKey struct {

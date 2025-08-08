@@ -46,6 +46,16 @@ type Task struct {
 	CreatedAt   time.Time    `bson:"created_at"`
 }
 
+type ProjectTasksResponse struct {
+	StateId      string `bson:"state_id"`
+	Name         string `bson:"name"`
+	Abbreviation string `bson:"abbreviation"`
+	Color        string `bson:"color"`
+	Description  string `bson:"description"`
+	Icon         string `bson:"icon"`
+	Tasks        []Task `bson:"tasks"`
+}
+
 type TaskPriority int
 
 const (
