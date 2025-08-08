@@ -30,11 +30,24 @@ type StateIdCounter struct {
 	Counter   int64              `bson:"counter"`
 }
 
+type EmpSummary struct {
+	ID                    primitive.ObjectID `bson:"_id"`
+	EmployeeId            string             `bson:"employee_id"`
+	FullName              string             `bson:"full_name"`
+	EmailId               string             `bson:"email_id"`
+	EmploymentStatus      string             `bson:"employment_status"`
+	Department            string             `bson:"department"`
+	Designation           string             `bson:"designation"`
+	ReportingManagerName  string             `bson:"reporting_manager"`
+	ReportingManagerId    string             `bson:"reporting_manager_id"`
+	ReportingManagerEmail string             `bson:"reporting_manager_email"`
+}
+
 type Task struct {
 	StateId     string       `bson:"state_id"`
 	Title       string       `bson:"title"`
 	Description string       `bson:"description"`
-	Assignees   []string     `bson:"assignees"`
+	Assignees   []EmpSummary `bson:"assignees"`
 	AssignedBy  string       `bson:"assigned_by"`
 	StartDate   time.Time    `bson:"start_date"`
 	DueDate     time.Time    `bson:"due_date"`
