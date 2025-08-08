@@ -31,16 +31,18 @@ type StateIdCounter struct {
 }
 
 type EmpSummary struct {
-	ID                    primitive.ObjectID `bson:"_id"`
-	EmployeeId            string             `bson:"employee_id"`
-	FullName              string             `bson:"full_name"`
-	EmailId               string             `bson:"email_id"`
-	EmploymentStatus      string             `bson:"employment_status"`
-	Department            string             `bson:"department"`
-	Designation           string             `bson:"designation"`
-	ReportingManagerName  string             `bson:"reporting_manager"`
-	ReportingManagerId    string             `bson:"reporting_manager_id"`
-	ReportingManagerEmail string             `bson:"reporting_manager_email"`
+	ID                          primitive.ObjectID `bson:"_id"`
+	EmployeeId                  string             `bson:"employee_id"`
+	FullName                    string             `bson:"full_name"`
+	EmailId                     string             `bson:"email_id"`
+	EmploymentStatus            string             `bson:"employment_status"`
+	Department                  string             `bson:"department"`
+	Designation                 string             `bson:"designation"`
+	ReportingManagerName        string             `bson:"reporting_manager"`
+	ReportingManagerId          string             `bson:"reporting_manager_id"`
+	ReportingManagerEmail       string             `bson:"reporting_manager_email"`
+	ReportingManagerDesignation string             `bson:"reporting_manager_designation"`
+	ReportingManagerDepartment  string             `bson:"reporting_manager_department"`
 }
 
 type Task struct {
