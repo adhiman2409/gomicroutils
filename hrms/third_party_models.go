@@ -6,6 +6,7 @@ type PolicyBazaarEmployeeInfo struct {
 	EmployeeID       string                         `bson:"employee_id"`
 	Name             string                         `bson:"name"`
 	Email            string                         `bson:"email"`
+	MobileNumber     string                         `bson:"mobile_number"`
 	DateOfJoin       string                         `bson:"date_of_joining"`
 	LeavingDate      string                         `bson:"leaving_date"`
 	LeftOrganization bool                           `bson:"left_organization"`
