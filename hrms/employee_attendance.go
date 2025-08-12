@@ -69,7 +69,7 @@ type EmployeeAttendance struct {
 	OrgCheckInTimeInTicks      int64              `bson:"org_check_in_time_in_ticks"`
 	OrgCheckOutTimeInTicks     int64              `bson:"org_check_out_time_in_ticks"`
 	DailyCheckInStats          []DailyCheckInStat `bson:"daily_checkin_stats"`
-	LocationTracking           []GeoTracking      `bson:"location_tracking"`
+	GeoTracking                []GeoTracking      `bson:"geo_tracking"`
 	IsLocked                   bool               `bson:"is_locked"`
 	IsExpired                  bool               `bson:"is_expired"`
 	IsRegularized              bool               `bson:"is_regularized"`

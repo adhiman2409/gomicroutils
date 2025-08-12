@@ -358,6 +358,21 @@ type PassportDetails struct {
 	VisaInfo            []VisaInfo `bson:"visa_info"`
 }
 
+type FNFDetails struct {
+	Status                       string               `bson:"status"`
+	StartDate                    time.Time            `bson:"start_date"`
+	EndDate                      time.Time            `bson:"end_date"`
+	Remarks                      string               `bson:"remarks"`
+	Documents                    []SeparationDocument `bson:"documents"`
+	FinalSettlementDate          time.Time            `bson:"final_settlement_date"`
+	FinalSettlementAmount        float32              `bson:"final_settlement_amount"`
+	IsFinalSettlementPaid        bool                 `bson:"is_final_settlement_paid"`
+	FinalSettlementPaidDate      time.Time            `bson:"final_settlement_paid_date"`
+	FinalSettlementTransactionId string               `bson:"final_settlement_transaction_id"`
+	IsFNFDetailsLocked           bool                 `bson:"is_fnf_details_locked"`
+	IsFNFDetailsEditable         bool                 `bson:"is_fnf_details_editable"`
+}
+
 type EmployeeTechInfo struct {
 	ID                        primitive.ObjectID `bson:"_id"`
 	EmployeeId                string             `bson:"employee_id"`
@@ -399,6 +414,7 @@ type EmployeeTechInfoOld struct {
 	OldAppraisals             []Appraisal        `bson:"old_appraisals,omitempty"`
 	ActiveAppraisal           AppraisalOld       `bson:"active_appraisal,omitempty"`
 	Separations               []SeparationInfo   `bson:"separations"`
+	FNFDetails                FNFDetails         `bson:"fnf_details"`
 	PassportDetails           PassportDetails    `bson:"passport_details"`
 	IsSeparationInfoLocked    bool               `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked    bool               `bson:"is_profile_editing_locked"`
@@ -427,15 +443,16 @@ func GetAllInputTypes() []string {
 }
 
 func InputTypeFromString(s string) InputType {
-	if s == "Text" {
+	switch s {
+	case "Text":
 		return Text
-	} else if s == "Binary" {
+	case "Binary":
 		return Binary
-	} else if s == "StarRating" {
+	case "StarRating":
 		return StarRating
-	} else if s == "SingleSelect" {
+	case "SingleSelect":
 		return SingleSelect
-	} else {
+	default:
 		return MultiSelect
 	}
 }
