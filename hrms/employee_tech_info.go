@@ -391,6 +391,7 @@ type EmployeeTechInfo struct {
 	OldAppraisals             []Appraisal        `bson:"old_appraisals,omitempty"`
 	ActiveAppraisal           Appraisal          `bson:"active_appraisal,omitempty"`
 	Separations               []SeparationInfo   `bson:"separations"`
+	FNFDetails                FNFDetails         `bson:"fnf_details"`
 	PassportDetails           PassportDetails    `bson:"passport_details"`
 	IsSeparationInfoLocked    bool               `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked    bool               `bson:"is_profile_editing_locked"`
