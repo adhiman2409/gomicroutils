@@ -50,7 +50,7 @@ type Task struct {
 	Title       string       `bson:"title"`
 	Description string       `bson:"description"`
 	Assignees   []EmpSummary `bson:"assignees"`
-	AssignedBy  string       `bson:"assigned_by"`
+	AssignedBy  EmpSummary   `bson:"assigned_by"`
 	StartDate   time.Time    `bson:"start_date"`
 	DueDate     time.Time    `bson:"due_date"`
 	Labels      []string     `bson:"labels"`
