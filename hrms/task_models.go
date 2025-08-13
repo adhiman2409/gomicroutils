@@ -30,6 +30,13 @@ type StateIdCounter struct {
 	Counter   int64              `bson:"counter"`
 }
 
+type TaskIdCounter struct {
+	ID        primitive.ObjectID `bson:"_id,omitempty"`
+	ProjectId string             `bson:"project_id"`
+	Prefix    string             `bson:"prefix"`
+	Counter   int64              `bson:"counter"`
+}
+
 type EmpSummary struct {
 	ID                          primitive.ObjectID `bson:"_id"`
 	EmployeeId                  string             `bson:"employee_id"`

@@ -138,6 +138,8 @@ const KYC_COLLECTION_PROJECT_TASK_STATES = "kyc-project-task-states"
 
 const KYC_COLLECTION_PROJECT_TASK_STATE_COUNTER = "kyc-project-task-state-counter"
 
+const KYC_COLLECTION_PROJECT_TASK_ID_COUNTER = "kyc-project-task-id-counter"
+
 const POLICYBAZAAR_COLLECTION_EMPLOYEE_INFO = "policybazaar-employee-info"
 
 func GetKYCProjectTaskStatesCollection(client *mongo.Client, domain string) *mongo.Collection {
@@ -148,6 +150,11 @@ func GetKYCProjectTaskStatesCollection(client *mongo.Client, domain string) *mon
 func GetKYCProjectTaskStateCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(KYC_COLLECTION_PROJECT_TASK_STATE_COUNTER)
+}
+
+func GetKYCProjectTaskIdCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(KYC_COLLECTION_PROJECT_TASK_ID_COUNTER)
 }
 
 func GetPolicyBazaarEmployeeInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
