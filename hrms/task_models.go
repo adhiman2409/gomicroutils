@@ -37,6 +37,15 @@ type TaskIdCounter struct {
 	Counter   int64              `bson:"counter"`
 }
 
+type Comments struct {
+	EmployeeId  string    `bson:"employee_id"`
+	Name        string    `bson:"name"`
+	Department  string    `bson:"department"`
+	Designation string    `bson:"designation"`
+	Comment     string    `bson:"comment"`
+	CreatedAt   time.Time `bson:"created_at"`
+}
+
 type EmpSummary struct {
 	ID                          primitive.ObjectID `bson:"_id"`
 	EmployeeId                  string             `bson:"employee_id"`
@@ -65,6 +74,7 @@ type Task struct {
 	Priority    TaskPriority `bson:"priority"`
 	Attachments []string     `bson:"attachments"`
 	Remarks     []string     `bson:"remarks"`
+	Comments    []Comments   `bson:"comments"`
 	UpdatedAt   time.Time    `bson:"updated_at"`
 	CreatedAt   time.Time    `bson:"created_at"`
 }
