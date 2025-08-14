@@ -63,8 +63,6 @@ type EmployeeAttendance struct {
 	IsWeeklyOffDay             bool               `bson:"is_weekly_off_day"`
 	IsFullDayLOP               bool               `bson:"is_full_day_lop"`
 	IsHalfDayLOP               bool               `bson:"is_half_day_lop"`
-	IsOnBreak                  bool               `bson:"is_on_break"`
-	TotalBreakTimeInMins       int64              `bson:"total_break_time_in_mins"`
 	ShiftType                  ShiftType          `bson:"shift_type"`
 	SentCheckInMail            bool               `bson:"sent_check_in_mail"`
 	SentCheckOutMail           bool               `bson:"sent_check_out_mail"`
@@ -72,6 +70,8 @@ type EmployeeAttendance struct {
 	OrgCheckOutTimeInTicks     int64              `bson:"org_check_out_time_in_ticks"`
 	DailyCheckInStats          []DailyCheckInStat `bson:"daily_checkin_stats"`
 	GeoTracking                []GeoTracking      `bson:"geo_tracking"`
+	IsOnBreak                  bool               `bson:"is_on_break"`
+	TotalBreakTimeInMins       int64              `bson:"total_break_time_in_mins"`
 	DailyBreakStats            []DailyBreakStat   `bson:"daily_break_stats"`
 	IsLocked                   bool               `bson:"is_locked"`
 	IsExpired                  bool               `bson:"is_expired"`
