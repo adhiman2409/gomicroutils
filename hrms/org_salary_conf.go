@@ -9,6 +9,7 @@ type OrgSalaryComponent struct {
 	ComponentName             string             `bson:"component_name"`
 	Abbrivation               string             `bson:"abbrivation"`
 	Description               string             `bson:"description"`
+	IsBaseComponent           bool               `bson:"is_base_component"` // Indicates if this is a base component
 	IsTaxableComponent        bool               `bson:"is_taxable_component"`
 	IsCreditComponent         bool               `bson:"is_credit_component"`
 	Formula                   string             `bson:"formula"`
@@ -31,9 +32,22 @@ type OrgSalaryComponentGroup struct {
 	TotalAmount      float32              `bson:"total_amount"`
 }
 
+type OrgStockOptionComponents struct {
+	StockCount                   float32 `json:"stock_count"`
+	TotalStockValue              float32 `json:"total_stock_value"`
+	TotalVestingDurationInMonths string  `json:"total_vesting_duration_in_months"`
+	VestingFrequencyInMonths     string  `json:"vesting_frequency_in_months"`
+	StockOptionType              string  `json:"stock_option_type"` // e.g., ESOP, RSU
+}
+
 type OrgSalaryStructure struct {
 	ID                    primitive.ObjectID        `bson:"_id"`
-	OrgName               string                    `bson:"org_name"`
 	Name                  string                    `bson:"name"`
+	Abbrivation           string                    `bson:"abbrivation"`
+	Description           string                    `bson:"description"`
+	BaseComponentValue    float32                   `bson:"base_component_value"`
 	SalaryComponentGroups []OrgSalaryComponentGroup `bson:"salary_component_groups"`
+	IsStockOptionEnabled  bool                      `bson:"is_stock_option_enabled"`
+	StockOptionComponents OrgStockOptionComponents  `bson:"stock_option_components"`
+	TotalCTC              float32                   `bson:"total_ctc"`
 }
