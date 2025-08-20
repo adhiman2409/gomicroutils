@@ -43,6 +43,7 @@ type Comments struct {
 	Department  string    `bson:"department"`
 	Designation string    `bson:"designation"`
 	Comment     string    `bson:"comment"`
+	Attachments []string  `bson:"attachments"`
 	CreatedAt   time.Time `bson:"created_at"`
 }
 
