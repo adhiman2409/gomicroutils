@@ -38,7 +38,7 @@ type CandidateOfferLetter struct {
 	DocumentNumber           string                   `bson:"document_number"`
 	DocumentDate             string                   `bson:"document_date"`
 	OfferCoverLetterTemplate OfferCoverLetterTemplate `bson:"cover_letter_template"`
-	RemunerationInfo         OrgSalaryStructure       `bson:"remuneration_info"`
+	SalaryInfo               OrgSalaryStructure       `bson:"salary_info"`
 	JoiningDate              string                   `bson:"joining_date"`
 	ValidFrom                string                   `bson:"valid_from"`
 	ValidTo                  string                   `bson:"valid_to"`
