@@ -65,6 +65,10 @@ type IndianSalaryStructure struct {
 	MonthlyBroadbandAndMobile               float32   `bson:"monthly_broadband_and_mobile"`
 	AnnualFoodCoupons                       float32   `bson:"annual_food_coupons"`
 	MonthlyFoodCoupons                      float32   `bson:"monthly_food_coupons"`
+	AnnualUniformAndLaundry                 float32   `bson:"annual_uniform_and_laundry"`
+	MonthlyUniformAndLaundry                float32   `bson:"monthly_uniform_and_laundry"`
+	AnnualConveyanceAllowance               float32   `bson:"annual_conveyance_allowance"`
+	MonthlyConveyanceAllowance              float32   `bson:"monthly_conveyance_allowance"`
 	AnnualStatutoryBonus                    float32   `bson:"annual_statutory_bonus"`
 	MonthlyStatutoryBonus                   float32   `bson:"monthly_statutory_bonus"`
 	AnnualGratuity                          float32   `bson:"annual_gratuity"`

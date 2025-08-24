@@ -83,6 +83,18 @@ type OrgSalaryConfig struct {
 	MonthlyHRAPercentageOfBasic              float32            `bson:"monthly_hra_percentage_of_basic"`
 	MonthlyStatutoryBonusPercentageOfBasic   float32            `bson:"monthly_statutory_bonus_percentage_of_basic"`
 	MonthlyGratuityPercentageOfBasic         float32            `bson:"monthly_gratuity_percentage_of_basic"`
+	AnnualLTA                                float32            `bson:"annual_lta"`
+	MonthlyLTA                               float32            `bson:"monthly_lta"`
+	AnnualBooksAndPeriodicals                float32            `bson:"annual_books_and_periodicals"`
+	MonthlyBooksAndPeriodicals               float32            `bson:"monthly_books_and_periodicals"`
+	AnnualBroadbandAndMobile                 float32            `bson:"annual_broadband_and_mobile"`
+	MonthlyBroadbandAndMobile                float32            `bson:"monthly_broadband_and_mobile"`
+	AnnualFoodCoupons                        float32            `bson:"annual_food_coupons"`
+	MonthlyFoodCoupons                       float32            `bson:"monthly_food_coupons"`
+	AnnualUniformAndLaundry                  float32            `bson:"annual_uniform_and_laundry"`
+	MonthlyUniformAndLaundry                 float32            `bson:"monthly_uniform_and_laundry"`
+	AnnualConveyanceAllowance                float32            `bson:"annual_conveyance_allowance"`
+	MonthlyConveyanceAllowance               float32            `bson:"monthly_conveyance_allowance"`
 	AddRemainingAmountInSpecialAllowance     bool               `bson:"add_remaining_amount_in_special_allowance"`
 	ESICConfig                               []ESICConfig       `bson:"esi_config"`
 	LWFConfig                                []LWFConfig        `bson:"lwf_config"`
