@@ -95,6 +95,9 @@ type OrgSalaryConfig struct {
 	MonthlyUniformAndLaundry                 float32            `bson:"monthly_uniform_and_laundry"`
 	AnnualConveyanceAllowance                float32            `bson:"annual_conveyance_allowance"`
 	MonthlyConveyanceAllowance               float32            `bson:"monthly_conveyance_allowance"`
+	IsOptedforCorporateNPS                   bool               `bson:"is_opted_for_corporate_nps"`
+	AnnualCorporateNPSPercentageOfBasic      float32            `bson:"annual_corporate_nps_percentage_of_basic"`
+	MonthlyCorporateNPSPercentageOfBasic     float32            `bson:"monthly_corporate_nps_percentage_of_basic"`
 	AddRemainingAmountInSpecialAllowance     bool               `bson:"add_remaining_amount_in_special_allowance"`
 	ESICConfig                               []ESICConfig       `bson:"esi_config"`
 	LWFConfig                                []LWFConfig        `bson:"lwf_config"`
