@@ -39,6 +39,7 @@ const ORG_COLLECTION_CLIENT_HOLIDAYS = "org-client_holidays"
 const ORG_COLLECTION_POLICY = "org-policy"
 const ORG_COLLECTION_POLICY_STATS = "org-policy-stats"
 const ORG_COLLECTION_SALARY_COMPONENTS = "org-salary_components"
+const ORG_COLLECTION_SALARY_CONFIGS = "org-salary_configs"
 const ORG_COLLECTION_SALARY_GROUPS = "org-salary_groups"
 const ORG_COLLECTION_SALARY_STRUCTURES = "org-salary_structures"
 const ORG_COLLECTION_OFFER_LETTERS = "org-offer-letters"
@@ -494,6 +495,11 @@ func GetOrgPolicyCollection(client *mongo.Client, domain string) *mongo.Collecti
 func GetOrgSalaryComponentsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_SALARY_COMPONENTS)
+}
+
+func GetOrgSalaryConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_SALARY_CONFIGS)
 }
 
 func GetOrgSalaryStructuresCollection(client *mongo.Client, domain string) *mongo.Collection {

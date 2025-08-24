@@ -51,3 +51,26 @@ type OrgSalaryStructure struct {
 	StockOptionComponents OrgStockOptionComponents  `bson:"stock_option_components"`
 	TotalCTC              float32                   `bson:"total_ctc"`
 }
+
+type OrgSalaryConfig struct {
+	ID                                       primitive.ObjectID `bson:"_id"`
+	State                                    int                `bson:"state"`
+	Country                                  string             `bson:"country"`
+	DeliveryLocation                         string             `bson:"delivery_location"`
+	OrganizationDefaultTaxRegime             string             `bson:"organization_default_tax_regime"` // e.g., "new", "old"
+	IsPFContributionIsBasedOnBasicSalary     bool               `bson:"is_pf_contribution_is_based_on_basic_salary"`
+	PFEmployerContributionPercentageOfBasic  float32            `bson:"pf_employer_contribution_percentage_of_basic"`
+	PFEmployeeContributionPercentageOfBasic  float32            `bson:"pf_employee_contribution_percentage_of_basic"`
+	PFFixedEmployerContributionAmount        float32            `bson:"pf_fixed_employer_contribution_amount"`
+	PFFixedEmployeeContributionAmount        float32            `bson:"pf_fixed_employee_contribution_amount"`
+	ESIThresholdForEmployee                  float32            `bson:"esi_threshold_for_employee"`
+	ESIEmployerContributionPercentageOfGross float32            `bson:"esi_employer_contribution_percentage_of_gross"`
+	ESIEmployeeContributionPercentageOfGross float32            `bson:"esi_employee_contribution_percentage_of_gross"`
+	GratuityCalculationMethod                string             `bson:"gratuity_calculation_method"` // e.g., "last_drawn_salary", "average_salary"
+	GratuityRatePerYear                      float32            `bson:"gratuity_rate_per_year"`      // e.g., 15 days' salary per year of service
+	GratuityMaxLimit                         float32            `bson:"gratuity_max_limit"`
+	LWFApplicableCityList                    []string           `bson:"lwf_applicable_city_list"`
+	LWFEmployerContribution                  float32            `bson:"lwf_employer_contribution"`
+	LWFEmployeeContribution                  float32            `bson:"lwf_employee_contribution"`
+	AnnualMedicalInsurancePremium            float32            `bson:"annual_medical_insurance_premium"`
+}
