@@ -39,7 +39,7 @@ const ORG_COLLECTION_CLIENT_HOLIDAYS = "org-client_holidays"
 const ORG_COLLECTION_POLICY = "org-policy"
 const ORG_COLLECTION_POLICY_STATS = "org-policy-stats"
 const ORG_COLLECTION_SALARY_COMPONENTS = "org-salary_components"
-const ORG_COLLECTION_SALARY_CONFIGS = "org-salary_configs"
+
 const ORG_COLLECTION_SALARY_GROUPS = "org-salary_groups"
 const ORG_COLLECTION_SALARY_STRUCTURES = "org-salary_structures"
 const ORG_COLLECTION_OFFER_LETTERS = "org-offer-letters"
@@ -146,6 +146,8 @@ const POLICYBAZAAR_COLLECTION_EMPLOYEE_INFO = "policybazaar-employee-info"
 const PAYROLL_COLLECTION_EMPLOYEE_INDIAN_SALARY_INFO = "payroll-employee-indian-salary-info"
 
 const PAYROLL_COLLECTION_EMPLOYEE_INDIAN_SALARY_INFO_COUNTER = "payroll-employee-indian-salary-info-counter"
+const PAYROLL_COLLECTION_ORG_SALARY_CONFIGS = "payroll-organization-salary_configs"
+const PAYROLL_COLLECTION_EMP_SALARY_CONFIGS = "payroll-employee-salary_configs"
 
 func GetPayrollEmployeeIndianSalaryInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
@@ -497,9 +499,14 @@ func GetOrgSalaryComponentsCollection(client *mongo.Client, domain string) *mong
 	return db.Collection(ORG_COLLECTION_SALARY_COMPONENTS)
 }
 
-func GetOrgSalaryConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetPayrollOrgSalaryConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(ORG_COLLECTION_SALARY_CONFIGS)
+	return db.Collection(PAYROLL_COLLECTION_ORG_SALARY_CONFIGS)
+}
+
+func GetPayrollEmployeeSalaryConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_EMP_SALARY_CONFIGS)
 }
 
 func GetOrgSalaryStructuresCollection(client *mongo.Client, domain string) *mongo.Collection {
