@@ -129,6 +129,7 @@ type SalaryStructureIdCounter struct {
 
 type PayrollSalaryConfig struct {
 	ID                                       primitive.ObjectID `bson:"_id"`
+	EmployeeId                               primitive.ObjectID `bson:"employee_id"`
 	State                                    int                `bson:"state"`
 	Country                                  string             `bson:"country"`
 	DeliveryLocation                         string             `bson:"delivery_location"`
@@ -166,4 +167,19 @@ type PayrollSalaryConfig struct {
 	AnnualMedicalInsurancePremium            float32            `bson:"annual_medical_insurance_premium"`
 	UpdatedAt                                time.Time          `bson:"updated_at"`
 	CreatedAt                                time.Time          `bson:"created_at"`
+}
+
+type ESICConfig struct {
+	State                  string  `bson:"state"`
+	ESIEmployerPercentage  float32 `bson:"esi_employer_percentage"`
+	ESIEmployeePercentage  float32 `bson:"esi_employee_percentage"`
+	ESIMaximumWage         float32 `bson:"esi_maximum_wage"`
+	ESIMinimumWage         float32 `bson:"esi_minimum_wage"`
+	ESIApplicableWageLimit float32 `bson:"esi_applicable_wage_limit"`
+}
+
+type LWFConfig struct {
+	CityName                       string  `bson:"city_name"`
+	LWFEmployerMonthlyContribution float32 `bson:"lwf_employer_monthly_contribution"`
+	LWFEmployeeMonthlyContribution float32 `bson:"lwf_employee_monthly_contribution"`
 }

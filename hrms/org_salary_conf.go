@@ -51,18 +51,3 @@ type OrgSalaryStructure struct {
 	StockOptionComponents OrgStockOptionComponents  `bson:"stock_option_components"`
 	TotalCTC              float32                   `bson:"total_ctc"`
 }
-
-type ESICConfig struct {
-	State                  string  `bson:"state"`
-	ESIEmployerPercentage  float32 `bson:"esi_employer_percentage"`
-	ESIEmployeePercentage  float32 `bson:"esi_employee_percentage"`
-	ESIMaximumWage         float32 `bson:"esi_maximum_wage"`
-	ESIMinimumWage         float32 `bson:"esi_minimum_wage"`
-	ESIApplicableWageLimit float32 `bson:"esi_applicable_wage_limit"`
-}
-
-type LWFConfig struct {
-	CityName                       string  `bson:"city_name"`
-	LWFEmployerMonthlyContribution float32 `bson:"lwf_employer_monthly_contribution"`
-	LWFEmployeeMonthlyContribution float32 `bson:"lwf_employee_monthly_contribution"`
-}
