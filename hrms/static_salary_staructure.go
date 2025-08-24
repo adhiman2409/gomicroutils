@@ -130,7 +130,7 @@ type SalaryStructureIdCounter struct {
 type PayrollSalaryConfig struct {
 	ID                                       primitive.ObjectID `bson:"_id"`
 	EmployeeId                               string             `bson:"employee_id"`
-	State                                    int                `bson:"state"`
+	State                                    string             `bson:"state"`
 	Country                                  string             `bson:"country"`
 	DeliveryLocation                         string             `bson:"delivery_location"`
 	OrganizationDefaultTaxRegime             string             `bson:"organization_default_tax_regime"` // e.g., "new", "old"
