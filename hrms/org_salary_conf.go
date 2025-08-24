@@ -61,8 +61,8 @@ type OrgSalaryConfig struct {
 	IsPFContributionIsBasedOnBasicSalary     bool               `bson:"is_pf_contribution_is_based_on_basic_salary"`
 	PFEmployerContributionPercentageOfBasic  float32            `bson:"pf_employer_contribution_percentage_of_basic"`
 	PFEmployeeContributionPercentageOfBasic  float32            `bson:"pf_employee_contribution_percentage_of_basic"`
-	PFFixedEmployerContributionAmount        float32            `bson:"pf_fixed_employer_contribution_amount"`
-	PFFixedEmployeeContributionAmount        float32            `bson:"pf_fixed_employee_contribution_amount"`
+	PFMonthlyFixedEmployerContributionAmount float32            `bson:"pf_monthly_fixed_employer_contribution_amount"`
+	PFMonthlyFixedEmployeeContributionAmount float32            `bson:"pf_monthly_fixed_employee_contribution_amount"`
 	ESIThresholdForEmployee                  float32            `bson:"esi_threshold_for_employee"`
 	ESIEmployerContributionPercentageOfGross float32            `bson:"esi_employer_contribution_percentage_of_gross"`
 	ESIEmployeeContributionPercentageOfGross float32            `bson:"esi_employee_contribution_percentage_of_gross"`
