@@ -85,6 +85,8 @@ type IndianSalaryStructure struct {
 	MonthlyCTC                              float32   `bson:"monthly_ctc"`
 	AnnualNetPay                            float32   `bson:"annual_net_pay"`
 	MonthlyNetPay                           float32   `bson:"monthly_net_pay"`
+	UseOrgDefaultEmployeePFContributions    bool      `bson:"use_org_default_employee_pf_contributions"`
+	EmployeePFContributionPercentage        float32   `bson:"employee_pf_contribution_percentage"`
 	IsOldSalaryStructureAvailable           bool      `bson:"is_old_salary_structure_available"`
 	OldSalaryStructureSSID                  string    `bson:"old_salary_structure_ssid"`
 	OldAnnualFixedCTC                       float32   `bson:"old_annual_fixed_ctc"`
