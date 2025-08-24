@@ -127,7 +127,7 @@ type SalaryStructureIdCounter struct {
 	Counter     int64              `bson:"counter"`
 }
 
-type OrgSalaryConfig struct {
+type PayrollSalaryConfig struct {
 	ID                                       primitive.ObjectID `bson:"_id"`
 	State                                    int                `bson:"state"`
 	Country                                  string             `bson:"country"`
@@ -164,4 +164,6 @@ type OrgSalaryConfig struct {
 	ESICConfig                               []ESICConfig       `bson:"esi_config"`
 	LWFConfig                                []LWFConfig        `bson:"lwf_config"`
 	AnnualMedicalInsurancePremium            float32            `bson:"annual_medical_insurance_premium"`
+	UpdatedAt                                time.Time          `bson:"updated_at"`
+	CreatedAt                                time.Time          `bson:"created_at"`
 }
