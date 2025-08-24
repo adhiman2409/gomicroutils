@@ -93,11 +93,13 @@ type IndianSalaryStructure struct {
 	OldAnnualVariableCTC                    float32   `bson:"old_annual_variable_ctc"`
 	OldUseOrgDefaultEmployeePFContributions bool      `bson:"old_use_org_default_employee_pf_contributions"`
 	OldEmployeePFContributionPercentage     float32   `bson:"old_employee_pf_contribution_percentage"`
-	IsArrearPaymentRequired                 bool      `bson:"is_arrear_payment_required"`
+	IsArrearNeedToBePaid                    bool      `bson:"is_arrear_need_to_be_paid"`
 	ArrearFromDate                          time.Time `bson:"arrear_from_date"`
 	ArrearToDate                            time.Time `bson:"arrear_to_date"`
 	NumberOfArrearDays                      int       `bson:"number_of_arrear_days"`
 	ArrearsAmount                           float32   `bson:"arrears_amount"`
+	IsArrearPaid                            bool      `bson:"is_arrear_paid"`
+	ArrearPaymentDate                       time.Time `bson:"arrear_payment_date"`
 	Remarks                                 []string  `bson:"remarks"`
 	CreatedAt                               time.Time `bson:"created_at"`
 	UpdatedAt                               time.Time `bson:"updated_at"`
