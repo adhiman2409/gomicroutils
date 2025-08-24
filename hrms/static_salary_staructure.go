@@ -8,15 +8,15 @@ import (
 
 type IndianSalaryStructure struct {
 	SSID                                    string    `bson:"ssid"`
-	FinancialYearStartDate                  time.Time `bson:"financial_year_start_date"`
-	FinancialYearEndDate                    time.Time `bson:"financial_year_end_date"`
-	EffectiveFromDate                       time.Time `bson:"effective_from_date"`
+	FinancialYearStartDate                  string    `bson:"financial_year_start_date"`
+	FinancialYearEndDate                    string    `bson:"financial_year_end_date"`
+	EffectiveFromDate                       string    `bson:"effective_from_date"`
 	IsExpired                               bool      `bson:"is_expired"`
-	ExpiredOn                               time.Time `bson:"expired_on"`
+	ExpiredOn                               string    `bson:"expired_on"`
 	EmployeeId                              string    `bson:"employee_id"`
 	EmployeeName                            string    `bson:"employee_name"`
 	EmployeeEmail                           string    `bson:"employee_email"`
-	EmployeeJoiningDate                     time.Time `bson:"employee_joining_date"`
+	EmployeeJoiningDate                     string    `bson:"employee_joining_date"`
 	Gender                                  string    `bson:"gender"`
 	Designation                             string    `bson:"designation"`
 	Department                              string    `bson:"department"`
