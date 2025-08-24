@@ -96,12 +96,8 @@ type IndianSalaryStructure struct {
 }
 
 type ArrearPaymentInfo struct {
-	EmployeeId             string    `bson:"employee_id"`
-	EmployeeName           string    `bson:"employee_name"`
-	EmployeeEmail          string    `bson:"employee_email"`
-	NewSalaryStructureSSID string    `bson:"new_salary_structure_ssid"`
-	OldSalaryStructureSSID string    `bson:"old_salary_structure_ssid"`
 	IsArrearNeedToBePaid   bool      `bson:"is_arrear_need_to_be_paid"`
+	OldSalaryStructureSSID string    `bson:"old_salary_structure_ssid"`
 	ArrearFromDate         time.Time `bson:"arrear_from_date"`
 	ArrearToDate           time.Time `bson:"arrear_to_date"`
 	NumberOfArrearDays     int       `bson:"number_of_arrear_days"`
@@ -112,15 +108,15 @@ type ArrearPaymentInfo struct {
 }
 
 type IndianSalaryStructureDetails struct {
-	ID                       primitive.ObjectID      `bson:"_id"`
-	EmployeeId               string                  `bson:"employee_id"`
-	EmployeeName             string                  `bson:"employee_name"`
-	EmploymentStatus         string                  `bson:"employment_status"`
-	ActiveSalaryStructure    IndianSalaryStructure   `bson:"active_salary_structure"`
-	ExpiredSalaryStructures  []IndianSalaryStructure `bson:"expired_salary_structures"`
-	ArrearPaymentInfo        ArrearPaymentInfo       `bson:"arrear_payment_info"`
-	ExpiredArrearPaymentInfo []ArrearPaymentInfo     `bson:"expired_arrear_payment_info"`
-	Remarks                  []string                `bson:"remarks"`
+	ID                      primitive.ObjectID      `bson:"_id"`
+	EmployeeId              string                  `bson:"employee_id"`
+	EmployeeName            string                  `bson:"employee_name"`
+	EmploymentStatus        string                  `bson:"employment_status"`
+	ActiveSalaryStructure   IndianSalaryStructure   `bson:"active_salary_structure"`
+	ExpiredSalaryStructures []IndianSalaryStructure `bson:"expired_salary_structures"`
+	ArrearPaymentInfo       ArrearPaymentInfo       `bson:"arrear_payment_info"`
+	PaidArrearPaymentInfo   []ArrearPaymentInfo     `bson:"paid_arrear_payment_info"`
+	Remarks                 []string                `bson:"remarks"`
 }
 
 type SalaryStructureIdCounter struct {
