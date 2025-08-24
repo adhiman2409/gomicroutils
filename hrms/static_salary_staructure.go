@@ -43,8 +43,8 @@ type IndianSalaryStructure struct {
 	MonthlyEmployerContributionESIC         float32   `bson:"monthly_employer_contribution_esic"`
 	AnnualEmployerContributionLWF           float32   `bson:"annual_employer_contribution_lwf"`
 	MonthlyEmployerContributionLWF          float32   `bson:"monthly_employer_contribution_lwf"`
-	AnnualMedicalInsurance                  float32   `bson:"annual_medical_insurance"`
-	MonthlyMedicalInsurance                 float32   `bson:"monthly_medical_insurance"`
+	AnnualMedicalInsurancePremium           float32   `bson:"annual_medical_insurance_premium"`
+	MonthlyMedicalInsurancePremium          float32   `bson:"monthly_medical_insurance_premium"`
 	AnnualEmployeeContributionPF            float32   `bson:"annual_employee_contribution_pf"`
 	MonthlyEmployeeContributionPF           float32   `bson:"monthly_employee_contribution_pf"`
 	AnnualEmployeeContributionESIC          float32   `bson:"annual_employee_contribution_esic"`
