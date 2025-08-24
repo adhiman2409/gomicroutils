@@ -142,6 +142,20 @@ const KYC_COLLECTION_PROJECT_TASK_ID_COUNTER = "kyc-project-task-id-counter"
 
 const POLICYBAZAAR_COLLECTION_EMPLOYEE_INFO = "policybazaar-employee-info"
 
+const PAYROLL_COLLECTION_EMPLOYEE_INDIAN_SALARY_INFO = "payroll-employee-indian-salary-info"
+
+const PAYROLL_COLLECTION_EMPLOYEE_INDIAN_SALARY_INFO_COUNTER = "payroll-employee-indian-salary-info-counter"
+
+func GetPayrollEmployeeIndianSalaryInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_EMPLOYEE_INDIAN_SALARY_INFO)
+}
+
+func GetPayrollEmployeeIndianSalaryInfoCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_EMPLOYEE_INDIAN_SALARY_INFO_COUNTER)
+}
+
 func GetKYCProjectTaskStatesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(KYC_COLLECTION_PROJECT_TASK_STATES)

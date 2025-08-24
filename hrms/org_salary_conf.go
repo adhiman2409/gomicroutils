@@ -33,11 +33,11 @@ type OrgSalaryComponentGroup struct {
 }
 
 type OrgStockOptionComponents struct {
-	StockCount                   float32 `json:"stock_count"`
-	TotalStockValue              float32 `json:"total_stock_value"`
-	TotalVestingDurationInMonths string  `json:"total_vesting_duration_in_months"`
-	VestingFrequencyInMonths     string  `json:"vesting_frequency_in_months"`
-	StockOptionType              string  `json:"stock_option_type"` // e.g., ESOP, RSU
+	StockCount                   float32 `bson:"stock_count"`
+	TotalStockValue              float32 `bson:"total_stock_value"`
+	TotalVestingDurationInMonths string  `bson:"total_vesting_duration_in_months"`
+	VestingFrequencyInMonths     string  `bson:"vesting_frequency_in_months"`
+	StockOptionType              string  `bson:"stock_option_type"` // e.g., ESOP, RSU
 }
 
 type OrgSalaryStructure struct {
