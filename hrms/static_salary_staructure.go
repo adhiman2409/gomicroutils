@@ -118,14 +118,15 @@ type ArrearPaymentInfo struct {
 }
 
 type IndianSalaryStructureDetails struct {
-	ID                      primitive.ObjectID      `bson:"_id"`
-	EmployeeId              string                  `bson:"employee_id"`
-	EmployeeName            string                  `bson:"employee_name"`
-	EmploymentStatus        string                  `bson:"employment_status"`
-	ArrearPaymentInfo       ArrearPaymentInfo       `bson:"arrear_payment_info"`
-	ActiveSalaryStructure   IndianSalaryStructure   `bson:"active_salary_structure"`
-	ExpiredSalaryStructures []IndianSalaryStructure `bson:"expired_salary_structures"`
-	Remarks                 []string                `bson:"remarks"`
+	ID                       primitive.ObjectID      `bson:"_id"`
+	EmployeeId               string                  `bson:"employee_id"`
+	EmployeeName             string                  `bson:"employee_name"`
+	EmploymentStatus         string                  `bson:"employment_status"`
+	ActiveSalaryStructure    IndianSalaryStructure   `bson:"active_salary_structure"`
+	ExpiredSalaryStructures  []IndianSalaryStructure `bson:"expired_salary_structures"`
+	ArrearPaymentInfo        ArrearPaymentInfo       `bson:"arrear_payment_info"`
+	ExpiredArrearPaymentInfo []ArrearPaymentInfo     `bson:"expired_arrear_payment_info"`
+	Remarks                  []string                `bson:"remarks"`
 }
 
 type SalaryStructureIdCounter struct {
