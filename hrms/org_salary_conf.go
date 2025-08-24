@@ -82,9 +82,7 @@ type OrgSalaryConfig struct {
 	MinimumMonthlyBasicSalary                float32            `bson:"minimum_monthly_basic_salary"`
 	MonthlyHRAPercentageOfBasic              float32            `bson:"monthly_hra_percentage_of_basic"`
 	MonthlyStatutoryBonusPercentageOfBasic   float32            `bson:"monthly_statutory_bonus_percentage_of_basic"`
-	GratuityCalculationMethod                string             `bson:"gratuity_calculation_method"` // e.g., "last_drawn_salary", "average_salary"
-	GratuityRatePerYear                      float32            `bson:"gratuity_rate_per_year"`      // e.g., 15 days' salary per year of service
-	GratuityMaxLimit                         float32            `bson:"gratuity_max_limit"`
+	MonthlyGratuityPercentageOfBasic         float32            `bson:"monthly_gratuity_percentage_of_basic"`
 	AddRemainingAmountInSpecialAllowance     bool               `bson:"add_remaining_amount_in_special_allowance"`
 	ESICConfig                               []ESICConfig       `bson:"esi_config"`
 	LWFConfig                                []LWFConfig        `bson:"lwf_config"`
