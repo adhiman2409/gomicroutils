@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type IndianSalaryStructure struct {
+type CountrySalaryStructure struct {
 	SSID                                    string    `bson:"ssid"`
 	FinancialYearStartDate                  string    `bson:"financial_year_start_date"`
 	FinancialYearEndDate                    string    `bson:"financial_year_end_date"`
@@ -24,6 +24,7 @@ type IndianSalaryStructure struct {
 	OrganizationDefaultTaxRegime            string    `bson:"organization_default_tax_regime"`
 	EmployeeAdoptedTaxRegime                string    `bson:"employee_adopted_tax_regime"`
 	State                                   string    `bson:"state"`
+	Country                                 string    `bson:"country"`
 	DeliveryLocation                        string    `bson:"delivery_location"`
 	PAN                                     string    `bson:"pan"`
 	UAN                                     string    `bson:"uan"`
@@ -112,16 +113,16 @@ type ArrearPaymentInfo struct {
 	Remarks                string    `bson:"remarks"`
 }
 
-type IndianSalaryStructureDetails struct {
-	ID                      primitive.ObjectID      `bson:"_id"`
-	EmployeeId              string                  `bson:"employee_id"`
-	EmployeeName            string                  `bson:"employee_name"`
-	EmploymentStatus        string                  `bson:"employment_status"`
-	ActiveSalaryStructure   IndianSalaryStructure   `bson:"active_salary_structure"`
-	ExpiredSalaryStructures []IndianSalaryStructure `bson:"expired_salary_structures"`
-	ArrearPaymentInfo       ArrearPaymentInfo       `bson:"arrear_payment_info"`
-	PaidArrearPaymentInfo   []ArrearPaymentInfo     `bson:"paid_arrear_payment_info"`
-	Remarks                 []string                `bson:"remarks"`
+type SalaryStructureDetails struct {
+	ID                      primitive.ObjectID       `bson:"_id"`
+	EmployeeId              string                   `bson:"employee_id"`
+	EmployeeName            string                   `bson:"employee_name"`
+	EmploymentStatus        string                   `bson:"employment_status"`
+	ActiveSalaryStructure   CountrySalaryStructure   `bson:"active_salary_structure"`
+	ExpiredSalaryStructures []CountrySalaryStructure `bson:"expired_salary_structures"`
+	ArrearPaymentInfo       ArrearPaymentInfo        `bson:"arrear_payment_info"`
+	PaidArrearPaymentInfo   []ArrearPaymentInfo      `bson:"paid_arrear_payment_info"`
+	Remarks                 []string                 `bson:"remarks"`
 }
 
 type SalaryStructureIdCounter struct {
