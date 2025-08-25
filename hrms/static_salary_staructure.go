@@ -284,4 +284,6 @@ type EmployeePayrollMaster struct {
 	TotalTaxableAmountPendingForThisFinancialYear float32                       `bson:"total_taxable_amount_pending_for_this_financial_year"`
 	TotalTaxPendingForThisFinancialYear           float32                       `bson:"total_tax_pending_for_this_financial_year"`
 	TotalPendingMonthsForThisFinancialYear        int                           `bson:"total_pending_months_for_this_financial_year"`
+	CreatedAt                                     time.Time                     `bson:"created_at"`
+	UpdatedAt                                     time.Time                     `bson:"updated_at"`
 }
