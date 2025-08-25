@@ -5,7 +5,7 @@ type NewTaxRegime struct {
 	FinancialYear          string          `bson:"financial_year"`
 	StandardDeduction      float64         `bson:"standard_deduction"` // e.g., 50000
 	Slabs                  []TaxSlab       `bson:"slabs"`
-	Rebate                 Rebate          `bson:"rebate"`                     // Percentage, e.g., 10 for 10%
+	Rebate                 Rebate          `bson:"rebate"`
 	Surcharges             []SurchargeSlab `bson:"surcharges"`                 // Percentage, e.g., 10 for 10%
 	CessOnTaxWithSurcharge float64         `bson:"cess_on_tax_with_surcharge"` // Percentage, e.g., 4 for 4%
 }
