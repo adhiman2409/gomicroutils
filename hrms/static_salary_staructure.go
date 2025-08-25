@@ -89,9 +89,9 @@ type IndianSalaryStructure struct {
 	MonthlyCTC                              float32   `bson:"monthly_ctc"`
 	AnnualNetPay                            float32   `bson:"annual_net_pay"`
 	MonthlyNetPay                           float32   `bson:"monthly_net_pay"`
-	TotalAmountPaidThisFinancialYear        float32   `json:"total_amount_paid_this_financial_year"`
-	TotalTaxPaidThisFinancialYear           float32   `json:"total_tax_paid_this_financial_year"`
-	CurrentFinancialYearLastSalaryPaidMonth string    `json:"current_financial_year_last_salary_paid_month"`
+	TotalAmountPaidThisFinancialYear        float32   `bson:"total_amount_paid_this_financial_year"`
+	TotalTaxPaidThisFinancialYear           float32   `bson:"total_tax_paid_this_financial_year"`
+	CurrentFinancialYearLastSalaryPaidMonth string    `bson:"current_financial_year_last_salary_paid_month"`
 	Remarks                                 string    `bson:"remarks"`
 	CreatedAt                               time.Time `bson:"created_at"`
 	UpdatedAt                               time.Time `bson:"updated_at"`
