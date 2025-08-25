@@ -136,6 +136,7 @@ type SalaryStructureIdCounter struct {
 type PayrollSalaryConfig struct {
 	ID                                       primitive.ObjectID `bson:"_id"`
 	EmployeeId                               string             `bson:"employee_id"`
+	EmployeeName                             string             `bson:"employee_name"`
 	State                                    string             `bson:"state"`
 	Country                                  string             `bson:"country"`
 	DeliveryLocation                         string             `bson:"delivery_location"`
@@ -188,4 +189,99 @@ type LWFConfig struct {
 	CityName                       string  `bson:"city_name"`
 	LWFEmployerMonthlyContribution float32 `bson:"lwf_employer_monthly_contribution"`
 	LWFEmployeeMonthlyContribution float32 `bson:"lwf_employee_monthly_contribution"`
+}
+
+type EmployeeTaxSavingDeclaration struct {
+	EmployeeID                           string  `bson:"employee_id"`
+	EmployeeName                         string  `bson:"employee_name"`
+	FinancialYear                        string  `bson:"financial_year"`
+	OptedTaxRegime                       string  `bson:"opted_tax_regime"`
+	IncomeOtherThanSalary                float64 `bson:"income_other_than_salary"`
+	HomeLoanInterest                     float64 `bson:"home_loan_interest"`
+	HRAExemption                         float64 `bson:"hra_exemption"`
+	Section80CDeduction                  float64 `bson:"section_80c_deduction"`
+	Section80CCD2EmployerNPSContribution float64 `bson:"section_80ccd2_employer_nps_contribution"`
+	Section80DHealthInsuranceForSelf     float64 `bson:"section_80d_health_insurance_for_self"`
+	Section80DHealthInsuranceForFamily   float64 `bson:"section_80d_health_insurance_for_family"`
+	OtherDeductions                      float64 `bson:"other_deductions"`
+}
+
+type YearlyPayrollAndTaxDetails struct {
+	GrossSalary                          float64 `bson:"gross_salary"`
+	StandardDeduction                    float64 `bson:"standard_deduction"`
+	NetSalary                            float64 `bson:"net_salary"`
+	IncomeOtherThanSalary                float64 `bson:"income_other_than_salary"`
+	HomeLoanInterest                     float64 `bson:"home_loan_interest"`
+	HRAExemption                         float64 `bson:"hra_exemption"`
+	Section80CDeduction                  float64 `bson:"section_80c_deduction"`
+	Section80CCD2EmployerNPSContribution float64 `bson:"section_80ccd2_employer_nps_contribution"`
+	Section80DHealthInsuranceForSelf     float64 `bson:"section_80d_health_insurance_for_self"`
+	Section80DHealthInsuranceForFamily   float64 `bson:"section_80d_health_insurance_for_family"`
+	OtherDeductions                      float64 `bson:"other_deductions"`
+	NetTaxableIncome                     float64 `bson:"net_taxable_income"`
+	TaxOnTotalIncome                     float64 `bson:"tax_on_total_income"`
+	RebateUnderSection87A                float64 `bson:"rebate_under_section_87a"`
+	TaxAfterRebate                       float64 `bson:"tax_after_rebate"`
+	SurchargeOnTax                       float64 `bson:"surcharge_on_tax"`
+	TaxWithSurcharge                     float64 `bson:"tax_with_surcharge"`
+	CessOnTaxWithSurcharge               float64 `bson:"cess_on_tax_with_surcharge"`
+	TotalTaxPayable                      float64 `bson:"total_tax_payable"`
+}
+
+type MonthlyEarnings struct {
+	BasicSalary        float64 `bson:"basic_salary"`
+	HouseRentAllowance float64 `bson:"house_rent_allowance"`
+	StatutoryBonus     float64 `bson:"statutory_bonus"`
+	SpecialAllowance   float64 `bson:"special_allowance"`
+	OtherEarnings      float64 `bson:"other_earnings"`
+	GrossSalary        float64 `bson:"gross_salary"`
+}
+
+type MonthlyDeductions struct {
+	LabourWelfareFund float64 `bson:"labour_welfare_fund"`
+	ESI               float64 `bson:"esi"`
+	ProvidentFund     float64 `bson:"provident_fund"`
+	IncomeTax         float64 `bson:"income_tax"`
+	OtherDeductions   float64 `bson:"other_deductions"`
+	TotalDeductions   float64 `bson:"total_deductions"`
+}
+
+type MonthlyEmployerContributions struct {
+	LabourWelfareFund          float64 `bson:"labour_welfare_fund"`
+	EmployeeStateInsurance     float64 `bson:"employee_state_insurance"`
+	ProvidentFund              float64 `bson:"provident_fund"`
+	MedicalInsurancePremium    float64 `bson:"medical_insurance_premium"`
+	Gratuity                   float64 `bson:"gratuity"`
+	TotalEmployerContributions float64 `bson:"total_employer_contributions"`
+}
+
+type MonthlyPayrollAndTaxDetails struct {
+	Year                         string                       `bson:"year"`
+	Month                        string                       `bson:"month"`
+	MonthlyEarnings              MonthlyEarnings              `bson:"monthly_earnings"`
+	MonthlyDeductions            MonthlyDeductions            `bson:"monthly_deductions"`
+	MonthlyEmployerContributions MonthlyEmployerContributions `bson:"monthly_employer_contributions"`
+}
+
+type EmployeePayrollMaster struct {
+	ID                                            primitive.ObjectID            `bson:"_id"`
+	EmployeeID                                    string                        `bson:"employee_id"`
+	EmployeeName                                  string                        `bson:"employee_name"`
+	JoiningDate                                   string                        `bson:"joining_date"`
+	OptedTaxRegime                                string                        `bson:"opted_tax_regime"`
+	FinancialYear                                 string                        `bson:"financial_year"`
+	AssessmentYear                                string                        `bson:"assessment_year"`
+	CurrentFinancialYearCTC                       float64                       `bson:"current_financial_year_ctc"`
+	CurrentFinancialYearGrossSalary               float64                       `bson:"current_financial_year_gross_salary"`
+	TotalCTCAmountPaidThisFinancialYear           float32                       `bson:"total_ctc_amount_paid_this_financial_year"`
+	TotalTaxableAmountPaidThisFinancialYear       float32                       `bson:"total_taxable_amount_paid_this_financial_year"`
+	TotalTaxPaidThisFinancialYear                 float32                       `bson:"total_tax_paid_this_financial_year"`
+	TotalPaidMonthsThisFinancialYear              int                           `bson:"total_paid_months_this_financial_year"`
+	LastPaidMonthThisFinancialYear                string                        `bson:"last_paid_month_this_financial_year"`
+	YearlyPayrollAndTaxDetails                    YearlyPayrollAndTaxDetails    `bson:"yearly_payroll_and_tax_details"`
+	MonthlyPayrollAndTaxDetails                   []MonthlyPayrollAndTaxDetails `bson:"monthly_payroll_and_tax_details"`
+	TotalCTCAmountPendingForThisFinancialYear     float32                       `bson:"total_ctc_amount_pending_for_this_financial_year"`
+	TotalTaxableAmountPendingForThisFinancialYear float32                       `bson:"total_taxable_amount_pending_for_this_financial_year"`
+	TotalTaxPendingForThisFinancialYear           float32                       `bson:"total_tax_pending_for_this_financial_year"`
+	TotalPendingMonthsForThisFinancialYear        int                           `bson:"total_pending_months_for_this_financial_year"`
 }

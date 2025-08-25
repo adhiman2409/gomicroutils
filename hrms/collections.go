@@ -148,11 +148,18 @@ const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO = "payroll-employee-salary-info"
 const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO_COUNTER = "payroll-employee-salary-info-counter"
 const PAYROLL_COLLECTION_ORG_SALARY_CONFIGS = "payroll-organization-salary_configs"
 const PAYROLL_COLLECTION_EMP_SALARY_CONFIGS = "payroll-employee-salary_configs"
-const PAYROLL_COLLECTION_NEW_TAX_REGIME = "payroll-new-tax-regime"
+const PAYROLL_COLLECTION_TAX_REGIMES = "payroll-tax-regimes"
 
-func GetPayrollNewTaxRegimeCollection(client *mongo.Client, domain string) *mongo.Collection {
+const PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER = "payroll-employee-payroll-master"
+
+func GetPayrollEmployeePayrollMasterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(PAYROLL_COLLECTION_NEW_TAX_REGIME)
+	return db.Collection(PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER)
+}
+
+func GetPayrollTaxRegimesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_TAX_REGIMES)
 }
 
 func GetPayrollEmployeeSalaryInfoCollection(client *mongo.Client, domain string) *mongo.Collection {

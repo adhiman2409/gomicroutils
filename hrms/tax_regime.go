@@ -1,7 +1,8 @@
 package hrms
 
-type NewTaxRegime struct {
+type TaxRegime struct {
 	ID                     string          `bson:"_id"`
+	Type                   string          `bson:"type"`
 	FinancialYear          string          `bson:"financial_year"`
 	StandardDeduction      float64         `bson:"standard_deduction"` // e.g., 50000
 	Slabs                  []TaxSlab       `bson:"slabs"`
