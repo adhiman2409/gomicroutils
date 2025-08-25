@@ -97,6 +97,28 @@ func (a *StorageConnection) DownloadImage(w http.ResponseWriter, r *http.Request
 	return nil
 }
 
+// Download gets a file from GCS bucket, Takes file path as a path param from request
+func (a *StorageConnection) GetImageBuffer(eid, department, category, documentType, filename, domain string) ([]byte, error) {
+	pid := os.Getenv("GOOGLE_PROJECT_ID")
+	clientCtx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	nd := GetUpdatedDomain(domain)
+	filePath := fmt.Sprintf("%s/%s/%s/%s/%s", department, eid, category, documentType, filename)
+
+	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return []byte{}, err
+	}
+	defer reader.Close()
+	content, err := io.ReadAll(reader)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return []byte{}, err
+	}
+	return content, nil
+}
+
 func (a *StorageConnection) DownloadStaticFile(w http.ResponseWriter, r *http.Request, domain string) error {
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	clientCtx, cancel := context.WithCancel(context.Background())
