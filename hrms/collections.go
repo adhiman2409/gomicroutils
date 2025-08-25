@@ -148,6 +148,12 @@ const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO = "payroll-employee-salary-info"
 const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO_COUNTER = "payroll-employee-salary-info-counter"
 const PAYROLL_COLLECTION_ORG_SALARY_CONFIGS = "payroll-organization-salary_configs"
 const PAYROLL_COLLECTION_EMP_SALARY_CONFIGS = "payroll-employee-salary_configs"
+const PAYROLL_COLLECTION_NEW_TAX_REGIME = "payroll-new-tax-regime"
+
+func GetPayrollNewTaxRegimeCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_NEW_TAX_REGIME)
+}
 
 func GetPayrollEmployeeSalaryInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
