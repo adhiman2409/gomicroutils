@@ -234,7 +234,7 @@ type MonthlyEarnings struct {
 	StatutoryBonus     float64 `bson:"statutory_bonus"`
 	SpecialAllowance   float64 `bson:"special_allowance"`
 	OtherEarnings      float64 `bson:"other_earnings"`
-	GrossSalary        float64 `bson:"gross_salary"`
+	TotalGrossSalary   float64 `bson:"total_gross_salary"`
 }
 
 type MonthlyDeductions struct {
@@ -259,8 +259,13 @@ type MonthlyPayrollAndTaxDetails struct {
 	Year                         string                       `bson:"year"`
 	Month                        string                       `bson:"month"`
 	MonthlyEarnings              MonthlyEarnings              `bson:"monthly_earnings"`
+	TotalGrossEarnings           float64                      `bson:"total_gross_earnings"`
 	MonthlyDeductions            MonthlyDeductions            `bson:"monthly_deductions"`
+	TotalDeductions              float64                      `bson:"total_deductions"`
+	NetSalary                    float64                      `bson:"net_salary"`
+	TaxableIncome                float64                      `bson:"taxable_income"`
 	MonthlyEmployerContributions MonthlyEmployerContributions `bson:"monthly_employer_contributions"`
+	TotalEmployerContributions   float64                      `bson:"total_employer_contributions"`
 }
 
 type EmployeePayrollMaster struct {

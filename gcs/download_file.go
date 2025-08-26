@@ -105,6 +105,8 @@ func (a *StorageConnection) GetImageBuffer(eid, department, category, documentTy
 	nd := GetUpdatedDomain(domain)
 	filePath := fmt.Sprintf("%s/%s/%s/%s/%s", department, eid, category, documentType, filename)
 
+	fmt.Println("Downloading file from GCS: ", filePath)
+
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
 	if err != nil {
 		fmt.Println("Error ", err.Error())
