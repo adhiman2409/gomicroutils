@@ -207,9 +207,9 @@ type EmployeeTaxSavingDeclaration struct {
 }
 
 type YearlyPayrollAndTaxDetails struct {
-	GrossSalary                          float64   `bson:"gross_salary"`
+	GrossIncome                          float64   `bson:"gross_income"`
 	StandardDeduction                    float64   `bson:"standard_deduction"`
-	NetSalary                            float64   `bson:"net_salary"`
+	NetIncome                            float64   `bson:"net_income"`
 	IncomeOtherThanSalary                float64   `bson:"income_other_than_salary"`
 	HomeLoanInterest                     float64   `bson:"home_loan_interest"`
 	HRAExemption                         float64   `bson:"hra_exemption"`
