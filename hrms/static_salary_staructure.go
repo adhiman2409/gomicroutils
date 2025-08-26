@@ -217,7 +217,7 @@ type YearlyPayrollAndTaxDetails struct {
 	Section80CCD1EmployeeNPSContribution float64   `bson:"section_80ccd1_employee_nps_contribution"`
 	Section80CCD2EmployerNPSContribution float64   `bson:"section_80ccd2_employer_nps_contribution"`
 	Section80DHealthInsuranceForSelf     float64   `bson:"section_80d_health_insurance_for_self"`
-	Section80DHealthInsuranceForFamily   float64   `bson:"section_80d_health_insurance_for_family"`
+	Section80DHealthInsuranceForParents  float64   `bson:"section_80d_health_insurance_for_parents"`
 	Section80TTAInterestOnSavings        float64   `bson:"section_80tta_interest_on_savings"`
 	Section80TTBInterestOnDeposits       float64   `bson:"section_80ttb_interest_on_deposits"`
 	DonationUnder80G                     float64   `bson:"donation_under_80g"`
