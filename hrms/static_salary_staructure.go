@@ -231,6 +231,8 @@ type YearlyPayrollAndTaxDetails struct {
 	TaxWithSurcharge                     float64   `bson:"tax_with_surcharge"`
 	CessOnTaxWithSurcharge               float64   `bson:"cess_on_tax_with_surcharge"`
 	TotalTaxPayable                      float64   `bson:"total_tax_payable"`
+	PendingGrossSalary                   float64   `bson:"pending_gross_salary"`
+	PendingTax                           float64   `bson:"pending_tax"`
 }
 
 type MonthlyEarnings struct {
