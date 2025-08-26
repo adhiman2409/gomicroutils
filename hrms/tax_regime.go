@@ -18,9 +18,10 @@ type Rebate struct {
 }
 
 type TaxSlab struct {
-	MinIncome    float64 `bson:"min_income"`     // Inclusive
-	MaxIncome    float64 `bson:"max_income"`     // Inclusive
-	RateOnIncome float64 `bson:"rate_on_income"` // Percentage, e.g., 5 for 5%
+	MinIncome     float64 `bson:"min_income"`     // Inclusive
+	MaxIncome     float64 `bson:"max_income"`     // Inclusive
+	RateOnIncome  float64 `bson:"rate_on_income"` // Percentage, e.g., 5 for 5%
+	Calculatedtax float64 `bson:"calculated_tax"` // Pre-calculated tax for the slab
 }
 
 type SurchargeSlab struct {

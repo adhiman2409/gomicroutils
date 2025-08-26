@@ -207,25 +207,30 @@ type EmployeeTaxSavingDeclaration struct {
 }
 
 type YearlyPayrollAndTaxDetails struct {
-	GrossSalary                          float64 `bson:"gross_salary"`
-	StandardDeduction                    float64 `bson:"standard_deduction"`
-	NetSalary                            float64 `bson:"net_salary"`
-	IncomeOtherThanSalary                float64 `bson:"income_other_than_salary"`
-	HomeLoanInterest                     float64 `bson:"home_loan_interest"`
-	HRAExemption                         float64 `bson:"hra_exemption"`
-	Section80CDeduction                  float64 `bson:"section_80c_deduction"`
-	Section80CCD2EmployerNPSContribution float64 `bson:"section_80ccd2_employer_nps_contribution"`
-	Section80DHealthInsuranceForSelf     float64 `bson:"section_80d_health_insurance_for_self"`
-	Section80DHealthInsuranceForFamily   float64 `bson:"section_80d_health_insurance_for_family"`
-	OtherDeductions                      float64 `bson:"other_deductions"`
-	NetTaxableIncome                     float64 `bson:"net_taxable_income"`
-	TaxOnTotalIncome                     float64 `bson:"tax_on_total_income"`
-	RebateUnderSection87A                float64 `bson:"rebate_under_section_87a"`
-	TaxAfterRebate                       float64 `bson:"tax_after_rebate"`
-	SurchargeOnTax                       float64 `bson:"surcharge_on_tax"`
-	TaxWithSurcharge                     float64 `bson:"tax_with_surcharge"`
-	CessOnTaxWithSurcharge               float64 `bson:"cess_on_tax_with_surcharge"`
-	TotalTaxPayable                      float64 `bson:"total_tax_payable"`
+	GrossSalary                          float64   `bson:"gross_salary"`
+	StandardDeduction                    float64   `bson:"standard_deduction"`
+	NetSalary                            float64   `bson:"net_salary"`
+	IncomeOtherThanSalary                float64   `bson:"income_other_than_salary"`
+	HomeLoanInterest                     float64   `bson:"home_loan_interest"`
+	HRAExemption                         float64   `bson:"hra_exemption"`
+	Section80CDeduction                  float64   `bson:"section_80c_deduction"`
+	Section80CCD1EmployeeNPSContribution float64   `bson:"section_80ccd1_employee_nps_contribution"`
+	Section80CCD2EmployerNPSContribution float64   `bson:"section_80ccd2_employer_nps_contribution"`
+	Section80DHealthInsuranceForSelf     float64   `bson:"section_80d_health_insurance_for_self"`
+	Section80DHealthInsuranceForFamily   float64   `bson:"section_80d_health_insurance_for_family"`
+	Section80TTAInterestOnSavings        float64   `bson:"section_80tta_interest_on_savings"`
+	Section80TTBInterestOnDeposits       float64   `bson:"section_80ttb_interest_on_deposits"`
+	DonationUnder80G                     float64   `bson:"donation_under_80g"`
+	OtherDeductions                      float64   `bson:"other_deductions"`
+	NetTaxableIncome                     float64   `bson:"net_taxable_income"`
+	TaxSlabTable                         []TaxSlab `bson:"tax_slab_table"`
+	TaxOnTotalIncome                     float64   `bson:"tax_on_total_income"`
+	RebateUnderSection87A                float64   `bson:"rebate_under_section_87a"`
+	TaxAfterRebate                       float64   `bson:"tax_after_rebate"`
+	SurchargeOnTax                       float64   `bson:"surcharge_on_tax"`
+	TaxWithSurcharge                     float64   `bson:"tax_with_surcharge"`
+	CessOnTaxWithSurcharge               float64   `bson:"cess_on_tax_with_surcharge"`
+	TotalTaxPayable                      float64   `bson:"total_tax_payable"`
 }
 
 type MonthlyEarnings struct {
