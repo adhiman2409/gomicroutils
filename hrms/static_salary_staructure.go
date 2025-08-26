@@ -221,7 +221,7 @@ type YearlyPayrollAndTaxDetails struct {
 	Section80TTAInterestOnSavings        float64   `bson:"section_80tta_interest_on_savings"`
 	Section80TTBInterestOnDeposits       float64   `bson:"section_80ttb_interest_on_deposits"`
 	Section80EInterestOnEducationLoan    float64   `bson:"section_80e_interest_on_education_loan"`
-	DonationUnder80G                     float64   `bson:"donation_under_80g"`
+	Section80GDonations                  float64   `bson:"section_80g_donations"`
 	OtherDeductions                      float64   `bson:"other_deductions"`
 	NetTaxableIncome                     float64   `bson:"net_taxable_income"`
 	TaxSlabTable                         []TaxSlab `bson:"tax_slab_table"`
