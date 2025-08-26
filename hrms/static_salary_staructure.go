@@ -90,7 +90,6 @@ type CountrySalaryStructure struct {
 	MonthlyCTC                            float32   `bson:"monthly_ctc"`
 	AnnualNetPay                          float32   `bson:"annual_net_pay"`
 	MonthlyNetPay                         float32   `bson:"monthly_net_pay"`
-	TotalCTCAmountPaidThisFinancialYear   float32   `bson:"total_ctc_amount_paid_this_financial_year"`
 	TotalGrossAmountPaidThisFinancialYear float32   `bson:"total_gross_amount_paid_this_financial_year"`
 	TotalTaxPaidThisFinancialYear         float32   `bson:"total_tax_paid_this_financial_year"`
 	TotalPaidMonthsThisFinancialYear      int       `bson:"total_paid_months_this_financial_year"`
@@ -284,14 +283,12 @@ type EmployeePayrollMaster struct {
 	AssessmentYear                              string                        `bson:"assessment_year"`
 	CurrentFinancialYearCTC                     float64                       `bson:"current_financial_year_ctc"`
 	CurrentFinancialYearGrossSalary             float64                       `bson:"current_financial_year_gross_salary"`
-	TotalCTCAmountPaidThisFinancialYear         float32                       `bson:"total_ctc_amount_paid_this_financial_year"`
 	TotalGrossAmountPaidThisFinancialYear       float32                       `bson:"total_gross_amount_paid_this_financial_year"`
 	TotalTaxPaidThisFinancialYear               float32                       `bson:"total_tax_paid_this_financial_year"`
 	TotalPaidMonthsThisFinancialYear            int                           `bson:"total_paid_months_this_financial_year"`
 	LastPaidMonthThisFinancialYear              string                        `bson:"last_paid_month_this_financial_year"`
 	YearlyPayrollAndTaxDetails                  YearlyPayrollAndTaxDetails    `bson:"yearly_payroll_and_tax_details"`
 	MonthlyPayrollAndTaxDetails                 []MonthlyPayrollAndTaxDetails `bson:"monthly_payroll_and_tax_details"`
-	TotalCTCAmountPendingForThisFinancialYear   float32                       `bson:"total_ctc_amount_pending_for_this_financial_year"`
 	TotalGrossAmountPendingForThisFinancialYear float32                       `bson:"total_gross_amount_pending_for_this_financial_year"`
 	TotalTaxPendingForThisFinancialYear         float32                       `bson:"total_tax_pending_for_this_financial_year"`
 	TotalPendingMonthsForThisFinancialYear      int                           `bson:"total_pending_months_for_this_financial_year"`
