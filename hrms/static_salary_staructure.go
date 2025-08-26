@@ -8,8 +8,7 @@ import (
 
 type CountrySalaryStructure struct {
 	SSID                                  string    `bson:"ssid"`
-	FinancialYearStartDate                string    `bson:"financial_year_start_date"`
-	FinancialYearEndDate                  string    `bson:"financial_year_end_date"`
+	FinancialYear                         string    `bson:"financial_year"`
 	EffectiveFromDate                     string    `bson:"effective_from_date"`
 	IsExpired                             bool      `bson:"is_expired"`
 	ExpiredOn                             string    `bson:"expired_on"`
@@ -231,8 +230,6 @@ type YearlyPayrollAndTaxDetails struct {
 	TaxWithSurcharge                     float64   `bson:"tax_with_surcharge"`
 	CessOnTaxWithSurcharge               float64   `bson:"cess_on_tax_with_surcharge"`
 	TotalTaxPayable                      float64   `bson:"total_tax_payable"`
-	PendingGrossSalary                   float64   `bson:"pending_gross_salary"`
-	PendingTax                           float64   `bson:"pending_tax"`
 }
 
 type MonthlyEarnings struct {
