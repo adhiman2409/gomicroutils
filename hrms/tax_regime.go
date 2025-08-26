@@ -2,8 +2,9 @@ package hrms
 
 type TaxRegime struct {
 	ID                     string          `bson:"_id"`
-	Type                   string          `bson:"type"`
-	FinancialYear          string          `bson:"financial_year"`
+	RegimeName             string          `bson:"regime_name"`    // e.g., "Old", "New"
+	FinancialYear          string          `bson:"financial_year"` // e.g., "2023-2024"
+	Description            string          `bson:"description"`
 	StandardDeduction      float64         `bson:"standard_deduction"` // e.g., 50000
 	Slabs                  []TaxSlab       `bson:"slabs"`
 	Rebate                 Rebate          `bson:"rebate"`
