@@ -98,24 +98,24 @@ func (a *StorageConnection) DownloadImage(w http.ResponseWriter, r *http.Request
 }
 
 // Download gets a file from GCS bucket, Takes file path as a path param from request
-func (a *StorageConnection) GetImageBuffer(eid, department, category, documentType, filename, domain string) ([]byte, error) {
+func (a *StorageConnection) GetImageBuffer(ctx context.Context, eid, department, category, documentType, filename, domain string) ([]byte, error) {
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
-	clientCtx, cancel := context.WithCancel(context.Background())
-	defer cancel()
+	// clientCtx, cancel := context.WithCancel(ctx)
+	// defer cancel()
 	nd := GetUpdatedDomain(domain)
 	filePath := fmt.Sprintf("%s/%s/%s/%s/%s", department, eid, category, documentType, filename)
 
-	fmt.Println("Downloading file from GCS: ", filePath, "domain:", nd)
+	fmt.Println("Downloading file from GCS: ", filePath, "domain:", nd, "pid:", pid)
 
-	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
+	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(ctx)
 	if err != nil {
-		fmt.Println("Error ", err.Error())
+		fmt.Println("Error 1", err.Error())
 		return []byte{}, err
 	}
 	defer reader.Close()
 	content, err := io.ReadAll(reader)
 	if err != nil {
-		fmt.Println("Error ", err.Error())
+		fmt.Println("Error 2", err.Error())
 		return []byte{}, err
 	}
 	return content, nil
