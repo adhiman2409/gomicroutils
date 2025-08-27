@@ -280,6 +280,9 @@ type OneTimeMonthlyDeduction struct {
 type MonthlyPayrollAndTaxDetails struct {
 	Year                         string                       `bson:"year"`
 	Month                        string                       `bson:"month"`
+	SalaryProcessingStatus       string                       `bson:"salary_processing_status"`
+	SalaryProcessingDate         string                       `bson:"salary_processing_date"`
+	SalaryStructureSSID          string                       `bson:"salary_structure_ssid"`
 	MonthlyEarnings              MonthlyEarnings              `bson:"monthly_earnings"`
 	TotalGrossEarnings           float64                      `bson:"total_gross_earnings"`
 	MonthlyDeductions            MonthlyDeductions            `bson:"monthly_deductions"`
@@ -290,6 +293,7 @@ type MonthlyPayrollAndTaxDetails struct {
 	TotalEmployerContributions   float64                      `bson:"total_employer_contributions"`
 	OneTimeMonthlyEarning        []OneTimeMonthlyEarning      `bson:"one_time_monthly_earnings"`
 	OneTimeMonthlyDeduction      []OneTimeMonthlyDeduction    `bson:"one_time_monthly_deductions"`
+	Remarks                      string                       `bson:"remarks"`
 	CreatedAt                    time.Time                    `bson:"created_at"`
 	UpdatedAt                    time.Time                    `bson:"updated_at"`
 }
@@ -299,6 +303,7 @@ type EmployeePayrollMaster struct {
 	EmployeeID                                  string                        `bson:"employee_id"`
 	EmployeeName                                string                        `bson:"employee_name"`
 	JoiningDate                                 string                        `bson:"joining_date"`
+	EmploymentStatus                            string                        `bson:"employment_status"`
 	OptedTaxRegime                              string                        `bson:"opted_tax_regime"`
 	FinancialYear                               string                        `bson:"financial_year"`
 	AssessmentYear                              string                        `bson:"assessment_year"`
