@@ -10,6 +10,9 @@ type CountrySalaryStructure struct {
 	SSID                                  string    `bson:"ssid"`
 	FinancialYear                         string    `bson:"financial_year"`
 	EffectiveFromDate                     string    `bson:"effective_from_date"`
+	EffectiveToDate                       string    `bson:"effective_to_date"`
+	IsUpcoming                            bool      `bson:"is_upcoming"`
+	IsActive                              bool      `bson:"is_active"`
 	IsExpired                             bool      `bson:"is_expired"`
 	ExpiredOn                             string    `bson:"expired_on"`
 	EmployeeId                            string    `bson:"employee_id"`
@@ -116,6 +119,7 @@ type SalaryStructureDetails struct {
 	EmployeeId              string                   `bson:"employee_id"`
 	EmployeeName            string                   `bson:"employee_name"`
 	EmploymentStatus        string                   `bson:"employment_status"`
+	UpcomingSalaryStructure CountrySalaryStructure   `bson:"upcoming_salary_structure"`
 	ActiveSalaryStructure   CountrySalaryStructure   `bson:"active_salary_structure"`
 	ExpiredSalaryStructures []CountrySalaryStructure `bson:"expired_salary_structures"`
 	ArrearPaymentInfo       ArrearPaymentInfo        `bson:"arrear_payment_info"`
@@ -259,6 +263,20 @@ type MonthlyEmployerContributions struct {
 	TotalEmployerContributions float64 `bson:"total_employer_contributions"`
 }
 
+type OneTimeMonthlyEarning struct {
+	Name      string  `bson:"name"`
+	Type      string  `bson:"type"` // e.g., "bonus", "arrears", "incentive"
+	Amount    float64 `bson:"amount"`
+	IsTaxable bool    `bson:"is_taxable"`
+}
+
+type OneTimeMonthlyDeduction struct {
+	Name      string  `bson:"name"`
+	Type      string  `bson:"type"` // e.g., "loan", "advance", "penalty"
+	Amount    float64 `bson:"amount"`
+	IsTaxable bool    `bson:"is_taxable"`
+}
+
 type MonthlyPayrollAndTaxDetails struct {
 	Year                         string                       `bson:"year"`
 	Month                        string                       `bson:"month"`
@@ -270,6 +288,10 @@ type MonthlyPayrollAndTaxDetails struct {
 	TaxableIncome                float64                      `bson:"taxable_income"`
 	MonthlyEmployerContributions MonthlyEmployerContributions `bson:"monthly_employer_contributions"`
 	TotalEmployerContributions   float64                      `bson:"total_employer_contributions"`
+	OneTimeMonthlyEarning        []OneTimeMonthlyEarning      `bson:"one_time_monthly_earnings"`
+	OneTimeMonthlyDeduction      []OneTimeMonthlyDeduction    `bson:"one_time_monthly_deductions"`
+	CreatedAt                    time.Time                    `bson:"created_at"`
+	UpdatedAt                    time.Time                    `bson:"updated_at"`
 }
 
 type EmployeePayrollMaster struct {
