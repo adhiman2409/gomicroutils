@@ -283,6 +283,7 @@ type MonthlyPayrollAndTaxDetails struct {
 	SalaryProcessingStatus       string                       `bson:"salary_processing_status"`
 	SalaryProcessingDate         string                       `bson:"salary_processing_date"`
 	SalaryStructureSSID          string                       `bson:"salary_structure_ssid"`
+	IsSalaryManuallyUpdated      bool                         `bson:"is_salary_manually_updated"`
 	MonthlyEarnings              MonthlyEarnings              `bson:"monthly_earnings"`
 	TotalGrossEarnings           float64                      `bson:"total_gross_earnings"`
 	MonthlyDeductions            MonthlyDeductions            `bson:"monthly_deductions"`
