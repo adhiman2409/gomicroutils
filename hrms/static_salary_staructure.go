@@ -281,6 +281,8 @@ type OneTimeMonthlyDeduction struct {
 type MonthlyPayrollAndTaxDetails struct {
 	Year                         string                       `bson:"year"`
 	Month                        string                       `bson:"month"`
+	NumberOfDaysInMonth          int                          `bson:"number_of_days_in_month"`
+	NumberOfPayableDays          int                          `bson:"number_of_payable_days"`
 	SalaryProcessingStatus       string                       `bson:"salary_processing_status"`
 	SalaryProcessingDate         string                       `bson:"salary_processing_date"`
 	SalaryStructureSSID          string                       `bson:"salary_structure_ssid"`
