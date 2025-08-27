@@ -1,15 +1,17 @@
 package hrms
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type TaxRegime struct {
-	ID                     string          `bson:"_id"`
-	RegimeName             string          `bson:"regime_name"`    // e.g., "Old", "New"
-	FinancialYear          string          `bson:"financial_year"` // e.g., "2023-2024"
-	Description            string          `bson:"description"`
-	StandardDeduction      float64         `bson:"standard_deduction"` // e.g., 50000
-	Slabs                  []TaxSlab       `bson:"slabs"`
-	RebateUnderSection87A  Rebate          `bson:"rebate"`
-	Surcharges             []SurchargeSlab `bson:"surcharges"`                 // Percentage, e.g., 10 for 10%
-	CessOnTaxWithSurcharge float64         `bson:"cess_on_tax_with_surcharge"` // Percentage, e.g., 4 for 4%
+	ID                     primitive.ObjectID `bson:"_id"`
+	RegimeName             string             `bson:"regime_name"`    // e.g., "Old", "New"
+	FinancialYear          string             `bson:"financial_year"` // e.g., "2023-2024"
+	Description            string             `bson:"description"`
+	StandardDeduction      float64            `bson:"standard_deduction"` // e.g., 50000
+	Slabs                  []TaxSlab          `bson:"slabs"`
+	RebateUnderSection87A  Rebate             `bson:"rebate"`
+	Surcharges             []SurchargeSlab    `bson:"surcharges"`                 // Percentage, e.g., 10 for 10%
+	CessOnTaxWithSurcharge float64            `bson:"cess_on_tax_with_surcharge"` // Percentage, e.g., 4 for 4%
 }
 
 type Rebate struct {
