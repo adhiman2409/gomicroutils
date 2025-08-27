@@ -27,7 +27,7 @@ type CompanyInfo struct {
 
 	SourceOfIntroduction string        `bson:"source_of_introduction"`
 	IntroducedBy         string        `bson:"introduced_by"`
-	CurrentStage         string        `bson:"current_stage"` // Lead, Prospect, Client, etc.
+	CurrentStage         ClientStage   `bson:"current_stage"` // Lead, Prospect, Client, etc.
 	AssignedSPOCs        []ContactInfo `bson:"assigned_spocs,omitempty"`
 	Tags                 []string      `bson:"tags,omitempty"`
 	Priority             string        `bson:"priority,omitempty"`
@@ -113,4 +113,115 @@ type MeetingInfo struct {
 	CreatedBy         string             `bson:"created_by"`
 	CreatedAt         time.Time          `bson:"created_at"`
 	UpdatedAt         time.Time          `bson:"updated_at"`
+}
+
+type ClientStage int
+
+const (
+	ColdLead ClientStage = iota + 1
+	WarmLead
+	HotLead
+	Suspect
+	Prospect
+	Verified
+	Engaged
+	ProposalSent
+	UnderReview
+	FeedbackReceived
+	Negotiation
+	TermsAligned
+	PendingSignoff
+	ContractSigned
+	Onboarded
+	ActiveClient
+)
+
+func (s ClientStage) String() string {
+	stages := []string{
+		"Cold Lead",
+		"Warm Lead",
+		"Hot Lead",
+		"Suspect",
+		"Prospect",
+		"Verified",
+		"Engaged",
+		"Proposal Sent",
+		"Under Review",
+		"Feedback Received",
+		"Negotiation",
+		"Terms Aligned",
+		"Pending Signoff",
+		"Contract Signed",
+		"Onboarded",
+		"Active Client",
+	}
+	i := int(s) - 1
+	if i < 0 || i >= len(stages) {
+		return "Unknown"
+	}
+	return stages[i]
+}
+
+func (s ClientStage) EnumIndex() int {
+	return int(s)
+}
+
+func GetClientStages() []string {
+	return []string{
+		"Cold Lead",
+		"Warm Lead",
+		"Hot Lead",
+		"Suspect",
+		"Prospect",
+		"Verified",
+		"Engaged",
+		"Proposal Sent",
+		"Under Review",
+		"Feedback Received",
+		"Negotiation",
+		"Terms Aligned",
+		"Pending Signoff",
+		"Contract Signed",
+		"Onboarded",
+		"Active Client",
+	}
+}
+
+func ClientStageFromString(s string) ClientStage {
+	switch s {
+	case "Cold Lead":
+		return ColdLead
+	case "Warm Lead":
+		return WarmLead
+	case "Hot Lead":
+		return HotLead
+	case "Suspect":
+		return Suspect
+	case "Prospect":
+		return Prospect
+	case "Verified":
+		return Verified
+	case "Engaged":
+		return Engaged
+	case "Proposal Sent":
+		return ProposalSent
+	case "Under Review":
+		return UnderReview
+	case "Feedback Received":
+		return FeedbackReceived
+	case "Negotiation":
+		return Negotiation
+	case "Terms Aligned":
+		return TermsAligned
+	case "Pending Signoff":
+		return PendingSignoff
+	case "Contract Signed":
+		return ContractSigned
+	case "Onboarded":
+		return Onboarded
+	case "Active Client":
+		return ActiveClient
+	default:
+		return ColdLead // fallback (could also return 0)
+	}
 }
