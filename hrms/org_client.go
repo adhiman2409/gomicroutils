@@ -1,5 +1,11 @@
 package hrms
 
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
+
 // type ClientHoliday struct {
 // 	ID          primitive.ObjectID `bson:"_id"`
 // 	ClientId    string             `bson:"client_id"`
@@ -12,30 +18,30 @@ package hrms
 // 	Description string             `bson:"description"`
 // }
 
-// type ClientInfo struct {
-// 	ID                         primitive.ObjectID `bson:"_id"`
-// 	ClientId                   string             `bson:"client_id"`
-// 	ClientName                 string             `bson:"client_name"`
-// 	ClientType                 string             `bson:"client_type"`
-// 	ClientStatus               string             `bson:"client_status"`
-// 	ClientDescription          string             `bson:"client_description"`
-// 	IsDefault                  bool               `bson:"is_default"`
-// 	IsNDASigned                bool               `bson:"is_nda_signed"`
-// 	NDASignDate                time.Time          `bson:"nda_sign_date"`
-// 	NDADocument                string             `bson:"nda_document"`
-// 	ClientWebsite              string             `bson:"client_website"`
-// 	PrimaryContactName         string             `bson:"primary_contact_name"`
-// 	PrimaryContactEmail        string             `bson:"primary_contact_email"`
-// 	PrimaryContactIDesignation string             `bson:"primary_contact_designation"`
-// 	FullAddress                Address            `bson:"full_address"`
-// 	City                       string             `bson:"city"`
-// 	State                      string             `bson:"state"`
-// 	Country                    string             `bson:"country"`
-// 	Contacts                   []string           `bson:"contacts"`
-// 	CreatedBy                  string             `bson:"created_by"`
-// 	CreatedAt                  time.Time          `bson:"created_at"`
-// 	UpdatedAt                  time.Time          `bson:"updated_at"`
-// }
+type ClientInfo struct {
+	ID                         primitive.ObjectID `bson:"_id"`
+	ClientId                   string             `bson:"client_id"`
+	ClientName                 string             `bson:"client_name"`
+	ClientType                 string             `bson:"client_type"`
+	ClientStatus               string             `bson:"client_status"`
+	ClientDescription          string             `bson:"client_description"`
+	IsDefault                  bool               `bson:"is_default"`
+	IsNDASigned                bool               `bson:"is_nda_signed"`
+	NDASignDate                time.Time          `bson:"nda_sign_date"`
+	NDADocument                string             `bson:"nda_document"`
+	ClientWebsite              string             `bson:"client_website"`
+	PrimaryContactName         string             `bson:"primary_contact_name"`
+	PrimaryContactEmail        string             `bson:"primary_contact_email"`
+	PrimaryContactIDesignation string             `bson:"primary_contact_designation"`
+	FullAddress                Address            `bson:"full_address"`
+	City                       string             `bson:"city"`
+	State                      string             `bson:"state"`
+	Country                    string             `bson:"country"`
+	Contacts                   []string           `bson:"contacts"`
+	CreatedBy                  string             `bson:"created_by"`
+	CreatedAt                  time.Time          `bson:"created_at"`
+	UpdatedAt                  time.Time          `bson:"updated_at"`
+}
 
 // type Participant struct {
 // 	IsInternal  bool   `bson:"is_internal"`
@@ -92,24 +98,24 @@ package hrms
 // 	UpdatedAt                      time.Time          `bson:"updated_at"`
 // }
 
-// type ClientContactInfo struct {
-// 	ID                 primitive.ObjectID `bson:"_id"`
-// 	ClientId           string             `bson:"client_id"`
-// 	ClientName         string             `bson:"client_name"`
-// 	ContactName        string             `bson:"contact_name"`
-// 	ContactEmail       string             `bson:"contact_email"`
-// 	ContactPhone       string             `bson:"contact_phone"`
-// 	ContactDesignation string             `bson:"contact_designation"`
-// 	ContactRole        string             `bson:"contact_role"`
-// 	ContactDescription string             `bson:"contact_description"`
-// 	CreatedBy          string             `bson:"created_by"`
-// 	ReferencedBy       string             `bson:"referenced_by"`
-// 	CreatedAt          time.Time          `bson:"created_at"`
-// 	UpdatedAt          time.Time          `bson:"updated_at"`
-// }
+type ClientContactInfo struct {
+	ID                 primitive.ObjectID `bson:"_id"`
+	ClientId           string             `bson:"client_id"`
+	ClientName         string             `bson:"client_name"`
+	ContactName        string             `bson:"contact_name"`
+	ContactEmail       string             `bson:"contact_email"`
+	ContactPhone       string             `bson:"contact_phone"`
+	ContactDesignation string             `bson:"contact_designation"`
+	ContactRole        string             `bson:"contact_role"`
+	ContactDescription string             `bson:"contact_description"`
+	CreatedBy          string             `bson:"created_by"`
+	ReferencedBy       string             `bson:"referenced_by"`
+	CreatedAt          time.Time          `bson:"created_at"`
+	UpdatedAt          time.Time          `bson:"updated_at"`
+}
 
-// type ClientIdCounter struct {
-// 	ID      primitive.ObjectID `bson:"_id"`
-// 	Prefix  string             `bson:"prefix"`
-// 	Counter int64              `bson:"counter"`
-// }
+type ClientIdCounter struct {
+	ID      primitive.ObjectID `bson:"_id"`
+	Prefix  string             `bson:"prefix"`
+	Counter int64              `bson:"counter"`
+}
