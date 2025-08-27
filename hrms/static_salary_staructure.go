@@ -15,6 +15,7 @@ type CountrySalaryStructure struct {
 	IsActive                              bool      `bson:"is_active"`
 	IsExpired                             bool      `bson:"is_expired"`
 	ExpiredOn                             string    `bson:"expired_on"`
+	ExpiredSalaryStructureSSID            string    `bson:"expired_salary_structure_ssid"`
 	EmployeeId                            string    `bson:"employee_id"`
 	EmployeeName                          string    `bson:"employee_name"`
 	EmployeeEmail                         string    `bson:"employee_email"`
