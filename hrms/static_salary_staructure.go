@@ -6,6 +6,16 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type SalaryProcessingStatus string
+
+const (
+	Pending         SalaryProcessingStatus = "pending"
+	Approved        SalaryProcessingStatus = "approved"
+	Paid            SalaryProcessingStatus = "paid"
+	TemporaryOnHold SalaryProcessingStatus = "temporary_on_hold"
+	Cancelled       SalaryProcessingStatus = "cancelled"
+)
+
 type CountrySalaryStructure struct {
 	SSID                                  string    `bson:"ssid"`
 	FinancialYear                         string    `bson:"financial_year"`
@@ -266,9 +276,10 @@ type MonthlyEmployerContributions struct {
 
 type OneTimeMonthlyEarning struct {
 	Name      string  `bson:"name"`
-	Type      string  `bson:"type"` // e.g., "bonus", "arrears", "incentive"
+	Type      string  `bson:"type"` // e.g., "bonus", "arrears", "incentive", "reimbursement"
 	Amount    float64 `bson:"amount"`
 	IsTaxable bool    `bson:"is_taxable"`
+	Remarks   string  `bson:"remarks"`
 }
 
 type OneTimeMonthlyDeduction struct {
@@ -276,6 +287,7 @@ type OneTimeMonthlyDeduction struct {
 	Type      string  `bson:"type"` // e.g., "loan", "advance", "penalty"
 	Amount    float64 `bson:"amount"`
 	IsTaxable bool    `bson:"is_taxable"`
+	Remarks   string  `bson:"remarks"`
 }
 
 type MonthlyPayrollAndTaxDetails struct {
@@ -283,14 +295,14 @@ type MonthlyPayrollAndTaxDetails struct {
 	Month                        string                       `bson:"month"`
 	NumberOfDaysInMonth          int                          `bson:"number_of_days_in_month"`
 	NumberOfPayableDays          int                          `bson:"number_of_payable_days"`
-	SalaryProcessingStatus       string                       `bson:"salary_processing_status"`
+	SalaryProcessingStatus       SalaryProcessingStatus       `bson:"salary_processing_status"`
 	SalaryProcessingDate         string                       `bson:"salary_processing_date"`
 	SalaryStructureSSID          string                       `bson:"salary_structure_ssid"`
 	IsHybridSSIDMonth            bool                         `bson:"is_hybrid_ssid_month"`
 	NewSSIDStartDate             string                       `bson:"new_ssid_start_date"`
 	OldSSIDEndDate               string                       `bson:"old_ssid_end_date"`
 	OldSalaryStructureSSID       string                       `bson:"old_salary_structure_ssid"`
-	IsSalaryManuallyUpdated      bool                         `bson:"is_salary_manually_updated"`
+	IsManuallyUpdated            bool                         `bson:"is_manually_updated"`
 	MonthlyEarnings              MonthlyEarnings              `bson:"monthly_earnings"`
 	TotalGrossEarnings           float64                      `bson:"total_gross_earnings"`
 	MonthlyDeductions            MonthlyDeductions            `bson:"monthly_deductions"`
