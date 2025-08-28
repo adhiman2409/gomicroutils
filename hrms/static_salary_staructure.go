@@ -301,7 +301,7 @@ type MonthlyPayrollAndTaxDetails struct {
 	TotalEmployerContributions   float64                      `bson:"total_employer_contributions"`
 	OneTimeMonthlyEarning        []OneTimeMonthlyEarning      `bson:"one_time_monthly_earnings"`
 	OneTimeMonthlyDeduction      []OneTimeMonthlyDeduction    `bson:"one_time_monthly_deductions"`
-	Remarks                      string                       `bson:"remarks"`
+	Remarks                      []string                     `bson:"remarks"`
 	CreatedAt                    time.Time                    `bson:"created_at"`
 	UpdatedAt                    time.Time                    `bson:"updated_at"`
 }
