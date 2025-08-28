@@ -6,16 +6,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type SalaryProcessingStatus string
-
-const (
-	Pending         SalaryProcessingStatus = "pending"
-	Approved        SalaryProcessingStatus = "approved"
-	Paid            SalaryProcessingStatus = "paid"
-	TemporaryOnHold SalaryProcessingStatus = "temporary_on_hold"
-	Cancelled       SalaryProcessingStatus = "cancelled"
-)
-
 type CountrySalaryStructure struct {
 	SSID                                  string    `bson:"ssid"`
 	FinancialYear                         string    `bson:"financial_year"`
@@ -295,7 +285,7 @@ type MonthlyPayrollAndTaxDetails struct {
 	Month                        string                       `bson:"month"`
 	NumberOfDaysInMonth          int                          `bson:"number_of_days_in_month"`
 	NumberOfPayableDays          int                          `bson:"number_of_payable_days"`
-	SalaryProcessingStatus       SalaryProcessingStatus       `bson:"salary_processing_status"`
+	SalaryProcessingStatus       SalaryStatus                 `bson:"salary_processing_status"`
 	SalaryProcessingDate         string                       `bson:"salary_processing_date"`
 	SalaryStructureSSID          string                       `bson:"salary_structure_ssid"`
 	IsHybridSSIDMonth            bool                         `bson:"is_hybrid_ssid_month"`
