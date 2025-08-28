@@ -7,37 +7,34 @@ import (
 )
 
 type CompanyInfo struct {
-    ID                 primitive.ObjectID bson:"_id,omitempty"
-    CompanyId          string             bson:"company_id"
-    CompanyName        string             bson:"company_name"
-    CompanyLogo        string             bson:"company_logo"
-    Website            string             bson:"website"
-    Industry           string             bson:"industry"
-    HeadquarterCountry string             bson:"headquarter_country"
-    BusinessActivities string             bson:"business_activities"
-    ClientDescription  string             bson:"client_description"
-
-    YearFounded          int           bson:"year_founded,omitempty"
-    Contacts             []ContactInfo bson:"contacts,omitempty"
-    CompanySize          int           bson:"company_size,omitempty"
-    AnnualRevenue        float64       bson:"annual_revenue,omitempty"
-    RevenueCurrency      string        bson:"revenue_currency,omitempty"
-    ProductsAndServices  []string      bson:"products_and_services,omitempty"
-    OtherOfficeLocations []string      bson:"other_office_locations,omitempty"
-
-    SourceOfIntroduction string        bson:"source_of_introduction"
-    IntroducedBy         string        bson:"introduced_by"
-    CurrentStage         ClientStage   bson:"current_stage" // Lead, Prospect, Client, etc.
-    AssignedSPOCs        []ContactInfo bson:"assigned_spocs,omitempty"
-    Tags                 []string      bson:"tags,omitempty"
-    Priority             string        bson:"priority,omitempty"
-    IsPublic             bool          bson:"is_public,omitempty"
-    Attachments          []Attachment  bson:"attachments,omitempty"
-    Remarks              []string      bson:"remarks"
-
-    CreatedBy string    bson:"created_by"
-    CreatedAt time.Time bson:"created_at"
-    UpdatedAt time.Time bson:"updated_at"
+	ID                   primitive.ObjectID `bson:"_id,omitempty"`
+	CompanyId            string             `bson:"company_id"`
+	CompanyName          string             `bson:"company_name"`
+	CompanyLogo          string             `bson:"company_logo"`
+	Website              string             `bson:"website"`
+	Industry             string             `bson:"industry"`
+	HeadquarterCountry   string             `bson:"headquarter_country"`
+	BusinessActivities   string             `bson:"business_activities"`
+	ClientDescription    string             `bson:"client_description"`
+	YearFounded          int                `bson:"year_founded,omitempty"`
+	Contacts             []ContactInfo      `bson:"contacts,omitempty"`
+	CompanySize          int                `bson:"company_size,omitempty"`
+	AnnualRevenue        float64            `bson:"annual_revenue,omitempty"`
+	RevenueCurrency      string             `bson:"revenue_currency,omitempty"`
+	ProductsAndServices  []string           `bson:"products_and_services,omitempty"`
+	OtherOfficeLocations []string           `bson:"other_office_locations,omitempty"`
+	SourceOfIntroduction string             `bson:"source_of_introduction"`
+	IntroducedBy         string             `bson:"introduced_by"`
+	CurrentStage         ClientStage        `bson:"current_stage"` // Lead, Prospect, Client, etc.
+	AssignedSPOCs        []ContactInfo      `bson:"assigned_spocs,omitempty"`
+	Tags                 []string           `bson:"tags,omitempty"`
+	Priority             string             `bson:"priority,omitempty"`
+	IsPublic             bool               `bson:"is_public,omitempty"`
+	Attachments          []Attachment       `bson:"attachments,omitempty"`
+	Remarks              []string           `bson:"remarks"`
+	CreatedBy            string             `bson:"created_by"`
+	CreatedAt            time.Time          `bson:"created_at"`
+	UpdatedAt            time.Time          `bson:"updated_at"`
 }
 
 type ContactInfo struct {
