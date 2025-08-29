@@ -9,7 +9,7 @@ import (
 type SalaryProcessingRequest struct {
 	Id                             primitive.ObjectID            `bson:"_id"`
 	RequestId                      string                        `bson:"request_id"`
-	Year                           string                        `bson:"year"`
+	FinancialYear                  string                        `bson:"financial_year"`
 	Month                          string                        `bson:"month"`
 	NumberOfDaysInMonth            int                           `bson:"number_of_days_in_month"`
 	NumberOfPayableDays            int                           `bson:"number_of_payable_days"`
