@@ -1,8 +1,14 @@
 package hrms
 
-import "time"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type SalaryProcessingRequest struct {
+	Id                             primitive.ObjectID            `bson:"_id"`
+	RequestId                      string                        `bson:"request_id"`
 	Year                           string                        `bson:"year"`
 	Month                          string                        `bson:"month"`
 	NumberOfDaysInMonth            int                           `bson:"number_of_days_in_month"`
@@ -77,6 +83,7 @@ type EmployeeMonthlySalaryDetail struct {
 	BankBranch                   string                       `bson:"bank_branch"`
 	AccountNumber                string                       `bson:"account_number"`
 	IFSC                         string                       `bson:"ifsc"`
+	IsShortWorkingDaysOrHours    bool                         `bson:"is_short_working_days_or_hours"`
 	TotalWorkingDays             int                          `bson:"total_working_days"`
 	ActualWorkingDays            int                          `bson:"actual_working_days"`
 	RequiredWorkingHours         float32                      `bson:"required_working_hours"`
