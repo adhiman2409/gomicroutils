@@ -149,6 +149,7 @@ const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO_COUNTER = "payroll-employee-salary
 const PAYROLL_COLLECTION_ORG_SALARY_CONFIGS = "payroll-organization-salary_configs"
 const PAYROLL_COLLECTION_EMP_SALARY_CONFIGS = "payroll-employee-salary_configs"
 const PAYROLL_COLLECTION_TAX_REGIMES = "payroll-tax-regimes"
+const PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS = "payroll-salary-processing-requests"
 
 const PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER = "payroll-employee-payroll-master"
 
@@ -186,6 +187,11 @@ func GetKYCMeetingCollection(client *mongo.Client, domain string) *mongo.Collect
 func GetPayrollEmployeePayrollMasterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER)
+}
+
+func GetPayrollSalaryProcessingRequestsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS)
 }
 
 func GetPayrollTaxRegimesCollection(client *mongo.Client, domain string) *mongo.Collection {
