@@ -23,6 +23,7 @@ type CountrySalaryStructure struct {
 	Gender                                string    `bson:"gender"`
 	Designation                           string    `bson:"designation"`
 	Department                            string    `bson:"department"`
+	EmployeeType                          string    `bson:"employee_type"`
 	EmploymentStatus                      string    `bson:"employment_status"`
 	OrganizationDefaultTaxRegime          string    `bson:"organization_default_tax_regime"`
 	EmployeeAdoptedTaxRegime              string    `bson:"employee_adopted_tax_regime"`
