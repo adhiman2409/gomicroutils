@@ -32,6 +32,7 @@ type CompanyInfo struct {
 	IsPublic             bool               `bson:"is_public,omitempty"`
 	Attachments          []Attachment       `bson:"attachments,omitempty"`
 	Remarks              []string           `bson:"remarks"`
+	Regex                string             `bson:"regex,omitempty"`
 	CreatedBy            string             `bson:"created_by"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
