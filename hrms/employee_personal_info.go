@@ -33,6 +33,7 @@ type FamilyInfo struct {
 	CoveredInCorporateIns    bool   `bson:"covered_in_corporate_ins"`
 	InsurancePolicyId        string `bson:"insurance_policy_id"`
 	InsuranceCardURL         string `bson:"insurance_card_url"`
+	InsuranceCardUpdateYear  string `bson:"insurance_card_update_year"`
 	UpdateAt                 string `bson:"updated_at"`
 	UpdateBy                 string `bson:"updated_by"`
 }
