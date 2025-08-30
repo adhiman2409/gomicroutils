@@ -52,14 +52,17 @@ type AttendanceSheet struct {
 }
 
 type ReimbursementDetails struct {
-	ReimbursementID   string  `bson:"reimbursement_id"`
-	ReimbursementType string  `bson:"reimbursement_type"`
-	ReimbursementDate string  `bson:"reimbursement_date"`
-	Amount            float64 `bson:"amount"`
-	Status            string  `bson:"status"`
-	ApprovedBy        string  `bson:"approved_by"`
-	ApprovalDate      string  `bson:"approval_date"`
-	Remarks           string  `bson:"remarks"`
+	ReimbursementID     string  `bson:"reimbursement_id"`
+	Category            string  `bson:"category"`
+	SubCategory         string  `bson:"sub_category"`
+	BillAmountInINR     float32 `bson:"bill_amount_in_inr"`
+	ApprovedAmountInINR float32 `bson:"approved_amount_in_inr"`
+	Status              string  `bson:"status"`
+	PrimaryApproverId   string  `bson:"primary_approver_id"`
+	PrimaryApproverName string  `bson:"primary_approver_name"`
+	FinanceApproverId   string  `bson:"finance_approver_id"`
+	FinanceApproverName string  `bson:"finance_approver_name"`
+	Remarks             string  `bson:"remarks"`
 }
 
 type EmployeeMonthlySalaryDetail struct {
