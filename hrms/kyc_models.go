@@ -81,9 +81,11 @@ type ActionItem struct {
 }
 
 type Attachment struct {
-	Id       primitive.ObjectID `bson:"_id"`
-	FileName string             `bson:"file_name"`
-	FileURL  string             `bson:"file_url"`
+	Id         primitive.ObjectID `bson:"_id"`
+	FileName   string             `bson:"file_name"`
+	FileURL    string             `bson:"file_url"`
+	UploadedBy string             `bson:"uploaded_by"`
+	UploadedAt time.Time          `bson:"uploaded_at"`
 }
 
 type Note struct {
