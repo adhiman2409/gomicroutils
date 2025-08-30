@@ -29,6 +29,7 @@ type ProjectShifts struct {
 type ProjectInfo struct {
 	ID                      primitive.ObjectID  `bson:"_id"`
 	ClientId                string              `bson:"client_id"`
+	ClientName              string              `bson:"client_name"`
 	ProjectId               string              `bson:"project_id"`
 	ProjectName             string              `bson:"project_name"`
 	ProjectType             string              `bson:"project_type"`
