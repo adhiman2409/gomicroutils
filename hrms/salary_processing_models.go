@@ -84,8 +84,8 @@ type EmployeeMonthlySalaryDetail struct {
 	AccountNumber                string                       `bson:"account_number"`
 	IFSC                         string                       `bson:"ifsc"`
 	IsShortWorkingDaysOrHours    bool                         `bson:"is_short_working_days_or_hours"`
-	TotalWorkingDays             int                          `bson:"total_working_days"`
-	ActualWorkingDays            int                          `bson:"actual_working_days"`
+	TotalWorkingDays             float32                      `bson:"total_working_days"`
+	ActualWorkingDays            float32                      `bson:"actual_working_days"`
 	RequiredWorkingHours         float32                      `bson:"required_working_hours"`
 	ActualWorkingHours           float32                      `bson:"actual_working_hours"`
 	AttendanceSheet              []AttendanceSheet            `bson:"attendance"`
