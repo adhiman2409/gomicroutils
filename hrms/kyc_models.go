@@ -110,6 +110,7 @@ type MeetingInfo struct {
 	MailSent          bool               `bson:"mail_sent,omitempty"`
 	IsReminderSet     bool               `bson:"is_reminder_set"`
 	CreatedBy         string             `bson:"created_by"`
+	CreatedByName     string             `bson:"created_by_name"`
 	CreatedAt         time.Time          `bson:"created_at"`
 	UpdatedAt         time.Time          `bson:"updated_at"`
 }
