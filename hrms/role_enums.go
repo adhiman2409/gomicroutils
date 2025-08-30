@@ -10,15 +10,15 @@ const (
 	Manager
 	TeamLead
 	TeamMember
+	Doctor
 	Candidate
 	Volunteer
-	GSDonor
 	Anonymous
 )
 
 func (r Role) String() string {
 	return [...]string{"Superadmin", "OrgAdmin", "OrgManager", "Recruiter", "Manager",
-		"TeamLead", "TeamMember", "Candidate", "Volunteer", "GSDonor", "Anonymous"}[r-1]
+		"TeamLead", "TeamMember", "Doctor", "Candidate", "Volunteer", "Anonymous"}[r-1]
 }
 
 func (r Role) EnumIndex() int {
@@ -27,31 +27,32 @@ func (r Role) EnumIndex() int {
 
 func GetAllRoles() []string {
 	return []string{"Superadmin", "OrgAdmin", "OrgManager", "Recruiter", "Manager",
-		"TeamLead", "TeamMember", "Candidate", "Volunteer", "GSDonor", "Anonymous"}
+		"TeamLead", "TeamMember", "Doctor", "Candidate", "Volunteer", "Anonymous"}
 }
 
 func RoleEnumFromString(s string) Role {
-	if s == "Superadmin" {
+	switch s {
+	case "Superadmin":
 		return Superadmin
-	} else if s == "OrgAdmin" {
+	case "OrgAdmin":
 		return OrgAdmin
-	} else if s == "OrgManager" {
+	case "OrgManager":
 		return OrgManager
-	} else if s == "Recruiter" {
+	case "Recruiter":
 		return Recruiter
-	} else if s == "Manager" {
+	case "Manager":
 		return Manager
-	} else if s == "TeamLead" {
+	case "TeamLead":
 		return TeamLead
-	} else if s == "TeamMember" {
+	case "TeamMember":
 		return TeamMember
-	} else if s == "Candidate" {
+	case "Doctor":
+		return Doctor
+	case "Candidate":
 		return Candidate
-	} else if s == "Volunteer" {
+	case "Volunteer":
 		return Volunteer
-	} else if s == "GSDonor" {
-		return GSDonor
-	} else {
+	default:
 		return Anonymous
 	}
 }
