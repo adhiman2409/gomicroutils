@@ -269,6 +269,7 @@ type OneTimeMonthlyEarning struct {
 	Name      string  `bson:"name"`
 	Type      string  `bson:"type"` // e.g., "bonus", "arrears", "incentive", "reimbursement"
 	Amount    float64 `bson:"amount"`
+	Id        string  `bson:"id"`
 	IsTaxable bool    `bson:"is_taxable"`
 	Remarks   string  `bson:"remarks"`
 }
@@ -276,6 +277,7 @@ type OneTimeMonthlyEarning struct {
 type OneTimeMonthlyDeduction struct {
 	Name      string  `bson:"name"`
 	Type      string  `bson:"type"` // e.g., "loan", "advance", "penalty"
+	Id        string  `bson:"id"`
 	Amount    float64 `bson:"amount"`
 	IsTaxable bool    `bson:"is_taxable"`
 	Remarks   string  `bson:"remarks"`
