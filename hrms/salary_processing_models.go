@@ -97,8 +97,6 @@ type EmployeeMonthlySalaryDetail struct {
 	SalaryProcessingDate         string                       `bson:"salary_processing_date"`
 	IsManuallyUpdated            bool                         `bson:"is_manually_updated"`
 	MonthlyEarnings              MonthlyEarnings              `bson:"monthly_earnings"`
-	DailyGrossIncome             float64                      `bson:"daily_gross_income"`
-	DailyTaxAmount               float64                      `bson:"daily_tax_amount"`
 	TotalGrossEarnings           float64                      `bson:"total_gross_earnings"`
 	MonthlyDeductions            MonthlyDeductions            `bson:"monthly_deductions"`
 	TotalDeductions              float64                      `bson:"total_deductions"`
