@@ -142,6 +142,7 @@ type PayrollSalaryConfig struct {
 	EmployeeType                             string                `bson:"employee_type"`
 	PayrollConfigName                        string                `bson:"payroll_config_name"`
 	IsDefaultForEmployeeType                 bool                  `bson:"is_default_for_employee_type"`
+	Description                              string                `bson:"description"`
 	EmployeeId                               string                `bson:"employee_id"`
 	EmployeeName                             string                `bson:"employee_name"`
 	State                                    string                `bson:"state"`
