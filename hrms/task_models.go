@@ -81,6 +81,7 @@ type Task struct {
 	History     []TaskHistory `bson:"history"`
 	UpdatedAt   time.Time     `bson:"updated_at"`
 	CreatedAt   time.Time     `bson:"created_at"`
+	CreatedBy   EmpSummary    `bson:"created_by"`
 }
 
 type ProjectTasksResponse struct {
