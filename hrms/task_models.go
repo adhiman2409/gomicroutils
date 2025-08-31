@@ -18,6 +18,8 @@ type TaskState struct {
 	StateId      string `bson:"state_id"`
 	Name         string `bson:"name"`
 	Abbreviation string `bson:"abbreviation"`
+	IsStartState bool   `bson:"is_start_state"`
+	IsEndState   bool   `bson:"is_end_state"`
 	Color        string `bson:"color"`
 	Description  string `bson:"description"`
 	Icon         string `bson:"icon"`
