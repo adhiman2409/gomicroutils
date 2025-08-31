@@ -65,23 +65,24 @@ type EmpSummary struct {
 }
 
 type Task struct {
-	TaskId      string        `bson:"task_id"`
-	StateId     string        `bson:"state_id"`
-	Title       string        `bson:"title"`
-	Description string        `bson:"description"`
-	Assignees   []EmpSummary  `bson:"assignees"`
-	AssignedBy  EmpSummary    `bson:"assigned_by"`
-	StartDate   time.Time     `bson:"start_date"`
-	DueDate     time.Time     `bson:"due_date"`
-	Labels      []string      `bson:"labels"`
-	Priority    TaskPriority  `bson:"priority"`
-	Attachments []string      `bson:"attachments"`
-	Remarks     []string      `bson:"remarks"`
-	Comments    []Comments    `bson:"comments"`
-	History     []TaskHistory `bson:"history"`
-	UpdatedAt   time.Time     `bson:"updated_at"`
-	CreatedAt   time.Time     `bson:"created_at"`
-	CreatedBy   EmpSummary    `bson:"created_by"`
+	TaskId          string            `bson:"task_id"`
+	StateId         string            `bson:"state_id"`
+	Title           string            `bson:"title"`
+	Description     string            `bson:"description"`
+	Assignees       []EmpSummary      `bson:"assignees"`
+	AssignedBy      EmpSummary        `bson:"assigned_by"`
+	StartDate       time.Time         `bson:"start_date"`
+	DueDate         time.Time         `bson:"due_date"`
+	Labels          []string          `bson:"labels"`
+	Priority        TaskPriority      `bson:"priority"`
+	Attachments     []string          `bson:"attachments"`
+	Remarks         []string          `bson:"remarks"`
+	Comments        []Comments        `bson:"comments"`
+	History         []TaskHistory     `bson:"history"`
+	AssigneeHistory []AssigneeHistory `bson:"assignee_history"`
+	UpdatedAt       time.Time         `bson:"updated_at"`
+	CreatedAt       time.Time         `bson:"created_at"`
+	CreatedBy       EmpSummary        `bson:"created_by"`
 }
 
 type ProjectTasksResponse struct {
@@ -102,6 +103,21 @@ type TaskHistory struct {
 	EmployeeName string    `bson:"employee_name"`
 	Timestamp    time.Time `bson:"timestamp"`
 	Details      string    `bson:"details"`
+}
+
+type AssigneeHistory struct {
+	ID                          string `bson:"id"`
+	EmployeeId                  string `bson:"employee_id"`
+	FullName                    string `bson:"full_name"`
+	EmailId                     string `bson:"email_id"`
+	EmploymentStatus            string `bson:"employment_status"` //Active
+	Department                  string `bson:"department"`
+	Designation                 string `bson:"designation"`
+	ReportingManagerName        string `bson:"reporting_manager"`
+	ReportingManagerId          string `bson:"reporting_manager_id"`
+	ReportingManagerEmail       string `bson:"reporting_manager_email"`
+	ReportingManagerDesignation string `bson:"reporting_manager_designation"`
+	ReportingManagerDepartment  string `bson:"reporting_manager_department"`
 }
 
 type TaskPriority int
