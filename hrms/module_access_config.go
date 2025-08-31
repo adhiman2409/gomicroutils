@@ -1,11 +1,11 @@
 package hrms
 
 type ModuleAccessConfig struct {
-	ModuleName   string `json:"module_name"`
-	EmployeeId   string `json:"employee_id"`
-	EmployeeName string `json:"employee_name"`
-	CanView      bool   `json:"can_view"`
-	CanEdit      bool   `json:"can_edit"`
-	CanDelete    bool   `json:"can_delete"`
-	CanCreate    bool   `json:"can_create"`
+	ModuleName   string `bson:"module_name"`
+	EmployeeId   string `bson:"employee_id"`
+	EmployeeName string `bson:"employee_name"`
+	CanView      bool   `bson:"can_view"`
+	CanEdit      bool   `bson:"can_edit"`
+	CanDelete    bool   `bson:"can_delete"`
+	CanCreate    bool   `bson:"can_create"`
 }
