@@ -106,4 +106,5 @@ type EmployeeMonthlySalaryDetail struct {
 	OneTimeMonthlyEarning        []OneTimeMonthlyEarning      `bson:"one_time_monthly_earnings"`
 	OneTimeMonthlyDeduction      []OneTimeMonthlyDeduction    `bson:"one_time_monthly_deductions"`
 	Remarks                      string                       `bson:"remarks"`
+	ApproverRemarks              string                       `bson:"approver_remarks"`
 }
