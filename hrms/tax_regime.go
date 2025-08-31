@@ -26,6 +26,16 @@ type TaxSlab struct {
 	CalculatedTax float64 `bson:"calculated_tax"` // Pre-calculated tax for the slab
 }
 
+type ProfessionalTaxSlab struct {
+	StateName           string  `bson:"state_name"`
+	MinMonthlyIncome    float64 `bson:"min_monthly_income"` // Inclusive
+	MaxMonthlyIncome    float64 `bson:"max_monthly_income"` // Inclusive
+	IsFixedAmount       bool    `bson:"is_fixed_amount"`
+	FixedMonthlyAmount  float64 `bson:"fixed_monthly_amount"`
+	MaxAnnualAmount     float64 `bson:"max_annual_amount"`
+	IsFebMonthException bool    `bson:"is_feb_month_exception"`
+}
+
 type SurchargeSlab struct {
 	MinIncome float64 `bson:"min_income"`  // Inclusive
 	MaxIncome float64 `bson:"max_income"`  // Inclusive
