@@ -148,9 +148,12 @@ type PayrollSalaryConfig struct {
 	State                                    string                `bson:"state"`
 	Country                                  string                `bson:"country"`
 	DeliveryLocation                         string                `bson:"delivery_location"`
-	IsStipend                                bool                  `bson:"is_stipend"`
-	AnnualStipendAmount                      float32               `bson:"annual_stipend_amount"`
-	MonthlyStipendAmount                     float32               `bson:"monthly_stipend_amount"`
+	IsFixedMonthlyPayout                     bool                  `bson:"is_fixed_monthly_payout"`
+	FixedMonthlyPayoutAmount                 float32               `bson:"fixed_monthly_payout_amount"`
+	IsFixedDailyPayout                       bool                  `bson:"is_fixed_daily_payout"`
+	FixedDailyPayoutAmount                   float32               `bson:"fixed_daily_payout_amount"`
+	DeductOnlyTDS                            bool                  `bson:"deduct_only_tds"`
+	DefaultTDSPercentage                     float32               `bson:"default_tds_percentage"`
 	OrganizationDefaultTaxRegime             string                `bson:"organization_default_tax_regime"` // e.g., "new", "old"
 	EmployeeAdoptedTaxRegime                 string                `bson:"employee_adopted_tax_regime"`     // e.g., "new", "old"
 	IsVariableSalaryPartOfTotalCTC           bool                  `bson:"is_variable_salary_part_of_total_ctc"`
