@@ -7,11 +7,12 @@ import (
 )
 
 type ProjectStateList struct {
-	ID         primitive.ObjectID `bson:"_id"`
-	ProjectId  string             `bson:"project_id"`
-	TaskStates []TaskState        `bson:"task_states"`
-	CreatedAt  time.Time          `bson:"created_at"`
-	Tasks      []Task             `bson:"tasks"`
+	ID               primitive.ObjectID `bson:"_id"`
+	ConfigNotAllowed bool               `bson:"config_not_allowed"`
+	ProjectId        string             `bson:"project_id"`
+	TaskStates       []TaskState        `bson:"task_states"`
+	CreatedAt        time.Time          `bson:"created_at"`
+	Tasks            []Task             `bson:"tasks"`
 }
 
 type TaskState struct {
