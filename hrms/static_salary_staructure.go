@@ -25,6 +25,7 @@ type CountrySalaryStructure struct {
 	Department                            string    `bson:"department"`
 	EmployeeType                          string    `bson:"employee_type"`
 	EmploymentStatus                      string    `bson:"employment_status"`
+	IsFullTimeEmployeeSalaryStructure     bool      `bson:"is_fulltime_employee_salary_structure"`
 	OrganizationDefaultTaxRegime          string    `bson:"organization_default_tax_regime"`
 	EmployeeAdoptedTaxRegime              string    `bson:"employee_adopted_tax_regime"`
 	State                                 string    `bson:"state"`
@@ -141,6 +142,7 @@ type SalaryStructureIdCounter struct {
 type PayrollSalaryConfig struct {
 	ID                                       primitive.ObjectID    `bson:"_id"`
 	EmployeeType                             string                `bson:"employee_type"`
+	IsFullTimeEmployeeSalaryConfig           bool                  `bson:"is_fulltime_employee_salary_config"`
 	PayrollConfigName                        string                `bson:"payroll_config_name"`
 	IsDefaultForEmployeeType                 bool                  `bson:"is_default_for_employee_type"`
 	Description                              string                `bson:"description"`
