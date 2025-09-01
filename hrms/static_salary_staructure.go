@@ -121,6 +121,7 @@ type SalaryStructureDetails struct {
 	EmployeeId              string                   `bson:"employee_id"`
 	EmployeeName            string                   `bson:"employee_name"`
 	EmploymentStatus        string                   `bson:"employment_status"`
+	EmployeeType            string                   `bson:"employee_type"`
 	UpcomingSalaryStructure CountrySalaryStructure   `bson:"upcoming_salary_structure"`
 	ActiveSalaryStructure   CountrySalaryStructure   `bson:"active_salary_structure"`
 	ExpiredSalaryStructures []CountrySalaryStructure `bson:"expired_salary_structures"`
