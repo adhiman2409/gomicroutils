@@ -161,6 +161,37 @@ const KYC_MEETING_COUNTER_COLLECTION = "kyc-meeting_counter"
 const KYC_MEETING_INFO_COLLECTION = "kyc-meeting_info"
 const KYC_CONTACTS_COLLECTION = "kyc-contact_collection"
 
+const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
+const REJOVE_COLLECTION_DOCTOR_COUNTER = "rejove-doctor-id-counter"
+const REJOVE_COLLECTION_PATIENT_COUNTER = "rejove-patient-id-counter"
+const REJOVE_COLLECTION_DOCTOR_CASE_COUNTER = "rejove-doctor_case-id-counter"
+const REJOVE_COLLECTION_DOCTOR_PRACTICES = "rejove-doctor-practices"
+
+func GetRejoveDoctorsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REJOVE_COLLECTION_DOCTORS)
+}
+
+func GetRejoveDoctorCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REJOVE_COLLECTION_DOCTOR_COUNTER)
+}
+
+func GetRejoveDoctorCaseCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REJOVE_COLLECTION_DOCTOR_CASE_COUNTER)
+}
+
+func GetRejovePatientCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REJOVE_COLLECTION_PATIENT_COUNTER)
+}
+
+func GetRejoveDoctorPracticesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REJOVE_COLLECTION_DOCTOR_PRACTICES)
+}
+
 func GetKYCCompanyCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(KYC_COMPANY_COUNTER_COLLECTION)
