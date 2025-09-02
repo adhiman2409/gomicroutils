@@ -6,6 +6,7 @@ const (
 	Pending SalaryStatus = iota + 1
 	WaitingApproval
 	Approved
+	Processed
 	Paid
 	TemporaryOnHold
 	NeedRevision
@@ -13,7 +14,7 @@ const (
 )
 
 func (r SalaryStatus) String() string {
-	return [...]string{"Pending", "WaitingApproval", "Approved", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled"}[r-1]
+	return [...]string{"Pending", "WaitingApproval", "Approved", "Processed", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled"}[r-1]
 }
 
 func (r SalaryStatus) EnumIndex() int {
@@ -21,7 +22,7 @@ func (r SalaryStatus) EnumIndex() int {
 }
 
 func GetAllSalaryStatus() []string {
-	return []string{"Pending", "WaitingApproval", "Approved", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled"}
+	return []string{"Pending", "WaitingApproval", "Approved", "Processed", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled"}
 }
 
 func SalaryStatusFromString(s string) SalaryStatus {
@@ -30,6 +31,8 @@ func SalaryStatusFromString(s string) SalaryStatus {
 		return WaitingApproval
 	case "Approved":
 		return Approved
+	case "Processed":
+		return Processed
 	case "Paid":
 		return Paid
 	case "TemporaryOnHold":
