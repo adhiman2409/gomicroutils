@@ -13,7 +13,7 @@ type Practice struct {
 
 type Patient struct {
 	PatientId      string    `bson:"patient_id"`
-	DoctorId       string    `bson:"user_id"`
+	DoctorId       string    `bson:"doctor_id"`
 	EmailId        string    `bson:"email_id"`
 	PhoneNumber    string    `bson:"phone_number"`
 	FirstName      string    `bson:"first_name"`
@@ -34,7 +34,7 @@ type UserIdCounter struct {
 
 type CaseIdCounter struct {
 	ID       primitive.ObjectID `bson:"_id"`
-	DoctorId string             `bson:"user_id"`
+	DoctorId string             `bson:"doctor_id"`
 	Prefix   string             `bson:"prefix"`
 	Counter  int64              `bson:"counter"`
 }
@@ -70,7 +70,7 @@ type DoctorAuthObject struct {
 
 type DoctorInfo struct {
 	ID                primitive.ObjectID `bson:"_id"`
-	DoctorId          string             `bson:"user_id"`
+	DoctorId          string             `bson:"doctor_id"`
 	Password          string             `bson:"password"`
 	Designation       string             `bson:"designation"`
 	FirstLoginPending bool               `bson:"first_login_pending"`
