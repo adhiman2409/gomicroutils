@@ -34,21 +34,22 @@ type SalaryProcessingRequest struct {
 }
 
 type AttendanceSheet struct {
-	Day                  string  `bson:"day"`
-	Month                string  `bson:"month"`
-	Year                 string  `bson:"year"`
-	Weekday              string  `bson:"weekday"`
-	IsHoliday            bool    `bson:"is_holiday"`
-	IsWeeklyOffDay       bool    `bson:"is_weekly_off_day"`
-	IsWorkingDay         bool    `bson:"is_working_day"`
-	IsOnLeave            bool    `bson:"is_on_leave"`
-	IsHalfDayLeave       bool    `bson:"is_half_day_leave"`
-	IsFullDayLOP         bool    `bson:"is_full_day_lop"`
-	IsHalfDayLOP         bool    `bson:"is_half_day_lop"`
-	RequiredWorkingHours float32 `bson:"required_working_hours"`
-	ActualWorkingHours   float32 `bson:"actual_working_hours"`
-	Status               string  `bson:"status"`
-	Remarks              string  `bson:"remarks"`
+	Day                    string  `bson:"day"`
+	Month                  string  `bson:"month"`
+	Year                   string  `bson:"year"`
+	Weekday                string  `bson:"weekday"`
+	IsHoliday              bool    `bson:"is_holiday"`
+	IsWeeklyOffDay         bool    `bson:"is_weekly_off_day"`
+	IsWorkingDay           bool    `bson:"is_working_day"`
+	IsOnLeave              bool    `bson:"is_on_leave"`
+	IsHalfDayLeave         bool    `bson:"is_half_day_leave"`
+	IsFullDayLOP           bool    `bson:"is_full_day_lop"`
+	IsHalfDayLOP           bool    `bson:"is_half_day_lop"`
+	IsSalaryDeductedForLOP bool    `bson:"is_salary_deducted_for_lop"`
+	RequiredWorkingHours   float32 `bson:"required_working_hours"`
+	ActualWorkingHours     float32 `bson:"actual_working_hours"`
+	Status                 string  `bson:"status"`
+	Remarks                string  `bson:"remarks"`
 }
 
 type ReimbursementDetails struct {

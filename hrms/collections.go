@@ -153,6 +153,7 @@ const PAYROLL_COLLECTION_TAX_REGIMES = "payroll-tax-regimes"
 const PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS = "payroll-salary-processing-requests"
 
 const PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER = "payroll-employee-payroll-master"
+const PAYROLL_COLLECTION_PAYROLL_ACCESS_CONTROL = "payroll-employee-payroll-access-control"
 
 const KYC_COMPANY_INFO_COLLECTION = "kyc-company_info"
 const KYC_COMPANY_COUNTER_COLLECTION = "kyc-company_counter"
@@ -183,6 +184,11 @@ func GetKYCMeetingCounterCollection(client *mongo.Client, domain string) *mongo.
 func GetKYCMeetingCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(KYC_MEETING_INFO_COLLECTION)
+}
+
+func GetPayrollAccessControlCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_PAYROLL_ACCESS_CONTROL)
 }
 
 func GetPayrollEmployeePayrollMasterCollection(client *mongo.Client, domain string) *mongo.Collection {
