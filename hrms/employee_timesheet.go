@@ -39,17 +39,18 @@ type TimeSheetProject struct {
 }
 
 type TimeSheet struct {
-	Day               int                `bson:"day"`
-	Date              string             `bson:"date"`
-	FirstCheckInTime  time.Time          `bson:"first_check_in_time"`
-	LastCheckOutTime  time.Time          `bson:"last_check_out_time"`
-	TotalWorkingHours float64            `bson:"total_working_hours"`
-	IsWorkingDay      bool               `bson:"is_working_day"`
-	IsHoliday         bool               `bson:"is_holiday"`
-	IsOnLeave         bool               `bson:"is_on_leave"`
-	IsWeeklyOffDay    bool               `bson:"is_weekly_off_day"`
-	Entries           []TimeSheetEntry   `bson:"entries"`
-	Projects          []TimeSheetProject `bson:"projects"`
+	Day                  int                `bson:"day"`
+	Date                 string             `bson:"date"`
+	FirstCheckInTime     time.Time          `bson:"first_check_in_time"`
+	LastCheckOutTime     time.Time          `bson:"last_check_out_time"`
+	RequiredWorkingHours float64            `bson:"required_working_hours"`
+	TotalWorkingHours    float64            `bson:"total_working_hours"`
+	IsWorkingDay         bool               `bson:"is_working_day"`
+	IsHoliday            bool               `bson:"is_holiday"`
+	IsOnLeave            bool               `bson:"is_on_leave"`
+	IsWeeklyOffDay       bool               `bson:"is_weekly_off_day"`
+	Entries              []TimeSheetEntry   `bson:"entries"`
+	Projects             []TimeSheetProject `bson:"projects"`
 }
 
 type TimeSheetEntry struct {
