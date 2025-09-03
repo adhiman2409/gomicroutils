@@ -18,6 +18,11 @@ type SalaryProcessingRequest struct {
 	TotalNumberOfSalaries          int                           `bson:"total_number_of_salaries"`
 	TotalNumberOfOnHoldSalaries    int                           `bson:"total_number_of_on_hold_salaries"`
 	TotalNumberOfProcessedSalaries int                           `bson:"total_number_of_processed_salaries"`
+	TotalOnHoldSalariesAmount      float64                       `bson:"total_on_hold_salaries_amount"`
+	TotalNumberOfLOPDeductions     float32                       `bson:"total_number_of_lop_deductions"`
+	TotalLOPDeductionsAmount       float64                       `bson:"total_lop_deductions_amount"`
+	TotalNumberOfReimbursements    int                           `bson:"total_number_of_reimbursements"`
+	TotalReimbursementsAmount      float64                       `bson:"total_reimbursements_amount"`
 	TotalSalaryAmount              float64                       `bson:"total_salary_amount"`
 	RequesterId                    string                        `bson:"requested_by_id"`
 	RequesterName                  string                        `bson:"requested_by_name"`
