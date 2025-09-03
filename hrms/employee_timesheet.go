@@ -17,17 +17,39 @@ type MonthlyTimeSheet struct {
 	DailyTimesheet []TimeSheet        `bson:"daily_timesheet"`
 }
 
+type ProjectTask struct {
+	TaskID                   string  `bson:"task_id"`
+	TaskName                 string  `bson:"task_name"`
+	TaskWorkingHours         float64 `bson:"task_working_hours"`
+	EmployeeRemarks          string  `bson:"employee_remarks"`
+	IsApproved               bool    `bson:"is_approved"`
+	ApprovedTaskWorkingHours float64 `bson:"approved_task_working_hours"`
+	ApproverRemarks          string  `bson:"approver_remarks"`
+}
+
+type TimeSheetProject struct {
+	ProjectID                string        `bson:"project_id"`
+	ProjectName              string        `bson:"project_name"`
+	ProjectHeadId            string        `bson:"project_head_id"`
+	ProjectHeadName          string        `bson:"project_head_name"`
+	ManagerID                string        `bson:"manager_id"`
+	ManagerName              string        `bson:"manager_name"`
+	TotalProjectWorkingHours float64       `bson:"total_project_working_hours"`
+	Tasks                    []ProjectTask `bson:"tasks"`
+}
+
 type TimeSheet struct {
-	Day               int              `bson:"day"`
-	Date              string           `bson:"date"`
-	FirstCheckInTime  time.Time        `bson:"first_check_in_time"`
-	LastCheckOutTime  time.Time        `bson:"last_check_out_time"`
-	TotalWorkingHours float64          `bson:"total_working_hours"`
-	IsWorkingDay      bool             `bson:"is_working_day"`
-	IsHoliday         bool             `bson:"is_holiday"`
-	IsOnLeave         bool             `bson:"is_on_leave"`
-	IsWeeklyOffDay    bool             `bson:"is_weekly_off_day"`
-	Entries           []TimeSheetEntry `bson:"entries"`
+	Day               int                `bson:"day"`
+	Date              string             `bson:"date"`
+	FirstCheckInTime  time.Time          `bson:"first_check_in_time"`
+	LastCheckOutTime  time.Time          `bson:"last_check_out_time"`
+	TotalWorkingHours float64            `bson:"total_working_hours"`
+	IsWorkingDay      bool               `bson:"is_working_day"`
+	IsHoliday         bool               `bson:"is_holiday"`
+	IsOnLeave         bool               `bson:"is_on_leave"`
+	IsWeeklyOffDay    bool               `bson:"is_weekly_off_day"`
+	Entries           []TimeSheetEntry   `bson:"entries"`
+	Projects          []TimeSheetProject `bson:"projects"`
 }
 
 type TimeSheetEntry struct {

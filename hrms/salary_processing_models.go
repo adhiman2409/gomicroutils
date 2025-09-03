@@ -87,6 +87,7 @@ type EmployeeMonthlySalaryDetail struct {
 	BankBranch                   string                       `bson:"bank_branch"`
 	AccountNumber                string                       `bson:"account_number"`
 	IFSC                         string                       `bson:"ifsc"`
+	IsSalaryOnHold               bool                         `bson:"is_salary_on_hold"`
 	IsShortWorkingDaysOrHours    bool                         `bson:"is_short_working_days_or_hours"`
 	TotalWorkingDays             float32                      `bson:"total_working_days"`
 	ActualWorkingDays            float32                      `bson:"actual_working_days"`
