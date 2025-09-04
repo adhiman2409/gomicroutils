@@ -148,3 +148,40 @@ func (a *StorageConnection) GetSalarySlipsByEID(employeeId, domain string) ([]st
 	return res, nil
 
 }
+
+func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, financialYear, month, year, domain string) error {
+	pid := os.Getenv("GOOGLE_PROJECT_ID")
+	clientCtx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	nd := GetUpdatedFinanceDomain(domain)
+	fileName := "payroll_" + month + "_" + year + ".xlsx"
+
+	filepathwithname := "PayrollSheets/" + financialYear + "/" + fileName
+
+	fmt.Println("filepathwithname ", filepathwithname)
+	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filepathwithname).NewReader(clientCtx)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return err
+	}
+	defer reader.Close()
+	contentType := reader.Attrs.ContentType
+	size := strconv.FormatInt(reader.Attrs.Size, 10)
+	content, err := io.ReadAll(reader)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return err
+	}
+
+	w.Header().Set("Content-Type", contentType)
+	disposition := "attachment"
+	w.Header().Set("Content-Disposition", disposition+"; filename="+fileName)
+	w.Header().Set("Content-Length", size)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
+
+	return nil
+}

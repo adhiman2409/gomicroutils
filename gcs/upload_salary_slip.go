@@ -71,3 +71,37 @@ func (a *StorageConnection) UploadSalarySlip(r *http.Request, domain string) (Fi
 	}
 	return info, nil
 }
+
+func (a *StorageConnection) UploadPayrollSheet(filepath, filename, month, financialYear, domain string) (FileUploadResponse, error) {
+
+	pathPrefix := "PayrollSheets/"
+
+	pid := os.Getenv("GOOGLE_PROJECT_ID")
+
+	f, err := os.Open(filepath + filename)
+	if err != nil {
+		fmt.Println("Error ", err.Error())
+		return FileUploadResponse{}, errors.New("file read error")
+	}
+	defer f.Close()
+
+	nd := GetUpdatedFinanceDomain(domain)
+
+	storagePath := pathPrefix + "/" + financialYear + "/" + filename
+
+	wc := a.Client.Bucket(nd).UserProject(pid).Object(storagePath).NewWriter(context.Background())
+	if _, err = io.Copy(wc, f); err != nil {
+		log.Errorf("file upload error: %v", err)
+		return FileUploadResponse{}, err
+	}
+	if err := wc.Close(); err != nil {
+		return FileUploadResponse{}, err
+	}
+
+	info := FileUploadResponse{
+		Domain:  domain,
+		DocName: filename,
+		DocPath: storagePath,
+	}
+	return info, nil
+}
