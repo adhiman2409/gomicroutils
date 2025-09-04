@@ -345,6 +345,7 @@ type EmployeePayrollMaster struct {
 	TotalPaidMonthsThisFinancialYear            int                           `bson:"total_paid_months_this_financial_year"`
 	LastPaidMonthThisFinancialYear              string                        `bson:"last_paid_month_this_financial_year"`
 	YearlyPayrollAndTaxDetails                  YearlyPayrollAndTaxDetails    `bson:"yearly_payroll_and_tax_details"`
+	IsTaxableComponentChanged                   bool                          `bson:"is_taxable_component_changed"`
 	MonthlyPayrollAndTaxDetails                 []MonthlyPayrollAndTaxDetails `bson:"monthly_payroll_and_tax_details"`
 	TotalGrossAmountPendingForThisFinancialYear float32                       `bson:"total_gross_amount_pending_for_this_financial_year"`
 	TotalTaxPendingForThisFinancialYear         float32                       `bson:"total_tax_pending_for_this_financial_year"`

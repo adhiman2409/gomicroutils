@@ -29,23 +29,24 @@ func GetAllExpenseStates() []string {
 }
 
 func ExpenseStateFromString(s string) ExpenseState {
-	if s == "EApplied" {
+	switch s {
+	case "EApplied":
 		return EApplied
-	} else if s == "EPrimaryApproved" {
+	case "EPrimaryApproved":
 		return EPrimaryApproved
-	} else if s == "EPrimaryRejected" {
+	case "EPrimaryRejected":
 		return EPrimaryRejected
-	} else if s == "ESecondaryApproved" {
+	case "ESecondaryApproved":
 		return ESecondaryApproved
-	} else if s == "ESecondaryRejected" {
+	case "ESecondaryRejected":
 		return ESecondaryRejected
-	} else if s == "EFinanceAccepted" {
+	case "EFinanceAccepted":
 		return EFinanceAccepted
-	} else if s == "EFinanceRejected" {
+	case "EFinanceRejected":
 		return EFinanceRejected
-	} else if s == "EPaid" {
+	case "EPaid":
 		return EPaid
-	} else {
+	default:
 		return EUnknown
 	}
 }
