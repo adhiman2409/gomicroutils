@@ -166,7 +166,6 @@ func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, eid, fin
 		return err
 	}
 	defer reader.Close()
-	contentType := reader.Attrs.ContentType
 	size := strconv.FormatInt(reader.Attrs.Size, 10)
 	content, err := io.ReadAll(reader)
 	if err != nil {
@@ -174,7 +173,7 @@ func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, eid, fin
 		return err
 	}
 
-	w.Header().Set("Content-Type", contentType)
+	w.Header().Set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 	disposition := "attachment"
 	w.Header().Set("Content-Disposition", disposition+"; filename="+fileName)
 	w.Header().Set("Content-Length", size)
