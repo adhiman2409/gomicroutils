@@ -81,6 +81,7 @@ type EmployeeMonthlySalaryDetail struct {
 	JoiningDate                  string                       `bson:"joining_date"`
 	EmploymentStatus             string                       `bson:"employment_status"`
 	EmployeeType                 string                       `bson:"employee_type"`
+	EmployeeEmail                string                       `bson:"employee_email"`
 	Gender                       string                       `bson:"gender"`
 	EmployeeAdoptedTaxRegime     string                       `bson:"employee_adopted_tax_regime"`
 	State                        string                       `bson:"state"`
@@ -89,6 +90,7 @@ type EmployeeMonthlySalaryDetail struct {
 	UAN                          string                       `bson:"uan"`
 	UID                          string                       `bson:"uid"`
 	PFEstablishmentCode          string                       `bson:"pf_establishment_code"`
+	BankAccountHolderName        string                       `bson:"bank_account_holder_name"`
 	BankName                     string                       `bson:"bank_name"`
 	BankBranch                   string                       `bson:"bank_branch"`
 	AccountNumber                string                       `bson:"account_number"`
