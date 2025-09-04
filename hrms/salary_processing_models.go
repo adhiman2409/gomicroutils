@@ -24,6 +24,7 @@ type SalaryProcessingRequest struct {
 	TotalNumberOfReimbursements    int                           `bson:"total_number_of_reimbursements"`
 	TotalReimbursementsAmount      float64                       `bson:"total_reimbursements_amount"`
 	TotalSalaryAmount              float64                       `bson:"total_salary_amount"`
+	PayrollSheetURL                string                        `bson:"payroll_sheet_url"`
 	RequesterId                    string                        `bson:"requested_by_id"`
 	RequesterName                  string                        `bson:"requested_by_name"`
 	RequesterRemarks               string                        `bson:"requester_remarks"`
