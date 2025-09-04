@@ -87,7 +87,7 @@ func (a *StorageConnection) UploadPayrollSheet(filepath, filename, month, financ
 
 	nd := GetUpdatedFinanceDomain(domain)
 
-	storagePath := pathPrefix + financialYear + "/" + filename
+	storagePath := pathPrefix + financialYear + "/" + month + "/" + filename
 
 	wc := a.Client.Bucket(nd).UserProject(pid).Object(storagePath).NewWriter(context.Background())
 	if _, err = io.Copy(wc, f); err != nil {
