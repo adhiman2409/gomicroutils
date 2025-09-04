@@ -167,6 +167,13 @@ const REJOVE_COLLECTION_PATIENT_COUNTER = "rejove-patient-id-counter"
 const REJOVE_COLLECTION_DOCTOR_CASE_COUNTER = "rejove-doctor_case-id-counter"
 const REJOVE_COLLECTION_DOCTOR_PRACTICES = "rejove-doctor-practices"
 
+const REJOVE_COLLECTION_PATIENTS = "rejove-patients"
+
+func GetRejovePatientsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REJOVE_COLLECTION_PATIENTS)
+}
+
 func GetRejoveDoctorsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(REJOVE_COLLECTION_DOCTORS)
