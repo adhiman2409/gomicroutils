@@ -149,7 +149,7 @@ func (a *StorageConnection) GetSalarySlipsByEID(employeeId, domain string) ([]st
 
 }
 
-func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, financialYear, month, year, domain string) error {
+func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, eid, financialYear, month, year, domain string) error {
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
