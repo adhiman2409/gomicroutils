@@ -97,12 +97,15 @@ type DoctorInfo struct {
 
 type Case struct {
 	CaseId                    string                    `bson:"case_id"`
+	DoctorId                  string                    `bson:"doctor_id"`
 	PatientId                 string                    `bson:"patient_id"`
 	CaseType                  string                    `bson:"case_type"` //Aligner, RetainerOnly
 	PlanType                  string                    `bson:"plan_type"` //NewCase, MidcourseCorrection, Refinements
 	CasePreferences           CasePreference            `bson:"case_preferences"`
 	ToothMovementRestrictions ToothMovementRestrictions `bson:"tooth_movement_restrictions"`
 	CaseAttachments           CaseAttachments           `bson:"case_attachments"`
+	CreatedAt                 time.Time                 `bson:"created_at"`
+	UpdatedAt                 time.Time                 `bson:"updated_at"`
 }
 
 type CasePreference struct {
