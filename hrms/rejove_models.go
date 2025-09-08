@@ -104,6 +104,7 @@ type Case struct {
 	CasePreferences           CasePreference            `bson:"case_preferences"`
 	ToothMovementRestrictions ToothMovementRestrictions `bson:"tooth_movement_restrictions"`
 	CaseAttachments           CaseAttachments           `bson:"case_attachments"`
+	CaseStatus                CaseStatus                `bson:"case_status"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
 	UpdatedAt                 time.Time                 `bson:"updated_at"`
 }
