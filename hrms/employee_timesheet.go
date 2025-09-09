@@ -71,3 +71,35 @@ type TimeSheetEntry struct {
 	Hours     float64 `bson:"hours"`
 	Remark    string  `bson:"remark"`
 }
+
+type PendingApprovalEmployee struct {
+	EmployeeID           string        `bson:"employee_id"`
+	EmployeeName         string        `bson:"employee_name"`
+	ClaimedWorkingHours  float64       `bson:"claimed_working_hours"`
+	ApprovedWorkingHours float64       `bson:"approved_working_hours"`
+	Tasks                []ProjectTask `bson:"tasks"`
+}
+
+type PendingApprovalProject struct {
+	ProjectID            string                    `bson:"project_id"`
+	ProjectName          string                    `bson:"project_name"`
+	ClaimedProjectHours  float64                   `bson:"claimed_project_hours"`
+	ApprovedProjectHours float64                   `bson:"approved_project_hours"`
+	Employees            []PendingApprovalEmployee `bson:"employees"`
+}
+
+type MonthlyPendingApproval struct {
+	Id                    primitive.ObjectID     `bson:"_id"`
+	Month                 int                    `bson:"month"`
+	Year                  int                    `bson:"year"`
+	ManagerID             string                 `bson:"manager_id"`
+	ManagerName           string                 `bson:"manager_name"`
+	TotalPendingApprovals int                    `bson:"total_pending_approvals"`
+	DailyPendingApproval  []DailyPendingApproval `bson:"daily_pending_approval"`
+}
+
+type DailyPendingApproval struct {
+	Day                   int                      `bson:"day"`
+	TotalPendingApprovals int                      `bson:"total_pending_approvals"`
+	Projects              []PendingApprovalProject `bson:"projects"`
+}
