@@ -11,7 +11,7 @@ type LeadInfo struct {
 	LeadID        string             `bson:"lead_id"`
 	Title         string             `bson:"title"`
 	Description   string             `bson:"description"`
-	Stage         string             `bson:"stage"`
+	Stage         ClientMainStage    `bson:"stage"`
 	SubStage      string             `bson:"sub_stage,omitempty"`
 	AssignedSPOCs []ContactInfo      `bson:"assigned_spocs,omitempty"`
 	LeadRemarks   []string           `bson:"lead_remarks,omitempty"`
@@ -133,6 +133,7 @@ type MeetingInfo struct {
 	UpdatedAt         time.Time          `bson:"updated_at"`
 	MailSent          bool               `bson:"mail_sent,omitempty"`
 }
+
 type ClientMainStage int
 
 const (
