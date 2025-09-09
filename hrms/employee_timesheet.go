@@ -25,6 +25,8 @@ type ProjectTask struct {
 	TaskID                   string    `bson:"task_id"`
 	TaskName                 string    `bson:"task_name"`
 	TaskWorkingHours         float64   `bson:"task_working_hours"`
+	AppliedById              string    `bson:"applied_by_id"`
+	AppliedByName            string    `bson:"applied_by_name"`
 	AppliedOn                time.Time `bson:"applied_on"`
 	EmployeeRemarks          string    `bson:"employee_remarks"`
 	IsApproved               bool      `bson:"is_approved"`
