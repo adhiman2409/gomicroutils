@@ -69,6 +69,7 @@ type Task struct {
 	TaskId          string            `bson:"task_id"`
 	StateId         string            `bson:"state_id"`
 	ProjectId       string            `bson:"project_id"`
+	ProjectName     string            `bson:"project_name"`
 	Title           string            `bson:"title"`
 	Description     string            `bson:"description"`
 	Assignees       []EmpSummary      `bson:"assignees"`

@@ -7,14 +7,18 @@ import (
 )
 
 type MonthlyTimeSheet struct {
-	ID             primitive.ObjectID `bson:"_id"`
-	Month          int                `bson:"month"`
-	Year           int                `bson:"year"`
-	EmployeeID     string             `bson:"employee_id"`
-	EmployeeName   string             `bson:"employee_name"`
-	ManagerID      string             `bson:"manager_id"`
-	ManagerName    string             `bson:"manager_name"`
-	DailyTimesheet []TimeSheet        `bson:"daily_timesheet"`
+	ID                          primitive.ObjectID `bson:"_id"`
+	Month                       int                `bson:"month"`
+	Year                        int                `bson:"year"`
+	EmployeeID                  string             `bson:"employee_id"`
+	EmployeeName                string             `bson:"employee_name"`
+	ManagerID                   string             `bson:"manager_id"`
+	ManagerName                 string             `bson:"manager_name"`
+	MonthlyWorkingDays          float32            `bson:"monthly_working_days"`
+	RequiredMonthlyWorkingHours float32            `bson:"required_monthly_working_hours"`
+	ClaimedMonthlyWorkingHours  float32            `bson:"claimed_monthly_working_hours"`
+	ApprovedMonthlyWorkingHours float32            `bson:"approved_monthly_working_hours"`
+	DailyTimesheet              []TimeSheet        `bson:"daily_timesheet"`
 }
 
 type ProjectTask struct {
@@ -28,14 +32,15 @@ type ProjectTask struct {
 }
 
 type TimeSheetProject struct {
-	ProjectID                string        `bson:"project_id"`
-	ProjectName              string        `bson:"project_name"`
-	ProjectHeadId            string        `bson:"project_head_id"`
-	ProjectHeadName          string        `bson:"project_head_name"`
-	ManagerID                string        `bson:"manager_id"`
-	ManagerName              string        `bson:"manager_name"`
-	TotalProjectWorkingHours float64       `bson:"total_project_working_hours"`
-	Tasks                    []ProjectTask `bson:"tasks"`
+	ProjectID                        string        `bson:"project_id"`
+	ProjectName                      string        `bson:"project_name"`
+	ProjectHeadId                    string        `bson:"project_head_id"`
+	ProjectHeadName                  string        `bson:"project_head_name"`
+	ManagerID                        string        `bson:"manager_id"`
+	ManagerName                      string        `bson:"manager_name"`
+	TotalClaimedProjectWorkingHours  float64       `bson:"total_claimed_project_working_hours"`
+	TotalApprovedProjectWorkingHours float64       `bson:"total_approved_project_working_hours"`
+	Tasks                            []ProjectTask `bson:"tasks"`
 }
 
 type TimeSheet struct {
