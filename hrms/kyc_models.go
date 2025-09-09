@@ -7,7 +7,7 @@ import (
 )
 
 type LeadInfo struct {
-	ID            primitive.ObjectID `bson:"_id,omitempty"`
+	Id            primitive.ObjectID `bson:"_id,omitempty"`
 	LeadID        string             `bson:"lead_id"`
 	Title         string             `bson:"title"`
 	Description   string             `bson:"description"`
@@ -21,15 +21,15 @@ type LeadInfo struct {
 }
 
 type CompanyInfo struct {
-	ID                 string `bson:"_id,omitempty"`
-	CompanyId          string `bson:"company_id"`
-	CompanyName        string `bson:"company_name"`
-	CompanyLogo        string `bson:"company_logo"`
-	Website            string `bson:"website"`
-	Industry           string `bson:"industry"`
-	HeadquarterCountry string `bson:"headquarter_country"`
-	BusinessActivities string `bson:"business_activities"`
-	ClientDescription  string `bson:"client_description"`
+	Id                 primitive.ObjectID `bson:"_id,omitempty"`
+	CompanyId          string             `bson:"company_id"`
+	CompanyName        string             `bson:"company_name"`
+	CompanyLogo        string             `bson:"company_logo"`
+	Website            string             `bson:"website"`
+	Industry           string             `bson:"industry"`
+	HeadquarterCountry string             `bson:"headquarter_country"`
+	BusinessActivities string             `bson:"business_activities"`
+	ClientDescription  string             `bson:"client_description"`
 
 	YearFounded          int           `bson:"year_founded,omitempty"`
 	Contacts             []ContactInfo `bson:"contacts,omitempty"`
@@ -76,64 +76,63 @@ type ContactInfo struct {
 }
 
 type Attendee struct {
-	ID          string `bson:"_id,omitempty"`
-	Eid         string `bson:"employee_id,omitempty"`
-	Name        string `bson:"name"`
-	Email       string `bson:"email,omitempty"`
-	Designation string `bson:"designation,omitempty"`
-	Mobile      string `bson:"mobile,omitempty"`
+	Id          primitive.ObjectID `bson:"_id,omitempty"`
+	Eid         string             `bson:"employee_id,omitempty"`
+	Name        string             `bson:"name"`
+	Email       string             `bson:"email,omitempty"`
+	Designation string             `bson:"designation,omitempty"`
+	Mobile      string             `bson:"mobile,omitempty"`
 }
 
 type ActionItem struct {
-	ID            string        `bson:"_id,omitempty"`
-	Title         string        `bson:"title"`
-	Description   string        `bson:"description"`
-	AssignedTo    []ContactInfo `bson:"assigned_to,omitempty"`
-	DueDate       time.Time     `bson:"due_date"`
-	Status        string        `bson:"status"`
-	CreatedAt     time.Time     `bson:"created_at"`
-	IsReminderSet bool          `bson:"is_reminder_set"`
-	ReminderTime  time.Time     `bson:"reminder_time,omitempty"`
-	MailSent      bool          `bson:"mail_sent,omitempty"`
-	CreatedBy     string        `bson:"created_by"`
+	Id            primitive.ObjectID `bson:"_id,omitempty"`
+	Title         string             `bson:"title"`
+	Description   string             `bson:"description"`
+	AssignedTo    []ContactInfo      `bson:"assigned_to,omitempty"`
+	DueDate       time.Time          `bson:"due_date"`
+	Status        string             `bson:"status"`
+	CreatedAt     time.Time          `bson:"created_at"`
+	IsReminderSet bool               `bson:"is_reminder_set"`
+	ReminderTime  time.Time          `bson:"reminder_time,omitempty"`
+	MailSent      bool               `bson:"mail_sent,omitempty"`
+	CreatedBy     string             `bson:"created_by"`
 }
 
 type Attachment struct {
-	ID         string    `bson:"_id,omitempty"`
-	FileName   string    `bson:"file_name"`
-	FileURL    string    `bson:"file_url"`
-	UploadedAt time.Time `bson:"uploaded_at"`
+	Id         primitive.ObjectID `bson:"_id,omitempty"`
+	FileName   string             `bson:"file_name"`
+	FileURL    string             `bson:"file_url"`
+	UploadedAt time.Time          `bson:"uploaded_at"`
 }
 
 type Note struct {
-	ID          string    `bson:"_id,omitempty"`
-	NoteContent string    `bson:"note_content"`
-	CreatedBy   string    `bson:"created_by"`
-	CreatedAt   time.Time `bson:"created_at"`
+	Id          primitive.ObjectID `bson:"_id,omitempty"`
+	NoteContent string             `bson:"note_content"`
+	CreatedBy   string             `bson:"created_by"`
+	CreatedAt   time.Time          `bson:"created_at"`
 }
 
 type MeetingInfo struct {
-	ID                string       `bson:"_id,omitempty"`
-	MeetingId         string       `bson:"meeting_id"`
-	LeadId            string       `bson:"lead_id,omitempty"`
-	Title             string       `bson:"title"`
-	MeetingDate       time.Time    `bson:"meeting_date"`
-	Mode              string       `bson:"mode"`
-	InternalAttendees []Attendee   `bson:"internal_attendees,omitempty"`
-	ExternalAttendees []Attendee   `bson:"external_attendees,omitempty"`
-	MeetingNotes      []Note       `bson:"meeting_notes,omitempty"`
-	ActionItems       []ActionItem `bson:"action_items,omitempty"`
-	Attachments       []Attachment `bson:"attachments,omitempty"`
-	Outcome           string       `bson:"outcome"`
-	ReminderDate      time.Time    `bson:"reminder_date,omitempty"`
-	IsReminderSet     bool         `bson:"is_reminder_set"`
-	CreatedBy         string       `bson:"created_by"`
-	CreatedByName     string       `bson:"created_by_name"`
-	CreatedAt         time.Time    `bson:"created_at"`
-	UpdatedAt         time.Time    `bson:"updated_at"`
-	MailSent          bool         `bson:"mail_sent,omitempty"`
+	Id                primitive.ObjectID `bson:"_id,omitempty"`
+	MeetingId         string             `bson:"meeting_id"`
+	LeadId            string             `bson:"lead_id,omitempty"`
+	Title             string             `bson:"title"`
+	MeetingDate       time.Time          `bson:"meeting_date"`
+	Mode              string             `bson:"mode"`
+	InternalAttendees []Attendee         `bson:"internal_attendees,omitempty"`
+	ExternalAttendees []Attendee         `bson:"external_attendees,omitempty"`
+	MeetingNotes      []Note             `bson:"meeting_notes,omitempty"`
+	ActionItems       []ActionItem       `bson:"action_items,omitempty"`
+	Attachments       []Attachment       `bson:"attachments,omitempty"`
+	Outcome           string             `bson:"outcome"`
+	ReminderDate      time.Time          `bson:"reminder_date,omitempty"`
+	IsReminderSet     bool               `bson:"is_reminder_set"`
+	CreatedBy         string             `bson:"created_by"`
+	CreatedByName     string             `bson:"created_by_name"`
+	CreatedAt         time.Time          `bson:"created_at"`
+	UpdatedAt         time.Time          `bson:"updated_at"`
+	MailSent          bool               `bson:"mail_sent,omitempty"`
 }
-
 type ClientMainStage int
 
 const (
