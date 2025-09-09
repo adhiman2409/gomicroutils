@@ -73,33 +73,33 @@ type TimeSheetEntry struct {
 }
 
 type PendingApprovalEmployee struct {
-	EmployeeID           string        `bson:"employee_id"`
-	EmployeeName         string        `bson:"employee_name"`
-	ClaimedWorkingHours  float64       `bson:"claimed_working_hours"`
-	ApprovedWorkingHours float64       `bson:"approved_working_hours"`
-	Tasks                []ProjectTask `bson:"tasks"`
+	EmployeeID           string        `json:"employee_id" bson:"employee_id"`
+	EmployeeName         string        `json:"employee_name" bson:"employee_name"`
+	ClaimedWorkingHours  float64       `json:"claimed_working_hours" bson:"claimed_working_hours"`
+	ApprovedWorkingHours float64       `json:"approved_working_hours" bson:"approved_working_hours"`
+	Tasks                []ProjectTask `json:"tasks" bson:"tasks"`
 }
 
 type PendingApprovalProject struct {
-	ProjectID            string                    `bson:"project_id"`
-	ProjectName          string                    `bson:"project_name"`
-	ClaimedProjectHours  float64                   `bson:"claimed_project_hours"`
-	ApprovedProjectHours float64                   `bson:"approved_project_hours"`
-	Employees            []PendingApprovalEmployee `bson:"employees"`
+	ProjectID            string                    `json:"project_id" bson:"project_id"`
+	ProjectName          string                    `json:"project_name" bson:"project_name"`
+	ClaimedProjectHours  float64                   `json:"claimed_project_hours" bson:"claimed_project_hours"`
+	ApprovedProjectHours float64                   `json:"approved_project_hours" bson:"approved_project_hours"`
+	Employees            []PendingApprovalEmployee `json:"employees" bson:"employees"`
 }
 
 type MonthlyPendingApproval struct {
-	Id                    primitive.ObjectID     `bson:"_id"`
-	Month                 int                    `bson:"month"`
-	Year                  int                    `bson:"year"`
-	ManagerID             string                 `bson:"manager_id"`
-	ManagerName           string                 `bson:"manager_name"`
-	TotalPendingApprovals int                    `bson:"total_pending_approvals"`
-	DailyPendingApproval  []DailyPendingApproval `bson:"daily_pending_approval"`
+	Id                    primitive.ObjectID     `json:"_id" bson:"_id"`
+	Month                 int                    `json:"month" bson:"month"`
+	Year                  int                    `json:"year" bson:"year"`
+	ManagerID             string                 `json:"manager_id" bson:"manager_id"`
+	ManagerName           string                 `json:"manager_name" bson:"manager_name"`
+	TotalPendingApprovals int                    `json:"total_pending_approvals" bson:"total_pending_approvals"`
+	DailyPendingApproval  []DailyPendingApproval `json:"daily_pending_approval" bson:"daily_pending_approval"`
 }
 
 type DailyPendingApproval struct {
-	Day                   int                      `bson:"day"`
-	TotalPendingApprovals int                      `bson:"total_pending_approvals"`
-	Projects              []PendingApprovalProject `bson:"projects"`
+	Day                   int                      `json:"day" bson:"day"`
+	TotalPendingApprovals int                      `json:"total_pending_approvals" bson:"total_pending_approvals"`
+	Projects              []PendingApprovalProject `json:"projects" bson:"projects"`
 }
