@@ -34,6 +34,7 @@ type AssetInfo struct {
 	ImagesUpdatedOn       time.Time             `bson:"image_updated_on"`
 	Status                AssetStatus           `bson:"status"` // Available, Allocated, Under Maintenance, Retired
 	IsInsured             bool                  `bson:"is_insured"`
+	AssetInsuranceInfo    AssetInsuranceInfo    `bson:"asset_insurance_info"`
 	Remarks               []string              `bson:"remarks"`
 	WarrantyEndDate       time.Time             `bson:"warranty_end_date"`
 	WarrantyProvider      string                `bson:"warranty_provider"`
@@ -51,23 +52,21 @@ type AssetConfig struct {
 }
 
 type AssetInsuranceInfo struct {
-	AssetId             string                `bson:"asset_id"`
-	AssetSerialNumber   string                `bson:"asset_serial_number"`
-	InsuranceId         string                `bson:"insurance_id"`
-	ProviderName        string                `bson:"provider_name"`
-	PolicyNumber        string                `bson:"policy_number"`
-	CoverageAmount      float64               `bson:"coverage_amount"`
-	PremiumAmount       float64               `bson:"premium_amount"`
-	StartDate           time.Time             `bson:"start_date"`
-	EndDate             time.Time             `bson:"end_date"`
-	CoverageType        string                `bson:"coverage_type"`  // Full, Partial, Theft-only
-	ContactNumber       string                `bson:"contact_number"` // Insurance provider's contact
-	TermsAndConditions  string                `bson:"terms_and_conditions"`
-	IsActive            bool                  `bson:"is_active"` // Whether insurance is currently valid
-	AssetAllocationInfo []AssetAllocationInfo `bson:"asset_allocation_info"`
-	AssetTransitInfo    []AssetTransitInfo    `bson:"asset_transit_info"`
-	CreatedAt           time.Time             `bson:"created_at"`
-	UpdatedAt           time.Time             `bson:"updated_at"`
+	AssetId            string    `bson:"asset_id"`
+	AssetSerialNumber  string    `bson:"asset_serial_number"`
+	InsuranceId        string    `bson:"insurance_id"`
+	ProviderName       string    `bson:"provider_name"`
+	PolicyNumber       string    `bson:"policy_number"`
+	CoverageAmount     float64   `bson:"coverage_amount"`
+	PremiumAmount      float64   `bson:"premium_amount"`
+	StartDate          time.Time `bson:"start_date"`
+	EndDate            time.Time `bson:"end_date"`
+	CoverageType       string    `bson:"coverage_type"`  // Full, Partial, Theft-only
+	ContactNumber      string    `bson:"contact_number"` // Insurance provider's contact
+	TermsAndConditions string    `bson:"terms_and_conditions"`
+	IsActive           bool      `bson:"is_active"` // Whether insurance is currently valid
+	CreatedAt          time.Time `bson:"created_at"`
+	UpdatedAt          time.Time `bson:"updated_at"`
 }
 
 type AssetAllocationInfo struct {
