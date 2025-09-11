@@ -75,14 +75,16 @@ type AssetInsuranceInfo struct {
 }
 
 type AssetDisposalInfo struct {
-	DisposalType   string    `bson:"disposal_type"` // Sell, Recycle, Donate, Trash
-	DisposedBy     string    `bson:"disposed_by"`
-	DisposalDate   time.Time `bson:"disposal_date"`
-	DisposalAmount float64   `bson:"disposal_amount"`
-	Remarks        []string  `bson:"remarks"`
-	Attachemnts    []string  `bson:"attachments"`
-	CreatedAt      time.Time `bson:"created_at"`
-	UpdatedAt      time.Time `bson:"updated_at"`
+	DisposalType        string    `bson:"disposal_type"` // Sell, Recycle, Donate, Trash
+	DisposedById        string    `bson:"disposed_by_id"`
+	DisposedByName      string    `bson:"disposed_by_name"`
+	DisposalDate        time.Time `bson:"disposal_date"`
+	DisposalCost        float64   `bson:"disposal_cost"`
+	AssetDisposalAmount float64   `bson:"asset_disposal_amount"`
+	Remarks             []string  `bson:"remarks"`
+	Attachments         []string  `bson:"attachments"`
+	CreatedAt           time.Time `bson:"created_at"`
+	UpdatedAt           time.Time `bson:"updated_at"`
 }
 
 type AssetPhysicalVerification struct {
