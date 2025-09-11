@@ -13,7 +13,8 @@ type AssetInfo struct {
 	DepartmentName        string                `bson:"department_name"`
 	AssetSerialNumber     string                `bson:"asset_serial_number"`
 	AssetCategory         string                `bson:"asset_category"` //Hardware, Software
-	AssetType             string                `bson:"asset_type"`     //laptop, screen, keyboard, mouse etc
+	AssetSubCategory      string                `bson:"asset_sub_category"`
+	AssetType             string                `bson:"asset_type"` //laptop, screen, keyboard, mouse etc
 	AssetBrandName        string                `bson:"asset_brand_name"`
 	AssetDescription      string                `bson:"asset_description"`
 	AssetModel            string                `bson:"asset_model"`
