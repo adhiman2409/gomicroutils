@@ -88,12 +88,13 @@ type AssetDisposalInfo struct {
 }
 
 type AssetPhysicalVerification struct {
-	VerificationDate time.Time       `bson:"verification_date"`
-	VerifiedBy       EmployeeSummary `bson:"verified_by"`
-	Remarks          []string        `bson:"remarks"`
-	Attachments      []string        `bson:"attachments"`
-	CreatedAt        time.Time       `bson:"created_at"`
-	UpdatedAt        time.Time       `bson:"updated_at"`
+	VerificationDate time.Time `bson:"verification_date"`
+	VerifiedById     string    `bson:"verified_by_id"`
+	VerifiedByName   string    `bson:"verified_by_name"`
+	Remarks          []string  `bson:"remarks"`
+	Attachments      []string  `bson:"attachments"`
+	CreatedAt        time.Time `bson:"created_at"`
+	UpdatedAt        time.Time `bson:"updated_at"`
 }
 
 type AssetAllocationInfo struct {
