@@ -94,6 +94,7 @@ type MonthlyPendingApproval struct {
 	Year                  int                    `json:"year" bson:"year"`
 	ManagerID             string                 `json:"manager_id" bson:"manager_id"`
 	ManagerName           string                 `json:"manager_name" bson:"manager_name"`
+	IsProjectHead         bool                   `json:"is_project_head" bson:"is_project_head"`
 	TotalPendingApprovals int                    `json:"total_pending_approvals" bson:"total_pending_approvals"`
 	DailyPendingApproval  []DailyPendingApproval `json:"daily_pending_approval" bson:"daily_pending_approval"`
 }
