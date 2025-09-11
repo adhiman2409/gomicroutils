@@ -35,6 +35,7 @@ type ClientInfo struct {
 	PrimaryContactIDesignation string             `bson:"primary_contact_designation"`
 	ProjectHeadId              string             `bson:"project_head_id"`
 	ProjectHeadName            string             `bson:"project_head_name"`
+	ProjectHeadEmail           string             `bson:"project_head_email"`
 	FullAddress                Address            `bson:"full_address"`
 	City                       string             `bson:"city"`
 	State                      string             `bson:"state"`
