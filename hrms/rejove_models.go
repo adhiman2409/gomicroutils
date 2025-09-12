@@ -101,6 +101,7 @@ type Case struct {
 	PatientId                 string                    `bson:"patient_id"`
 	CaseType                  string                    `bson:"case_type"` //Aligner, RetainerOnly
 	PlanType                  string                    `bson:"plan_type"` //NewCase, MidcourseCorrection, Refinements
+	IsSubmitted               bool                      `bson:"is_submitted"`
 	CasePreferences           CasePreference            `bson:"case_preferences"`
 	ToothMovementRestrictions ToothMovementRestrictions `bson:"tooth_movement_restrictions"`
 	CaseAttachments           CaseAttachments           `bson:"case_attachments"`
