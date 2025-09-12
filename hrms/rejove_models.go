@@ -102,6 +102,7 @@ type Case struct {
 	CaseType                  string                    `bson:"case_type"` //Aligner, RetainerOnly
 	PlanType                  string                    `bson:"plan_type"` //NewCase, MidcourseCorrection, Refinements
 	IsSubmitted               bool                      `bson:"is_submitted"`
+	SubmissionVoiceNoteUrl    string                    `bson:"submission_voice_note_url"`
 	CasePreferences           CasePreference            `bson:"case_preferences"`
 	ToothMovementRestrictions ToothMovementRestrictions `bson:"tooth_movement_restrictions"`
 	CaseAttachments           CaseAttachments           `bson:"case_attachments"`
