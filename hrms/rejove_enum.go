@@ -3,7 +3,8 @@ package hrms
 type CaseStatus int
 
 const (
-	Submitted = iota + 1
+	Draft = iota + 1
+	Submitted
 	UnderInspection
 	PendingCaseRecords
 	VirtualSetupInProgress
@@ -16,7 +17,7 @@ const (
 )
 
 func (r CaseStatus) String() string {
-	return [...]string{"Submitted", "UnderInspection", "PendingCaseRecords", "VirtualSetupInProgress", "ApprovedVirtualSetup", "AligneerFabricationInProgress", "OngoingCase", "Delivered", "Retainers", "CCancelled"}[r-1]
+	return [...]string{"Draft", "Submitted", "UnderInspection", "PendingCaseRecords", "VirtualSetupInProgress", "ApprovedVirtualSetup", "AligneerFabricationInProgress", "OngoingCase", "Delivered", "Retainers", "CCancelled"}[r-1]
 }
 
 func (r CaseStatus) CaseEnumIndex() int {
@@ -24,11 +25,13 @@ func (r CaseStatus) CaseEnumIndex() int {
 }
 
 func GetCaseStatusTypes() []string {
-	return []string{"Submitted", "UnderInspection", "PendingCaseRecords", "VirtualSetupInProgress", "ApprovedVirtualSetup", "AligneerFabricationInProgress", "OngoingCase", "Delivered", "Retainers", "CCancelled"}
+	return []string{"Draft", "Submitted", "UnderInspection", "PendingCaseRecords", "VirtualSetupInProgress", "ApprovedVirtualSetup", "AligneerFabricationInProgress", "OngoingCase", "Delivered", "Retainers", "CCancelled"}
 }
 
 func CaseStatusFromString(s string) CaseStatus {
 	switch s {
+	case "Draft":
+		return Draft
 	case "Submitted":
 		return Submitted
 	case "UnderInspection":
