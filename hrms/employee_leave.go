@@ -49,6 +49,7 @@ type LeaveStats struct {
 type EmployeeLeaveStats struct {
 	ID                               primitive.ObjectID `bson:"_id"`
 	EmployeeId                       string             `bson:"employee_id"`
+	EmployeeType                     string             `bson:"employee_type"`
 	FullName                         string             `bson:"full_name"`
 	PhoneNumber                      string             `bson:"phone_number"`
 	IsMale                           bool               `bson:"is_male"`
