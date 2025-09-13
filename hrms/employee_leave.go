@@ -55,6 +55,7 @@ type EmployeeLeaveStats struct {
 	IsMarried                        bool               `bson:"is_married"`
 	EmailId                          string             `bson:"email_id"`
 	EmpJoiningDate                   string             `bson:"emp_joining_date"`
+	EmpConfirmationDate              string             `bson:"emp_confirmation_date"`
 	TenureInDays                     float32            `bson:"tenure_in_days"`
 	TotalWorkingDays                 float32            `bson:"total_working_days"`
 	TotalAbsentDays                  float32            `bson:"total_absent_days"`
