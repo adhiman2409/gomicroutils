@@ -11,6 +11,14 @@ type Practice struct {
 	Cases  []Case `bson:"cases"`
 }
 
+type AdditionalPlans struct {
+	ArchToBeTreated string   `bson:"arch_to_be_treated"` //Upper, Lower, Both
+	ImpressionType  string   `bson:"impression_type"`    //Digital,Physical Impressions
+	Remarks         string   `bson:"remarks"`
+	Attachments     []string `bson:"attachments"`
+	VoiceNoteUrl    string   `bson:"voice_note_url"`
+}
+
 type Patient struct {
 	PatientId      string    `bson:"patient_id"`
 	DoctorId       string    `bson:"doctor_id"`
@@ -107,6 +115,9 @@ type Case struct {
 	ToothMovementRestrictions ToothMovementRestrictions `bson:"tooth_movement_restrictions"`
 	CaseAttachments           CaseAttachments           `bson:"case_attachments"`
 	CaseStatus                CaseStatus                `bson:"case_status"`
+	MidCourseCorrection       []AdditionalPlans         `bson:"mid_course_correction"`
+	Refinements               []AdditionalPlans         `bson:"refinements"`
+	AllignerTacking           []AdditionalPlans         `bson:"alligner_tacking"`
 	Remarks                   string                    `bson:"remarks"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
 	UpdatedAt                 time.Time                 `bson:"updated_at"`
