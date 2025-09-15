@@ -12,11 +12,13 @@ type Practice struct {
 }
 
 type AdditionalPlans struct {
-	ArchToBeTreated string   `bson:"arch_to_be_treated"` //Upper, Lower, Both
-	ImpressionType  string   `bson:"impression_type"`    //Digital,Physical Impressions
-	Remarks         string   `bson:"remarks"`
-	Attachments     []string `bson:"attachments"`
-	VoiceNoteUrl    string   `bson:"voice_note_url"`
+	ArchToBeTreated string    `bson:"arch_to_be_treated"` //Upper, Lower, Both
+	ImpressionType  string    `bson:"impression_type"`    //Digital,Physical Impressions
+	Remarks         string    `bson:"remarks"`
+	Attachments     []string  `bson:"attachments"`
+	VoiceNoteUrl    string    `bson:"voice_note_url"`
+	CreatedAt       time.Time `bson:"created_at"`
+	UpdatedAt       time.Time `bson:"updated_at"`
 }
 
 type Patient struct {
