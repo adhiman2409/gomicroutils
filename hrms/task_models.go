@@ -82,7 +82,7 @@ type Task struct {
 	Remarks         []string          `bson:"remarks"`
 	Comments        []Comments        `bson:"comments"`
 	History         []TaskHistory     `bson:"history"`
-	AssigneeHistory []AssigneeHistory `bson:"assignee_history"`
+	AssigneeHistory []AssigneeHistory `bson:"assignee_history,omitempty"`
 	UpdatedAt       time.Time         `bson:"updated_at"`
 	CreatedAt       time.Time         `bson:"created_at"`
 	CreatedBy       EmpSummary        `bson:"created_by"`
