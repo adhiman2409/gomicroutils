@@ -19,8 +19,8 @@ type TaskState struct {
 	StateId      string `bson:"state_id"`
 	Name         string `bson:"name"`
 	Abbreviation string `bson:"abbreviation"`
-	IsStartState bool   `bson:"is_start_state"`
-	IsEndState   bool   `bson:"is_end_state"`
+	IsStartState bool   `bson:"is_start_state,omitempty"`
+	IsEndState   bool   `bson:"is_end_state,omitempty"`
 	Color        string `bson:"color"`
 	Description  string `bson:"description"`
 	Icon         string `bson:"icon"`
