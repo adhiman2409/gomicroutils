@@ -34,6 +34,7 @@ type AssetInfo struct {
 	ImagesUpdatedOn                  time.Time                   `bson:"image_updated_on"`
 	Status                           AssetStatus                 `bson:"status"` // Available, Allocated, Under Maintenance, Retired
 	IsInsured                        bool                        `bson:"is_insured"`
+	IsPhysicallyVerified             bool                        `bson:"is_physically_verified"`
 	AssetInsuranceInfo               AssetInsuranceInfo          `bson:"asset_insurance_info"`
 	AssetPhysicalVerificationInfo    AssetPhysicalVerification   `bson:"asset_physical_verification_info"`
 	AssetPhysicalVerificationHistory []AssetPhysicalVerification `bson:"asset_physical_verification_history"`
