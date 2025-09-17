@@ -3,6 +3,7 @@ package middleware
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -28,7 +29,7 @@ func RequestAuth(next http.Handler) http.Handler {
 		authHeader := strings.Split(r.Header.Get("Authorization"), "Bearer ")
 		if len(authHeader) != 2 {
 			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
-			// fmt.Println("Token length wrong or Token missing")
+			fmt.Println("Token length wrong or Token missing")
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return
 		}
@@ -36,7 +37,7 @@ func RequestAuth(next http.Handler) http.Handler {
 		api := mux.CurrentRoute(r).GetName()
 		claims, err := grpcclient.GetAuthClient().Verify(jwtToken, api)
 		if err != nil {
-			// fmt.Println("Token Error: " + err.Error())
+			fmt.Println("Token Error: " + err.Error())
 			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return
