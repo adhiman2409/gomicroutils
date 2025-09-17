@@ -16,9 +16,17 @@ type LeadInfo struct {
 	AssignedSPOCs []ContactInfo      `bson:"assigned_spocs,omitempty"`
 	LeadRemarks   []string           `bson:"lead_remarks,omitempty"`
 	Meetings      []MeetingInfo      `bson:"meetings,omitempty"`
+	Remarks       []LeadRemark       `bson:"remarks,omitempty"`
 	CreatedBy     string             `bson:"created_by"`
 	CreatedAt     time.Time          `bson:"created_at"`
 	UpdatedAt     time.Time          `bson:"updated_at"`
+}
+
+type LeadRemark struct {
+	Note          string    `bson:"note"`
+	CreatedAt     time.Time `bson:"created_at"`
+	CreatedByEid  string    `bson:"created_by_eid"`
+	CreatedByName string    `bson:"created_by_name"`
 }
 
 type CompanyInfo struct {
