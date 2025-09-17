@@ -9,6 +9,7 @@ import (
 type AssetInfo struct {
 	ID                               primitive.ObjectID          `bson:"_id"`
 	AssetId                          string                      `bson:"asset_id"`
+	UniqueId                         string                      `bson:"unique_id"`
 	DepartmentId                     string                      `bson:"department_id"`
 	DepartmentName                   string                      `bson:"department_name"`
 	AssetSerialNumber                string                      `bson:"asset_serial_number"`
