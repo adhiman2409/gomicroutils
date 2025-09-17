@@ -19,7 +19,7 @@ type AssetInfo struct {
 	AssetBrandName                   string                      `bson:"asset_brand_name"`
 	AssetDescription                 string                      `bson:"asset_description"`
 	AssetModel                       string                      `bson:"asset_model"`
-	AssetConfig                      AssetConfig                 `bson:"asset_config"`
+	AssetConfig                      map[string]any              `bson:"asset_config"`
 	Accessories                      []string                    `bson:"accessories"`
 	ProcurementType                  string                      `bson:"procurement_type"` // Purchased, Rental, Subscription
 	RenewalFrequency                 Frequency                   `bson:"renewal_frequency"`
