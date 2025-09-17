@@ -6,6 +6,19 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type Category struct {
+	Category      string   `bson:"category"`
+	SubCategories []string `bson:"sub_categories"`
+}
+
+type NewAssetConfig struct {
+	ConfigField []string  `bson:"config_field"`
+	Category    string    `bson:"category"`
+	SubCategory string    `bson:"sub_category"`
+	CreatedAt   time.Time `bson:"created_at"`
+	UpdatedAt   time.Time `bson:"updated_at"`
+}
+
 type AssetInfo struct {
 	ID                               primitive.ObjectID          `bson:"_id"`
 	AssetId                          string                      `bson:"asset_id"`
