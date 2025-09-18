@@ -163,6 +163,8 @@ const KYC_COLLECTION_MEETING_INFO = "kyc-meeting_info"
 const KYC_COLLECTION_CONTACTS = "kyc-contact_collection"
 const KYC_COLLECTION_DEALS = "kyc-deals"
 
+const KYC_COLLECTION_DEALS_COUNTER = "kyc-company-counter"
+
 const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
 const REJOVE_COLLECTION_DOCTOR_COUNTER = "rejove-doctor-id-counter"
 const REJOVE_COLLECTION_DOCTOR_CASE_COUNTER = "rejove-doctor_case-id-counter"
@@ -173,6 +175,11 @@ const REJOVE_COLLECTION_PATIENTS = "rejove-patients"
 const REJOVE_COLLECTION_PATIENT_CASES = "rejove-patient_cases"
 const INVENTORY_COLLECTION_INVENTORY_CATEGORIES = "inventory-categories"
 const INVENTORY_COLLECTION_INVENTORY_ASSET_CONFIG_FIELDS = "inventory-asset-config-fields"
+
+func GetKYCDealCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(KYC_COLLECTION_DEALS_COUNTER)
+}
 
 func GetInventoryCategoryCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
