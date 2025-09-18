@@ -17,7 +17,7 @@ type Deal struct {
 	DealValue          float64            `bson:"deal_value"`
 	Currency           string             `bson:"currency"`                 // INR / USD
 	DocumentLinks      []Attachment       `bson:"document_links,omitempty"` // Proposals, NDAs, MOMs
-	Timeline           []LeadRemark       `bson:"timelime"`
+	Timeline           []LeadRemark       `bson:"timeline"`
 	WinLossReason      string             `bson:"win_loss_reason,omitempty"` // Reason for closed-lost
 	ProbabilityToClose int                `bson:"probability_to_close,omitempty"`
 	DealSource         string             `bson:"deal_source,omitempty"` // Referral, Inbound, Outbound, etc.
