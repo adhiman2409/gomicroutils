@@ -22,6 +22,7 @@ type Department struct {
 	OrgName        string             `bson:"org_name"`
 	Name           string             `bson:"name"`
 	Alias          string             `bson:"alias"`
+	Abbreviation   string             `bson:"abbreviation"`
 	AdminId        string             `bson:"admin_id"`
 	AdminName      string             `bson:"admin_name"`
 	TotalEmployees uint32             `bson:"total_employees"`
