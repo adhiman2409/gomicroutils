@@ -156,11 +156,12 @@ const PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS = "payroll-salary-processing
 const PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER = "payroll-employee-payroll-master"
 const PAYROLL_COLLECTION_PAYROLL_ACCESS_CONTROL = "payroll-employee-payroll-access-control"
 
-const KYC_COMPANY_INFO_COLLECTION = "kyc-company_info"
-const KYC_COMPANY_COUNTER_COLLECTION = "kyc-company_counter"
-const KYC_MEETING_COUNTER_COLLECTION = "kyc-meeting_counter"
-const KYC_MEETING_INFO_COLLECTION = "kyc-meeting_info"
-const KYC_CONTACTS_COLLECTION = "kyc-contact_collection"
+const KYC_COLLECTION_COMPANY_INFO = "kyc-company_info"
+const KYC_COLLECTION_COMPANY_COUNTER = "kyc-company_counter"
+const KYC_COLLECTION_MEETING_COUNTER = "kyc-meeting_counter"
+const KYC_COLLECTION_MEETING_INFO = "kyc-meeting_info"
+const KYC_COLLECTION_CONTACTS = "kyc-contact_collection"
+const KYC_COLLECTION_DEALS = "kyc-deals"
 
 const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
 const REJOVE_COLLECTION_DOCTOR_COUNTER = "rejove-doctor-id-counter"
@@ -220,27 +221,32 @@ func GetRejoveDoctorPracticesCollection(client *mongo.Client, domain string) *mo
 
 func GetKYCCompanyCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(KYC_COMPANY_COUNTER_COLLECTION)
+	return db.Collection(KYC_COLLECTION_COMPANY_COUNTER)
 }
 
 func GetKYCCompanyCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(KYC_COMPANY_INFO_COLLECTION)
+	return db.Collection(KYC_COLLECTION_COMPANY_INFO)
 }
 
 func GetKYCContactsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(KYC_CONTACTS_COLLECTION)
+	return db.Collection(KYC_COLLECTION_CONTACTS)
+}
+
+func GetKYCDealsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(KYC_COLLECTION_DEALS)
 }
 
 func GetKYCMeetingCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(KYC_MEETING_COUNTER_COLLECTION)
+	return db.Collection(KYC_COLLECTION_MEETING_COUNTER)
 }
 
 func GetKYCMeetingCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(KYC_MEETING_INFO_COLLECTION)
+	return db.Collection(KYC_COLLECTION_MEETING_INFO)
 }
 
 func GetPayrollAccessControlCollection(client *mongo.Client, domain string) *mongo.Collection {
