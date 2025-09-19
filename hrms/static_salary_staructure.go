@@ -7,12 +7,12 @@ import (
 )
 
 type MonthlyPaidSalary struct {
-	Month              string  `json:"month"`
-	Year               string  `json:"year"`
-	GrossMonthlyAmount float32 `json:"gross_monthly_amount"`
-	TaxAmount          float32 `json:"tax_amount"`
-	NetMonthlyAmount   float32 `json:"net_monthly_amount"`
-	Status             string  `json:"status"` // Paid, Pending, Hold
+	Month              string  `bson:"month"`
+	Year               string  `bson:"year"`
+	GrossMonthlyAmount float32 `bson:"gross_monthly_amount"`
+	TaxAmount          float32 `bson:"tax_amount"`
+	NetMonthlyAmount   float32 `bson:"net_monthly_amount"`
+	Status             string  `bson:"status"` // Paid, Pending, Hold
 }
 
 type CountrySalaryStructure struct {
