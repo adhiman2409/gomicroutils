@@ -179,7 +179,7 @@ type PayrollSalaryConfig struct {
 	PFEmployeeContributionPercentageOfBasic  float32               `bson:"pf_employee_contribution_percentage_of_basic"`
 	PFMonthlyFixedEmployerContributionAmount float32               `bson:"pf_monthly_fixed_employer_contribution_amount"`
 	PFMonthlyFixedEmployeeContributionAmount float32               `bson:"pf_monthly_fixed_employee_contribution_amount"`
-	MonthlyBasicSalaryPercentageOfGross      float32               `bson:"monthly_basic_salary_percentage_odf_gross"`
+	MonthlyBasicSalaryPercentageOfGross      float32               `bson:"monthly_basic_salary_percentage_of_gross"`
 	MinimumMonthlyBasicSalary                float32               `bson:"minimum_monthly_basic_salary"`
 	MonthlyHRAPercentageOfBasic              float32               `bson:"monthly_hra_percentage_of_basic"`
 	MonthlyStatutoryBonusPercentageOfBasic   float32               `bson:"monthly_statutory_bonus_percentage_of_basic"`
