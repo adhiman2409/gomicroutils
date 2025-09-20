@@ -281,6 +281,7 @@ type MonthlyDeductions struct {
 	LabourWelfareFund float64 `bson:"labour_welfare_fund"`
 	ESI               float64 `bson:"esi"`
 	ProvidentFund     float64 `bson:"provident_fund"`
+	ProfessionalTax   float64 `bson:"professional_tax"`
 	IncomeTax         float64 `bson:"income_tax"`
 	OtherDeductions   float64 `bson:"other_deductions"`
 	TotalDeductions   float64 `bson:"total_deductions"`
