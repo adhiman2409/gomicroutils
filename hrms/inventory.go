@@ -6,17 +6,22 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type ConfigFields struct {
+	Field string `bson:"field"`
+	Value string `bson:"value"`
+}
+
 type Category struct {
 	Category      string   `bson:"category"`
 	SubCategories []string `bson:"sub_categories"`
 }
 
 type NewAssetConfig struct {
-	ConfigField []string  `bson:"config_field"`
-	Category    string    `bson:"category"`
-	SubCategory string    `bson:"sub_category"`
-	CreatedAt   time.Time `bson:"created_at"`
-	UpdatedAt   time.Time `bson:"updated_at"`
+	Category    string         `bson:"category"`
+	SubCategory string         `bson:"sub_category"`
+	ConfigField []ConfigFields `bson:"config_field"`
+	CreatedAt   time.Time      `bson:"created_at"`
+	UpdatedAt   time.Time      `bson:"updated_at"`
 }
 
 type AssetInfo struct {
