@@ -17,11 +17,11 @@ type Category struct {
 }
 
 type NewAssetConfig struct {
-	Category    string         `bson:"category"`
-	SubCategory string         `bson:"sub_category"`
-	ConfigField []ConfigFields `bson:"config_field"`
-	CreatedAt   time.Time      `bson:"created_at"`
-	UpdatedAt   time.Time      `bson:"updated_at"`
+	Category    string    `bson:"category"`
+	SubCategory string    `bson:"sub_category"`
+	ConfigField []string  `bson:"config_field"`
+	CreatedAt   time.Time `bson:"created_at"`
+	UpdatedAt   time.Time `bson:"updated_at"`
 }
 
 type AssetInfo struct {
