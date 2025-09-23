@@ -169,6 +169,8 @@ type PayrollSalaryConfig struct {
 	FixedDailyPayoutAmount                   float32               `bson:"fixed_daily_payout_amount"`
 	DeductOnlyTDS                            bool                  `bson:"deduct_only_tds"`
 	DefaultTDSPercentage                     float32               `bson:"default_tds_percentage"`
+	IsFixedDurationPayment                   bool                  `bson:"is_fixed_duration_payment"`
+	FixedPaymentDurationInMonths             int                   `bson:"fixed_payment_duration_in_months"`
 	OrganizationDefaultTaxRegime             string                `bson:"organization_default_tax_regime"` // e.g., "new", "old"
 	EmployeeAdoptedTaxRegime                 string                `bson:"employee_adopted_tax_regime"`     // e.g., "new", "old"
 	IsVariableSalaryPartOfTotalCTC           bool                  `bson:"is_variable_salary_part_of_total_ctc"`
