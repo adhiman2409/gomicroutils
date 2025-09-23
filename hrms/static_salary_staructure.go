@@ -287,7 +287,7 @@ type MonthlyDeductions struct {
 	ProfessionalTax   float64 `bson:"professional_tax,omitempty"`
 	IncomeTax         float64 `bson:"income_tax,omitempty"`
 	OtherDeductions   float64 `bson:"other_deductions,omitempty"`
-	TDSDeductions     float64 `bson:"tds_deductions,omitempty"`
+	TDSDeduction      float64 `bson:"tds_deduction,omitempty"`
 	TotalDeductions   float64 `bson:"total_deductions"`
 }
 
