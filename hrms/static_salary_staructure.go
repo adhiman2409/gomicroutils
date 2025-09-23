@@ -269,21 +269,25 @@ type YearlyPayrollAndTaxDetails struct {
 }
 
 type MonthlyEarnings struct {
-	BasicSalary        float64 `bson:"basic_salary"`
-	HouseRentAllowance float64 `bson:"house_rent_allowance"`
-	StatutoryBonus     float64 `bson:"statutory_bonus"`
-	SpecialAllowance   float64 `bson:"special_allowance"`
-	OtherEarnings      float64 `bson:"other_earnings"`
+	BasicSalary        float64 `bson:"basic_salary,omitempty"`
+	HouseRentAllowance float64 `bson:"house_rent_allowance,omitempty"`
+	StatutoryBonus     float64 `bson:"statutory_bonus,omitempty"`
+	SpecialAllowance   float64 `bson:"special_allowance,omitempty"`
+	OtherEarnings      float64 `bson:"other_earnings,omitempty"`
+	Stipend            float64 `bson:"stipend,omitempty"`
+	ConsultantFees     float64 `bson:"consultant_fees,omitempty"`
+	ContractualFees    float64 `bson:"contractual_fees,omitempty"`
 	TotalGrossSalary   float64 `bson:"total_gross_salary"`
 }
 
 type MonthlyDeductions struct {
-	LabourWelfareFund float64 `bson:"labour_welfare_fund"`
-	ESI               float64 `bson:"esi"`
-	ProvidentFund     float64 `bson:"provident_fund"`
-	ProfessionalTax   float64 `bson:"professional_tax"`
-	IncomeTax         float64 `bson:"income_tax"`
-	OtherDeductions   float64 `bson:"other_deductions"`
+	LabourWelfareFund float64 `bson:"labour_welfare_fund,omitempty"`
+	ESI               float64 `bson:"esi,omitempty"`
+	ProvidentFund     float64 `bson:"provident_fund,omitempty"`
+	ProfessionalTax   float64 `bson:"professional_tax,omitempty"`
+	IncomeTax         float64 `bson:"income_tax,omitempty"`
+	OtherDeductions   float64 `bson:"other_deductions,omitempty"`
+	TDSDeductions     float64 `bson:"tds_deductions,omitempty"`
 	TotalDeductions   float64 `bson:"total_deductions"`
 }
 
