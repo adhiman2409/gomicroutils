@@ -35,6 +35,14 @@ type CountrySalaryStructure struct {
 	EmployeeType                               string              `bson:"employee_type"`
 	EmploymentStatus                           string              `bson:"employment_status"`
 	IsFullTimeEmployeeSalaryStructure          bool                `bson:"is_fulltime_employee_salary_structure"`
+	IsFixedMonthlyPayout                       bool                `bson:"is_fixed_monthly_payout"`
+	FixedMonthlyPayoutAmount                   float32             `bson:"fixed_monthly_payout_amount"`
+	IsFixedDailyPayout                         bool                `bson:"is_fixed_daily_payout"`
+	FixedDailyPayoutAmount                     float32             `bson:"fixed_daily_payout_amount"`
+	DeductOnlyTDS                              bool                `bson:"deduct_only_tds"`
+	DefaultTDSPercentage                       float32             `bson:"default_tds_percentage"`
+	IsFixedDurationPayment                     bool                `bson:"is_fixed_duration_payment"`
+	FixedPaymentDurationInMonths               int                 `bson:"fixed_payment_duration_in_months"`
 	OrganizationDefaultTaxRegime               string              `bson:"organization_default_tax_regime"`
 	EmployeeAdoptedTaxRegime                   string              `bson:"employee_adopted_tax_regime"`
 	State                                      string              `bson:"state"`
