@@ -149,6 +149,7 @@ const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO = "payroll-employee-salary-info"
 
 const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO_COUNTER = "payroll-employee-salary-info-counter"
 const PAYROLL_COLLECTION_ORG_SALARY_CONFIGS = "payroll-organization-salary_configs"
+const PAYROLL_COLLECTION_ORG_SALARY_CONFIG_TEMPLATES = "payroll-organization-salary_config_templates"
 const PAYROLL_COLLECTION_EMP_SALARY_CONFIGS = "payroll-employee-salary_configs"
 const PAYROLL_COLLECTION_TAX_REGIMES = "payroll-tax-regimes"
 const PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS = "payroll-salary-processing-requests"
@@ -639,6 +640,11 @@ func GetOrgSalaryComponentsCollection(client *mongo.Client, domain string) *mong
 func GetPayrollOrgSalaryConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYROLL_COLLECTION_ORG_SALARY_CONFIGS)
+}
+
+func GetPayrollOrgSalaryConfigTemplatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_ORG_SALARY_CONFIG_TEMPLATES)
 }
 
 func GetPayrollEmployeeSalaryConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
