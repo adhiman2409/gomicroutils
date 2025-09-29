@@ -30,6 +30,11 @@ type AssetInfo struct {
 	UniqueId                         string                      `bson:"unique_id"`
 	DepartmentId                     string                      `bson:"department_id"`
 	DepartmentName                   string                      `bson:"department_name"`
+	ProjectId                        string                      `bson:"project_id"`
+	ProjectName                      string                      `bson:"project_name"`
+	ProjectHeadId                    string                      `bson:"project_head_id"`
+	ProjectHeadName                  string                      `bson:"project_head_name"`
+	ProjectHeadEmailId               string                      `bson:"project_head_email_id"`
 	AssetSerialNumber                string                      `bson:"asset_serial_number"`
 	AssetCategory                    string                      `bson:"asset_category"` //Hardware, Software
 	AssetSubCategory                 string                      `bson:"asset_sub_category"`
