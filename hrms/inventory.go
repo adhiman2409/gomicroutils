@@ -84,6 +84,7 @@ type AssetInfo struct {
 	WarrantyProvider                 string                      `bson:"warranty_provider"`
 	AllocationInfo                   []AssetAllocationInfo       `bson:"allocation_info"`
 	AllocationHistory                []AllocationHistory         `bson:"allocation_history"`
+	VendorInfo                       VendorInfo                  `bson:"vendor_info"`
 	CreatedAt                        time.Time                   `bson:"created_at"`
 	UpdatedAt                        time.Time                   `bson:"updated_at"`
 }
