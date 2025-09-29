@@ -6,6 +6,11 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type SocialURL struct {
+	Platform string `bson:"platform"`
+	URL      string `bson:"url"`
+}
+
 type LeadInfo struct {
 	Id            primitive.ObjectID `bson:"_id,omitempty"`
 	LeadID        string             `bson:"lead_id"`
@@ -82,6 +87,7 @@ type ContactInfo struct {
 	CompanyId   string      `bson:"company_id,omitempty"`
 	RegexString string      `bson:"regex_string,omitempty"`
 	CompanyInfo CompanyInfo `bson:"company_info,omitempty"`
+	SocialURLs  []SocialURL `bson:"social_urls,omitempty"`
 }
 
 type Attendee struct {

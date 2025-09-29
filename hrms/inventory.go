@@ -24,6 +24,19 @@ type NewAssetConfig struct {
 	UpdatedAt   time.Time `bson:"updated_at"`
 }
 
+type VendorInfo struct {
+	ID          primitive.ObjectID `bson:"_id"`
+	VendorName  string             `bson:"vendor_name"`
+	ContactName string             `bson:"contact_name"`
+	Email       string             `bson:"email"`
+	Phone       string             `bson:"phone"`
+	Address     Address            `bson:"address"`
+	Description string             `bson:"description"`
+	CreatedAt   time.Time          `bson:"created_at"`
+	UpdatedAt   time.Time          `bson:"updated_at"`
+	Tags        []string           `bson:"tags"`
+}
+
 type AssetInfo struct {
 	ID                               primitive.ObjectID          `bson:"_id"`
 	AssetId                          string                      `bson:"asset_id"`
@@ -43,6 +56,8 @@ type AssetInfo struct {
 	AssetDescription                 string                      `bson:"asset_description"`
 	AssetModel                       string                      `bson:"asset_model"`
 	AssetConfig                      AssetConfig                 `bson:"asset_config"`
+	AssetLocation                    string                      `bson:"asset_location"`
+	InvoiceNumber                    string                      `bson:"invoice_number"`
 	AssetNewConfig                   []ConfigFields              `bson:"asset_new_config"`
 	Accessories                      []string                    `bson:"accessories"`
 	ProcurementType                  string                      `bson:"procurement_type"` // Purchased, Rental, Subscription
