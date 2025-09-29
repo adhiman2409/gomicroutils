@@ -8,6 +8,7 @@ import (
 
 type Deal struct {
 	Id                 primitive.ObjectID `bson:"_id,omitempty"` // Unique Deal ID
+	CompanyId          string             `bson:"company_id"`    // Company ID to which the deal belongs
 	DealId             string             `bson:"deal_id"`
 	LeadId             string             `bson:"lead_id"`
 	DealName           string             `bson:"deal_name"`             // Deal Name / Reference
