@@ -177,6 +177,12 @@ const REJOVE_COLLECTION_PATIENT_CASES = "rejove-patient_cases"
 const INVENTORY_COLLECTION_INVENTORY_CATEGORIES = "inventory-categories"
 const INVENTORY_COLLECTION_INVENTORY_ASSET_CONFIG_FIELDS = "inventory-asset-config-fields"
 const INVENTORY_VENDOR_INFO = "inventory-vendor-info"
+const KYC_COLLECTION_CONTACT_COUNTER = "kyc-contact-counter"
+
+func GetKYCContactsCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(KYC_COLLECTION_CONTACT_COUNTER)
+}
 
 func GetVendorInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))

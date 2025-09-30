@@ -18,7 +18,7 @@ type LeadInfo struct {
 	Description        string             `bson:"description"`
 	Stage              ClientMainStage    `bson:"stage"`
 	SubStage           string             `bson:"sub_stage,omitempty"`
-	AssignedSPOCs      []ContactInfo      `bson:"assigned_spocs,omitempty"`
+	AssignedSPOCs      []string           `bson:"assigned_spocs,omitempty"`
 	LeadRemarks        []string           `bson:"lead_remarks,omitempty"`
 	Meetings           []MeetingInfo      `bson:"meetings,omitempty"`
 	Remarks            []LeadRemark       `bson:"remarks"`
@@ -26,7 +26,7 @@ type LeadInfo struct {
 	DealValue          float64            `bson:"deal_value"`
 	Currency           string             `bson:"currency"`
 	DocumentLinks      []Attachment       `bson:"document_links,omitempty"`
-	AssociatedContacts []ContactInfo      `bson:"associated_contacts,omitempty"`
+	AssociatedContacts []string           `bson:"associated_contacts,omitempty"`
 	ProbabilityToClose int                `bson:"probability_to_close,omitempty"`
 	LeadSource         string             `bson:"lead_source,omitempty"`
 	CreatedBy          string             `bson:"created_by"`
@@ -43,24 +43,23 @@ type LeadRemark struct {
 }
 
 type CompanyInfo struct {
-	Id                 primitive.ObjectID `bson:"_id,omitempty"`
-	CompanyId          string             `bson:"company_id"`
-	CompanyName        string             `bson:"company_name"`
-	CompanyLogo        string             `bson:"company_logo"`
-	CurrentStage       ClientMainStage    `bson:"current_stage"`
-	Website            string             `bson:"website"`
-	Industry           string             `bson:"industry"`
-	HeadquarterCountry string             `bson:"headquarter_country"`
-	BusinessActivities string             `bson:"business_activities"`
-	ClientDescription  string             `bson:"client_description"`
-
-	YearFounded          int           `bson:"year_founded,omitempty"`
-	Contacts             []ContactInfo `bson:"contacts,omitempty"`
-	CompanySize          int           `bson:"company_size,omitempty"`
-	AnnualRevenue        float64       `bson:"annual_revenue,omitempty"`
-	RevenueCurrency      string        `bson:"revenue_currency,omitempty"`
-	ProductsAndServices  []string      `bson:"products_and_services,omitempty"`
-	OtherOfficeLocations []string      `bson:"other_office_locations,omitempty"`
+	Id                   primitive.ObjectID `bson:"_id,omitempty"`
+	CompanyId            string             `bson:"company_id"`
+	CompanyName          string             `bson:"company_name"`
+	CompanyLogo          string             `bson:"company_logo"`
+	CurrentStage         ClientMainStage    `bson:"current_stage"`
+	Website              string             `bson:"website"`
+	Industry             string             `bson:"industry"`
+	HeadquarterCountry   string             `bson:"headquarter_country"`
+	BusinessActivities   string             `bson:"business_activities"`
+	ClientDescription    string             `bson:"client_description"`
+	YearFounded          int                `bson:"year_founded,omitempty"`
+	Contacts             []string           `bson:"contacts,omitempty"`
+	CompanySize          int                `bson:"company_size,omitempty"`
+	AnnualRevenue        float64            `bson:"annual_revenue,omitempty"`
+	RevenueCurrency      string             `bson:"revenue_currency,omitempty"`
+	ProductsAndServices  []string           `bson:"products_and_services,omitempty"`
+	OtherOfficeLocations []string           `bson:"other_office_locations,omitempty"`
 
 	SourceOfIntroduction string       `bson:"source_of_introduction"`
 	IntroducedBy         string       `bson:"introduced_by"`
