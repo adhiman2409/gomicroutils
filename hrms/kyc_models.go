@@ -26,6 +26,7 @@ type LeadInfo struct {
 	DealValue          float64            `bson:"deal_value"`
 	Currency           string             `bson:"currency"`
 	DocumentLinks      []Attachment       `bson:"document_links,omitempty"`
+	AssociatedContacts []ContactInfo      `bson:"associated_contacts,omitempty"`
 	ProbabilityToClose int                `bson:"probability_to_close,omitempty"`
 	LeadSource         string             `bson:"lead_source,omitempty"`
 	CreatedBy          string             `bson:"created_by"`
