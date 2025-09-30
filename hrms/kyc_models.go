@@ -12,20 +12,25 @@ type SocialURL struct {
 }
 
 type LeadInfo struct {
-	Id            primitive.ObjectID `bson:"_id,omitempty"`
-	LeadID        string             `bson:"lead_id"`
-	Title         string             `bson:"title"`
-	Description   string             `bson:"description"`
-	Stage         ClientMainStage    `bson:"stage"`
-	SubStage      string             `bson:"sub_stage,omitempty"`
-	AssignedSPOCs []ContactInfo      `bson:"assigned_spocs,omitempty"`
-	LeadRemarks   []string           `bson:"lead_remarks,omitempty"`
-	Meetings      []MeetingInfo      `bson:"meetings,omitempty"`
-	Remarks       []LeadRemark       `bson:"remarks"`
-	Notes         []LeadRemark       `bson:"notes"`
-	CreatedBy     string             `bson:"created_by"`
-	CreatedAt     time.Time          `bson:"created_at"`
-	UpdatedAt     time.Time          `bson:"updated_at"`
+	Id                 primitive.ObjectID `bson:"_id,omitempty"`
+	LeadID             string             `bson:"lead_id"`
+	Title              string             `bson:"title"`
+	Description        string             `bson:"description"`
+	Stage              ClientMainStage    `bson:"stage"`
+	SubStage           string             `bson:"sub_stage,omitempty"`
+	AssignedSPOCs      []ContactInfo      `bson:"assigned_spocs,omitempty"`
+	LeadRemarks        []string           `bson:"lead_remarks,omitempty"`
+	Meetings           []MeetingInfo      `bson:"meetings,omitempty"`
+	Remarks            []LeadRemark       `bson:"remarks"`
+	Notes              []LeadRemark       `bson:"notes"`
+	DealValue          float64            `bson:"deal_value"`
+	Currency           string             `bson:"currency"`
+	DocumentLinks      []Attachment       `bson:"document_links,omitempty"`
+	ProbabilityToClose int                `bson:"probability_to_close,omitempty"`
+	LeadSource         string             `bson:"lead_source,omitempty"`
+	CreatedBy          string             `bson:"created_by"`
+	CreatedAt          time.Time          `bson:"created_at"`
+	UpdatedAt          time.Time          `bson:"updated_at"`
 }
 
 type LeadRemark struct {
@@ -41,6 +46,7 @@ type CompanyInfo struct {
 	CompanyId          string             `bson:"company_id"`
 	CompanyName        string             `bson:"company_name"`
 	CompanyLogo        string             `bson:"company_logo"`
+	CurrentStage       ClientMainStage    `bson:"current_stage"`
 	Website            string             `bson:"website"`
 	Industry           string             `bson:"industry"`
 	HeadquarterCountry string             `bson:"headquarter_country"`
