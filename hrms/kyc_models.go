@@ -109,7 +109,7 @@ type ActionItem struct {
 	Id            primitive.ObjectID `bson:"_id,omitempty"`
 	Title         string             `bson:"title"`
 	Description   string             `bson:"description"`
-	AssignedTo    []ContactInfo      `bson:"assigned_to,omitempty"`
+	AssignedTo    []string           `bson:"assigned_to,omitempty"`
 	DueDate       time.Time          `bson:"due_date"`
 	Status        string             `bson:"status"`
 	CreatedAt     time.Time          `bson:"created_at"`
