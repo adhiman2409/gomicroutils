@@ -16,9 +16,9 @@ const (
 
 type Activity struct {
 	Id             primitive.ObjectID `bson:"_id,omitempty"`
-	Day            string             `bson:"day"`   // DD
-	Month          string             `bson:"month"` // MM
-	Year           string             `bson:"year"`  // YYYY
+	Day            int                `bson:"day"`   // DD
+	Month          int                `bson:"month"` // MM
+	Year           int                `bson:"year"`  // YYYY
 	EmployeeID     string             `bson:"employee_id"`
 	UnixTimestamp  int64              `bson:"timestamp"`
 	ActivityType   ActivityType       `bson:"activity_type"` // "app_usage", "web_history", "screenshot"
