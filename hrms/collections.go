@@ -178,12 +178,12 @@ const INVENTORY_COLLECTION_INVENTORY_CATEGORIES = "inventory-categories"
 const INVENTORY_COLLECTION_INVENTORY_ASSET_CONFIG_FIELDS = "inventory-asset-config-fields"
 const INVENTORY_VENDOR_INFO = "inventory-vendor-info"
 
-const ACTIVITY_COLLECTION_ACTIVITY_LOG_ENTRIES = "activity-log-entries"
+const ACTIVITY_COLLECTION_ACTIVITY_MONITORING_ENTRIES = "activity-monitoring-entries"
 const ACTIVITY_COLLECTION_EMPLOYEE_MONITOR_CONFIGS = "activity-employee-monitor-configs"
 
-func GetActivityLogEntriesCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetActivityMonitoringEntriesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(ACTIVITY_COLLECTION_ACTIVITY_LOG_ENTRIES)
+	return db.Collection(ACTIVITY_COLLECTION_ACTIVITY_MONITORING_ENTRIES)
 }
 
 func GetEmployeeMonitorConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {

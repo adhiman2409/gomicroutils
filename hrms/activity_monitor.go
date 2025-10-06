@@ -2,17 +2,25 @@ package hrms
 
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
-type EmployeeMMonitorConfig struct {
+type MonitoringConfig struct {
 	Id                              primitive.ObjectID `bson:"_id"`
 	StartMonitoringAfterCheckInOnly bool               `bson:"start_monitoring_after_check_in_only"`
 	IsCheckedIn                     bool               `bson:"is_checked_in"`
 	IsCheckedOut                    bool               `bson:"is_checked_out"`
-	MacAddress                      string             `bson:"mac_address"`
 	UserId                          string             `bson:"user_id"`
+	MacAddress                      string             `bson:"mac_address"`
 	Name                            string             `bson:"name"`
+	Domain                          string             `bson:"domain"`
 	Department                      string             `bson:"department"`
 	Email                           string             `bson:"email"`
-	Domain                          string             `bson:"domain"`
+	MonitoringEnabled               bool               `bson:"monitoring_enabled"`
+	IdleThreshold                   int                `bson:"idle_threshold"`
+	ScreenshotInterval              int                `bson:"screenshot_interval"`
+	TrackApplications               bool               `bson:"track_applications"`
+	TrackLocation                   bool               `bson:"track_location"`
+	TrackBrowser                    bool               `bson:"track_browser"`
+	TrackDocuments                  bool               `bson:"track_documents"`
+	TrackUSB                        bool               `bson:"track_usb"`
 }
 
 type ActivityLogEntry struct {
