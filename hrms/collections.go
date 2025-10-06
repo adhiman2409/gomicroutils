@@ -178,11 +178,17 @@ const INVENTORY_COLLECTION_INVENTORY_CATEGORIES = "inventory-categories"
 const INVENTORY_COLLECTION_INVENTORY_ASSET_CONFIG_FIELDS = "inventory-asset-config-fields"
 const INVENTORY_VENDOR_INFO = "inventory-vendor-info"
 const KYC_COLLECTION_CONTACT_COUNTER = "kyc-contact-counter"
-const ACTIVITY_COLLECTION_ACTIVITY_MONITOR_ACTIVITIES = "activity-monitor-activities"
+const ACTIVITY_COLLECTION_ACTIVITY_LOG_ENTRIES = "activity-log-entries"
+const ACTIVITY_COLLECTION_EMPLOYEE_MONITOR_CONFIGS = "activity-employee-monitor-configs"
 
-func GetActivityMonitorActivitiesCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetActivityLogEntriesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(ACTIVITY_COLLECTION_ACTIVITY_MONITOR_ACTIVITIES)
+	return db.Collection(ACTIVITY_COLLECTION_ACTIVITY_LOG_ENTRIES)
+}
+
+func GetEmployeeMonitorConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ACTIVITY_COLLECTION_EMPLOYEE_MONITOR_CONFIGS)
 }
 
 func GetKYCContactsCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
