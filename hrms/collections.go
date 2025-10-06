@@ -157,13 +157,13 @@ const PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS = "payroll-salary-processing
 const PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER = "payroll-employee-payroll-master"
 const PAYROLL_COLLECTION_PAYROLL_ACCESS_CONTROL = "payroll-employee-payroll-access-control"
 
-const KYC_COLLECTION_COMPANY_INFO = "kyc-company_info"
-const KYC_COLLECTION_COMPANY_COUNTER = "kyc-company_counter"
-const KYC_COLLECTION_MEETING_COUNTER = "kyc-meeting_counter"
-const KYC_COLLECTION_MEETING_INFO = "kyc-meeting_info"
-const KYC_COLLECTION_CONTACTS = "kyc-contact_collection"
+const KYC_COLLECTION_COMPANY_INFO = "kyc-company-info"
+const KYC_COLLECTION_COMPANY_COUNTER = "kyc-company-counter"
+const KYC_COLLECTION_MEETING_COUNTER = "kyc-meeting-counter"
+const KYC_COLLECTION_MEETING_INFO = "kyc-meeting-info"
+const KYC_COLLECTION_CONTACTS = "kyc-contacts"
 const KYC_COLLECTION_DEALS = "kyc-deals"
-
+const KYC_COLLECTION_CONTACT_COUNTER = "kyc-contact-counter"
 const KYC_COLLECTION_DEALS_COUNTER = "kyc-company-counter"
 
 const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
@@ -177,7 +177,7 @@ const REJOVE_COLLECTION_PATIENT_CASES = "rejove-patient_cases"
 const INVENTORY_COLLECTION_INVENTORY_CATEGORIES = "inventory-categories"
 const INVENTORY_COLLECTION_INVENTORY_ASSET_CONFIG_FIELDS = "inventory-asset-config-fields"
 const INVENTORY_VENDOR_INFO = "inventory-vendor-info"
-const KYC_COLLECTION_CONTACT_COUNTER = "kyc-contact-counter"
+
 const ACTIVITY_COLLECTION_ACTIVITY_LOG_ENTRIES = "activity-log-entries"
 const ACTIVITY_COLLECTION_EMPLOYEE_MONITOR_CONFIGS = "activity-employee-monitor-configs"
 
