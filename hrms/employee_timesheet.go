@@ -68,6 +68,7 @@ type TimeSheet struct {
 
 type TimeSheetEntry struct {
 	ProjectId string  `bson:"project_id" json:"project_id"`
+	TaskId    string  `bson:"task_id" json:"task_id"`
 	Hours     float64 `bson:"hours" json:"hours"`
 	Remark    string  `bson:"remark" json:"remark"`
 }
