@@ -4,15 +4,15 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type EmployeeMMonitorConfig struct {
 	Id                              primitive.ObjectID `bson:"_id"`
-	StartMonitoringAfterCheckInOnly bool               `bson:"startMonitoringAfterCheckInOnly"`
-	IsCheckedIn                     bool               `bson:"isCheckedIn"`
-	IsCheckedOut                    bool               `bson:"isCheckedOut"`
-	MacAddress                      string             `bson:"macAddress"`
-	UserId                          string             `bson:"UserId"`
-	Name                            string             `bson:"Name"`
-	Department                      string             `bson:"Department"`
-	Email                           string             `bson:"Email"`
-	Domain                          string             `bson:"Domain"`
+	StartMonitoringAfterCheckInOnly bool               `bson:"start_monitoring_after_check_in_only"`
+	IsCheckedIn                     bool               `bson:"is_checked_in"`
+	IsCheckedOut                    bool               `bson:"is_checked_out"`
+	MacAddress                      string             `bson:"mac_address"`
+	UserId                          string             `bson:"user_id"`
+	Name                            string             `bson:"name"`
+	Department                      string             `bson:"department"`
+	Email                           string             `bson:"email"`
+	Domain                          string             `bson:"domain"`
 }
 
 type ActivityLogEntry struct {
