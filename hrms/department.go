@@ -20,6 +20,7 @@ type Department struct {
 	ID             primitive.ObjectID `bson:"_id"`
 	OrgId          string             `bson:"org_id"`
 	OrgName        string             `bson:"org_name"`
+	BudgetId       string             `bson:"budget_id"`
 	Name           string             `bson:"name"`
 	Alias          string             `bson:"alias"`
 	Abbreviation   string             `bson:"abbreviation"`
