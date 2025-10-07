@@ -62,13 +62,6 @@ type ActivityInfo struct {
 	ProcessID    int    `bson:"process_id,omitempty"`
 }
 
-// UserActivityInfo represents user activity status
-type UserActivityInfo struct {
-	Status       string  `bson:"status"` // "Active" or "Idle"
-	IdleTime     float64 `bson:"idle_time_seconds,omitempty"`
-	LastActivity string  `bson:"last_activity,omitempty"`
-}
-
 // SystemStatusInfo represents system status information
 type SystemStatusInfo struct {
 	Message string `bson:"message"`
@@ -93,10 +86,21 @@ type LocationInfo struct {
 	Available bool      `bson:"available"`
 }
 
+// UserActivityInfo represents user activity status
+type UserActivityInfo struct {
+	Status               string  `bson:"status"` // "Active" or "Idle"
+	TotalIdleTimeToday   float64 `bson:"total_idle_time_today,omitempty"`
+	TotalActiveTimeToday float64 `bson:"total_active_time_today,omitempty"`
+	LastActivity         string  `bson:"last_activity,omitempty"`
+}
+
 // NetworkStatus represents network connectivity status
 type NetworkStatus struct {
-	IsOnline  bool   `bson:"is_online"`
-	IPAddress string `bson:"ip_address"`
+	IsOnline           bool    `bson:"is_online"`
+	SSID               string  `bson:"ssid,omitempty"`
+	TotalUpTimeToday   float64 `bson:"total_uptime_today,omitempty"`
+	TotalDownTimeToday float64 `bson:"total_downtime_today,omitempty"`
+	IPAddress          string  `bson:"ip_address"`
 }
 
 // ScreenshotInfo represents screenshot metadata
