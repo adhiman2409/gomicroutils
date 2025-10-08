@@ -164,7 +164,7 @@ const KYC_COLLECTION_MEETING_INFO = "kyc-meeting-info"
 const KYC_COLLECTION_CONTACTS = "kyc-contacts"
 const KYC_COLLECTION_DEALS = "kyc-deals"
 const KYC_COLLECTION_CONTACT_COUNTER = "kyc-contact-counter"
-const KYC_COLLECTION_DEALS_COUNTER = "kyc-company-counter"
+const KYC_COLLECTION_DEALS_COUNTER = "kyc-deals-counter"
 
 const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
 const REJOVE_COLLECTION_DOCTOR_COUNTER = "rejove-doctor-id-counter"
