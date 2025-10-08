@@ -37,6 +37,15 @@ type VendorInfo struct {
 	Tags        []string           `bson:"tags"`
 }
 
+type AssetReturnInfo struct {
+	AssetId         string          `bson:"asset_id"`
+	ReturnedBy      EmployeeSummary `bson:"returned_by"`
+	ReturnedTo      EmployeeSummary `bson:"returned_to"`
+	Remarks         []string        `bson:"remarks"`
+	ReturnDocuments []string        `bson:"return_documents"`
+	ReturnedAt      time.Time       `bson:"returned_at"`
+}
+
 type AssetInfo struct {
 	ID                               primitive.ObjectID          `bson:"_id"`
 	AssetId                          string                      `bson:"asset_id"`
@@ -83,6 +92,7 @@ type AssetInfo struct {
 	WarrantyEndDate                  time.Time                   `bson:"warranty_end_date"`
 	WarrantyProvider                 string                      `bson:"warranty_provider"`
 	AllocationInfo                   []AssetAllocationInfo       `bson:"allocation_info"`
+	AssetReturnInfo                  AssetReturnInfo             `bson:"asset_return_info"`
 	AllocationHistory                []AllocationHistory         `bson:"allocation_history"`
 	VendorInfo                       VendorInfo                  `bson:"vendor_info"`
 	CreatedAt                        time.Time                   `bson:"created_at"`
@@ -145,6 +155,7 @@ type AssetAllocationInfo struct {
 	EmployeeID          string      `bson:"employee_id"`
 	EmployeeEmail       string      `bson:"employee_email"`
 	EmployeeName        string      `bson:"employee_name"`
+	EmployeeLocation    string      `bson:"employee_location"`
 	EmployementStatus   string      `bson:"employement_status"`
 	AllocatedAt         time.Time   `bson:"allocated_at"`
 	AllocationDocuments []string    `bson:"allocation_documents"`
@@ -161,6 +172,7 @@ type AllocationHistory struct {
 	EmployeeID          string      `bson:"employee_id"`
 	EmployeeEmail       string      `bson:"employee_email"`
 	EmployeeName        string      `bson:"employee_name"`
+	EmployeeLocation    string      `bson:"employee_location"`
 	AllocatedAt         time.Time   `bson:"allocated_at"`
 	AllocationDocuments []string    `bson:"allocation_documents"`
 	AllocatedTill       time.Time   `bson:"allocated_till"`
