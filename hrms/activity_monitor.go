@@ -28,28 +28,45 @@ type MonitoringConfig struct {
 }
 
 type ActivityLogEntry struct {
-	Id               primitive.ObjectID `bson:"_id"`
-	Day              int                `bson:"day"`
-	Month            int                `bson:"month"`
-	Year             int                `bson:"year"`
-	EmployeeID       string             `bson:"employee_id"`
-	User             string             `bson:"user"`
-	Timestamp        time.Time          `bson:"timestamp"`
-	UserID           string             `bson:"user_id"`
-	MacAddress       string             `bson:"mac_address"`
-	Message          string             `bson:"message,omitempty"` // Kept for backward compatibility
-	EventType        string             `bson:"event_type"`
-	Hostname         string             `bson:"hostname"`
-	IPAddress        string             `bson:"ip_address,omitempty"`
-	SessionID        string             `bson:"session_id,omitempty"`
-	Domain           string             `bson:"domain,omitempty"`
-	ActivityInfo     ActivityInfo       `bson:"activity_info,omitempty"`
-	UserActivityInfo UserActivityInfo   `bson:"user_activity_info,omitempty"`
-	SystemStatusInfo SystemStatusInfo   `bson:"system_status_info,omitempty"`
-	USBDeviceInfo    USBDeviceInfo      `bson:"usb_device_info,omitempty"`
-	LocationInfo     LocationInfo       `bson:"location_info,omitempty"`
-	NetworkStatus    NetworkStatus      `bson:"network_status,omitempty"`
-	ScreenshotInfo   ScreenshotInfo     `bson:"screenshot_info,omitempty"`
+	Id                     primitive.ObjectID     `bson:"_id"`
+	Day                    int                    `bson:"day"`
+	Month                  int                    `bson:"month"`
+	Year                   int                    `bson:"year"`
+	EmployeeID             string                 `bson:"employee_id"`
+	User                   string                 `bson:"user"`
+	Timestamp              time.Time              `bson:"timestamp"`
+	UserID                 string                 `bson:"user_id"`
+	MacAddress             string                 `bson:"mac_address"`
+	Message                string                 `bson:"message,omitempty"` // Kept for backward compatibility
+	EventType              string                 `bson:"event_type"`
+	Hostname               string                 `bson:"hostname"`
+	IPAddress              string                 `bson:"ip_address,omitempty"`
+	SessionID              string                 `bson:"session_id,omitempty"`
+	Domain                 string                 `bson:"domain,omitempty"`
+	ActivityInfo           ActivityInfo           `bson:"activity_info,omitempty"`
+	UserActivityInfo       UserActivityInfo       `bson:"user_activity_info,omitempty"`
+	SystemStatusInfo       SystemStatusInfo       `bson:"system_status_info,omitempty"`
+	USBDeviceInfo          USBDeviceInfo          `bson:"usb_device_info,omitempty"`
+	LocationInfo           LocationInfo           `bson:"location_info,omitempty"`
+	NetworkStatus          NetworkStatus          `bson:"network_status,omitempty"`
+	ScreenshotInfo         ScreenshotInfo         `bson:"screenshot_info,omitempty"`
+	ApplicationUsageReport ApplicationUsageReport `bson:"application_usage_report,omitempty"`
+}
+
+// ApplicationUsage represents time spent on an application
+type ApplicationUsage struct {
+	AppName        string    `bson:"app_name"`
+	TimeSpent      float64   `bson:"time_spent_seconds"`       // Total time in current session
+	TimeSpentToday float64   `bson:"time_spent_today_seconds"` // Total time today
+	LastActiveTime time.Time `bson:"last_active_time"`
+	SessionCount   int       `bson:"session_count"` // Number of times app was activated
+}
+
+// ApplicationUsageReport represents a summary of application usage
+type ApplicationUsageReport struct {
+	Applications []ApplicationUsage `bson:"applications"`
+	TotalTime    float64            `bson:"total_time_seconds"`
+	TopApps      []ApplicationUsage `bson:"top_apps,omitempty"` // Top 5 apps by time
 }
 
 // ActivityInfo represents current activity information
