@@ -96,6 +96,8 @@ type USBDeviceInfo struct {
 
 // LocationInfo represents device location
 type LocationInfo struct {
+	City      string    `bson:"city"`
+	Country   string    `bson:"country"`
 	Latitude  float64   `bson:"latitude"`
 	Longitude float64   `bson:"longitude"`
 	Accuracy  float64   `bson:"accuracy"`
