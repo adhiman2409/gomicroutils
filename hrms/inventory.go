@@ -93,6 +93,7 @@ type AssetInfo struct {
 	WarrantyProvider                 string                      `bson:"warranty_provider"`
 	AllocationInfo                   []AssetAllocationInfo       `bson:"allocation_info"`
 	AssetReturnInfo                  AssetReturnInfo             `bson:"asset_return_info"`
+	AssetReturnHistory               []AssetReturnInfo           `bson:"asset_return_history"`
 	AllocationHistory                []AllocationHistory         `bson:"allocation_history"`
 	VendorInfo                       VendorInfo                  `bson:"vendor_info"`
 	CreatedAt                        time.Time                   `bson:"created_at"`
