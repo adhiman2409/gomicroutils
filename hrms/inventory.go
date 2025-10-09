@@ -38,12 +38,12 @@ type VendorInfo struct {
 }
 
 type AssetReturnInfo struct {
-	AssetId         string          `bson:"asset_id"`
-	ReturnedBy      EmployeeSummary `bson:"returned_by"`
-	ReturnedTo      EmployeeSummary `bson:"returned_to"`
-	Remarks         []string        `bson:"remarks"`
-	ReturnDocuments []string        `bson:"return_documents"`
-	ReturnedAt      time.Time       `bson:"returned_at"`
+	AssetId              string          `bson:"asset_id"`
+	ReturnEntryUpdatedBy EmployeeSummary `bson:"return_entry_updated_by"`
+	ReturnedTo           EmployeeSummary `bson:"returned_to"`
+	Remarks              []string        `bson:"remarks"`
+	ReturnDocuments      []string        `bson:"return_documents"`
+	ReturnedAt           time.Time       `bson:"returned_at"`
 }
 
 type AssetInfo struct {
