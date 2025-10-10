@@ -53,13 +53,53 @@ type ActivityLogEntry struct {
 	ApplicationUsageReport ApplicationUsageReport `bson:"application_usage_report,omitempty"`
 }
 
+type ActivityReport struct {
+	Id                         primitive.ObjectID     `bson:"_id"`
+	Day                        int                    `bson:"day"`
+	Month                      int                    `bson:"month"`
+	Year                       int                    `bson:"year"`
+	EmployeeID                 string                 `bson:"employee_id"`
+	EmployeeName               string                 `bson:"employee_name"`
+	CheckInTimeStamp           time.Time              `bson:"checkin_timestamp"`
+	CheckOutTimeStamp          time.Time              `bson:"checkout_timestamp"`
+	FirstActivityTimeStamp     time.Time              `bson:"first_activity_timestamp"`
+	LastActivityTimeStamp      time.Time              `bson:"last_activity_timestamp"`
+	TotalEvents                int                    `bson:"total_events"`
+	TotalActiveTime            float64                `bson:"total_active_time_seconds"`
+	TotalIdleTime              float64                `bson:"total_idle_time_seconds"`
+	MonitoringWindows          []MonitoringWindow     `bson:"monitoring_windows,omitempty"`
+	MonitoringWindowSizeInMins int                    `bson:"monitoring_window_size_in_mins"`
+	ApplicationUsageReport     ApplicationUsageReport `bson:"application_usage_report,omitempty"`
+}
+
+type MonitoringWindow struct {
+	Start         time.Time `bson:"start"`
+	End           time.Time `bson:"end"`
+	ActiveTime    float64   `bson:"active_time_seconds"`
+	IdleTime      float64   `bson:"idle_time_seconds"`
+	ScreenshotURL string    `bson:"screenshot_url,omitempty"`
+}
+
 // ApplicationUsage represents time spent on an application
 type ApplicationUsage struct {
-	AppName        string    `bson:"app_name"`
-	TimeSpent      float64   `bson:"time_spent_seconds"`       // Total time in current session
-	TimeSpentToday float64   `bson:"time_spent_today_seconds"` // Total time today
-	LastActiveTime time.Time `bson:"last_active_time"`
-	SessionCount   int       `bson:"session_count"` // Number of times app was activated
+	AppName        string       `bson:"app_name"`
+	TimeStamp      time.Time    `bson:"timestamp"`
+	TimeSpentToday float64      `bson:"time_spent_today_seconds"` // Total time today
+	LastActiveTime time.Time    `bson:"last_active_time"`
+	SessionCount   int          `bson:"session_count"` // Number of times app was activated
+	ActivityInfo   ActivityInfo `bson:"activity_info,omitempty"`
+}
+
+// ActivityInfo represents current activity information
+type ActivityInfo struct {
+	TimeStamp    time.Time `bson:"timestamp"`
+	TimeSpent    float64   `bson:"time_spent_seconds"` // Total time today
+	AppName      string    `bson:"app_name,omitempty"`
+	WindowTitle  string    `bson:"window_title,omitempty"`
+	DocumentName string    `bson:"document_name,omitempty"`
+	BrowserURL   string    `bson:"browser_url,omitempty"`
+	IsIncognito  bool      `bson:"is_incognito,omitempty"`
+	ProcessID    int       `bson:"process_id,omitempty"`
 }
 
 // ApplicationUsageReport represents a summary of application usage
@@ -67,16 +107,6 @@ type ApplicationUsageReport struct {
 	Applications []ApplicationUsage `bson:"applications"`
 	TotalTime    float64            `bson:"total_time_seconds"`
 	TopApps      []ApplicationUsage `bson:"top_apps,omitempty"` // Top 5 apps by time
-}
-
-// ActivityInfo represents current activity information
-type ActivityInfo struct {
-	AppName      string `bson:"app_name,omitempty"`
-	WindowTitle  string `bson:"window_title,omitempty"`
-	DocumentName string `bson:"document_name,omitempty"`
-	BrowserURL   string `bson:"browser_url,omitempty"`
-	IsIncognito  bool   `bson:"is_incognito,omitempty"`
-	ProcessID    int    `bson:"process_id,omitempty"`
 }
 
 // SystemStatusInfo represents system status information
@@ -135,24 +165,24 @@ type ScreenshotInfo struct {
 
 // ApplicationTimeBreakdown represents the percentage of time spent on each application
 type ApplicationTimeBreakdown struct {
-	AppName            string  `bson:"app_name"`
-	TimeSpent          float64 `bson:"time_spent_seconds"`
-	PercentageOfTotal  float64 `bson:"percentage_of_total"`
+	AppName           string  `bson:"app_name"`
+	TimeSpent         float64 `bson:"time_spent_seconds"`
+	PercentageOfTotal float64 `bson:"percentage_of_total"`
 }
 
 // EmployeeAnalyticsReport represents a comprehensive analytics report for an employee
 type EmployeeAnalyticsReport struct {
-	Id                       primitive.ObjectID         `bson:"_id"`
-	Day                      int                        `bson:"day"`
-	Month                    int                        `bson:"month"`
-	Year                     int                        `bson:"year"`
-	EmployeeID               string                     `bson:"employee_id"`
-	EmployeeName             string                     `bson:"employee_name"`
-	Domain                   string                     `bson:"domain"`
-	ReportTimestamp          time.Time                  `bson:"report_timestamp"`
-	TotalTime                float64                    `bson:"total_time_seconds"`              // Total time from first to last event
-	ActiveTime               float64                    `bson:"active_time_seconds"`
-	IdleTime                 float64                    `bson:"idle_time_seconds"`
-	ApplicationBreakdown     []ApplicationTimeBreakdown `bson:"application_breakdown"`
-	TotalApplicationTime     float64                    `bson:"total_application_time_seconds"`  // Sum of all app time
+	Id                   primitive.ObjectID         `bson:"_id"`
+	Day                  int                        `bson:"day"`
+	Month                int                        `bson:"month"`
+	Year                 int                        `bson:"year"`
+	EmployeeID           string                     `bson:"employee_id"`
+	EmployeeName         string                     `bson:"employee_name"`
+	Domain               string                     `bson:"domain"`
+	ReportTimestamp      time.Time                  `bson:"report_timestamp"`
+	TotalTime            float64                    `bson:"total_time_seconds"` // Total time from first to last event
+	ActiveTime           float64                    `bson:"active_time_seconds"`
+	IdleTime             float64                    `bson:"idle_time_seconds"`
+	ApplicationBreakdown []ApplicationTimeBreakdown `bson:"application_breakdown"`
+	TotalApplicationTime float64                    `bson:"total_application_time_seconds"` // Sum of all app time
 }
