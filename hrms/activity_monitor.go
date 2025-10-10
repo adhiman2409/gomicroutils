@@ -65,7 +65,9 @@ type ActivityReport struct {
 	CheckOutTimeStamp          time.Time              `bson:"checkout_timestamp"`
 	CheckOutSource             string                 `bson:"checkout_source,omitempty"`
 	FirstActivityTimeStamp     time.Time              `bson:"first_activity_timestamp"`
+	FirstActivityApplication   string                 `bson:"first_activity_application,omitempty"`
 	LastActivityTimeStamp      time.Time              `bson:"last_activity_timestamp"`
+	LastActivityApplication    string                 `bson:"last_activity_application,omitempty"`
 	TotalEvents                int                    `bson:"total_events"`
 	TotalActiveTime            float64                `bson:"total_active_time_seconds"`
 	TotalIdleTime              float64                `bson:"total_idle_time_seconds"`
