@@ -6,6 +6,22 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+// EventType constants
+const (
+	EventTypeMonitoringControl   = "monitoring_control"
+	EventTypeMonitoringSession   = "monitoring_session"
+	EventTypeApplicationActivity = "application_activity"
+	EventTypeUserActivity        = "user_activity"
+	EventTypeBrowserActivity     = "browser_activity"
+	EventTypeDocumentActivity    = "document_activity"
+	EventTypeUSBActivity         = "usb_activity"
+	EventTypeLocationUpdate      = "location_update"
+	EventTypeScreenshot          = "screenshot"
+	EventTypeSystemStatus        = "system_status"
+	EventTypeNetworkStatus       = "network_status"
+	EventTypeApplicationUsage    = "application_usage"
+)
+
 type MonitoringConfig struct {
 	Id                              primitive.ObjectID `bson:"_id"`
 	StartMonitoringAfterCheckInOnly bool               `bson:"start_monitoring_after_check_in_only"`
