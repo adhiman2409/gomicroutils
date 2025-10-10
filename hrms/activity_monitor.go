@@ -132,3 +132,27 @@ type ScreenshotInfo struct {
 	URL        string    `bson:"url,omitempty"`
 	Domain     string    `bson:"domain,omitempty"`
 }
+
+// ApplicationTimeBreakdown represents the percentage of time spent on each application
+type ApplicationTimeBreakdown struct {
+	AppName            string  `bson:"app_name"`
+	TimeSpent          float64 `bson:"time_spent_seconds"`
+	PercentageOfTotal  float64 `bson:"percentage_of_total"`
+}
+
+// EmployeeAnalyticsReport represents a comprehensive analytics report for an employee
+type EmployeeAnalyticsReport struct {
+	Id                       primitive.ObjectID         `bson:"_id"`
+	Day                      int                        `bson:"day"`
+	Month                    int                        `bson:"month"`
+	Year                     int                        `bson:"year"`
+	EmployeeID               string                     `bson:"employee_id"`
+	EmployeeName             string                     `bson:"employee_name"`
+	Domain                   string                     `bson:"domain"`
+	ReportTimestamp          time.Time                  `bson:"report_timestamp"`
+	TotalTime                float64                    `bson:"total_time_seconds"`              // Total time from first to last event
+	ActiveTime               float64                    `bson:"active_time_seconds"`
+	IdleTime                 float64                    `bson:"idle_time_seconds"`
+	ApplicationBreakdown     []ApplicationTimeBreakdown `bson:"application_breakdown"`
+	TotalApplicationTime     float64                    `bson:"total_application_time_seconds"`  // Sum of all app time
+}
