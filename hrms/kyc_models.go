@@ -25,6 +25,7 @@ type LeadInfo struct {
 	Remarks                 []LeadRemark       `bson:"remarks"`
 	Notes                   []LeadRemark       `bson:"notes"`
 	DealValue               float64            `bson:"deal_value"`
+	Priority                string             `bson:"priority,omitempty"`
 	Currency                string             `bson:"currency"`
 	DocumentLinks           []Attachment       `bson:"document_links,omitempty"`
 	AssociatedContacts      []string           `bson:"associated_contacts,omitempty"`
@@ -61,20 +62,19 @@ type CompanyInfo struct {
 	RevenueCurrency      string             `bson:"revenue_currency,omitempty"`
 	ProductsAndServices  []string           `bson:"products_and_services,omitempty"`
 	OtherOfficeLocations []string           `bson:"other_office_locations,omitempty"`
-
-	SourceOfIntroduction string       `bson:"source_of_introduction"`
-	IntroducedBy         string       `bson:"introduced_by"`
-	Tags                 []string     `bson:"tags,omitempty"`
-	Priority             string       `bson:"priority,omitempty"`
-	IsPublic             bool         `bson:"is_public,omitempty"`
-	Attachments          []Attachment `bson:"attachments,omitempty"`
-	Remarks              []string     `bson:"remarks,omitempty"`
-	Regex                string       `bson:"regex"`
-	UpcomingReminderTime time.Time    `bson:"upcoming_reminder_time,omitempty"`
-	Leads                []LeadInfo   `bson:"leads,omitempty"`
-	CreatedBy            string       `bson:"created_by"`
-	CreatedAt            time.Time    `bson:"created_at"`
-	UpdatedAt            time.Time    `bson:"updated_at"`
+	SourceOfIntroduction string             `bson:"source_of_introduction"`
+	IntroducedBy         string             `bson:"introduced_by"`
+	Tags                 []string           `bson:"tags,omitempty"`
+	Priority             string             `bson:"priority,omitempty"`
+	IsPublic             bool               `bson:"is_public,omitempty"`
+	Attachments          []Attachment       `bson:"attachments,omitempty"`
+	Remarks              []string           `bson:"remarks,omitempty"`
+	Regex                string             `bson:"regex"`
+	UpcomingReminderTime time.Time          `bson:"upcoming_reminder_time,omitempty"`
+	Leads                []LeadInfo         `bson:"leads,omitempty"`
+	CreatedBy            string             `bson:"created_by"`
+	CreatedAt            time.Time          `bson:"created_at"`
+	UpdatedAt            time.Time          `bson:"updated_at"`
 }
 
 type ContactInfo struct {
@@ -124,6 +124,7 @@ type Attachment struct {
 	Id         primitive.ObjectID `bson:"_id,omitempty"`
 	FileName   string             `bson:"file_name"`
 	FileURL    string             `bson:"file_url"`
+	CreatedBy  string             `bson:"created_by"`
 	UploadedAt time.Time          `bson:"uploaded_at"`
 }
 
