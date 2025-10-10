@@ -61,7 +61,9 @@ type ActivityReport struct {
 	EmployeeID                 string                 `bson:"employee_id"`
 	EmployeeName               string                 `bson:"employee_name"`
 	CheckInTimeStamp           time.Time              `bson:"checkin_timestamp"`
+	CheckInSource              string                 `bson:"checkin_source,omitempty"`
 	CheckOutTimeStamp          time.Time              `bson:"checkout_timestamp"`
+	CheckOutSource             string                 `bson:"checkout_source,omitempty"`
 	FirstActivityTimeStamp     time.Time              `bson:"first_activity_timestamp"`
 	LastActivityTimeStamp      time.Time              `bson:"last_activity_timestamp"`
 	TotalEvents                int                    `bson:"total_events"`
