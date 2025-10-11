@@ -6,20 +6,21 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-// EventType constants
 const (
-	EventTypeMonitoringControl   = "monitoring_control"
-	EventTypeMonitoringSession   = "monitoring_session"
-	EventTypeApplicationActivity = "application_activity"
-	EventTypeUserActivity        = "user_activity"
-	EventTypeBrowserActivity     = "browser_activity"
-	EventTypeDocumentActivity    = "document_activity"
-	EventTypeUSBActivity         = "usb_activity"
-	EventTypeLocationUpdate      = "location_update"
-	EventTypeScreenshot          = "screenshot"
-	EventTypeSystemStatus        = "system_status"
-	EventTypeNetworkStatus       = "network_status"
-	EventTypeApplicationUsage    = "application_usage"
+	EventTypeMonitoringControl      = "monitoring_control"
+	EventTypeMonitoringSession      = "monitoring_session"
+	EventTypeApplicationActivity    = "application_activity"
+	EventTypeApplicationSubActivity = "application_sub_activity"
+	EventTypeUserActivity           = "user_activity"
+	EventTypeBrowserActivity        = "browser_activity"
+	EventTypeBrowserSubActivity     = "browser_sub_activity"
+	EventTypeDocumentActivity       = "document_activity"
+	EventTypeUSBActivity            = "usb_activity"
+	EventTypeLocationUpdate         = "location_update"
+	EventTypeScreenshot             = "screenshot"
+	EventTypeSystemStatus           = "system_status"
+	EventTypeNetworkStatus          = "network_status"
+	EventTypeApplicationUsage       = "application_usage"
 )
 
 type MonitoringConfig struct {
