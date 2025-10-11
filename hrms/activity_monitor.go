@@ -111,12 +111,12 @@ type MonitoringWindow struct {
 
 // ApplicationUsage represents time spent on an application
 type ApplicationUsage struct {
-	AppName        string       `bson:"app_name"`
-	TimeStamp      time.Time    `bson:"timestamp"`
-	TimeSpentToday float64      `bson:"time_spent_today_seconds"` // Total time today
-	LastActiveTime time.Time    `bson:"last_active_time"`
-	SessionCount   int          `bson:"session_count"` // Number of times app was activated
-	ActivityInfo   ActivityInfo `bson:"activity_info,omitempty"`
+	AppName        string         `bson:"app_name"`
+	TimeStamp      time.Time      `bson:"timestamp"`
+	TimeSpentToday float64        `bson:"time_spent_today_seconds"` // Total time today
+	LastActiveTime time.Time      `bson:"last_active_time"`
+	SessionCount   int            `bson:"session_count"` // Number of times app was activated
+	ActivityInfo   []ActivityInfo `bson:"activity_info,omitempty"`
 }
 
 // ActivityInfo represents current activity information
