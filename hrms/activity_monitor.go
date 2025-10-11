@@ -88,8 +88,7 @@ type ActivityReport struct {
 	FirstActivityApplication   string             `bson:"first_activity_application,omitempty"`
 	LastActivityTimeStamp      time.Time          `bson:"last_activity_timestamp"`
 	LastActivityApplication    string             `bson:"last_activity_application,omitempty"`
-	LastSubActivityTimeStamp   time.Time          `bson:"last_sub_activity_timestamp"`
-	LastSubActivityApplication string             `bson:"last_sub_activity_application,omitempty"`
+	LastSubActivityInfo        ActivityInfo       `bson:"last_sub_activity_info,omitempty"`
 	TotalEvents                int                `bson:"total_events"`
 	TotalActiveTime            float64            `bson:"total_active_time_seconds"`
 	TotalIdleTime              float64            `bson:"total_idle_time_seconds"`
