@@ -7,6 +7,8 @@ import (
 )
 
 const (
+	EventTypeEmployeeCheckedIn      = "employee_checked_in"
+	EventTypeEmployeeCheckedOut     = "employee_checked_out"
 	EventTypeMonitoringControl      = "monitoring_control"
 	EventTypeMonitoringSession      = "monitoring_session"
 	EventTypeApplicationActivity    = "application_activity"
@@ -98,6 +100,10 @@ type MonitoringWindow struct {
 	End                             time.Time `bson:"end"`
 	ActiveTime                      float64   `bson:"active_time_seconds"`
 	IdleTime                        float64   `bson:"idle_time_seconds"`
+	IsCheckinInThisWindow           bool      `bson:"is_checkin_in_this_window"`
+	CheckinTimeStamp                time.Time `bson:"checkin_timestamp,omitempty"`
+	IsCheckoutInThisWindow          bool      `bson:"is_checkout_in_this_window"`
+	CheckoutTimeStamp               time.Time `bson:"checkout_timestamp,omitempty"`
 	IsMonitoringStartedInThisWindow bool      `bson:"is_monitoring_started_in_this_window"`
 	StartMonitoringTimeStamp        time.Time `bson:"start_monitoring_timestamp,omitempty"`
 	IsMonitoringEndedInThisWindow   bool      `bson:"is_monitoring_ended_in_this_window"`
