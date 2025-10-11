@@ -84,6 +84,7 @@ type ActivityReport struct {
 	FirstCheckInSource         string             `bson:"first_checkin_source,omitempty"`
 	LastCheckOutTimeStamp      time.Time          `bson:"last_checkout_timestamp"`
 	LastCheckOutSource         string             `bson:"last_checkout_source,omitempty"`
+	LastUserStatusInfo         UserActivityInfo   `bson:"last_user_status_info,omitempty"`
 	LastApplicationInfo        ApplicationUsage   `bson:"last_activity_info,omitempty"`
 	TotalEvents                int                `bson:"total_events"`
 	TotalActiveTime            float64            `bson:"total_active_time_seconds"`
@@ -166,10 +167,10 @@ type LocationInfo struct {
 
 // UserActivityInfo represents user activity status
 type UserActivityInfo struct {
-	Status               string  `bson:"status"` // "Active" or "Idle"
-	TotalIdleTimeToday   float64 `bson:"total_idle_time_today,omitempty"`
-	TotalActiveTimeToday float64 `bson:"total_active_time_today,omitempty"`
-	LastActivity         string  `bson:"last_activity,omitempty"`
+	Status               string    `bson:"status"` // "Active" or "Idle"
+	TimeStamp            time.Time `bson:"timestamp,omitempty"`
+	TotalIdleTimeToday   float64   `bson:"total_idle_time_today,omitempty"`
+	TotalActiveTimeToday float64   `bson:"total_active_time_today,omitempty"`
 }
 
 // NetworkStatus represents network connectivity status
