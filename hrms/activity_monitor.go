@@ -77,10 +77,10 @@ type ActivityReport struct {
 	Year                       int                    `bson:"year"`
 	EmployeeID                 string                 `bson:"employee_id"`
 	EmployeeName               string                 `bson:"employee_name"`
-	CheckInTimeStamp           time.Time              `bson:"checkin_timestamp"`
-	CheckInSource              string                 `bson:"checkin_source,omitempty"`
-	CheckOutTimeStamp          time.Time              `bson:"checkout_timestamp"`
-	CheckOutSource             string                 `bson:"checkout_source,omitempty"`
+	FirstCheckInTimeStamp      time.Time              `bson:"first_checkin_timestamp"`
+	FirstCheckInSource         string                 `bson:"first_checkin_source,omitempty"`
+	LastCheckOutTimeStamp      time.Time              `bson:"last_checkout_timestamp"`
+	LastCheckOutSource         string                 `bson:"last_checkout_source,omitempty"`
 	FirstActivityTimeStamp     time.Time              `bson:"first_activity_timestamp"`
 	FirstActivityApplication   string                 `bson:"first_activity_application,omitempty"`
 	LastActivityTimeStamp      time.Time              `bson:"last_activity_timestamp"`
@@ -94,11 +94,15 @@ type ActivityReport struct {
 }
 
 type MonitoringWindow struct {
-	Start         time.Time `bson:"start"`
-	End           time.Time `bson:"end"`
-	ActiveTime    float64   `bson:"active_time_seconds"`
-	IdleTime      float64   `bson:"idle_time_seconds"`
-	ScreenshotURL string    `bson:"screenshot_url,omitempty"`
+	Start                           time.Time `bson:"start"`
+	End                             time.Time `bson:"end"`
+	ActiveTime                      float64   `bson:"active_time_seconds"`
+	IdleTime                        float64   `bson:"idle_time_seconds"`
+	IsMonitoringStartedInThisWindow bool      `bson:"is_monitoring_started_in_this_window"`
+	StartMonitoringTimeStamp        time.Time `bson:"start_monitoring_timestamp,omitempty"`
+	IsMonitoringEndedInThisWindow   bool      `bson:"is_monitoring_ended_in_this_window"`
+	EndMonitoringTimeStamp          time.Time `bson:"end_monitoring_timestamp,omitempty"`
+	ScreenshotURL                   string    `bson:"screenshot_url,omitempty"`
 }
 
 // ApplicationUsage represents time spent on an application
