@@ -79,7 +79,6 @@ type ActivityReport struct {
 	Year                       int                `bson:"year"`
 	EmployeeID                 string             `bson:"employee_id"`
 	EmployeeName               string             `bson:"employee_name"`
-	IsCurrentlyCheckedIn       bool               `bson:"is_currently_checked_in"`
 	FirstCheckInTimeStamp      time.Time          `bson:"first_checkin_timestamp"`
 	FirstCheckInSource         string             `bson:"first_checkin_source,omitempty"`
 	LastCheckOutTimeStamp      time.Time          `bson:"last_checkout_timestamp"`
