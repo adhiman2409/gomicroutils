@@ -90,6 +90,7 @@ type ActivityReport struct {
 	LastActivityTimeStamp      time.Time          `bson:"last_activity_timestamp"`
 	LastActivityApplication    string             `bson:"last_activity_application,omitempty"`
 	LastUserStatusInfo         UserActivityInfo   `bson:"last_user_status_info,omitempty"`
+	LastNetworkStatusInfo      NetworkStatus      `bson:"last_network_status_info,omitempty"`
 	LastApplicationInfo        ApplicationUsage   `bson:"last_activity_info,omitempty"`
 	TotalEvents                int                `bson:"total_events"`
 	TotalActiveTime            float64            `bson:"total_active_time_seconds"`
@@ -112,6 +113,11 @@ type MonitoringWindow struct {
 	StartMonitoringTimeStamp        time.Time `bson:"start_monitoring_timestamp,omitempty"`
 	IsMonitoringEndedInThisWindow   bool      `bson:"is_monitoring_ended_in_this_window"`
 	EndMonitoringTimeStamp          time.Time `bson:"end_monitoring_timestamp,omitempty"`
+	City                            string    `bson:"city,omitempty"`
+	Country                         string    `bson:"country,omitempty"`
+	SSID                            string    `bson:"ssid,omitempty"`
+	NetworkUptime                   float64   `bson:"network_uptime,omitempty"`
+	NetworkDowntime                 float64   `bson:"network_downtime,omitempty"`
 	ScreenshotURL                   string    `bson:"screenshot_url,omitempty"`
 }
 
