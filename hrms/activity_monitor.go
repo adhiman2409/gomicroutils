@@ -84,6 +84,11 @@ type ActivityReport struct {
 	FirstCheckInSource         string             `bson:"first_checkin_source,omitempty"`
 	LastCheckOutTimeStamp      time.Time          `bson:"last_checkout_timestamp"`
 	LastCheckOutSource         string             `bson:"last_checkout_source,omitempty"`
+	LastLocationInfo           LocationInfo       `bson:"last_location_info,omitempty"`
+	FirstActivityTimeStamp     time.Time          `bson:"first_activity_timestamp"`
+	FirstActivityApplication   string             `bson:"first_activity_application,omitempty"`
+	LastActivityTimeStamp      time.Time          `bson:"last_activity_timestamp"`
+	LastActivityApplication    string             `bson:"last_activity_application,omitempty"`
 	LastUserStatusInfo         UserActivityInfo   `bson:"last_user_status_info,omitempty"`
 	LastApplicationInfo        ApplicationUsage   `bson:"last_activity_info,omitempty"`
 	TotalEvents                int                `bson:"total_events"`
@@ -163,6 +168,7 @@ type LocationInfo struct {
 	Accuracy  float64   `bson:"accuracy"`
 	Timestamp time.Time `bson:"timestamp"`
 	Available bool      `bson:"available"`
+	SSID      string    `bson:"ssid,omitempty"`
 }
 
 // UserActivityInfo represents user activity status
