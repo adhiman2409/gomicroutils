@@ -89,7 +89,7 @@ type ActivityReport struct {
 	LastUserStatusInfo         UserActivityInfo   `bson:"last_user_status_info,omitempty"`
 	LastScreenshotInfo         ScreenshotInfo     `bson:"last_screenshot_info,omitempty"`
 	LastNetworkStatusInfo      NetworkStatus      `bson:"last_network_status_info,omitempty"`
-	LastApplicationInfo        ApplicationUsage   `bson:"last_activity_info,omitempty"`
+	LastApplicationInfo        ApplicationUsage   `bson:"last_application_info,omitempty"`
 	TotalEvents                int                `bson:"total_events"`
 	TotalActiveTime            float64            `bson:"total_active_time_seconds"`
 	TotalIdleTime              float64            `bson:"total_idle_time_seconds"`
