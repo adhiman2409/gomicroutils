@@ -174,7 +174,6 @@ type LocationInfo struct {
 	Accuracy  float64   `bson:"accuracy"`
 	Timestamp time.Time `bson:"timestamp"`
 	Available bool      `bson:"available"`
-	SSID      string    `bson:"ssid,omitempty"`
 }
 
 // UserActivityInfo represents user activity status
@@ -187,11 +186,12 @@ type UserActivityInfo struct {
 
 // NetworkStatus represents network connectivity status
 type NetworkStatus struct {
-	IsOnline           bool    `bson:"is_online"`
-	SSID               string  `bson:"ssid,omitempty"`
-	TotalUpTimeToday   float64 `bson:"total_uptime_today,omitempty"`
-	TotalDownTimeToday float64 `bson:"total_downtime_today,omitempty"`
-	IPAddress          string  `bson:"ip_address"`
+	TimeStamp          time.Time `bson:"timestamp,omitempty"`
+	IsOnline           bool      `bson:"is_online"`
+	SSID               string    `bson:"ssid,omitempty"`
+	TotalUpTimeToday   float64   `bson:"total_uptime_today,omitempty"`
+	TotalDownTimeToday float64   `bson:"total_downtime_today,omitempty"`
+	IPAddress          string    `bson:"ip_address"`
 }
 
 // ScreenshotInfo represents screenshot metadata
