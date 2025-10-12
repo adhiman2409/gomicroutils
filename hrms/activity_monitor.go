@@ -90,6 +90,7 @@ type ActivityReport struct {
 	LastActivityTimeStamp      time.Time          `bson:"last_activity_timestamp"`
 	LastActivityApplication    string             `bson:"last_activity_application,omitempty"`
 	LastUserStatusInfo         UserActivityInfo   `bson:"last_user_status_info,omitempty"`
+	LastScreenshotInfo         ScreenshotInfo     `bson:"last_screenshot_info,omitempty"`
 	LastNetworkStatusInfo      NetworkStatus      `bson:"last_network_status_info,omitempty"`
 	LastApplicationInfo        ApplicationUsage   `bson:"last_activity_info,omitempty"`
 	TotalEvents                int                `bson:"total_events"`
