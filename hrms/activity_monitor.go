@@ -84,7 +84,7 @@ type ActivityReport struct {
 	FirstCheckInSource         string             `bson:"first_checkin_source,omitempty"`
 	LastCheckOutTimeStamp      time.Time          `bson:"last_checkout_timestamp"`
 	LastCheckOutSource         string             `bson:"last_checkout_source,omitempty"`
-	LastLocationInfo           LocationInfo       `bson:"last_location_info,omitempty"`
+	LastKnownLocation          LocationInfo       `bson:"last_known_location,omitempty"`
 	FirstActivityTimeStamp     time.Time          `bson:"first_activity_timestamp"`
 	FirstActivityApplication   string             `bson:"first_activity_application,omitempty"`
 	LastActivityTimeStamp      time.Time          `bson:"last_activity_timestamp"`
