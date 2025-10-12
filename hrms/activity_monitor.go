@@ -117,8 +117,7 @@ type MonitoringWindow struct {
 	City                            string    `bson:"city,omitempty"`
 	Country                         string    `bson:"country,omitempty"`
 	SSID                            string    `bson:"ssid,omitempty"`
-	NetworkUptime                   float64   `bson:"network_uptime,omitempty"`
-	NetworkDowntime                 float64   `bson:"network_downtime,omitempty"`
+	IPAddress                       string    `bson:"ip_address,omitempty"`
 	ScreenshotURL                   string    `bson:"screenshot_url,omitempty"`
 }
 
