@@ -2,6 +2,7 @@ package grpcclient
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/adhiman2409/gomicroutils/genproto/monitor"
 )
@@ -21,6 +22,8 @@ func (a *MonitorClient) UpdateCheckInCheckoutStatus(req EmployeeCheckInCheckOutR
 		CheckOutSource:    req.CheckOutSource,
 		Domain:            domain,
 	}
+
+	fmt.Printf("Sending gRPC request: %s\n", r.String())
 
 	res, err := a.client.UpdateCheckInCheckoutStatus(context.Background(), &r)
 	if err != nil {
