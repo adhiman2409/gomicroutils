@@ -9,13 +9,15 @@ import (
 func (a *MonitorClient) UpdateCheckInCheckoutStatus(req EmployeeCheckInCheckOutRequest, domain string) (EmployeeCheckInCheckOutResponse, error) {
 
 	r := monitor.EmployeeCheckInCheckOutRequest{
-		Day:          req.Day,
-		Month:        req.Month,
-		Year:         req.Year,
-		EmployeeId:   req.EmployeeId,
-		IsCheckedIn:  req.IsCheckedIn,
-		IsCheckedOut: req.IsCheckedOut,
-		Domain:       domain,
+		Day:               req.Day,
+		Month:             req.Month,
+		Year:              req.Year,
+		EmployeeId:        req.EmployeeId,
+		IsCheckedIn:       req.IsCheckedIn,
+		CheckInTimestamp:  req.CheckInTimestamp,
+		IsCheckedOut:      req.IsCheckedOut,
+		CheckOutTimestamp: req.CheckOutTimestamp,
+		Domain:            domain,
 	}
 
 	res, err := a.client.UpdateCheckInCheckoutStatus(context.Background(), &r)

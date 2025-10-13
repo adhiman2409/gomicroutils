@@ -10,8 +10,10 @@ message EmployeeCheckInCheckOutRequest {
   int32 year = 3; 
   string employeeId = 4;
   bool isCheckedIn = 5;
-  bool isCheckedOut = 6;
-  string domain = 7;
+  string checkInTimestamp = 6;
+  bool isCheckedOut = 7;
+  string checkOutTimestamp = 8;
+  string domain = 9;
 }
 
 message EmployeeCheckInCheckOutResponse {
