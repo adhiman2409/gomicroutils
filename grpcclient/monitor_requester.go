@@ -6,7 +6,7 @@ import (
 	"github.com/adhiman2409/gomicroutils/genproto/monitor"
 )
 
-func (a *MonitorClient) SendNotification(req EmployeeCheckInCheckOutRequest, domain string) (EmployeeCheckInCheckOutResponse, error) {
+func (a *MonitorClient) UpdateCheckInCheckoutStatus(req EmployeeCheckInCheckOutRequest, domain string) (EmployeeCheckInCheckOutResponse, error) {
 
 	r := monitor.EmployeeCheckInCheckOutRequest{
 		Day:          req.Day,
