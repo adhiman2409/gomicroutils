@@ -73,29 +73,28 @@ type ActivityLogEntry struct {
 }
 
 type ActivityReport struct {
-	Id                         primitive.ObjectID `bson:"_id"`
-	Day                        int                `bson:"day"`
-	Month                      int                `bson:"month"`
-	Year                       int                `bson:"year"`
-	EmployeeID                 string             `bson:"employee_id"`
-	EmployeeName               string             `bson:"employee_name"`
-	FirstCheckInTimeStamp      time.Time          `bson:"first_checkin_timestamp"`
-	FirstCheckInSource         string             `bson:"first_checkin_source,omitempty"`
-	LastCheckOutTimeStamp      time.Time          `bson:"last_checkout_timestamp"`
-	LastCheckOutSource         string             `bson:"last_checkout_source,omitempty"`
-	LastKnownLocation          LocationInfo       `bson:"last_known_location,omitempty"`
-	LastActivityTimeStamp      time.Time          `bson:"last_activity_timestamp"`
-	LastActivityApplication    string             `bson:"last_activity_application,omitempty"`
-	LastUserStatusInfo         UserActivityInfo   `bson:"last_user_status_info,omitempty"`
-	LastScreenshotInfo         ScreenshotInfo     `bson:"last_screenshot_info,omitempty"`
-	LastNetworkStatusInfo      NetworkStatus      `bson:"last_network_status_info,omitempty"`
-	LastApplicationInfo        ApplicationUsage   `bson:"last_application_info,omitempty"`
-	TotalEvents                int                `bson:"total_events"`
-	TotalActiveTime            float64            `bson:"total_active_time_seconds"`
-	TotalIdleTime              float64            `bson:"total_idle_time_seconds"`
-	MonitoringWindows          []MonitoringWindow `bson:"monitoring_windows,omitempty"`
-	MonitoringWindowSizeInMins int                `bson:"monitoring_window_size_in_mins"`
-	ApplicationUsages          []ApplicationUsage `bson:"application_usages,omitempty"`
+	Id                           primitive.ObjectID `bson:"_id"`
+	Day                          int                `bson:"day"`
+	Month                        int                `bson:"month"`
+	Year                         int                `bson:"year"`
+	EmployeeID                   string             `bson:"employee_id"`
+	EmployeeName                 string             `bson:"employee_name"`
+	FirstCheckInTimeStamp        time.Time          `bson:"first_checkin_timestamp"`
+	FirstCheckInSource           string             `bson:"first_checkin_source,omitempty"`
+	TotalChechInCheckoutSessions int                `bson:"total_checkin_checkout_sessions"`
+	LastCheckOutTimeStamp        time.Time          `bson:"last_checkout_timestamp"`
+	LastCheckOutSource           string             `bson:"last_checkout_source,omitempty"`
+	LastKnownLocation            LocationInfo       `bson:"last_known_location,omitempty"`
+	LastUserStatusInfo           UserActivityInfo   `bson:"last_user_status_info,omitempty"`
+	LastScreenshotInfo           ScreenshotInfo     `bson:"last_screenshot_info,omitempty"`
+	LastNetworkStatusInfo        NetworkStatus      `bson:"last_network_status_info,omitempty"`
+	LastApplicationInfo          ApplicationUsage   `bson:"last_application_info,omitempty"`
+	TotalEvents                  int                `bson:"total_events"`
+	TotalActiveTime              float64            `bson:"total_active_time_seconds"`
+	TotalIdleTime                float64            `bson:"total_idle_time_seconds"`
+	MonitoringWindows            []MonitoringWindow `bson:"monitoring_windows,omitempty"`
+	MonitoringWindowSizeInMins   int                `bson:"monitoring_window_size_in_mins"`
+	ApplicationUsages            []ApplicationUsage `bson:"application_usages,omitempty"`
 }
 
 type MonitoringWindow struct {
