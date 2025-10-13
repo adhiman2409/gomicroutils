@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package monitor;
+
+option go_package = "genproto/monitor";
+
+message EmployeeCheckInCheckOutRequest {
+  string employeeId = 1;
+  bool isCheckedIn = 2;
+  bool isCheckedOut = 3;
+  string domain = 4;
+}
+
+message EmployeeCheckInCheckOutResponse {
+  bool status = 1;
+  string message = 2;
+}
