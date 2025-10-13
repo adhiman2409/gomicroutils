@@ -31,6 +31,7 @@ type LeadInfo struct {
 	AssociatedContacts      []string           `bson:"associated_contacts,omitempty"`
 	ProbabilityToClose      int                `bson:"probability_to_close,omitempty"`
 	LeadSource              string             `bson:"lead_source,omitempty"`
+	Watchers                []string           `bson:"watchers,omitempty"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
@@ -72,29 +73,32 @@ type CompanyInfo struct {
 	Regex                string             `bson:"regex"`
 	UpcomingReminderTime time.Time          `bson:"upcoming_reminder_time,omitempty"`
 	Leads                []LeadInfo         `bson:"leads,omitempty"`
+	EditHistory          []LeadRemark       `bson:"edit_history,omitempty"`
 	CreatedBy            string             `bson:"created_by"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
 }
 
 type ContactInfo struct {
-	ContactId   string      `bson:"contact_id,omitempty"`
-	EmpId       string      `bson:"emp_id,omitempty"`
-	Name        string      `bson:"name"`
-	Email       string      `bson:"email"`
-	Mobile      string      `bson:"mobile"`
-	Designation string      `bson:"designation"`
-	Department  string      `bson:"department,omitempty"`
-	DOB         string      `bson:"dob,omitempty"`
-	Anniversary string      `bson:"anniversary,omitempty"`
-	Tags        []string    `bson:"tags,omitempty"`
-	IsActive    bool        `bson:"is_active,omitempty"`
-	Notes       string      `bson:"notes,omitempty"`
-	CompanyName string      `bson:"company_name,omitempty"`
-	CompanyId   string      `bson:"company_id,omitempty"`
-	RegexString string      `bson:"regex_string,omitempty"`
-	CompanyInfo CompanyInfo `bson:"company_info,omitempty"`
-	SocialURLs  []SocialURL `bson:"social_urls,omitempty"`
+	ContactId       string      `bson:"contact_id,omitempty"`
+	EmpId           string      `bson:"emp_id,omitempty"`
+	Name            string      `bson:"name"`
+	Email           string      `bson:"email"`
+	Mobile          string      `bson:"mobile"`
+	SecondaryEmail  string      `bson:"secondary_email"`
+	SecondaryMobile string      `bson:"secondary_mobile"`
+	Designation     string      `bson:"designation"`
+	Department      string      `bson:"department,omitempty"`
+	DOB             string      `bson:"dob,omitempty"`
+	Anniversary     string      `bson:"anniversary,omitempty"`
+	Tags            []string    `bson:"tags,omitempty"`
+	IsActive        bool        `bson:"is_active,omitempty"`
+	Notes           string      `bson:"notes,omitempty"`
+	CompanyName     string      `bson:"company_name,omitempty"`
+	CompanyId       string      `bson:"company_id,omitempty"`
+	RegexString     string      `bson:"regex_string,omitempty"`
+	CompanyInfo     CompanyInfo `bson:"company_info,omitempty"`
+	SocialURLs      []SocialURL `bson:"social_urls,omitempty"`
 }
 
 type Attendee struct {
