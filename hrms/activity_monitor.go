@@ -81,7 +81,7 @@ type ActivityReport struct {
 	EmployeeName                 string             `bson:"employee_name"`
 	FirstCheckInTimeStamp        time.Time          `bson:"first_checkin_timestamp"`
 	FirstCheckInSource           string             `bson:"first_checkin_source,omitempty"`
-	TotalChechInCheckoutSessions int                `bson:"total_checkin_checkout_sessions"`
+	TotalCheckInCheckoutSessions int                `bson:"total_checkin_checkout_sessions"`
 	LastCheckOutTimeStamp        time.Time          `bson:"last_checkout_timestamp"`
 	LastCheckOutSource           string             `bson:"last_checkout_source,omitempty"`
 	LastKnownLocation            LocationInfo       `bson:"last_known_location,omitempty"`
