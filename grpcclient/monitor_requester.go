@@ -15,8 +15,10 @@ func (a *MonitorClient) UpdateCheckInCheckoutStatus(req EmployeeCheckInCheckOutR
 		EmployeeId:        req.EmployeeId,
 		IsCheckedIn:       req.IsCheckedIn,
 		CheckInTimestamp:  req.CheckInTimestamp,
+		CheckInSource:     req.CheckInSource,
 		IsCheckedOut:      req.IsCheckedOut,
 		CheckOutTimestamp: req.CheckOutTimestamp,
+		CheckOutSource:    req.CheckOutSource,
 		Domain:            domain,
 	}
 

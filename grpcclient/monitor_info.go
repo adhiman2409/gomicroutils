@@ -7,8 +7,10 @@ type EmployeeCheckInCheckOutRequest struct {
 	EmployeeId        string `json:"employee_id"`
 	IsCheckedIn       bool   `json:"is_checked_in"`
 	CheckInTimestamp  string `json:"check_in_timestamp"`
+	CheckInSource     string `json:"check_in_source"`
 	IsCheckedOut      bool   `json:"is_checked_out"`
 	CheckOutTimestamp string `json:"check_out_timestamp"`
+	CheckOutSource    string `json:"check_out_source"`
 	Domain            string `json:"domain"`
 }
 

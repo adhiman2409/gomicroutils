@@ -29,9 +29,11 @@ type EmployeeCheckInCheckOutRequest struct {
 	EmployeeId        string                 `protobuf:"bytes,4,opt,name=employeeId,proto3" json:"employeeId,omitempty"`
 	IsCheckedIn       bool                   `protobuf:"varint,5,opt,name=isCheckedIn,proto3" json:"isCheckedIn,omitempty"`
 	CheckInTimestamp  string                 `protobuf:"bytes,6,opt,name=checkInTimestamp,proto3" json:"checkInTimestamp,omitempty"`
-	IsCheckedOut      bool                   `protobuf:"varint,7,opt,name=isCheckedOut,proto3" json:"isCheckedOut,omitempty"`
-	CheckOutTimestamp string                 `protobuf:"bytes,8,opt,name=checkOutTimestamp,proto3" json:"checkOutTimestamp,omitempty"`
-	Domain            string                 `protobuf:"bytes,9,opt,name=domain,proto3" json:"domain,omitempty"`
+	CheckInSource     string                 `protobuf:"bytes,7,opt,name=checkInSource,proto3" json:"checkInSource,omitempty"`
+	IsCheckedOut      bool                   `protobuf:"varint,8,opt,name=isCheckedOut,proto3" json:"isCheckedOut,omitempty"`
+	CheckOutTimestamp string                 `protobuf:"bytes,9,opt,name=checkOutTimestamp,proto3" json:"checkOutTimestamp,omitempty"`
+	CheckOutSource    string                 `protobuf:"bytes,10,opt,name=checkOutSource,proto3" json:"checkOutSource,omitempty"`
+	Domain            string                 `protobuf:"bytes,11,opt,name=domain,proto3" json:"domain,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -108,6 +110,13 @@ func (x *EmployeeCheckInCheckOutRequest) GetCheckInTimestamp() string {
 	return ""
 }
 
+func (x *EmployeeCheckInCheckOutRequest) GetCheckInSource() string {
+	if x != nil {
+		return x.CheckInSource
+	}
+	return ""
+}
+
 func (x *EmployeeCheckInCheckOutRequest) GetIsCheckedOut() bool {
 	if x != nil {
 		return x.IsCheckedOut
@@ -118,6 +127,13 @@ func (x *EmployeeCheckInCheckOutRequest) GetIsCheckedOut() bool {
 func (x *EmployeeCheckInCheckOutRequest) GetCheckOutTimestamp() string {
 	if x != nil {
 		return x.CheckOutTimestamp
+	}
+	return ""
+}
+
+func (x *EmployeeCheckInCheckOutRequest) GetCheckOutSource() string {
+	if x != nil {
+		return x.CheckOutSource
 	}
 	return ""
 }
@@ -185,7 +201,7 @@ var File_proto_monitor_type_update_employee_attendance_status_proto protoreflect
 
 const file_proto_monitor_type_update_employee_attendance_status_proto_rawDesc = "" +
 	"\n" +
-	":proto/monitor/type/update_employee_attendance_status.proto\x12\amonitor\"\xb4\x02\n" +
+	":proto/monitor/type/update_employee_attendance_status.proto\x12\amonitor\"\x82\x03\n" +
 	"\x1eEmployeeCheckInCheckOutRequest\x12\x10\n" +
 	"\x03day\x18\x01 \x01(\x05R\x03day\x12\x14\n" +
 	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x12\n" +
@@ -194,10 +210,13 @@ const file_proto_monitor_type_update_employee_attendance_status_proto_rawDesc = 
 	"employeeId\x18\x04 \x01(\tR\n" +
 	"employeeId\x12 \n" +
 	"\visCheckedIn\x18\x05 \x01(\bR\visCheckedIn\x12*\n" +
-	"\x10checkInTimestamp\x18\x06 \x01(\tR\x10checkInTimestamp\x12\"\n" +
-	"\fisCheckedOut\x18\a \x01(\bR\fisCheckedOut\x12,\n" +
-	"\x11checkOutTimestamp\x18\b \x01(\tR\x11checkOutTimestamp\x12\x16\n" +
-	"\x06domain\x18\t \x01(\tR\x06domain\"S\n" +
+	"\x10checkInTimestamp\x18\x06 \x01(\tR\x10checkInTimestamp\x12$\n" +
+	"\rcheckInSource\x18\a \x01(\tR\rcheckInSource\x12\"\n" +
+	"\fisCheckedOut\x18\b \x01(\bR\fisCheckedOut\x12,\n" +
+	"\x11checkOutTimestamp\x18\t \x01(\tR\x11checkOutTimestamp\x12&\n" +
+	"\x0echeckOutSource\x18\n" +
+	" \x01(\tR\x0echeckOutSource\x12\x16\n" +
+	"\x06domain\x18\v \x01(\tR\x06domain\"S\n" +
 	"\x1fEmployeeCheckInCheckOutResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\bR\x06status\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessageB\x12Z\x10genproto/monitorb\x06proto3"
