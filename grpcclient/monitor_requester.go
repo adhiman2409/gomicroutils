@@ -9,6 +9,9 @@ import (
 func (a *MonitorClient) SendNotification(req EmployeeCheckInCheckOutRequest, domain string) (EmployeeCheckInCheckOutResponse, error) {
 
 	r := monitor.EmployeeCheckInCheckOutRequest{
+		Day:          req.Day,
+		Month:        req.Month,
+		Year:         req.Year,
 		EmployeeId:   req.EmployeeId,
 		IsCheckedIn:  req.IsCheckedIn,
 		IsCheckedOut: req.IsCheckedOut,

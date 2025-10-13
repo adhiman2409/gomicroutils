@@ -23,10 +23,13 @@ const (
 
 type EmployeeCheckInCheckOutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	EmployeeId    string                 `protobuf:"bytes,1,opt,name=employeeId,proto3" json:"employeeId,omitempty"`
-	IsCheckedIn   bool                   `protobuf:"varint,2,opt,name=isCheckedIn,proto3" json:"isCheckedIn,omitempty"`
-	IsCheckedOut  bool                   `protobuf:"varint,3,opt,name=isCheckedOut,proto3" json:"isCheckedOut,omitempty"`
-	Domain        string                 `protobuf:"bytes,4,opt,name=domain,proto3" json:"domain,omitempty"`
+	Day           int32                  `protobuf:"varint,1,opt,name=day,proto3" json:"day,omitempty"`
+	Month         int32                  `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	Year          int32                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
+	EmployeeId    string                 `protobuf:"bytes,4,opt,name=employeeId,proto3" json:"employeeId,omitempty"`
+	IsCheckedIn   bool                   `protobuf:"varint,5,opt,name=isCheckedIn,proto3" json:"isCheckedIn,omitempty"`
+	IsCheckedOut  bool                   `protobuf:"varint,6,opt,name=isCheckedOut,proto3" json:"isCheckedOut,omitempty"`
+	Domain        string                 `protobuf:"bytes,7,opt,name=domain,proto3" json:"domain,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,6 +62,27 @@ func (x *EmployeeCheckInCheckOutRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use EmployeeCheckInCheckOutRequest.ProtoReflect.Descriptor instead.
 func (*EmployeeCheckInCheckOutRequest) Descriptor() ([]byte, []int) {
 	return file_proto_monitor_type_update_employee_attendance_status_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *EmployeeCheckInCheckOutRequest) GetDay() int32 {
+	if x != nil {
+		return x.Day
+	}
+	return 0
+}
+
+func (x *EmployeeCheckInCheckOutRequest) GetMonth() int32 {
+	if x != nil {
+		return x.Month
+	}
+	return 0
+}
+
+func (x *EmployeeCheckInCheckOutRequest) GetYear() int32 {
+	if x != nil {
+		return x.Year
+	}
+	return 0
 }
 
 func (x *EmployeeCheckInCheckOutRequest) GetEmployeeId() string {
@@ -145,14 +169,17 @@ var File_proto_monitor_type_update_employee_attendance_status_proto protoreflect
 
 const file_proto_monitor_type_update_employee_attendance_status_proto_rawDesc = "" +
 	"\n" +
-	":proto/monitor/type/update_employee_attendance_status.proto\x12\amonitor\"\x9e\x01\n" +
-	"\x1eEmployeeCheckInCheckOutRequest\x12\x1e\n" +
+	":proto/monitor/type/update_employee_attendance_status.proto\x12\amonitor\"\xda\x01\n" +
+	"\x1eEmployeeCheckInCheckOutRequest\x12\x10\n" +
+	"\x03day\x18\x01 \x01(\x05R\x03day\x12\x14\n" +
+	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x12\n" +
+	"\x04year\x18\x03 \x01(\x05R\x04year\x12\x1e\n" +
 	"\n" +
-	"employeeId\x18\x01 \x01(\tR\n" +
+	"employeeId\x18\x04 \x01(\tR\n" +
 	"employeeId\x12 \n" +
-	"\visCheckedIn\x18\x02 \x01(\bR\visCheckedIn\x12\"\n" +
-	"\fisCheckedOut\x18\x03 \x01(\bR\fisCheckedOut\x12\x16\n" +
-	"\x06domain\x18\x04 \x01(\tR\x06domain\"S\n" +
+	"\visCheckedIn\x18\x05 \x01(\bR\visCheckedIn\x12\"\n" +
+	"\fisCheckedOut\x18\x06 \x01(\bR\fisCheckedOut\x12\x16\n" +
+	"\x06domain\x18\a \x01(\tR\x06domain\"S\n" +
 	"\x1fEmployeeCheckInCheckOutResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\bR\x06status\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessageB\x12Z\x10genproto/monitorb\x06proto3"

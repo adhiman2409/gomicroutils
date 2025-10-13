@@ -5,10 +5,13 @@ package monitor;
 option go_package = "genproto/monitor";
 
 message EmployeeCheckInCheckOutRequest {
-  string employeeId = 1;
-  bool isCheckedIn = 2;
-  bool isCheckedOut = 3;
-  string domain = 4;
+  int32 day = 1;
+  int32 month = 2;
+  int32 year = 3; 
+  string employeeId = 4;
+  bool isCheckedIn = 5;
+  bool isCheckedOut = 6;
+  string domain = 7;
 }
 
 message EmployeeCheckInCheckOutResponse {
