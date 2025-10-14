@@ -95,6 +95,7 @@ type ActivityReport struct {
 	TotalIdleTime                float64            `bson:"total_idle_time_seconds"`
 	MonitoringWindows            []MonitoringWindow `bson:"monitoring_windows,omitempty"`
 	MonitoringWindowSizeInMins   int                `bson:"monitoring_window_size_in_mins"`
+	ActivityInfo                 []ActivityInfo     `bson:"activity_info,omitempty"`
 	ApplicationUsages            []ApplicationUsage `bson:"application_usages,omitempty"`
 }
 
