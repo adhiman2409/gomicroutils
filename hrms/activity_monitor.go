@@ -93,6 +93,7 @@ type ActivityReport struct {
 	TotalEvents                  int                `bson:"total_events"`
 	TotalActiveTime              float64            `bson:"total_active_time_seconds"`
 	TotalIdleTime                float64            `bson:"total_idle_time_seconds"`
+	TotalOfflineTime             float64            `bson:"total_offline_time_seconds"`
 	MonitoringWindows            []MonitoringWindow `bson:"monitoring_windows,omitempty"`
 	MonitoringWindowSizeInMins   int                `bson:"monitoring_window_size_in_mins"`
 	ActivityInfo                 []ActivityInfo     `bson:"activity_info,omitempty"`
