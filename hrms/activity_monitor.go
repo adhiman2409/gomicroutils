@@ -176,10 +176,11 @@ type LocationInfo struct {
 
 // UserActivityInfo represents user activity status
 type UserActivityInfo struct {
-	Status               string    `bson:"status"` // "Active" or "Idle"
-	TimeStamp            time.Time `bson:"timestamp,omitempty"`
-	TotalIdleTimeToday   float64   `bson:"total_idle_time_today,omitempty"`
-	TotalActiveTimeToday float64   `bson:"total_active_time_today,omitempty"`
+	Status                string    `bson:"status"` // "Active" or "Idle"
+	TimeStamp             time.Time `bson:"timestamp,omitempty"`
+	TotalIdleTimeToday    float64   `bson:"total_idle_time_today,omitempty"`
+	TotalActiveTimeToday  float64   `bson:"total_active_time_today,omitempty"`
+	TotalOfflineTimeToday float64   `bson:"total_offline_time_today,omitempty"`
 }
 
 // NetworkStatus represents network connectivity status
