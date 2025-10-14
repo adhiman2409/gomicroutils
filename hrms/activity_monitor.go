@@ -105,6 +105,7 @@ type MonitoringWindow struct {
 	End                             time.Time `bson:"end"`
 	ActiveTime                      float64   `bson:"active_time_seconds"`
 	IdleTime                        float64   `bson:"idle_time_seconds"`
+	OfflineTime                     float64   `bson:"offline_time_seconds"`
 	IsCheckinInThisWindow           bool      `bson:"is_checkin_in_this_window"`
 	CheckinTimeStamp                time.Time `bson:"checkin_timestamp,omitempty"`
 	IsCheckoutInThisWindow          bool      `bson:"is_checkout_in_this_window"`
