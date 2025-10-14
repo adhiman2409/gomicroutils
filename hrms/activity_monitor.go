@@ -94,10 +94,20 @@ type ActivityReport struct {
 	TotalActiveTime              float64            `bson:"total_active_time_seconds"`
 	TotalIdleTime                float64            `bson:"total_idle_time_seconds"`
 	TotalOfflineTime             float64            `bson:"total_offline_time_seconds"`
+	TotalCheckInTime             float64            `bson:"total_checkin_time_seconds"`
 	MonitoringWindows            []MonitoringWindow `bson:"monitoring_windows,omitempty"`
 	MonitoringWindowSizeInMins   int                `bson:"monitoring_window_size_in_mins"`
 	ActivityInfo                 []ActivityInfo     `bson:"activity_info,omitempty"`
 	ApplicationUsages            []ApplicationUsage `bson:"application_usages,omitempty"`
+	CheckInOutHistory            []CheckInOutInfo   `bson:"checkin_checkout_history,omitempty"`
+}
+
+type CheckInOutInfo struct {
+	CheckInTimeStamp  time.Time `bson:"checkin_timestamp"`
+	CheckInSource     string    `bson:"checkin_source,omitempty"`
+	CheckOutTimeStamp time.Time `bson:"checkout_timestamp"`
+	CheckOutSource    string    `bson:"checkout_source,omitempty"`
+	TotalDuration     float64   `bson:"total_duration_seconds"`
 }
 
 type MonitoringWindow struct {
