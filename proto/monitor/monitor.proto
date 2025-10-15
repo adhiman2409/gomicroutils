@@ -3,9 +3,11 @@ syntax = "proto3";
 package monitor;
 
 import "proto/monitor/type/update_employee_attendance_status.proto";
+import "proto/monitor/type/heartbeat.proto";
 
 option go_package = "genproto/monitor";
 
 service MonitorService {
     rpc UpdateCheckInCheckoutStatus(EmployeeCheckInCheckOutRequest) returns (EmployeeCheckInCheckOutResponse) {}
+    rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
 }

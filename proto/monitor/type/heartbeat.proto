@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package monitor;
+
+option go_package = "genproto/monitor";
+
+// HeartbeatRequest represents a heartbeat request from the client
+message HeartbeatRequest {
+    string employee_id = 1;
+    string domain = 2;
+}
+
+// HeartbeatResponse represents the server's response to a heartbeat
+message HeartbeatResponse {
+    int32 day = 1;
+    int32 month = 2;
+    int32 year = 3;
+    bool is_checked_in = 4;
+    string checkin_timestamp = 5;  // RFC3339 formatted timestamp
+    string checkin_source = 6;
+    bool is_checked_out = 7;
+    string checkout_timestamp = 8;  // RFC3339 formatted timestamp
+    string checkout_source = 9;
+    bool is_on_leave = 10;
+    bool is_holiday = 11;
+    bool is_weekly_off_day = 12;
+    bool is_attendance_fetch_error = 13;
+    string message = 14;
+}
