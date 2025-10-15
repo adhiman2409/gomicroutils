@@ -85,21 +85,21 @@ type ActivityReport struct {
 	TotalCheckInCheckoutSessions int                `bson:"total_checkin_checkout_sessions"`
 	LastCheckOutTimeStamp        time.Time          `bson:"last_checkout_timestamp"`
 	LastCheckOutSource           string             `bson:"last_checkout_source,omitempty"`
-	LastKnownLocation            LocationInfo       `bson:"last_known_location,omitempty"`
-	LastUserStatusInfo           UserActivityInfo   `bson:"last_user_status_info,omitempty"`
-	LastScreenshotInfo           ScreenshotInfo     `bson:"last_screenshot_info,omitempty"`
-	LastNetworkStatusInfo        NetworkStatus      `bson:"last_network_status_info,omitempty"`
-	LastApplicationInfo          ApplicationUsage   `bson:"last_application_info,omitempty"`
 	TotalEvents                  int                `bson:"total_events"`
 	TotalActiveTime              float64            `bson:"total_active_time_seconds"`
 	TotalIdleTime                float64            `bson:"total_idle_time_seconds"`
 	TotalOfflineTime             float64            `bson:"total_offline_time_seconds"`
 	TotalCheckInTime             float64            `bson:"total_checkin_time_seconds"`
+	TotalSessionTime             float64            `bson:"total_session_time_seconds"`
+	TotalNetworkUpTime           float64            `bson:"total_network_uptime_seconds"`
+	TotalNetworkDownTime         float64            `bson:"total_network_downtime_seconds"`
 	MonitoringWindows            []MonitoringWindow `bson:"monitoring_windows,omitempty"`
 	MonitoringWindowSizeInMins   int                `bson:"monitoring_window_size_in_mins"`
 	ActivityInfo                 []ActivityInfo     `bson:"activity_info,omitempty"`
 	ApplicationUsages            []ApplicationUsage `bson:"application_usages,omitempty"`
 	CheckInOutHistory            []CheckInOutInfo   `bson:"checkin_checkout_history,omitempty"`
+	ScreenshotInfos              []ScreenshotInfo   `bson:"screenshot_infos,omitempty"`
+	LocationInfos                []LocationInfo     `bson:"location_infos,omitempty"`
 }
 
 type CheckInOutInfo struct {
@@ -188,21 +188,25 @@ type LocationInfo struct {
 
 // UserActivityInfo represents user activity status
 type UserActivityInfo struct {
-	Status                string    `bson:"status"` // "Active" or "Idle"
-	TimeStamp             time.Time `bson:"timestamp,omitempty"`
-	TotalIdleTimeToday    float64   `bson:"total_idle_time_today,omitempty"`
-	TotalActiveTimeToday  float64   `bson:"total_active_time_today,omitempty"`
-	TotalOfflineTimeToday float64   `bson:"total_offline_time_today,omitempty"`
+	Status                 string    `bson:"status"` // "Active" or "Idle"
+	TimeStamp              time.Time `bson:"timestamp,omitempty"`
+	IdleDurationSeconds    float64   `bson:"idle_duration_seconds,omitempty"`
+	ActiveDurationSeconds  float64   `bson:"active_duration_seconds,omitempty"`
+	OfflineDurationSeconds float64   `bson:"offline_duration_seconds,omitempty"`
+	SessionDurationSeconds float64   `bson:"session_duration_seconds,omitempty"`
 }
 
 // NetworkStatus represents network connectivity status
+// UpTimeSeconds: Network uptime in the last minute (not total for the day)
+// DownTimeSeconds: Network downtime in the last minute (not total for the day)
+// SessionDurationSeconds: Time between consecutive NetworkStatus events
 type NetworkStatus struct {
-	TimeStamp          time.Time `bson:"timestamp,omitempty"`
-	IsOnline           bool      `bson:"is_online"`
-	SSID               string    `bson:"ssid,omitempty"`
-	TotalUpTimeToday   float64   `bson:"total_uptime_today,omitempty"`
-	TotalDownTimeToday float64   `bson:"total_downtime_today,omitempty"`
-	IPAddress          string    `bson:"ip_address"`
+	TimeStamp              time.Time `bson:"timestamp,omitempty"`
+	SSID                   string    `bson:"ssid,omitempty"`
+	UpTimeSeconds          float64   `bson:"uptime,omitempty"`
+	DownTimeSeconds        float64   `bson:"downtime,omitempty"`
+	SessionDurationSeconds float64   `bson:"session_duration_seconds,omitempty"`
+	IPAddress              string    `bson:"ip_address"`
 }
 
 // ScreenshotInfo represents screenshot metadata
