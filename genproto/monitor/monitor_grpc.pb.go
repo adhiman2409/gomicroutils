@@ -8,7 +8,6 @@ package monitor
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -17,7 +16,7 @@ import (
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
 // Requires gRPC-Go v1.64.0 or later.
-const _ = grpc.SupportPackageIsVersion7
+const _ = grpc.SupportPackageIsVersion9
 
 const (
 	MonitorService_UpdateCheckInCheckoutStatus_FullMethodName = "/monitor.MonitorService/UpdateCheckInCheckoutStatus"
@@ -25,6 +24,7 @@ const (
 	MonitorService_SendActivityLog_FullMethodName             = "/monitor.MonitorService/SendActivityLog"
 	MonitorService_SendActivityLogBatch_FullMethodName        = "/monitor.MonitorService/SendActivityLogBatch"
 	MonitorService_FetchMonitoringConfig_FullMethodName       = "/monitor.MonitorService/FetchMonitoringConfig"
+	MonitorService_MonitorStream_FullMethodName               = "/monitor.MonitorService/MonitorStream"
 )
 
 // MonitorServiceClient is the client API for MonitorService service.
@@ -36,6 +36,8 @@ type MonitorServiceClient interface {
 	SendActivityLog(ctx context.Context, in *ActivityLogRequest, opts ...grpc.CallOption) (*ActivityLogResponse, error)
 	SendActivityLogBatch(ctx context.Context, in *ActivityLogBatchRequest, opts ...grpc.CallOption) (*ActivityLogResponse, error)
 	FetchMonitoringConfig(ctx context.Context, in *MonitoringConfigRequest, opts ...grpc.CallOption) (*MonitoringConfigResponse, error)
+	// Bidirectional streaming for real-time commands and events
+	MonitorStream(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[ClientMessage, ServerMessage], error)
 }
 
 type monitorServiceClient struct {
@@ -96,6 +98,19 @@ func (c *monitorServiceClient) FetchMonitoringConfig(ctx context.Context, in *Mo
 	return out, nil
 }
 
+func (c *monitorServiceClient) MonitorStream(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[ClientMessage, ServerMessage], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &MonitorService_ServiceDesc.Streams[0], MonitorService_MonitorStream_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[ClientMessage, ServerMessage]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MonitorService_MonitorStreamClient = grpc.BidiStreamingClient[ClientMessage, ServerMessage]
+
 // MonitorServiceServer is the server API for MonitorService service.
 // All implementations must embed UnimplementedMonitorServiceServer
 // for forward compatibility.
@@ -105,6 +120,8 @@ type MonitorServiceServer interface {
 	SendActivityLog(context.Context, *ActivityLogRequest) (*ActivityLogResponse, error)
 	SendActivityLogBatch(context.Context, *ActivityLogBatchRequest) (*ActivityLogResponse, error)
 	FetchMonitoringConfig(context.Context, *MonitoringConfigRequest) (*MonitoringConfigResponse, error)
+	// Bidirectional streaming for real-time commands and events
+	MonitorStream(grpc.BidiStreamingServer[ClientMessage, ServerMessage]) error
 	mustEmbedUnimplementedMonitorServiceServer()
 }
 
@@ -129,6 +146,9 @@ func (UnimplementedMonitorServiceServer) SendActivityLogBatch(context.Context, *
 }
 func (UnimplementedMonitorServiceServer) FetchMonitoringConfig(context.Context, *MonitoringConfigRequest) (*MonitoringConfigResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchMonitoringConfig not implemented")
+}
+func (UnimplementedMonitorServiceServer) MonitorStream(grpc.BidiStreamingServer[ClientMessage, ServerMessage]) error {
+	return status.Errorf(codes.Unimplemented, "method MonitorStream not implemented")
 }
 func (UnimplementedMonitorServiceServer) mustEmbedUnimplementedMonitorServiceServer() {}
 func (UnimplementedMonitorServiceServer) testEmbeddedByValue()                        {}
@@ -241,6 +261,13 @@ func _MonitorService_FetchMonitoringConfig_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MonitorService_MonitorStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(MonitorServiceServer).MonitorStream(&grpc.GenericServerStream[ClientMessage, ServerMessage]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MonitorService_MonitorStreamServer = grpc.BidiStreamingServer[ClientMessage, ServerMessage]
+
 // MonitorService_ServiceDesc is the grpc.ServiceDesc for MonitorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -269,6 +296,13 @@ var MonitorService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MonitorService_FetchMonitoringConfig_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "MonitorStream",
+			Handler:       _MonitorService_MonitorStream_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "proto/monitor/monitor.proto",
 }
