@@ -6,6 +6,7 @@ import "proto/monitor/type/update_employee_attendance_status.proto";
 import "proto/monitor/type/heartbeat.proto";
 import "proto/monitor/type/activity_log.proto";
 import "proto/monitor/type/monitoring_config.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "genproto/monitor";
 
@@ -15,4 +16,89 @@ service MonitorService {
     rpc SendActivityLog(ActivityLogRequest) returns (ActivityLogResponse) {}
     rpc SendActivityLogBatch(ActivityLogBatchRequest) returns (ActivityLogResponse) {}
     rpc FetchMonitoringConfig(MonitoringConfigRequest) returns (MonitoringConfigResponse) {}
+
+    // Bidirectional streaming for real-time commands and events
+    rpc MonitorStream(stream ClientMessage) returns (stream ServerMessage) {}
+}
+
+// Client -> Server messages
+message ClientMessage {
+    oneof message {
+        ClientConnect connect = 1;
+        ClientHeartbeat heartbeat = 2;
+        ScreenshotResponse screenshot_response = 3;
+        ClientAck ack = 4;
+    }
+}
+
+message ClientConnect {
+    string user_id = 1;
+    string mac_address = 2;
+    string domain = 3;
+    string client_version = 4;
+}
+
+message ClientHeartbeat {
+    google.protobuf.Timestamp timestamp = 1;
+}
+
+message ScreenshotResponse {
+    string request_id = 1;
+    bool success = 2;
+    string screenshot_path = 3;
+    string error_message = 4;
+    bytes screenshot_data = 5; // Optional: send screenshot data directly
+}
+
+message ClientAck {
+    string message_id = 1;
+    bool success = 2;
+}
+
+// Server -> Client messages
+message ServerMessage {
+    string message_id = 1; // Unique ID for tracking acknowledgments
+    google.protobuf.Timestamp timestamp = 2;
+
+    oneof message {
+        AttendanceUpdate attendance_update = 3;
+        ScreenshotCommand screenshot_command = 4;
+        ConfigUpdate config_update = 5;
+        MonitoringCommand monitoring_command = 6;
+    }
+}
+
+message AttendanceUpdate {
+    string user_id = 1;
+    bool is_checked_in = 2;
+    bool is_checked_out = 3;
+    google.protobuf.Timestamp check_in_timestamp = 4;
+    google.protobuf.Timestamp check_out_timestamp = 5;
+    string check_in_source = 6;
+    string check_out_source = 7;
+    string message = 8;
+}
+
+message ScreenshotCommand {
+    string request_id = 1;
+    bool immediate = 2; // Take screenshot immediately
+    string reason = 3; // Optional: reason for screenshot request
+}
+
+message ConfigUpdate {
+    MonitoringConfigResponse config = 1;
+    string reason = 2;
+}
+
+message MonitoringCommand {
+    enum CommandType {
+        START_MONITORING = 0;
+        STOP_MONITORING = 1;
+        PAUSE_MONITORING = 2;
+        RESUME_MONITORING = 3;
+        FLUSH_LOGS = 4;
+        RESTART_CLIENT = 5;
+    }
+    CommandType command = 1;
+    string reason = 2;
 }
