@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package monitor;
+
+option go_package = "genproto/monitor";
+
+// MonitoringConfigRequest requests configuration for a device
+message MonitoringConfigRequest {
+    string mac_address = 1;
+    string domain = 2;
+}
+
+// MonitoringConfigResponse contains the monitoring configuration
+message MonitoringConfigResponse {
+    bool start_monitoring_after_check_in_only = 1;
+    bool is_checked_in = 2;
+    bool is_checked_out = 3;
+    string user_id = 4;
+    string mac_address = 5;
+    string name = 6;
+    string domain = 7;
+    string department = 8;
+    string email = 9;
+    bool monitoring_enabled = 10;
+    int32 idle_threshold = 11;
+    int32 screenshot_interval = 12;
+    int32 check_interval = 13;
+    int32 location_interval = 14;
+    bool track_applications = 15;
+    bool track_location = 16;
+    bool track_browser = 17;
+    bool track_documents = 18;
+    bool track_usb = 19;
+    string screenshot_path = 20;
+}

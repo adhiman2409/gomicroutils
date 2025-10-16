@@ -4,10 +4,15 @@ package monitor;
 
 import "proto/monitor/type/update_employee_attendance_status.proto";
 import "proto/monitor/type/heartbeat.proto";
+import "proto/monitor/type/activity_log.proto";
+import "proto/monitor/type/monitoring_config.proto";
 
 option go_package = "genproto/monitor";
 
 service MonitorService {
     rpc UpdateCheckInCheckoutStatus(EmployeeCheckInCheckOutRequest) returns (EmployeeCheckInCheckOutResponse) {}
     rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
+    rpc SendActivityLog(ActivityLogRequest) returns (ActivityLogResponse) {}
+    rpc SendActivityLogBatch(ActivityLogBatchRequest) returns (ActivityLogResponse) {}
+    rpc FetchMonitoringConfig(MonitoringConfigRequest) returns (MonitoringConfigResponse) {}
 }

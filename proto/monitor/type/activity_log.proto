@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+package monitor;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "genproto/monitor";
+
+// ActivityLogRequest represents a single activity log entry
+message ActivityLogRequest {
+    google.protobuf.Timestamp timestamp = 1;
+    string user_id = 2;
+    string name = 3;
+    string mac_address = 4;
+    string message = 5;
+    string event_type = 6;
+    string hostname = 7;
+    string ip_address = 8;
+    string session_id = 9;
+    string domain = 10;
+
+    // Structured event data (only one should be populated based on event_type)
+    ActivityInfo activity_info = 11;
+    UserActivityInfo user_activity_info = 12;
+    SystemStatusInfo system_status_info = 13;
+    USBDeviceInfo usb_device_info = 14;
+    LocationInfo location_info = 15;
+    NetworkStatus network_status = 16;
+    ScreenshotInfo screenshot_info = 17;
+    ApplicationUsageReport application_usage_report = 18;
+}
+
+// ActivityLogBatchRequest contains multiple activity log entries
+message ActivityLogBatchRequest {
+    repeated ActivityLogRequest entries = 1;
+}
+
+// ActivityLogResponse confirms log receipt
+message ActivityLogResponse {
+    bool success = 1;
+    string message = 2;
+    int32 entries_processed = 3;
+}
+
+// ActivityInfo represents current activity information
+message ActivityInfo {
+    google.protobuf.Timestamp timestamp = 1;
+    string app_name = 2;
+    string window_title = 3;
+    string document_name = 4;
+    string browser_url = 5;
+    bool is_incognito = 6;
+    int32 process_id = 7;
+}
+
+// UserActivityInfo represents user activity status
+message UserActivityInfo {
+    string status = 1; // "Active" or "Idle"
+    google.protobuf.Timestamp timestamp = 2;
+    double idle_duration_seconds = 3;
+    double active_duration_seconds = 4;
+    double offline_duration_seconds = 5;
+    double session_duration_seconds = 6;
+}
+
+// SystemStatusInfo represents system status information
+message SystemStatusInfo {
+    string message = 1;
+    string details = 2;
+}
+
+// USBDeviceInfo represents USB device information
+message USBDeviceInfo {
+    int32 vendor_id = 1;
+    int32 product_id = 2;
+    string vendor_name = 3;
+    string product_name = 4;
+    string action = 5; // "connected" or "disconnected"
+}
+
+// LocationInfo represents device location
+message LocationInfo {
+    string city = 1;
+    string country = 2;
+    double latitude = 3;
+    double longitude = 4;
+    double accuracy = 5;
+    google.protobuf.Timestamp timestamp = 6;
+    bool available = 7;
+}
+
+// NetworkStatus represents network connectivity status
+message NetworkStatus {
+    google.protobuf.Timestamp timestamp = 1;
+    string ssid = 2;
+    double uptime_seconds = 3;
+    double downtime_seconds = 4;
+    double session_duration_seconds = 5;
+    string ip_address = 6;
+}
+
+// ScreenshotInfo represents screenshot metadata
+message ScreenshotInfo {
+    string filename = 1;
+    google.protobuf.Timestamp timestamp = 2;
+    string mac_address = 3;
+    string user_id = 4;
+    string file_path = 5;
+    string url = 6;
+    string domain = 7;
+    string department = 8;
+}
+
+// ApplicationUsage represents time spent on an application
+message ApplicationUsage {
+    string app_name = 1;
+    double timestamp = 2;
+    double time_spent_today_seconds = 3;
+    google.protobuf.Timestamp last_active_time = 4;
+    int32 session_count = 5;
+}
+
+// ApplicationUsageReport represents a summary of application usage
+message ApplicationUsageReport {
+    repeated ApplicationUsage applications = 1;
+    double total_time_seconds = 2;
+    repeated ApplicationUsage top_apps = 3;
+}

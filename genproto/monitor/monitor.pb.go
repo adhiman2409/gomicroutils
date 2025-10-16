@@ -24,24 +24,38 @@ var File_proto_monitor_monitor_proto protoreflect.FileDescriptor
 
 const file_proto_monitor_monitor_proto_rawDesc = "" +
 	"\n" +
-	"\x1bproto/monitor/monitor.proto\x12\amonitor\x1a:proto/monitor/type/update_employee_attendance_status.proto\x1a\"proto/monitor/type/heartbeat.proto2\xca\x01\n" +
+	"\x1bproto/monitor/monitor.proto\x12\amonitor\x1a:proto/monitor/type/update_employee_attendance_status.proto\x1a\"proto/monitor/type/heartbeat.proto\x1a%proto/monitor/type/activity_log.proto\x1a*proto/monitor/type/monitoring_config.proto2\xd4\x03\n" +
 	"\x0eMonitorService\x12r\n" +
 	"\x1bUpdateCheckInCheckoutStatus\x12'.monitor.EmployeeCheckInCheckOutRequest\x1a(.monitor.EmployeeCheckInCheckOutResponse\"\x00\x12D\n" +
-	"\tHeartbeat\x12\x19.monitor.HeartbeatRequest\x1a\x1a.monitor.HeartbeatResponse\"\x00B\x12Z\x10genproto/monitorb\x06proto3"
+	"\tHeartbeat\x12\x19.monitor.HeartbeatRequest\x1a\x1a.monitor.HeartbeatResponse\"\x00\x12N\n" +
+	"\x0fSendActivityLog\x12\x1b.monitor.ActivityLogRequest\x1a\x1c.monitor.ActivityLogResponse\"\x00\x12X\n" +
+	"\x14SendActivityLogBatch\x12 .monitor.ActivityLogBatchRequest\x1a\x1c.monitor.ActivityLogResponse\"\x00\x12^\n" +
+	"\x15FetchMonitoringConfig\x12 .monitor.MonitoringConfigRequest\x1a!.monitor.MonitoringConfigResponse\"\x00B\x12Z\x10genproto/monitorb\x06proto3"
 
 var file_proto_monitor_monitor_proto_goTypes = []any{
 	(*EmployeeCheckInCheckOutRequest)(nil),  // 0: monitor.EmployeeCheckInCheckOutRequest
 	(*HeartbeatRequest)(nil),                // 1: monitor.HeartbeatRequest
-	(*EmployeeCheckInCheckOutResponse)(nil), // 2: monitor.EmployeeCheckInCheckOutResponse
-	(*HeartbeatResponse)(nil),               // 3: monitor.HeartbeatResponse
+	(*ActivityLogRequest)(nil),              // 2: monitor.ActivityLogRequest
+	(*ActivityLogBatchRequest)(nil),         // 3: monitor.ActivityLogBatchRequest
+	(*MonitoringConfigRequest)(nil),         // 4: monitor.MonitoringConfigRequest
+	(*EmployeeCheckInCheckOutResponse)(nil), // 5: monitor.EmployeeCheckInCheckOutResponse
+	(*HeartbeatResponse)(nil),               // 6: monitor.HeartbeatResponse
+	(*ActivityLogResponse)(nil),             // 7: monitor.ActivityLogResponse
+	(*MonitoringConfigResponse)(nil),        // 8: monitor.MonitoringConfigResponse
 }
 var file_proto_monitor_monitor_proto_depIdxs = []int32{
 	0, // 0: monitor.MonitorService.UpdateCheckInCheckoutStatus:input_type -> monitor.EmployeeCheckInCheckOutRequest
 	1, // 1: monitor.MonitorService.Heartbeat:input_type -> monitor.HeartbeatRequest
-	2, // 2: monitor.MonitorService.UpdateCheckInCheckoutStatus:output_type -> monitor.EmployeeCheckInCheckOutResponse
-	3, // 3: monitor.MonitorService.Heartbeat:output_type -> monitor.HeartbeatResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: monitor.MonitorService.SendActivityLog:input_type -> monitor.ActivityLogRequest
+	3, // 3: monitor.MonitorService.SendActivityLogBatch:input_type -> monitor.ActivityLogBatchRequest
+	4, // 4: monitor.MonitorService.FetchMonitoringConfig:input_type -> monitor.MonitoringConfigRequest
+	5, // 5: monitor.MonitorService.UpdateCheckInCheckoutStatus:output_type -> monitor.EmployeeCheckInCheckOutResponse
+	6, // 6: monitor.MonitorService.Heartbeat:output_type -> monitor.HeartbeatResponse
+	7, // 7: monitor.MonitorService.SendActivityLog:output_type -> monitor.ActivityLogResponse
+	7, // 8: monitor.MonitorService.SendActivityLogBatch:output_type -> monitor.ActivityLogResponse
+	8, // 9: monitor.MonitorService.FetchMonitoringConfig:output_type -> monitor.MonitoringConfigResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -54,6 +68,8 @@ func file_proto_monitor_monitor_proto_init() {
 	}
 	file_proto_monitor_type_update_employee_attendance_status_proto_init()
 	file_proto_monitor_type_heartbeat_proto_init()
+	file_proto_monitor_type_activity_log_proto_init()
+	file_proto_monitor_type_monitoring_config_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
