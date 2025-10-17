@@ -23,6 +23,8 @@ const (
 	EventTypeSystemStatus           = "system_status"
 	EventTypeNetworkStatus          = "network_status"
 	EventTypeApplicationUsage       = "application_usage"
+	EventTypeInstantScreenshot      = "instant_screenshot"
+	EventTypeInstantVideo           = "instant_video"
 )
 
 type MonitoringConfig struct {
