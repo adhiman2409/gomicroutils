@@ -1,0 +1,9 @@
+# github.com/adhiman2409/gomicroutils/genproto/monitor
+genproto/monitor/monitor_grpc.pb.go:41:68: undefined: grpc.BidiStreamingClient
+genproto/monitor/monitor_grpc.pb.go:102:98: undefined: grpc.BidiStreamingClient
+genproto/monitor/monitor_grpc.pb.go:108:13: undefined: grpc.GenericClientStream
+genproto/monitor/monitor_grpc.pb.go:113:48: undefined: grpc.BidiStreamingClient
+genproto/monitor/monitor_grpc.pb.go:125:21: undefined: grpc.BidiStreamingServer
+genproto/monitor/monitor_grpc.pb.go:151:61: undefined: grpc.BidiStreamingServer
+genproto/monitor/monitor_grpc.pb.go:266:56: undefined: grpc.GenericServerStream
+genproto/monitor/monitor_grpc.pb.go:270:48: undefined: grpc.BidiStreamingServer
