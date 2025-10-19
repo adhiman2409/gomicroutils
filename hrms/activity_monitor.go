@@ -102,6 +102,7 @@ type ActivityReport struct {
 	ApplicationUsages            []ApplicationUsage `bson:"application_usages,omitempty"`
 	CheckInOutHistory            []CheckInOutInfo   `bson:"checkin_checkout_history,omitempty"`
 	ScreenshotInfos              []ScreenshotInfo   `bson:"screenshot_infos,omitempty"`
+	VideoInfos                   []VideoInfo        `bson:"video_infos,omitempty"`
 	LocationInfos                []LocationInfo     `bson:"location_infos,omitempty"`
 }
 
