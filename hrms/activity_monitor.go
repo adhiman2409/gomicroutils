@@ -71,6 +71,7 @@ type ActivityLogEntry struct {
 	LocationInfo           LocationInfo           `bson:"location_info,omitempty"`
 	NetworkStatus          NetworkStatus          `bson:"network_status,omitempty"`
 	ScreenshotInfo         ScreenshotInfo         `bson:"screenshot_info,omitempty"`
+	VideoInfo              VideoInfo              `bson:"video_info,omitempty"`
 	ApplicationUsageReport ApplicationUsageReport `bson:"application_usage_report,omitempty"`
 }
 
@@ -220,6 +221,18 @@ type ScreenshotInfo struct {
 	FilePath   string    `bson:"file_path"`
 	URL        string    `bson:"url,omitempty"`
 	Domain     string    `bson:"domain,omitempty"`
+}
+
+// VideoInfo represents video recording metadata
+type VideoInfo struct {
+	Filename        string    `bson:"filename"`
+	Timestamp       time.Time `bson:"timestamp"`
+	MacAddress      string    `bson:"mac_address"`
+	UserID          string    `bson:"user_id"`
+	FilePath        string    `bson:"file_path"`
+	URL             string    `bson:"url,omitempty"`
+	Domain          string    `bson:"domain,omitempty"`
+	DurationSeconds int32     `bson:"duration_seconds,omitempty"`
 }
 
 // ApplicationTimeBreakdown represents the percentage of time spent on each application

@@ -28,6 +28,7 @@ message ClientMessage {
         ClientHeartbeat heartbeat = 2;
         ScreenshotResponse screenshot_response = 3;
         ClientAck ack = 4;
+        VideoCaptureResponse video_capture_response = 5;
     }
 }
 
@@ -65,6 +66,7 @@ message ServerMessage {
         ScreenshotCommand screenshot_command = 4;
         ConfigUpdate config_update = 5;
         MonitoringCommand monitoring_command = 6;
+        VideoCaptureCommand video_capture_command = 7;
     }
 }
 
@@ -83,6 +85,21 @@ message ScreenshotCommand {
     string request_id = 1;
     bool immediate = 2; // Take screenshot immediately
     string reason = 3; // Optional: reason for screenshot request
+}
+
+message VideoCaptureCommand {
+    string request_id = 1;
+    int32 duration_seconds = 2; // Duration of video recording in seconds (default: 5)
+    bool immediate = 3; // Start recording immediately
+    string reason = 4; // Optional: reason for video capture request
+}
+
+message VideoCaptureResponse {
+    string request_id = 1;
+    bool success = 2;
+    string video_path = 3;
+    string error_message = 4;
+    int32 duration_seconds = 5; // Actual duration recorded
 }
 
 message ConfigUpdate {

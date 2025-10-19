@@ -8,7 +8,6 @@ package monitor
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -17,7 +16,7 @@ import (
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
 // Requires gRPC-Go v1.64.0 or later.
-const _ = grpc.SupportPackageIsVersion8
+const _ = grpc.SupportPackageIsVersion9
 
 const (
 	MonitorService_UpdateCheckInCheckoutStatus_FullMethodName = "/monitor.MonitorService/UpdateCheckInCheckoutStatus"

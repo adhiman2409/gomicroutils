@@ -77,7 +77,7 @@ func (x MonitoringCommand_CommandType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use MonitoringCommand_CommandType.Descriptor instead.
 func (MonitoringCommand_CommandType) EnumDescriptor() ([]byte, []int) {
-	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{9, 0}
+	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{11, 0}
 }
 
 // Client -> Server messages
@@ -89,6 +89,7 @@ type ClientMessage struct {
 	//	*ClientMessage_Heartbeat
 	//	*ClientMessage_ScreenshotResponse
 	//	*ClientMessage_Ack
+	//	*ClientMessage_VideoCaptureResponse
 	Message       isClientMessage_Message `protobuf_oneof:"message"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -167,6 +168,15 @@ func (x *ClientMessage) GetAck() *ClientAck {
 	return nil
 }
 
+func (x *ClientMessage) GetVideoCaptureResponse() *VideoCaptureResponse {
+	if x != nil {
+		if x, ok := x.Message.(*ClientMessage_VideoCaptureResponse); ok {
+			return x.VideoCaptureResponse
+		}
+	}
+	return nil
+}
+
 type isClientMessage_Message interface {
 	isClientMessage_Message()
 }
@@ -187,6 +197,10 @@ type ClientMessage_Ack struct {
 	Ack *ClientAck `protobuf:"bytes,4,opt,name=ack,proto3,oneof"`
 }
 
+type ClientMessage_VideoCaptureResponse struct {
+	VideoCaptureResponse *VideoCaptureResponse `protobuf:"bytes,5,opt,name=video_capture_response,json=videoCaptureResponse,proto3,oneof"`
+}
+
 func (*ClientMessage_Connect) isClientMessage_Message() {}
 
 func (*ClientMessage_Heartbeat) isClientMessage_Message() {}
@@ -194,6 +208,8 @@ func (*ClientMessage_Heartbeat) isClientMessage_Message() {}
 func (*ClientMessage_ScreenshotResponse) isClientMessage_Message() {}
 
 func (*ClientMessage_Ack) isClientMessage_Message() {}
+
+func (*ClientMessage_VideoCaptureResponse) isClientMessage_Message() {}
 
 type ClientConnect struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -446,6 +462,7 @@ type ServerMessage struct {
 	//	*ServerMessage_ScreenshotCommand
 	//	*ServerMessage_ConfigUpdate
 	//	*ServerMessage_MonitoringCommand
+	//	*ServerMessage_VideoCaptureCommand
 	Message       isServerMessage_Message `protobuf_oneof:"message"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -538,6 +555,15 @@ func (x *ServerMessage) GetMonitoringCommand() *MonitoringCommand {
 	return nil
 }
 
+func (x *ServerMessage) GetVideoCaptureCommand() *VideoCaptureCommand {
+	if x != nil {
+		if x, ok := x.Message.(*ServerMessage_VideoCaptureCommand); ok {
+			return x.VideoCaptureCommand
+		}
+	}
+	return nil
+}
+
 type isServerMessage_Message interface {
 	isServerMessage_Message()
 }
@@ -558,6 +584,10 @@ type ServerMessage_MonitoringCommand struct {
 	MonitoringCommand *MonitoringCommand `protobuf:"bytes,6,opt,name=monitoring_command,json=monitoringCommand,proto3,oneof"`
 }
 
+type ServerMessage_VideoCaptureCommand struct {
+	VideoCaptureCommand *VideoCaptureCommand `protobuf:"bytes,7,opt,name=video_capture_command,json=videoCaptureCommand,proto3,oneof"`
+}
+
 func (*ServerMessage_AttendanceUpdate) isServerMessage_Message() {}
 
 func (*ServerMessage_ScreenshotCommand) isServerMessage_Message() {}
@@ -565,6 +595,8 @@ func (*ServerMessage_ScreenshotCommand) isServerMessage_Message() {}
 func (*ServerMessage_ConfigUpdate) isServerMessage_Message() {}
 
 func (*ServerMessage_MonitoringCommand) isServerMessage_Message() {}
+
+func (*ServerMessage_VideoCaptureCommand) isServerMessage_Message() {}
 
 type AttendanceUpdate struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
@@ -726,6 +758,150 @@ func (x *ScreenshotCommand) GetReason() string {
 	return ""
 }
 
+type VideoCaptureCommand struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	RequestId       string                 `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	DurationSeconds int32                  `protobuf:"varint,2,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"` // Duration of video recording in seconds (default: 5)
+	Immediate       bool                   `protobuf:"varint,3,opt,name=immediate,proto3" json:"immediate,omitempty"`                                    // Start recording immediately
+	Reason          string                 `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`                                           // Optional: reason for video capture request
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *VideoCaptureCommand) Reset() {
+	*x = VideoCaptureCommand{}
+	mi := &file_proto_monitor_monitor_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VideoCaptureCommand) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoCaptureCommand) ProtoMessage() {}
+
+func (x *VideoCaptureCommand) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_monitor_monitor_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoCaptureCommand.ProtoReflect.Descriptor instead.
+func (*VideoCaptureCommand) Descriptor() ([]byte, []int) {
+	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *VideoCaptureCommand) GetRequestId() string {
+	if x != nil {
+		return x.RequestId
+	}
+	return ""
+}
+
+func (x *VideoCaptureCommand) GetDurationSeconds() int32 {
+	if x != nil {
+		return x.DurationSeconds
+	}
+	return 0
+}
+
+func (x *VideoCaptureCommand) GetImmediate() bool {
+	if x != nil {
+		return x.Immediate
+	}
+	return false
+}
+
+func (x *VideoCaptureCommand) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type VideoCaptureResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	RequestId       string                 `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	Success         bool                   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
+	VideoPath       string                 `protobuf:"bytes,3,opt,name=video_path,json=videoPath,proto3" json:"video_path,omitempty"`
+	ErrorMessage    string                 `protobuf:"bytes,4,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	DurationSeconds int32                  `protobuf:"varint,5,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"` // Actual duration recorded
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *VideoCaptureResponse) Reset() {
+	*x = VideoCaptureResponse{}
+	mi := &file_proto_monitor_monitor_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VideoCaptureResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoCaptureResponse) ProtoMessage() {}
+
+func (x *VideoCaptureResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_monitor_monitor_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoCaptureResponse.ProtoReflect.Descriptor instead.
+func (*VideoCaptureResponse) Descriptor() ([]byte, []int) {
+	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *VideoCaptureResponse) GetRequestId() string {
+	if x != nil {
+		return x.RequestId
+	}
+	return ""
+}
+
+func (x *VideoCaptureResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *VideoCaptureResponse) GetVideoPath() string {
+	if x != nil {
+		return x.VideoPath
+	}
+	return ""
+}
+
+func (x *VideoCaptureResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *VideoCaptureResponse) GetDurationSeconds() int32 {
+	if x != nil {
+		return x.DurationSeconds
+	}
+	return 0
+}
+
 type ConfigUpdate struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
 	Config        *MonitoringConfigResponse `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
@@ -736,7 +912,7 @@ type ConfigUpdate struct {
 
 func (x *ConfigUpdate) Reset() {
 	*x = ConfigUpdate{}
-	mi := &file_proto_monitor_monitor_proto_msgTypes[8]
+	mi := &file_proto_monitor_monitor_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -748,7 +924,7 @@ func (x *ConfigUpdate) String() string {
 func (*ConfigUpdate) ProtoMessage() {}
 
 func (x *ConfigUpdate) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_monitor_proto_msgTypes[8]
+	mi := &file_proto_monitor_monitor_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -761,7 +937,7 @@ func (x *ConfigUpdate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigUpdate.ProtoReflect.Descriptor instead.
 func (*ConfigUpdate) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{8}
+	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ConfigUpdate) GetConfig() *MonitoringConfigResponse {
@@ -788,7 +964,7 @@ type MonitoringCommand struct {
 
 func (x *MonitoringCommand) Reset() {
 	*x = MonitoringCommand{}
-	mi := &file_proto_monitor_monitor_proto_msgTypes[9]
+	mi := &file_proto_monitor_monitor_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -800,7 +976,7 @@ func (x *MonitoringCommand) String() string {
 func (*MonitoringCommand) ProtoMessage() {}
 
 func (x *MonitoringCommand) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_monitor_proto_msgTypes[9]
+	mi := &file_proto_monitor_monitor_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -813,7 +989,7 @@ func (x *MonitoringCommand) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MonitoringCommand.ProtoReflect.Descriptor instead.
 func (*MonitoringCommand) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{9}
+	return file_proto_monitor_monitor_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *MonitoringCommand) GetCommand() MonitoringCommand_CommandType {
@@ -834,12 +1010,13 @@ var File_proto_monitor_monitor_proto protoreflect.FileDescriptor
 
 const file_proto_monitor_monitor_proto_rawDesc = "" +
 	"\n" +
-	"\x1bproto/monitor/monitor.proto\x12\amonitor\x1a:proto/monitor/type/update_employee_attendance_status.proto\x1a\"proto/monitor/type/heartbeat.proto\x1a%proto/monitor/type/activity_log.proto\x1a*proto/monitor/type/monitoring_config.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x80\x02\n" +
+	"\x1bproto/monitor/monitor.proto\x12\amonitor\x1a:proto/monitor/type/update_employee_attendance_status.proto\x1a\"proto/monitor/type/heartbeat.proto\x1a%proto/monitor/type/activity_log.proto\x1a*proto/monitor/type/monitoring_config.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd7\x02\n" +
 	"\rClientMessage\x122\n" +
 	"\aconnect\x18\x01 \x01(\v2\x16.monitor.ClientConnectH\x00R\aconnect\x128\n" +
 	"\theartbeat\x18\x02 \x01(\v2\x18.monitor.ClientHeartbeatH\x00R\theartbeat\x12N\n" +
 	"\x13screenshot_response\x18\x03 \x01(\v2\x1b.monitor.ScreenshotResponseH\x00R\x12screenshotResponse\x12&\n" +
-	"\x03ack\x18\x04 \x01(\v2\x12.monitor.ClientAckH\x00R\x03ackB\t\n" +
+	"\x03ack\x18\x04 \x01(\v2\x12.monitor.ClientAckH\x00R\x03ack\x12U\n" +
+	"\x16video_capture_response\x18\x05 \x01(\v2\x1d.monitor.VideoCaptureResponseH\x00R\x14videoCaptureResponseB\t\n" +
 	"\amessage\"\x88\x01\n" +
 	"\rClientConnect\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1f\n" +
@@ -859,7 +1036,7 @@ const file_proto_monitor_monitor_proto_rawDesc = "" +
 	"\tClientAck\x12\x1d\n" +
 	"\n" +
 	"message_id\x18\x01 \x01(\tR\tmessageId\x12\x18\n" +
-	"\asuccess\x18\x02 \x01(\bR\asuccess\"\x95\x03\n" +
+	"\asuccess\x18\x02 \x01(\bR\asuccess\"\xe9\x03\n" +
 	"\rServerMessage\x12\x1d\n" +
 	"\n" +
 	"message_id\x18\x01 \x01(\tR\tmessageId\x128\n" +
@@ -867,7 +1044,8 @@ const file_proto_monitor_monitor_proto_rawDesc = "" +
 	"\x11attendance_update\x18\x03 \x01(\v2\x19.monitor.AttendanceUpdateH\x00R\x10attendanceUpdate\x12K\n" +
 	"\x12screenshot_command\x18\x04 \x01(\v2\x1a.monitor.ScreenshotCommandH\x00R\x11screenshotCommand\x12<\n" +
 	"\rconfig_update\x18\x05 \x01(\v2\x15.monitor.ConfigUpdateH\x00R\fconfigUpdate\x12K\n" +
-	"\x12monitoring_command\x18\x06 \x01(\v2\x1a.monitor.MonitoringCommandH\x00R\x11monitoringCommandB\t\n" +
+	"\x12monitoring_command\x18\x06 \x01(\v2\x1a.monitor.MonitoringCommandH\x00R\x11monitoringCommand\x12R\n" +
+	"\x15video_capture_command\x18\a \x01(\v2\x1c.monitor.VideoCaptureCommandH\x00R\x13videoCaptureCommandB\t\n" +
 	"\amessage\"\xf7\x02\n" +
 	"\x10AttendanceUpdate\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\"\n" +
@@ -882,7 +1060,21 @@ const file_proto_monitor_monitor_proto_rawDesc = "" +
 	"\n" +
 	"request_id\x18\x01 \x01(\tR\trequestId\x12\x1c\n" +
 	"\timmediate\x18\x02 \x01(\bR\timmediate\x12\x16\n" +
-	"\x06reason\x18\x03 \x01(\tR\x06reason\"a\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\"\x95\x01\n" +
+	"\x13VideoCaptureCommand\x12\x1d\n" +
+	"\n" +
+	"request_id\x18\x01 \x01(\tR\trequestId\x12)\n" +
+	"\x10duration_seconds\x18\x02 \x01(\x05R\x0fdurationSeconds\x12\x1c\n" +
+	"\timmediate\x18\x03 \x01(\bR\timmediate\x12\x16\n" +
+	"\x06reason\x18\x04 \x01(\tR\x06reason\"\xbe\x01\n" +
+	"\x14VideoCaptureResponse\x12\x1d\n" +
+	"\n" +
+	"request_id\x18\x01 \x01(\tR\trequestId\x12\x18\n" +
+	"\asuccess\x18\x02 \x01(\bR\asuccess\x12\x1d\n" +
+	"\n" +
+	"video_path\x18\x03 \x01(\tR\tvideoPath\x12#\n" +
+	"\rerror_message\x18\x04 \x01(\tR\ferrorMessage\x12)\n" +
+	"\x10duration_seconds\x18\x05 \x01(\x05R\x0fdurationSeconds\"a\n" +
 	"\fConfigUpdate\x129\n" +
 	"\x06config\x18\x01 \x01(\v2!.monitor.MonitoringConfigResponseR\x06config\x12\x16\n" +
 	"\x06reason\x18\x02 \x01(\tR\x06reason\"\xf9\x01\n" +
@@ -918,7 +1110,7 @@ func file_proto_monitor_monitor_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_monitor_monitor_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_proto_monitor_monitor_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_proto_monitor_monitor_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_proto_monitor_monitor_proto_goTypes = []any{
 	(MonitoringCommand_CommandType)(0),      // 0: monitor.MonitoringCommand.CommandType
 	(*ClientMessage)(nil),                   // 1: monitor.ClientMessage
@@ -929,51 +1121,55 @@ var file_proto_monitor_monitor_proto_goTypes = []any{
 	(*ServerMessage)(nil),                   // 6: monitor.ServerMessage
 	(*AttendanceUpdate)(nil),                // 7: monitor.AttendanceUpdate
 	(*ScreenshotCommand)(nil),               // 8: monitor.ScreenshotCommand
-	(*ConfigUpdate)(nil),                    // 9: monitor.ConfigUpdate
-	(*MonitoringCommand)(nil),               // 10: monitor.MonitoringCommand
-	(*timestamppb.Timestamp)(nil),           // 11: google.protobuf.Timestamp
-	(*MonitoringConfigResponse)(nil),        // 12: monitor.MonitoringConfigResponse
-	(*EmployeeCheckInCheckOutRequest)(nil),  // 13: monitor.EmployeeCheckInCheckOutRequest
-	(*HeartbeatRequest)(nil),                // 14: monitor.HeartbeatRequest
-	(*ActivityLogRequest)(nil),              // 15: monitor.ActivityLogRequest
-	(*ActivityLogBatchRequest)(nil),         // 16: monitor.ActivityLogBatchRequest
-	(*MonitoringConfigRequest)(nil),         // 17: monitor.MonitoringConfigRequest
-	(*EmployeeCheckInCheckOutResponse)(nil), // 18: monitor.EmployeeCheckInCheckOutResponse
-	(*HeartbeatResponse)(nil),               // 19: monitor.HeartbeatResponse
-	(*ActivityLogResponse)(nil),             // 20: monitor.ActivityLogResponse
+	(*VideoCaptureCommand)(nil),             // 9: monitor.VideoCaptureCommand
+	(*VideoCaptureResponse)(nil),            // 10: monitor.VideoCaptureResponse
+	(*ConfigUpdate)(nil),                    // 11: monitor.ConfigUpdate
+	(*MonitoringCommand)(nil),               // 12: monitor.MonitoringCommand
+	(*timestamppb.Timestamp)(nil),           // 13: google.protobuf.Timestamp
+	(*MonitoringConfigResponse)(nil),        // 14: monitor.MonitoringConfigResponse
+	(*EmployeeCheckInCheckOutRequest)(nil),  // 15: monitor.EmployeeCheckInCheckOutRequest
+	(*HeartbeatRequest)(nil),                // 16: monitor.HeartbeatRequest
+	(*ActivityLogRequest)(nil),              // 17: monitor.ActivityLogRequest
+	(*ActivityLogBatchRequest)(nil),         // 18: monitor.ActivityLogBatchRequest
+	(*MonitoringConfigRequest)(nil),         // 19: monitor.MonitoringConfigRequest
+	(*EmployeeCheckInCheckOutResponse)(nil), // 20: monitor.EmployeeCheckInCheckOutResponse
+	(*HeartbeatResponse)(nil),               // 21: monitor.HeartbeatResponse
+	(*ActivityLogResponse)(nil),             // 22: monitor.ActivityLogResponse
 }
 var file_proto_monitor_monitor_proto_depIdxs = []int32{
 	2,  // 0: monitor.ClientMessage.connect:type_name -> monitor.ClientConnect
 	3,  // 1: monitor.ClientMessage.heartbeat:type_name -> monitor.ClientHeartbeat
 	4,  // 2: monitor.ClientMessage.screenshot_response:type_name -> monitor.ScreenshotResponse
 	5,  // 3: monitor.ClientMessage.ack:type_name -> monitor.ClientAck
-	11, // 4: monitor.ClientHeartbeat.timestamp:type_name -> google.protobuf.Timestamp
-	11, // 5: monitor.ServerMessage.timestamp:type_name -> google.protobuf.Timestamp
-	7,  // 6: monitor.ServerMessage.attendance_update:type_name -> monitor.AttendanceUpdate
-	8,  // 7: monitor.ServerMessage.screenshot_command:type_name -> monitor.ScreenshotCommand
-	9,  // 8: monitor.ServerMessage.config_update:type_name -> monitor.ConfigUpdate
-	10, // 9: monitor.ServerMessage.monitoring_command:type_name -> monitor.MonitoringCommand
-	11, // 10: monitor.AttendanceUpdate.check_in_timestamp:type_name -> google.protobuf.Timestamp
-	11, // 11: monitor.AttendanceUpdate.check_out_timestamp:type_name -> google.protobuf.Timestamp
-	12, // 12: monitor.ConfigUpdate.config:type_name -> monitor.MonitoringConfigResponse
-	0,  // 13: monitor.MonitoringCommand.command:type_name -> monitor.MonitoringCommand.CommandType
-	13, // 14: monitor.MonitorService.UpdateCheckInCheckoutStatus:input_type -> monitor.EmployeeCheckInCheckOutRequest
-	14, // 15: monitor.MonitorService.Heartbeat:input_type -> monitor.HeartbeatRequest
-	15, // 16: monitor.MonitorService.SendActivityLog:input_type -> monitor.ActivityLogRequest
-	16, // 17: monitor.MonitorService.SendActivityLogBatch:input_type -> monitor.ActivityLogBatchRequest
-	17, // 18: monitor.MonitorService.FetchMonitoringConfig:input_type -> monitor.MonitoringConfigRequest
-	1,  // 19: monitor.MonitorService.MonitorStream:input_type -> monitor.ClientMessage
-	18, // 20: monitor.MonitorService.UpdateCheckInCheckoutStatus:output_type -> monitor.EmployeeCheckInCheckOutResponse
-	19, // 21: monitor.MonitorService.Heartbeat:output_type -> monitor.HeartbeatResponse
-	20, // 22: monitor.MonitorService.SendActivityLog:output_type -> monitor.ActivityLogResponse
-	20, // 23: monitor.MonitorService.SendActivityLogBatch:output_type -> monitor.ActivityLogResponse
-	12, // 24: monitor.MonitorService.FetchMonitoringConfig:output_type -> monitor.MonitoringConfigResponse
-	6,  // 25: monitor.MonitorService.MonitorStream:output_type -> monitor.ServerMessage
-	20, // [20:26] is the sub-list for method output_type
-	14, // [14:20] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	10, // 4: monitor.ClientMessage.video_capture_response:type_name -> monitor.VideoCaptureResponse
+	13, // 5: monitor.ClientHeartbeat.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 6: monitor.ServerMessage.timestamp:type_name -> google.protobuf.Timestamp
+	7,  // 7: monitor.ServerMessage.attendance_update:type_name -> monitor.AttendanceUpdate
+	8,  // 8: monitor.ServerMessage.screenshot_command:type_name -> monitor.ScreenshotCommand
+	11, // 9: monitor.ServerMessage.config_update:type_name -> monitor.ConfigUpdate
+	12, // 10: monitor.ServerMessage.monitoring_command:type_name -> monitor.MonitoringCommand
+	9,  // 11: monitor.ServerMessage.video_capture_command:type_name -> monitor.VideoCaptureCommand
+	13, // 12: monitor.AttendanceUpdate.check_in_timestamp:type_name -> google.protobuf.Timestamp
+	13, // 13: monitor.AttendanceUpdate.check_out_timestamp:type_name -> google.protobuf.Timestamp
+	14, // 14: monitor.ConfigUpdate.config:type_name -> monitor.MonitoringConfigResponse
+	0,  // 15: monitor.MonitoringCommand.command:type_name -> monitor.MonitoringCommand.CommandType
+	15, // 16: monitor.MonitorService.UpdateCheckInCheckoutStatus:input_type -> monitor.EmployeeCheckInCheckOutRequest
+	16, // 17: monitor.MonitorService.Heartbeat:input_type -> monitor.HeartbeatRequest
+	17, // 18: monitor.MonitorService.SendActivityLog:input_type -> monitor.ActivityLogRequest
+	18, // 19: monitor.MonitorService.SendActivityLogBatch:input_type -> monitor.ActivityLogBatchRequest
+	19, // 20: monitor.MonitorService.FetchMonitoringConfig:input_type -> monitor.MonitoringConfigRequest
+	1,  // 21: monitor.MonitorService.MonitorStream:input_type -> monitor.ClientMessage
+	20, // 22: monitor.MonitorService.UpdateCheckInCheckoutStatus:output_type -> monitor.EmployeeCheckInCheckOutResponse
+	21, // 23: monitor.MonitorService.Heartbeat:output_type -> monitor.HeartbeatResponse
+	22, // 24: monitor.MonitorService.SendActivityLog:output_type -> monitor.ActivityLogResponse
+	22, // 25: monitor.MonitorService.SendActivityLogBatch:output_type -> monitor.ActivityLogResponse
+	14, // 26: monitor.MonitorService.FetchMonitoringConfig:output_type -> monitor.MonitoringConfigResponse
+	6,  // 27: monitor.MonitorService.MonitorStream:output_type -> monitor.ServerMessage
+	22, // [22:28] is the sub-list for method output_type
+	16, // [16:22] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_proto_monitor_monitor_proto_init() }
@@ -990,12 +1186,14 @@ func file_proto_monitor_monitor_proto_init() {
 		(*ClientMessage_Heartbeat)(nil),
 		(*ClientMessage_ScreenshotResponse)(nil),
 		(*ClientMessage_Ack)(nil),
+		(*ClientMessage_VideoCaptureResponse)(nil),
 	}
 	file_proto_monitor_monitor_proto_msgTypes[5].OneofWrappers = []any{
 		(*ServerMessage_AttendanceUpdate)(nil),
 		(*ServerMessage_ScreenshotCommand)(nil),
 		(*ServerMessage_ConfigUpdate)(nil),
 		(*ServerMessage_MonitoringCommand)(nil),
+		(*ServerMessage_VideoCaptureCommand)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1003,7 +1201,7 @@ func file_proto_monitor_monitor_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_monitor_monitor_proto_rawDesc), len(file_proto_monitor_monitor_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
