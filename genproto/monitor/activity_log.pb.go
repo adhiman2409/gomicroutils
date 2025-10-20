@@ -43,7 +43,8 @@ type ActivityLogRequest struct {
 	LocationInfo           *LocationInfo           `protobuf:"bytes,15,opt,name=location_info,json=locationInfo,proto3" json:"location_info,omitempty"`
 	NetworkStatus          *NetworkStatus          `protobuf:"bytes,16,opt,name=network_status,json=networkStatus,proto3" json:"network_status,omitempty"`
 	ScreenshotInfo         *ScreenshotInfo         `protobuf:"bytes,17,opt,name=screenshot_info,json=screenshotInfo,proto3" json:"screenshot_info,omitempty"`
-	ApplicationUsageReport *ApplicationUsageReport `protobuf:"bytes,18,opt,name=application_usage_report,json=applicationUsageReport,proto3" json:"application_usage_report,omitempty"`
+	VideoInfo              *VideoInfo              `protobuf:"bytes,18,opt,name=video_info,json=videoInfo,proto3" json:"video_info,omitempty"`
+	ApplicationUsageReport *ApplicationUsageReport `protobuf:"bytes,19,opt,name=application_usage_report,json=applicationUsageReport,proto3" json:"application_usage_report,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -193,6 +194,13 @@ func (x *ActivityLogRequest) GetNetworkStatus() *NetworkStatus {
 func (x *ActivityLogRequest) GetScreenshotInfo() *ScreenshotInfo {
 	if x != nil {
 		return x.ScreenshotInfo
+	}
+	return nil
+}
+
+func (x *ActivityLogRequest) GetVideoInfo() *VideoInfo {
+	if x != nil {
+		return x.VideoInfo
 	}
 	return nil
 }
@@ -897,6 +905,114 @@ func (x *ScreenshotInfo) GetDepartment() string {
 	return ""
 }
 
+type VideoInfo struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Filename        string                 `protobuf:"bytes,1,opt,name=filename,proto3" json:"filename,omitempty"`
+	Timestamp       *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	MacAddress      string                 `protobuf:"bytes,3,opt,name=mac_address,json=macAddress,proto3" json:"mac_address,omitempty"`
+	UserId          string                 `protobuf:"bytes,4,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	FilePath        string                 `protobuf:"bytes,5,opt,name=file_path,json=filePath,proto3" json:"file_path,omitempty"`
+	Url             string                 `protobuf:"bytes,6,opt,name=url,proto3" json:"url,omitempty"`
+	Domain          string                 `protobuf:"bytes,7,opt,name=domain,proto3" json:"domain,omitempty"`
+	Department      string                 `protobuf:"bytes,8,opt,name=department,proto3" json:"department,omitempty"`
+	DurationSeconds int32                  `protobuf:"varint,9,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *VideoInfo) Reset() {
+	*x = VideoInfo{}
+	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VideoInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VideoInfo) ProtoMessage() {}
+
+func (x *VideoInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VideoInfo.ProtoReflect.Descriptor instead.
+func (*VideoInfo) Descriptor() ([]byte, []int) {
+	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *VideoInfo) GetFilename() string {
+	if x != nil {
+		return x.Filename
+	}
+	return ""
+}
+
+func (x *VideoInfo) GetTimestamp() *timestamppb.Timestamp {
+	if x != nil {
+		return x.Timestamp
+	}
+	return nil
+}
+
+func (x *VideoInfo) GetMacAddress() string {
+	if x != nil {
+		return x.MacAddress
+	}
+	return ""
+}
+
+func (x *VideoInfo) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *VideoInfo) GetFilePath() string {
+	if x != nil {
+		return x.FilePath
+	}
+	return ""
+}
+
+func (x *VideoInfo) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+func (x *VideoInfo) GetDomain() string {
+	if x != nil {
+		return x.Domain
+	}
+	return ""
+}
+
+func (x *VideoInfo) GetDepartment() string {
+	if x != nil {
+		return x.Department
+	}
+	return ""
+}
+
+func (x *VideoInfo) GetDurationSeconds() int32 {
+	if x != nil {
+		return x.DurationSeconds
+	}
+	return 0
+}
+
 // ApplicationUsage represents time spent on an application
 type ApplicationUsage struct {
 	state                 protoimpl.MessageState `protogen:"open.v1"`
@@ -911,7 +1027,7 @@ type ApplicationUsage struct {
 
 func (x *ApplicationUsage) Reset() {
 	*x = ApplicationUsage{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[10]
+	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -923,7 +1039,7 @@ func (x *ApplicationUsage) String() string {
 func (*ApplicationUsage) ProtoMessage() {}
 
 func (x *ApplicationUsage) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[10]
+	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -936,7 +1052,7 @@ func (x *ApplicationUsage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplicationUsage.ProtoReflect.Descriptor instead.
 func (*ApplicationUsage) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{10}
+	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ApplicationUsage) GetAppName() string {
@@ -986,7 +1102,7 @@ type ApplicationUsageReport struct {
 
 func (x *ApplicationUsageReport) Reset() {
 	*x = ApplicationUsageReport{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[11]
+	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -998,7 +1114,7 @@ func (x *ApplicationUsageReport) String() string {
 func (*ApplicationUsageReport) ProtoMessage() {}
 
 func (x *ApplicationUsageReport) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[11]
+	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1011,7 +1127,7 @@ func (x *ApplicationUsageReport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplicationUsageReport.ProtoReflect.Descriptor instead.
 func (*ApplicationUsageReport) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{11}
+	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ApplicationUsageReport) GetApplications() []*ApplicationUsage {
@@ -1039,7 +1155,7 @@ var File_proto_monitor_type_activity_log_proto protoreflect.FileDescriptor
 
 const file_proto_monitor_type_activity_log_proto_rawDesc = "" +
 	"\n" +
-	"%proto/monitor/type/activity_log.proto\x12\amonitor\x1a\x1fgoogle/protobuf/timestamp.proto\"\xed\x06\n" +
+	"%proto/monitor/type/activity_log.proto\x12\amonitor\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\a\n" +
 	"\x12ActivityLogRequest\x128\n" +
 	"\ttimestamp\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
@@ -1062,8 +1178,10 @@ const file_proto_monitor_type_activity_log_proto_rawDesc = "" +
 	"\x0fusb_device_info\x18\x0e \x01(\v2\x16.monitor.USBDeviceInfoR\rusbDeviceInfo\x12:\n" +
 	"\rlocation_info\x18\x0f \x01(\v2\x15.monitor.LocationInfoR\flocationInfo\x12=\n" +
 	"\x0enetwork_status\x18\x10 \x01(\v2\x16.monitor.NetworkStatusR\rnetworkStatus\x12@\n" +
-	"\x0fscreenshot_info\x18\x11 \x01(\v2\x17.monitor.ScreenshotInfoR\x0escreenshotInfo\x12Y\n" +
-	"\x18application_usage_report\x18\x12 \x01(\v2\x1f.monitor.ApplicationUsageReportR\x16applicationUsageReport\"P\n" +
+	"\x0fscreenshot_info\x18\x11 \x01(\v2\x17.monitor.ScreenshotInfoR\x0escreenshotInfo\x121\n" +
+	"\n" +
+	"video_info\x18\x12 \x01(\v2\x12.monitor.VideoInfoR\tvideoInfo\x12Y\n" +
+	"\x18application_usage_report\x18\x13 \x01(\v2\x1f.monitor.ApplicationUsageReportR\x16applicationUsageReport\"P\n" +
 	"\x17ActivityLogBatchRequest\x125\n" +
 	"\aentries\x18\x01 \x03(\v2\x1b.monitor.ActivityLogRequestR\aentries\"v\n" +
 	"\x13ActivityLogResponse\x12\x18\n" +
@@ -1125,7 +1243,20 @@ const file_proto_monitor_type_activity_log_proto_rawDesc = "" +
 	"\x06domain\x18\a \x01(\tR\x06domain\x12\x1e\n" +
 	"\n" +
 	"department\x18\b \x01(\tR\n" +
-	"department\"\xef\x01\n" +
+	"department\"\xad\x02\n" +
+	"\tVideoInfo\x12\x1a\n" +
+	"\bfilename\x18\x01 \x01(\tR\bfilename\x128\n" +
+	"\ttimestamp\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x1f\n" +
+	"\vmac_address\x18\x03 \x01(\tR\n" +
+	"macAddress\x12\x17\n" +
+	"\auser_id\x18\x04 \x01(\tR\x06userId\x12\x1b\n" +
+	"\tfile_path\x18\x05 \x01(\tR\bfilePath\x12\x10\n" +
+	"\x03url\x18\x06 \x01(\tR\x03url\x12\x16\n" +
+	"\x06domain\x18\a \x01(\tR\x06domain\x12\x1e\n" +
+	"\n" +
+	"department\x18\b \x01(\tR\n" +
+	"department\x12)\n" +
+	"\x10duration_seconds\x18\t \x01(\x05R\x0fdurationSeconds\"\xef\x01\n" +
 	"\x10ApplicationUsage\x12\x19\n" +
 	"\bapp_name\x18\x01 \x01(\tR\aappName\x12\x1c\n" +
 	"\ttimestamp\x18\x02 \x01(\x01R\ttimestamp\x127\n" +
@@ -1149,7 +1280,7 @@ func file_proto_monitor_type_activity_log_proto_rawDescGZIP() []byte {
 	return file_proto_monitor_type_activity_log_proto_rawDescData
 }
 
-var file_proto_monitor_type_activity_log_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_proto_monitor_type_activity_log_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_proto_monitor_type_activity_log_proto_goTypes = []any{
 	(*ActivityLogRequest)(nil),      // 0: monitor.ActivityLogRequest
 	(*ActivityLogBatchRequest)(nil), // 1: monitor.ActivityLogBatchRequest
@@ -1161,12 +1292,13 @@ var file_proto_monitor_type_activity_log_proto_goTypes = []any{
 	(*LocationInfo)(nil),            // 7: monitor.LocationInfo
 	(*NetworkStatus)(nil),           // 8: monitor.NetworkStatus
 	(*ScreenshotInfo)(nil),          // 9: monitor.ScreenshotInfo
-	(*ApplicationUsage)(nil),        // 10: monitor.ApplicationUsage
-	(*ApplicationUsageReport)(nil),  // 11: monitor.ApplicationUsageReport
-	(*timestamppb.Timestamp)(nil),   // 12: google.protobuf.Timestamp
+	(*VideoInfo)(nil),               // 10: monitor.VideoInfo
+	(*ApplicationUsage)(nil),        // 11: monitor.ApplicationUsage
+	(*ApplicationUsageReport)(nil),  // 12: monitor.ApplicationUsageReport
+	(*timestamppb.Timestamp)(nil),   // 13: google.protobuf.Timestamp
 }
 var file_proto_monitor_type_activity_log_proto_depIdxs = []int32{
-	12, // 0: monitor.ActivityLogRequest.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 0: monitor.ActivityLogRequest.timestamp:type_name -> google.protobuf.Timestamp
 	3,  // 1: monitor.ActivityLogRequest.activity_info:type_name -> monitor.ActivityInfo
 	4,  // 2: monitor.ActivityLogRequest.user_activity_info:type_name -> monitor.UserActivityInfo
 	5,  // 3: monitor.ActivityLogRequest.system_status_info:type_name -> monitor.SystemStatusInfo
@@ -1174,21 +1306,23 @@ var file_proto_monitor_type_activity_log_proto_depIdxs = []int32{
 	7,  // 5: monitor.ActivityLogRequest.location_info:type_name -> monitor.LocationInfo
 	8,  // 6: monitor.ActivityLogRequest.network_status:type_name -> monitor.NetworkStatus
 	9,  // 7: monitor.ActivityLogRequest.screenshot_info:type_name -> monitor.ScreenshotInfo
-	11, // 8: monitor.ActivityLogRequest.application_usage_report:type_name -> monitor.ApplicationUsageReport
-	0,  // 9: monitor.ActivityLogBatchRequest.entries:type_name -> monitor.ActivityLogRequest
-	12, // 10: monitor.ActivityInfo.timestamp:type_name -> google.protobuf.Timestamp
-	12, // 11: monitor.UserActivityInfo.timestamp:type_name -> google.protobuf.Timestamp
-	12, // 12: monitor.LocationInfo.timestamp:type_name -> google.protobuf.Timestamp
-	12, // 13: monitor.NetworkStatus.timestamp:type_name -> google.protobuf.Timestamp
-	12, // 14: monitor.ScreenshotInfo.timestamp:type_name -> google.protobuf.Timestamp
-	12, // 15: monitor.ApplicationUsage.last_active_time:type_name -> google.protobuf.Timestamp
-	10, // 16: monitor.ApplicationUsageReport.applications:type_name -> monitor.ApplicationUsage
-	10, // 17: monitor.ApplicationUsageReport.top_apps:type_name -> monitor.ApplicationUsage
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	10, // 8: monitor.ActivityLogRequest.video_info:type_name -> monitor.VideoInfo
+	12, // 9: monitor.ActivityLogRequest.application_usage_report:type_name -> monitor.ApplicationUsageReport
+	0,  // 10: monitor.ActivityLogBatchRequest.entries:type_name -> monitor.ActivityLogRequest
+	13, // 11: monitor.ActivityInfo.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 12: monitor.UserActivityInfo.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 13: monitor.LocationInfo.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 14: monitor.NetworkStatus.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 15: monitor.ScreenshotInfo.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 16: monitor.VideoInfo.timestamp:type_name -> google.protobuf.Timestamp
+	13, // 17: monitor.ApplicationUsage.last_active_time:type_name -> google.protobuf.Timestamp
+	11, // 18: monitor.ApplicationUsageReport.applications:type_name -> monitor.ApplicationUsage
+	11, // 19: monitor.ApplicationUsageReport.top_apps:type_name -> monitor.ApplicationUsage
+	20, // [20:20] is the sub-list for method output_type
+	20, // [20:20] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_proto_monitor_type_activity_log_proto_init() }
@@ -1202,7 +1336,7 @@ func file_proto_monitor_type_activity_log_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_monitor_type_activity_log_proto_rawDesc), len(file_proto_monitor_type_activity_log_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

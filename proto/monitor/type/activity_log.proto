@@ -27,7 +27,8 @@ message ActivityLogRequest {
     LocationInfo location_info = 15;
     NetworkStatus network_status = 16;
     ScreenshotInfo screenshot_info = 17;
-    ApplicationUsageReport application_usage_report = 18;
+    VideoInfo video_info = 18;
+    ApplicationUsageReport application_usage_report = 19;
 }
 
 // ActivityLogBatchRequest contains multiple activity log entries
@@ -109,6 +110,18 @@ message ScreenshotInfo {
     string url = 6;
     string domain = 7;
     string department = 8;
+}
+
+message VideoInfo {
+    string filename = 1;
+    google.protobuf.Timestamp timestamp = 2;
+    string mac_address = 3;
+    string user_id = 4;
+    string file_path = 5;
+    string url = 6;
+    string domain = 7;
+    string department = 8;
+    int32 duration_seconds = 9;
 }
 
 // ApplicationUsage represents time spent on an application

@@ -207,29 +207,29 @@ func (a *MonitorClient) SendActivityLog(req ActivityLogRequest) (ActivityLogResp
 		apps := make([]*monitor.ApplicationUsage, 0, len(req.ApplicationUsageReport.Applications))
 		for _, app := range req.ApplicationUsageReport.Applications {
 			apps = append(apps, &monitor.ApplicationUsage{
-				AppName:              app.AppName,
-				Timestamp:            app.Timestamp,
+				AppName:               app.AppName,
+				Timestamp:             app.Timestamp,
 				TimeSpentTodaySeconds: app.TimeSpentTodaySeconds,
-				LastActiveTime:       timestamppb.New(app.LastActiveTime),
-				SessionCount:         app.SessionCount,
+				LastActiveTime:        timestamppb.New(app.LastActiveTime),
+				SessionCount:          app.SessionCount,
 			})
 		}
-		
+
 		topApps := make([]*monitor.ApplicationUsage, 0, len(req.ApplicationUsageReport.TopApps))
 		for _, app := range req.ApplicationUsageReport.TopApps {
 			topApps = append(topApps, &monitor.ApplicationUsage{
-				AppName:              app.AppName,
-				Timestamp:            app.Timestamp,
+				AppName:               app.AppName,
+				Timestamp:             app.Timestamp,
 				TimeSpentTodaySeconds: app.TimeSpentTodaySeconds,
-				LastActiveTime:       timestamppb.New(app.LastActiveTime),
-				SessionCount:         app.SessionCount,
+				LastActiveTime:        timestamppb.New(app.LastActiveTime),
+				SessionCount:          app.SessionCount,
 			})
 		}
 
 		r.ApplicationUsageReport = &monitor.ApplicationUsageReport{
-			Applications:   apps,
+			Applications:     apps,
 			TotalTimeSeconds: req.ApplicationUsageReport.TotalTimeSeconds,
-			TopApps:        topApps,
+			TopApps:          topApps,
 		}
 	}
 
@@ -251,7 +251,7 @@ func (a *MonitorClient) SendActivityLog(req ActivityLogRequest) (ActivityLogResp
 // SendActivityLogBatch sends multiple activity log entries via gRPC
 func (a *MonitorClient) SendActivityLogBatch(req ActivityLogBatchRequest) (ActivityLogResponse, error) {
 	entries := make([]*monitor.ActivityLogRequest, 0, len(req.Entries))
-	
+
 	for _, entry := range req.Entries {
 		r := &monitor.ActivityLogRequest{
 			Timestamp:  timestamppb.New(entry.Timestamp),
@@ -343,33 +343,47 @@ func (a *MonitorClient) SendActivityLogBatch(req ActivityLogBatchRequest) (Activ
 			}
 		}
 
+		if entry.VideoInfo != nil {
+			r.VideoInfo = &monitor.VideoInfo{
+				Filename:        entry.VideoInfo.Filename,
+				Timestamp:       timestamppb.New(entry.VideoInfo.Timestamp),
+				MacAddress:      entry.VideoInfo.MacAddress,
+				UserId:          entry.VideoInfo.UserId,
+				FilePath:        entry.VideoInfo.FilePath,
+				Url:             entry.VideoInfo.URL,
+				Domain:          entry.VideoInfo.Domain,
+				Department:      entry.VideoInfo.Department,
+				DurationSeconds: entry.VideoInfo.DurationSeconds,
+			}
+		}
+
 		if entry.ApplicationUsageReport != nil {
 			apps := make([]*monitor.ApplicationUsage, 0, len(entry.ApplicationUsageReport.Applications))
 			for _, app := range entry.ApplicationUsageReport.Applications {
 				apps = append(apps, &monitor.ApplicationUsage{
-					AppName:              app.AppName,
-					Timestamp:            app.Timestamp,
+					AppName:               app.AppName,
+					Timestamp:             app.Timestamp,
 					TimeSpentTodaySeconds: app.TimeSpentTodaySeconds,
-					LastActiveTime:       timestamppb.New(app.LastActiveTime),
-					SessionCount:         app.SessionCount,
+					LastActiveTime:        timestamppb.New(app.LastActiveTime),
+					SessionCount:          app.SessionCount,
 				})
 			}
-			
+
 			topApps := make([]*monitor.ApplicationUsage, 0, len(entry.ApplicationUsageReport.TopApps))
 			for _, app := range entry.ApplicationUsageReport.TopApps {
 				topApps = append(topApps, &monitor.ApplicationUsage{
-					AppName:              app.AppName,
-					Timestamp:            app.Timestamp,
+					AppName:               app.AppName,
+					Timestamp:             app.Timestamp,
 					TimeSpentTodaySeconds: app.TimeSpentTodaySeconds,
-					LastActiveTime:       timestamppb.New(app.LastActiveTime),
-					SessionCount:         app.SessionCount,
+					LastActiveTime:        timestamppb.New(app.LastActiveTime),
+					SessionCount:          app.SessionCount,
 				})
 			}
 
 			r.ApplicationUsageReport = &monitor.ApplicationUsageReport{
-				Applications:   apps,
+				Applications:     apps,
 				TotalTimeSeconds: entry.ApplicationUsageReport.TotalTimeSeconds,
-				TopApps:        topApps,
+				TopApps:          topApps,
 			}
 		}
 

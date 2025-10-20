@@ -30,20 +30,20 @@ type HeartbeatRequest struct {
 
 // HeartbeatResponse represents the server's response to a heartbeat
 type HeartbeatResponse struct {
-	Day                       int32  `json:"day"`
-	Month                     int32  `json:"month"`
-	Year                      int32  `json:"year"`
-	IsCheckedIn               bool   `json:"is_checked_in"`
-	CheckinTimestamp          string `json:"checkin_timestamp"`
-	CheckinSource             string `json:"checkin_source"`
-	IsCheckedOut              bool   `json:"is_checked_out"`
-	CheckoutTimestamp         string `json:"checkout_timestamp"`
-	CheckoutSource            string `json:"checkout_source"`
-	IsOnLeave                 bool   `json:"is_on_leave"`
-	IsHoliday                 bool   `json:"is_holiday"`
-	IsWeeklyOffDay            bool   `json:"is_weekly_off_day"`
-	IsAttendanceFetchError    bool   `json:"is_attendance_fetch_error"`
-	Message                   string `json:"message"`
+	Day                    int32  `json:"day"`
+	Month                  int32  `json:"month"`
+	Year                   int32  `json:"year"`
+	IsCheckedIn            bool   `json:"is_checked_in"`
+	CheckinTimestamp       string `json:"checkin_timestamp"`
+	CheckinSource          string `json:"checkin_source"`
+	IsCheckedOut           bool   `json:"is_checked_out"`
+	CheckoutTimestamp      string `json:"checkout_timestamp"`
+	CheckoutSource         string `json:"checkout_source"`
+	IsOnLeave              bool   `json:"is_on_leave"`
+	IsHoliday              bool   `json:"is_holiday"`
+	IsWeeklyOffDay         bool   `json:"is_weekly_off_day"`
+	IsAttendanceFetchError bool   `json:"is_attendance_fetch_error"`
+	Message                string `json:"message"`
 }
 
 // MonitoringConfigRequest requests configuration for a device
@@ -78,24 +78,25 @@ type MonitoringConfigResponse struct {
 
 // ActivityLogRequest represents a single activity log entry
 type ActivityLogRequest struct {
-	Timestamp               time.Time                `json:"timestamp"`
-	UserId                  string                   `json:"user_id"`
-	Name                    string                   `json:"name"`
-	MacAddress              string                   `json:"mac_address"`
-	Message                 string                   `json:"message"`
-	EventType               string                   `json:"event_type"`
-	Hostname                string                   `json:"hostname"`
-	IpAddress               string                   `json:"ip_address"`
-	SessionId               string                   `json:"session_id"`
-	Domain                  string                   `json:"domain"`
-	ActivityInfo            *ActivityInfo            `json:"activity_info,omitempty"`
-	UserActivityInfo        *UserActivityInfo        `json:"user_activity_info,omitempty"`
-	SystemStatusInfo        *SystemStatusInfo        `json:"system_status_info,omitempty"`
-	USBDeviceInfo           *USBDeviceInfo           `json:"usb_device_info,omitempty"`
-	LocationInfo            *LocationInfo            `json:"location_info,omitempty"`
-	NetworkStatus           *NetworkStatus           `json:"network_status,omitempty"`
-	ScreenshotInfo          *ScreenshotInfo          `json:"screenshot_info,omitempty"`
-	ApplicationUsageReport  *ApplicationUsageReport  `json:"application_usage_report,omitempty"`
+	Timestamp              time.Time               `json:"timestamp"`
+	UserId                 string                  `json:"user_id"`
+	Name                   string                  `json:"name"`
+	MacAddress             string                  `json:"mac_address"`
+	Message                string                  `json:"message"`
+	EventType              string                  `json:"event_type"`
+	Hostname               string                  `json:"hostname"`
+	IpAddress              string                  `json:"ip_address"`
+	SessionId              string                  `json:"session_id"`
+	Domain                 string                  `json:"domain"`
+	ActivityInfo           *ActivityInfo           `json:"activity_info,omitempty"`
+	UserActivityInfo       *UserActivityInfo       `json:"user_activity_info,omitempty"`
+	SystemStatusInfo       *SystemStatusInfo       `json:"system_status_info,omitempty"`
+	USBDeviceInfo          *USBDeviceInfo          `json:"usb_device_info,omitempty"`
+	LocationInfo           *LocationInfo           `json:"location_info,omitempty"`
+	NetworkStatus          *NetworkStatus          `json:"network_status,omitempty"`
+	ScreenshotInfo         *ScreenshotInfo         `json:"screenshot_info,omitempty"`
+	VideoInfo              *VideoInfo              `json:"video_info,omitempty"`
+	ApplicationUsageReport *ApplicationUsageReport `json:"application_usage_report,omitempty"`
 }
 
 // ActivityLogBatchRequest contains multiple activity log entries
@@ -105,9 +106,9 @@ type ActivityLogBatchRequest struct {
 
 // ActivityLogResponse confirms log receipt
 type ActivityLogResponse struct {
-	Success           bool   `json:"success"`
-	Message           string `json:"message"`
-	EntriesProcessed  int32  `json:"entries_processed"`
+	Success          bool   `json:"success"`
+	Message          string `json:"message"`
+	EntriesProcessed int32  `json:"entries_processed"`
 }
 
 // ActivityInfo represents current activity information
@@ -179,18 +180,31 @@ type ScreenshotInfo struct {
 	Department string    `json:"department"`
 }
 
+// VideoInfo represents video metadata
+type VideoInfo struct {
+	Filename        string    `json:"filename"`
+	Timestamp       time.Time `json:"timestamp"`
+	MacAddress      string    `json:"mac_address"`
+	UserId          string    `json:"user_id"`
+	FilePath        string    `json:"file_path"`
+	URL             string    `json:"url"`
+	Domain          string    `json:"domain"`
+	Department      string    `json:"department"`
+	DurationSeconds int32     `json:"duration_seconds"`
+}
+
 // ApplicationUsage represents time spent on an application
 type ApplicationUsage struct {
-	AppName              string    `json:"app_name"`
-	Timestamp            float64   `json:"timestamp"`
-	TimeSpentTodaySeconds float64  `json:"time_spent_today_seconds"`
-	LastActiveTime       time.Time `json:"last_active_time"`
-	SessionCount         int32     `json:"session_count"`
+	AppName               string    `json:"app_name"`
+	Timestamp             float64   `json:"timestamp"`
+	TimeSpentTodaySeconds float64   `json:"time_spent_today_seconds"`
+	LastActiveTime        time.Time `json:"last_active_time"`
+	SessionCount          int32     `json:"session_count"`
 }
 
 // ApplicationUsageReport represents a summary of application usage
 type ApplicationUsageReport struct {
-	Applications   []ApplicationUsage `json:"applications"`
-	TotalTimeSeconds float64          `json:"total_time_seconds"`
-	TopApps        []ApplicationUsage `json:"top_apps"`
+	Applications     []ApplicationUsage `json:"applications"`
+	TotalTimeSeconds float64            `json:"total_time_seconds"`
+	TopApps          []ApplicationUsage `json:"top_apps"`
 }
