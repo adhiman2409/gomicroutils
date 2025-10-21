@@ -25,7 +25,7 @@ type Expense struct {
 	ExpenseId               string             `bson:"expense_id"`
 	EmployeeId              string             `bson:"employee_id"`
 	EmployeeName            string             `bson:"employee_name"`
-	Department              string             `bson:"department`
+	Department              string             `bson:"department"`
 	DesignationId           string             `bson:"designation_id"`
 	ExpenseState            ExpenseState       `bson:"expense_state"`
 	Category                string             `bson:"category"`
