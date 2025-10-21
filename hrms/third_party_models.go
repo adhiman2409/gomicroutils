@@ -17,6 +17,7 @@ type PolicyBazaarEmployeeInfo struct {
 	JoinedAt         time.Time                      `bson:"joined_at"`
 	UpdatedAt        time.Time                      `bson:"updated_at"`
 	ExitedAt         time.Time                      `bson:"exited_at"`
+	LastModified     time.Time                      `bson:"last_modified"`
 }
 
 type ThirdPartyKey struct {
