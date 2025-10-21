@@ -29,6 +29,7 @@ type Patient struct {
 	FirstName      string    `bson:"first_name"`
 	LastName       string    `bson:"last_name"`
 	Gender         string    `bson:"gender"`
+	DOB            time.Time `bson:"dob"`
 	Age            int64     `bson:"age"`
 	PatientType    string    `bson:"patient_type"` //Local or OutStation
 	OutStationDate time.Time `bson:"out_station_date"`
