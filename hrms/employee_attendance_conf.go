@@ -29,6 +29,7 @@ type EmpAttendanceConf struct {
 	EnforceLocationCheckIn           bool                  `bson:"enforce_location_check_in"`
 	EnforceLocationCheckOut          bool                  `bson:"enforce_location_check_out"`
 	EnforceAttendanceSource          bool                  `bson:"enforce_attendance_source"`
+	IsDeviceMonitoringEnabled        bool                  `bson:"is_device_monitoring_enabled"`
 	AttendanceSource                 string                `bson:"attendance_source"`
 	RequiredLat                      float64               `bson:"required_lat"`
 	RequiredLng                      float64               `bson:"required_lng"`
