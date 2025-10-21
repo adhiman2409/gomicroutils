@@ -25,6 +25,8 @@ type Expense struct {
 	ExpenseId               string             `bson:"expense_id"`
 	EmployeeId              string             `bson:"employee_id"`
 	EmployeeName            string             `bson:"employee_name"`
+	Department              string             `bson:"department`
+	DesignationId           string             `bson:"designation_id"`
 	ExpenseState            ExpenseState       `bson:"expense_state"`
 	Category                string             `bson:"category"`
 	SubCategory             string             `bson:"sub_category"`
@@ -37,8 +39,9 @@ type Expense struct {
 	BillCurrency            string             `bson:"bill_currency"`
 	BillNumber              string             `bson:"bill_number"`
 	PaidTo                  string             `bson:"paid_to"`
-	IsBillable              bool               `bson:"is_billable"`
+	BillableProjectId       string             `bson:"billable_project_id"`
 	BillableProject         string             `bson:"billable_project"`
+	IsBillableToClient      bool               `bson:"is_billable_to_client"`
 	ApprovedAmount          float32            `bson:"approved_amount"`
 	ApprovedAmountInINR     float32            `bson:"approved_amount_in_inr"`
 	RejectedAmount          float32            `bson:"rejected_amount"`
