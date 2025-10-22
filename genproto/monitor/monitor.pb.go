@@ -1179,7 +1179,7 @@ func file_proto_monitor_monitor_proto_init() {
 	}
 	file_proto_monitor_type_update_employee_attendance_status_proto_init()
 	file_proto_monitor_type_heartbeat_proto_init()
-	file_proto_monitor_type_activity_log_proto_init()
+	file_monitor_type_activity_log_proto_init()
 	file_proto_monitor_type_monitoring_config_proto_init()
 	file_proto_monitor_monitor_proto_msgTypes[0].OneofWrappers = []any{
 		(*ClientMessage_Connect)(nil),
