@@ -130,6 +130,7 @@ type UserActivityInfo struct {
 	ActiveDurationSeconds  float64   `json:"active_duration_seconds"`
 	OfflineDurationSeconds float64   `json:"offline_duration_seconds"`
 	SessionDurationSeconds float64   `json:"session_duration_seconds"`
+	SleepDurationSeconds   float64   `json:"sleep_duration_seconds"`
 }
 
 // SystemStatusInfo represents system status information

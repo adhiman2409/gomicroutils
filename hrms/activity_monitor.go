@@ -91,6 +91,7 @@ type ActivityReport struct {
 	TotalEvents                  int                `bson:"total_events"`
 	TotalActiveTime              float64            `bson:"total_active_time_seconds"`
 	TotalIdleTime                float64            `bson:"total_idle_time_seconds"`
+	TotalSleepTime               float64            `bson:"total_sleep_time_seconds"`
 	TotalOfflineTime             float64            `bson:"total_offline_time_seconds"`
 	TotalCheckInTime             float64            `bson:"total_checkin_time_seconds"`
 	TotalSessionTime             float64            `bson:"total_session_time_seconds"`
@@ -119,6 +120,7 @@ type MonitoringWindow struct {
 	End                             time.Time `bson:"end"`
 	ActiveTime                      float64   `bson:"active_time_seconds"`
 	IdleTime                        float64   `bson:"idle_time_seconds"`
+	SleepTime                       float64   `bson:"sleep_time_seconds"`
 	OfflineTime                     float64   `bson:"offline_time_seconds"`
 	IsCheckinInThisWindow           bool      `bson:"is_checkin_in_this_window"`
 	CheckinTimeStamp                time.Time `bson:"checkin_timestamp,omitempty"`
@@ -198,6 +200,7 @@ type UserActivityInfo struct {
 	ActiveDurationSeconds  float64   `bson:"active_duration_seconds,omitempty"`
 	OfflineDurationSeconds float64   `bson:"offline_duration_seconds,omitempty"`
 	SessionDurationSeconds float64   `bson:"session_duration_seconds,omitempty"`
+	SleepDurationSeconds   float64   `bson:"sleep_duration_seconds,omitempty"`
 }
 
 // NetworkStatus represents network connectivity status

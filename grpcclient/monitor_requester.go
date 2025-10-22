@@ -147,6 +147,7 @@ func (a *MonitorClient) SendActivityLog(req ActivityLogRequest) (ActivityLogResp
 			ActiveDurationSeconds:  req.UserActivityInfo.ActiveDurationSeconds,
 			OfflineDurationSeconds: req.UserActivityInfo.OfflineDurationSeconds,
 			SessionDurationSeconds: req.UserActivityInfo.SessionDurationSeconds,
+			SleepDurationSeconds:   req.UserActivityInfo.SleepDurationSeconds,
 		}
 	}
 
@@ -287,6 +288,7 @@ func (a *MonitorClient) SendActivityLogBatch(req ActivityLogBatchRequest) (Activ
 				ActiveDurationSeconds:  entry.UserActivityInfo.ActiveDurationSeconds,
 				OfflineDurationSeconds: entry.UserActivityInfo.OfflineDurationSeconds,
 				SessionDurationSeconds: entry.UserActivityInfo.SessionDurationSeconds,
+				SleepDurationSeconds:   entry.UserActivityInfo.SleepDurationSeconds,
 			}
 		}
 

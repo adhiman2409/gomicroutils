@@ -62,6 +62,7 @@ message UserActivityInfo {
     double active_duration_seconds = 4;
     double offline_duration_seconds = 5;
     double session_duration_seconds = 6;
+    double sleep_duration_seconds = 7;
 }
 
 // SystemStatusInfo represents system status information
