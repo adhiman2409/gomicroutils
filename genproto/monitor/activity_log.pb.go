@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v5.29.3
-// source: proto/monitor/type/activity_log.proto
+// source: monitor/type/activity_log.proto
 
 package monitor
 
@@ -51,7 +51,7 @@ type ActivityLogRequest struct {
 
 func (x *ActivityLogRequest) Reset() {
 	*x = ActivityLogRequest{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[0]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -63,7 +63,7 @@ func (x *ActivityLogRequest) String() string {
 func (*ActivityLogRequest) ProtoMessage() {}
 
 func (x *ActivityLogRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[0]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -76,7 +76,7 @@ func (x *ActivityLogRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActivityLogRequest.ProtoReflect.Descriptor instead.
 func (*ActivityLogRequest) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{0}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ActivityLogRequest) GetTimestamp() *timestamppb.Timestamp {
@@ -222,7 +222,7 @@ type ActivityLogBatchRequest struct {
 
 func (x *ActivityLogBatchRequest) Reset() {
 	*x = ActivityLogBatchRequest{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[1]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -234,7 +234,7 @@ func (x *ActivityLogBatchRequest) String() string {
 func (*ActivityLogBatchRequest) ProtoMessage() {}
 
 func (x *ActivityLogBatchRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[1]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -247,7 +247,7 @@ func (x *ActivityLogBatchRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActivityLogBatchRequest.ProtoReflect.Descriptor instead.
 func (*ActivityLogBatchRequest) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{1}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ActivityLogBatchRequest) GetEntries() []*ActivityLogRequest {
@@ -269,7 +269,7 @@ type ActivityLogResponse struct {
 
 func (x *ActivityLogResponse) Reset() {
 	*x = ActivityLogResponse{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[2]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -281,7 +281,7 @@ func (x *ActivityLogResponse) String() string {
 func (*ActivityLogResponse) ProtoMessage() {}
 
 func (x *ActivityLogResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[2]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +294,7 @@ func (x *ActivityLogResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActivityLogResponse.ProtoReflect.Descriptor instead.
 func (*ActivityLogResponse) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{2}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ActivityLogResponse) GetSuccess() bool {
@@ -334,7 +334,7 @@ type ActivityInfo struct {
 
 func (x *ActivityInfo) Reset() {
 	*x = ActivityInfo{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[3]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -346,7 +346,7 @@ func (x *ActivityInfo) String() string {
 func (*ActivityInfo) ProtoMessage() {}
 
 func (x *ActivityInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[3]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -359,7 +359,7 @@ func (x *ActivityInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActivityInfo.ProtoReflect.Descriptor instead.
 func (*ActivityInfo) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{3}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ActivityInfo) GetTimestamp() *timestamppb.Timestamp {
@@ -420,13 +420,14 @@ type UserActivityInfo struct {
 	ActiveDurationSeconds  float64                `protobuf:"fixed64,4,opt,name=active_duration_seconds,json=activeDurationSeconds,proto3" json:"active_duration_seconds,omitempty"`
 	OfflineDurationSeconds float64                `protobuf:"fixed64,5,opt,name=offline_duration_seconds,json=offlineDurationSeconds,proto3" json:"offline_duration_seconds,omitempty"`
 	SessionDurationSeconds float64                `protobuf:"fixed64,6,opt,name=session_duration_seconds,json=sessionDurationSeconds,proto3" json:"session_duration_seconds,omitempty"`
+	SleepDurationSeconds   float64                `protobuf:"fixed64,7,opt,name=sleep_duration_seconds,json=sleepDurationSeconds,proto3" json:"sleep_duration_seconds,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
 
 func (x *UserActivityInfo) Reset() {
 	*x = UserActivityInfo{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[4]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -438,7 +439,7 @@ func (x *UserActivityInfo) String() string {
 func (*UserActivityInfo) ProtoMessage() {}
 
 func (x *UserActivityInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[4]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -451,7 +452,7 @@ func (x *UserActivityInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserActivityInfo.ProtoReflect.Descriptor instead.
 func (*UserActivityInfo) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{4}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UserActivityInfo) GetStatus() string {
@@ -496,6 +497,13 @@ func (x *UserActivityInfo) GetSessionDurationSeconds() float64 {
 	return 0
 }
 
+func (x *UserActivityInfo) GetSleepDurationSeconds() float64 {
+	if x != nil {
+		return x.SleepDurationSeconds
+	}
+	return 0
+}
+
 // SystemStatusInfo represents system status information
 type SystemStatusInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -507,7 +515,7 @@ type SystemStatusInfo struct {
 
 func (x *SystemStatusInfo) Reset() {
 	*x = SystemStatusInfo{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[5]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -519,7 +527,7 @@ func (x *SystemStatusInfo) String() string {
 func (*SystemStatusInfo) ProtoMessage() {}
 
 func (x *SystemStatusInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[5]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -532,7 +540,7 @@ func (x *SystemStatusInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SystemStatusInfo.ProtoReflect.Descriptor instead.
 func (*SystemStatusInfo) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{5}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SystemStatusInfo) GetMessage() string {
@@ -563,7 +571,7 @@ type USBDeviceInfo struct {
 
 func (x *USBDeviceInfo) Reset() {
 	*x = USBDeviceInfo{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[6]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -575,7 +583,7 @@ func (x *USBDeviceInfo) String() string {
 func (*USBDeviceInfo) ProtoMessage() {}
 
 func (x *USBDeviceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[6]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -588,7 +596,7 @@ func (x *USBDeviceInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use USBDeviceInfo.ProtoReflect.Descriptor instead.
 func (*USBDeviceInfo) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{6}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *USBDeviceInfo) GetVendorId() int32 {
@@ -642,7 +650,7 @@ type LocationInfo struct {
 
 func (x *LocationInfo) Reset() {
 	*x = LocationInfo{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[7]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -654,7 +662,7 @@ func (x *LocationInfo) String() string {
 func (*LocationInfo) ProtoMessage() {}
 
 func (x *LocationInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[7]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -667,7 +675,7 @@ func (x *LocationInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LocationInfo.ProtoReflect.Descriptor instead.
 func (*LocationInfo) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{7}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *LocationInfo) GetCity() string {
@@ -734,7 +742,7 @@ type NetworkStatus struct {
 
 func (x *NetworkStatus) Reset() {
 	*x = NetworkStatus{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[8]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -746,7 +754,7 @@ func (x *NetworkStatus) String() string {
 func (*NetworkStatus) ProtoMessage() {}
 
 func (x *NetworkStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[8]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -759,7 +767,7 @@ func (x *NetworkStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkStatus.ProtoReflect.Descriptor instead.
 func (*NetworkStatus) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{8}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *NetworkStatus) GetTimestamp() *timestamppb.Timestamp {
@@ -821,7 +829,7 @@ type ScreenshotInfo struct {
 
 func (x *ScreenshotInfo) Reset() {
 	*x = ScreenshotInfo{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[9]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -833,7 +841,7 @@ func (x *ScreenshotInfo) String() string {
 func (*ScreenshotInfo) ProtoMessage() {}
 
 func (x *ScreenshotInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[9]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -846,7 +854,7 @@ func (x *ScreenshotInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScreenshotInfo.ProtoReflect.Descriptor instead.
 func (*ScreenshotInfo) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{9}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ScreenshotInfo) GetFilename() string {
@@ -922,7 +930,7 @@ type VideoInfo struct {
 
 func (x *VideoInfo) Reset() {
 	*x = VideoInfo{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[10]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -934,7 +942,7 @@ func (x *VideoInfo) String() string {
 func (*VideoInfo) ProtoMessage() {}
 
 func (x *VideoInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[10]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -947,7 +955,7 @@ func (x *VideoInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VideoInfo.ProtoReflect.Descriptor instead.
 func (*VideoInfo) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{10}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *VideoInfo) GetFilename() string {
@@ -1027,7 +1035,7 @@ type ApplicationUsage struct {
 
 func (x *ApplicationUsage) Reset() {
 	*x = ApplicationUsage{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[11]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1039,7 +1047,7 @@ func (x *ApplicationUsage) String() string {
 func (*ApplicationUsage) ProtoMessage() {}
 
 func (x *ApplicationUsage) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[11]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1052,7 +1060,7 @@ func (x *ApplicationUsage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplicationUsage.ProtoReflect.Descriptor instead.
 func (*ApplicationUsage) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{11}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ApplicationUsage) GetAppName() string {
@@ -1102,7 +1110,7 @@ type ApplicationUsageReport struct {
 
 func (x *ApplicationUsageReport) Reset() {
 	*x = ApplicationUsageReport{}
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[12]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1114,7 +1122,7 @@ func (x *ApplicationUsageReport) String() string {
 func (*ApplicationUsageReport) ProtoMessage() {}
 
 func (x *ApplicationUsageReport) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_monitor_type_activity_log_proto_msgTypes[12]
+	mi := &file_monitor_type_activity_log_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1127,7 +1135,7 @@ func (x *ApplicationUsageReport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplicationUsageReport.ProtoReflect.Descriptor instead.
 func (*ApplicationUsageReport) Descriptor() ([]byte, []int) {
-	return file_proto_monitor_type_activity_log_proto_rawDescGZIP(), []int{12}
+	return file_monitor_type_activity_log_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ApplicationUsageReport) GetApplications() []*ApplicationUsage {
@@ -1151,11 +1159,11 @@ func (x *ApplicationUsageReport) GetTopApps() []*ApplicationUsage {
 	return nil
 }
 
-var File_proto_monitor_type_activity_log_proto protoreflect.FileDescriptor
+var File_monitor_type_activity_log_proto protoreflect.FileDescriptor
 
-const file_proto_monitor_type_activity_log_proto_rawDesc = "" +
+const file_monitor_type_activity_log_proto_rawDesc = "" +
 	"\n" +
-	"%proto/monitor/type/activity_log.proto\x12\amonitor\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\a\n" +
+	"\x1fmonitor/type/activity_log.proto\x12\amonitor\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\a\n" +
 	"\x12ActivityLogRequest\x128\n" +
 	"\ttimestamp\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
@@ -1197,14 +1205,15 @@ const file_proto_monitor_type_activity_log_proto_rawDesc = "" +
 	"browserUrl\x12!\n" +
 	"\fis_incognito\x18\x06 \x01(\bR\visIncognito\x12\x1d\n" +
 	"\n" +
-	"process_id\x18\a \x01(\x05R\tprocessId\"\xc4\x02\n" +
+	"process_id\x18\a \x01(\x05R\tprocessId\"\xfa\x02\n" +
 	"\x10UserActivityInfo\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x128\n" +
 	"\ttimestamp\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x122\n" +
 	"\x15idle_duration_seconds\x18\x03 \x01(\x01R\x13idleDurationSeconds\x126\n" +
 	"\x17active_duration_seconds\x18\x04 \x01(\x01R\x15activeDurationSeconds\x128\n" +
 	"\x18offline_duration_seconds\x18\x05 \x01(\x01R\x16offlineDurationSeconds\x128\n" +
-	"\x18session_duration_seconds\x18\x06 \x01(\x01R\x16sessionDurationSeconds\"F\n" +
+	"\x18session_duration_seconds\x18\x06 \x01(\x01R\x16sessionDurationSeconds\x124\n" +
+	"\x16sleep_duration_seconds\x18\a \x01(\x01R\x14sleepDurationSeconds\"F\n" +
 	"\x10SystemStatusInfo\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12\x18\n" +
 	"\adetails\x18\x02 \x01(\tR\adetails\"\xa7\x01\n" +
@@ -1269,19 +1278,19 @@ const file_proto_monitor_type_activity_log_proto_rawDesc = "" +
 	"\btop_apps\x18\x03 \x03(\v2\x19.monitor.ApplicationUsageR\atopAppsB\x12Z\x10genproto/monitorb\x06proto3"
 
 var (
-	file_proto_monitor_type_activity_log_proto_rawDescOnce sync.Once
-	file_proto_monitor_type_activity_log_proto_rawDescData []byte
+	file_monitor_type_activity_log_proto_rawDescOnce sync.Once
+	file_monitor_type_activity_log_proto_rawDescData []byte
 )
 
-func file_proto_monitor_type_activity_log_proto_rawDescGZIP() []byte {
-	file_proto_monitor_type_activity_log_proto_rawDescOnce.Do(func() {
-		file_proto_monitor_type_activity_log_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_monitor_type_activity_log_proto_rawDesc), len(file_proto_monitor_type_activity_log_proto_rawDesc)))
+func file_monitor_type_activity_log_proto_rawDescGZIP() []byte {
+	file_monitor_type_activity_log_proto_rawDescOnce.Do(func() {
+		file_monitor_type_activity_log_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_monitor_type_activity_log_proto_rawDesc), len(file_monitor_type_activity_log_proto_rawDesc)))
 	})
-	return file_proto_monitor_type_activity_log_proto_rawDescData
+	return file_monitor_type_activity_log_proto_rawDescData
 }
 
-var file_proto_monitor_type_activity_log_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
-var file_proto_monitor_type_activity_log_proto_goTypes = []any{
+var file_monitor_type_activity_log_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_monitor_type_activity_log_proto_goTypes = []any{
 	(*ActivityLogRequest)(nil),      // 0: monitor.ActivityLogRequest
 	(*ActivityLogBatchRequest)(nil), // 1: monitor.ActivityLogBatchRequest
 	(*ActivityLogResponse)(nil),     // 2: monitor.ActivityLogResponse
@@ -1297,7 +1306,7 @@ var file_proto_monitor_type_activity_log_proto_goTypes = []any{
 	(*ApplicationUsageReport)(nil),  // 12: monitor.ApplicationUsageReport
 	(*timestamppb.Timestamp)(nil),   // 13: google.protobuf.Timestamp
 }
-var file_proto_monitor_type_activity_log_proto_depIdxs = []int32{
+var file_monitor_type_activity_log_proto_depIdxs = []int32{
 	13, // 0: monitor.ActivityLogRequest.timestamp:type_name -> google.protobuf.Timestamp
 	3,  // 1: monitor.ActivityLogRequest.activity_info:type_name -> monitor.ActivityInfo
 	4,  // 2: monitor.ActivityLogRequest.user_activity_info:type_name -> monitor.UserActivityInfo
@@ -1325,26 +1334,26 @@ var file_proto_monitor_type_activity_log_proto_depIdxs = []int32{
 	0,  // [0:20] is the sub-list for field type_name
 }
 
-func init() { file_proto_monitor_type_activity_log_proto_init() }
-func file_proto_monitor_type_activity_log_proto_init() {
-	if File_proto_monitor_type_activity_log_proto != nil {
+func init() { file_monitor_type_activity_log_proto_init() }
+func file_monitor_type_activity_log_proto_init() {
+	if File_monitor_type_activity_log_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_monitor_type_activity_log_proto_rawDesc), len(file_proto_monitor_type_activity_log_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_monitor_type_activity_log_proto_rawDesc), len(file_monitor_type_activity_log_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_proto_monitor_type_activity_log_proto_goTypes,
-		DependencyIndexes: file_proto_monitor_type_activity_log_proto_depIdxs,
-		MessageInfos:      file_proto_monitor_type_activity_log_proto_msgTypes,
+		GoTypes:           file_monitor_type_activity_log_proto_goTypes,
+		DependencyIndexes: file_monitor_type_activity_log_proto_depIdxs,
+		MessageInfos:      file_monitor_type_activity_log_proto_msgTypes,
 	}.Build()
-	File_proto_monitor_type_activity_log_proto = out.File
-	file_proto_monitor_type_activity_log_proto_goTypes = nil
-	file_proto_monitor_type_activity_log_proto_depIdxs = nil
+	File_monitor_type_activity_log_proto = out.File
+	file_monitor_type_activity_log_proto_goTypes = nil
+	file_monitor_type_activity_log_proto_depIdxs = nil
 }
