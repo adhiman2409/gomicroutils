@@ -122,6 +122,7 @@ type ActionItem struct {
 	ReminderTime  time.Time          `bson:"reminder_time,omitempty"`
 	MailSent      bool               `bson:"mail_sent,omitempty"`
 	CreatedBy     string             `bson:"created_by"`
+	Remarks       []LeadRemark       `bson:"remarks"`
 }
 
 type Attachment struct {
