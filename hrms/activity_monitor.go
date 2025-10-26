@@ -34,6 +34,7 @@ type MonitoringConfig struct {
 	IsCheckedOut                    bool               `bson:"is_checked_out"`
 	UserId                          string             `bson:"user_id"`
 	MacAddress                      string             `bson:"mac_address"`
+	StripMacAddress                 string             `bson:"strip_mac_address"`
 	Name                            string             `bson:"name"`
 	Domain                          string             `bson:"domain"`
 	Department                      string             `bson:"department"`
