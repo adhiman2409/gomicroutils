@@ -37,6 +37,7 @@ type MonitoringConfig struct {
 	StripMacAddress                 string             `bson:"strip_mac_address"`
 	Name                            string             `bson:"name"`
 	Domain                          string             `bson:"domain"`
+	FrontendURL                     string             `bson:"frontend_url"`
 	Department                      string             `bson:"department"`
 	Email                           string             `bson:"email"`
 	MonitoringEnabled               bool               `bson:"monitoring_enabled"`
