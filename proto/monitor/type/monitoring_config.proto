@@ -32,4 +32,5 @@ message MonitoringConfigResponse {
     bool track_documents = 18;
     bool track_usb = 19;
     string screenshot_path = 20;
+    string frontend_url = 21;
 }

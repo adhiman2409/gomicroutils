@@ -61,6 +61,7 @@ type MonitoringConfigResponse struct {
 	MacAddress                      string `json:"mac_address"`
 	Name                            string `json:"name"`
 	Domain                          string `json:"domain"`
+	FrontendURL                     string `json:"frontend_url"`
 	Department                      string `json:"department"`
 	Email                           string `json:"email"`
 	MonitoringEnabled               bool   `json:"monitoring_enabled"`

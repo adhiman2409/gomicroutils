@@ -95,6 +95,7 @@ func (a *MonitorClient) FetchMonitoringConfig(req MonitoringConfigRequest) (Moni
 		MacAddress:                      res.GetMacAddress(),
 		Name:                            res.GetName(),
 		Domain:                          res.GetDomain(),
+		FrontendURL:                     res.GetFrontendUrl(),
 		Department:                      res.GetDepartment(),
 		Email:                           res.GetEmail(),
 		MonitoringEnabled:               res.GetMonitoringEnabled(),
