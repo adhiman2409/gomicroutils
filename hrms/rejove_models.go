@@ -127,17 +127,17 @@ type Case struct {
 }
 
 type CasePreference struct {
-	ArchToBeTreated        string `bson:"arch_to_be_treated"`       //Upper, Lower, Both
-	ArchCorrection         string `bson:"arch_correction"`          //Anterior(Social Six),Full
-	OverJet                string `bson:"over_jet"`                 //Maintain,Increase,Decrease
-	OverBite               string `bson:"over_bite"`                //Maintain,Increase,Decrease
-	MidLine                string `bson:"mid_line"`                 //Maintain,Improve
-	CanineRelation         string `bson:"canine_relation"`          //Maintain,Improve,None
-	MolarRelation          string `bson:"molar_relation"`           //Maintain,Improve,None
-	SpaceAlterations       string `bson:"space_alterations"`        //CloseAllSpaces,CreateSpaceFor{number},LeaveSpaceDistalTo{number},None
-	SpaceGainingPreference string `bson:"space_gaining_preference"` //IPR,Extraction,Expansion,None
-	Upper                  string `bson:"upper"`                    //Anterior, Posterior, Both
-	Lower                  string `bson:"lower"`                    //Anterior, Posterior, Both
+	ArchToBeTreated        string              `bson:"arch_to_be_treated"`       //Upper, Lower, Both
+	ArchCorrection         string              `bson:"arch_correction"`          //Anterior(Social Six),Full
+	OverJet                string              `bson:"over_jet"`                 //Maintain,Increase,Decrease
+	OverBite               string              `bson:"over_bite"`                //Maintain,Increase,Decrease
+	MidLine                string              `bson:"mid_line"`                 //Maintain,Improve
+	CanineRelation         string              `bson:"canine_relation"`          //Maintain,Improve,None
+	MolarRelation          string              `bson:"molar_relation"`           //Maintain,Improve,None
+	SpaceAlterations       SpaceAlterations    `bson:"space_alterations"`        //CloseAllSpaces,CreateSpaceFor{number},LeaveSpaceDistalTo{number},None
+	SpaceGainingPreference SpaceGainPreference `bson:"space_gaining_preference"` //IPR,Extraction,Expansion,None
+	Upper                  string              `bson:"upper"`                    //Anterior, Posterior, Both
+	Lower                  string              `bson:"lower"`                    //Anterior, Posterior, Both
 }
 
 type ToothMovementRestrictions struct {
@@ -181,4 +181,49 @@ type AllProducts struct {
 	Delivered                     int64 `bson:"delivered"`
 	Retainers                     int64 `bson:"retainers"`
 	Cancelled                     int64 `bson:"cancelled"`
+}
+
+type SpaceGainPreference struct {
+	IPR                  bool                 `bson:"ipr"` //IPR,Extraction,Expansion,None
+	ExtractionPreference ExtractionPreference `bson:"extraction_teeths"`
+	ExpansionPreference  ExpansionPreference  `bson:"expansion_preference"`
+}
+
+type ExpansionPreference struct {
+	Expansion                bool                         `bson:"expansion"`
+	ExpansionTeethPreference [32]ExpansionTeethPreference `bson:"expansion_teeths"`
+}
+
+type ExpansionTeethPreference struct {
+	ToothIndex         int `bson:"tooth_index"`
+	SpaceInMillimeters int `bson:"space_in_millimeters"`
+}
+
+type ExtractionPreference struct {
+	Extraction                bool                          `bson:"extraction"`
+	ExtractionTeethPreference [32]ExtractionTeethPreference `bson:"extraction_teeths"`
+}
+
+type ExtractionTeethPreference struct {
+	Extraction         bool `bson:"extraction"`
+	ToothIndex         int  `bson:"tooth_index"`
+	SpaceInMillimeters int  `bson:"space_in_millimeters"`
+}
+
+type SpaceAlterations struct {
+	CloseAllSpaces     bool                   `bson:"close_all_spaces"`
+	CreateSpaceFor     [32]CreateSpaceFor     `bson:"create_space_for,omitempty"`
+	LeaveSpaceDistalTo [32]LeaveSpaceDistalTo `bson:"leave_space_distal_to,omitempty"`
+}
+
+type CreateSpaceFor struct {
+	CreateSpace        bool `bson:"create_space"`
+	ToothIndex         int  `bson:"tooth_index"`
+	SpaceInMillimeters int  `bson:"space_in_millimeters"`
+}
+
+type LeaveSpaceDistalTo struct {
+	LeaveSpace         bool `bson:"leave_space"`
+	ToothIndex         int  `bson:"tooth_index"`
+	SpaceInMillimeters int  `bson:"space_in_millimeters"`
 }
