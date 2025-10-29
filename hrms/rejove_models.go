@@ -195,8 +195,9 @@ type ExpansionPreference struct {
 }
 
 type ExpansionTeethPreference struct {
-	ToothIndex         int `bson:"tooth_index"`
-	SpaceInMillimeters int `bson:"space_in_millimeters"`
+	Expansion          bool `bson:"expansion"`
+	ToothIndex         int  `bson:"tooth_index"`
+	SpaceInMillimeters int  `bson:"space_in_millimeters"`
 }
 
 type ExtractionPreference struct {
