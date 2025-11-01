@@ -127,13 +127,14 @@ type Case struct {
 }
 
 type CasePreference struct {
-	ArchToBeTreated        string              `bson:"arch_to_be_treated"`       //Upper, Lower, Both
-	ArchCorrection         string              `bson:"arch_correction"`          //Anterior(Social Six),Full
-	OverJet                string              `bson:"over_jet"`                 //Maintain,Increase,Decrease
-	OverBite               string              `bson:"over_bite"`                //Maintain,Increase,Decrease
-	MidLine                string              `bson:"mid_line"`                 //Maintain,Improve
-	CanineRelation         string              `bson:"canine_relation"`          //Maintain,Improve,None
-	MolarRelation          string              `bson:"molar_relation"`           //Maintain,Improve,None
+	ArchToBeTreated        string              `bson:"arch_to_be_treated"` //Upper, Lower, Both
+	ArchCorrection         string              `bson:"arch_correction"`    //Anterior(Social Six),Full
+	OverJet                string              `bson:"over_jet"`           //Maintain,Increase,Decrease
+	OverBite               string              `bson:"over_bite"`          //Maintain,Increase,Decrease
+	MidLine                string              `bson:"mid_line"`           //Maintain,Improve
+	CanineRelation         string              `bson:"canine_relation"`    //Maintain,Improve,None
+	MolarRelation          string              `bson:"molar_relation"`     //Maintain,Improve,None
+	AsDecidedByExpertTeam  bool                `bson:"as_decided_by_expert_team"`
 	SpaceAlterations       SpaceAlterations    `bson:"space_alterations"`        //CloseAllSpaces,CreateSpaceFor{number},LeaveSpaceDistalTo{number},None
 	SpaceGainingPreference SpaceGainPreference `bson:"space_gaining_preference"` //IPR,Extraction,Expansion,None
 	Upper                  string              `bson:"upper"`                    //Anterior, Posterior, Both
@@ -184,9 +185,10 @@ type AllProducts struct {
 }
 
 type SpaceGainPreference struct {
-	IPR                  bool                 `bson:"ipr"` //IPR,Extraction,Expansion,None
-	ExtractionPreference ExtractionPreference `bson:"extraction_teeths"`
-	ExpansionPreference  ExpansionPreference  `bson:"expansion_preference"`
+	IPR                  string `bson:"ipr"`                   //Primary,AsNeeded,None
+	ExpansionPreference  string `bson:"expansion_preference"`  //Primary,AsNeeded,None
+	ExtractionPreference string `bson:"extraction_preference"` //Primary,AsNeeded,None
+	SpaceGainDetails     string `bson:"space_gain_details"`
 }
 
 type ExpansionPreference struct {
@@ -212,9 +214,10 @@ type ExtractionTeethPreference struct {
 }
 
 type SpaceAlterations struct {
-	CloseAllSpaces     bool                   `bson:"close_all_spaces"`
-	CreateSpaceFor     [32]CreateSpaceFor     `bson:"create_space_for,omitempty"`
-	LeaveSpaceDistalTo [32]LeaveSpaceDistalTo `bson:"leave_space_distal_to,omitempty"`
+	NoSpaceAlterations bool   `bson:"no_space_alterations"`
+	CloseAllSpaces     bool   `bson:"close_all_spaces"`
+	CreateSpaceFor     string `bson:"create_space_for"`
+	LeaveSpaceDistalTo string `bson:"leave_space_distal_to"`
 }
 
 type CreateSpaceFor struct {
