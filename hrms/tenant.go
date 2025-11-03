@@ -27,6 +27,7 @@ type Tenant struct {
 	Status             string             `bson:"status"`
 	RefreshToken       string             `bson:"refresh_token"`
 	GoogleRefreshToken string             `bson:"google_refresh_token"`
+	DeviceId           string             `bson:"device_id"`
 	CreatedBy          string             `bson:"created_by"`
 	CreatedAt          time.Time          `bson:"created_at"`
 	UpdatedAt          time.Time          `bson:"updated_at"`
