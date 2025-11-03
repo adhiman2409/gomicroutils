@@ -80,30 +80,31 @@ type DoctorAuthObject struct {
 }
 
 type DoctorInfo struct {
-	ID                primitive.ObjectID `bson:"_id"`
-	DoctorId          string             `bson:"doctor_id"`
-	Password          string             `bson:"password"`
-	Designation       string             `bson:"designation"`
-	FirstLoginPending bool               `bson:"first_login_pending"`
-	OrgName           string             `bson:"org_name"`
-	EmailId           string             `bson:"email_id"`
-	PhoneNumber       string             `bson:"phone_number"`
-	Department        string             `bson:"department"`
-	OfficeName        string             `bson:"office_name"`
-	FirstName         string             `bson:"first_name"`
-	LastName          string             `bson:"last_name"`
-	Specialization    string             `bson:"specialization"`
-	EmailVerified     bool               `bson:"email_verified"`
-	Status            string             `bson:"status"` //Active and Inactive
-	BillingAddress    Address            `bson:"billing_address"`
-	ShippingAddress   Address            `bson:"shipping_address"`
-	RefreshToken      string             `bson:"refresh_token"`
-	ImageURL          string             `bson:"image_url"`
-	GSTNumber         string             `bson:"gst_number"`
-	Role              string             `bson:"role"`
-	CreatedBy         string             `bson:"created_by"`
-	CreatedAt         time.Time          `bson:"created_at"`
-	UpdatedAt         time.Time          `bson:"updated_at"`
+	ID                       primitive.ObjectID `bson:"_id"`
+	DoctorId                 string             `bson:"doctor_id"`
+	Password                 string             `bson:"password"`
+	Designation              string             `bson:"designation"`
+	FirstLoginPending        bool               `bson:"first_login_pending"`
+	OrgName                  string             `bson:"org_name"`
+	EmailId                  string             `bson:"email_id"`
+	PhoneNumber              string             `bson:"phone_number"`
+	Department               string             `bson:"department"`
+	OfficeName               string             `bson:"office_name"`
+	FirstName                string             `bson:"first_name"`
+	LastName                 string             `bson:"last_name"`
+	Specialization           string             `bson:"specialization"`
+	EmailVerified            bool               `bson:"email_verified"`
+	Status                   string             `bson:"status"` //Active and Inactive
+	BillingAddress           Address            `bson:"billing_address"`
+	ShippingAddress          Address            `bson:"shipping_address"`
+	RefreshToken             string             `bson:"refresh_token"`
+	ImageURL                 string             `bson:"image_url"`
+	GSTNumber                string             `bson:"gst_number"`
+	Role                     string             `bson:"role"`
+	DentalRegistrationNumber string             `bson:"dental_registration_number"`
+	CreatedBy                string             `bson:"created_by"`
+	CreatedAt                time.Time          `bson:"created_at"`
+	UpdatedAt                time.Time          `bson:"updated_at"`
 }
 
 type Case struct {
