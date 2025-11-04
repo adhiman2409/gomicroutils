@@ -26,6 +26,7 @@ type ClientInfo struct {
 	ClientStatus               string             `bson:"client_status"`
 	ClientDescription          string             `bson:"client_description"`
 	IsDefault                  bool               `bson:"is_default"`
+	IsExternalProject          bool               `bson:"is_external_project"`
 	IsNDASigned                bool               `bson:"is_nda_signed"`
 	NDASignDate                time.Time          `bson:"nda_sign_date"`
 	NDADocument                string             `bson:"nda_document"`
@@ -36,6 +37,9 @@ type ClientInfo struct {
 	ProjectHeadId              string             `bson:"project_head_id"`
 	ProjectHeadName            string             `bson:"project_head_name"`
 	ProjectHeadEmail           string             `bson:"project_head_email"`
+	ExternalProjectHeadId      string             `bson:"external_project_head_id"`
+	ExternalProjectHeadName    string             `bson:"external_project_head_name"`
+	ExternalProjectHeadEmail   string             `bson:"external_project_head_email"`
 	FullAddress                Address            `bson:"full_address"`
 	City                       string             `bson:"city"`
 	State                      string             `bson:"state"`
