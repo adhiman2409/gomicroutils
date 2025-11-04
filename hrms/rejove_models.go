@@ -122,6 +122,7 @@ type Case struct {
 	MidCourseCorrection       []AdditionalPlans         `bson:"mid_course_correction"`
 	Refinements               []AdditionalPlans         `bson:"refinements"`
 	AllignerTacking           []AdditionalPlans         `bson:"alligner_tacking"`
+	RejoveChatMessages        []RejoveChatMessage       `bson:"rejove_chat_messages"`
 	Remarks                   string                    `bson:"remarks"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
 	UpdatedAt                 time.Time                 `bson:"updated_at"`
@@ -231,4 +232,14 @@ type LeaveSpaceDistalTo struct {
 	LeaveSpace         bool `bson:"leave_space"`
 	ToothIndex         int  `bson:"tooth_index"`
 	SpaceInMillimeters int  `bson:"space_in_millimeters"`
+}
+
+type RejoveChatMessage struct {
+	FromId      string    `bson:"from_id"`
+	FromName    string    `bson:"from_name"`
+	Message     string    `bson:"message"`
+	IsRead      bool      `bson:"is_read"`
+	Metadata    string    `bson:"metadata"`
+	Attachments []string  `bson:"attachments"`
+	CreatedAt   time.Time `bson:"created_at"`
 }
