@@ -13,6 +13,7 @@ type GeoTracking struct {
 	Location                 string    `bson:"location"`
 	IsStationary             bool      `bson:"is_stationary"`
 	StationaryDurationInMins int64     `bson:"stationary_duration_in_mins"`
+	TransitDurationInMins    int64     `bson:"transit_duration_in_mins"`
 	EventName                string    `bson:"event_name"` // e.g., "checkin", "checkout", "location_update"
 	EventId                  string    `bson:"event_id"`   // Unique identifier for the event
 	Remarks                  string    `bson:"remarks"`    // Additional information about the event
