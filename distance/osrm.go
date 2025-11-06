@@ -1,6 +1,7 @@
 package distance
 
 import (
+	"container/list"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -32,16 +33,35 @@ type RouteResult struct {
 	Duration float64 // in seconds
 }
 
-// RouteCache is a simple in-memory cache for routes
+// cacheEntry holds a cache value and its key for LRU tracking
+type cacheEntry struct {
+	key    string
+	result *RouteResult
+}
+
+// RouteCache is an LRU (Least Recently Used) in-memory cache for routes
 type RouteCache struct {
-	mu    sync.RWMutex
-	cache map[string]*RouteResult
+	mu       sync.RWMutex
+	cache    map[string]*list.Element
+	lruList  *list.List
+	maxSize  int
+}
+
+// NewRouteCache creates a new LRU cache with the specified maximum size
+func NewRouteCache(maxSize int) *RouteCache {
+	if maxSize <= 0 {
+		maxSize = 1000 // default size
+	}
+	return &RouteCache{
+		cache:   make(map[string]*list.Element),
+		lruList: list.New(),
+		maxSize: maxSize,
+	}
 }
 
 var (
-	routeCache = &RouteCache{
-		cache: make(map[string]*RouteResult),
-	}
+	// Default cache with 1000 entries limit
+	routeCache = NewRouteCache(1000)
 )
 
 // GetRoute fetches a route between coordinates using OSRM
@@ -126,31 +146,67 @@ func createCacheKey(coordinates []Coordinate) string {
 	return strings.Join(parts, "|")
 }
 
-// Cache methods
+// Cache methods with LRU eviction
 func (rc *RouteCache) get(key string) *RouteResult {
-	rc.mu.RLock()
-	defer rc.mu.RUnlock()
-	return rc.cache[key]
+	rc.mu.Lock()
+	defer rc.mu.Unlock()
+
+	if elem, exists := rc.cache[key]; exists {
+		// Move to front (most recently used)
+		rc.lruList.MoveToFront(elem)
+		return elem.Value.(*cacheEntry).result
+	}
+	return nil
 }
 
 func (rc *RouteCache) set(key string, result *RouteResult) {
 	rc.mu.Lock()
 	defer rc.mu.Unlock()
 
-	rc.cache[key] = result
-
-	// Clear old cache entries if size exceeds 1000
-	if len(rc.cache) > 1000 {
-		// Delete oldest 500 entries (simple approach - delete first 500 keys)
-		count := 0
-		for k := range rc.cache {
-			if count >= 500 {
-				break
-			}
-			delete(rc.cache, k)
-			count++
-		}
+	// If key already exists, update and move to front
+	if elem, exists := rc.cache[key]; exists {
+		rc.lruList.MoveToFront(elem)
+		elem.Value.(*cacheEntry).result = result
+		return
 	}
+
+	// Add new entry
+	entry := &cacheEntry{
+		key:    key,
+		result: result,
+	}
+	elem := rc.lruList.PushFront(entry)
+	rc.cache[key] = elem
+
+	// Evict least recently used if size exceeds max
+	if rc.lruList.Len() > rc.maxSize {
+		rc.evictOldest()
+	}
+}
+
+// evictOldest removes the least recently used entry from cache
+func (rc *RouteCache) evictOldest() {
+	elem := rc.lruList.Back()
+	if elem != nil {
+		rc.lruList.Remove(elem)
+		entry := elem.Value.(*cacheEntry)
+		delete(rc.cache, entry.key)
+	}
+}
+
+// Size returns the current number of entries in the cache
+func (rc *RouteCache) Size() int {
+	rc.mu.RLock()
+	defer rc.mu.RUnlock()
+	return rc.lruList.Len()
+}
+
+// Clear removes all entries from the cache
+func (rc *RouteCache) Clear() {
+	rc.mu.Lock()
+	defer rc.mu.Unlock()
+	rc.cache = make(map[string]*list.Element)
+	rc.lruList = list.New()
 }
 
 // decodePolyline decodes a polyline string into an array of coordinates
