@@ -73,6 +73,7 @@ type EmployeeAttendance struct {
 	OrgCheckInTimeInTicks         int64              `bson:"org_check_in_time_in_ticks"`
 	OrgCheckOutTimeInTicks        int64              `bson:"org_check_out_time_in_ticks"`
 	DailyCheckInStats             []DailyCheckInStat `bson:"daily_checkin_stats"`
+	TotalDistanceTraveledInKMs    float64            `bson:"total_distance_traveled_in_kms"`
 	TotalStationaryDurationInMins int64              `bson:"total_stationary_duration_in_mins"`
 	TotalTransitDurationInMins    int64              `bson:"total_transit_duration_in_mins"`
 	GeoTracking                   []GeoTracking      `bson:"geo_tracking"`
