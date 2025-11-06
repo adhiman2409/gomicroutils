@@ -14,7 +14,7 @@ type GeoTracking struct {
 	IsStationary             bool      `bson:"is_stationary"`
 	StationaryDurationInMins int64     `bson:"stationary_duration_in_mins"`
 	TransitDurationInMins    int64     `bson:"transit_duration_in_mins"`
-	DistanceTraveledInKMs    float64   `bson:"distance_traveled_in_kms"`
+	DistanceTravelledInKMs   float64   `bson:"distance_travelled_in_kms"`
 	EventName                string    `bson:"event_name"` // e.g., "checkin", "checkout", "location_update"
 	EventId                  string    `bson:"event_id"`   // Unique identifier for the event
 	Remarks                  string    `bson:"remarks"`    // Additional information about the event
@@ -74,7 +74,7 @@ type EmployeeAttendance struct {
 	OrgCheckInTimeInTicks         int64              `bson:"org_check_in_time_in_ticks"`
 	OrgCheckOutTimeInTicks        int64              `bson:"org_check_out_time_in_ticks"`
 	DailyCheckInStats             []DailyCheckInStat `bson:"daily_checkin_stats"`
-	TotalDistanceTraveledInKMs    float64            `bson:"total_distance_traveled_in_kms"`
+	TotalDistanceTravelledInKMs   float64            `bson:"total_distance_travelled_in_kms"`
 	TotalStationaryDurationInMins int64              `bson:"total_stationary_duration_in_mins"`
 	TotalTransitDurationInMins    int64              `bson:"total_transit_duration_in_mins"`
 	GeoTracking                   []GeoTracking      `bson:"geo_tracking"`
