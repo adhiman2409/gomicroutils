@@ -53,16 +53,18 @@ type Estimate struct {
 }
 
 type TreatmentPlan struct {
-	Title            string    `bson:"title"`
-	Description      string    `bson:"description"`
-	FinalCost        float64   `bson:"final_cost"`
-	Currency         string    `bson:"currency"`
-	ExpectedDuration string    `bson:"expected_duration"`
-	CreatedAt        time.Time `bson:"created_at"`
-	Status           string    `bson:"status"`
-	Attachments      []string  `bson:"attachments"`
-	DoctorRemarks    string    `bson:"doctor_remarks"`
-	UpdatedAt        time.Time `bson:"updated_at"`
+	Title                string    `bson:"title"`
+	Description          string    `bson:"description"`
+	FinalCost            float64   `bson:"final_cost"`
+	Currency             string    `bson:"currency"`
+	ExpectedDuration     string    `bson:"expected_duration"`
+	CreatedAt            time.Time `bson:"created_at"`
+	Status               string    `bson:"status"`
+	ApprovedAt           time.Time `bson:"approved_at"`
+	ExpectedDeliveryDate time.Time `bson:"expected_delivery_date"`
+	Attachments          []string  `bson:"attachments"`
+	DoctorRemarks        string    `bson:"doctor_remarks"`
+	UpdatedAt            time.Time `bson:"updated_at"`
 }
 
 type UserIdCounter struct {
@@ -142,6 +144,7 @@ type Case struct {
 	CaseType                  string                    `bson:"case_type"` //Aligner, RetainerOnly
 	PlanType                  string                    `bson:"plan_type"` //NewCase, MidcourseCorrection, Refinements
 	IsSubmitted               bool                      `bson:"is_submitted"`
+	SubmittedAt               time.Time                 `bson:"submitted_at"`
 	SubmissionVoiceNoteUrl    string                    `bson:"submission_voice_note_url"`
 	CasePreferences           CasePreference            `bson:"case_preferences"`
 	ToothMovementRestrictions ToothMovementRestrictions `bson:"tooth_movement_restrictions"`
@@ -155,6 +158,7 @@ type Case struct {
 	TreatmentPlans            []TreatmentPlan           `bson:"treatment_plans"`
 	Estimate                  Estimate                  `bson:"estimate"`
 	Remarks                   string                    `bson:"remarks"`
+	FirstResponseTime         time.Time                 `bson:"first_response_time"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
 	UpdatedAt                 time.Time                 `bson:"updated_at"`
 }
