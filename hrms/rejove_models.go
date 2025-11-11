@@ -37,6 +37,34 @@ type Patient struct {
 	UpdatedAt      time.Time `bson:"updated_at"`
 }
 
+type Estimate struct {
+	CaseId            string    `bson:"case_id"`
+	DoctorId          string    `bson:"doctor_id"`
+	PatientId         string    `bson:"patient_id"`
+	EstimateAmt       float64   `bson:"estimate_amt"`
+	EstimationDetails string    `bson:"estimation_details"`
+	Currency          string    `bson:"currency"`
+	ValidityDays      int       `bson:"validity_days"`
+	IsApproved        bool      `bson:"is_approved"`
+	ApprovalDate      time.Time `bson:"approval_date"`
+	DoctorRemarks     string    `bson:"doctor_remarks"`
+	CreatedAt         time.Time `bson:"created_at"`
+	UpdatedAt         time.Time `bson:"updated_at"`
+}
+
+type TreatmentPlan struct {
+	Title            string    `bson:"title"`
+	Description      string    `bson:"description"`
+	FinalCost        float64   `bson:"final_cost"`
+	Currency         string    `bson:"currency"`
+	ExpectedDuration string    `bson:"expected_duration"`
+	CreatedAt        time.Time `bson:"created_at"`
+	Status           string    `bson:"status"`
+	Attachments      []string  `bson:"attachments"`
+	DoctorRemarks    string    `bson:"doctor_remarks"`
+	UpdatedAt        time.Time `bson:"updated_at"`
+}
+
 type UserIdCounter struct {
 	ID      primitive.ObjectID `bson:"_id"`
 	Prefix  string             `bson:"prefix"`
@@ -123,6 +151,9 @@ type Case struct {
 	Refinements               []AdditionalPlans         `bson:"refinements"`
 	AllignerTacking           []AdditionalPlans         `bson:"alligner_tacking"`
 	RejoveChatMessages        []RejoveChatMessage       `bson:"rejove_chat_messages"`
+	CaseAssignedTo            string                    `bson:"case_assigned_to"`
+	TreatmentPlans            []TreatmentPlan           `bson:"treatment_plans"`
+	Estimate                  Estimate                  `bson:"estimate"`
 	Remarks                   string                    `bson:"remarks"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
 	UpdatedAt                 time.Time                 `bson:"updated_at"`
