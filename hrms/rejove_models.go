@@ -154,7 +154,7 @@ type Case struct {
 	Refinements               []AdditionalPlans         `bson:"refinements"`
 	AllignerTacking           []AdditionalPlans         `bson:"alligner_tacking"`
 	RejoveChatMessages        []RejoveChatMessage       `bson:"rejove_chat_messages"`
-	CaseAssignedTo            string                    `bson:"case_assigned_to"`
+	CaseAssignedTo            EmpSummary                `bson:"case_assigned_to"`
 	TreatmentPlans            []TreatmentPlan           `bson:"treatment_plans"`
 	Estimate                  Estimate                  `bson:"estimate"`
 	Remarks                   string                    `bson:"remarks"`
