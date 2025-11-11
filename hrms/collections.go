@@ -12,6 +12,7 @@ const ORG_COLLECTION_ORGANIZATION = "organization"
 const ORG_COLLECTION_DEPARTMENTS = "org-departments"
 const ORG_COLLECTION_DOCUMENTS = "org-documents"
 const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
+const ORG_COLLECTION_HIERARCHY_TREE = "org-hierarchy-tree"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
 const ORG_COLLECTION_AUTH = "auth"
 const AUTH_COLLECTION_THIRD_PARTY_API_KEYS = "auth-third-party-api-keys"
@@ -485,6 +486,11 @@ func GetOrgPermissionsCollection(client *mongo.Client, domain string) *mongo.Col
 func GetOrgEmployeeTypeCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_EMPLOYEE_TYPE)
+}
+
+func GetOrgHierarchyTreeCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_HIERARCHY_TREE)
 }
 
 func GetAuthThirdPartyAPIKeysCollection(client *mongo.Client, domain string) *mongo.Collection {
