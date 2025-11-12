@@ -8,6 +8,11 @@ import (
 
 const TEMPLATE_COLLECTION_USERS = "template-users"
 
+const AUTH_COLLECTION_THIRD_PARTY_API_KEYS = "auth-third-party-api-keys"
+const AUTH_COLLECTION_ORG_SIDEBAR_CONFIG = "auth-org-sidebar-config"
+const AUTH_COLLECTION_EMPLOYEE_SIDEBAR_CONFIG = "auth-employee-sidebar-config"
+const AUTH_COLLECTION_MODULE_ACCESS_CONFIG = "auth-module-access-config"
+
 const ORG_COLLECTION_ORGANIZATION = "organization"
 const ORG_COLLECTION_DEPARTMENTS = "org-departments"
 const ORG_COLLECTION_DOCUMENTS = "org-documents"
@@ -15,10 +20,6 @@ const ORG_COLLECTION_EMPLOYEE_TYPE = "org-employee-types"
 const ORG_COLLECTION_HIERARCHY_TREE = "org-hierarchy-tree"
 const ORG_COLLECTION_PERMISSIONS = "org-permissions"
 const ORG_COLLECTION_AUTH = "auth"
-const AUTH_COLLECTION_THIRD_PARTY_API_KEYS = "auth-third-party-api-keys"
-const AUTH_COLLECTION_ORG_SIDEBAR_CONFIG = "auth-org-sidebar-config"
-const AUTH_COLLECTION_EMPLOYEE_SIDEBAR_CONFIG = "auth-employee-sidebar-config"
-const AUTH_COLLECTION_MODULE_ACCESS_CONFIG = "auth-module-access-config"
 const ORG_COLLECTION_ATTENDANCE_CONF = "org-attendance-conf"
 const ORG_COLLECTION_HOLIDAYS = "org-holidays"
 const ORG_COLLECTION_LEAVES_CONF = "org-leaves-conf"
@@ -41,13 +42,12 @@ const ORG_COLLECTION_CLIENT_HOLIDAYS = "org-client_holidays"
 const ORG_COLLECTION_POLICY = "org-policy"
 const ORG_COLLECTION_POLICY_STATS = "org-policy-stats"
 const ORG_COLLECTION_SALARY_COMPONENTS = "org-salary_components"
-
 const ORG_COLLECTION_SALARY_GROUPS = "org-salary_groups"
 const ORG_COLLECTION_SALARY_STRUCTURES = "org-salary_structures"
 const ORG_COLLECTION_OFFER_LETTERS = "org-offer-letters"
 const ORG_COLLECTION_OFFER_LETTER_ANNEXURES = "org-offer-letter-annexures"
 const ORG_COLLECTION_EMPLOYEE_SHIFTS = "org-employee-shifts"
-const ORG_COLLECTION_FOCUS_CATEGORIES = "org-focus-categories"
+const ORG_COLLECTION_FOCUS_APPLICATIONS = "org-focus-applications"
 
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
@@ -709,9 +709,9 @@ func GetOrgEmployeeShiftsCollection(client *mongo.Client, domain string) *mongo.
 	return db.Collection(ORG_COLLECTION_EMPLOYEE_SHIFTS)
 }
 
-func GetOrgFocusCategoriesCollection(client *mongo.Client, domain string) *mongo.Collection {
+func GetOrgFocusApplicationsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(ORG_COLLECTION_FOCUS_CATEGORIES)
+	return db.Collection(ORG_COLLECTION_FOCUS_APPLICATIONS)
 }
 
 func GetOrgSalaryGroupsCollection(client *mongo.Client, domain string) *mongo.Collection {
