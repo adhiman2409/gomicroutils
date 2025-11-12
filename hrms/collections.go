@@ -47,6 +47,7 @@ const ORG_COLLECTION_SALARY_STRUCTURES = "org-salary_structures"
 const ORG_COLLECTION_OFFER_LETTERS = "org-offer-letters"
 const ORG_COLLECTION_OFFER_LETTER_ANNEXURES = "org-offer-letter-annexures"
 const ORG_COLLECTION_EMPLOYEE_SHIFTS = "org-employee-shifts"
+const ORG_COLLECTION_FOCUS_CATEGORIES = "org-focus-categories"
 
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
