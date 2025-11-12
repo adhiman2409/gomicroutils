@@ -709,6 +709,11 @@ func GetOrgEmployeeShiftsCollection(client *mongo.Client, domain string) *mongo.
 	return db.Collection(ORG_COLLECTION_EMPLOYEE_SHIFTS)
 }
 
+func GetOrgFocusCategoriesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_FOCUS_CATEGORIES)
+}
+
 func GetOrgSalaryGroupsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_SALARY_GROUPS)
