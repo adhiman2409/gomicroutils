@@ -53,6 +53,7 @@ type Estimate struct {
 }
 
 type TreatmentPlan struct {
+	TreatmentPlanId      string    `bson:"treatment_plan_id"`
 	Title                string    `bson:"title"`
 	Description          string    `bson:"description"`
 	FinalCost            float64   `bson:"final_cost"`
