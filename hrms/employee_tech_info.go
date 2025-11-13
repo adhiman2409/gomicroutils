@@ -461,10 +461,12 @@ const (
 	StarRating
 	SingleSelect
 	MultiSelect
+	Number
+	Integer
 )
 
 func (r InputType) String() string {
-	return [...]string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect"}[r-1]
+	return [...]string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect", "Number", "Integer"}[r-1]
 }
 
 func (r InputType) EnumIndex() int {
@@ -472,20 +474,24 @@ func (r InputType) EnumIndex() int {
 }
 
 func GetAllInputTypes() []string {
-	return []string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect"}
+	return []string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect", "Number", "Integer"}
 }
 
 func InputTypeFromString(s string) InputType {
 	switch s {
-	case "Text":
-		return Text
 	case "Binary":
 		return Binary
 	case "StarRating":
 		return StarRating
 	case "SingleSelect":
 		return SingleSelect
-	default:
+	case "MultiSelect":
 		return MultiSelect
+	case "Number":
+		return Number
+	case "Integer":
+		return Integer
+	default:
+		return Text
 	}
 }
