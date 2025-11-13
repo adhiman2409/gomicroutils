@@ -462,11 +462,11 @@ const (
 	SingleSelect
 	MultiSelect
 	Number
-	Integer
+	None
 )
 
 func (r InputType) String() string {
-	return [...]string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect", "Number", "Integer"}[r-1]
+	return [...]string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect", "Number", "None"}[r-1]
 }
 
 func (r InputType) EnumIndex() int {
@@ -474,7 +474,7 @@ func (r InputType) EnumIndex() int {
 }
 
 func GetAllInputTypes() []string {
-	return []string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect", "Number", "Integer"}
+	return []string{"Text", "Binary", "StarRating", "SingleSelect", "MultiSelect", "Number", "None"}
 }
 
 func InputTypeFromString(s string) InputType {
@@ -489,8 +489,8 @@ func InputTypeFromString(s string) InputType {
 		return MultiSelect
 	case "Number":
 		return Number
-	case "Integer":
-		return Integer
+	case "None":
+		return None
 	default:
 		return Text
 	}
