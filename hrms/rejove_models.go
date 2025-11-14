@@ -46,6 +46,8 @@ type Estimate struct {
 	Currency          string    `bson:"currency"`
 	ValidityDays      int       `bson:"validity_days"`
 	IsApproved        bool      `bson:"is_approved"`
+	IsRejected        bool      `bson:"is_rejected"`
+	RejectionDate     time.Time `bson:"rejection_date"`
 	ApprovalDate      time.Time `bson:"approval_date"`
 	DoctorRemarks     string    `bson:"doctor_remarks"`
 	CreatedAt         time.Time `bson:"created_at"`
