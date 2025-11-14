@@ -158,6 +158,7 @@ type Case struct {
 	CaseAssignedTo            EmpSummary                `bson:"case_assigned_to"`
 	TreatmentPlans            []TreatmentPlan           `bson:"treatment_plans"`
 	Estimate                  Estimate                  `bson:"estimate"`
+	EstimateHistory           []Estimate                `bson:"estimate_history"`
 	Remarks                   string                    `bson:"remarks"`
 	FirstResponseTime         time.Time                 `bson:"first_response_time"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
