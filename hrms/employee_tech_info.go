@@ -280,6 +280,7 @@ type Appraisal struct {
 	EmployeeEmail                   string                       `bson:"employee_email"`
 	EmployeeDesignation             string                       `bson:"employee_designation"`
 	EmployeeDepartment              string                       `bson:"employee_department"`
+	EmployeeRole                    string                       `bson:"employee_role"`
 	EmployeeLocation                string                       `bson:"employee_location"`
 	EmployeeDateOfJoining           string                       `bson:"employee_date_of_joining"`
 	EmployeeTenureInDays            string                       `bson:"employee_tenure_in_days"`
@@ -301,9 +302,11 @@ type Appraisal struct {
 	Awards                          []Award                      `bson:"awards"`
 	HRFeedbacks                     []HRFeedback                 `bson:"hr_feedbacks"`
 	OverallEmployeeRating           string                       `bson:"overall_employee_rating"`
-	OverallManagerRating            string                       `bson:"overall_manager_rating"`
 	OverallEmployeeRemarks          string                       `bson:"overall_employee_remarks"`
+	OverallManagerRating            string                       `bson:"overall_manager_rating"`
 	OverallManagerRemarks           string                       `bson:"overall_manager_remarks"`
+	OverallManagementRating         string                       `bson:"overall_management_rating"`
+	OverallManagementRemarks        string                       `bson:"overall_management_remarks"`
 	GoalsAndExpectionsForNextYear   string                       `bson:"goals_and_expections_for_next_year"`
 	CompensationInfo                CompensationInfo             `bson:"compensation_info"`
 	DateOfCurrentDesignation        string                       `bson:"date_of_current_designation"`
