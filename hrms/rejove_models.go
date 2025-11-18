@@ -6,6 +6,21 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type AlignerTreatmentDetails struct {
+	AlignerId             string        `bson:"aligner_id"`
+	TotalNumberOfAligners int64         `bson:"total_number_of_aligners"`
+	AlignerSchedule       string        `bson:"aligner_schedule"`
+	NextDeliveryDate      time.Time     `bson:"next_delivery_date"`
+	CurrentBatch          AlignerPlan   `bson:"current_batch"`
+	FullTreatmentCycle    []AlignerPlan `bson:"full_treatment_cycle"`
+}
+
+type AlignerPlan struct {
+	AlignerDeliveryDate time.Time `bson:"aligner_delivery_date"`
+	AlignerValidTill    time.Time `bson:"aligner_valid_till"`
+	AdditionalNotes     string    `bson:"additional_notes"`
+}
+
 type Practice struct {
 	UserId string `bson:"user_id"`
 	Cases  []Case `bson:"cases"`
@@ -38,36 +53,38 @@ type Patient struct {
 }
 
 type Estimate struct {
-	CaseId            string    `bson:"case_id"`
-	DoctorId          string    `bson:"doctor_id"`
-	PatientId         string    `bson:"patient_id"`
-	EstimateAmt       float64   `bson:"estimate_amt"`
-	EstimationDetails string    `bson:"estimation_details"`
-	Currency          string    `bson:"currency"`
-	ValidityDays      int       `bson:"validity_days"`
-	IsApproved        bool      `bson:"is_approved"`
-	IsRejected        bool      `bson:"is_rejected"`
-	RejectionDate     time.Time `bson:"rejection_date"`
-	ApprovalDate      time.Time `bson:"approval_date"`
-	DoctorRemarks     string    `bson:"doctor_remarks"`
-	CreatedAt         time.Time `bson:"created_at"`
-	UpdatedAt         time.Time `bson:"updated_at"`
+	CaseId                  string                  `bson:"case_id"`
+	DoctorId                string                  `bson:"doctor_id"`
+	PatientId               string                  `bson:"patient_id"`
+	EstimateAmt             float64                 `bson:"estimate_amt"`
+	EstimationDetails       string                  `bson:"estimation_details"`
+	Currency                string                  `bson:"currency"`
+	ValidityDays            int                     `bson:"validity_days"`
+	IsApproved              bool                    `bson:"is_approved"`
+	IsRejected              bool                    `bson:"is_rejected"`
+	RejectionDate           time.Time               `bson:"rejection_date"`
+	ApprovalDate            time.Time               `bson:"approval_date"`
+	DoctorRemarks           string                  `bson:"doctor_remarks"`
+	AlignerTreatmentDetails AlignerTreatmentDetails `bson:"aligner_treatment_details"`
+	CreatedAt               time.Time               `bson:"created_at"`
+	UpdatedAt               time.Time               `bson:"updated_at"`
 }
 
 type TreatmentPlan struct {
-	TreatmentPlanId      string    `bson:"treatment_plan_id"`
-	Title                string    `bson:"title"`
-	Description          string    `bson:"description"`
-	FinalCost            float64   `bson:"final_cost"`
-	Currency             string    `bson:"currency"`
-	ExpectedDuration     string    `bson:"expected_duration"`
-	CreatedAt            time.Time `bson:"created_at"`
-	Status               string    `bson:"status"`
-	ApprovedAt           time.Time `bson:"approved_at"`
-	ExpectedDeliveryDate time.Time `bson:"expected_delivery_date"`
-	Attachments          []string  `bson:"attachments"`
-	DoctorRemarks        string    `bson:"doctor_remarks"`
-	UpdatedAt            time.Time `bson:"updated_at"`
+	TreatmentPlanId         string                  `bson:"treatment_plan_id"`
+	Title                   string                  `bson:"title"`
+	Description             string                  `bson:"description"`
+	FinalCost               float64                 `bson:"final_cost"`
+	Currency                string                  `bson:"currency"`
+	ExpectedDuration        string                  `bson:"expected_duration"`
+	CreatedAt               time.Time               `bson:"created_at"`
+	Status                  string                  `bson:"status"`
+	ApprovedAt              time.Time               `bson:"approved_at"`
+	ExpectedDeliveryDate    time.Time               `bson:"expected_delivery_date"`
+	Attachments             []string                `bson:"attachments"`
+	DoctorRemarks           string                  `bson:"doctor_remarks"`
+	AlignerTreatmentDetails AlignerTreatmentDetails `bson:"aligner_treatment_details"`
+	UpdatedAt               time.Time               `bson:"updated_at"`
 }
 
 type UserIdCounter struct {
