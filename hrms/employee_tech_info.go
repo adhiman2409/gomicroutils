@@ -151,27 +151,28 @@ type SectionQuestionAnswer struct {
 }
 
 type QuestionAnswer struct {
-	Domain                string    `bson:"domain"`
-	Department            string    `bson:"department"`
-	Designation           string    `bson:"designation"`
-	EmployeeId            string    `bson:"employee_id"`
-	Title                 string    `bson:"title"`
-	Description           string    `bson:"description"`
-	IsMandatory           bool      `bson:"is_mandatory"`
-	InputType             InputType `bson:"input_type"`
-	WeightageInPercentage float32   `bson:"weightage_in_percentage"`
-	MinimumScore          string    `bson:"minimum_score"`
-	MaximumScore          string    `bson:"maximum_score"`
-	EmployeeScore         string    `bson:"employee_score"`
-	ManagerScore          string    `bson:"manager_score"`
-	MultiSelectOptions    []string  `bson:"multi_select_options"`
-	SingleSelectOptions   []string  `bson:"single_select_options"`
-	BinaryOptions         []string  `bson:"binary_options"`
-	SelectedOptions       []string  `bson:"selected_options"`
-	Hint                  string    `bson:"hint"`
-	EmployeeRemarks       string    `bson:"employee_remarks"`
-	ManagerRemarks        string    `bson:"manager_remarks"`
-	CreatedBy             string    `bson:"created_by"`
+	Domain                 string    `bson:"domain"`
+	Department             string    `bson:"department"`
+	Designation            string    `bson:"designation"`
+	EmployeeId             string    `bson:"employee_id"`
+	Title                  string    `bson:"title"`
+	Description            string    `bson:"description"`
+	IsMandatory            bool      `bson:"is_mandatory"`
+	InputType              InputType `bson:"input_type"`
+	WeightageInPercentage  float32   `bson:"weightage_in_percentage"`
+	MinimumScore           string    `bson:"minimum_score"`
+	MaximumScore           string    `bson:"maximum_score"`
+	EmployeeScore          string    `bson:"employee_score"`
+	ManagerScore           string    `bson:"manager_score"`
+	MultiSelectOptions     []string  `bson:"multi_select_options"`
+	SingleSelectOptions    []string  `bson:"single_select_options"`
+	BinaryOptions          []string  `bson:"binary_options"`
+	SelectedOptions        []string  `bson:"selected_options"`
+	ManagerSelectedOptions []string  `bson:"manager_selected_options"`
+	Hint                   string    `bson:"hint"`
+	EmployeeRemarks        string    `bson:"employee_remarks"`
+	ManagerRemarks         string    `bson:"manager_remarks"`
+	CreatedBy              string    `bson:"created_by"`
 }
 
 type Rating struct {
