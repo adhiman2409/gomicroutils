@@ -121,18 +121,21 @@ type SeparationInfo struct {
 }
 
 type SectionWiseQuestionAnswerSet struct {
-	Domain                 string                  `bson:"domain"`
-	Department             string                  `bson:"department"`
-	Designation            string                  `bson:"designation"`
-	EmployeeId             string                  `bson:"employee_id"`
-	Title                  string                  `bson:"title"`
-	Description            string                  `bson:"description"`
-	IsMandatory            bool                    `bson:"is_mandatory"`
-	WeightageInPercentage  float32                 `bson:"weightage_in_percentage"`
-	TotalEmployeeScore     string                  `bson:"total_employee_score"`
-	TotalManagerScore      string                  `bson:"total_manager_score"`
-	SectionQuestionAnswers []SectionQuestionAnswer `bson:"section_question_answers"`
-	CreatedBy              string                  `bson:"created_by"`
+	Domain                  string                  `bson:"domain"`
+	Department              string                  `bson:"department"`
+	Designation             string                  `bson:"designation"`
+	EmployeeId              string                  `bson:"employee_id"`
+	Title                   string                  `bson:"title"`
+	Description             string                  `bson:"description"`
+	IsMandatory             bool                    `bson:"is_mandatory"`
+	WeightageInPercentage   float32                 `bson:"weightage_in_percentage"`
+	TotalEmployeeScore      string                  `bson:"total_employee_score"`
+	TotalManagerScore       string                  `bson:"total_manager_score"`
+	TotalMaximumScore       string                  `bson:"total_maximum_score"`
+	EmployeeScorePercentage string                  `bson:"employee_score_percentage"`
+	ManagerScorePercentage  string                  `bson:"manager_score_percentage"`
+	SectionQuestionAnswers  []SectionQuestionAnswer `bson:"section_question_answers"`
+	CreatedBy               string                  `bson:"created_by"`
 }
 
 type SectionQuestionAnswer struct {
