@@ -61,6 +61,8 @@ const EMPLOYEE_COLLECTION_ATTENDANCE_CONF = "employee-attendance-conf"
 const EMPLOYEE_COLLECTION_ATTENDANCE = "employee-attendance"
 const EMPLOYEE_COLLECTION_DAILY_ATN_OBJECT = "employee-daily-atn-object"
 const EMPLOYEE_COLLECTION_LEAVES = "employee-leaves"
+const EMPLOYEE_COLLECTION_LEAVE_ID_COUNTER = "employee-leave-id-counter"
+
 const EMPLOYEE_COLLECTION_LEAVE_STATS = "employee-leave-stats"
 const EMPLOYEE_COLLECTION_QUALIFICATION = "employee-qualification"
 const EMPLOYEE_COLLECTION_CERTIFICATE_AND_TRAINING = "employee-cert-and-training"
@@ -553,6 +555,11 @@ func GetEmpAttendanceCollection(client *mongo.Client, domain string) *mongo.Coll
 func GetEmpLeavesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_LEAVES)
+}
+
+func GetEmpLeaveIdCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_LEAVE_ID_COUNTER)
 }
 
 func GetDocumentCollection(client *mongo.Client, domain string) *mongo.Collection {
