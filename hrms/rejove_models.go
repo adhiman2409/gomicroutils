@@ -7,7 +7,6 @@ import (
 )
 
 type AlignerTreatmentDetails struct {
-	AlignerId             string        `bson:"aligner_id"`
 	TotalNumberOfAligners int64         `bson:"total_number_of_aligners"`
 	AlignerSchedule       string        `bson:"aligner_schedule"`
 	NextDeliveryDate      time.Time     `bson:"next_delivery_date"`
@@ -16,6 +15,7 @@ type AlignerTreatmentDetails struct {
 }
 
 type AlignerPlan struct {
+	AlignerId           string    `bson:"aligner_id"`
 	AlignerDeliveryDate time.Time `bson:"aligner_delivery_date"`
 	AlignerValidTill    time.Time `bson:"aligner_valid_till"`
 	AdditionalNotes     string    `bson:"additional_notes"`
