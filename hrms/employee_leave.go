@@ -86,6 +86,7 @@ type Leave struct {
 
 type EmployeeLeaveObj struct {
 	ID                                   primitive.ObjectID `bson:"_id"`
+	LeaveId                              string             `bson:"leave_id"`
 	EmployeeId                           string             `bson:"employee_id"`
 	FullName                             string             `bson:"full_name"`
 	EmailId                              string             `bson:"email_id"`
