@@ -41,3 +41,36 @@ func (a *OrgClient) InitOrganization(e OrgInitInfo) (string, error) {
 
 	return "success", nil
 }
+
+func (a *OrgClient) DeductExpenseFromBudget(e DeductExpenseInfo) (DeductExpenseInfoResponse, error) {
+
+	req := org.DeductExpenseRequest{
+		Domain:       e.Domain,
+		DepartmentId: e.DepartmentId,
+		FiscalYear:   e.FiscalYear,
+		Amount:       e.Amount,
+		Currency:     e.Currency,
+		ExpenseId:    e.ExpenseId,
+	}
+	res, err := a.client.DeductExpenseFromBudget(context.Background(), &req)
+	if err != nil {
+		fmt.Println(err.Error())
+
+		return DeductExpenseInfoResponse{
+			IsError: true,
+			Message: err.Error(),
+		}, err
+	}
+
+	if res.IsError {
+		return DeductExpenseInfoResponse{
+			IsError: true,
+			Message: res.Message,
+		}, err
+	}
+
+	return DeductExpenseInfoResponse{
+		IsError: false,
+		Message: "success",
+	}, nil
+}

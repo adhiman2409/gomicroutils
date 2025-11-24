@@ -28,3 +28,17 @@ message InitOrgResponse {
   	bool isError = 1;
   	string message = 2;
 }
+
+message DeductExpenseRequest {
+  string domain       = 1;
+  string departmentId = 2;   
+  string fiscalYear   = 3;  
+  double amount       = 4;   
+  string currency     = 5;
+  string expenseId    = 6;   
+}
+
+message DeductExpenseResponse {
+  bool   isError           = 1;
+  string message           = 2;
+}

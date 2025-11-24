@@ -16,4 +16,5 @@ service OrgService {
     rpc GetOrgAttendanceConf(OrgAttendanceRequest) returns (OrgAttendanceResponse) {}
     rpc GetDepAttendanceConf(DepAttendanceRequest) returns (DepAttendanceResponse) {}
     rpc GetOrgLeaveConf(OrgLeaveRequest) returns (OrgLeaveResponse) {}
+    rpc DeductExpenseFromBudget(DeductExpenseRequest) returns (DeductExpenseResponse) {}
 }

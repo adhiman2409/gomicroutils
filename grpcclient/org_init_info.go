@@ -19,3 +19,17 @@ type OrgInitInfo struct {
 	Country           string
 	TimeZone          string
 }
+
+type DeductExpenseInfo struct {
+	Domain       string
+	DepartmentId string
+	FiscalYear   string
+	Amount       float64
+	Currency     string
+	ExpenseId    string
+}
+
+type DeductExpenseInfoResponse struct {
+	IsError bool
+	Message string
+}
