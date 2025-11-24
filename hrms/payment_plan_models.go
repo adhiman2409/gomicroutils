@@ -47,6 +47,8 @@ type SubscriptionDetails struct {
 	Id                   primitive.ObjectID `bson:"_id"`
 	SubscriptionID       string             `bson:"subscription_id"`
 	TenantId             string             `bson:"tenant_id"`
+	TenantName           string             `bson:"tenant_name"`
+	Domain               string             `bson:"domain"`
 	PrimaryAdminId       string             `bson:"primary_admin_id"`
 	PrimaryAdminName     string             `bson:"primary_admin_name"`
 	PrimaryAdminEmail    string             `bson:"primary_admin_email"`
@@ -61,7 +63,7 @@ type SubscriptionDetails struct {
 	IsDiscounted         bool               `bson:"is_discounted"`
 	Discount             DiscountDetails    `bson:"discount"`
 	DiscountedAmount     float32            `bson:"discounted_amount"`
-	PaymentFrequency     Frequency          `bson:"payment_frequency"`
+	PaymentFrequency     string             `bson:"payment_frequency"`
 	StartDate            time.Time          `bson:"start_date"`
 	EndDate              time.Time          `bson:"end_date"`
 	Status               string             `bson:"status"`
@@ -74,12 +76,25 @@ type SubscriptionDetails struct {
 	TotalPaidAmount      float32            `bson:"total_paid_amount"`
 	TotalPendingAmount   float32            `bson:"total_pending_amount"`
 	TotalRefundedAmount  float32            `bson:"total_refunded_amount"`
+	ApplicableTaxIds     []string           `bson:"applicable_tax_ids"`
 	HaveTIN              bool               `bson:"have_tin"`
 	TaxIdentificationNum string             `bson:"tax_identification_num"`
+	BillingCycleDetails  BillingCycle       `bson:"billing_cycle"`
+	Notes                string             `bson:"notes"`
+}
+
+type BillingCycle struct {
+	ID                  primitive.ObjectID `bson:"_id"`
+	BillingCycleID      string             `bson:"billing_cycle_id"`
+	Frequency           string             `bson:"frequency"`
+	UsageBufferDays     int                `bson:"usage_buffer_days"`
+	CycleLengthInMonths int                `bson:"cycle_length_in_months"`
+	PaymentBufferDays   int                `bson:"payment_buffer_days"`
 }
 
 type TaxDetails struct {
 	Id         primitive.ObjectID `bson:"_id"`
+	TaxId      string             `bson:"tax_id"`
 	Year       int                `bson:"year"`
 	Type       string             `bson:"type"` // e.g., "GST", "VAT"
 	Name       string             `bson:"name"`
@@ -92,8 +107,8 @@ type DiscountDetails struct {
 	DiscountID  string             `bson:"discount_id"`
 	Code        string             `bson:"code"`
 	Type        string             `bson:"type"`       // percentage or fixed
-	Percentage  float64            `bson:"percentage"` // applicable if DiscountType is percentage
-	Amount      int                `bson:"amount"`     // aplicable if DiscountType is fixed
+	Percentage  float64            `bson:"percentage"` // if percentage type
+	Amount      int                `bson:"amount"`     // if fixed discount
 	Currency    string             `bson:"currency"`
 	Description string             `bson:"description"`
 	Status      string             `bson:"status"`
