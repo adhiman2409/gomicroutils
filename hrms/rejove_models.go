@@ -179,6 +179,7 @@ type Case struct {
 	Estimate                  Estimate                  `bson:"estimate"`
 	EstimateHistory           []Estimate                `bson:"estimate_history"`
 	Remarks                   string                    `bson:"remarks"`
+	CancellationReason        string                    `bson:"cancellation_reason"`
 	FirstResponseTime         time.Time                 `bson:"first_response_time"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
 	UpdatedAt                 time.Time                 `bson:"updated_at"`
