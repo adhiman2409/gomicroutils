@@ -175,6 +175,7 @@ const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
 const REJOVE_COLLECTION_DOCTOR_COUNTER = "rejove-doctor-id-counter"
 const REJOVE_COLLECTION_DOCTOR_CASE_COUNTER = "rejove-doctor-case-id-counter"
 const REJOVE_COLLECTION_DOCTOR_PRACTICES = "rejove-doctor-practices"
+const REJOVE_COLLECTION_CRM_CONFIGS = "rejove-crm-configs"
 
 const REJOVE_COLLECTION_PATIENT_COUNTER = "rejove-patient-id-counter"
 const REJOVE_COLLECTION_PATIENTS = "rejove-patients"
@@ -190,6 +191,11 @@ const ACTIVITY_COLLECTION_EMPLOYEE_ANALYTICS_REPORTS = "activity-employee-analyt
 func GetActivityMonitoringEntriesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ACTIVITY_COLLECTION_ACTIVITY_MONITORING_ENTRIES)
+}
+
+func GetRejoveCRMConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(REJOVE_COLLECTION_CRM_CONFIGS)
 }
 
 func GetEmployeeMonitorConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {

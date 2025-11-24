@@ -152,6 +152,8 @@ type DoctorInfo struct {
 	GSTNumber                string             `bson:"gst_number"`
 	Role                     string             `bson:"role"`
 	DentalRegistrationNumber string             `bson:"dental_registration_number"`
+	MarketType               string             `bson:"market_type"`  //Domestic, International
+	ChannelType              string             `bson:"channel_type"` //Whitelabel, Retail
 	CreatedBy                string             `bson:"created_by"`
 	CreatedAt                time.Time          `bson:"created_at"`
 	UpdatedAt                time.Time          `bson:"updated_at"`
@@ -299,4 +301,21 @@ type RejoveChatMessage struct {
 	Metadata    string    `bson:"metadata"`
 	Attachments []string  `bson:"attachments"`
 	CreatedAt   time.Time `bson:"created_at"`
+}
+
+type CrmAssignmentConfig struct {
+	DomesticAssigneeId      string                 `bson:"domestic_assignee_id"`
+	InternationalAssigneeId string                 `bson:"international_assignee_id"`
+	UpdatedBy               string                 `bson:"updated_by"`
+	UpdatedAt               time.Time              `bson:"updated_at"`
+	History                 []CrmAssignmentHistory `bson:"history"`
+}
+
+type CrmAssignmentHistory struct {
+	OldDomesticAssigneeId      string    `bson:"old_domestic_assignee_id"`
+	NewDomesticAssigneeId      string    `bson:"new_domestic_assignee_id"`
+	OldInternationalAssigneeId string    `bson:"old_international_assignee_id"`
+	NewInternationalAssigneeId string    `bson:"new_international_assignee_id"`
+	UpdatedBy                  string    `bson:"updated_by"`
+	UpdatedAt                  time.Time `bson:"updated_at"`
 }
