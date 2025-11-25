@@ -123,6 +123,8 @@ const PAYMENT_COLLECTION_SUBSCRIPTION_COUNTER = "payment-subscription-counter"
 const PAYMENT_COLLECTION_TAX_DETAILS = "payment-tax-details"
 const PAYMENT_COLLECTION_DISCOUNT_DETAILS = "payment-discount-details"
 const PAYMENT_COLLECTION_DISCOUNT_COUNTER = "payment-discount-counter"
+const PAYMENT_COLLECTION_INVOICE_COUNTER = "payment-invoice-counter"
+const PAYMENT_COLLECTION_INVOICES = "payment-invoices"
 
 const PAYMENT_COLLECTION_PROCESSED_EVENTS = "payment-processed-events"
 const PAYMENT_COLLECTION_MONTHLY_USER_DATA = "payment-monthly-user-data"
@@ -417,6 +419,16 @@ func GetPaymentDiscountDetailsCollection(client *mongo.Client, domain string) *m
 func GetPaymentDiscountCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENT_COLLECTION_DISCOUNT_COUNTER)
+}
+
+func GetPaymentInvoiceCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_INVOICE_COUNTER)
+}
+
+func GetPaymentInvoicesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENT_COLLECTION_INVOICES)
 }
 
 func GetPaymentProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
