@@ -57,14 +57,14 @@ type SubscriptionDetails struct {
 	SecondaryAdminEmail    string             `bson:"secondary_admin_email"`
 	PlanId                 string             `bson:"plan_id"`
 	Name                   string             `bson:"name"`
-	Amount                 float32            `bson:"amount"`
+	BaseAmount             float32            `bson:"base_amount"`
 	Currency               string             `bson:"currency"`
 	Country                string             `bson:"country"`
 	InitialLicenseCount    int                `bson:"initial_license_count"`
 	LastInvoiceGeneratedAt time.Time          `bson:"last_invoice_generated_at"`
 	IsDiscounted           bool               `bson:"is_discounted"`
 	Discount               DiscountDetails    `bson:"discount"`
-	DiscountedAmount       float32            `bson:"discounted_amount"`
+	AmountAfterDiscount    float32            `bson:"amount_after_discount"`
 	PaymentFrequency       string             `bson:"payment_frequency"`
 	StartDate              time.Time          `bson:"start_date"`
 	EndDate                time.Time          `bson:"end_date"`
@@ -138,7 +138,6 @@ type Invoice struct {
 	UsersOnLastDay           int                `bson:"users_on_last_day"`
 	NewUsersInPeriod         int                `bson:"new_users_in_period"`
 	BufferDays               int                `bson:"buffer_days"`
-	LicenseCost              float64            `bson:"license_cost"`
 	LastDayUsersCost         float64            `bson:"last_day_users_cost"`
 	NewUsersCost             float64            `bson:"new_users_cost"`
 	Subtotal                 float64            `bson:"subtotal"`
