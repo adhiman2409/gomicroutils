@@ -154,6 +154,7 @@ type DoctorInfo struct {
 	DentalRegistrationNumber string             `bson:"dental_registration_number"`
 	MarketType               string             `bson:"market_type"`  //Domestic, International
 	ChannelType              string             `bson:"channel_type"` //Whitelabel, Retail
+	ClinicName               string             `bson:"clinic_name"`
 	CreatedBy                string             `bson:"created_by"`
 	CreatedAt                time.Time          `bson:"created_at"`
 	UpdatedAt                time.Time          `bson:"updated_at"`
