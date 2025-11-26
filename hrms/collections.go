@@ -190,6 +190,18 @@ const INVENTORY_VENDOR_INFO = "inventory-vendor-info"
 const ACTIVITY_COLLECTION_ACTIVITY_MONITORING_ENTRIES = "activity-monitoring-entries"
 const ACTIVITY_COLLECTION_EMPLOYEE_MONITOR_CONFIGS = "activity-employee-monitor-configs"
 const ACTIVITY_COLLECTION_EMPLOYEE_ANALYTICS_REPORTS = "activity-employee-analytics-reports"
+const ACTIVITY_COLLECTION_APPLICATION_UPDATES = "activity-application-updates"
+const ACTIVITY_COLLECTION_APPLICATION_UPDATE_INFOS = "activity-application-update-infos"
+
+func GetActivityApplicationUpdateInfosCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ACTIVITY_COLLECTION_APPLICATION_UPDATE_INFOS)
+}
+
+func GetActivityApplicationUpdatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ACTIVITY_COLLECTION_APPLICATION_UPDATES)
+}
 
 func GetActivityMonitoringEntriesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))

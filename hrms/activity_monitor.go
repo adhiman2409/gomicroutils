@@ -264,3 +264,32 @@ type EmployeeAnalyticsReport struct {
 	ApplicationBreakdown []ApplicationTimeBreakdown `bson:"application_breakdown"`
 	TotalApplicationTime float64                    `bson:"total_application_time_seconds"` // Sum of all app time
 }
+
+type UpdateInfo struct {
+	Version              string `json:"version"`
+	DownloadURL          string `json:"download_url"`
+	Checksum             string `json:"checksum"`
+	Criticality          string `json:"criticality"`
+	ReleaseNotes         string `json:"release_notes"`
+	MinCompatibleVersion string `json:"min_compatible_version"`
+	SizeBytes            int    `json:"size_bytes"`
+	Platform             string `json:"platform"`
+	Architecture         string `json:"architecture"`
+	ReleasedAt           string `json:"released_at"`
+	Domain               string `json:"domain"`
+}
+
+type ApplicationUpdateInfo struct {
+	MacAddress     string    `json:"mac_address"`
+	EmployeeID     string    `json:"employee_id"`
+	CurrentVersion string    `json:"current_version"`
+	TargetVersion  string    `json:"target_version"`
+	Status         string    `json:"status"` // checking, downloading, installing, success, failed, rolled_back
+	Error          string    `json:"error,omitempty"`
+	Progress       int       `json:"progress"` // 0 to 100
+	Timestamp      time.Time `json:"timestamp"`
+	Platform       string    `json:"platform"`
+	Architecture   string    `json:"architecture"`
+	LastHeartbeat  time.Time `json:"last_heartbeat"`
+	OnboardedOn    time.Time `json:"onboarded_on"`
+}
