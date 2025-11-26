@@ -73,7 +73,7 @@ type SubscriptionDetails struct {
 	UpdatedAt              time.Time          `bson:"updated_at"`
 	NextBillingDate        time.Time          `bson:"next_billing_date"`
 	LastBillingDate        time.Time          `bson:"last_billing_date"`
-	PaymentHistory         []PaymentDetails   `bson:"payment_history"`
+	PaymentHistory         []PaymentHistory   `bson:"payment_history"`
 	TotalAmount            float32            `bson:"total_amount"`
 	TotalPaidAmount        float32            `bson:"total_paid_amount"`
 	TotalPendingAmount     float32            `bson:"total_pending_amount"`
@@ -82,6 +82,8 @@ type SubscriptionDetails struct {
 	HaveTIN                bool               `bson:"have_tin"`
 	TaxIdentificationNum   string             `bson:"tax_identification_num"`
 	BillingCycleDetails    BillingCycle       `bson:"billing_cycle"`
+	NumberOfCycles         int                `bson:"number_of_cycles"`
+	RemainingCycles        int                `bson:"remaining_cycles"`
 	Notes                  string             `bson:"notes"`
 }
 
@@ -165,4 +167,12 @@ type TaxLine struct {
 	TaxType   string  `bson:"tax_type"`
 	TaxRate   float64 `bson:"tax_rate"`
 	TaxAmount float64 `bson:"tax_amount"`
+}
+
+type PaymentHistory struct {
+	InvoiceId     string    `bson:"invoice_id"`
+	PaymentId     string    `bson:"payment_id"`
+	Amount        float32   `bson:"amount"`
+	PaymentStatus string    `bson:"payment_status"`
+	PaymentDate   time.Time `bson:"payment_date"`
 }
