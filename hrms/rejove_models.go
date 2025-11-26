@@ -323,8 +323,9 @@ type UpdateCrmAssignmentConfigRequest struct {
 }
 
 type CrmAssignmentHistory struct {
-	OldCountryAssignments []CrmCountryAssignment `bson:"old_country_assignments"`
-	NewCountryAssignments []CrmCountryAssignment `bson:"new_country_assignments"`
-	UpdatedBy             string                 `bson:"updated_by"`
-	UpdatedAt             time.Time              `bson:"updated_at"`
+	Action       string    `bson:"action"`
+	EmployeeId   string    `bson:"employee_id"`
+	EmployeeName string    `bson:"employee_name"`
+	Timestamp    time.Time `bson:"timestamp"`
+	Details      string    `bson:"details"`
 }
