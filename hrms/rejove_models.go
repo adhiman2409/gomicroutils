@@ -305,18 +305,26 @@ type RejoveChatMessage struct {
 }
 
 type CrmAssignmentConfig struct {
-	DomesticAssigneeId      string                 `bson:"domestic_assignee_id"`
-	InternationalAssigneeId string                 `bson:"international_assignee_id"`
-	UpdatedBy               string                 `bson:"updated_by"`
-	UpdatedAt               time.Time              `bson:"updated_at"`
-	History                 []CrmAssignmentHistory `bson:"history"`
+	CountryAssignments []CrmCountryAssignment `bson:"country_assignments"`
+	UpdatedBy          string                 `bson:"updated_by"`
+	UpdatedAt          time.Time              `bson:"updated_at"`
+	History            []CrmAssignmentHistory `bson:"history"`
+}
+
+type CrmCountryAssignment struct {
+	Countries       []string `bson:"countries"`        // List of countries in CRM's purview
+	CrmEmployeeIds  []string `bson:"crm_employee_ids"` // List of CRM employee IDs for round-robin
+	CurrentIndex    int      `bson:"current_index"`    // Current round-robin index
+	AssignmentCount int64    `bson:"assignment_count"` // Total assignments made
+}
+
+type UpdateCrmAssignmentConfigRequest struct {
+	CountryAssignments []CrmCountryAssignment `bson:"country_assignments"`
 }
 
 type CrmAssignmentHistory struct {
-	OldDomesticAssigneeId      string    `bson:"old_domestic_assignee_id"`
-	NewDomesticAssigneeId      string    `bson:"new_domestic_assignee_id"`
-	OldInternationalAssigneeId string    `bson:"old_international_assignee_id"`
-	NewInternationalAssigneeId string    `bson:"new_international_assignee_id"`
-	UpdatedBy                  string    `bson:"updated_by"`
-	UpdatedAt                  time.Time `bson:"updated_at"`
+	OldCountryAssignments []CrmCountryAssignment `bson:"old_country_assignments"`
+	NewCountryAssignments []CrmCountryAssignment `bson:"new_country_assignments"`
+	UpdatedBy             string                 `bson:"updated_by"`
+	UpdatedAt             time.Time              `bson:"updated_at"`
 }
