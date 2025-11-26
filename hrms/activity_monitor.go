@@ -280,16 +280,16 @@ type UpdateInfo struct {
 }
 
 type ApplicationUpdateInfo struct {
-	MacAddress     string    `json:"mac_address"`
-	EmployeeID     string    `json:"employee_id"`
-	CurrentVersion string    `json:"current_version"`
-	TargetVersion  string    `json:"target_version"`
-	Status         string    `json:"status"` // checking, downloading, installing, success, failed, rolled_back
-	Error          string    `json:"error,omitempty"`
-	Progress       int       `json:"progress"` // 0 to 100
-	Timestamp      time.Time `json:"timestamp"`
-	Platform       string    `json:"platform"`
-	Architecture   string    `json:"architecture"`
-	LastHeartbeat  time.Time `json:"last_heartbeat"`
-	OnboardedOn    time.Time `json:"onboarded_on"`
+	Id             primitive.ObjectID `bson:"_id"`
+	MacAddress     string             `json:"mac_address"`
+	EmployeeID     string             `json:"employee_id"`
+	CurrentVersion string             `json:"current_version"`
+	TargetVersion  string             `json:"target_version"`
+	Status         string             `json:"status"` // checking, downloading, installing, success, failed, rolled_back
+	Error          string             `json:"error,omitempty"`
+	Progress       int                `json:"progress"` // 0 to 100
+	Timestamp      time.Time          `json:"timestamp"`
+	Platform       string             `json:"platform"`
+	Architecture   string             `json:"architecture"`
+	LastHeartbeat  time.Time          `json:"last_heartbeat"`
 }
