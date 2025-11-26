@@ -266,17 +266,18 @@ type EmployeeAnalyticsReport struct {
 }
 
 type UpdateInfo struct {
-	Version              string    `json:"version"`
-	DownloadURL          string    `json:"download_url"`
-	Checksum             string    `json:"checksum"`
-	Criticality          string    `json:"criticality"`
-	ReleaseNotes         string    `json:"release_notes"`
-	MinCompatibleVersion string    `json:"min_compatible_version"`
-	SizeBytes            int       `json:"size_bytes"`
-	Platform             string    `json:"platform"`
-	Architecture         string    `json:"architecture"`
-	ReleasedAt           time.Time `json:"released_at"`
-	Domain               string    `json:"domain"`
+	Id                   primitive.ObjectID `bson:"_id"`
+	Version              string             `json:"version"`
+	DownloadURL          string             `json:"download_url"`
+	Checksum             string             `json:"checksum"`
+	Criticality          string             `json:"criticality"`
+	ReleaseNotes         string             `json:"release_notes"`
+	MinCompatibleVersion string             `json:"min_compatible_version"`
+	SizeBytes            int                `json:"size_bytes"`
+	Platform             string             `json:"platform"`
+	Architecture         string             `json:"architecture"`
+	ReleasedAt           time.Time          `json:"released_at"`
+	Domain               string             `json:"domain"`
 }
 
 type ApplicationUpdateInfo struct {
