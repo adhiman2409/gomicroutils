@@ -60,6 +60,7 @@ type Estimate struct {
 	EstimationDetails         string                  `bson:"estimation_details"`
 	Currency                  string                  `bson:"currency"`
 	ExpectedTreatmentDuration string                  `bson:"expected_treatment_duration"`
+	NumberOfSets              string                  `bson:"number_of_sets"`
 	IsApproved                bool                    `bson:"is_approved"`
 	IsRejected                bool                    `bson:"is_rejected"`
 	RejectionDate             time.Time               `bson:"rejection_date"`

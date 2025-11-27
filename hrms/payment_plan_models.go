@@ -176,3 +176,9 @@ type PaymentHistory struct {
 	PaymentStatus string    `bson:"payment_status"`
 	PaymentDate   time.Time `bson:"payment_date"`
 }
+
+type CountryTax struct {
+	ID         primitive.ObjectID `bson:"_id"`
+	Country    string             `bson:"country" json:"country"`
+	Components []TaxDetails       `bson:"components" json:"components"`
+}
