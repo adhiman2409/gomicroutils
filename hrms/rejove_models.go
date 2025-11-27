@@ -53,21 +53,21 @@ type Patient struct {
 }
 
 type Estimate struct {
-	CaseId                  string                  `bson:"case_id"`
-	DoctorId                string                  `bson:"doctor_id"`
-	PatientId               string                  `bson:"patient_id"`
-	EstimateAmt             float64                 `bson:"estimate_amt"`
-	EstimationDetails       string                  `bson:"estimation_details"`
-	Currency                string                  `bson:"currency"`
-	ValidityDays            int                     `bson:"validity_days"`
-	IsApproved              bool                    `bson:"is_approved"`
-	IsRejected              bool                    `bson:"is_rejected"`
-	RejectionDate           time.Time               `bson:"rejection_date"`
-	ApprovalDate            time.Time               `bson:"approval_date"`
-	DoctorRemarks           string                  `bson:"doctor_remarks"`
-	AlignerTreatmentDetails AlignerTreatmentDetails `bson:"aligner_treatment_details"`
-	CreatedAt               time.Time               `bson:"created_at"`
-	UpdatedAt               time.Time               `bson:"updated_at"`
+	CaseId                    string                  `bson:"case_id"`
+	DoctorId                  string                  `bson:"doctor_id"`
+	PatientId                 string                  `bson:"patient_id"`
+	EstimateAmt               string                  `bson:"estimate_amt"`
+	EstimationDetails         string                  `bson:"estimation_details"`
+	Currency                  string                  `bson:"currency"`
+	ExpectedTreatmentDuration string                  `bson:"expected_treatment_duration"`
+	IsApproved                bool                    `bson:"is_approved"`
+	IsRejected                bool                    `bson:"is_rejected"`
+	RejectionDate             time.Time               `bson:"rejection_date"`
+	ApprovalDate              time.Time               `bson:"approval_date"`
+	DoctorRemarks             string                  `bson:"doctor_remarks"`
+	AlignerTreatmentDetails   AlignerTreatmentDetails `bson:"aligner_treatment_details"`
+	CreatedAt                 time.Time               `bson:"created_at"`
+	UpdatedAt                 time.Time               `bson:"updated_at"`
 }
 
 type TreatmentPlan struct {
