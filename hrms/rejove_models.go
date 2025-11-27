@@ -63,10 +63,13 @@ type Estimate struct {
 	NumberOfSets              string                  `bson:"number_of_sets"`
 	IsApproved                bool                    `bson:"is_approved"`
 	IsRejected                bool                    `bson:"is_rejected"`
+	IsInternalApproved        bool                    `bson:"is_internal_approved"`
 	RejectionDate             time.Time               `bson:"rejection_date"`
 	ApprovalDate              time.Time               `bson:"approval_date"`
 	DoctorRemarks             string                  `bson:"doctor_remarks"`
 	AlignerTreatmentDetails   AlignerTreatmentDetails `bson:"aligner_treatment_details"`
+	CreatedBy                 PrimaryAssigneeSummary  `bson:"created_by"`
+	ApprovedBy                PrimaryAssigneeSummary  `bson:"approved_by"`
 	CreatedAt                 time.Time               `bson:"created_at"`
 	UpdatedAt                 time.Time               `bson:"updated_at"`
 }
@@ -80,7 +83,10 @@ type TreatmentPlan struct {
 	ExpectedDuration        string                  `bson:"expected_duration"`
 	CreatedAt               time.Time               `bson:"created_at"`
 	Status                  string                  `bson:"status"`
+	IsInternalApproved      bool                    `bson:"is_internal_approved"`
 	ApprovedAt              time.Time               `bson:"approved_at"`
+	CreatedBy               PrimaryAssigneeSummary  `bson:"created_by"`
+	ApprovedBy              PrimaryAssigneeSummary  `bson:"approved_by"`
 	ExpectedDeliveryDate    time.Time               `bson:"expected_delivery_date"`
 	Attachments             []string                `bson:"attachments"`
 	DoctorRemarks           string                  `bson:"doctor_remarks"`
@@ -178,7 +184,7 @@ type Case struct {
 	Refinements               []AdditionalPlans         `bson:"refinements"`
 	AllignerTacking           []AdditionalPlans         `bson:"alligner_tacking"`
 	RejoveChatMessages        []RejoveChatMessage       `bson:"rejove_chat_messages"`
-	CaseAssignedTo            EmpSummary                `bson:"case_assigned_to"`
+	CaseAssignedTo            PrimaryAssigneeSummary    `bson:"case_assigned_to"`
 	TreatmentPlans            []TreatmentPlan           `bson:"treatment_plans"`
 	Estimate                  Estimate                  `bson:"estimate"`
 	EstimateHistory           []Estimate                `bson:"estimate_history"`
@@ -187,6 +193,45 @@ type Case struct {
 	FirstResponseTime         time.Time                 `bson:"first_response_time"`
 	CreatedAt                 time.Time                 `bson:"created_at"`
 	UpdatedAt                 time.Time                 `bson:"updated_at"`
+	CaseAssignedToHistory     []PrimaryAssigneeSummary  `bson:"primary_assignee_history"`
+	SecondaaryAssignees       []SecondaryEmpSummary     `bson:"secondary_assignees"`
+	SecondaryAssigneesHistory []SecondaryEmpSummary     `bson:"secondary_assignee_history"`
+}
+
+type SecondaryEmpSummary struct {
+	ID               primitive.ObjectID `bson:"_id"`
+	EmployeeId       string             `bson:"employee_id"`
+	FullName         string             `bson:"full_name"`
+	EmailId          string             `bson:"email_id"`
+	EmploymentStatus string             `bson:"employment_status"`
+	Department       string             `bson:"department"`
+	Designation      string             `bson:"designation"`
+	AssignedBy       SmallEmpSummary    `bson:"assigned_by"`
+	CreatedAt        time.Time          `bson:"created_at"`
+	UpdatedAt        time.Time          `bson:"updated_at"`
+}
+
+type PrimaryAssigneeSummary struct {
+	ID               primitive.ObjectID `bson:"_id"`
+	EmployeeId       string             `bson:"employee_id"`
+	FullName         string             `bson:"full_name"`
+	EmailId          string             `bson:"email_id"`
+	EmploymentStatus string             `bson:"employment_status"`
+	Department       string             `bson:"department"`
+	Designation      string             `bson:"designation"`
+	AssignedBy       SmallEmpSummary    `bson:"assigned_by"`
+	CreatedAt        time.Time          `bson:"created_at"`
+	UpdatedAt        string             `bson:"updated_at"`
+}
+
+type SmallEmpSummary struct {
+	ID               primitive.ObjectID `bson:"_id"`
+	EmployeeId       string             `bson:"employee_id"`
+	FullName         string             `bson:"full_name"`
+	EmailId          string             `bson:"email_id"`
+	EmploymentStatus string             `bson:"employment_status"`
+	Department       string             `bson:"department"`
+	Designation      string             `bson:"designation"`
 }
 
 type CasePreference struct {
@@ -305,28 +350,12 @@ type RejoveChatMessage struct {
 	CreatedAt   time.Time `bson:"created_at"`
 }
 
-type CrmAssignmentConfig struct {
-	CountryAssignments []CrmCountryAssignment `bson:"country_assignments"`
-	UpdatedBy          string                 `bson:"updated_by"`
-	UpdatedAt          time.Time              `bson:"updated_at"`
-	History            []CrmAssignmentHistory `bson:"history"`
-}
-
-type CrmCountryAssignment struct {
-	Countries       []string `bson:"countries"`        // List of countries in CRM's purview
-	CrmEmployeeIds  []string `bson:"crm_employee_ids"` // List of CRM employee IDs for round-robin
-	CurrentIndex    int      `bson:"current_index"`    // Current round-robin index
-	AssignmentCount int64    `bson:"assignment_count"` // Total assignments made
-}
-
-type UpdateCrmAssignmentConfigRequest struct {
-	CountryAssignments []CrmCountryAssignment `bson:"country_assignments"`
-}
-
-type CrmAssignmentHistory struct {
-	Action       string    `bson:"action"`
-	EmployeeId   string    `bson:"employee_id"`
-	EmployeeName string    `bson:"employee_name"`
-	Timestamp    time.Time `bson:"timestamp"`
-	Details      string    `bson:"details"`
+type CrmConfig struct {
+	ID        primitive.ObjectID `bson:"_id,omitempty"`
+	Country   string             `bson:"country"`
+	CrmIds    []string           `bson:"crm_ids"`
+	CreatedBy string             `bson:"created_by"`
+	UpdatedBy string             `bson:"updated_by"`
+	CreatedAt time.Time          `bson:"created_at"`
+	UpdatedAt time.Time          `bson:"updated_at"`
 }
