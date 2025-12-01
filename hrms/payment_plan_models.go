@@ -121,41 +121,43 @@ type DiscountDetails struct {
 }
 
 type Invoice struct {
-	Id                       primitive.ObjectID `bson:"_id"`
-	InvoiceID                string             `bson:"invoice_id"`
-	InvoiceNumber            string             `bson:"invoice_number"`
-	SubscriptionID           string             `bson:"subscription_id"`
-	TenantId                 string             `bson:"tenant_id"`
-	TenantName               string             `bson:"tenant_name"`
-	Domain                   string             `bson:"domain"`
-	PrimaryAdminEmail        string             `bson:"primary_admin_email"`
-	SecondaryAdminEmail      string             `bson:"secondary_admin_email"`
-	BillingCycleType         string             `bson:"billing_cycle_type"`
-	BillingPeriodStart       time.Time          `bson:"billing_period_start"`
-	BillingPeriodEnd         time.Time          `bson:"billing_period_end"`
-	IsFirstInvoice           bool               `bson:"is_first_invoice"`
-	InitialLicenseCount      int                `bson:"initial_license_count"`
-	LicenseBaseCost          float64            `bson:"license_base_cost"`
-	LisenceCostAfterDiscount float64            `bson:"lisence_cost_after_discount"`
-	UsersOnLastDay           int                `bson:"users_on_last_day"`
-	NewUsersInPeriod         int                `bson:"new_users_in_period"`
-	BufferDays               int                `bson:"buffer_days"`
-	LastDayUsersCost         float64            `bson:"last_day_users_cost"`
-	NewUsersCost             float64            `bson:"new_users_cost"`
-	Subtotal                 float64            `bson:"subtotal"`
-	TaxBreakdown             TaxBreakdown       `bson:"tax_breakdown"`
-	TaxAmount                float64            `bson:"tax_amount"`
-	DiscountAmount           float64            `bson:"discount_amount"`
-	GrandTotal               float64            `bson:"grand_total"`
-	PaymentStatus            string             `bson:"payment_status"`
-	PaymentMethod            string             `bson:"payment_method"`
-	PaymentDate              time.Time          `bson:"payment_date,omitempty"`
-	DueDate                  time.Time          `bson:"due_date"`
-	EmailSent                bool               `bson:"email_sent"`
-	EmailSentAt              time.Time          `bson:"email_sent_at,omitempty"`
-	CreatedAt                time.Time          `bson:"created_at"`
-	UpdatedAt                time.Time          `bson:"updated_at"`
-	Notes                    string             `bson:"notes"`
+	Id                             primitive.ObjectID `bson:"_id"`
+	InvoiceID                      string             `bson:"invoice_id"`
+	InvoiceNumber                  string             `bson:"invoice_number"`
+	SubscriptionID                 string             `bson:"subscription_id"`
+	TenantId                       string             `bson:"tenant_id"`
+	TenantName                     string             `bson:"tenant_name"`
+	Domain                         string             `bson:"domain"`
+	PrimaryAdminEmail              string             `bson:"primary_admin_email"`
+	SecondaryAdminEmail            string             `bson:"secondary_admin_email"`
+	BillingCycleType               string             `bson:"billing_cycle_type"`
+	BillingPeriodStart             time.Time          `bson:"billing_period_start"`
+	BillingPeriodEnd               time.Time          `bson:"billing_period_end"`
+	IsFirstInvoice                 bool               `bson:"is_first_invoice"`
+	InitialLicenseCount            int                `bson:"initial_license_count"`
+	UsersOnLastDay                 int                `bson:"users_on_last_day"`
+	NewUsersInPeriod               int                `bson:"new_users_in_period"`
+	BufferDays                     int                `bson:"buffer_days"`
+	LicenseBaseCost                float64            `bson:"license_base_cost"`
+	LicenseCostAfterDiscount       float64            `bson:"license_cost_after_discount"`
+	InitialLicenseCost             float64            `bson:"initial_license_cost"`
+	LastDayUsersCostBeforeDiscount float64            `bson:"last_day_users_cost_before_discount"`
+	NewUsersCostBeforeDiscount     float64            `bson:"new_users_cost_before_discount"`
+	GrossTotalBeforeDiscount       float64            `bson:"gross_total_before_discount"`
+	LastDayUsersCostAfterDiscount  float64            `bson:"last_day_users_cost_after_discount"`
+	NewUsersCostAfterDiscount      float64            `bson:"new_users_cost_after_discount"`
+	GrossTotalAfterDiscount        float64            `bson:"gross_total_after_discount"`
+	TaxBreakdown                   TaxBreakdown       `bson:"tax_breakdown"`
+	TaxAmount                      float64            `bson:"tax_amount"`
+	DiscountAmount                 float64            `bson:"discount_amount"`
+	NetTotal                       float64            `bson:"net_total"`
+	PaymentStatus                  string             `bson:"payment_status"`
+	PaymentMethod                  string             `bson:"payment_method"`
+	PaymentDate                    time.Time          `bson:"payment_date,omitempty"`
+	DueDate                        time.Time          `bson:"due_date"`
+	CreatedAt                      time.Time          `bson:"created_at"`
+	UpdatedAt                      time.Time          `bson:"updated_at"`
+	Notes                          string             `bson:"notes"`
 }
 
 type TaxBreakdown struct {
@@ -170,15 +172,25 @@ type TaxLine struct {
 }
 
 type PaymentHistory struct {
-	InvoiceId     string    `bson:"invoice_id"`
-	PaymentId     string    `bson:"payment_id"`
-	Amount        float32   `bson:"amount"`
-	PaymentStatus string    `bson:"payment_status"`
-	PaymentDate   time.Time `bson:"payment_date"`
+	InvoiceId        string    `bson:"invoice_id"`
+	PaymentId        string    `bson:"payment_id"`
+	Amount           float32   `bson:"amount"`
+	PaymentStatus    string    `bson:"payment_status"`
+	PaymentDate      time.Time `bson:"payment_date"`
+	Reminders        Reminders `bson:"reminders"`
+	BillingStartDate time.Time `bson:"billing_start_date"`
+	BillingEndDate   time.Time `bson:"billing_end_date"`
 }
 
 type CountryTax struct {
 	ID         primitive.ObjectID `bson:"_id"`
 	Country    string             `bson:"country" json:"country"`
 	Components []TaxDetails       `bson:"components" json:"components"`
+}
+
+type Reminders struct {
+	ReminderCount    int         `bson:"reminder_count"`
+	LastReminderDate time.Time   `bson:"last_reminder_date"`
+	NextReminderDate time.Time   `bson:"next_reminder_date"`
+	ReminderDates    []time.Time `bson:"reminder_dates"`
 }
