@@ -221,6 +221,7 @@ type LAnalytics struct {
 type PendingEmployee struct {
 	EmployeeName       string   `bson:"employee_name"`
 	EmployeeId         string   `bson:"employee_id"`
+	JoiningDate        string   `bson:"joining_date"`
 	EmployeeEmail      string   `bson:"employee_email"`
 	PendingItems       []string `bson:"pending_items"`
 	PendingSinceInDays int      `bson:"pending_since_in_days"`
