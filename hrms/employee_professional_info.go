@@ -22,6 +22,7 @@ type EmpProfessionalInfo struct {
 	ConfirmationDate                  string             `bson:"confirmation_date"`
 	ReleavingDate                     string             `bson:"releaving_date"`
 	ReleavingRemarks                  string             `bson:"releaving_remarks"`
+	MarkedReleavedOn                  time.Time          `bson:"marked_releaved_on"`
 	EmploymentStatus                  string             `bson:"employment_status"`
 	IsRotationalShift                 bool               `bson:"is_rotational_shift"`
 	OfficeLocation                    string             `bson:"office_location"`

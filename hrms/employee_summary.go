@@ -36,6 +36,7 @@ type EmployeeSummary struct {
 	NewJoineeRewardId                 string             `bson:"new_joinee_reward_id"`
 	ImgURL                            string             `bson:"img_url"`
 	ReleavingDate                     string             `bson:"releaving_date"`
+	MarkedReleavedOn                  time.Time          `bson:"marked_releaved_on"`
 	IsProfileEditingLocked            bool               `bson:"is_profile_editing_locked"`
 	Country                           string             `bson:"country"`
 	TimeZone                          string             `bson:"time_zone"`
