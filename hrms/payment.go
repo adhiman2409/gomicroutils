@@ -63,8 +63,9 @@ type OrderEntity struct {
 	Status     string             `bson:"status"`
 	Attempts   int                `bson:"attempts"`
 	Notes      struct {
-		PayeeID   string `bson:"payee_id"`
-		InvoiceID string `bson:"invoice_id"`
+		TenantID       string `bson:"tenant_id"`
+		SubscriptionId string `bson:"subscription_id"`
+		InvoiceID      string `bson:"invoice_id"`
 	} `bson:"notes"`
 	CreatedAt int64 `bson:"created_at"`
 }

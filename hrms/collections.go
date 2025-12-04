@@ -113,6 +113,7 @@ const GSORG_COLLECTION_SUBSCRIPTIONS = "gsorg-subscriptions"
 const GSORG_COLLECTION_PAYMENT_ORDERS = "gsorg-payment-orders"
 const GSORG_COLLECTION_PAYMENT_PAYMENTS = "gsorg-payment-payments"
 const GSORG_COLLECTION_PROCESSED_EVENTS = "gsorg-processed-events"
+
 const NOTIFICATION_COLLECTION_DEVICES = "notification-devices"
 
 const PAYMENT_COLLECTION_ORDERS = "payment-orders"
