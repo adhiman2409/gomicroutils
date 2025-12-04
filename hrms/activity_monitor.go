@@ -299,6 +299,7 @@ type HeartBeat struct {
 	Id                                  primitive.ObjectID `bson:"_id"`
 	MacAddress                          string             `bson:"mac_address"`
 	EmployeeID                          string             `bson:"employee_id"`
+	EmployeeName                        string             `bson:"employee_name"`
 	OperatingSystem                     string             `bson:"operating_system"`
 	SystemArchitecture                  string             `bson:"system_architecture"`
 	LastHeartbeatTimestamp              time.Time          `bson:"last_heartbeat_timestamp"`

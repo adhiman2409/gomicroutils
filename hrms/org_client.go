@@ -20,6 +20,8 @@ import (
 
 type ClientInfo struct {
 	ID                         primitive.ObjectID `bson:"_id"`
+	OrganizationId             string             `bson:"organization_id"`
+	OrganizationName           string             `bson:"organization_name"`
 	ClientId                   string             `bson:"client_id"`
 	ClientName                 string             `bson:"client_name"`
 	ClientType                 string             `bson:"client_type"`
