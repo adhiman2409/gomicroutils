@@ -40,6 +40,7 @@ type JobEntry struct {
 	IsLive                  bool               `bson:"is_live"`
 	JDURL                   string             `bson:"jd_url"`
 	ImageURL                string             `bson:"image_url"`
+	NaukriT                 string             `bson:"naukri_t"`
 	Remarks                 string             `bson:"remarks"`
 	CreatedAt               int64              `bson:"created_at"`
 	UpdatedAt               int64              `bson:"updated_at"`
