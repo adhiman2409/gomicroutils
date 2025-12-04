@@ -267,47 +267,47 @@ type EmployeeAnalyticsReport struct {
 
 type UpdateInfo struct {
 	Id                   primitive.ObjectID `bson:"_id"`
-	Version              string             `json:"version"`
-	DownloadURL          string             `json:"download_url"`
-	Checksum             string             `json:"checksum"`
-	Criticality          string             `json:"criticality"`
-	ReleaseNotes         string             `json:"release_notes"`
-	MinCompatibleVersion string             `json:"min_compatible_version"`
-	SizeBytes            int                `json:"size_bytes"`
-	Platform             string             `json:"platform"`
-	Architecture         string             `json:"architecture"`
-	ReleasedAt           time.Time          `json:"released_at"`
-	Domain               string             `json:"domain"`
+	Version              string             `bson:"version"`
+	DownloadURL          string             `bson:"download_url"`
+	Checksum             string             `bson:"checksum"`
+	Criticality          string             `bson:"criticality"`
+	ReleaseNotes         string             `bson:"release_notes"`
+	MinCompatibleVersion string             `bson:"min_compatible_version"`
+	SizeBytes            int                `bson:"size_bytes"`
+	Platform             string             `bson:"platform"`
+	Architecture         string             `bson:"architecture"`
+	ReleasedAt           time.Time          `bson:"released_at"`
+	Domain               string             `bson:"domain"`
 }
 
 type ApplicationUpdateInfo struct {
 	Id             primitive.ObjectID `bson:"_id"`
-	MacAddress     string             `json:"mac_address"`
-	EmployeeID     string             `json:"employee_id"`
-	CurrentVersion string             `json:"current_version"`
-	TargetVersion  string             `json:"target_version"`
-	Status         string             `json:"status"` // checking, downloading, installing, success, failed, rolled_back
-	Error          string             `json:"error,omitempty"`
-	Progress       int                `json:"progress"` // 0 to 100
-	Timestamp      time.Time          `json:"timestamp"`
-	Platform       string             `json:"platform"`
-	Architecture   string             `json:"architecture"`
-	LastHeartbeat  time.Time          `json:"last_heartbeat"`
+	MacAddress     string             `bson:"mac_address"`
+	EmployeeID     string             `bson:"employee_id"`
+	CurrentVersion string             `bson:"current_version"`
+	TargetVersion  string             `bson:"target_version"`
+	Status         string             `bson:"status"` // checking, downloading, installing, success, failed, rolled_back
+	Error          string             `bson:"error,omitempty"`
+	Progress       int                `bson:"progress"` // 0 to 100
+	Timestamp      time.Time          `bson:"timestamp"`
+	Platform       string             `bson:"platform"`
+	Architecture   string             `bson:"architecture"`
+	LastHeartbeat  time.Time          `bson:"last_heartbeat"`
 }
 
 type HeartBeat struct {
 	Id                                  primitive.ObjectID `bson:"_id"`
-	MacAddress                          string             `json:"mac_address"`
-	EmployeeID                          string             `json:"employee_id"`
-	OperatingSystem                     string             `json:"operating_system"`
-	SystemArchitecture                  string             `json:"system_architecture"`
-	LastHeartbeatTimestamp              time.Time          `json:"last_heartbeat_timestamp"`
-	CurrentApplicationVersion           string             `json:"current_application_version"`
-	LastApplicationUpdateCheckTimestamp time.Time          `json:"last_application_update_check_timestamp"`
-	TotalActivityEventsReceivedToday    int                `json:"total_activity_events_received_today"`
-	LastEventTimestamp                  time.Time          `json:"last_event_timestamp"`
-	TotalActiveTimeSeconds              float64            `json:"total_active_time_seconds"`
-	TotalIdleTimeSeconds                float64            `json:"total_idle_time_seconds"`
-	TotalOfflineTimeSeconds             float64            `json:"total_offline_time_seconds"`
-	TotalSleepTimeSeconds               float64            `json:"total_sleep_time_seconds"`
+	MacAddress                          string             `bson:"mac_address"`
+	EmployeeID                          string             `bson:"employee_id"`
+	OperatingSystem                     string             `bson:"operating_system"`
+	SystemArchitecture                  string             `bson:"system_architecture"`
+	LastHeartbeatTimestamp              time.Time          `bson:"last_heartbeat_timestamp"`
+	CurrentApplicationVersion           string             `bson:"current_application_version"`
+	LastApplicationUpdateCheckTimestamp time.Time          `bson:"last_application_update_check_timestamp"`
+	TotalActivityEventsReceivedToday    int                `bson:"total_activity_events_received_today"`
+	LastEventTimestamp                  time.Time          `bson:"last_event_timestamp"`
+	TotalActiveTimeSeconds              float64            `bson:"total_active_time_seconds"`
+	TotalIdleTimeSeconds                float64            `bson:"total_idle_time_seconds"`
+	TotalOfflineTimeSeconds             float64            `bson:"total_offline_time_seconds"`
+	TotalSleepTimeSeconds               float64            `bson:"total_sleep_time_seconds"`
 }
