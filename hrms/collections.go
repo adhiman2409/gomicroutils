@@ -192,6 +192,12 @@ const ACTIVITY_COLLECTION_EMPLOYEE_MONITOR_CONFIGS = "activity-employee-monitor-
 const ACTIVITY_COLLECTION_EMPLOYEE_ANALYTICS_REPORTS = "activity-employee-analytics-reports"
 const ACTIVITY_COLLECTION_APPLICATION_UPDATES = "activity-application-updates"
 const ACTIVITY_COLLECTION_APPLICATION_UPDATE_INFOS = "activity-application-update-infos"
+const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
+
+func GetActivityClientHeartbeatsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ACTIVITY_COLLECTION_CLIENT_HEARTBEATS)
+}
 
 func GetActivityApplicationUpdateInfosCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))

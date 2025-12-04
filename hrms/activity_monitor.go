@@ -294,3 +294,20 @@ type ApplicationUpdateInfo struct {
 	Architecture   string             `json:"architecture"`
 	LastHeartbeat  time.Time          `json:"last_heartbeat"`
 }
+
+type HeartBeat struct {
+	Id                                  primitive.ObjectID `bson:"_id"`
+	MacAddress                          string             `json:"mac_address"`
+	EmployeeID                          string             `json:"employee_id"`
+	OperatingSystem                     string             `json:"operating_system"`
+	SystemArchitecture                  string             `json:"system_architecture"`
+	LastHeartbeatTimestamp              time.Time          `json:"last_heartbeat_timestamp"`
+	CurrentApplicationVersion           string             `json:"current_application_version"`
+	LastApplicationUpdateCheckTimestamp time.Time          `json:"last_application_update_check_timestamp"`
+	TotalActivityEventsReceivedToday    int                `json:"total_activity_events_received_today"`
+	LastEventTimestamp                  time.Time          `json:"last_event_timestamp"`
+	TotalActiveTimeSeconds              float64            `json:"total_active_time_seconds"`
+	TotalIdleTimeSeconds                float64            `json:"total_idle_time_seconds"`
+	TotalOfflineTimeSeconds             float64            `json:"total_offline_time_seconds"`
+	TotalSleepTimeSeconds               float64            `json:"total_sleep_time_seconds"`
+}
