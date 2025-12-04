@@ -304,6 +304,8 @@ type HeartBeat struct {
 	LastHeartbeatTimestamp              time.Time          `bson:"last_heartbeat_timestamp"`
 	CurrentApplicationVersion           string             `bson:"current_application_version"`
 	LastApplicationUpdateCheckTimestamp time.Time          `bson:"last_application_update_check_timestamp"`
+	IsUpdateAvailable                   bool               `bson:"is_update_available"`
+	AvailableUpdateVersion              string             `bson:"available_update_version"`
 	TotalActivityEventsReceivedToday    int                `bson:"total_activity_events_received_today"`
 	LastEventTimestamp                  time.Time          `bson:"last_event_timestamp"`
 	TotalActiveTimeSeconds              float64            `bson:"total_active_time_seconds"`
