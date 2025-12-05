@@ -130,6 +130,12 @@ const PAYMENT_COLLECTION_INVOICES = "payment-invoices"
 const PAYMENT_COLLECTION_PROCESSED_EVENTS = "payment-processed-events"
 const PAYMENT_COLLECTION_MONTHLY_USER_DATA = "payment-monthly-user-data"
 
+const PAYMENTS_COLLECTION_PROCESSED_EVENTS = "payments-processed-events"
+const PAYMENTS_COLLECTION_TAX_CONFIGS = "payments-tax-configs"
+const PAYMENTS_COLLECTION_BILLING_CYCLE_CONFIGS = "payments-billing-cycle-configs"
+const PAYMENTS_COLLECTION_SUBSCRIPTION_PAYMENTS = "payments-subscription-payments"
+const PAYMENTS__COLLECTION_SUBSCRIPTION_PAYMENT_COUNTER = "payment-subscription-payment-counter"
+
 const ATTENDANCE_COLLECTION_MONTHLY_TIMESHEET = "attendance-monthly-timesheet"
 const ATTENDANCE_COLLECTION_MONTHLY_TIMESHEET_APPROVALS = "attendance-monthly-timesheet-approvals"
 
@@ -194,6 +200,31 @@ const ACTIVITY_COLLECTION_EMPLOYEE_ANALYTICS_REPORTS = "activity-employee-analyt
 const ACTIVITY_COLLECTION_APPLICATION_UPDATES = "activity-application-updates"
 const ACTIVITY_COLLECTION_APPLICATION_UPDATE_INFOS = "activity-application-update-infos"
 const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
+
+func GetPaymentsProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENTS_COLLECTION_PROCESSED_EVENTS)
+}
+
+func GetPaymentsTaxConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENTS_COLLECTION_TAX_CONFIGS)
+}
+
+func GetPaymentsBillingCycleConfigsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENTS_COLLECTION_BILLING_CYCLE_CONFIGS)
+}
+
+func GetPaymentsSubscriptionPaymentsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENTS_COLLECTION_SUBSCRIPTION_PAYMENTS)
+}
+
+func GetPaymentSubscriptionPaymentCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYMENTS__COLLECTION_SUBSCRIPTION_PAYMENT_COUNTER)
+}
 
 func GetActivityClientHeartbeatsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))

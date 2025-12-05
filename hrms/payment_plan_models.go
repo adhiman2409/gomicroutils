@@ -27,15 +27,15 @@ type PaymentDetails struct {
 	PaymentStatus          string             `bson:"payment_status"`
 	PaymentCurrency        string             `bson:"payment_currency"`
 	PaymentMethod          string             `bson:"payment_method"`
-	ActualAmount           float32            `bson:"actual_amount"`
-	PaymentAmount          float32            `bson:"payment_amount"`
-	PendingAmount          float32            `bson:"pending_amount"`
+	ActualAmount           float64            `bson:"actual_amount"`
+	PaymentAmount          float64            `bson:"payment_amount"`
+	PendingAmount          float64            `bson:"pending_amount"`
 	IsOverdue              bool               `bson:"is_overdue"`
 	OverdueDays            int                `bson:"overdue_days"`
-	InterestOnOverdue      float32            `bson:"interest_on_overdue"`
+	InterestOnOverdue      float64            `bson:"interest_on_overdue"`
 	OverdueInterestRate    float64            `bson:"overdue_interest_rate"`
-	OverdueInterestAmount  float32            `bson:"overdue_interest_amount"`
-	OverdueAmount          float32            `bson:"overdue_amount"`
+	OverdueInterestAmount  float64            `bson:"overdue_interest_amount"`
+	OverdueAmount          float64            `bson:"overdue_amount"`
 	FirstReminderMailSent  bool               `bson:"first_reminder_mail_sent"`
 	SecondReminderMailSent bool               `bson:"second_reminder_mail_sent"`
 	ThirdReminderMailSent  bool               `bson:"third_reminder_mail_sent"`
@@ -57,14 +57,14 @@ type SubscriptionDetails struct {
 	SecondaryAdminEmail    string             `bson:"secondary_admin_email"`
 	PlanId                 string             `bson:"plan_id"`
 	Name                   string             `bson:"name"`
-	BaseAmount             float32            `bson:"base_amount"`
+	BaseAmount             float64            `bson:"base_amount"`
 	Currency               string             `bson:"currency"`
 	Country                string             `bson:"country"`
 	InitialLicenseCount    int                `bson:"initial_license_count"`
 	LastInvoiceGeneratedAt time.Time          `bson:"last_invoice_generated_at"`
 	IsDiscounted           bool               `bson:"is_discounted"`
 	Discount               DiscountDetails    `bson:"discount"`
-	AmountAfterDiscount    float32            `bson:"amount_after_discount"`
+	AmountAfterDiscount    float64            `bson:"amount_after_discount"`
 	PaymentFrequency       string             `bson:"payment_frequency"`
 	StartDate              time.Time          `bson:"start_date"`
 	EndDate                time.Time          `bson:"end_date"`
@@ -74,10 +74,10 @@ type SubscriptionDetails struct {
 	NextBillingDate        time.Time          `bson:"next_billing_date"`
 	LastBillingDate        time.Time          `bson:"last_billing_date"`
 	PaymentHistory         []PaymentHistory   `bson:"payment_history"`
-	TotalAmount            float32            `bson:"total_amount"`
-	TotalPaidAmount        float32            `bson:"total_paid_amount"`
-	TotalPendingAmount     float32            `bson:"total_pending_amount"`
-	TotalRefundedAmount    float32            `bson:"total_refunded_amount"`
+	TotalAmount            float64            `bson:"total_amount"`
+	TotalPaidAmount        float64            `bson:"total_paid_amount"`
+	TotalPendingAmount     float64            `bson:"total_pending_amount"`
+	TotalRefundedAmount    float64            `bson:"total_refunded_amount"`
 	ApplicableTaxIds       []string           `bson:"applicable_tax_ids"`
 	HaveTIN                bool               `bson:"have_tin"`
 	TaxIdentificationNum   string             `bson:"tax_identification_num"`
@@ -151,13 +151,15 @@ type Invoice struct {
 	TaxAmount                      float64            `bson:"tax_amount"`
 	DiscountAmount                 float64            `bson:"discount_amount"`
 	NetTotal                       float64            `bson:"net_total"`
-	PaymentStatus                  string             `bson:"payment_status"`
-	PaymentMethod                  string             `bson:"payment_method"`
-	PaymentDate                    time.Time          `bson:"payment_date,omitempty"`
-	DueDate                        time.Time          `bson:"due_date"`
-	CreatedAt                      time.Time          `bson:"created_at"`
-	UpdatedAt                      time.Time          `bson:"updated_at"`
-	Notes                          string             `bson:"notes"`
+	Currency                       string             `bson:"currency"`
+
+	PaymentStatus string    `bson:"payment_status"`
+	PaymentMethod string    `bson:"payment_method"`
+	PaymentDate   time.Time `bson:"payment_date,omitempty"`
+	DueDate       time.Time `bson:"due_date"`
+	CreatedAt     time.Time `bson:"created_at"`
+	UpdatedAt     time.Time `bson:"updated_at"`
+	Notes         string    `bson:"notes"`
 }
 
 type TaxBreakdown struct {
@@ -174,7 +176,7 @@ type TaxLine struct {
 type PaymentHistory struct {
 	InvoiceId        string    `bson:"invoice_id"`
 	PaymentId        string    `bson:"payment_id"`
-	Amount           float32   `bson:"amount"`
+	Amount           float64   `bson:"amount"`
 	PaymentStatus    string    `bson:"payment_status"`
 	PaymentDate      time.Time `bson:"payment_date"`
 	Reminders        Reminders `bson:"reminders"`
