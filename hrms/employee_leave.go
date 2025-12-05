@@ -63,6 +63,7 @@ type EmployeeLeaveStats struct {
 	TotalPresentDays                 float32            `bson:"total_present_days"`
 	AttendanceStatsUpdatedOn         string             `bson:"attendance_stats_updated_on"`
 	LeaveStatsUpdatedOn              string             `bson:"leave_stats_updated_on"`
+	LeaveStatsRecalculatedOn         string             `bson:"leave_stats_recalculated_on"`
 	EarnedLeaveCycleInDays           int32              `bson:"earned_leave_cycle_in_days"`
 	RegularizationReminderMailSentOn string             `bson:"regularization_reminder_mail_sent_on"`
 	Year                             string             `bson:"year"`
