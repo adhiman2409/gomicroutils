@@ -50,6 +50,11 @@ const ORG_COLLECTION_EMPLOYEE_SHIFTS = "org-employee-shifts"
 const ORG_COLLECTION_FOCUS_CATEGORIES = "org-focus-categories"
 const ORG_COLLECTION_FOCUS_APPLICATIONS = "org-focus-applications"
 
+const ORG_COLLECTION_BUDGET_DEPARTMENTS = "org-budget-departments"
+const ORG_COLLECTION_BUDGET_HISTORY_DEPARTMENTS = "org-budget-history-departments"
+const ORG_COLLECTION_BUDGET_ID_COUNTER = "org-budget-id-counter"
+const ORG_COLLECTION_DEPARTMENT_DAILY_STATS = "org-department-daily-stats"
+
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
 
@@ -200,6 +205,26 @@ const ACTIVITY_COLLECTION_EMPLOYEE_ANALYTICS_REPORTS = "activity-employee-analyt
 const ACTIVITY_COLLECTION_APPLICATION_UPDATES = "activity-application-updates"
 const ACTIVITY_COLLECTION_APPLICATION_UPDATE_INFOS = "activity-application-update-infos"
 const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
+
+func GetOrgBudgetCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_BUDGET_DEPARTMENTS)
+}
+
+func GetOrgBudgetHistoryCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_BUDGET_HISTORY_DEPARTMENTS)
+}
+
+func GetOrgBudgetIdCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_BUDGET_ID_COUNTER)
+}
+
+func GetOrgDepartmentDailyStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_DEPARTMENT_DAILY_STATS)
+}
 
 func GetPaymentsProcessedEventsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
