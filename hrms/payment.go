@@ -33,8 +33,9 @@ type PaymentEntity struct {
 	VPA            string             `bson:"vpa"`
 	Contact        string             `bson:"contact"`
 	Notes          struct {
-		PayeeID   string `bson:"payee_id"`
-		InvoiceID string `bson:"invoice_id"`
+		TenantID       string `bson:"tenant_id"`
+		SubscriptionId string `bson:"subscription_id"`
+		InvoiceID      string `bson:"invoice_id"`
 	} `bson:"notes"`
 	Fee          int    `bson:"fee"`
 	Tax          int    `bson:"tax"`
