@@ -17,20 +17,23 @@ type EmployeeInfo struct {
 }
 
 type Department struct {
-	ID             primitive.ObjectID `bson:"_id"`
-	OrgId          string             `bson:"org_id"`
-	OrgName        string             `bson:"org_name"`
-	BudgetId       string             `bson:"budget_id"`
-	Name           string             `bson:"name"`
-	Alias          string             `bson:"alias"`
-	Abbreviation   string             `bson:"abbreviation"`
-	AdminId        string             `bson:"admin_id"`
-	AdminName      string             `bson:"admin_name"`
-	TotalEmployees uint32             `bson:"total_employees"`
-	EmployeeList   []EmployeeInfo     `bson:"employee_list"`
-	Description    string             `bson:"description"`
-	IsActive       bool               `bson:"is_active"`
-	CreatedBy      string             `bson:"created_by"`
-	CreatedAt      time.Time          `bson:"created_at"`
-	UpdatedAt      time.Time          `bson:"updated_at"`
+	ID                    primitive.ObjectID `bson:"_id"`
+	OrgId                 string             `bson:"org_id"`
+	OrgName               string             `bson:"org_name"`
+	BudgetId              string             `bson:"budget_id"`
+	Name                  string             `bson:"name"`
+	Alias                 string             `bson:"alias"`
+	Abbreviation          string             `bson:"abbreviation"`
+	AdminId               string             `bson:"admin_id"`
+	AdminName             string             `bson:"admin_name"`
+	TotalEmployees        uint32             `bson:"total_employees"`
+	ActiveEmployees       uint32             `bson:"active_employees"`
+	NoticePeriodEmployees uint32             `bson:"notice_period_employees"`
+	ExitedEmployees       uint32             `bson:"exited_employees"`
+	EmployeeList          []EmployeeInfo     `bson:"employee_list"`
+	Description           string             `bson:"description"`
+	IsActive              bool               `bson:"is_active"`
+	CreatedBy             string             `bson:"created_by"`
+	CreatedAt             time.Time          `bson:"created_at"`
+	UpdatedAt             time.Time          `bson:"updated_at"`
 }
