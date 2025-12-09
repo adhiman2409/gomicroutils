@@ -19,6 +19,19 @@ type EmployeeInfo struct {
 	AttendanceStatus []string `bson:"attendance_status"`
 }
 
+type AttendanceStats struct {
+	CheckedIn                   uint32  `bson:"checked_in"`
+	CheckedOut                  uint32  `bson:"checked_out"`
+	OnLeave                     uint32  `bson:"on_leave"`
+	Absent                      uint32  `bson:"absent"`
+	AverageLoginTimeToday       string  `bson:"average_login_time_today"`
+	AttendancePercentageToday   float64 `bson:"attendance_percentage_today"`
+	AverageLoginTimeMonthly     string  `bson:"average_login_time_monthly"`
+	AttendancePercentageMonthly float64 `bson:"attendance_percentage_monthly"`
+	AverageLoginTimeYearly      string  `bson:"average_login_time_yearly"`
+	AttendancePercentageYearly  float64 `bson:"attendance_percentage_yearly"`
+}
+
 type Department struct {
 	ID                    primitive.ObjectID `bson:"_id"`
 	OrgId                 string             `bson:"org_id"`
@@ -34,6 +47,7 @@ type Department struct {
 	NoticePeriodEmployees uint32             `bson:"notice_period_employees"`
 	ExitedEmployees       uint32             `bson:"exited_employees"`
 	EmployeeList          []EmployeeInfo     `bson:"employee_list"`
+	AttendanceStats       AttendanceStats    `bson:"attendance_stats"`
 	Description           string             `bson:"description"`
 	IsActive              bool               `bson:"is_active"`
 	CreatedBy             string             `bson:"created_by"`
