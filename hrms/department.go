@@ -24,11 +24,11 @@ type AttendanceStats struct {
 	CheckedOut                  uint32  `bson:"checked_out"`
 	OnLeave                     uint32  `bson:"on_leave"`
 	Absent                      uint32  `bson:"absent"`
-	AverageLoginTimeToday       string  `bson:"average_login_time_today"`
+	AverageLoginDurationToday   string  `bson:"average_login_duration_today"`
 	AttendancePercentageToday   float64 `bson:"attendance_percentage_today"`
-	AverageLoginTimeMonthly     string  `bson:"average_login_time_monthly"`
+	AverageLoginDurationMonthly string  `bson:"average_login_duration_monthly"`
 	AttendancePercentageMonthly float64 `bson:"attendance_percentage_monthly"`
-	AverageLoginTimeYearly      string  `bson:"average_login_time_yearly"`
+	AverageLoginDurationYearly  string  `bson:"average_login_duration_yearly"`
 	AttendancePercentageYearly  float64 `bson:"attendance_percentage_yearly"`
 }
 
