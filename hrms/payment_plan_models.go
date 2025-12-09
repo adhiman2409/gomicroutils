@@ -7,42 +7,26 @@ import (
 )
 
 type PaymentDetails struct {
-	Id                     primitive.ObjectID `bson:"_id"`
-	TenantId               string             `bson:"tenant_id"`
-	PrimaryAdminId         string             `bson:"primary_admin_id"`
-	PrimaryAdminName       string             `bson:"primary_admin_name"`
-	PrimaryAdminEmail      string             `bson:"primary_admin_email"`
-	SecondaryAdminId       string             `bson:"secondary_admin_id"`
-	SecondaryAdminName     string             `bson:"secondary_admin_name"`
-	SecondaryAdminEmail    string             `bson:"secondary_admin_email"`
-	SubscriptionId         string             `bson:"subscription_id"`
-	PlanId                 string             `bson:"plan_id"`
-	Day                    int                `bson:"day"`
-	Month                  int                `bson:"month"`
-	Year                   int                `bson:"year"`
-	PaymentDueDate         time.Time          `bson:"payment_due_date"`
-	PaymentDate            time.Time          `bson:"payment_date"`
-	IsOnTimePayment        bool               `bson:"is_on_time_payment"`
-	PaymentId              string             `bson:"payment_id"`
-	PaymentStatus          string             `bson:"payment_status"`
-	PaymentCurrency        string             `bson:"payment_currency"`
-	PaymentMethod          string             `bson:"payment_method"`
-	ActualAmount           float64            `bson:"actual_amount"`
-	PaymentAmount          float64            `bson:"payment_amount"`
-	PendingAmount          float64            `bson:"pending_amount"`
-	IsOverdue              bool               `bson:"is_overdue"`
-	OverdueDays            int                `bson:"overdue_days"`
-	InterestOnOverdue      float64            `bson:"interest_on_overdue"`
-	OverdueInterestRate    float64            `bson:"overdue_interest_rate"`
-	OverdueInterestAmount  float64            `bson:"overdue_interest_amount"`
-	OverdueAmount          float64            `bson:"overdue_amount"`
-	FirstReminderMailSent  bool               `bson:"first_reminder_mail_sent"`
-	SecondReminderMailSent bool               `bson:"second_reminder_mail_sent"`
-	ThirdReminderMailSent  bool               `bson:"third_reminder_mail_sent"`
-	CreatedAt              time.Time          `bson:"created_at"`
-	UpdatedAt              time.Time          `bson:"updated_at"`
+	Id                primitive.ObjectID `bson:"_id"`
+	TenantId          string             `bson:"tenant_id"`
+	PaymentId         string             `bson:"payment_id"`
+	RazorpayPaymentId string             `bson:"razorpay_payment_id"`
+	InvoiceId         string             `bson:"invoice_id"`
+	SubscriptionId    string             `bson:"subscription_id"`
+	PaymentDueDate    time.Time          `bson:"payment_due_date"`
+	PaymentDate       time.Time          `bson:"payment_date"`
+	IsOnTimePayment   bool               `bson:"is_on_time_payment"`
+	PaymentStatus     string             `bson:"payment_status"`
+	PaymentCurrency   string             `bson:"payment_currency"`
+	PaymentMethod     string             `bson:"payment_method"`
+	ActualAmount      float64            `bson:"actual_amount"`
+	PaymentAmount     float64            `bson:"payment_amount"`
+	PendingAmount     float64            `bson:"pending_amount"`
+	IsOverdue         bool               `bson:"is_overdue"`
+	OverdueDays       int                `bson:"overdue_days"`
+	CreatedAt         time.Time          `bson:"created_at"`
+	UpdatedAt         time.Time          `bson:"updated_at"`
 }
-
 type SubscriptionDetails struct {
 	Id                     primitive.ObjectID `bson:"_id"`
 	SubscriptionID         string             `bson:"subscription_id"`
