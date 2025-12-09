@@ -27,6 +27,7 @@ type PaymentDetails struct {
 	CreatedAt         time.Time          `bson:"created_at"`
 	UpdatedAt         time.Time          `bson:"updated_at"`
 }
+
 type SubscriptionDetails struct {
 	Id                     primitive.ObjectID `bson:"_id"`
 	SubscriptionID         string             `bson:"subscription_id"`
