@@ -7,13 +7,16 @@ import (
 )
 
 type EmployeeInfo struct {
-	EmployeeId      string `bson:"employee_id"`
-	FullName        string `bson:"full_name"`
-	Department      string `bson:"department"`
-	Designation     string `bson:"designation"`
-	EmailID         string `bson:"email_id"`
-	Status          string `bson:"status"`
-	ProfileImageURL string `bson:"profile_image_url"`
+	EmployeeId       string   `bson:"employee_id"`
+	FullName         string   `bson:"full_name"`
+	Department       string   `bson:"department"`
+	Designation      string   `bson:"designation"`
+	EmailID          string   `bson:"email_id"`
+	Status           string   `bson:"status"`
+	ProfileImageURL  string   `bson:"profile_image_url"`
+	CurrentStatus    string   `bson:"current_status"`
+	CheckInSource    string   `bson:"check_in_source"`
+	AttendanceStatus []string `bson:"attendance_status"`
 }
 
 type Department struct {
