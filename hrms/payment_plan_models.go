@@ -7,25 +7,49 @@ import (
 )
 
 type PaymentDetails struct {
-	Id                primitive.ObjectID `bson:"_id"`
-	TenantId          string             `bson:"tenant_id"`
-	PaymentId         string             `bson:"payment_id"`
-	RazorpayPaymentId string             `bson:"razorpay_payment_id"`
-	InvoiceId         string             `bson:"invoice_id"`
-	SubscriptionId    string             `bson:"subscription_id"`
-	PaymentDueDate    time.Time          `bson:"payment_due_date"`
-	PaymentDate       time.Time          `bson:"payment_date"`
-	IsOnTimePayment   bool               `bson:"is_on_time_payment"`
-	PaymentStatus     string             `bson:"payment_status"`
-	PaymentCurrency   string             `bson:"payment_currency"`
-	PaymentMethod     string             `bson:"payment_method"`
-	ActualAmount      float64            `bson:"actual_amount"`
-	PaymentAmount     float64            `bson:"payment_amount"`
-	PendingAmount     float64            `bson:"pending_amount"`
-	IsOverdue         bool               `bson:"is_overdue"`
-	OverdueDays       int                `bson:"overdue_days"`
-	CreatedAt         time.Time          `bson:"created_at"`
-	UpdatedAt         time.Time          `bson:"updated_at"`
+	Id              primitive.ObjectID `bson:"_id"`
+	TenantId        string             `bson:"tenant_id"`
+	PaymentId       string             `bson:"payment_id"`
+	InvoiceId       string             `bson:"invoice_id"`
+	SubscriptionId  string             `bson:"subscription_id"`
+	PaymentDueDate  time.Time          `bson:"payment_due_date"`
+	PaymentDate     time.Time          `bson:"payment_date"`
+	IsOnTimePayment bool               `bson:"is_on_time_payment"`
+	PaymentStatus   string             `bson:"payment_status"`
+	PaymentCurrency string             `bson:"payment_currency"`
+	PaymentMode     string             `bson:"payment_mode"`
+	PaymentMeta     interface{}        `bson:"payment_meta"`
+	ActualAmount    float64            `bson:"actual_amount"`
+	PaymentAmount   float64            `bson:"payment_amount"`
+	PendingAmount   float64            `bson:"pending_amount"`
+	IsOverdue       bool               `bson:"is_overdue"`
+	OverdueDays     int                `bson:"overdue_days"`
+	CreatedAt       time.Time          `bson:"created_at"`
+	UpdatedAt       time.Time          `bson:"updated_at"`
+}
+
+type RazorpayMeta struct {
+	RazorpayPaymentId string `bson:"razorpay_payment_id"`
+	RazorpayOrderId   string `bson:"razorpay_order_id"`
+	PaymentMode       string `bson:"payment_mode"`
+}
+
+type ChequeMeta struct {
+	ChequeNumber string `bson:"cheque_number"`
+	BankName     string `bson:"bank_name"`
+	Branch       string `bson:"branch"`
+	IssuerName   string `bson:"issuer_name"`
+}
+
+type BankTransferMeta struct {
+	UTRNumber    string `bson:"utr_number"`
+	BankName     string `bson:"bank_name"`
+	AccountNo    string `bson:"account_no"`
+	TransferMode string `bson:"transfer_mode"` // NEFT, RTGS, IMPS
+}
+
+type CashMeta struct {
+	ReceiverName string `bson:"receiver_name"`
 }
 
 type SubscriptionDetails struct {
