@@ -17,7 +17,7 @@ type PaymentDetails struct {
 	IsOnTimePayment bool               `bson:"is_on_time_payment"`
 	PaymentStatus   string             `bson:"payment_status"`
 	PaymentCurrency string             `bson:"payment_currency"`
-	PaymentMode     string             `bson:"payment_mode"`
+	PaymentMode     PaymentMethod      `bson:"payment_mode"`
 	PaymentMeta     interface{}        `bson:"payment_meta"`
 	ActualAmount    float64            `bson:"actual_amount"`
 	PaymentAmount   float64            `bson:"payment_amount"`
