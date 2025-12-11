@@ -18,6 +18,9 @@ type GeoTracking struct {
 	EventName                string    `bson:"event_name"` // e.g., "checkin", "checkout", "location_update"
 	EventId                  string    `bson:"event_id"`   // Unique identifier for the event
 	Remarks                  string    `bson:"remarks"`    // Additional information about the event
+	BatteryLevel             float32   `bson:"battery_level"`
+	GPSStatus                string    `bson:"gps_status"`
+	MobileDataStatus         string    `bson:"mobile_data_status"` // e.g., "on", "off"
 }
 
 type EmployeeAttendance struct {
