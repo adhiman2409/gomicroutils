@@ -85,6 +85,7 @@ const REIMBURSEMENT_COLLECTION_EXPENSE_COUNTER = "reimbursement-expense-counter"
 const REIMBURSEMENT_COLLECTION_EXPENSE = "reimbursement-expenses"
 
 const JOBMGR_COLLECTION_JOBS = "jobmgr-jobs"
+const JOBMGR_COLLECTION_PENDING_JOBS = "jobmgr-pending-jobs"
 const JOBMGR_COLLECTION_APPLICATIONS = "jobmgr-applications"
 const JOBMGR_COLLECTION_JOB_COUNTER = "jobmgr-job-counter"
 const JOBMGR_COLLECTION_CANDIDATES = "jobmgr-candidates"
@@ -894,6 +895,11 @@ func GetExpenseCollection(client *mongo.Client, domain string) *mongo.Collection
 func GetJobMgrJobsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(JOBMGR_COLLECTION_JOBS)
+}
+
+func GetJobMgrPendingJobsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(JOBMGR_COLLECTION_PENDING_JOBS)
 }
 
 func GetJobMgrApplicationsCollection(client *mongo.Client, domain string) *mongo.Collection {
