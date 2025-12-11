@@ -41,10 +41,12 @@ const (
 	JobClosed
 	JobPartiallyClosed
 	JobOnHold
+	JobAwaitingApproval
+	JobRejected
 )
 
 func (a JobStatus) String() string {
-	return [...]string{"JobOpened", "JobOpened", "JobClosed", "JobPartiallyClosed", "JobOnHold"}[a-1]
+	return [...]string{"JobOpened", "JobOpened", "JobClosed", "JobPartiallyClosed", "JobOnHold", "JobAwaitingApproval", "JobRejected"}[a-1]
 }
 
 func (a JobStatus) EnumIndex() int {
@@ -52,7 +54,7 @@ func (a JobStatus) EnumIndex() int {
 }
 
 func GetAllJobStatus() []string {
-	return []string{"JobOpened", "JobClosed", "JobPartiallyClosed", "JobOnHold"}
+	return []string{"JobOpened", "JobClosed", "JobPartiallyClosed", "JobOnHold", "JobAwaitingApproval", "JobRejected"}
 }
 
 func JobStatusEnumFromString(s string) JobStatus {
@@ -61,8 +63,12 @@ func JobStatusEnumFromString(s string) JobStatus {
 		return JobOpened
 	case "JobClosed":
 		return JobClosed
-	case "JobPartiallyClosed":
+	case "PartiallyClosed":
 		return JobPartiallyClosed
+	case "JobAwaitingApproval":
+		return JobAwaitingApproval
+	case "JobRejected":
+		return JobRejected
 	default:
 		return JobOnHold
 	}
