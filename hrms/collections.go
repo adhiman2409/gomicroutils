@@ -12,6 +12,7 @@ const AUTH_COLLECTION_THIRD_PARTY_API_KEYS = "auth-third-party-api-keys"
 const AUTH_COLLECTION_ORG_SIDEBAR_CONFIG = "auth-org-sidebar-config"
 const AUTH_COLLECTION_EMPLOYEE_SIDEBAR_CONFIG = "auth-employee-sidebar-config"
 const AUTH_COLLECTION_MODULE_ACCESS_CONFIG = "auth-module-access-config"
+const AUTH_COLLECTION_DEVICE_SHIFTING_ATTEMPTS = "auth-device-shifting-attempts"
 
 const ORG_COLLECTION_ORGANIZATION = "organization"
 const ORG_COLLECTION_DEPARTMENTS = "org-departments"
@@ -615,6 +616,11 @@ func GetAuthEmployeeSidebarConfigCollection(client *mongo.Client, domain string)
 func GetAuthModuleAccessConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(AUTH_COLLECTION_MODULE_ACCESS_CONFIG)
+}
+
+func GetAuthDeviceShiftingAttemptsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(AUTH_COLLECTION_DEVICE_SHIFTING_ATTEMPTS)
 }
 
 func GetOrgAttendanceConfCollection(client *mongo.Client, domain string) *mongo.Collection {
