@@ -41,10 +41,10 @@ type cacheEntry struct {
 
 // RouteCache is an LRU (Least Recently Used) in-memory cache for routes
 type RouteCache struct {
-	mu       sync.RWMutex
-	cache    map[string]*list.Element
-	lruList  *list.List
-	maxSize  int
+	mu      sync.RWMutex
+	cache   map[string]*list.Element
+	lruList *list.List
+	maxSize int
 }
 
 // NewRouteCache creates a new LRU cache with the specified maximum size
@@ -86,7 +86,7 @@ func GetRoute(coordinates []Coordinate) (*RouteResult, error) {
 	coordString := strings.Join(coordParts, ";")
 
 	// Build URL
-	url := fmt.Sprintf("https://router.project-osrm.org/route/v1/driving/%s?overview=full&geometries=polyline", coordString)
+	url := fmt.Sprintf("https://osrm.unirms.com/route/v1/driving/%s?overview=full&geometries=polyline", coordString)
 
 	// Make HTTP request
 	resp, err := http.Get(url)
