@@ -35,7 +35,7 @@ func RequestAuth(next http.Handler) http.Handler {
 		}
 
 		apiName := mux.CurrentRoute(r).GetName()
-		if apiName == "Login" || apiName == "Refresh" || apiName == "VerifyAuthEmail" || apiName == "ForgotPassword" || apiName == "OAuthGoogleCodeURL" || apiName == "UseGoogleAuth" {
+		if apiName == "Login" || apiName == "Refresh" || apiName == "VerifyAuthEmail" || apiName == "ForgotPassword" || apiName == "OAuthGoogleCodeURL" || apiName == "UseGoogleAuth" || apiName == "UpdateEmployeeLocations" {
 			ai.Authorised = true
 			byteArray, _ = json.Marshal(ai)
 			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
