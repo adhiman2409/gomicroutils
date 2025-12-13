@@ -39,6 +39,7 @@ type EmployeeAttendance struct {
 	RequiredRadiusInMeters        float64            `bson:"required_radius_in_meters"`
 	GeoTrackingEnabled            bool               `bson:"geo_tracking_enabled"`
 	GeoTrackingIntervalInMin      int32              `bson:"geo_tracking_interval_in_min"`
+	LastLocationUpdateTime        time.Time          `bson:"last_location_update_time"`
 	CheckInLat                    float64            `bson:"check_in_lat"`
 	CheckInLng                    float64            `bson:"check_in_lng"`
 	CheckOutLat                   float64            `bson:"check_out_lat"`
