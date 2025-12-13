@@ -26,33 +26,46 @@ func RequestAuth(next http.Handler) http.Handler {
 		}
 		byteArray, _ := json.Marshal(ai)
 
-		authHeader := strings.Split(r.Header.Get("Authorization"), "Bearer ")
-		if len(authHeader) != 2 {
-			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
-			fmt.Println("Token length wrong or Token missing")
-			next.ServeHTTP(w, r.WithContext(ctx))
-			return
-		}
+		if r.Header.Get("Authorization") != "" {
 
-		jwtToken := authHeader[1]
-		api := mux.CurrentRoute(r).GetName()
-		claims, err := grpcclient.GetAuthClient().Verify(jwtToken, api)
-		if err != nil {
-			fmt.Println("Token Error: " + err.Error())
-			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
-			next.ServeHTTP(w, r.WithContext(ctx))
-			return
-		}
+			authHeader := strings.Split(r.Header.Get("Authorization"), "Bearer ")
+			if len(authHeader) != 2 {
+				ctx := context.WithValue(r.Context(), "claims", string(byteArray))
+				fmt.Println("Token length wrong or Token missing")
+				next.ServeHTTP(w, r.WithContext(ctx))
+				return
+			}
 
-		ai.Authorised = claims.Authorised
-		ai.Name = claims.Name
-		ai.EmailId = claims.EmailId
-		ai.PhoneNumber = claims.PhoneNumber
-		ai.Role = claims.Role
-		ai.Department = claims.Department
-		ai.Domain = claims.Domain
-		ai.Tenant = claims.Tenant
-		ai.OrgName = claims.OrgName
+			jwtToken := authHeader[1]
+			api := mux.CurrentRoute(r).GetName()
+			claims, err := grpcclient.GetAuthClient().Verify(jwtToken, api)
+			if err != nil {
+				fmt.Println("Token Error: " + err.Error())
+				ctx := context.WithValue(r.Context(), "claims", string(byteArray))
+				next.ServeHTTP(w, r.WithContext(ctx))
+				return
+			}
+
+			ai.Authorised = claims.Authorised
+			ai.Name = claims.Name
+			ai.EmailId = claims.EmailId
+			ai.PhoneNumber = claims.PhoneNumber
+			ai.Role = claims.Role
+			ai.Department = claims.Department
+			ai.Domain = claims.Domain
+			ai.Tenant = claims.Tenant
+			ai.OrgName = claims.OrgName
+		} else {
+			_, err := grpcclient.GetAuthClient().Verify("", mux.CurrentRoute(r).GetName())
+			if err != nil {
+				fmt.Printf("%+v", err)
+				ctx := context.WithValue(r.Context(), "claims", string(byteArray))
+				next.ServeHTTP(w, r.WithContext(ctx))
+				return
+			}
+
+			ai.Authorised = true
+		}
 
 		byteArray, _ = json.Marshal(ai)
 
