@@ -33,6 +33,15 @@ func RequestAuth(next http.Handler) http.Handler {
 			next.ServeHTTP(w, r.WithContext(ctx))
 			return
 		}
+
+		apiName := mux.CurrentRoute(r).GetName()
+		if apiName == "Login" || apiName == "Refresh" || apiName == "VerifyAuthEmail" || apiName == "ForgotPassword" || apiName == "OAuthGoogleCodeURL" || apiName == "UseGoogleAuth" {
+			ai.Authorised = true
+			byteArray, _ = json.Marshal(ai)
+			ctx := context.WithValue(r.Context(), "claims", string(byteArray))
+			next.ServeHTTP(w, r.WithContext(ctx))
+			return
+		}
 		jwtToken := authHeader[1]
 		api := mux.CurrentRoute(r).GetName()
 		claims, err := grpcclient.GetAuthClient().Verify(jwtToken, api)
