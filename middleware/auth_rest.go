@@ -27,7 +27,6 @@ func RequestAuth(next http.Handler) http.Handler {
 		byteArray, _ := json.Marshal(ai)
 
 		if r.Header.Get("Authorization") != "" {
-
 			authHeader := strings.Split(r.Header.Get("Authorization"), "Bearer ")
 			if len(authHeader) != 2 {
 				ctx := context.WithValue(r.Context(), "claims", string(byteArray))
