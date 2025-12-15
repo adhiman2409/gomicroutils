@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -21,6 +22,7 @@ func (a *StorageConnection) DownloadFile(w http.ResponseWriter, r *http.Request,
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	department := mux.Vars(r)["department"]
+	department = strings.ReplaceAll(department, "/", "-")
 	eid := mux.Vars(r)["eid"]
 	category := mux.Vars(r)["category"]
 	documentType := mux.Vars(r)["dtype"]
