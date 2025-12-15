@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/google/martian/v3/log"
 )
@@ -15,6 +16,8 @@ func (a *StorageConnection) UploadFile(r *http.Request, domain string) (FileUplo
 
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	department := r.FormValue("department")
+	//check if department contains special character "/" replace it with "-"
+	department = strings.ReplaceAll(department, "/", "-")
 	eid := r.FormValue("eid")
 	category := r.FormValue("category")
 	documentType := r.FormValue("dtype")
