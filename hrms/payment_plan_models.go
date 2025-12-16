@@ -94,6 +94,7 @@ type SubscriptionDetails struct {
 	NumberOfCycles         int                `bson:"number_of_cycles"`
 	RemainingCycles        int                `bson:"remaining_cycles"`
 	Notes                  string             `bson:"notes"`
+	TotalEstimatedCost     float64            `bson:"total_estimated_cost"`
 }
 
 type BillingCycle struct {
@@ -161,14 +162,15 @@ type Invoice struct {
 	DiscountAmount                 float64            `bson:"discount_amount"`
 	NetTotal                       float64            `bson:"net_total"`
 	Currency                       string             `bson:"currency"`
-
-	PaymentStatus string    `bson:"payment_status"`
-	PaymentMethod string    `bson:"payment_method"`
-	PaymentDate   time.Time `bson:"payment_date,omitempty"`
-	DueDate       time.Time `bson:"due_date"`
-	CreatedAt     time.Time `bson:"created_at"`
-	UpdatedAt     time.Time `bson:"updated_at"`
-	Notes         string    `bson:"notes"`
+	HaveTIN                        bool               `bson:"have_tin"`
+	TIN                            string             `bson:"tin"`
+	PaymentStatus                  string             `bson:"payment_status"`
+	PaymentMethod                  string             `bson:"payment_method"`
+	PaymentDate                    time.Time          `bson:"payment_date,omitempty"`
+	DueDate                        time.Time          `bson:"due_date"`
+	CreatedAt                      time.Time          `bson:"created_at"`
+	UpdatedAt                      time.Time          `bson:"updated_at"`
+	Notes                          string             `bson:"notes"`
 }
 
 type TaxBreakdown struct {
