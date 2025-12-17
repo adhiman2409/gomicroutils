@@ -7,26 +7,26 @@ import (
 )
 
 type GeoTracking struct {
-	Lat                      float64   `bson:"lat"`
-	Lng                      float64   `bson:"lng"`
-	Time                     time.Time `bson:"time"`
-	Location                 string    `bson:"location"`
-	IsStationary             bool      `bson:"is_stationary"`
-	StationaryDurationInMins int64     `bson:"stationary_duration_in_mins"`
-	TransitDurationInMins    int64     `bson:"transit_duration_in_mins"`
-	DistanceTravelledInKMs   float64   `bson:"distance_travelled_in_kms"`
-	EventName                string    `bson:"event_name"` // e.g., "checkin", "checkout", "location_update"
-	EventId                  string    `bson:"event_id"`   // Unique identifier for the event
-	Remarks                  string    `bson:"remarks"`    // Additional information about the event
-	BatteryLevel             float32   `bson:"battery_level"`
-	GPSStatus                string    `bson:"gps_status"`
-	MobileDataStatus         string    `bson:"mobile_data_status"` // e.g., "on", "off"
+	Lat                      float64            `bson:"lat"`
+	Lng                      float64            `bson:"lng"`
+	Time                     time.Time          `bson:"time"`
+	Location                 string             `bson:"location"`
+	IsStationary             bool               `bson:"is_stationary"`
+	StationaryDurationInMins int64              `bson:"stationary_duration_in_mins"`
+	TransitDurationInMins    int64              `bson:"transit_duration_in_mins"`
+	DistanceTravelledInKMs   float64            `bson:"distance_travelled_in_kms"`
+	EventName                string             `bson:"event_name"` // e.g., "checkin", "checkout", "location_update"
+	EventId                  string             `bson:"event_id"`   // Unique identifier for the event
+	Remarks                  string             `bson:"remarks"`    // Additional information about the event
+	BatteryLevel             float32            `bson:"battery_level"`
+	GPSStatus                string             `bson:"gps_status"`
+	MobileDataStatus         string             `bson:"mobile_data_status"` // e.g., "on", "off"
+	DevicePermissions        []DevicePermission `bson:"device_permissions"`
 }
 
 type DevicePermission struct {
-	Name        string `json:"name"`
-	IsEnabled   bool   `json:"is_enabled"`
-	AccessLevel string `json:"access_level"`
+	Name             string `json:"name"`
+	PermissionStatus string `json:"permission_status"`
 }
 
 type EmployeeAttendance struct {
