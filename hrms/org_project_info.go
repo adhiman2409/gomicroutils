@@ -59,6 +59,7 @@ type ProjectInfo struct {
 	TeamMembers                     []ProjectTeamMember `bson:"team_members"`
 	ReleasedTeamMembers             []ProjectTeamMember `bson:"released_team_members"`
 	ShiftTypes                      []ShiftType         `bson:"shift_types"`
+	AskForExternalApproval          bool                `bson:"ask_for_external_approval"`
 	CreatedBy                       string              `bson:"created_by"`
 	CreatedAt                       time.Time           `bson:"created_at"`
 	UpdatedAt                       time.Time           `bson:"updated_at"`
