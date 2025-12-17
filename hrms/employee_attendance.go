@@ -23,6 +23,12 @@ type GeoTracking struct {
 	MobileDataStatus         string    `bson:"mobile_data_status"` // e.g., "on", "off"
 }
 
+type DevicePermission struct {
+	Name        string `json:"name"`
+	IsEnabled   bool   `json:"is_enabled"`
+	AccessLevel string `json:"access_level"`
+}
+
 type EmployeeAttendance struct {
 	ID                            primitive.ObjectID `bson:"_id"`
 	EID                           string             `bson:"eid"`
@@ -85,6 +91,8 @@ type EmployeeAttendance struct {
 	IsOnBreak                     bool               `bson:"is_on_break"`
 	TotalBreakTimeInMins          int64              `bson:"total_break_time_in_mins"`
 	DailyBreakStats               []DailyBreakStat   `bson:"daily_break_stats"`
+	DevicePermissions             []DevicePermission `bson:"device_permissions"`
+	MacAddress                    string             `bson:"mac_address"`
 	IsLocked                      bool               `bson:"is_locked"`
 	IsExpired                     bool               `bson:"is_expired"`
 	IsRegularized                 bool               `bson:"is_regularized"`
