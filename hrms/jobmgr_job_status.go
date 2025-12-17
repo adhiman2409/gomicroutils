@@ -46,7 +46,7 @@ const (
 )
 
 func (a JobStatus) String() string {
-	return [...]string{"JobOpened", "JobOpened", "JobClosed", "JobPartiallyClosed", "JobOnHold", "JobAwaitingApproval", "JobRejected"}[a-1]
+	return [...]string{"JobOpened", "JobClosed", "JobPartiallyClosed", "JobOnHold", "JobAwaitingApproval", "JobRejected"}[a-1]
 }
 
 func (a JobStatus) EnumIndex() int {
