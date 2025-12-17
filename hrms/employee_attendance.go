@@ -22,11 +22,32 @@ type GeoTracking struct {
 	GPSStatus                string             `bson:"gps_status"`
 	MobileDataStatus         string             `bson:"mobile_data_status"` // e.g., "on", "off"
 	DevicePermissions        []DevicePermission `bson:"device_permissions"`
+	MacAddress               string             `bson:"mac_address"`
+}
+
+type GeoTrackingDailyReport struct {
+	EID                           string        `bson:"eid"`
+	Day                           string        `bson:"day"`
+	Month                         string        `bson:"month"`
+	Year                          string        `bson:"year"`
+	GeoTracking                   []GeoTracking `bson:"geo_tracking"` // List of GeoTracking events
+	LastLocationUpdateTime        time.Time     `bson:"last_location_update_time"`
+	TotalStationaryDurationInMins int64         `bson:"total_stationary_duration_in_mins"`
+	TotalTransitDurationInMins    int64         `bson:"total_transit_duration_in_mins"`
+	TotalDistanceTravelledInKMs   float64       `bson:"total_distance_travelled_in_kms"`
+	TotalDistanceTraveledInKM     float32       `bson:"total_distance_traveled_in_km"`
+	AttendanceStatus              string        `bson:"attendance_status"` // e.g., "checked_in", "not_checked_in"
+	CheckInTime                   string        `bson:"check_in_time"`
+	CheckOutTime                  string        `bson:"check_out_time"`
+	CheckInLat                    float64       `bson:"check_in_lat"`
+	CheckInLng                    float64       `bson:"check_in_lng"`
+	CheckOutLat                   float64       `bson:"check_out_lat"`
+	CheckOutLng                   float64       `bson:"check_out_lng"`
 }
 
 type DevicePermission struct {
-	Name             string `json:"name"`
-	PermissionStatus string `json:"permission_status"`
+	Name             string `bson:"name"`
+	PermissionStatus string `bson:"permission_status"`
 }
 
 type EmployeeAttendance struct {
