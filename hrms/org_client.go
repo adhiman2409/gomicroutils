@@ -42,6 +42,8 @@ type ClientInfo struct {
 	ExternalProjectHeadId      string             `bson:"external_project_head_id"`
 	ExternalProjectHeadName    string             `bson:"external_project_head_name"`
 	ExternalProjectHeadEmail   string             `bson:"external_project_head_email"`
+	StartDate                  string             `bson:"start_date"`
+	EndDate                    string             `bson:"end_date"`
 	FullAddress                Address            `bson:"full_address"`
 	City                       string             `bson:"city"`
 	State                      string             `bson:"state"`
