@@ -1,5 +1,6 @@
 package hrms
 
+// Client represents a client organization for which job positions are being managed.
 type Client struct {
 	ClientName                  string `bson:"client_name"`
 	ProjectName                 string `bson:"project_name"`
