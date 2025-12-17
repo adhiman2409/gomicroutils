@@ -61,6 +61,8 @@ type JobEntry struct {
 	ProjectName              string               `bson:"project_name"`
 	IsApproved               bool                 `bson:"is_approved"`
 	ApprovedOn               string               `bson:"approved_on"`
+	ApproverId               string               `bson:"approver_id"`
+	ApproverName             string               `bson:"approver_name"`
 	ManagerId                string               `bson:"manager_id"`
 	ManagerName              string               `bson:"manager_name"`
 	RecruiterId              string               `bson:"recruiter_id"`
