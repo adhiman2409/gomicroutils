@@ -49,6 +49,7 @@ type ClientInfo struct {
 	State                      string             `bson:"state"`
 	Country                    string             `bson:"country"`
 	Contacts                   []string           `bson:"contacts"`
+	Attachments                []Attachment       `json:"attachments"`
 	CreatedBy                  string             `bson:"created_by"`
 	CreatedAt                  time.Time          `bson:"created_at"`
 	UpdatedAt                  time.Time          `bson:"updated_at"`
