@@ -44,10 +44,8 @@ type GeoTrackingDailyReport struct {
 	AttendanceStatus              string             `bson:"attendance_status"` // e.g., "checked_in", "not_checked_in"
 	CheckInTime                   string             `bson:"check_in_time"`
 	CheckOutTime                  string             `bson:"check_out_time"`
-	CheckInLat                    float64            `bson:"check_in_lat"`
-	CheckInLng                    float64            `bson:"check_in_lng"`
-	CheckOutLat                   float64            `bson:"check_out_lat"`
-	CheckOutLng                   float64            `bson:"check_out_lng"`
+	StartLocation                 string             `bson:"start_location"`
+	EndLocation                   string             `bson:"end_location"`
 	TotalWorkingHours             float32            `bson:"total_working_hours"`
 }
 
