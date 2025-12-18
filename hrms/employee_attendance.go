@@ -47,6 +47,7 @@ type GeoTrackingDailyReport struct {
 	CheckInLng                    float64            `bson:"check_in_lng"`
 	CheckOutLat                   float64            `bson:"check_out_lat"`
 	CheckOutLng                   float64            `bson:"check_out_lng"`
+	TotalWorkingHours             float32            `bson:"total_working_hours"`
 }
 
 type DevicePermission struct {
