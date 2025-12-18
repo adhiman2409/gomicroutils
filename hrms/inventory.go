@@ -44,6 +44,8 @@ type AssetReturnInfo struct {
 	Remarks              []string        `bson:"remarks"`
 	ReturnDocuments      []string        `bson:"return_documents"`
 	ReturnedAt           time.Time       `bson:"returned_at"`
+	CreatedAt            time.Time       `bson:"created_at"`
+	UpdatedAt            time.Time       `bson:"updated_at"`
 }
 
 type AssetInfo struct {
