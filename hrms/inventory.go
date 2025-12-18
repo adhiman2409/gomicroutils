@@ -183,6 +183,8 @@ type AllocationHistory struct {
 	Remarks             []string    `bson:"remarks"`
 	Status              AssetStatus `bson:"status"`
 	ReturnedAt          time.Time   `bson:"returned_at"`
+	CreatedAt           time.Time   `bson:"created_at"`
+	UpdatedAt           time.Time   `bson:"updated_at"`
 }
 
 type AssetTransitInfo struct {
