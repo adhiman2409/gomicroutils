@@ -39,7 +39,6 @@ type GeoTrackingDailyReport struct {
 	LastLocationUpdateTime        time.Time          `bson:"last_location_update_time"`
 	TotalStationaryDurationInMins int64              `bson:"total_stationary_duration_in_mins"`
 	TotalTransitDurationInMins    int64              `bson:"total_transit_duration_in_mins"`
-	TotalDistanceTravelledInKMs   float64            `bson:"total_distance_travelled_in_kms"`
 	TotalDistanceTraveledInKM     float32            `bson:"total_distance_traveled_in_km"`
 	AttendanceStatus              string             `bson:"attendance_status"` // e.g., "checked_in", "not_checked_in"
 	CheckInTime                   string             `bson:"check_in_time"`
