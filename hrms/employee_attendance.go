@@ -28,6 +28,10 @@ type GeoTracking struct {
 type GeoTrackingDailyReport struct {
 	ID                            primitive.ObjectID `bson:"_id"`
 	EID                           string             `bson:"eid"`
+	EmployeeName                  string             `bson:"employee_name"`
+	Department                    string             `bson:"department"`
+	Designation                   string             `bson:"designation"`
+	ManagerName                   string             `bson:"manager_name"`
 	Day                           string             `bson:"day"`
 	Month                         string             `bson:"month"`
 	Year                          string             `bson:"year"`
