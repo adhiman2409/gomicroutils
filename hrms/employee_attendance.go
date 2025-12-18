@@ -32,6 +32,7 @@ type GeoTrackingDailyReport struct {
 	Department                    string             `bson:"department"`
 	Designation                   string             `bson:"designation"`
 	ManagerName                   string             `bson:"manager_name"`
+	ManagerId                     string             `bson:"manager_id"`
 	Day                           string             `bson:"day"`
 	Month                         string             `bson:"month"`
 	Year                          string             `bson:"year"`
