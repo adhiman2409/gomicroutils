@@ -54,6 +54,11 @@ type DevicePermission struct {
 	PermissionStatus string `bson:"permission_status"`
 }
 
+type ImageURLInfo struct {
+	URL        string    `bson:"url"`
+	UploadedAt time.Time `bson:"uploaded_at"`
+}
+
 type EmployeeAttendance struct {
 	ID                            primitive.ObjectID `bson:"_id"`
 	EID                           string             `bson:"eid"`
@@ -117,6 +122,7 @@ type EmployeeAttendance struct {
 	TotalBreakTimeInMins          int64              `bson:"total_break_time_in_mins"`
 	DailyBreakStats               []DailyBreakStat   `bson:"daily_break_stats"`
 	DevicePermissions             []DevicePermission `bson:"device_permissions"`
+	ImageURLs                     []ImageURLInfo     `bson:"image_urls"`
 	MacAddress                    string             `bson:"mac_address"`
 	IsLocked                      bool               `bson:"is_locked"`
 	IsExpired                     bool               `bson:"is_expired"`
