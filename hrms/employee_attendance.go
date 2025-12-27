@@ -57,6 +57,7 @@ type DevicePermission struct {
 type ImageURLInfo struct {
 	URL        string    `bson:"url"`
 	UploadedAt time.Time `bson:"uploaded_at"`
+	Remarks    string    `bson:"remarks"`
 }
 
 type EmployeeAttendance struct {
