@@ -104,6 +104,12 @@ type BillingCycle struct {
 	UsageBufferDays     int                `bson:"usage_buffer_days"`
 	CycleLengthInMonths int                `bson:"cycle_length_in_months"`
 	PaymentBufferDays   int                `bson:"payment_buffer_days"`
+	SubDurations        []SubDuration      `bson:"sub_durations"`
+}
+
+type SubDuration struct {
+	Duration       string `bson:"duration"`
+	LengthInMonths int    `bson:"length_in_months"`
 }
 
 type TaxDetails struct {
