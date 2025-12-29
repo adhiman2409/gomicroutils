@@ -82,6 +82,7 @@ const EMPLOYEE_COLLECTION_ASSET_COUNTER = "employee-asset-counter"
 const EMPLOYEE_COLLECTION_LEAVES_CARRY_FORWARD = "employee-leaves-carry-forward"
 const EMPLOYEE_COLLECTION_INCREMENT_LETTERS = "employee-increment-letters"
 const EMPLOYEE_COLLECTION_INCREMENT_LETTER_COUNTER = "employee-increment-letter-counter"
+const EMPLOYEE_COLLECTION_RESTRICTED_HOLIDAYS = "employee-restricted-holidays"
 
 const REIMBURSEMENT_COLLECTION_EXPENSE_COUNTER = "reimbursement-expense-counter"
 const REIMBURSEMENT_COLLECTION_EXPENSE = "reimbursement-expenses"
@@ -857,6 +858,11 @@ func GetEmpIncrementLettersCollection(client *mongo.Client, domain string) *mong
 func GetEmpIncrementLetterCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_INCREMENT_LETTER_COUNTER)
+}
+
+func GetEmpRestrictedHolidaysCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_RESTRICTED_HOLIDAYS)
 }
 
 func GetEmpAttendanceRegularizationCollection(client *mongo.Client, domain string) *mongo.Collection {

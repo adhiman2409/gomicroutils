@@ -50,6 +50,8 @@ type EmpAttendanceConf struct {
 	GeoLocationScreenShot            string                `bson:"geo_location_screen_shot"`
 	ShiftTimings                     []EmpShiftTimings     `bson:"shift_timings"`
 	DelayedCheckInStats              []DelayedCheckInStats `bson:"delayed_check_in_stats"`
+	MaxRestrictedHolidayCount        int32                 `bson:"max_restricted_holiday_count"`
+	RestrictedHolidays               []OrgHoliday          `bson:"restricted_holidays"`
 	AllowedDelayedCheckInCount       int32                 `bson:"allowed_delayed_check_in_count"`
 	SendWarningMailOnDelayedCheckIn  bool                  `bson:"send_warning_mail_on_delayed_check_in"`
 	ApplyLOPAfterMaxDelayedCheckIn   bool                  `bson:"apply_lop_after_max_delayed_check_in"`

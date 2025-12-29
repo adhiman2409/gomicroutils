@@ -31,6 +31,7 @@ type OrgAttendanceConf struct {
 	SendWarningMailOnDelayedCheckIn  bool               `bson:"send_warning_mail_on_delayed_check_in"`
 	ApplyLOPAfterMaxDelayedCheckIn   bool               `bson:"apply_lop_after_max_delayed_check_in"`
 	FullDayLOPAfterMaxDelayedCheckIn bool               `bson:"full_day_lop_after_max_delayed_check_in"`
+	MaxRestrictedHolidayCount        int32              `bson:"max_restricted_holiday_count"`
 	Country                          string             `bson:"country"`
 	TimeZone                         string             `bson:"time_zone"`
 	State                            string             `bson:"state"`
