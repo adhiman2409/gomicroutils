@@ -86,7 +86,7 @@ func GetRoute(coordinates []Coordinate) (*RouteResult, error) {
 	coordString := strings.Join(coordParts, ";")
 
 	// Build URL
-	url := fmt.Sprintf("https://osrm.unirms.com/route/v1/driving/%s?overview=full&geometries=polyline", coordString)
+	url := fmt.Sprintf("https://osrm.unirms.com/india/route/v1/driving/%s?overview=full&geometries=polyline", coordString)
 
 	// Make HTTP request
 	resp, err := http.Get(url)
