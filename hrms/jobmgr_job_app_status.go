@@ -28,6 +28,8 @@ const (
 	Offered
 	Naukri
 	Callback
+	ScreenSelect
+	ScreenReject
 )
 
 func (a JobAppStatus) String() string {
@@ -35,7 +37,7 @@ func (a JobAppStatus) String() string {
 		"Client R1 Scheduled", "Client R2 Scheduled", "Client Shared", "Internal Scheduled",
 		"Dropout", "Dropped", "Dropout Select", "Client R1 Reject", "Client R1 Select",
 		"Client R2 Select", "Client R2 Reject", "Position Closed", "Joined", "Not Joined", "Duplicate", "On Hold", "Sourced",
-		"Interview Select", "Viewed", "Offered", "Naukri", "Callback"}[a-1]
+		"Interview Select", "Viewed", "Offered", "Naukri", "Callback", "Screen Select", "Screen Reject"}[a-1]
 }
 
 func (a JobAppStatus) EnumIndex() int {
@@ -47,7 +49,7 @@ func GetAllJobAppStatus() []string {
 		"Client R1 Scheduled", "Client R2 Scheduled", "Client Shared", "Internal Scheduled",
 		"Dropout", "Dropped", "Dropout Select", "Client R1 Reject", "Client R1 Select",
 		"Client R2 Select", "Client R2 Reject", "Position Closed", "Joined", "Not Joined", "Duplicate", "On Hold", "Sourced",
-		"Interview Select", "Viewed", "Offered", "Naukri", "Callback"}
+		"Interview Select", "Viewed", "Offered", "Naukri", "Callback", "Screen Select", "Screen Reject"}
 }
 
 type JobAppStatusIdx struct {
@@ -82,6 +84,8 @@ func GetJobAppStatusNewIndex() []JobAppStatusIdx {
 		{State: "Dropout Select", Index: int(DropoutSelect)},
 		{State: "Dropped", Index: int(Dropped)},
 		{State: "Position Closed", Index: int(PositionClosed)},
+		{State: "Screen Select", Index: int(ScreenSelect)},
+		{State: "Screen Reject", Index: int(ScreenReject)},
 	}
 }
 
@@ -134,6 +138,10 @@ func JobAppStatusEnumFromString(s string) JobAppStatus {
 		return Offered
 	} else if s == "Callback" {
 		return Callback
+	} else if s == "Screen Select" {
+		return ScreenSelect
+	} else if s == "Screen Reject" {
+		return ScreenReject
 	} else {
 		return Naukri
 	}
