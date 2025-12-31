@@ -44,6 +44,14 @@ func (a JobAppStatus) EnumIndex() int {
 	return int(a)
 }
 
+func JobAppStatusEnumFromInt(a int) string {
+	return [...]string{"Pipeline", "Internal Select", "Internal Reject",
+		"Client R1 Scheduled", "Client R2 Scheduled", "Client Shared", "Internal Scheduled",
+		"Dropout", "Dropped", "Dropout Select", "Client R1 Reject", "Client R1 Select",
+		"Client R2 Select", "Client R2 Reject", "Position Closed", "Joined", "Not Joined", "Duplicate", "On Hold", "Sourced",
+		"Interview Select", "Viewed", "Offered", "Naukri", "Callback", "Screen Select", "Screen Reject"}[a-1]
+}
+
 func GetAllJobAppStatus() []string {
 	return []string{"Pipeline", "Internal Select", "Internal Reject",
 		"Client R1 Scheduled", "Client R2 Scheduled", "Client Shared", "Internal Scheduled",
