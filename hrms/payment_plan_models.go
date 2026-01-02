@@ -95,7 +95,8 @@ type SubscriptionDetails struct {
 	RemainingCycles        int                `bson:"remaining_cycles"`
 	Notes                  string             `bson:"notes"`
 	TotalEstimatedCost     float64            `bson:"total_estimated_cost"`
-	TenantAddress          BillingAddress     `bson:"tenant_address"`
+	TenantBillingAddress   BillingAddress     `bson:"tenant_billing_address"`
+	TenantShippingAddress  BillingAddress     `bson:"tenant_shipping_address"`
 }
 
 type BillingCycle struct {
