@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/adhiman2409/gomicroutils"
 	"github.com/gorilla/mux"
 )
 
@@ -67,7 +68,9 @@ func (a *StorageConnection) DownloadImage(w http.ResponseWriter, r *http.Request
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	department := mux.Vars(r)["department"]
-	eid := mux.Vars(r)["eid"]
+	enyeid := mux.Vars(r)["eid"]
+	eid, _ := gomicroutils.DecryptString(enyeid, "")
+	fmt.Println("DownloadImage EID:", eid)
 	category := mux.Vars(r)["category"]
 	documentType := mux.Vars(r)["dtype"]
 	filename := mux.Vars(r)["filename"]
