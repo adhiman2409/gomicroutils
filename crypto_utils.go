@@ -9,11 +9,12 @@ import (
 	"errors"
 	"io"
 	"os"
+	"strings"
 )
 
 // EncryptString encrypts a plaintext string using the provided key string
 // The key can be any length - it will be hashed to create a 32-byte AES key
-// Returns base64 encoded ciphertext
+// Returns base64url encoded ciphertext (URL-safe: uses - and _ instead of + and /)
 func EncryptString(plaintext, key string) (string, error) {
 	if plaintext == "" {
 		return "", errors.New("plaintext cannot be empty")
@@ -49,11 +50,16 @@ func EncryptString(plaintext, key string) (string, error) {
 	// Encrypt and append nonce to the beginning
 	ciphertext := gcm.Seal(nonce, nonce, plaintextBytes, nil)
 
-	// Encode to base64 for easy storage/transmission
-	return base64.StdEncoding.EncodeToString(ciphertext), nil
+	// Encode to base64url (URL-safe format)
+	base64Str := base64.StdEncoding.EncodeToString(ciphertext)
+	base64url := strings.ReplaceAll(base64Str, "+", "-")
+	base64url = strings.ReplaceAll(base64url, "/", "_")
+	base64url = strings.TrimRight(base64url, "=")
+
+	return base64url, nil
 }
 
-// DecryptString decrypts a base64 encoded ciphertext using the provided key string
+// DecryptString decrypts a base64url encoded ciphertext using the provided key string
 // The key must be the same string used for encryption
 // Returns the original plaintext
 func DecryptString(ciphertext, skey string) (string, error) {
@@ -65,8 +71,19 @@ func DecryptString(ciphertext, skey string) (string, error) {
 		key = os.Getenv("ENCRYPTION_KEY")
 	}
 
+	// Convert base64url to standard base64
+	// Replace URL-safe characters back to standard base64 characters
+	base64Str := strings.ReplaceAll(ciphertext, "-", "+")
+	base64Str = strings.ReplaceAll(base64Str, "_", "/")
+
+	// Add padding if needed
+	// base64 strings should be a multiple of 4 characters
+	if padding := len(base64Str) % 4; padding > 0 {
+		base64Str += strings.Repeat("=", 4-padding)
+	}
+
 	// Decode base64
-	ciphertextBytes, err := base64.StdEncoding.DecodeString(ciphertext)
+	ciphertextBytes, err := base64.StdEncoding.DecodeString(base64Str)
 	if err != nil {
 		return "", errors.New("invalid ciphertext format")
 	}
