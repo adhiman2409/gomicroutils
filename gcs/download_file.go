@@ -69,8 +69,11 @@ func (a *StorageConnection) DownloadImage(w http.ResponseWriter, r *http.Request
 	defer cancel()
 	department := mux.Vars(r)["department"]
 	enyeid := mux.Vars(r)["eid"]
-	eid, _ := gomicroutils.DecryptString(enyeid, "")
-	fmt.Println("DownloadImage EID:", eid)
+	eid := enyeid
+	if len(enyeid) > 20 {
+		e, _ := gomicroutils.DecryptString(enyeid, "")
+		eid = e
+	}
 	category := mux.Vars(r)["category"]
 	documentType := mux.Vars(r)["dtype"]
 	filename := mux.Vars(r)["filename"]
