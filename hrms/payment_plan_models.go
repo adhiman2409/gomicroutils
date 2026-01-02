@@ -217,7 +217,8 @@ type Reminders struct {
 }
 
 type AddressAndAccount struct {
-	TenantAddress    BillingAddress     `bson:"tenant_address"`
-	PineswiftAddress BillingAddress     `bson:"pineswift_address"`
-	PineswiftAccount BankAccountDetails `bson:"pineswift_account"`
+	TenantShippingAddress BillingAddress     `bson:"tenant_shipping_address"`
+	TenantBillingAddress  BillingAddress     `bson:"tenant_billing_address"`
+	PineswiftAddress      BillingAddress     `bson:"pineswift_address"`
+	PineswiftAccount      BankAccountDetails `bson:"pineswift_account"`
 }
