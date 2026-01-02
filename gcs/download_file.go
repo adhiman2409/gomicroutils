@@ -70,7 +70,7 @@ func (a *StorageConnection) DownloadImage(w http.ResponseWriter, r *http.Request
 	department := mux.Vars(r)["department"]
 	enyeid := mux.Vars(r)["eid"]
 	eid := enyeid
-	if len(enyeid) > 20 {
+	if len(enyeid) > 15 {
 		e, _ := gomicroutils.DecryptString(enyeid, "")
 		eid = e
 	}
