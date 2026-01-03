@@ -14,8 +14,9 @@ type JobApplicationErrorRecord struct {
 }
 
 type RecruiterInfo struct {
-	Id   string `bson:"id"`
-	Name string `bson:"name"`
+	ID   primitive.ObjectID `bson:"_id"`
+	RId  string             `bson:"id"`
+	Name string             `bson:"name"`
 }
 
 type AllocationEntry struct {
