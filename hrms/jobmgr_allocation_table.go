@@ -15,7 +15,7 @@ type JobApplicationErrorRecord struct {
 
 type RecruiterInfo struct {
 	ID   primitive.ObjectID `bson:"_id"`
-	RId  string             `bson:"id"`
+	RId  string             `bson:"rid"`
 	Name string             `bson:"name"`
 }
 
