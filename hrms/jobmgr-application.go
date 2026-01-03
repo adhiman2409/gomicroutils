@@ -61,7 +61,7 @@ type JobApplicationEntry struct {
 	Remarks                    string                 `bson:"remarks"`
 	TimeLine                   []TimeLineInfo         `bson:"time_line"`
 	ApplicationDate            string                 `bson:"application_date"`
-	Status                     JobAppStatus           `bson:"status"`
+	Status                     JobApplicationStatus   `bson:"status"`
 	IsContacted                bool                   `bson:"is_contacted"`
 	IsVerified                 bool                   `bson:"is_verified"`
 	RegexText                  string                 `bson:"regex_text"`

@@ -1,5 +1,14 @@
 package hrms
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
+type JobApplicationStatus struct {
+	ID          primitive.ObjectID `bson:"_id"`
+	Status      string             `bson:"status"`
+	DisplayName string             `bson:"display_name"`
+	Index       int                `bson:"index"`
+}
+
 type JobPublishStatus int
 
 const (
