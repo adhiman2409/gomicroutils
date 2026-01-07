@@ -29,6 +29,7 @@ message ClientMessage {
         ScreenshotResponse screenshot_response = 3;
         ClientAck ack = 4;
         VideoCaptureResponse video_capture_response = 5;
+        LogFileResponse log_file_response = 6;
     }
 }
 
@@ -67,6 +68,7 @@ message ServerMessage {
         ConfigUpdate config_update = 5;
         MonitoringCommand monitoring_command = 6;
         VideoCaptureCommand video_capture_command = 7;
+        LogFileRequest log_file_request = 8;
     }
 }
 
@@ -119,3 +121,27 @@ message MonitoringCommand {
     CommandType command = 1;
     string reason = 2;
 }
+
+message LogFileRequest {
+      string request_id = 1;
+      string date = 2;
+      repeated string log_levels = 3;
+      int32 max_lines = 4;
+  }
+
+  message LogEntry {
+      google.protobuf.Timestamp timestamp = 1;
+      string level = 2;
+      string message = 3;
+      string source_file = 4;
+  }
+
+  message LogFileResponse {
+      string request_id = 1;
+      bool success = 2;
+      string error_message = 3;
+      string date = 4;
+      repeated LogEntry entries = 5;
+      int32 total_lines = 6;
+      bool truncated = 7;
+  }
