@@ -33,6 +33,9 @@ type ClientInfo struct {
 	IsNDASigned                bool               `bson:"is_nda_signed"`
 	NDASignDate                time.Time          `bson:"nda_sign_date"`
 	NDADocument                string             `bson:"nda_document"`
+	IsContractSigned           bool               `bson:"is_contract_signed"`
+	ContractSignDate           time.Time          `bson:"contract_sign_date"`
+	ContractDocument           string             `bson:"contract_document"`
 	ClientWebsite              string             `bson:"client_website"`
 	PrimaryContactName         string             `bson:"primary_contact_name"`
 	PrimaryContactEmail        string             `bson:"primary_contact_email"`
