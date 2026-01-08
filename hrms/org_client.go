@@ -29,6 +29,7 @@ type ClientInfo struct {
 	ClientDescription          string             `bson:"client_description"`
 	IsDefault                  bool               `bson:"is_default"`
 	IsExternalProject          bool               `bson:"is_external_project"`
+	CompletionPercentage       float64            `bson:"completion_percentage"`
 	IsNDASigned                bool               `bson:"is_nda_signed"`
 	NDASignDate                time.Time          `bson:"nda_sign_date"`
 	NDADocument                string             `bson:"nda_document"`
