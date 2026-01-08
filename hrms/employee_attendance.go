@@ -37,6 +37,7 @@ type GeoTrackingDailyReport struct {
 	Month                         string             `bson:"month"`
 	Year                          string             `bson:"year"`
 	GeoTracking                   []GeoTracking      `bson:"geo_tracking"` // List of GeoTracking events
+	ErrorGeoTrackingMessages      []GeoTracking      `bson:"error_geo_tracking_messages"`
 	LastLocationUpdateTime        time.Time          `bson:"last_location_update_time"`
 	TotalStationaryDurationInMins int64              `bson:"total_stationary_duration_in_mins"`
 	TotalTransitDurationInMins    int64              `bson:"total_transit_duration_in_mins"`
@@ -118,6 +119,7 @@ type EmployeeAttendance struct {
 	TotalDistanceTravelledInKMs   float64            `bson:"total_distance_travelled_in_kms"`
 	TotalStationaryDurationInMins int64              `bson:"total_stationary_duration_in_mins"`
 	TotalTransitDurationInMins    int64              `bson:"total_transit_duration_in_mins"`
+	ErrorGeoTrackingMessages      []GeoTracking      `bson:"error_geo_tracking_messages"`
 	GeoTracking                   []GeoTracking      `bson:"geo_tracking"`
 	IsOnBreak                     bool               `bson:"is_on_break"`
 	TotalBreakTimeInMins          int64              `bson:"total_break_time_in_mins"`
