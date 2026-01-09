@@ -7,23 +7,18 @@ import (
 )
 
 type OEM struct {
-	ID           primitive.ObjectID `bson:"_id,omitempty"`
-	OEMId        string             `bson:"oem_id"`
-	OEMCode      string             `bson:"oem_code"`
-	ShowroomName string             `bson:"showroom_name"`
-	Brand        Brand              `bson:"brand"`
-	Domain       string             `bson:"domain"`
-	Address      Address            `bson:"address"`
-	GeoLocation  GeoPoint           `bson:"geo_location"`
-	Contact      ContactInfo        `bson:"contact"`
-	EmailId      string             `bson:"email_id"`
-	MobileNo     string             `bson:"phone"`
-	Status       string             `bson:"status"`
-	EID          string             `bson:"eid"`
-	Password     string             `bson:"password"`
-	Role         string             `bson:"role"`
-	CreatedAt    time.Time          `bson:"created_at"`
-	UpdatedAt    time.Time          `bson:"updated_at"`
+	ID        primitive.ObjectID `bson:"_id,omitempty"`
+	OEMId     string             `bson:"oem_id"`
+	OEMName   string             `bson:"oem_name"`
+	Domain    string             `bson:"domain"`
+	EmailId   string             `bson:"email_id"`
+	MobileNo  string             `bson:"phone"`
+	Status    string             `bson:"status"`
+	EID       string             `bson:"eid"`
+	Password  string             `bson:"password"`
+	Role      string             `bson:"role"`
+	CreatedAt time.Time          `bson:"created_at"`
+	UpdatedAt time.Time          `bson:"updated_at"`
 }
 
 type Brand struct {
