@@ -193,6 +193,7 @@ const KYC_COLLECTION_CONTACTS = "kyc-contacts"
 const KYC_COLLECTION_DEALS = "kyc-deals"
 const KYC_COLLECTION_CONTACT_COUNTER = "kyc-contact-counter"
 const KYC_COLLECTION_DEALS_COUNTER = "kyc-deals-counter"
+const KYC_COLLECTION_STICKY_NOTE = "kyc-sticky-notes"
 
 const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
 const REJOVE_COLLECTION_DOCTOR_COUNTER = "rejove-doctor-id-counter"
@@ -218,6 +219,11 @@ const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
 func GetPaymentsTenantAddressCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENTS_COLLECTION_TENANT_ADDRESS_COLLECTION)
+}
+
+func GetStickyNoteCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(KYC_COLLECTION_STICKY_NOTE)
 }
 
 func GetPaymentsBankDetailsCollection(client *mongo.Client, domain string) *mongo.Collection {
