@@ -51,6 +51,8 @@ type ClientInfo struct {
 	Country                    string             `bson:"country"`
 	Contacts                   []string           `bson:"contacts"`
 	Attachments                []Attachment       `bson:"attachments"`
+	EstimatedEffortInHours     float64            `bson:"estimated_effort_in_hours"`
+	ActualEffortInHours        float64            `bson:"actual_effort_in_hours"`
 	CreatedBy                  string             `bson:"created_by"`
 	CreatedAt                  time.Time          `bson:"created_at"`
 	UpdatedAt                  time.Time          `bson:"updated_at"`
