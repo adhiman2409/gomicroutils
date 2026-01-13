@@ -86,6 +86,7 @@ type Task struct {
 	AssigneeHistory        []AssigneeHistory `bson:"assignee_history,omitempty"`
 	EstimatedEffortInHours float64           `bson:"estimated_effort_in_hours"`
 	ActualEffortInHours    float64           `bson:"actual_effort_in_hours"`
+	IsPublic               bool              `bson:"is_public"`
 	UpdatedAt              time.Time         `bson:"updated_at"`
 	CreatedAt              time.Time         `bson:"created_at"`
 	CreatedBy              EmpSummary        `bson:"created_by"`
