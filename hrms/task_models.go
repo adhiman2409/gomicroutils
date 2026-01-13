@@ -66,27 +66,29 @@ type EmpSummary struct {
 }
 
 type Task struct {
-	TaskId          string            `bson:"task_id"`
-	StateId         string            `bson:"state_id"`
-	ProjectId       string            `bson:"project_id"`
-	TicketId        string            `bson:"ticket_id"`
-	ProjectName     string            `bson:"project_name"`
-	Title           string            `bson:"title"`
-	Description     string            `bson:"description"`
-	Assignees       []EmpSummary      `bson:"assignees"`
-	AssignedBy      EmpSummary        `bson:"assigned_by"`
-	StartDate       time.Time         `bson:"start_date"`
-	DueDate         time.Time         `bson:"due_date"`
-	Labels          []string          `bson:"labels"`
-	Priority        TaskPriority      `bson:"priority"`
-	Attachments     []string          `bson:"attachments"`
-	Remarks         []string          `bson:"remarks"`
-	Comments        []Comments        `bson:"comments"`
-	History         []TaskHistory     `bson:"history"`
-	AssigneeHistory []AssigneeHistory `bson:"assignee_history,omitempty"`
-	UpdatedAt       time.Time         `bson:"updated_at"`
-	CreatedAt       time.Time         `bson:"created_at"`
-	CreatedBy       EmpSummary        `bson:"created_by"`
+	TaskId                 string            `bson:"task_id"`
+	StateId                string            `bson:"state_id"`
+	ProjectId              string            `bson:"project_id"`
+	TicketId               string            `bson:"ticket_id"`
+	ProjectName            string            `bson:"project_name"`
+	Title                  string            `bson:"title"`
+	Description            string            `bson:"description"`
+	Assignees              []EmpSummary      `bson:"assignees"`
+	AssignedBy             EmpSummary        `bson:"assigned_by"`
+	StartDate              time.Time         `bson:"start_date"`
+	DueDate                time.Time         `bson:"due_date"`
+	Labels                 []string          `bson:"labels"`
+	Priority               TaskPriority      `bson:"priority"`
+	Attachments            []string          `bson:"attachments"`
+	Remarks                []string          `bson:"remarks"`
+	Comments               []Comments        `bson:"comments"`
+	History                []TaskHistory     `bson:"history"`
+	AssigneeHistory        []AssigneeHistory `bson:"assignee_history,omitempty"`
+	EstimatedEffortInHours float64           `bson:"estimated_effort_in_hours"`
+	ActualEffortInHours    float64           `bson:"actual_effort_in_hours"`
+	UpdatedAt              time.Time         `bson:"updated_at"`
+	CreatedAt              time.Time         `bson:"created_at"`
+	CreatedBy              EmpSummary        `bson:"created_by"`
 }
 
 type ProjectTasksResponse struct {
