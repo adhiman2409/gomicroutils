@@ -236,7 +236,7 @@ type CompletionStats struct {
 }
 
 type OldBatteryStats struct {
-	AverageBatteryPercentage int       `bson:"old_device_count"`
+	AverageBatteryPercentage int       `bson:"average_battery_percentage"`
 	TotalDevices             int       `bson:"total_devices"`
 	UpdatedAt                time.Time `bson:"updated_at"`
 }
@@ -245,7 +245,7 @@ type BatteryStats struct {
 	Day                       string            `bson:"day"`
 	Month                     string            `bson:"month"`
 	Year                      string            `bson:"year"`
-	AverageBatteryPercentage  float32           `bson:"average_battery"`
+	AverageBatteryPercentage  float32           `bson:"average_battery_percentage"`
 	TotalDevices              int               `bson:"total_devices"`
 	ZeroToTwentyPercent       float32           `bson:"zero_to_twenty_percent"`
 	TwentyOneToFortyPercent   float32           `bson:"twenty_one_to_forty_percent"`
