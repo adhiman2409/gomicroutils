@@ -242,16 +242,17 @@ type OldBatteryStats struct {
 }
 
 type BatteryStats struct {
-	Day                       string            `bson:"day"`
-	Month                     string            `bson:"month"`
-	Year                      string            `bson:"year"`
-	AverageBatteryPercentage  float32           `bson:"average_battery_percentage"`
-	TotalDevices              int               `bson:"total_devices"`
-	ZeroToTwentyPercent       float32           `bson:"zero_to_twenty_percent"`
-	TwentyOneToFortyPercent   float32           `bson:"twenty_one_to_forty_percent"`
-	FortyOneToSixtyPercent    float32           `bson:"forty_one_to_sixty_percent"`
-	SixtyOneToEightyPercent   float32           `bson:"sixty_one_to_eighty_percent"`
-	EightyOneToHundredPercent float32           `bson:"eighty_one_to_hundred_percent"`
-	OldBatteryStats           []OldBatteryStats `bson:"old_battery_stats"`
-	UpdatedAt                 time.Time         `bson:"updated_at"`
+	ID                        primitive.ObjectID `bson:"_id"`
+	Day                       string             `bson:"day"`
+	Month                     string             `bson:"month"`
+	Year                      string             `bson:"year"`
+	AverageBatteryPercentage  float32            `bson:"average_battery_percentage"`
+	TotalDevices              int                `bson:"total_devices"`
+	ZeroToTwentyPercent       float32            `bson:"zero_to_twenty_percent"`
+	TwentyOneToFortyPercent   float32            `bson:"twenty_one_to_forty_percent"`
+	FortyOneToSixtyPercent    float32            `bson:"forty_one_to_sixty_percent"`
+	SixtyOneToEightyPercent   float32            `bson:"sixty_one_to_eighty_percent"`
+	EightyOneToHundredPercent float32            `bson:"eighty_one_to_hundred_percent"`
+	OldBatteryStats           []OldBatteryStats  `bson:"old_battery_stats"`
+	UpdatedAt                 time.Time          `bson:"updated_at"`
 }
