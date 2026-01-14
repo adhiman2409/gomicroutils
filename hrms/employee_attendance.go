@@ -21,7 +21,9 @@ type GeoTracking struct {
 	BatteryLevel             float32            `bson:"battery_level"`
 	GPSStatus                string             `bson:"gps_status"`
 	MobileDataStatus         string             `bson:"mobile_data_status"` // e.g., "on", "off"
+	IsMockedLocation         bool               `bson:"is_mocked_location"`
 	DevicePermissions        []DevicePermission `bson:"device_permissions"`
+	DeviceConfigs            []DeviceConfig     `bson:"device_configs"`
 	MacAddress               string             `bson:"mac_address"`
 }
 
@@ -53,6 +55,11 @@ type GeoTrackingDailyReport struct {
 type DevicePermission struct {
 	Name             string `bson:"name"`
 	PermissionStatus string `bson:"permission_status"`
+}
+
+type DeviceConfig struct {
+	Key   string `bson:"key"`
+	Value string `bson:"value"`
 }
 
 type ImageURLInfo struct {
