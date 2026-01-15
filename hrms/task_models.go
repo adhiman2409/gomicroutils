@@ -87,6 +87,7 @@ type Task struct {
 	EstimatedEffortInHours float64           `bson:"estimated_effort_in_hours"`
 	ActualEffortInHours    float64           `bson:"actual_effort_in_hours"`
 	IsPublic               bool              `bson:"is_public"`
+	MovedAt                time.Time         `bson:"moved_at"`
 	UpdatedAt              time.Time         `bson:"updated_at"`
 	CreatedAt              time.Time         `bson:"created_at"`
 	CreatedBy              EmpSummary        `bson:"created_by"`
