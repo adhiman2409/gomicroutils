@@ -77,30 +77,25 @@ type IdCounter struct {
 }
 
 type CustomerLead struct {
-	ID         primitive.ObjectID `bson:"_id,omitempty"`
-	ShowroomID string             `bson:"showroom_id"`
-	CustomerID string             `bson:"customer_id"`
-
-	FirstName string `bson:"first_name"`
-	LastName  string `bson:"last_name"`
-	Phone     string `bson:"phone"`
-	Email     string `bson:"email"`
-	City      string `bson:"city"`
-
-	FuelType    string `bson:"fuel_type"`
-	VehicleType string `bson:"vehicle_type"`
-	MaxBudget   int64  `bson:"max_budget"`
-
-	LeadSource LeadSource `bson:"lead_source"`
-
-	Timeline []TimelineEvent `bson:"timeline"`
-
-	AssignedToEid  string `bson:"assigned_to_eid"`
-	AssignedToName string `bson:"assigned_to_name"`
-
-	Status    string    `bson:"status"`
-	CreatedAt time.Time `bson:"created_at"`
-	UpdatedAt time.Time `bson:"updated_at"`
+	ID                  primitive.ObjectID `bson:"_id,omitempty"`
+	ShowroomID          string             `bson:"showroom_id"`
+	CustomerID          string             `bson:"customer_id"`
+	FirstName           string             `bson:"first_name"`
+	LastName            string             `bson:"last_name"`
+	Phone               string             `bson:"phone"`
+	Email               string             `bson:"email"`
+	City                string             `bson:"city"`
+	FuelType            string             `bson:"fuel_type"`
+	VehicleType         string             `bson:"vehicle_type"`
+	MaxBudget           int64              `bson:"max_budget"`
+	LeadSource          LeadSource         `bson:"lead_source"`
+	Timeline            []TimelineEvent    `bson:"timeline"`
+	AssociatedShowrooms []string           `bson:"associated_showrooms"`
+	AssignedToEid       string             `bson:"assigned_to_eid"`
+	AssignedToName      string             `bson:"assigned_to_name"`
+	Status              string             `bson:"status"`
+	CreatedAt           time.Time          `bson:"created_at"`
+	UpdatedAt           time.Time          `bson:"updated_at"`
 }
 
 type LeadSource struct {
