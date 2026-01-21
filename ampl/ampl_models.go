@@ -146,32 +146,30 @@ type SalesAssignmentDoc struct {
 }
 
 type CustomerFinancialProfile struct {
-	Id          primitive.ObjectID `bson:"_id"`
-	CustomerID  string             `bson:"customer_id"`
-	CustomerAge int                `bson:"customer_age"`
-
-	PanCard     string `bson:"pan_card"`
-	AadharCard  string `bson:"aadhar_card"`
-	IncomeProof string `bson:"income_proof"`
-
-	EmploymentType      string  `bson:"employment_type"` // salaried | self_employed | business | fleet | captive
-	MonthlyIncome       float64 `bson:"monthly_income"`
-	InHandMonthlyIncome float64 `bson:"in_hand_monthly_income"`
-	AnnualIncome        float64 `bson:"annual_income"`
-
-	CIBILScore          int        `bson:"cibil_score"`
-	CreditScore         int        `bson:"credit_score"`
-	MaxDelayDaysInCIBIL int        `bson:"max_delay_days_in_cibil"`
-	HasOverdue          bool       `bson:"has_overdue"`
-	ResidenceType       string     `bson:"residence_type"` // own | rented
-	HasOwnHouse         bool       `bson:"has_own_house"`
-	ResidenceDocs       []Document `bson:"residence_docs"` // rental agreement | gas bill | phone bill
-	OngoingLoanCount    int        `bson:"ongoing_loan_count"`
-	AvgMonthlyBalance   float64    `bson:"avg_monthly_balance"`
-	FOIR                float64    `bson:"foir"`
-
-	CreatedAt time.Time `bson:"created_at"`
-	UpdatedAt time.Time `bson:"updated_at"`
+	Id                  primitive.ObjectID `bson:"_id"`
+	CustomerID          string             `bson:"customer_id"`
+	CustomerAge         int                `bson:"customer_age"`
+	PanCard             string             `bson:"pan_card"`
+	AadharCard          string             `bson:"aadhar_card"`
+	IncomeProof         string             `bson:"income_proof"`
+	EmploymentType      string             `bson:"employment_type"` // salaried | self_employed | business | fleet | captive
+	MonthlyIncome       float64            `bson:"monthly_income"`
+	InHandMonthlyIncome float64            `bson:"in_hand_monthly_income"`
+	AnnualIncome        float64            `bson:"annual_income"`
+	CIBILScore          int                `bson:"cibil_score"`
+	CreditScore         int                `bson:"credit_score"`
+	MaxDelayDaysInCIBIL int                `bson:"max_delay_days_in_cibil"`
+	HasOverdue          bool               `bson:"has_overdue"`
+	ResidenceType       string             `bson:"residence_type"` // own | rented
+	HasOwnHouse         bool               `bson:"has_own_house"`
+	ResidenceDocs       []Document         `bson:"residence_docs"` // rental agreement | gas bill | phone bill
+	OngoingLoanCount    int                `bson:"ongoing_loan_count"`
+	AvgMonthlyBalance   float64            `bson:"avg_monthly_balance"`
+	FOIR                float64            `bson:"foir"`
+	PreferredBankType   string             `bson:"preferred_bank_type"` // public | private | state | government
+	PreferredBankName   string             `bson:"preferred_bank_name"`
+	CreatedAt           time.Time          `bson:"created_at"`
+	UpdatedAt           time.Time          `bson:"updated_at"`
 }
 
 type Document struct {
