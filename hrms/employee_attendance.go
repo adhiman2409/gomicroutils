@@ -110,6 +110,7 @@ type EmployeeAttendance struct {
 	TodayMorningWorkingHours      float32            `bson:"today_morning_working_hours"`
 	IsDelayedCheckIn              bool               `bson:"is_delayed_check_in"`
 	IsEarlyCheckOut               bool               `bson:"is_early_check_out"`
+	IsWorkFromHome                bool               `bson:"is_work_from_home"`
 	IsOnLeave                     bool               `bson:"is_on_leave"`
 	IsHalfDayLeave                bool               `bson:"is_half_day_leave"`
 	IsWorkingDay                  bool               `bson:"is_working_day"`
