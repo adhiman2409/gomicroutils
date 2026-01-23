@@ -9,13 +9,14 @@ const (
 	Night
 	WeeklyOff
 	Holiday
+	WorkFromHome
 )
 
 func (r ShiftType) String() string {
 	if r == 0 {
 		return "Regular"
 	}
-	return [...]string{"Regular", "Morning", "Evening", "Night", "WeeklyOff", "Holiday"}[r-1]
+	return [...]string{"Regular", "Morning", "Evening", "Night", "WeeklyOff", "Holiday", "WorkFromHome"}[r-1]
 }
 
 func (r ShiftType) EnumIndex() int {
@@ -23,7 +24,7 @@ func (r ShiftType) EnumIndex() int {
 }
 
 func GetAllShiftType() []string {
-	return []string{"Regular", "Morning", "Evening", "Night", "WeeklyOff", "Holiday"}
+	return []string{"Regular", "Morning", "Evening", "Night", "WeeklyOff", "Holiday", "WorkFromHome"}
 }
 
 func ShiftTypeFromString(s string) ShiftType {
@@ -37,6 +38,8 @@ func ShiftTypeFromString(s string) ShiftType {
 		return WeeklyOff
 	} else if s == "Holiday" {
 		return Holiday
+	} else if s == "WorkFromHome" {
+		return WorkFromHome
 	} else {
 		return Regular
 	}
