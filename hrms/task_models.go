@@ -71,6 +71,7 @@ type Task struct {
 	ProjectId              string            `bson:"project_id"`
 	TicketId               string            `bson:"ticket_id"`
 	ProjectName            string            `bson:"project_name"`
+	ClientName             string            `bson:"client_name"`
 	Title                  string            `bson:"title"`
 	Description            string            `bson:"description"`
 	Assignees              []EmpSummary      `bson:"assignees"`
