@@ -13,6 +13,7 @@ type ProjectStateList struct {
 	TaskStates       []TaskState        `bson:"task_states"`
 	CreatedAt        time.Time          `bson:"created_at"`
 	Tasks            []Task             `bson:"tasks"`
+	ClientName       string             `bson:"client_name"`
 }
 
 type TaskState struct {
