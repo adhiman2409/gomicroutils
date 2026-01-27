@@ -33,6 +33,8 @@ type ProjectTask struct {
 	ApprovedTaskWorkingHours float64   `bson:"approved_task_working_hours" json:"approved_task_working_hours"`
 	ApproverRemarks          string    `bson:"approver_remarks" json:"approver_remarks"`
 	ApproverId               string    `bson:"approver_id" json:"approver_id"`
+	EstimatedEffortInHours   float64   `bson:"estimated_effort_in_hours" json:"estimated_effort_in_hours"`
+	ActualEffortInHours      float64   `bson:"actual_effort_in_hours" json:"actual_effort_in_hours"`
 	ApproverName             string    `bson:"approver_name" json:"approver_name"`
 	ApprovedOn               time.Time `bson:"approved_on" json:"approved_on"`
 }
