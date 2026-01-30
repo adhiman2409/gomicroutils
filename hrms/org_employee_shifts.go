@@ -7,6 +7,7 @@ import (
 type OrgEmployeeShifts struct {
 	ID                primitive.ObjectID `bson:"_id"`
 	ShiftType         ShiftType          `bson:"shift_type"`
+	ShiftName         string             `bson:"shift_name"`
 	Abbrivation       string             `bson:"abbrivation"`
 	IsActive          bool               `bson:"is_active"`
 	IsOverlappedShift bool               `bson:"is_overlapped_shift"`
