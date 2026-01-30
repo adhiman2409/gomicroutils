@@ -15,4 +15,5 @@ type OrgEmployeeShifts struct {
 	Color             string             `bson:"color"`
 	TextColor         string             `bson:"text_color"`
 	Country           string             `bson:"country"`
+	IsDefault         bool               `bson:"is_default"`
 }
