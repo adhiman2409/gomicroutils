@@ -26,6 +26,7 @@ type OrgAttendanceConf struct {
 	WorkingDaysPerWeek               float32            `bson:"working_days_per_week"`
 	WeeklyOffDays                    []string           `bson:"weekly_off_days"`
 	AlternateEvenWeeklyOffDays       []string           `bson:"alternate_even_weekly_off_days"`
+	FirstAndFourthWeeklyOffDays      []string           `bson:"first_and_fourth_weekly_off_days"`
 	DailyWorkingHours                float32            `bson:"daily_working_hours"`
 	AllowedDelayedCheckInCount       int32              `bson:"allowed_delayed_check_in_count"`
 	SendWarningMailOnDelayedCheckIn  bool               `bson:"send_warning_mail_on_delayed_check_in"`
