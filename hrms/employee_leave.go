@@ -137,9 +137,12 @@ type EmployeeLeaveObj struct {
 }
 
 type LeaveCarryForward struct {
-	ID                primitive.ObjectID `bson:"_id"`
-	EmployeeId        string             `bson:"employee_id"`
-	CarryForwardCount float64            `bson:"carry_forward_count"`
-	EncashmentCount   float64            `bson:"encashment_count"`
-	Year              int                `bson:"year"`
+	ID                       primitive.ObjectID `bson:"_id"`
+	EmployeeId               string             `bson:"employee_id"`
+	EmployeeJoiningDate      string             `bson:"employee_joining_date"`
+	EmployeeConfirmationDate string             `bson:"employee_confirmation_date"`
+	LeaveType                string             `bson:"leave_type"`
+	CarryForwardCount        float64            `bson:"carry_forward_count"`
+	EncashmentCount          float64            `bson:"encashment_count"`
+	Year                     int                `bson:"year"`
 }
