@@ -25,6 +25,7 @@ type EmpProfessionalInfo struct {
 	MarkedReleavedOn                  time.Time          `bson:"marked_releaved_on"`
 	EmploymentStatus                  string             `bson:"employment_status"`
 	IsRotationalShift                 bool               `bson:"is_rotational_shift"`
+	ShiftName                         string             `bson:"shift_name"`
 	OfficeLocation                    string             `bson:"office_location"`
 	WorkLocation                      string             `bson:"work_location"`
 	CIBILScore                        string             `bson:"cibil_score"`
