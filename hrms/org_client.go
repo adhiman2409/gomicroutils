@@ -1,6 +1,7 @@
 package hrms
 
 import (
+	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -133,4 +134,12 @@ type ClientIdCounter struct {
 	ID      primitive.ObjectID `bson:"_id"`
 	Prefix  string             `bson:"prefix"`
 	Counter int64              `bson:"counter"`
+}
+
+func GetMasterDomain() string {
+	var MASTER_DOMAIN = os.Getenv("MASTER_DOMAIN")
+	if MASTER_DOMAIN == "" {
+		MASTER_DOMAIN = "admin.unirms.com"
+	}
+	return MASTER_DOMAIN
 }
