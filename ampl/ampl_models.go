@@ -162,6 +162,7 @@ type CustomerFinancialProfile struct {
 	AvgMonthlyBalance      float64            `bson:"avg_monthly_balance"`
 	FOIR                   float64            `bson:"foir"`
 	TotalOngoingMonthlyEMI float64            `bson:"total_ongoing_monthly_emi"`
+	ConsentForIncomeProof  bool               `bson:"consent_for_income_proof"`
 	PreferredBankType      string             `bson:"preferred_bank_type"` // public | private | state | government
 	PreferredBankName      string             `bson:"preferred_bank_name"`
 	CreatedAt              time.Time          `bson:"created_at"`
