@@ -7,19 +7,20 @@ import (
 )
 
 type Showroom struct {
-	ID           primitive.ObjectID `bson:"_id,omitempty"`
-	ShowroomId   string             `bson:"showroom_id"`
-	ShowroomName string             `bson:"showroom_name"`
-	OemId        string             `bson:"oem_id"`
-	Domain       string             `bson:"domain"`
-	Address      Address            `bson:"address"`
-	GeoLocation  GeoPoint           `bson:"geo_location"`
-	Contact      ContactInfo        `bson:"contact"`
-	EmailId      string             `bson:"email_id"`
-	MobileNo     string             `bson:"mobile_no"`
-	Status       string             `bson:"status"`
-	CreatedAt    time.Time          `bson:"created_at"`
-	UpdatedAt    time.Time          `bson:"updated_at"`
+	ID             primitive.ObjectID `bson:"_id,omitempty"`
+	ShowroomId     string             `bson:"showroom_id"`
+	ShowroomName   string             `bson:"showroom_name"`
+	OemId          string             `bson:"oem_id"`
+	Domain         string             `bson:"domain"`
+	Address        Address            `bson:"address"`
+	GeoLocation    GeoPoint           `bson:"geo_location"`
+	Contact        ContactInfo        `bson:"contact"`
+	EmailId        string             `bson:"email_id"`
+	MobileNo       string             `bson:"mobile_no"`
+	Status         string             `bson:"status"`
+	CreatedAt      time.Time          `bson:"created_at"`
+	UpdatedAt      time.Time          `bson:"updated_at"`
+	BankPreference BankPreference     `bson:"bank_preference"`
 }
 
 type Brand struct {
@@ -77,25 +78,26 @@ type IdCounter struct {
 }
 
 type CustomerLead struct {
-	ID                  primitive.ObjectID `bson:"_id,omitempty"`
-	ShowroomID          string             `bson:"showroom_id"`
-	CustomerID          string             `bson:"customer_id"`
-	FirstName           string             `bson:"first_name"`
-	LastName            string             `bson:"last_name"`
-	Phone               string             `bson:"phone"`
-	Email               string             `bson:"email"`
-	City                string             `bson:"city"`
-	FuelType            string             `bson:"fuel_type"`
-	VehicleType         string             `bson:"vehicle_type"`
-	MaxBudget           int64              `bson:"max_budget"`
-	LeadSource          LeadSource         `bson:"lead_source"`
-	Timeline            []TimelineEvent    `bson:"timeline"`
-	AssociatedShowrooms []string           `bson:"associated_showrooms"`
-	AssignedToEid       string             `bson:"assigned_to_eid"`
-	AssignedToName      string             `bson:"assigned_to_name"`
-	Status              string             `bson:"status"`
-	CreatedAt           time.Time          `bson:"created_at"`
-	UpdatedAt           time.Time          `bson:"updated_at"`
+	ID                     primitive.ObjectID `bson:"_id,omitempty"`
+	ShowroomID             string             `bson:"showroom_id"`
+	CustomerID             string             `bson:"customer_id"`
+	FirstName              string             `bson:"first_name"`
+	LastName               string             `bson:"last_name"`
+	Phone                  string             `bson:"phone"`
+	Email                  string             `bson:"email"`
+	City                   string             `bson:"city"`
+	FuelType               string             `bson:"fuel_type"`
+	VehicleType            string             `bson:"vehicle_type"`
+	MaxBudget              int64              `bson:"max_budget"`
+	LeadSource             LeadSource         `bson:"lead_source"`
+	Timeline               []TimelineEvent    `bson:"timeline"`
+	AssociatedShowrooms    []string           `bson:"associated_showrooms"`
+	AssignedToEid          string             `bson:"assigned_to_eid"`
+	AssignedToName         string             `bson:"assigned_to_name"`
+	TimeToBuyVehicleInDays string             `bson:"time_to_buy_vehicle_in_days"`
+	Status                 string             `bson:"status"`
+	CreatedAt              time.Time          `bson:"created_at"`
+	UpdatedAt              time.Time          `bson:"updated_at"`
 }
 
 type LeadSource struct {
@@ -115,6 +117,12 @@ type TimelineEvent struct {
 	AttendedByDept string        `bson:"attended_by_dept"`
 	Remarks        string        `bson:"remarks"`
 	CreatedAt      time.Time     `bson:"created_at"`
+}
+
+type BankPreference struct {
+	Public  []string `bson:"public"`
+	Private []string `bson:"private"`
+	NBFC    []string `bson:"nbfc"`
 }
 
 type ShowroomBrief struct {
