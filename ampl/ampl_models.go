@@ -147,23 +147,22 @@ type CustomerFinancialProfile struct {
 	PanCard                string             `bson:"pan_card"`
 	AadharCard             string             `bson:"aadhar_card"`
 	IncomeProof            string             `bson:"income_proof"`
-	EmploymentType         string             `bson:"employment_type"` // salaried | self_employed | business | fleet | captive
-	MonthlyIncome          float64            `bson:"monthly_income"`
+	EmploymentType         string             `bson:"employment_type"`
+	GrossMonthlyIncome     float64            `bson:"gross_monthly_income"`
 	InHandMonthlyIncome    float64            `bson:"in_hand_monthly_income"`
-	AnnualIncome           float64            `bson:"annual_income"`
+	GrossAnnualIncome      float64            `bson:"gross_annual_income"`
 	CIBILScore             int                `bson:"cibil_score"`
 	CreditScore            int                `bson:"credit_score"`
 	MaxDelayDaysInCIBIL    int                `bson:"max_delay_days_in_cibil"`
 	HasOverdue             bool               `bson:"has_overdue"`
-	ResidenceType          string             `bson:"residence_type"` // own | rented
-	HasOwnHouse            bool               `bson:"has_own_house"`
-	ResidenceDocs          []Document         `bson:"residence_docs"` // rental agreement | gas bill | phone bill
+	ResidenceType          string             `bson:"residence_type"`
+	ResidenceDocs          []Document         `bson:"residence_docs"`
 	OngoingLoanCount       int                `bson:"ongoing_loan_count"`
 	AvgMonthlyBalance      float64            `bson:"avg_monthly_balance"`
 	FOIR                   float64            `bson:"foir"`
 	TotalOngoingMonthlyEMI float64            `bson:"total_ongoing_monthly_emi"`
 	ConsentForIncomeProof  bool               `bson:"consent_for_income_proof"`
-	PreferredBankType      string             `bson:"preferred_bank_type"` // public | private | state | government
+	PreferredBankType      string             `bson:"preferred_bank_type"`
 	PreferredBankName      string             `bson:"preferred_bank_name"`
 	CreatedAt              time.Time          `bson:"created_at"`
 	UpdatedAt              time.Time          `bson:"updated_at"`
