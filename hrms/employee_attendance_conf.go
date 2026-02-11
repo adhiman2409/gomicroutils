@@ -30,6 +30,7 @@ type EmpAttendanceConf struct {
 	EnforceLocationCheckOut          bool                  `bson:"enforce_location_check_out"`
 	EnforceAttendanceSource          bool                  `bson:"enforce_attendance_source"`
 	IsDeviceMonitoringEnabled        bool                  `bson:"is_device_monitoring_enabled"`
+	IsScreenshotEnabled              bool                  `bson:"is_screenshot_enabled"`
 	IsLoginLockedToDevice            bool                  `bson:"is_login_locked_to_device"`
 	AttendanceSource                 string                `bson:"attendance_source"`
 	RequiredLat                      float64               `bson:"required_lat"`

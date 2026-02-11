@@ -109,6 +109,10 @@ const TICKET_COLLECTION_TICKETS = "ticket-tickets"
 const TICKET_COLLECTION_TICKET_COUNTER = "ticket-ticket-counter"
 const TICKET_COLLECTION_TICKET_LEADS = "ticket-ticket-leads"
 
+const TRAINING_COLLECTION_TRAININGS = "training-trainings"
+const TRAINING_COLLECTION_ENROLLMENTS = "training-enrollments"
+const TRAINING_COLLECTION_COUNTER = "training-counter"
+
 const VOLUNTEER_COLLECTION_VOLUNTEER_COUNTER = "volunteer-volunteer-counter"
 const VOLUNTEER_COLLECTION_REQUESTS = "volunteer-requests"
 const VOLUNTEER_COLLECTION_VOLUNTEERS = "volunteer-volunteers"
@@ -1094,4 +1098,19 @@ func GetVolunteerRequestsCollection(client *mongo.Client, domain string) *mongo.
 func GetWorkerDomainCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(WORKER_COLLECTION_DOMAINS)
+}
+
+func GetTrainingTrainingsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_TRAININGS)
+}
+
+func GetTrainingEnrollmentsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_ENROLLMENTS)
+}
+
+func GetTrainingCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_COUNTER)
 }
