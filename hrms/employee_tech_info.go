@@ -412,28 +412,46 @@ type FNFDetails struct {
 	IsFNFDetailsEditable         bool                 `bson:"is_fnf_details_editable"`
 }
 
+type PIPDetails struct {
+	Status    string               `bson:"status"`
+	StartDate time.Time            `bson:"start_date"`
+	EndDate   time.Time            `bson:"end_date"`
+	Remarks   string               `bson:"remarks"`
+	Documents []SeparationDocument `bson:"documents"`
+}
+
+type NoticePeriodDetails struct {
+	Status    string               `bson:"status"`
+	StartDate time.Time            `bson:"start_date"`
+	EndDate   time.Time            `bson:"end_date"`
+	Remarks   string               `bson:"remarks"`
+	Documents []SeparationDocument `bson:"documents"`
+}
+
 type EmployeeTechInfo struct {
-	ID                        primitive.ObjectID `bson:"_id"`
-	EmployeeId                string             `bson:"employee_id"`
-	About                     string             `bson:"about"`
-	TotalExperinceInMonths    int                `bson:"total_experince_in_months"`
-	ReleaseDate               time.Time          `bson:"release_date"`
-	PSkill                    string             `bson:"p_skill"`
-	IsAppraisalActive         bool               `bson:"is_appraisal_active"`
-	IsIncrementLetterUploaded bool               `bson:"is_increment_letter_uploaded"`
-	SSkills                   []string           `bson:"s_skills"`
-	Experiences               []Experience       `bson:"experiences"`
-	Projects                  []Project          `bson:"projects"`
-	Achivements               []Achivement       `bson:"achivements"`
-	Awards                    []Award            `bson:"awards"`
-	Feedbacks                 []Feedback         `bson:"feedbacks,omitempty"`
-	OldAppraisals             []Appraisal        `bson:"old_appraisals,omitempty"`
-	ActiveAppraisal           Appraisal          `bson:"active_appraisal,omitempty"`
-	Separations               []SeparationInfo   `bson:"separations"`
-	FNFDetails                FNFDetails         `bson:"fnf_details"`
-	PassportDetails           PassportDetails    `bson:"passport_details"`
-	IsSeparationInfoLocked    bool               `bson:"is_separation_info_locked"`
-	IsProfileEditingLocked    bool               `bson:"is_profile_editing_locked"`
+	ID                        primitive.ObjectID  `bson:"_id"`
+	EmployeeId                string              `bson:"employee_id"`
+	About                     string              `bson:"about"`
+	TotalExperinceInMonths    int                 `bson:"total_experince_in_months"`
+	ReleaseDate               time.Time           `bson:"release_date"`
+	PSkill                    string              `bson:"p_skill"`
+	IsAppraisalActive         bool                `bson:"is_appraisal_active"`
+	IsIncrementLetterUploaded bool                `bson:"is_increment_letter_uploaded"`
+	SSkills                   []string            `bson:"s_skills"`
+	Experiences               []Experience        `bson:"experiences"`
+	Projects                  []Project           `bson:"projects"`
+	Achivements               []Achivement        `bson:"achivements"`
+	Awards                    []Award             `bson:"awards"`
+	Feedbacks                 []Feedback          `bson:"feedbacks,omitempty"`
+	OldAppraisals             []Appraisal         `bson:"old_appraisals,omitempty"`
+	ActiveAppraisal           Appraisal           `bson:"active_appraisal,omitempty"`
+	Separations               []SeparationInfo    `bson:"separations"`
+	FNFDetails                FNFDetails          `bson:"fnf_details"`
+	PIPDetails                PIPDetails          `bson:"pip_details"`
+	NoticePeriodDetails       NoticePeriodDetails `bson:"notice_period_details"`
+	PassportDetails           PassportDetails     `bson:"passport_details"`
+	IsSeparationInfoLocked    bool                `bson:"is_separation_info_locked"`
+	IsProfileEditingLocked    bool                `bson:"is_profile_editing_locked"`
 }
 
 type EmployeeTechInfoOld struct {
