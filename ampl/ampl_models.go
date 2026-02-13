@@ -170,6 +170,11 @@ type CustomerFinancialProfile struct {
 	FOIR                   float64            `bson:"foir"`
 	TotalOngoingMonthlyEMI float64            `bson:"total_ongoing_monthly_emi"`
 	ConsentForIncomeProof  bool               `bson:"consent_for_income_proof"`
+	YearsInCurrentJob      float64            `bson:"years_in_current_job"`
+	IsCashCustomer         bool               `bson:"is_cash_customer"`
+	VehicleType            string             `bson:"vehicle_type"`
+	VehicleOnRoadPrice     float64            `bson:"vehicle_on_road_price"`
+	VehicleExShowroomPrice float64            `bson:"vehicle_on_road_price"`
 	PreferredBankType      string             `bson:"preferred_bank_type"`
 	PreferredBankName      string             `bson:"preferred_bank_name"`
 	CreatedAt              time.Time          `bson:"created_at"`
