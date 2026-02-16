@@ -37,6 +37,12 @@ type EmpProfessionalInfo struct {
 	ReportingManagerName              string             `bson:"reporting_manager"`
 	ReportingManagerId                string             `bson:"reporting_manager_id"`
 	ReportingManagerEmail             string             `bson:"reporting_manager_email"`
+	TeamLeadName                      string             `bson:"team_lead"`
+	TeamLeadId                        string             `bson:"team_lead_id"`
+	TeamLeadEmail                     string             `bson:"team_lead_email"`
+	SupervisorName                    string             `bson:"supervisor_name"`
+	SupervisorId                      string             `bson:"supervisor_id"`
+	SupervisorEmail                   string             `bson:"supervisor_email"`
 	IsProfessionalInfoLocked          bool               `bson:"is_professional_info_locked"`
 	Country                           string             `bson:"country"`
 	TimeZone                          string             `bson:"time_zone"`
