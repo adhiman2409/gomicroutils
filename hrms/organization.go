@@ -24,9 +24,19 @@ type Organization struct {
 	TimeZone         string             `bson:"time_zone"`
 	Description      string             `bson:"description"`
 	SocialAccounts   []string           `bson:"social_accounts"`
+	Documents        []OrgDocument      `bson:"documents"`
 	UseGoogleAuth    bool               `bson:"use_google_auth"`
 	Website          string             `bson:"website"`
 	CreatedBy        string             `bson:"created_by"`
 	CreatedAt        time.Time          `bson:"created_at"`
 	UpdatedAt        time.Time          `bson:"updated_at"`
+}
+
+type OrgDocument struct {
+	DocumentName string    `bson:"doc_name"`
+	DocumentType string    `bson:"doc_type"`
+	DocumentURL  string    `bson:"doc_url"`
+	MetaTags     []string  `bson:"meta_tags"`
+	UploadedBy   string    `bson:"uploaded_by"`
+	CreatedAt    time.Time `bson:"created_at"`
 }
