@@ -174,7 +174,7 @@ type CustomerFinancialProfile struct {
 	IsCashCustomer         bool               `bson:"is_cash_customer"`
 	VehicleType            string             `bson:"vehicle_type"`
 	VehicleOnRoadPrice     float64            `bson:"vehicle_on_road_price"`
-	VehicleExShowroomPrice float64            `bson:"vehicle_on_road_price"`
+	VehicleExShowroomPrice float64            `bson:"vehicle_ex_showroom_price"`
 	PreferredBankType      string             `bson:"preferred_bank_type"`
 	PreferredBankName      string             `bson:"preferred_bank_name"`
 	CreatedAt              time.Time          `bson:"created_at"`
