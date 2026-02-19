@@ -168,6 +168,7 @@ type CustomerFinancialProfile struct {
 	OngoingLoanCount       int                `bson:"ongoing_loan_count"`
 	AvgMonthlyBalance      float64            `bson:"avg_monthly_balance"`
 	FOIR                   float64            `bson:"foir"`
+	CustomerState          string             `bson:"customer_state"`
 	TotalOngoingMonthlyEMI float64            `bson:"total_ongoing_monthly_emi"`
 	ConsentForIncomeProof  bool               `bson:"consent_for_income_proof"`
 	YearsInCurrentJob      float64            `bson:"years_in_current_job"`
