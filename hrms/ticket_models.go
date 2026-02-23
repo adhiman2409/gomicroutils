@@ -18,6 +18,11 @@ type EmployeeRef struct {
 	Email      string `bson:"email"`
 }
 
+type PermissionData struct {
+	Name             string `bson:"name"`
+	PermissionStatus string `bson:"permission_status"`
+}
+
 type TicketConfig struct {
 	ID                            primitive.ObjectID `bson:"_id"`
 	DepartmentName                string             `bson:"department_name"`
@@ -122,22 +127,22 @@ type Lead struct {
 }
 
 type GetTrackingTicket struct {
-	ID             primitive.ObjectID     `bson:"_id"`
-	TicketId       string                 `bson:"ticket_id"`
-	Date           time.Time              `bson:"date"`
-	Name           string                 `bson:"name"`
-	EmployeeId     string                 `bson:"employee_id"`
-	Designation    string                 `bson:"designation"`
-	Phone          string                 `bson:"phone"`
-	Title          string                 `bson:"title"`
-	Permission     string                 `bson:"permission"`
-	Description    string                 `bson:"description"`
-	ImgURL         []string               `bson:"img_url"`
-	ResolutionDesc string                 `bson:"resolution_desc"`
-	TicketStatus   TicketStatus           `bson:"ticket_status"`
-	MoreData       map[string]interface{} `bson:"more_data"`
-	CreatedAt      time.Time              `bson:"created_at"`
-	UpdatedAt      time.Time              `bson:"updated_at"`
+	ID             primitive.ObjectID `bson:"_id"`
+	TicketId       string             `bson:"ticket_id"`
+	Date           time.Time          `bson:"date"`
+	Name           string             `bson:"name"`
+	EmployeeId     string             `bson:"employee_id"`
+	Designation    string             `bson:"designation"`
+	Phone          string             `bson:"phone"`
+	Title          string             `bson:"title"`
+	Permission     string             `bson:"permission"`
+	Description    string             `bson:"description"`
+	ImgURL         []string           `bson:"img_url"`
+	ResolutionDesc string             `bson:"resolution_desc"`
+	TicketStatus   TicketStatus       `bson:"ticket_status"`
+	MoreData       []PermissionData   `bson:"more_data"`
+	CreatedAt      time.Time          `bson:"created_at"`
+	UpdatedAt      time.Time          `bson:"updated_at"`
 }
 
 type TicketStatus struct {
