@@ -33,6 +33,12 @@ type EmployeeSummary struct {
 	ReportingManagerName              string             `bson:"reporting_manager"`
 	ReportingManagerId                string             `bson:"reporting_manager_id"`
 	ReportingManagerEmail             string             `bson:"reporting_manager_email"`
+	TeamLeadName                      string             `bson:"team_lead"`
+	TeamLeadId                        string             `bson:"team_lead_id"`
+	TeamLeadEmail                     string             `bson:"team_lead_email"`
+	SupervisorName                    string             `bson:"supervisor_name"`
+	SupervisorId                      string             `bson:"supervisor_id"`
+	SupervisorEmail                   string             `bson:"supervisor_email"`
 	NewJoineeRewardId                 string             `bson:"new_joinee_reward_id"`
 	ImgURL                            string             `bson:"img_url"`
 	ReleavingDate                     string             `bson:"releaving_date"`
