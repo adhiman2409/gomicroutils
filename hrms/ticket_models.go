@@ -143,6 +143,7 @@ type GetTrackingTicket struct {
 	ResolutionDesc string             `bson:"resolution_desc"`
 	TicketStatus   TicketStatus       `bson:"ticket_status"`
 	MoreData       []PermissionData   `bson:"more_data"`
+	RootCause      string             `bson:"root_cause"`
 	CreatedById    string             `bson:"created_by_id"`
 	CreatedByName  string             `bson:"created_by_name"`
 	CreatedAt      time.Time          `bson:"created_at"`
