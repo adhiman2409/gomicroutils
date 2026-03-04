@@ -273,6 +273,7 @@ type PermissionsStatsReport struct {
 	TotalCheckedOut          int                `bson:"total_checked_out"`
 	TotalAbsent              int                `bson:"total_absent"`
 	TotalOnLeave             int                `bson:"total_on_leave"`
+	IsMailSentForCurrentHour bool               `bson:"is_mail_sent_for_current_hour"`
 	PermissionStats          []PermissionStats  `bson:"permission_stats"`
 }
 
