@@ -258,21 +258,22 @@ type BatteryStats struct {
 }
 
 type PermissionsStatsReport struct {
-	ID                         primitive.ObjectID `bson:"_id"`
-	Day                        int                `bson:"day"`
-	Month                      int                `bson:"month"`
-	Year                       int                `bson:"year"`
-	HourlyPermissionCompliance [24]float32        `bson:"hourly_permission_compliance"`
-	SystemHealthInPercentage   float32            `bson:"system_health_in_percentage"`
-	TotalBadPermissions        int                `bson:"total_bad_permissions"`
-	AffectedEmployeesCount     int                `bson:"affected_employees_count"`
-	TotalOnboarded             int                `bson:"total_onboarded"`
-	TotalActive                int                `bson:"total_active"`
-	TotalCheckedIn             int                `bson:"total_checked_in"`
-	TotalCheckedOut            int                `bson:"total_checked_out"`
-	TotalAbsent                int                `bson:"total_absent"`
-	TotalOnLeave               int                `bson:"total_on_leave"`
-	PermissionStats            []PermissionStats  `bson:"permission_stats"`
+	ID                       primitive.ObjectID `bson:"_id"`
+	Day                      int                `bson:"day"`
+	Month                    int                `bson:"month"`
+	Year                     int                `bson:"year"`
+	HourlyComplianceIndex    float32            `bson:"hourly_compliance_index"`
+	DateAndTimeStatsRecorded time.Time          `bson:"date_and_time_stats_recorded"`
+	SystemHealthInPercentage float32            `bson:"system_health_in_percentage"`
+	TotalBadPermissions      int                `bson:"total_bad_permissions"`
+	AffectedEmployeesCount   int                `bson:"affected_employees_count"`
+	TotalOnboarded           int                `bson:"total_onboarded"`
+	TotalActive              int                `bson:"total_active"`
+	TotalCheckedIn           int                `bson:"total_checked_in"`
+	TotalCheckedOut          int                `bson:"total_checked_out"`
+	TotalAbsent              int                `bson:"total_absent"`
+	TotalOnLeave             int                `bson:"total_on_leave"`
+	PermissionStats          []PermissionStats  `bson:"permission_stats"`
 }
 
 type PermissionStats struct {
