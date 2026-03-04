@@ -42,6 +42,7 @@ const ORG_COLLECTION_CLIENT_MEETING_INFO = "org-client-meeting-info"
 const ORG_COLLECTION_CLIENT_HOLIDAYS = "org-client_holidays"
 const ORG_COLLECTION_POLICY = "org-policy"
 const ORG_COLLECTION_POLICY_STATS = "org-policy-stats"
+const ORG_COLLECTION_APPLICATION_PERMISSION_STATS = "org-application-permission-stats"
 const ORG_COLLECTION_SALARY_COMPONENTS = "org-salary_components"
 const ORG_COLLECTION_SALARY_GROUPS = "org-salary_groups"
 const ORG_COLLECTION_SALARY_STRUCTURES = "org-salary_structures"
@@ -878,6 +879,11 @@ func GetOrgSalaryGroupsCollection(client *mongo.Client, domain string) *mongo.Co
 func GetOrgPolicyStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_POLICY_STATS)
+}
+
+func GetOrgApplicationPermissionStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_APPLICATION_PERMISSION_STATS)
 }
 
 func GetEmpIncrementLettersCollection(client *mongo.Client, domain string) *mongo.Collection {
