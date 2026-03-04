@@ -259,10 +259,10 @@ type BatteryStats struct {
 
 type PermissionsStatsReport struct {
 	ID                       primitive.ObjectID `bson:"_id"`
-	Day                      int                `bson:"day"`
-	Month                    int                `bson:"month"`
-	Year                     int                `bson:"year"`
-	HourlyComplianceIndex    float32            `bson:"hourly_compliance_index"`
+	Day                      string             `bson:"day"`
+	Month                    string             `bson:"month"`
+	Year                     string             `bson:"year"`
+	HourlyComplianceIndex    int                `bson:"hourly_compliance_index"`
 	DateAndTimeStatsRecorded time.Time          `bson:"date_and_time_stats_recorded"`
 	SystemHealthInPercentage float32            `bson:"system_health_in_percentage"`
 	TotalBadPermissions      int                `bson:"total_bad_permissions"`
