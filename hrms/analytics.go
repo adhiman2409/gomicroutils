@@ -281,6 +281,6 @@ type PermissionStats struct {
 	PermissionName     string  `bson:"permission_name"`
 	EnabledCount       int     `bson:"enabled_count"`
 	DisabledCount      int     `bson:"disabled_count"`
-	EnabledPercentage  float32 `bson:"enabled_percentage"`
-	DisabledPercentage float32 `bson:"disabled_percentage"`
+	EnabledPercentage  float64 `bson:"enabled_percentage"`
+	DisabledPercentage float64 `bson:"disabled_percentage"`
 }
