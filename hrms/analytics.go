@@ -264,7 +264,7 @@ type PermissionsStatsReport struct {
 	Year                     string             `bson:"year"`
 	HourlyComplianceIndex    int                `bson:"hourly_compliance_index"`
 	DateAndTimeStatsRecorded time.Time          `bson:"date_and_time_stats_recorded"`
-	SystemHealthInPercentage float32            `bson:"system_health_in_percentage"`
+	SystemHealthInPercentage float64            `bson:"system_health_in_percentage"`
 	TotalBadPermissions      int                `bson:"total_bad_permissions"`
 	AffectedEmployeesCount   int                `bson:"affected_employees_count"`
 	TotalOnboarded           int                `bson:"total_onboarded"`
