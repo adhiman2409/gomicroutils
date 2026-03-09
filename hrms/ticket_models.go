@@ -146,6 +146,7 @@ type GetTrackingTicket struct {
 	RootCause      string             `bson:"root_cause"`
 	CreatedById    string             `bson:"created_by_id"`
 	CreatedByName  string             `bson:"created_by_name"`
+	RevertedTicket []string           `bson:"reverted_ticket,omitempty"`
 	CreatedAt      time.Time          `bson:"created_at"`
 	UpdatedAt      time.Time          `bson:"updated_at"`
 }
