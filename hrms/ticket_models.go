@@ -127,28 +127,29 @@ type Lead struct {
 }
 
 type GetTrackingTicket struct {
-	ID             primitive.ObjectID `bson:"_id"`
-	TicketId       string             `bson:"ticket_id"`
-	Date           time.Time          `bson:"date"`
-	Name           string             `bson:"name"`
-	EmployeeId     string             `bson:"employee_id"`
-	Designation    string             `bson:"designation"`
-	Phone          string             `bson:"phone"`
-	Title          string             `bson:"title"`
-	Permission     string             `bson:"permission"`
-	Priority       string             `bson:"priority"`
-	DuplicateOf    string             `bson:"duplicate_of"`
-	Description    string             `bson:"description"`
-	ImgURL         []string           `bson:"img_url"`
-	ResolutionDesc string             `bson:"resolution_desc"`
-	TicketStatus   TicketStatus       `bson:"ticket_status"`
-	MoreData       []PermissionData   `bson:"more_data"`
-	RootCause      string             `bson:"root_cause"`
-	CreatedById    string             `bson:"created_by_id"`
-	CreatedByName  string             `bson:"created_by_name"`
-	RevertedTicket []string           `bson:"reverted_ticket,omitempty"`
-	CreatedAt      time.Time          `bson:"created_at"`
-	UpdatedAt      time.Time          `bson:"updated_at"`
+	ID                   primitive.ObjectID `bson:"_id"`
+	TicketId             string             `bson:"ticket_id"`
+	Date                 time.Time          `bson:"date"`
+	Name                 string             `bson:"name"`
+	EmployeeId           string             `bson:"employee_id"`
+	ReportingManagerName string             `bson:"reporting_manager_name"`
+	Designation          string             `bson:"designation"`
+	Phone                string             `bson:"phone"`
+	Title                string             `bson:"title"`
+	Permission           string             `bson:"permission"`
+	Priority             string             `bson:"priority"`
+	DuplicateOf          string             `bson:"duplicate_of"`
+	Description          string             `bson:"description"`
+	ImgURL               []string           `bson:"img_url"`
+	ResolutionDesc       string             `bson:"resolution_desc"`
+	TicketStatus         TicketStatus       `bson:"ticket_status"`
+	MoreData             []PermissionData   `bson:"more_data"`
+	RootCause            string             `bson:"root_cause"`
+	CreatedById          string             `bson:"created_by_id"`
+	CreatedByName        string             `bson:"created_by_name"`
+	RevertedTicket       []string           `bson:"reverted_ticket,omitempty"`
+	CreatedAt            time.Time          `bson:"created_at"`
+	UpdatedAt            time.Time          `bson:"updated_at"`
 }
 
 type TicketStatus struct {
