@@ -31,6 +31,10 @@ type LeadInfo struct {
 	AssociatedContacts      []string           `bson:"associated_contacts,omitempty"`
 	ProbabilityToClose      int                `bson:"probability_to_close,omitempty"`
 	LeadSource              string             `bson:"lead_source,omitempty"`
+	ReferenceId             string             `bson:"reference_id,omitempty"`
+	TenderId                string             `bson:"tender_id,omitempty"`
+	TenderStartDate         string             `bson:"tender_start_date,omitempty"`
+	TenderEndDate           string             `bson:"tender_end_date,omitempty"`
 	Watchers                []string           `bson:"watchers,omitempty"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
