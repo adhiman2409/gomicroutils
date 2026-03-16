@@ -176,6 +176,13 @@ const (
 	Negotiation
 	ContractSigned
 	CClient
+	NoGo
+	InProcess
+	SSubmitted
+	Technical
+	WWon
+	LLost
+	CClosed
 )
 
 func (s ClientMainStage) String() string {
@@ -187,24 +194,28 @@ func (s ClientMainStage) String() string {
 		"Negotiation",
 		"Contract Signed",
 		"Client",
+		"NO-GO",
+		"In-Process",
+		"Submitted",
+		"Technical",
+		"Won",
+		"Lost",
+		"Closed",
 	}
+
 	i := int(s) - 1
 	if i < 0 || i >= len(stages) {
 		return "Unknown"
 	}
+
 	return stages[i]
 }
 
-func GetClientMainStages() []string {
-	return []string{
-		"Lead",
-		"Suspect",
-		"Prospect",
-		"Proposal Sent",
-		"Negotiation",
-		"Contract Signed",
-		"Client",
+func GetClientMainStages(domain string) []string {
+	if domain == "qbitlabs.unirms.com" {
+		return QbitLabsStages
 	}
+	return DefaultStages
 }
 
 func ClientMainStageFromString(s string) ClientMainStage {
@@ -223,7 +234,41 @@ func ClientMainStageFromString(s string) ClientMainStage {
 		return ContractSigned
 	case "Client":
 		return CClient
+	case "NO-GO":
+		return NoGo
+	case "In-Process":
+		return InProcess
+	case "Submitted":
+		return SSubmitted
+	case "Technical":
+		return Technical
+	case "Won":
+		return WWon
+	case "Lost":
+		return LLost
+	case "Closed":
+		return CClosed
 	default:
 		return LLead // fallback
 	}
+}
+
+var DefaultStages = []string{
+	"Lead",
+	"Suspect",
+	"Prospect",
+	"Proposal Sent",
+	"Negotiation",
+	"Contract Signed",
+	"Client",
+}
+
+var QbitLabsStages = []string{
+	"NO-GO",
+	"In-Process",
+	"Submitted",
+	"Technical",
+	"Won",
+	"Lost",
+	"Closed",
 }
