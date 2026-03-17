@@ -221,6 +221,13 @@ const ACTIVITY_COLLECTION_APPLICATION_UPDATES = "activity-application-updates"
 const ACTIVITY_COLLECTION_APPLICATION_UPDATE_INFOS = "activity-application-update-infos"
 const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
 
+const WORKER_COLLECTION_MONTHLY_LEAVES_STATS = "worker-monthly-leaves-stats"
+
+func GetWorkerMonthlyLeavesStatsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(WORKER_COLLECTION_MONTHLY_LEAVES_STATS)
+}
+
 func GetPaymentsTenantAddressCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYMENTS_COLLECTION_TENANT_ADDRESS_COLLECTION)
