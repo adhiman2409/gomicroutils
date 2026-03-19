@@ -55,6 +55,7 @@ type EmpAttendanceConf struct {
 	DailyWorkingHours                float32               `bson:"daily_working_hours"`
 	EmploymentStatus                 string                `bson:"employment_status"`
 	GeoLocationScreenShot            string                `bson:"geo_location_screen_shot"`
+	GeoLocationScreenShots           []string              `bson:"geo_location_screen_shots"`
 	ShiftTimings                     []EmpShiftTimings     `bson:"shift_timings"`
 	DelayedCheckInStats              []DelayedCheckInStats `bson:"delayed_check_in_stats"`
 	MaxRestrictedHolidayCount        int32                 `bson:"max_restricted_holiday_count"`
