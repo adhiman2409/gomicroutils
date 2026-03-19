@@ -7,6 +7,7 @@ import (
 type OrgEmployeeShifts struct {
 	ID                primitive.ObjectID `bson:"_id"`
 	ShiftType         ShiftType          `bson:"shift_type"`
+	ShiftIndex        int                `bson:"shift_index"`
 	ShiftName         string             `bson:"shift_name"`
 	Abbrivation       string             `bson:"abbrivation"`
 	IsActive          bool               `bson:"is_active"`
@@ -15,6 +16,8 @@ type OrgEmployeeShifts struct {
 	OrgCheckOutTime   string             `bson:"org_check_out_time"`
 	Color             string             `bson:"color"`
 	TextColor         string             `bson:"text_color"`
+	IsDefaultShift    bool               `bson:"is_default_shift"`
+	IsInternalShift   bool               `bson:"is_internal_shift"`
 	Country           string             `bson:"country"`
-	IsDefault         bool               `bson:"is_default"`
+	TimeZone          string             `bson:"time_zone"`
 }
