@@ -20,6 +20,11 @@ type DelayedCheckInStats struct {
 	DelayedCheckinCount int32               `bson:"delayed_check_in_count"`
 }
 
+type GeoLocation struct {
+	Lat float64 `bson:"lat"`
+	Lng float64 `bson:"lng"`
+}
+
 type EmpAttendanceConf struct {
 	ID                               primitive.ObjectID    `bson:"_id"`
 	EID                              string                `bson:"eid"`
@@ -35,6 +40,7 @@ type EmpAttendanceConf struct {
 	AttendanceSource                 string                `bson:"attendance_source"`
 	RequiredLat                      float64               `bson:"required_lat"`
 	RequiredLng                      float64               `bson:"required_lng"`
+	RequiredLocations                []GeoLocation         `bson:"required_locations"`
 	RequiredRadiusInMeters           float64               `bson:"required_radius_in_meters"`
 	GeoTrackingEnabled               bool                  `bson:"geo_tracking_enabled"`
 	GeoTrackingIntervalInMin         int32                 `bson:"geo_tracking_interval_in_min"`
