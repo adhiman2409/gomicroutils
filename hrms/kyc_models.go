@@ -36,6 +36,10 @@ type LeadInfo struct {
 	TenderStartDate         string             `bson:"tender_start_date,omitempty"`
 	TenderEndDate           string             `bson:"tender_end_date,omitempty"`
 	Watchers                []string           `bson:"watchers,omitempty"`
+	LeadStage               string             `bson:"lead_stage"`
+	LeadSubStage            string             `bson:"lead_sub_stage"`
+	OfferingType            string             `bson:"offering_type"`
+	OfferingSubType         string             `bson:"offering_sub_type"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
@@ -164,6 +168,29 @@ type MeetingInfo struct {
 	CreatedAt         time.Time          `bson:"created_at"`
 	UpdatedAt         time.Time          `bson:"updated_at"`
 	MailSent          bool               `bson:"mail_sent,omitempty"`
+}
+
+type LeadOffering struct {
+	Id        primitive.ObjectID    `bson:"_id,omitempty"`
+	Type      string                `bson:"type"` // Product / Service / Solution
+	SubTypes  []LeadOfferingSubType `bson:"sub_types"`
+	IsActive  bool                  `bson:"is_active"`
+	CreatedAt time.Time             `bson:"created_at"`
+	UpdatedAt time.Time             `bson:"updated_at"`
+}
+
+type LeadOfferingSubType struct {
+	Id          primitive.ObjectID `bson:"_id,omitempty"`
+	Name        string             `bson:"name"`
+	Description string             `bson:"description,omitempty"`
+	IsActive    bool               `bson:"is_active"`
+}
+
+type LeadStage struct {
+	Id        primitive.ObjectID `bson:"_id"`
+	StageName string             `bson:"stage_name"`
+	Index     int                `bson:"index"`
+	SubStages []string           `bson:"sub_stages"`
 }
 
 type ClientMainStage int
