@@ -40,6 +40,7 @@ type LeadInfo struct {
 	LeadSubStage            string             `bson:"lead_sub_stage"`
 	OfferingType            string             `bson:"offering_type"`
 	OfferingSubType         string             `bson:"offering_sub_type"`
+	ActionItems             []ActionItem       `bson:"action_items"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
