@@ -83,6 +83,7 @@ type CompanyInfo struct {
 	UpcomingReminderTime time.Time          `bson:"upcoming_reminder_time,omitempty"`
 	Leads                []LeadInfo         `bson:"leads,omitempty"`
 	EditHistory          []LeadRemark       `bson:"edit_history,omitempty"`
+	IsActive             bool               `bson:"is_active"`
 	CompanyStage         string             `bson:"company_stage"`
 	CreatedBy            string             `bson:"created_by"`
 	CreatedAt            time.Time          `bson:"created_at"`
@@ -133,6 +134,7 @@ type ActionItem struct {
 	MailSent      bool               `bson:"mail_sent,omitempty"`
 	CreatedBy     string             `bson:"created_by"`
 	Remarks       []LeadRemark       `bson:"remarks"`
+	Attachments   []Attachment       `bson:"attachments,omitempty"`
 }
 
 type Attachment struct {
