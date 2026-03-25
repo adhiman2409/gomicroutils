@@ -83,6 +83,7 @@ type CompanyInfo struct {
 	UpcomingReminderTime time.Time          `bson:"upcoming_reminder_time,omitempty"`
 	Leads                []LeadInfo         `bson:"leads,omitempty"`
 	EditHistory          []LeadRemark       `bson:"edit_history,omitempty"`
+	CompanyStage         string             `bson:"company_stage"`
 	CreatedBy            string             `bson:"created_by"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
@@ -188,10 +189,12 @@ type LeadOfferingSubType struct {
 }
 
 type LeadStage struct {
-	Id        primitive.ObjectID `bson:"_id"`
-	StageName string             `bson:"stage_name"`
-	Index     int                `bson:"index"`
-	SubStages []string           `bson:"sub_stages"`
+	Id           primitive.ObjectID `bson:"_id"`
+	StageName    string             `bson:"stage_name"`
+	Index        int                `bson:"index"`
+	IsStartState bool               `bson:"is_start_state"`
+	IsEndState   bool               `bson:"is_end_state"`
+	SubStages    []string           `bson:"sub_stages"`
 }
 
 type ClientMainStage int
