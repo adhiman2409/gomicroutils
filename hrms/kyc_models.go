@@ -41,6 +41,7 @@ type LeadInfo struct {
 	OfferingType            string             `bson:"offering_type"`
 	OfferingSubType         string             `bson:"offering_sub_type"`
 	ActionItems             []ActionItem       `bson:"action_items"`
+	IsActive                bool               `bson:"is_active"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
@@ -83,7 +84,6 @@ type CompanyInfo struct {
 	UpcomingReminderTime time.Time          `bson:"upcoming_reminder_time,omitempty"`
 	Leads                []LeadInfo         `bson:"leads,omitempty"`
 	EditHistory          []LeadRemark       `bson:"edit_history,omitempty"`
-	IsActive             bool               `bson:"is_active"`
 	CompanyStage         string             `bson:"company_stage"`
 	CreatedBy            string             `bson:"created_by"`
 	CreatedAt            time.Time          `bson:"created_at"`
@@ -122,19 +122,29 @@ type Attendee struct {
 }
 
 type ActionItem struct {
-	Id            primitive.ObjectID `bson:"_id,omitempty"`
-	Title         string             `bson:"title"`
-	Description   string             `bson:"description"`
-	AssignedTo    []string           `bson:"assigned_to,omitempty"`
-	DueDate       time.Time          `bson:"due_date"`
-	Status        string             `bson:"status"`
-	CreatedAt     time.Time          `bson:"created_at"`
-	IsReminderSet bool               `bson:"is_reminder_set"`
-	ReminderTime  time.Time          `bson:"reminder_time,omitempty"`
-	MailSent      bool               `bson:"mail_sent,omitempty"`
-	CreatedBy     string             `bson:"created_by"`
-	Remarks       []LeadRemark       `bson:"remarks"`
-	Attachments   []Attachment       `bson:"attachments,omitempty"`
+	Id                    primitive.ObjectID     `bson:"_id,omitempty"`
+	Title                 string                 `bson:"title"`
+	Description           string                 `bson:"description"`
+	AssignedTo            []string               `bson:"assigned_to,omitempty"`
+	DueDate               time.Time              `bson:"due_date"`
+	Status                string                 `bson:"status"`
+	CreatedAt             time.Time              `bson:"created_at"`
+	IsReminderSet         bool                   `bson:"is_reminder_set"`
+	ReminderTime          time.Time              `bson:"reminder_time,omitempty"`
+	MailSent              bool                   `bson:"mail_sent,omitempty"`
+	LastMailSentOn        string                 `bson:"last_mail_sent_on,omitempty"` //format DD-MM-YYYY
+	CreatedBy             string                 `bson:"created_by"`
+	Attachments           []Attachment           `bson:"attachments,omitempty"`
+	GeoFencingEnabled     bool                   `bson:"geo_fencing_enabled,omitempty"`
+	GeoFencingEnforced    bool                   `bson:"geo_fencing_enforced,omitempty"`
+	GeoFencingCoordinates []GeoFencingCoordinate `bson:"geo_fencing_coordinates,omitempty"`
+	GeoFencingRadius      int                    `bson:"geo_fencing_radius,omitempty"`
+	Remarks               []LeadRemark           `bson:"remarks"`
+}
+
+type GeoFencingCoordinate struct {
+	Latitude  float64 `bson:"latitude"`
+	Longitude float64 `bson:"longitude"`
 }
 
 type Attachment struct {
