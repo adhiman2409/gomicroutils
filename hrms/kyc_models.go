@@ -139,6 +139,7 @@ type ActionItem struct {
 	GeoFencingEnforced    bool                   `bson:"geo_fencing_enforced,omitempty"`
 	GeoFencingCoordinates []GeoFencingCoordinate `bson:"geo_fencing_coordinates,omitempty"`
 	GeoFencingRadius      int                    `bson:"geo_fencing_radius,omitempty"`
+	IsDailyReminder       bool                   `bson:"is_daily_reminder,omitempty"`
 	Remarks               []LeadRemark           `bson:"remarks"`
 }
 
