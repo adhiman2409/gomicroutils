@@ -42,6 +42,7 @@ type LeadInfo struct {
 	OfferingSubType         string             `bson:"offering_sub_type"`
 	ActionItems             []ActionItem       `bson:"action_items"`
 	IsActive                bool               `bson:"is_active"`
+	ActualDealValue         float64            `bson:"actual_deal_value"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
@@ -53,6 +54,7 @@ type LeadRemark struct {
 	CreatedAt     time.Time          `bson:"created_at"`
 	CreatedByEid  string             `bson:"created_by_eid"`
 	CreatedByName string             `bson:"created_by_name"`
+	Attachments   []Attachment       `bson:"attachments,omitempty"`
 }
 
 type CompanyInfo struct {
