@@ -40,3 +40,20 @@ type OrgDocument struct {
 	UploadedBy   string    `bson:"uploaded_by"`
 	CreatedAt    time.Time `bson:"created_at"`
 }
+
+type CompanyHeadInfo struct {
+	EmployeeId   string    `bson:"employee_id"`
+	Name         string    `bson:"name"`
+	Email        string    `bson:"email"`
+	Designation  string    `bson:"designation"`
+	ProfileImage string    `bson:"profile_image"`
+	CreatedAt    time.Time `bson:"created_at"`
+}
+
+type CompanyHeadsDoc struct {
+	HRHead      CompanyHeadInfo `bson:"hr_head"`
+	FinanceHead CompanyHeadInfo `bson:"finance_head"`
+	AddedBy     string          `bson:"added_by"`
+	UpdatedAt   time.Time       `bson:"updated_at"`
+	CreatedAt   time.Time       `bson:"created_at"`
+}
