@@ -56,6 +56,7 @@ const ORG_COLLECTION_BUDGET_DEPARTMENTS = "org-budget-departments"
 const ORG_COLLECTION_BUDGET_HISTORY_DEPARTMENTS = "org-budget-history-departments"
 const ORG_COLLECTION_BUDGET_ID_COUNTER = "org-budget-id-counter"
 const ORG_COLLECTION_DEPARTMENT_DAILY_STATS = "org-department-daily-stats"
+const ORG_COLLECTION_COMPANY_HEADS = "org-company_heads"
 
 const DEPARTMENT_COLLECTION_DESIGNATIONS = "department-designations"
 const DEPARTMENT_COLLECTION_ATTENDANCE_CONF = "department-attendance-conf"
@@ -224,6 +225,11 @@ const ACTIVITY_COLLECTION_APPLICATION_UPDATE_INFOS = "activity-application-updat
 const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
 
 const WORKER_COLLECTION_MONTHLY_LEAVES_STATS = "worker-monthly-leaves-stats"
+
+func GetCompanyHeadsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(ORG_COLLECTION_COMPANY_HEADS)
+}
 
 func GetKYCLeadOfferingsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
