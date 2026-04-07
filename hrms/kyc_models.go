@@ -14,6 +14,7 @@ type SocialURL struct {
 type LeadInfo struct {
 	Id                      primitive.ObjectID `bson:"_id,omitempty"`
 	LeadID                  string             `bson:"lead_id"`
+	ProductId               string             `bson:"product_id"`
 	Title                   string             `bson:"title"`
 	Description             string             `bson:"description"`
 	Stage                   ClientMainStage    `bson:"stage"`
