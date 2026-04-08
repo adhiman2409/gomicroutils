@@ -44,6 +44,8 @@ type LeadInfo struct {
 	ActionItems             []ActionItem       `bson:"action_items"`
 	IsActive                bool               `bson:"is_active"`
 	ActualDealValue         float64            `bson:"actual_deal_value"`
+	RecycleCount            int                `bson:"recycle_count"`
+	LastRecycledAt          time.Time          `bson:"last_recycled_at"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
@@ -88,31 +90,38 @@ type CompanyInfo struct {
 	Leads                []LeadInfo         `bson:"leads,omitempty"`
 	EditHistory          []LeadRemark       `bson:"edit_history,omitempty"`
 	CompanyStage         string             `bson:"company_stage"`
+	IsIndividual         bool               `bson:"is_individual"`
+	IndividualName       string             `bson:"individual_name,omitempty"`
+	IndividualPhone      string             `bson:"individual_phone,omitempty"`
+	IndividualEmail      string             `bson:"individual_email,omitempty"`
+	IndividualOrgName    string             `bson:"individual_org_name,omitempty"`
 	CreatedBy            string             `bson:"created_by"`
 	CreatedAt            time.Time          `bson:"created_at"`
 	UpdatedAt            time.Time          `bson:"updated_at"`
 }
 
 type ContactInfo struct {
-	ContactId       string      `bson:"contact_id,omitempty"`
-	EmpId           string      `bson:"emp_id,omitempty"`
-	Name            string      `bson:"name"`
-	Email           string      `bson:"email"`
-	Mobile          string      `bson:"mobile"`
-	SecondaryEmail  string      `bson:"secondary_email"`
-	SecondaryMobile string      `bson:"secondary_mobile"`
-	Designation     string      `bson:"designation"`
-	Department      string      `bson:"department,omitempty"`
-	DOB             string      `bson:"dob,omitempty"`
-	Anniversary     string      `bson:"anniversary,omitempty"`
-	Tags            []string    `bson:"tags,omitempty"`
-	IsActive        bool        `bson:"is_active,omitempty"`
-	Notes           string      `bson:"notes,omitempty"`
-	CompanyName     string      `bson:"company_name,omitempty"`
-	CompanyId       string      `bson:"company_id,omitempty"`
-	RegexString     string      `bson:"regex_string,omitempty"`
-	CompanyInfo     CompanyInfo `bson:"company_info,omitempty"`
-	SocialURLs      []SocialURL `bson:"social_urls,omitempty"`
+	ContactId                   string      `bson:"contact_id,omitempty"`
+	EmpId                       string      `bson:"emp_id,omitempty"`
+	Name                        string      `bson:"name"`
+	Email                       string      `bson:"email"`
+	Mobile                      string      `bson:"mobile"`
+	SecondaryEmail              string      `bson:"secondary_email"`
+	SecondaryMobile             string      `bson:"secondary_mobile"`
+	Designation                 string      `bson:"designation"`
+	Department                  string      `bson:"department,omitempty"`
+	DOB                         string      `bson:"dob,omitempty"`
+	Anniversary                 string      `bson:"anniversary,omitempty"`
+	Tags                        []string    `bson:"tags,omitempty"`
+	IsActive                    bool        `bson:"is_active,omitempty"`
+	Notes                       string      `bson:"notes,omitempty"`
+	CompanyName                 string      `bson:"company_name,omitempty"`
+	CompanyId                   string      `bson:"company_id,omitempty"`
+	RegexString                 string      `bson:"regex_string,omitempty"`
+	CompanyInfo                 CompanyInfo `bson:"company_info,omitempty"`
+	SocialURLs                  []SocialURL `bson:"social_urls,omitempty"`
+	Address                     []Address   `bson:"address,omitempty"`
+	PreferedModeOfCommunication string      `bson:"prefered_mode_of_communication,omitempty"`
 }
 
 type Attendee struct {
@@ -211,6 +220,13 @@ type LeadStage struct {
 	IsStartState bool               `bson:"is_start_state"`
 	IsEndState   bool               `bson:"is_end_state"`
 	SubStages    []string           `bson:"sub_stages"`
+}
+
+type LeadSource struct {
+	Id          primitive.ObjectID `bson:"_id"`
+	Name        string             `bson:"name"`
+	Description string             `bson:"description"`
+	IsActive    bool               `bson:"is_active"`
 }
 
 type ClientMainStage int

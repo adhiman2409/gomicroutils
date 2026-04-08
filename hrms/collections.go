@@ -226,6 +226,13 @@ const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
 
 const WORKER_COLLECTION_MONTHLY_LEAVES_STATS = "worker-monthly-leaves-stats"
 
+const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
+
+func GetKYCLeadSourceCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_LEAD_SOURCES)
+}
+
 func GetCompanyHeadsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(ORG_COLLECTION_COMPANY_HEADS)
