@@ -197,6 +197,9 @@ type HighLight struct {
 }
 
 type HRFeedback struct {
+	IsHrFeedback          bool   `bson:"is_hr_feedback"`
+	IsEmployeeFeedback    bool   `bson:"is_employee_feedback"`
+	IsManagerFeedback     bool   `bson:"is_manager_feedback"`
 	IsAppericiationEmails bool   `bson:"is_appericiation_emails"`
 	IsEscalationEmails    bool   `bson:"is_escalation_emails"`
 	URL                   string `bson:"url"`
