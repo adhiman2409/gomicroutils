@@ -228,6 +228,13 @@ const WORKER_COLLECTION_MONTHLY_LEAVES_STATS = "worker-monthly-leaves-stats"
 
 const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
 
+const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
+
+func GetMailerMailTemplatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(MAILER_COLLECTION_MAIL_TEMPLATES)
+}
+
 func GetKYCLeadSourceCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
 	return db.Collection(KYC_COLLECTION_LEAD_SOURCES)
