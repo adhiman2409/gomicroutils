@@ -43,6 +43,7 @@ type LeadInfo struct {
 	OfferingSubType         string             `bson:"offering_sub_type"`
 	ActionItems             []ActionItem       `bson:"action_items"`
 	IsActive                bool               `bson:"is_active"`
+	Address                 []Address          `bson:"address,omitempty"`
 	ActualDealValue         float64            `bson:"actual_deal_value"`
 	RecycleCount            int                `bson:"recycle_count"`
 	LastRecycledAt          time.Time          `bson:"last_recycled_at"`
