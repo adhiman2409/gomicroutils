@@ -230,6 +230,13 @@ const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
 
 const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
 
+const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
+
+func GetEmployeeDocumentOTPCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_DOCUMENT_OTP_COLLECTION)
+}
+
 func GetMailerMailTemplatesCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
 	return db.Collection(MAILER_COLLECTION_MAIL_TEMPLATES)

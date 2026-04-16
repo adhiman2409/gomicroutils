@@ -21,3 +21,17 @@ type EmpDocumentInfo struct {
 	CreatedBy            string             `bson:"created_by"`
 	CreatedAt            time.Time          `bson:"created_at"`
 }
+
+type DocumentOTP struct {
+	ID           string    `bson:"id"`
+	EID          string    `bson:"eid"`
+	EmpName      string    `bson:"emp_name"`
+	EmpEmail     string    `bson:"emp_email"`
+	DocType      string    `bson:"doc_type"`
+	DocCategory  string    `bson:"doc_category"`
+	RequesterEID string    `bson:"requester_eid"`
+	OTP          string    `bson:"otp"`
+	ExpiresAt    time.Time `bson:"expires_at"`
+	IsUsed       bool      `bson:"is_used"`
+	CreatedAt    time.Time `bson:"created_at"`
+}
