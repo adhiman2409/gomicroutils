@@ -232,8 +232,15 @@ const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
 
 const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
 
+const KYC_COLLECTION_INVOICES = "kyc-invoices"
+
+func GetKYCInvoiceCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_INVOICES)
+}
+
 func GetEmployeeDocumentOTPCollection(client *mongo.Client, domain string) *mongo.Collection {
-	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
 	return db.Collection(EMPLOYEE_DOCUMENT_OTP_COLLECTION)
 }
 

@@ -152,6 +152,8 @@ type ActionItem struct {
 	GeoFencingEnabled     bool                   `bson:"geo_fencing_enabled,omitempty"`
 	GeoFencingEnforced    bool                   `bson:"geo_fencing_enforced,omitempty"`
 	GeoFencingCoordinates []GeoFencingCoordinate `bson:"geo_fencing_coordinates,omitempty"`
+	CreatedAtCoordinates  []GeoFencingCoordinate `bson:"created_at_coordinates,omitempty"`
+	ClosedAtCoordinates   []GeoFencingCoordinate `bson:"closed_at_coordinates,omitempty"`
 	GeoFencingRadius      int                    `bson:"geo_fencing_radius,omitempty"`
 	IsDailyReminder       bool                   `bson:"is_daily_reminder,omitempty"`
 	Remarks               []LeadRemark           `bson:"remarks"`
@@ -178,25 +180,26 @@ type Note struct {
 }
 
 type MeetingInfo struct {
-	Id                primitive.ObjectID `bson:"_id,omitempty"`
-	MeetingId         string             `bson:"meeting_id"`
-	LeadId            string             `bson:"lead_id,omitempty"`
-	Title             string             `bson:"title"`
-	MeetingDate       time.Time          `bson:"meeting_date"`
-	Mode              string             `bson:"mode"`
-	InternalAttendees []string           `bson:"internal_attendees,omitempty"`
-	ExternalAttendees []string           `bson:"external_attendees,omitempty"`
-	MeetingNotes      []Note             `bson:"meeting_notes,omitempty"`
-	ActionItems       []ActionItem       `bson:"action_items,omitempty"`
-	Attachments       []Attachment       `bson:"attachments,omitempty"`
-	Outcome           string             `bson:"outcome"`
-	ReminderDate      time.Time          `bson:"reminder_date,omitempty"`
-	IsReminderSet     bool               `bson:"is_reminder_set"`
-	CreatedBy         string             `bson:"created_by"`
-	CreatedByName     string             `bson:"created_by_name"`
-	CreatedAt         time.Time          `bson:"created_at"`
-	UpdatedAt         time.Time          `bson:"updated_at"`
-	MailSent          bool               `bson:"mail_sent,omitempty"`
+	Id                   primitive.ObjectID     `bson:"_id,omitempty"`
+	MeetingId            string                 `bson:"meeting_id"`
+	LeadId               string                 `bson:"lead_id,omitempty"`
+	Title                string                 `bson:"title"`
+	MeetingDate          time.Time              `bson:"meeting_date"`
+	Mode                 string                 `bson:"mode"`
+	InternalAttendees    []string               `bson:"internal_attendees,omitempty"`
+	ExternalAttendees    []string               `bson:"external_attendees,omitempty"`
+	MeetingNotes         []Note                 `bson:"meeting_notes,omitempty"`
+	ActionItems          []ActionItem           `bson:"action_items,omitempty"`
+	Attachments          []Attachment           `bson:"attachments,omitempty"`
+	Outcome              string                 `bson:"outcome"`
+	ReminderDate         time.Time              `bson:"reminder_date,omitempty"`
+	IsReminderSet        bool                   `bson:"is_reminder_set"`
+	CreatedBy            string                 `bson:"created_by"`
+	CreatedByName        string                 `bson:"created_by_name"`
+	CreatedAt            time.Time              `bson:"created_at"`
+	UpdatedAt            time.Time              `bson:"updated_at"`
+	CreatedAtCoordinates []GeoFencingCoordinate `bson:"created_at_coordinates,omitempty"`
+	MailSent             bool                   `bson:"mail_sent,omitempty"`
 }
 
 type LeadOffering struct {
@@ -229,6 +232,71 @@ type LeadSource struct {
 	Name        string             `bson:"name"`
 	Description string             `bson:"description"`
 	IsActive    bool               `bson:"is_active"`
+}
+
+type InvoiceInfo struct {
+	ID                   primitive.ObjectID  `bson:"_id,omitempty"`
+	CompanyId            string              `bson:"company_id"`
+	CompanyName          string              `bson:"company_name"`
+	ProductId            string              `bson:"product_id"`
+	ProductName          string              `bson:"product_name"`
+	Day                  int                 `bson:"day"`
+	Month                int                 `bson:"month"`
+	Year                 int                 `bson:"year"`
+	InvoiceId            string              `bson:"invoice_id"`
+	InvoiceFileURL       string              `bson:"invoice_file_url"` // Uploaded file reference
+	InvoiceDate          time.Time           `bson:"invoice_date"`
+	TotalAmount          float64             `bson:"total_amount"`
+	Currency             string              `bson:"currency"`
+	DueDate              time.Time           `bson:"due_date"`
+	Payment              []PaymentInfo       `bson:"payment,omitempty"`
+	RemainingAmount      float64             `bson:"remaining_amount,omitempty"`
+	ReferenceId          []string            `bson:"reference_id,omitempty"`   // e.g. transaction ID for payment
+	PaymentStatus        string              `bson:"payment_status,omitempty"` // Fully Paid, Partially Paid, Unpaid
+	InvoiceStatus        string              `bson:"invoice_status"`           // e.g. pending, paid, overdue
+	Remarks              string              `bson:"remarks"`
+	IsReminderSet        bool                `bson:"is_reminder_set"`
+	ExternalReminderList []ReminderRecipient `bson:"external_reminder_list"`
+	InternalReminderList []ReminderRecipient `bson:"internal_reminder_list"`
+	LastReminderSentOn   string              `bson:"last_reminder_sent_on"`
+	CreatedAt            time.Time           `bson:"created_at"`
+	UpdatedAt            time.Time           `bson:"updated_at"`
+}
+
+type PaymentInfo struct {
+	PaymentMode string    `bson:"payment_mode"`
+	AmountPaid  float64   `bson:"amount_paid"`
+	ReferenceId string    `bson:"reference_id,omitempty"`
+	PaymentDate time.Time `bson:"payment_date,omitempty"`
+	CreatedAt   time.Time `bson:"created_at"`
+	UpdatedAt   time.Time `bson:"updated_at"`
+}
+
+type ReminderRecipient struct {
+	FullName string `bson:"full_name"`
+	Email    string `bson:"email,omitempty"`
+	PhoneNo  string `bson:"phone_no,omitempty"`
+}
+
+type MonthlyInvoiceValue struct {
+	Month      int     `bson:"month"`
+	Year       int     `bson:"year"`
+	TotalValue float64 `bson:"total_value"`
+}
+
+type InvoiceDashboardSummary struct {
+	TotalInvoices      int64                 `bson:"total_invoices"`
+	InvoicesThisMonth  int64                 `bson:"invoices_this_month"`
+	TotalValue         float64               `bson:"total_value"`
+	AmountCollected    float64               `bson:"amount_collected"`
+	RemainingDue       float64               `bson:"remaining_due"`
+	RemainingDueCount  int64                 `bson:"remaining_due_count"`
+	FullyPaidCount     int64                 `bson:"fully_paid_count"`
+	PartiallyPaidCount int64                 `bson:"partially_paid_count"`
+	UnpaidCount        int64                 `bson:"unpaid_count"`
+	IssuedCount        int64                 `bson:"issued_count"`
+	CancelledCount     int64                 `bson:"cancelled_count"`
+	MonthlyValues      []MonthlyInvoiceValue `bson:"monthly_values"`
 }
 
 type ClientMainStage int
