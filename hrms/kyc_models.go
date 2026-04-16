@@ -152,8 +152,8 @@ type ActionItem struct {
 	GeoFencingEnabled     bool                   `bson:"geo_fencing_enabled,omitempty"`
 	GeoFencingEnforced    bool                   `bson:"geo_fencing_enforced,omitempty"`
 	GeoFencingCoordinates []GeoFencingCoordinate `bson:"geo_fencing_coordinates,omitempty"`
-	CreatedAtCoordinates  []GeoFencingCoordinate `bson:"created_at_coordinates,omitempty"`
-	ClosedAtCoordinates   []GeoFencingCoordinate `bson:"closed_at_coordinates,omitempty"`
+	CreatedAtCoordinates  GeoFencingCoordinate   `bson:"created_at_coordinates,omitempty"`
+	ClosedAtCoordinates   GeoFencingCoordinate   `bson:"closed_at_coordinates,omitempty"`
 	GeoFencingRadius      int                    `bson:"geo_fencing_radius,omitempty"`
 	IsDailyReminder       bool                   `bson:"is_daily_reminder,omitempty"`
 	Remarks               []LeadRemark           `bson:"remarks"`
@@ -180,26 +180,26 @@ type Note struct {
 }
 
 type MeetingInfo struct {
-	Id                   primitive.ObjectID     `bson:"_id,omitempty"`
-	MeetingId            string                 `bson:"meeting_id"`
-	LeadId               string                 `bson:"lead_id,omitempty"`
-	Title                string                 `bson:"title"`
-	MeetingDate          time.Time              `bson:"meeting_date"`
-	Mode                 string                 `bson:"mode"`
-	InternalAttendees    []string               `bson:"internal_attendees,omitempty"`
-	ExternalAttendees    []string               `bson:"external_attendees,omitempty"`
-	MeetingNotes         []Note                 `bson:"meeting_notes,omitempty"`
-	ActionItems          []ActionItem           `bson:"action_items,omitempty"`
-	Attachments          []Attachment           `bson:"attachments,omitempty"`
-	Outcome              string                 `bson:"outcome"`
-	ReminderDate         time.Time              `bson:"reminder_date,omitempty"`
-	IsReminderSet        bool                   `bson:"is_reminder_set"`
-	CreatedBy            string                 `bson:"created_by"`
-	CreatedByName        string                 `bson:"created_by_name"`
-	CreatedAt            time.Time              `bson:"created_at"`
-	UpdatedAt            time.Time              `bson:"updated_at"`
-	CreatedAtCoordinates []GeoFencingCoordinate `bson:"created_at_coordinates,omitempty"`
-	MailSent             bool                   `bson:"mail_sent,omitempty"`
+	Id                   primitive.ObjectID   `bson:"_id,omitempty"`
+	MeetingId            string               `bson:"meeting_id"`
+	LeadId               string               `bson:"lead_id,omitempty"`
+	Title                string               `bson:"title"`
+	MeetingDate          time.Time            `bson:"meeting_date"`
+	Mode                 string               `bson:"mode"`
+	InternalAttendees    []string             `bson:"internal_attendees,omitempty"`
+	ExternalAttendees    []string             `bson:"external_attendees,omitempty"`
+	MeetingNotes         []Note               `bson:"meeting_notes,omitempty"`
+	ActionItems          []ActionItem         `bson:"action_items,omitempty"`
+	Attachments          []Attachment         `bson:"attachments,omitempty"`
+	Outcome              string               `bson:"outcome"`
+	ReminderDate         time.Time            `bson:"reminder_date,omitempty"`
+	IsReminderSet        bool                 `bson:"is_reminder_set"`
+	CreatedBy            string               `bson:"created_by"`
+	CreatedByName        string               `bson:"created_by_name"`
+	CreatedAt            time.Time            `bson:"created_at"`
+	UpdatedAt            time.Time            `bson:"updated_at"`
+	CreatedAtCoordinates GeoFencingCoordinate `bson:"created_at_coordinates,omitempty"`
+	MailSent             bool                 `bson:"mail_sent,omitempty"`
 }
 
 type LeadOffering struct {
