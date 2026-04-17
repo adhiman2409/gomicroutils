@@ -226,13 +226,24 @@ const ACTIVITY_COLLECTION_CLIENT_HEARTBEATS = "activity-client-heartbeats"
 
 const WORKER_COLLECTION_MONTHLY_LEAVES_STATS = "worker-monthly-leaves-stats"
 
-const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
-
 const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
 
 const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
 
+const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
 const KYC_COLLECTION_INVOICES = "kyc-invoices"
+const KYC_COLLECTION_VENDOR_COUNTER = "kyc-vendor-counter"
+const KYC_COLLECTION_VENDORS = "kyc-vendors"
+
+func GetKYCVendorCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_VENDORS)
+}
+
+func GetKYCVendorCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_VENDOR_COUNTER)
+}
 
 func GetKYCInvoiceCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))

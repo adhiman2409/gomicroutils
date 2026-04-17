@@ -46,6 +46,19 @@ type LeaveStats struct {
 	TimeZone                          string  `bson:"time_zone"`
 }
 
+type AllcoationInfo struct {
+	LeaveType                       string  `bson:"leave_type"`
+	AllocatedLeaves                 float32 `bson:"allocated_leaves"`
+	AvailableLeavesBeforeAllocation float32 `bson:"available_leaves_before_allocation"`
+	AvailableLeavesAfterAllocation  float32 `bson:"available_leaves_after_allocation"`
+}
+
+type LeaveAllocationInfo struct {
+	AllocationDate  string           `bson:"allocation_date"`
+	Year            string           `bson:"year"`
+	AllocationsInfo []AllcoationInfo `bson:"allocations_info"`
+}
+
 type EmployeeLeaveStats struct {
 	ID                               primitive.ObjectID `bson:"_id"`
 	EmployeeId                       string             `bson:"employee_id"`

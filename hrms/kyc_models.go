@@ -258,6 +258,10 @@ type InvoiceInfo struct {
 	IsReminderSet        bool                `bson:"is_reminder_set"`
 	ExternalReminderList []ReminderRecipient `bson:"external_reminder_list"`
 	InternalReminderList []ReminderRecipient `bson:"internal_reminder_list"`
+	IsOutgoingInvoice    bool                `bson:"is_outgoing_invoice"`
+	VendorId             string              `bson:"vendor_id"`
+	VendorName           string              `bson:"vendor_name"`
+	BankDetails          []VendorBankDetails `bson:"bank_details,omitempty"`
 	LastReminderSentOn   string              `bson:"last_reminder_sent_on"`
 	CreatedAt            time.Time           `bson:"created_at"`
 	UpdatedAt            time.Time           `bson:"updated_at"`
@@ -296,7 +300,46 @@ type InvoiceDashboardSummary struct {
 	UnpaidCount        int64                 `bson:"unpaid_count"`
 	IssuedCount        int64                 `bson:"issued_count"`
 	CancelledCount     int64                 `bson:"cancelled_count"`
+	OutgoingInvoices   int64                 `bson:"outgoing_invoices"`
+	IncomingInvoices   int64                 `bson:"incoming_invoices"`
+	OutgoingTotalValue float64               `bson:"outgoing_total_value"`
+	IncomingTotalValue float64               `bson:"incoming_total_value"`
 	MonthlyValues      []MonthlyInvoiceValue `bson:"monthly_values"`
+}
+
+type VendorIdCounter struct {
+	ID      primitive.ObjectID `bson:"_id"`
+	Prefix  string             `bson:"prefix"`
+	Counter int64              `bson:"counter"`
+}
+
+type VendorContactInfo struct {
+	ID          primitive.ObjectID  `bson:"_id,omitempty"`
+	VendorId    string              `bson:"vendor_id"`
+	VendorName  string              `bson:"vendor_name"`
+	Address     VendorAddress       `bson:"address"`
+	BankDetails []VendorBankDetails `bson:"bank_details"`
+	IsActive    bool                `bson:"is_active"`
+	CreatedAt   time.Time           `bson:"created_at"`
+	UpdatedAt   time.Time           `bson:"updated_at"`
+}
+
+type VendorAddress struct {
+	Country string `bson:"country"`
+	State   string `bson:"state"`
+	City    string `bson:"city"`
+}
+
+type VendorBankDetails struct {
+	BankName      string `bson:"bank_name"`
+	AccountNumber string `bson:"account_number"`
+	IFSCCode      string `bson:"ifsc_code"`
+	AccountHolder string `bson:"account_holder"`
+	AccountType   string `bson:"account_type"`
+	SwiftCode     string `bson:"swift_code,omitempty"`
+	Branch        string `bson:"branch,omitempty"`
+	Country       string `bson:"country,omitempty"`
+	City          string `bson:"city,omitempty"`
 }
 
 type ClientMainStage int
