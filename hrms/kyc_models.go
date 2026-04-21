@@ -47,6 +47,7 @@ type LeadInfo struct {
 	ActualDealValue         float64            `bson:"actual_deal_value"`
 	RecycleCount            int                `bson:"recycle_count"`
 	LastRecycledAt          time.Time          `bson:"last_recycled_at"`
+	Timeline                []LeadRemark       `bson:"timeline,omitempty"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
