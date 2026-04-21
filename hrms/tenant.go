@@ -35,6 +35,7 @@ type Tenant struct {
 }
 
 type TenantDomain struct {
-	ID     primitive.ObjectID `bson:"_id"`
-	Domain string             `bson:"domain"`
+	ID       primitive.ObjectID `bson:"_id"`
+	Domain   string             `bson:"domain"`
+	Timezone string             `bson:"timezone"`
 }
