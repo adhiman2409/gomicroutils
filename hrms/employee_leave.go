@@ -60,29 +60,30 @@ type LeaveAllocationInfo struct {
 }
 
 type EmployeeLeaveStats struct {
-	ID                               primitive.ObjectID `bson:"_id"`
-	EmployeeId                       string             `bson:"employee_id"`
-	EmployeeType                     string             `bson:"employee_type"`
-	FullName                         string             `bson:"full_name"`
-	PhoneNumber                      string             `bson:"phone_number"`
-	IsMale                           bool               `bson:"is_male"`
-	IsMarried                        bool               `bson:"is_married"`
-	EmailId                          string             `bson:"email_id"`
-	EmpJoiningDate                   string             `bson:"emp_joining_date"`
-	EmpConfirmationDate              string             `bson:"emp_confirmation_date"`
-	TenureInDays                     float32            `bson:"tenure_in_days"`
-	TotalWorkingDays                 float32            `bson:"total_working_days"`
-	TotalAbsentDays                  float32            `bson:"total_absent_days"`
-	TotalPresentDays                 float32            `bson:"total_present_days"`
-	AttendanceStatsUpdatedOn         string             `bson:"attendance_stats_updated_on"`
-	LeaveStatsUpdatedOn              string             `bson:"leave_stats_updated_on"`
-	LeaveStatsRecalculatedOn         string             `bson:"leave_stats_recalculated_on"`
-	EarnedLeaveCycleInDays           int32              `bson:"earned_leave_cycle_in_days"`
-	RegularizationReminderMailSentOn string             `bson:"regularization_reminder_mail_sent_on"`
-	Year                             string             `bson:"year"`
-	Country                          string             `bson:"country"`
-	TimeZone                         string             `bson:"time_zone"`
-	LeavesStats                      []LeaveStats       `bson:"leaves_stats"`
+	ID                               primitive.ObjectID    `bson:"_id"`
+	EmployeeId                       string                `bson:"employee_id"`
+	EmployeeType                     string                `bson:"employee_type"`
+	FullName                         string                `bson:"full_name"`
+	PhoneNumber                      string                `bson:"phone_number"`
+	IsMale                           bool                  `bson:"is_male"`
+	IsMarried                        bool                  `bson:"is_married"`
+	EmailId                          string                `bson:"email_id"`
+	EmpJoiningDate                   string                `bson:"emp_joining_date"`
+	EmpConfirmationDate              string                `bson:"emp_confirmation_date"`
+	TenureInDays                     float32               `bson:"tenure_in_days"`
+	TotalWorkingDays                 float32               `bson:"total_working_days"`
+	TotalAbsentDays                  float32               `bson:"total_absent_days"`
+	TotalPresentDays                 float32               `bson:"total_present_days"`
+	AttendanceStatsUpdatedOn         string                `bson:"attendance_stats_updated_on"`
+	LeaveStatsUpdatedOn              string                `bson:"leave_stats_updated_on"`
+	LeaveStatsRecalculatedOn         string                `bson:"leave_stats_recalculated_on"`
+	EarnedLeaveCycleInDays           int32                 `bson:"earned_leave_cycle_in_days"`
+	RegularizationReminderMailSentOn string                `bson:"regularization_reminder_mail_sent_on"`
+	LeaveAllocationInfo              []LeaveAllocationInfo `bson:"leave_allocation_info"`
+	Year                             string                `bson:"year"`
+	Country                          string                `bson:"country"`
+	TimeZone                         string                `bson:"time_zone"`
+	LeavesStats                      []LeaveStats          `bson:"leaves_stats"`
 }
 
 type Leave struct {
