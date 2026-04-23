@@ -47,7 +47,20 @@ type EmpProfessionalInfo struct {
 	Country                           string             `bson:"country"`
 	TimeZone                          string             `bson:"time_zone"`
 	RegexText                         string             `bson:"regex_text"`
+	PIPOn                             time.Time          `bson:"pip_on"`
+	NoticePeriodOn                    time.Time          `bson:"notice_period_on"`
+	InactiveOn                        time.Time          `bson:"inactive_on"`
 	CreatedBy                         string             `bson:"created_by"`
 	CreatedAt                         time.Time          `bson:"created_at"`
 	UpdatedAt                         time.Time          `bson:"updated_at"`
+}
+
+type EmpStatusHistory struct {
+	ID         primitive.ObjectID `bson:"_id"`
+	EmployeeId string             `bson:"employee_id"`
+	FromStatus string             `bson:"from_status"`
+	ToStatus   string             `bson:"to_status"`
+	ChangedBy  string             `bson:"changed_by"`
+	Remarks    string             `bson:"remarks"`
+	ChangedAt  time.Time          `bson:"changed_at"`
 }

@@ -87,6 +87,8 @@ const EMPLOYEE_COLLECTION_INCREMENT_LETTERS = "employee-increment-letters"
 const EMPLOYEE_COLLECTION_INCREMENT_LETTER_COUNTER = "employee-increment-letter-counter"
 const EMPLOYEE_COLLECTION_RESTRICTED_HOLIDAYS = "employee-restricted-holidays"
 
+const EMPLOYEE_COLLECTION_STATUS_HISTORY = "employee-status-history"
+
 const REIMBURSEMENT_COLLECTION_EXPENSE_COUNTER = "reimbursement-expense-counter"
 const REIMBURSEMENT_COLLECTION_EXPENSE = "reimbursement-expenses"
 
@@ -234,6 +236,11 @@ const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
 const KYC_COLLECTION_INVOICES = "kyc-invoices"
 const KYC_COLLECTION_VENDOR_COUNTER = "kyc-vendor-counter"
 const KYC_COLLECTION_VENDORS = "kyc-vendors"
+
+func GetEmpStatusHistoryCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(EMPLOYEE_COLLECTION_STATUS_HISTORY)
+}
 
 func GetKYCVendorCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
