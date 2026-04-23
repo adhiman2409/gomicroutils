@@ -15,6 +15,12 @@ type BankInfo struct {
 	Country          string             `bson:"country"`
 	State            string             `bson:"state"`
 	ZipCode          string             `bson:"zip_code"`
+	SWIFT            string             `bson:"swift"`          // SWIFT/BIC code
+	RoutingNumber    string             `bson:"routing_number"` // ABA routing number (US)
+	SortCode         string             `bson:"sort_code"`      // UK/Ireland sort code
+	BSB              string             `bson:"bsb"`            // Australia/New Zealand BSB code
+	BankAddress      string             `bson:"bank_address"`   // Bank branch address
+	Currency         string             `bson:"currency"`       // ISO 4217 currency code (e.g. USD, EUR)
 	CreatedAt        string             `bson:"created_at"`
 	UpdatedAt        string             `bson:"updated_at"`
 	UpdatedBy        string             `bson:"updated_by"`
