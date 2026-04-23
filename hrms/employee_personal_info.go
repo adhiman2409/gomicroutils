@@ -58,6 +58,8 @@ type EmpPersonalInfo struct {
 	PAN                  string             `bson:"pan"`
 	AadharNumber         string             `bson:"aadhar_number"`
 	PassportNumber       string             `bson:"passport_number"`
+	EmiratesIdNumber     string             `bson:"emirates_id_number,omitempty"`
+	UnifiedIdNumber      string             `bson:"unified_id_number,omitempty"`
 	PermanentAddress     Address            `bson:"permanent_address"`
 	CommunicationAddress Address            `bson:"communication_address"`
 	FamilyInfo           []FamilyInfo       `bson:"family_info"`
