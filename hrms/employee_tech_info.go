@@ -382,6 +382,7 @@ type AppraisalOld struct {
 
 type VisaInfo struct {
 	VisaType           string    `bson:"visa_type"`
+	VisaFileNumber     string    `bson:"visa_file_number"`
 	StartDate          time.Time `bson:"start_date"`
 	EndDate            time.Time `bson:"end_date"`
 	Status             string    `bson:"status"`
