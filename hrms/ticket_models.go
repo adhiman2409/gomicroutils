@@ -7,9 +7,12 @@ import (
 )
 
 type Query struct {
-	Title     string `bson:"title"`
-	SLAInDays int64  `bson:"sla_in_days"`
-	Remarks   string `bson:"remarks"`
+	QueryId           string `bson:"query_id"`
+	IsSystemGenerated bool   `bson:"is_system_generated"`
+	IsAutomated       bool   `bson:"is_automated"`
+	Title             string `bson:"title"`
+	SLAInDays         int64  `bson:"sla_in_days"`
+	Remarks           string `bson:"remarks"`
 }
 
 type EmployeeRef struct {
