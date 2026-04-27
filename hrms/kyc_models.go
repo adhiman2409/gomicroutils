@@ -54,12 +54,13 @@ type LeadInfo struct {
 }
 
 type LeadRemark struct {
-	Id            primitive.ObjectID `bson:"_id,omitempty"`
-	Note          string             `bson:"note"`
-	CreatedAt     time.Time          `bson:"created_at"`
-	CreatedByEid  string             `bson:"created_by_eid"`
-	CreatedByName string             `bson:"created_by_name"`
-	Attachments   []Attachment       `bson:"attachments,omitempty"`
+	Id            primitive.ObjectID   `bson:"_id,omitempty"`
+	Note          string               `bson:"note"`
+	CreatedAt     time.Time            `bson:"created_at"`
+	CreatedByEid  string               `bson:"created_by_eid"`
+	CreatedByName string               `bson:"created_by_name"`
+	GeoLocation   GeoFencingCoordinate `bson:"geo_location,omitempty"`
+	Attachments   []Attachment         `bson:"attachments,omitempty"`
 }
 
 type CompanyInfo struct {
