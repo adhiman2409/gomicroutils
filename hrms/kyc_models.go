@@ -187,6 +187,8 @@ type MeetingInfo struct {
 	Title                string               `bson:"title"`
 	MeetingDate          time.Time            `bson:"meeting_date"`
 	Mode                 string               `bson:"mode"`
+	Status               string               `bson:"status,omitempty"`
+	Timeline             []LeadRemark         `bson:"timeline,omitempty"`
 	InternalAttendees    []string             `bson:"internal_attendees,omitempty"`
 	ExternalAttendees    []string             `bson:"external_attendees,omitempty"`
 	MeetingNotes         []Note               `bson:"meeting_notes,omitempty"`
