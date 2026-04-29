@@ -65,6 +65,7 @@ type EmpAttendanceConf struct {
 	ApplyLOPAfterMaxDelayedCheckIn   bool                  `bson:"apply_lop_after_max_delayed_check_in"`
 	FullDayLOPAfterMaxDelayedCheckIn bool                  `bson:"full_day_lop_after_max_delayed_check_in"`
 	NextShiftTimingsIndex            int32                 `bson:"next_shift_timings_index"`
+	IsPermanentRemoteWorker          bool                  `bson:"is_permanent_remote_worker"`
 	Country                          string                `bson:"country"`
 	TimeZone                         string                `bson:"time_zone"`
 	CreatedAt                        time.Time             `bson:"created_at"`
