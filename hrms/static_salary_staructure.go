@@ -216,7 +216,7 @@ type PayrollSalaryConfig struct {
 	MonthlyStatutoryBonusPercentageOfBasic   float32               `bson:"monthly_statutory_bonus_percentage_of_basic"`
 	MonthlyGratuityPercentageOfBasic         float32               `bson:"monthly_gratuity_percentage_of_basic"`
 	IsAllowanceCTCSlabBased                  bool                  `bson:"is_allowance_ctc_slab_based"`
-	CTCSlabs                                 []AllowanceHeads      `bson:"ctc_slabs"`
+	AllowanceHeads                           []AllowanceHeads      `bson:"allowance_heads"`
 	AnnualLTA                                float32               `bson:"annual_lta"`
 	MonthlyLTA                               float32               `bson:"monthly_lta"`
 	AnnualBooksAndPeriodicals                float32               `bson:"annual_books_and_periodicals"`
