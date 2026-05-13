@@ -94,6 +94,8 @@ type CountrySalaryStructure struct {
 	MonthlyUniformAndLaundry                   float32             `bson:"monthly_uniform_and_laundry"`
 	AnnualConveyanceAllowance                  float32             `bson:"annual_conveyance_allowance"`
 	MonthlyConveyanceAllowance                 float32             `bson:"monthly_conveyance_allowance"`
+	AnnualHelperAllowance                      float32             `bson:"annual_helper_allowance"`
+	MonthlyHelperAllowance                     float32             `bson:"monthly_helper_allowance"`
 	AnnualStatutoryBonus                       float32             `bson:"annual_statutory_bonus"`
 	MonthlyStatutoryBonus                      float32             `bson:"monthly_statutory_bonus"`
 	AnnualGratuity                             float32             `bson:"annual_gratuity"`
