@@ -173,12 +173,6 @@ const CANDIDATE_COLLECTION_CANDIDATE_CANDIDATES = "candidate-candidates"
 
 const INVENTORY_COLLECTION_INVENTORY_ASSETS = "inventory-assets"
 
-const KYC_COLLECTION_PROJECT_TASK_STATES = "kyc-project-task-states"
-
-const KYC_COLLECTION_PROJECT_TASK_STATE_COUNTER = "kyc-project-task-state-counter"
-
-const KYC_COLLECTION_PROJECT_TASK_ID_COUNTER = "kyc-project-task-id-counter"
-
 const POLICYBAZAAR_COLLECTION_EMPLOYEE_INFO = "policybazaar-employee-info"
 
 const PAYROLL_COLLECTION_EMPLOYEE_SALARY_INFO = "payroll-employee-salary-info"
@@ -204,6 +198,18 @@ const KYC_COLLECTION_DEALS_COUNTER = "kyc-deals-counter"
 const KYC_COLLECTION_STICKY_NOTE = "kyc-sticky-notes"
 const KYC_COLLECTION_LEAD_STAGES = "kyc-leads-stages"
 const KYC_COLLECTION_LEAD_OFFERINGS = "kyc-leads-offerings"
+const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
+const KYC_COLLECTION_MEETING_STATUSES = "kyc-meeting-statuses"
+const KYC_COLLECTION_LEAD_OFFERING_COUNTER = "kyc-lead-offering-counter"
+const KYC_COLLECTION_PRODUCT_LOCATION_COUNTER = "kyc-product-location-counter"
+const KYC_COLLECTION_INVOICES = "kyc-invoices"
+const KYC_COLLECTION_VENDORS = "kyc-vendors"
+const KYC_COLLECTION_VENDOR_COUNTER = "kyc-vendor-counter"
+const KYC_COLLECTION_INVOICE_REQUESTS = "kyc-invoice-requests"
+const KYC_COLLECTION_INVOICE_REQUEST_COUNTER = "kyc-invoice-request-counter"
+const KYC_COLLECTION_PROJECT_TASK_STATES = "kyc-project-task-states"
+const KYC_COLLECTION_PROJECT_TASK_STATE_COUNTER = "kyc-project-task-state-counter"
+const KYC_COLLECTION_PROJECT_TASK_ID_COUNTER = "kyc-project-task-id-counter"
 
 const REJOVE_COLLECTION_DOCTORS = "rejove-doctors"
 const REJOVE_COLLECTION_DOCTOR_COUNTER = "rejove-doctor-id-counter"
@@ -232,11 +238,6 @@ const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
 
 const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
 
-const KYC_COLLECTION_LEAD_SOURCES = "kyc-lead-sources"
-const KYC_COLLECTION_INVOICES = "kyc-invoices"
-const KYC_COLLECTION_VENDOR_COUNTER = "kyc-vendor-counter"
-const KYC_COLLECTION_VENDORS = "kyc-vendors"
-
 func GetEmpStatusHistoryCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
 	return db.Collection(EMPLOYEE_COLLECTION_STATUS_HISTORY)
@@ -255,6 +256,31 @@ func GetKYCVendorCounterCollection(client *mongo.Client, domain string) *mongo.C
 func GetKYCInvoiceCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
 	return db.Collection(KYC_COLLECTION_INVOICES)
+}
+
+func GetKYCLeadOfferingsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_LEAD_OFFERINGS)
+}
+
+func GetKYCLeadOfferingCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_LEAD_OFFERING_COUNTER)
+}
+
+func GetKYCProductLocationCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_PRODUCT_LOCATION_COUNTER)
+}
+
+func GetKYCInvoiceRequestCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_INVOICE_REQUESTS)
+}
+
+func GetKYCInvoiceRequestCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_INVOICE_REQUEST_COUNTER)
 }
 
 func GetEmployeeDocumentOTPCollection(client *mongo.Client, domain string) *mongo.Collection {
@@ -277,14 +303,14 @@ func GetCompanyHeadsCollection(client *mongo.Client, domain string) *mongo.Colle
 	return db.Collection(ORG_COLLECTION_COMPANY_HEADS)
 }
 
-func GetKYCLeadOfferingsCollection(client *mongo.Client, domain string) *mongo.Collection {
-	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(KYC_COLLECTION_LEAD_OFFERINGS)
+func GetKYCLeadStageCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_LEAD_STAGES)
 }
 
-func GetKYCLeadStageCollection(client *mongo.Client, domain string) *mongo.Collection {
-	db := client.Database(strings.Replace(domain, ".", "_", -1))
-	return db.Collection(KYC_COLLECTION_LEAD_STAGES)
+func GetKYCMeetingStatusCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(KYC_COLLECTION_MEETING_STATUSES)
 }
 
 func GetWorkerMonthlyLeavesStatsCollection(client *mongo.Client, domain string) *mongo.Collection {

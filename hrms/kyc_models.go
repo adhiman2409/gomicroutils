@@ -206,31 +206,6 @@ type MeetingInfo struct {
 	MailSent             bool                 `bson:"mail_sent,omitempty"`
 }
 
-type LeadOffering struct {
-	Id        primitive.ObjectID    `bson:"_id,omitempty"`
-	Type      string                `bson:"type"` // Product / Service / Solution
-	SubTypes  []LeadOfferingSubType `bson:"sub_types"`
-	IsActive  bool                  `bson:"is_active"`
-	CreatedAt time.Time             `bson:"created_at"`
-	UpdatedAt time.Time             `bson:"updated_at"`
-}
-
-type LeadOfferingSubType struct {
-	Id          primitive.ObjectID `bson:"_id,omitempty"`
-	Name        string             `bson:"name"`
-	Description string             `bson:"description,omitempty"`
-	IsActive    bool               `bson:"is_active"`
-}
-
-type LeadStage struct {
-	Id           primitive.ObjectID `bson:"_id"`
-	StageName    string             `bson:"stage_name"`
-	Index        int                `bson:"index"`
-	IsStartState bool               `bson:"is_start_state"`
-	IsEndState   bool               `bson:"is_end_state"`
-	SubStages    []string           `bson:"sub_stages"`
-}
-
 type LeadSource struct {
 	Id          primitive.ObjectID `bson:"_id"`
 	Name        string             `bson:"name"`
@@ -451,4 +426,10 @@ var QbitLabsStages = []string{
 	"Won",
 	"Lost",
 	"Closed",
+}
+
+type InvoiceRequestAttachment struct {
+	AttachmentType string `bson:"attachment_type"` // "trade_license", "vat_certificate", "agreement", "lpo"
+	FileURL        string `bson:"file_url"`
+	FileName       string `bson:"file_name"`
 }
