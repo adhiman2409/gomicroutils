@@ -38,6 +38,7 @@ type EmpAttendanceRegularization struct {
 	ManagerEmail              string             `bson:"manager_email"`
 	Country                   string             `bson:"country"`
 	TimeZone                  string             `bson:"time_zone"`
+	CreatedBy                 string             `bson:"created_by"`
 	CreatedAt                 time.Time          `bson:"created_at"`
 	UpdatedAt                 time.Time          `bson:"updated_at"`
 }
