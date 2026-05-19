@@ -25,6 +25,9 @@ type EmpAttendanceRegularization struct {
 	ApprovedCheckOutTime      string             `bson:"approved_check_out_time"`
 	ApprovedNewWorkingHours   float32            `bson:"approved_new_working_hours"`
 	ApprovedTotalWorkingHours float32            `bson:"approved_total_working_hours"`
+	PreviousWorkingMinutes    int32              `bson:"previous_working_minutes"`
+	RequestedWorkingMinutes   int32              `bson:"requested_working_minutes"`
+	ApprovedWorkingMinutes    int32              `bson:"approved_working_minutes"`
 	IsHalfDay                 bool               `bson:"is_half_day"`
 	EmployeeRemarks           string             `bson:"employee_remarks"`
 	Status                    string             `bson:"status"`
