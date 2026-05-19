@@ -42,7 +42,7 @@ type LeaveStats struct {
 	LeavesEncashedLastYear            float32 `bson:"leaves_encashed_last_year"`
 	LeavesCarryForwardLastYear        float32 `bson:"leaves_carry_forward_last_year"`
 	LastYearEarnedPrivilegeLeave      float32 `bson:"last_year_earned_privilege_leave"`
-	TotalEarnedPrivilegeLeave         float32 `bson:"total_earned_privilege_leave"`
+	LastToLastYearEarnedLeaves        float32 `bson:"last_to_last_year_earned_leaves"`
 	LastLeavesCreditedOn              string  `bson:"last_leaves_credited_on"`
 	Country                           string  `bson:"country"`
 	TimeZone                          string  `bson:"time_zone"`
