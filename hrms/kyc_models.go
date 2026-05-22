@@ -48,6 +48,7 @@ type LeadInfo struct {
 	RecycleCount            int                `bson:"recycle_count"`
 	LastRecycledAt          time.Time          `bson:"last_recycled_at"`
 	Timeline                []LeadRemark       `bson:"timeline,omitempty"`
+	Timezone                string             `bson:"timezone,omitempty"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
