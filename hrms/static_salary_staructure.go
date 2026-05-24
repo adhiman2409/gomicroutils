@@ -163,22 +163,25 @@ type SalaryStructureIdCounter struct {
 }
 
 type AllowanceHeads struct {
-	StartOfCTCSlab             float32 `bson:"start_of_ctc_slab"`
-	EndOfCTCSlab               float32 `bson:"end_of_ctc_slab"`
-	AnnualLTA                  float32 `bson:"annual_lta"`
-	MonthlyLTA                 float32 `bson:"monthly_lta"`
-	AnnualBooksAndPeriodicals  float32 `bson:"annual_books_and_periodicals"`
-	MonthlyBooksAndPeriodicals float32 `bson:"monthly_books_and_periodicals"`
-	AnnualBroadbandAndMobile   float32 `bson:"annual_broadband_and_mobile"`
-	MonthlyBroadbandAndMobile  float32 `bson:"monthly_broadband_and_mobile"`
-	AnnualFoodCoupons          float32 `bson:"annual_food_coupons"`
-	MonthlyFoodCoupons         float32 `bson:"monthly_food_coupons"`
-	AnnualUniformAndLaundry    float32 `bson:"annual_uniform_and_laundry"`
-	MonthlyUniformAndLaundry   float32 `bson:"monthly_uniform_and_laundry"`
-	AnnualConveyanceAllowance  float32 `bson:"annual_conveyance_allowance"`
-	MonthlyConveyanceAllowance float32 `bson:"monthly_conveyance_allowance"`
-	AnnualHelperAllowance      float32 `bson:"annual_helper_allowance"`
-	MonthlyHelperAllowance     float32 `bson:"monthly_helper_allowance"`
+	StartOfCTCSlab                 float32 `bson:"start_of_ctc_slab"`
+	EndOfCTCSlab                   float32 `bson:"end_of_ctc_slab"`
+	AllowancePercentageOfAnnualCTC float32 `bson:"allowance_percentage_of_annual_ctc"`
+	TotalAnnualAllowanceAmount     float32 `bson:"total_annual_allowance_amount"`
+	TotalMonthlyAllowanceAmount    float32 `bson:"total_monthly_allowance_amount"`
+	AnnualLTA                      float32 `bson:"annual_lta"`
+	MonthlyLTA                     float32 `bson:"monthly_lta"`
+	AnnualBooksAndPeriodicals      float32 `bson:"annual_books_and_periodicals"`
+	MonthlyBooksAndPeriodicals     float32 `bson:"monthly_books_and_periodicals"`
+	AnnualBroadbandAndMobile       float32 `bson:"annual_broadband_and_mobile"`
+	MonthlyBroadbandAndMobile      float32 `bson:"monthly_broadband_and_mobile"`
+	AnnualFoodCoupons              float32 `bson:"annual_food_coupons"`
+	MonthlyFoodCoupons             float32 `bson:"monthly_food_coupons"`
+	AnnualUniformAndLaundry        float32 `bson:"annual_uniform_and_laundry"`
+	MonthlyUniformAndLaundry       float32 `bson:"monthly_uniform_and_laundry"`
+	AnnualConveyanceAllowance      float32 `bson:"annual_conveyance_allowance"`
+	MonthlyConveyanceAllowance     float32 `bson:"monthly_conveyance_allowance"`
+	AnnualHelperAllowance          float32 `bson:"annual_helper_allowance"`
+	MonthlyHelperAllowance         float32 `bson:"monthly_helper_allowance"`
 }
 
 type PayrollSalaryConfig struct {
@@ -219,7 +222,10 @@ type PayrollSalaryConfig struct {
 	MonthlyStatutoryBonusPercentageOfBasic   float32               `bson:"monthly_statutory_bonus_percentage_of_basic"`
 	MonthlyGratuityPercentageOfBasic         float32               `bson:"monthly_gratuity_percentage_of_basic"`
 	IsAllowanceCTCSlabBased                  bool                  `bson:"is_allowance_ctc_slab_based"`
+	AllowancePercentageOfAnnualCTC           float32               `bson:"allowance_percentage_of_annual_ctc"`
 	AllowanceHeads                           []AllowanceHeads      `bson:"allowance_heads"`
+	TotalAnnualAllowanceAmount               float32               `bson:"total_annual_allowance_amount"`
+	TotalMonthlyAllowanceAmount              float32               `bson:"total_monthly_allowance_amount"`
 	AnnualLTA                                float32               `bson:"annual_lta"`
 	MonthlyLTA                               float32               `bson:"monthly_lta"`
 	AnnualBooksAndPeriodicals                float32               `bson:"annual_books_and_periodicals"`
