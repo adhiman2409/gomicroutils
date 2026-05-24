@@ -83,6 +83,9 @@ type CountrySalaryStructure struct {
 	MonthlyBasicSalary                         float32             `bson:"monthly_basic_salary"`
 	AnnualHRA                                  float32             `bson:"annual_hra"`
 	MonthlyHRA                                 float32             `bson:"monthly_hra"`
+	AllowancePercentageOfAnnualCTC             float32             `bson:"allowance_percentage_of_annual_ctc"`
+	TotalAnnualAllowanceAmount                 float32             `bson:"total_annual_allowance_amount"`
+	TotalMonthlyAllowanceAmount                float32             `bson:"total_monthly_allowance_amount"`
 	AnnualLTA                                  float32             `bson:"annual_lta"`
 	MonthlyLTA                                 float32             `bson:"monthly_lta"`
 	AnnualBooksAndPeriodicals                  float32             `bson:"annual_books_and_periodicals"`
