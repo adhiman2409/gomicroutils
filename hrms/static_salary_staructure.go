@@ -317,6 +317,7 @@ type MonthlyEarnings struct {
 	BasicSalary        float64 `bson:"basic_salary,omitempty"`
 	HouseRentAllowance float64 `bson:"house_rent_allowance,omitempty"`
 	StatutoryBonus     float64 `bson:"statutory_bonus,omitempty"`
+	OtherAllowance     float64 `bson:"other_allowance,omitempty"`
 	SpecialAllowance   float64 `bson:"special_allowance,omitempty"`
 	OtherEarnings      float64 `bson:"other_earnings,omitempty"`
 	Stipend            float64 `bson:"stipend,omitempty"`
