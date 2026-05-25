@@ -68,6 +68,32 @@ type ImageURLInfo struct {
 	Remarks    string    `bson:"remarks"`
 }
 
+type BiometricData struct {
+	ID            int       `bson:"id"`
+	EmpCode       string    `bson:"emp_code"`
+	PunchTime     time.Time `bson:"punch_time"`
+	PunchState    string    `bson:"punch_state"`
+	VerifyType    int       `bson:"verify_type"`
+	WorkCode      string    `bson:"work_code"`
+	TerminalSN    string    `bson:"terminal_sn"`
+	TerminalAlias string    `bson:"terminal_alias"`
+	AreaAlias     string    `bson:"area_alias"`
+	Longitude     float64   `bson:"longitude"`
+	Latitude      float64   `bson:"latitude"`
+	GPSLocation   string    `bson:"gps_location"`
+	Mobile        string    `bson:"mobile"`
+	Source        int       `bson:"source"`
+	Purpose       int       `bson:"purpose"`
+	CRC           string    `bson:"crc"`
+	IsAttendance  int       `bson:"is_attendance"`
+	Reserved      string    `bson:"reserved"`
+	UploadTime    time.Time `bson:"upload_time"`
+	SyncStatus    int       `bson:"sync_status"`
+	SyncTime      time.Time `bson:"sync_time"`
+	Emp           string    `bson:"emp"`
+	Terminal      string    `bson:"terminal"`
+}
+
 type EmployeeAttendance struct {
 	ID                            primitive.ObjectID `bson:"_id"`
 	EID                           string             `bson:"eid"`
@@ -135,6 +161,7 @@ type EmployeeAttendance struct {
 	DailyBreakStats               []DailyBreakStat   `bson:"daily_break_stats"`
 	DevicePermissions             []DevicePermission `bson:"device_permissions"`
 	ImageURLs                     []ImageURLInfo     `bson:"image_urls"`
+	BiometricData                 []BiometricData    `bson:"biometric_data,omitempty"`
 	MacAddress                    string             `bson:"mac_address"`
 	IsLocked                      bool               `bson:"is_locked"`
 	IsExpired                     bool               `bson:"is_expired"`
