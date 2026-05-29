@@ -34,6 +34,7 @@ type SalaryProcessingRequest struct {
 	ApproverName                   string                        `bson:"approver_name"`
 	ApproverRemarks                string                        `bson:"approver_remarks"`
 	ApprovedAt                     time.Time                     `bson:"approved_at"`
+	PaidAt                         time.Time                     `bson:"paid_at"`
 	CreatedAt                      time.Time                     `bson:"created_at"`
 	CreatedBy                      string                        `bson:"created_by"`
 	UpdatedAt                      time.Time                     `bson:"updated_at"`
