@@ -16,6 +16,7 @@ type BankInfo struct {
 	State            string             `bson:"state"`
 	ZipCode          string             `bson:"zip_code"`
 	SWIFT            string             `bson:"swift"`          // SWIFT/BIC code
+	IBAN             string             `bson:"iban"`           // International Bank Account Number
 	RoutingNumber    string             `bson:"routing_number"` // ABA routing number (US)
 	SortCode         string             `bson:"sort_code"`      // UK/Ireland sort code
 	BSB              string             `bson:"bsb"`            // Australia/New Zealand BSB code
