@@ -60,6 +60,8 @@ type EmpPersonalInfo struct {
 	PassportNumber       string             `bson:"passport_number"`
 	EmiratesIdNumber     string             `bson:"emirates_id_number,omitempty"`
 	UnifiedIdNumber      string             `bson:"unified_id_number,omitempty"`
+	VisaFileNumber       string             `bson:"visa_file_number,omitempty"`
+	VisaExpiryDate       string             `bson:"visa_expiry_date,omitempty"`
 	PermanentAddress     Address            `bson:"permanent_address"`
 	CommunicationAddress Address            `bson:"communication_address"`
 	FamilyInfo           []FamilyInfo       `bson:"family_info"`
