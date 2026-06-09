@@ -99,6 +99,7 @@ type AssetInfo struct {
 	AssetPhysicalVerificationHistory []AssetPhysicalVerification `bson:"asset_physical_verification_history"`
 	AssetDisposalInfo                AssetDisposalInfo           `bson:"asset_disposal_info"`
 	Remarks                          []string                    `bson:"remarks"`
+	WarrantyStartDate                time.Time                   `bson:"warranty_start_date"`
 	WarrantyEndDate                  time.Time                   `bson:"warranty_end_date"`
 	WarrantyProvider                 string                      `bson:"warranty_provider"`
 	AllocationInfo                   []AssetAllocationInfo       `bson:"allocation_info"`
