@@ -7,9 +7,15 @@ import (
 )
 
 type Category struct {
-	Category      string   `bson:"category"`
-	IsActive      bool     `bson:"is_active"`
-	SubCategories []string `bson:"sub_categories"`
+	Category        string        `bson:"category"`
+	IsActive        bool          `bson:"is_active"`
+	IsUserGenerated bool          `bson:"is_user_generated"`
+	SubCategories   []SubCategory `bson:"sub_categories"`
+}
+type SubCategory struct {
+	Name            string `bson:"name"`
+	IsActive        bool   `bson:"is_active"`
+	IsUserGenerated bool   `bson:"is_user_generated"`
 }
 
 type NewAssetConfig struct {
