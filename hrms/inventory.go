@@ -56,6 +56,7 @@ type AssetReturnInfo struct {
 	UpdatedAt            time.Time       `bson:"updated_at"`
 }
 
+// New variables added for asset return history and allocation history to maintain a record of all returns and allocations for an asset, which can be useful for auditing and tracking purposes.
 type AssetInfo struct {
 	ID                               primitive.ObjectID          `bson:"_id"`
 	AssetId                          string                      `bson:"asset_id"`
