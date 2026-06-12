@@ -25,6 +25,7 @@ type EmployeeSummary struct {
 	ProbationOrTrainingPeriodInMonths int64              `bson:"probation_or_training_period_in_months"`
 	ConfirmationDate                  string             `bson:"confirmation_date"`
 	IsRotationalShift                 bool               `bson:"is_rotational_shift"`
+	CurrentProduct                    string             `bson:"current_product"`
 	CurrentProject                    string             `bson:"current_project"`
 	CurrentClient                     string             `bson:"current_client"`
 	IsBillable                        bool               `bson:"is_billable"`
