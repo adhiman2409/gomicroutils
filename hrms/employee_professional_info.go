@@ -31,6 +31,7 @@ type EmpProfessionalInfo struct {
 	CIBILScore                        string             `bson:"cibil_score"`
 	ClientInfo                        Client             `bson:"client_info"`
 	WorkAddress                       Address            `bson:"work_address"`
+	CurrentProduct                    string             `bson:"current_product"`
 	CurrentProject                    string             `bson:"current_project"`
 	CurrentClient                     string             `bson:"current_client"`
 	IsBillable                        bool               `bson:"is_billable"`
