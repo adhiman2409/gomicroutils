@@ -20,6 +20,7 @@ type OrgLeaveConf struct {
 	BulkLeaveCount              int                `bson:"bulk_leave_count"`
 	BulkLeaveNoticeInDays       int                `bson:"bulk_leave_notice_in_days"`
 	IsEncashmentAllowed         bool               `bson:"encashment_allowed"`
+	IsManualAllocationAllowed   bool               `bson:"manual_allocation_allowed"`
 	ApplicableAfterWorkingDays  int                `bson:"applicable_after_working_days"`
 	DocumentRequired            bool               `bson:"document_required"`
 	WeeklyOffAndHolidayIncluded bool               `bson:"weekly_off_and_holiday_included"`
