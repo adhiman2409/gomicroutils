@@ -112,6 +112,8 @@ const TICKET_COLLECTION_TICKET_CONFIGS = "ticket-ticket-configs"
 const TICKET_COLLECTION_TICKETS = "ticket-tickets"
 const TICKET_COLLECTION_TICKET_COUNTER = "ticket-ticket-counter"
 const TICKET_COLLECTION_TICKET_LEADS = "ticket-ticket-leads"
+const TICKET_COLLECTION_TICKET_APPROVALS = "ticket-ticket-approvals"
+const TICKET_COLLECTION_TICKET_APPROVAL_COUNTERS = "ticket-ticket-approval-counter"
 
 const TRAINING_COLLECTION_TRAININGS = "training-trainings"
 const TRAINING_COLLECTION_ENROLLMENTS = "training-enrollments"
@@ -237,6 +239,16 @@ const WORKER_COLLECTION_MONTHLY_LEAVES_STATS = "worker-monthly-leaves-stats"
 const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
 
 const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
+
+func GetTicketApprovalsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	dbName := strings.Replace(domain, ".", "_", -1)
+	return client.Database(dbName).Collection(TICKET_COLLECTION_TICKET_APPROVALS)
+}
+
+func GetTicketApprovalCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	dbName := strings.Replace(domain, ".", "_", -1)
+	return client.Database(dbName).Collection(TICKET_COLLECTION_TICKET_APPROVAL_COUNTERS)
+}
 
 func GetEmpStatusHistoryCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))

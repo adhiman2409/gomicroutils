@@ -166,3 +166,29 @@ type TicketStatus struct {
 	Current string   `bson:"current"`
 	Allowed []string `bson:"allowed"`
 }
+
+type ApprovalIdCounter struct {
+	ID      primitive.ObjectID `bson:"_id"`
+	Prefix  string             `bson:"prefix"`
+	Counter int64              `bson:"counter"`
+}
+
+type TicketApproval struct {
+	ID               primitive.ObjectID `bson:"_id"`
+	ApprovalId       string             `bson:"approval_id"`
+	TicketID         string             `bson:"ticket_id"`
+	TicketTitle      string             `bson:"ticket_title"`
+	TicketDepartment string             `bson:"ticket_department"`
+	InitiatedById    string             `bson:"initiated_by_id"`
+	InitiatedByName  string             `bson:"initiated_by_name"`
+	InitiatedByEmail string             `bson:"initiated_by_email"`
+	ApprovalForId    string             `bson:"approval_for_id"`
+	ApprovalForName  string             `bson:"approval_for_name"`
+	ApprovalForEmail string             `bson:"approval_for_email"`
+	Status           string             `bson:"status"`
+	Remarks          string             `bson:"remarks"`
+	ResolvedRemarks  string             `bson:"resolved_remarks"`
+	ResolvedAt       time.Time          `bson:"resolved_at"`
+	CreatedAt        time.Time          `bson:"created_at"`
+	UpdatedAt        time.Time          `bson:"updated_at"`
+}
