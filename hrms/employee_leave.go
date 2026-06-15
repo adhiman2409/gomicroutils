@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type MannualLeaveAllocation struct {
+type ManualLeaveAllocation struct {
 	ID                              primitive.ObjectID `bson:"_id"`
 	EmployeeId                      string             `bson:"employee_id"`
 	EmployeeName                    string             `bson:"employee_name"`
