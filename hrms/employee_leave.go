@@ -12,7 +12,7 @@ type MannualLeaveAllocation struct {
 	EmployeeName                    string             `bson:"employee_name"`
 	LeaveType                       string             `bson:"leave_type"`
 	AmmountOfLeave                  float32            `bson:"ammount_of_leave"`
-	AllocatedOn                     string             `bson:"allocated_on"`
+	AllocatedOn                     time.Time          `bson:"allocated_on"`
 	AllocatedById                   string             `bson:"allocated_by_id"`
 	AllocatedByName                 string             `bson:"allocated_by_name"`
 	AvailableLeavesBeforeAllocation float32            `bson:"available_leaves_before_allocation"`
@@ -20,6 +20,8 @@ type MannualLeaveAllocation struct {
 	Remarks                         string             `bson:"remarks"`
 	Country                         string             `bson:"country"`
 	TimeZone                        string             `bson:"time_zone"`
+	ValidFrom                       time.Time          `bson:"valid_from"`
+	ValidTo                         time.Time          `bson:"valid_to"`
 	CreatedAt                       time.Time          `bson:"created_at"`
 	UpdatedAt                       time.Time          `bson:"updated_at"`
 }
