@@ -75,6 +75,8 @@ type LeaveAllocationInfo struct {
 	AllocatedLeaves                 float32 `bson:"allocated_leaves"`
 	AvailableLeavesBeforeAllocation float32 `bson:"available_leaves_before_allocation"`
 	AvailableLeavesAfterAllocation  float32 `bson:"available_leaves_after_allocation"`
+	IsManualAllocation              bool    `bson:"is_manual_allocation"`
+	Remarks                         string  `bson:"remarks"`
 }
 
 type EmployeeLeaveStats struct {
