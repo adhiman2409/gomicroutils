@@ -11,7 +11,7 @@ type ManualLeaveAllocation struct {
 	EmployeeId                      string             `bson:"employee_id"`
 	EmployeeName                    string             `bson:"employee_name"`
 	LeaveType                       string             `bson:"leave_type"`
-	AmmountOfLeave                  float32            `bson:"ammount_of_leave"`
+	AmountOfLeaves                  float32            `bson:"amount_of_leaves"`
 	AllocatedOn                     time.Time          `bson:"allocated_on"`
 	AllocatedById                   string             `bson:"allocated_by_id"`
 	AllocatedByName                 string             `bson:"allocated_by_name"`
