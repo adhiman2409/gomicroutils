@@ -71,6 +71,7 @@ const EMPLOYEE_COLLECTION_GEO_TRACKING_DAILY_REPORT = "employee-geo-tracking-dai
 const EMPLOYEE_COLLECTION_DAILY_ATN_OBJECT = "employee-daily-atn-object"
 const EMPLOYEE_COLLECTION_LEAVES = "employee-leaves"
 const EMPLOYEE_COLLECTION_LEAVE_ID_COUNTER = "employee-leave-id-counter"
+const EMPLOYEE_COLLECTION_MANUAL_LEAVES = "employee-manual-leaves"
 
 const EMPLOYEE_COLLECTION_LEAVE_STATS = "employee-leave-stats"
 const EMPLOYEE_COLLECTION_BATTERY_STATS = "employee-battery-stats"
@@ -808,6 +809,11 @@ func GetEmpLeavesCollection(client *mongo.Client, domain string) *mongo.Collecti
 func GetEmpLeaveIdCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(EMPLOYEE_COLLECTION_LEAVE_ID_COUNTER)
+}
+
+func GetEmpManualLeavesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_MANUAL_LEAVES)
 }
 
 func GetDocumentCollection(client *mongo.Client, domain string) *mongo.Collection {
