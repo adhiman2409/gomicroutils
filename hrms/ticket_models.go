@@ -185,6 +185,9 @@ type TicketApproval struct {
 	ApprovalForId    string             `bson:"approval_for_id"`
 	ApprovalForName  string             `bson:"approval_for_name"`
 	ApprovalForEmail string             `bson:"approval_for_email"`
+	ReporteeId       string             `bson:"reportee_id"`
+	ReporteeName     string             `bson:"reportee_name"`
+	ReporteeEmail    string             `bson:"reportee_email"`
 	Status           string             `bson:"status"`
 	Remarks          string             `bson:"remarks"`
 	ResolvedRemarks  string             `bson:"resolved_remarks"`
