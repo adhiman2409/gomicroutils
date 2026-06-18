@@ -69,14 +69,15 @@ type LeaveStats struct {
 }
 
 type LeaveAllocationInfo struct {
-	AllocationDate                  string  `bson:"allocation_date"`
-	Year                            string  `bson:"year"`
-	LeaveType                       string  `bson:"leave_type"`
-	AllocatedLeaves                 float32 `bson:"allocated_leaves"`
-	AvailableLeavesBeforeAllocation float32 `bson:"available_leaves_before_allocation"`
-	AvailableLeavesAfterAllocation  float32 `bson:"available_leaves_after_allocation"`
-	IsManualAllocation              bool    `bson:"is_manual_allocation"`
-	Remarks                         string  `bson:"remarks"`
+	AllocationDate                  string    `bson:"allocation_date"`
+	Year                            string    `bson:"year"`
+	LeaveType                       string    `bson:"leave_type"`
+	AllocatedLeaves                 float32   `bson:"allocated_leaves"`
+	AvailableLeavesBeforeAllocation float32   `bson:"available_leaves_before_allocation"`
+	AvailableLeavesAfterAllocation  float32   `bson:"available_leaves_after_allocation"`
+	IsManualAllocation              bool      `bson:"is_manual_allocation"`
+	Remarks                         string    `bson:"remarks"`
+	CreatedAt                       time.Time `bson:"created_at"`
 }
 
 type EmployeeLeaveStats struct {
