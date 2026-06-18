@@ -102,6 +102,7 @@ type Ticket struct {
 	IsLocked                       bool               `bson:"is_locked"`
 	Country                        string             `bson:"country"`
 	TimeZone                       string             `bson:"time_zone"`
+	Timeline                       []Comment          `bson:"timeline"`
 	CreatedAt                      time.Time          `bson:"created_at"`
 	UpdatedAt                      time.Time          `bson:"updated_at"`
 }
