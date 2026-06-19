@@ -103,6 +103,7 @@ type Ticket struct {
 	Country                        string             `bson:"country"`
 	TimeZone                       string             `bson:"time_zone"`
 	Timeline                       []Comment          `bson:"timeline"`
+	Watchers                       []EmployeeRef      `bson:"watchers"`
 	CreatedAt                      time.Time          `bson:"created_at"`
 	UpdatedAt                      time.Time          `bson:"updated_at"`
 }
