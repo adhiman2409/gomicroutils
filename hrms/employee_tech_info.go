@@ -452,6 +452,7 @@ type EmployeeTechInfo struct {
 	Separations               []SeparationInfo    `bson:"separations"`
 	FNFDetails                FNFDetails          `bson:"fnf_details"`
 	PIPDetails                PIPDetails          `bson:"pip_details"`
+	PIPTimeline               []PIPDetails        `bson:"pip_timeline"`
 	NoticePeriodDetails       NoticePeriodDetails `bson:"notice_period_details"`
 	PassportDetails           PassportDetails     `bson:"passport_details"`
 	IsSeparationInfoLocked    bool                `bson:"is_separation_info_locked"`
