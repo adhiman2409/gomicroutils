@@ -54,6 +54,7 @@ type EmpPersonalInfo struct {
 	BloodGroup           string             `bson:"blood_group"`
 	PhoneNumber          string             `bson:"phone_number"`
 	EmergencyNumber      string             `bson:"emergency_number"`
+	EmergencyNumberTwo   string             `bson:"emergency_number_two"`
 	PersonalEmail        string             `bson:"email_id"`
 	PAN                  string             `bson:"pan"`
 	AadharNumber         string             `bson:"aadhar_number"`
