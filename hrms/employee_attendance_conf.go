@@ -33,6 +33,7 @@ type EmpAttendanceConf struct {
 	CaptureCheckInLocation           bool                  `bson:"capture_check_in_location"`
 	EnforceLocationCheckIn           bool                  `bson:"enforce_location_check_in"`
 	EnforceLocationCheckOut          bool                  `bson:"enforce_location_check_out"`
+	EnforceImageCaptureWhileCheckIn  bool                  `bson:"enforce_image_capture_while_check_in"`
 	EnforceAttendanceSource          bool                  `bson:"enforce_attendance_source"`
 	IsDeviceMonitoringEnabled        bool                  `bson:"is_device_monitoring_enabled"`
 	IsScreenshotEnabled              bool                  `bson:"is_screenshot_enabled"`
