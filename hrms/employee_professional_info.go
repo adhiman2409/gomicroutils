@@ -51,6 +51,15 @@ type EmpProfessionalInfo struct {
 	PIPOn                             time.Time          `bson:"pip_on"`
 	NoticePeriodOn                    time.Time          `bson:"notice_period_on"`
 	InactiveOn                        time.Time          `bson:"inactive_on"`
+	DepartmentTimeline                []DepartmentRecord  `bson:"department_timeline"`
+	DesignationTimeline               []DesignationRecord `bson:"designation_timeline"`
+	OfficeTimeline                    []OfficeRecord      `bson:"office_timeline"`
+	WorkLocationTimeline              []WorkLocationRecord `bson:"work_location_timeline"`
+	PromotionDueDate                  time.Time           `bson:"promotion_due_date"`
+	TransferDueDate                   time.Time           `bson:"transfer_due_date"`
+	IsOnDeputation                    bool                `bson:"is_on_deputation"`
+	ActiveDeputation                  DeputationRecord    `bson:"active_deputation"`
+	DeputationTimeline                []DeputationRecord  `bson:"deputation_timeline"`
 	CreatedBy                         string             `bson:"created_by"`
 	CreatedAt                         time.Time          `bson:"created_at"`
 	UpdatedAt                         time.Time          `bson:"updated_at"`
