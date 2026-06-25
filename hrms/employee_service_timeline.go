@@ -17,6 +17,7 @@ type DepartmentRecord struct {
 type DesignationRecord struct {
 	Designation string    `bson:"designation"`
 	StartDate   time.Time `bson:"start_date"`
+	IsPromoted  bool      `bson:"is_promoted"`
 	EndDate     time.Time `bson:"end_date"`
 	Remarks     string    `bson:"remarks"`
 	ChangedBy   string    `bson:"changed_by"`
@@ -25,25 +26,27 @@ type DesignationRecord struct {
 // OfficeRecord tracks one office posting with geo-coordinates.
 // EndDate zero value means the posting is currently active.
 type OfficeRecord struct {
-	OfficeName string    `bson:"office_name"`
-	Lat        float64   `bson:"lat"`
-	Lng        float64   `bson:"lng"`
-	StartDate  time.Time `bson:"start_date"`
-	EndDate    time.Time `bson:"end_date"`
-	Remarks    string    `bson:"remarks"`
-	ChangedBy  string    `bson:"changed_by"`
+	OfficeName                      string    `bson:"office_name"`
+	Lat                             float64   `bson:"lat"`
+	Lng                             float64   `bson:"lng"`
+	IsTransferedToNewOfficeLocation bool      `bson:"is_transfered_to_new_office_location"`
+	StartDate                       time.Time `bson:"start_date"`
+	EndDate                         time.Time `bson:"end_date"`
+	Remarks                         string    `bson:"remarks"`
+	ChangedBy                       string    `bson:"changed_by"`
 }
 
 // WorkLocationRecord tracks one work location with geo-coordinates.
 // EndDate zero value means the location is currently active.
 type WorkLocationRecord struct {
-	LocationName string    `bson:"location_name"`
-	Lat          float64   `bson:"lat"`
-	Lng          float64   `bson:"lng"`
-	StartDate    time.Time `bson:"start_date"`
-	EndDate      time.Time `bson:"end_date"`
-	Remarks      string    `bson:"remarks"`
-	ChangedBy    string    `bson:"changed_by"`
+	LocationName                  string    `bson:"location_name"`
+	Lat                           float64   `bson:"lat"`
+	Lng                           float64   `bson:"lng"`
+	StartDate                     time.Time `bson:"start_date"`
+	IsTransferedToNewWorkLocation bool      `bson:"is_transfered_to_new_work_location"`
+	EndDate                       time.Time `bson:"end_date"`
+	Remarks                       string    `bson:"remarks"`
+	ChangedBy                     string    `bson:"changed_by"`
 }
 
 // DeputationRecord captures one deputation period to another department, office, or work location.
