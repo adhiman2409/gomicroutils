@@ -26,9 +26,13 @@ func (a *StorageConnection) DownloadSalarySlip(w http.ResponseWriter, employeeId
 	fileName := "Salary_Slip_" + employeeId + "_" + year + "_" + month + ".pdf"
 
 	filepathwithname := "SalarySlips/" + employeeId + "/" + year + "/" + fileName
-	if month == "2025" || month == "2026" {
+	if month == "2025" {
 		fileName = "Form_16_" + employeeId + "_2024_2025.pdf"
 		filepathwithname = "SalarySlips/" + employeeId + "/2025/" + fileName
+	}
+	if month == "2026" {
+		fileName = "Form_16_" + employeeId + "_2025_2026.pdf"
+		filepathwithname = "SalarySlips/" + employeeId + "/2026/" + fileName
 	}
 
 	fmt.Println("filepathwithname ", filepathwithname)
