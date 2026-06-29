@@ -195,5 +195,6 @@ type DailyBreakStat struct {
 	StartTime      time.Time `bson:"start_time"`
 	EndTime        time.Time `bson:"end_time"`
 	Remarks        string    `bson:"remarks"`
+	Source         string    `bson:"source"`
 	DurationInMins int64     `bson:"duration_in_mins"`
 }
