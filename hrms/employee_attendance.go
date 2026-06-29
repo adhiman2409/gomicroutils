@@ -197,5 +197,9 @@ type DailyBreakStat struct {
 	Remarks        string    `bson:"remarks"`
 	StartSource    string    `bson:"start_source"`
 	EndSource      string    `bson:"end_source"`
+	StartBreakLat  float64   `bson:"start_break_lat"`
+	StartBreakLng  float64   `bson:"start_break_lng"`
+	EndBreakLat    float64   `bson:"end_break_lat"`
+	EndBreakLng    float64   `bson:"end_break_lng"`
 	DurationInMins int64     `bson:"duration_in_mins"`
 }
