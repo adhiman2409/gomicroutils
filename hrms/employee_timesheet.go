@@ -58,6 +58,7 @@ type TimeSheet struct {
 	LastCheckOutTime     time.Time          `bson:"last_check_out_time" json:"last_check_out_time"`
 	RequiredWorkingHours float64            `bson:"required_working_hours" json:"required_working_hours"`
 	TotalWorkingHours    float64            `bson:"total_working_hours" json:"total_working_hours"`
+	TotalBreakHours      float64            `bson:"total_break_hours" json:"total_break_hours"`
 	ClaimedWorkingHours  float64            `bson:"claimed_working_hours" json:"claimed_working_hours"`
 	ApprovedWorkingHours float64            `bson:"approved_working_hours" json:"approved_working_hours"`
 	IsWorkingDay         bool               `bson:"is_working_day" json:"is_working_day"`
