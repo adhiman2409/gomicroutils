@@ -104,8 +104,17 @@ type Ticket struct {
 	TimeZone                       string             `bson:"time_zone"`
 	Timeline                       []Comment          `bson:"timeline"`
 	Watchers                       []EmployeeRef      `bson:"watchers"`
+	FieldResponses                 []FieldResponse    `bson:"field_responses,omitempty"`
 	CreatedAt                      time.Time          `bson:"created_at"`
 	UpdatedAt                      time.Time          `bson:"updated_at"`
+}
+
+type FieldResponse struct {
+	FieldId   string   `bson:"field_id"`
+	Name      string   `bson:"name"`
+	InputType string   `bson:"input_type"`
+	Value     string   `bson:"value"`
+	Values    []string `bson:"values,omitempty"`
 }
 
 type Comment struct {
