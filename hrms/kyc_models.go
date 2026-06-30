@@ -48,9 +48,6 @@ type LeadInfo struct {
 	RecycleCount            int                `bson:"recycle_count"`
 	LastRecycledAt          time.Time          `bson:"last_recycled_at"`
 	Timeline                []LeadRemark       `bson:"timeline,omitempty"`
-	LeadId                  string             `bson:"lead_id"`
-	LeadName                string             `bson:"lead_name"`
-	AddedInLeadValue        bool               `bson:"added_in_lead_value"`
 	Timezone                string             `bson:"timezone,omitempty"`
 	CreatedBy               string             `bson:"created_by"`
 	CreatedAt               time.Time          `bson:"created_at"`
@@ -246,6 +243,9 @@ type InvoiceInfo struct {
 	VendorName           string              `bson:"vendor_name"`
 	BankDetails          []VendorBankDetails `bson:"bank_details,omitempty"`
 	LastReminderSentOn   string              `bson:"last_reminder_sent_on"`
+	LeadId               string              `bson:"lead_id"`
+	LeadName             string              `bson:"lead_name"`
+	AddedInLeadValue     bool                `bson:"added_in_lead_value"`
 	CreatedAt            time.Time           `bson:"created_at"`
 	UpdatedAt            time.Time           `bson:"updated_at"`
 }
