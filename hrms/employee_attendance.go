@@ -167,6 +167,7 @@ type EmployeeAttendance struct {
 	IsExpired                     bool               `bson:"is_expired"`
 	IsRegularized                 bool               `bson:"is_regularized"`
 	RegularizedOn                 string             `bson:"regularized_on"`
+	RegularizedAt                 time.Time          `bson:"regularized_at"`
 	RegularizedBy                 string             `bson:"regularized_by"`
 	Remarks                       string             `bson:"remarks"`
 	Country                       string             `bson:"country"`
