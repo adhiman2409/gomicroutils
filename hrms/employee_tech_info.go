@@ -455,9 +455,31 @@ type EmployeeTechInfo struct {
 	PIPTimeline               []PIPDetails          `bson:"pip_timeline"`
 	NoticePeriodDetails       NoticePeriodDetails   `bson:"notice_period_details"`
 	NoticePeriodTimeLine      []NoticePeriodDetails `bson:"notice_period_timeline,omitempty"`
+	SeparationDetails         SeparationDetails     `bson:"separation_details"`
+	SeparationDetailsTimeline []SeparationDetails   `bson:"separation_details_timeline,omitempty"`
 	PassportDetails           PassportDetails       `bson:"passport_details"`
 	IsSeparationInfoLocked    bool                  `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked    bool                  `bson:"is_profile_editing_locked"`
+}
+
+type SeparationDetails struct {
+	ResignationDate                  time.Time            `bson:"resignation_date"`
+	ResignationStatus                string               `bson:"resignation_status"`
+	EmployeeRemarks                  string               `bson:"employee_remarks"`
+	ReportingManagerRemarks          string               `bson:"reporting_manager_remarks"`
+	HRRemarks                        string               `bson:"hr_remarks"`
+	PrimaryApproverId                string               `bson:"primary_approver_id"`
+	PrimaryApproverName              string               `bson:"primary_approver_name"`
+	IsAcceptedByPrimaryApprover      bool                 `bson:"is_accepted_by_primary_approver"`
+	PrimaryApproverAcceptanceDate    time.Time            `bson:"primary_approver_acceptance_date"`
+	SeparationDocuments              []SeparationDocument `bson:"separation_documents"`
+	RetentionRequestDate             time.Time            `bson:"resignation_request_date"`
+	EmployeeRetentionRemarks         string               `bson:"employee_retention_remarks"`
+	ReportingManagerRetentionRemarks string               `bson:"reporting_manager_retention_remarks"`
+	HRRetentionRemarks               string               `bson:"hr_retention_remarks"`
+	IsRetentionAcceptedByHR          bool                 `bson:"is_retention_accepted_by_hr"`
+	RetentionAcceptanceDate          time.Time            `bson:"retention_acceptance_date"`
+	ExitDate                         time.Time            `bson:"exit_date"`
 }
 
 type EmployeeTechInfoOld struct {
