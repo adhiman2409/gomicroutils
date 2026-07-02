@@ -46,14 +46,15 @@ func InputTypeFromString(s string) InputType {
 type ResignationState int
 
 const (
-	ResignationSubmitted ResignationState = iota + 1
+	RegularEmployment ResignationState = iota + 1
+	ResignationSubmitted
 	ResignationAccepted
 	ResignationRejected
 	ResignationRevoked
 )
 
 func (r ResignationState) String() string {
-	return [...]string{"ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked"}[r-1]
+	return [...]string{"RegularEmployment", "ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked"}[r-1]
 }
 
 func (r ResignationState) EnumIndex() int {
@@ -61,7 +62,7 @@ func (r ResignationState) EnumIndex() int {
 }
 
 func GetAllResignationState() []string {
-	return []string{"ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked"}
+	return []string{"RegularEmployment", "ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked"}
 }
 
 func ResignationStateFromString(s string) ResignationState {
@@ -75,6 +76,6 @@ func ResignationStateFromString(s string) ResignationState {
 	case "ResignationRevoked":
 		return ResignationRevoked
 	default:
-		return ResignationSubmitted
+		return RegularEmployment
 	}
 }
