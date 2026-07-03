@@ -463,6 +463,9 @@ type EmployeeTechInfo struct {
 }
 
 type SeparationDetails struct {
+	EmployeeId                       string               `bson:"employee_id"`
+	EmployeeName                     string               `bson:"employee_name"`
+	EmployeeEmail                    string               `bson:"employee_email"`
 	ResignationDate                  time.Time            `bson:"resignation_date"`
 	ResignationState                 ResignationState     `bson:"resignation_state"`
 	EmployeeRemarks                  string               `bson:"employee_remarks"`
@@ -470,6 +473,10 @@ type SeparationDetails struct {
 	HRRemarks                        string               `bson:"hr_remarks"`
 	PrimaryApproverId                string               `bson:"primary_approver_id"`
 	PrimaryApproverName              string               `bson:"primary_approver_name"`
+	PrimaryApproverEmail             string               `bson:"primary_approver_email"`
+	ReportingManagerId               string               `bson:"reporting_manager_id"`
+	ReportingManagerName             string               `bson:"reporting_manager_name"`
+	ReportingManagerEmail            string               `bson:"reporting_manager_email"`
 	IsAcceptedByPrimaryApprover      bool                 `bson:"is_accepted_by_primary_approver"`
 	PrimaryApproverAcceptanceDate    time.Time            `bson:"primary_approver_acceptance_date"`
 	RetentionRequestDate             time.Time            `bson:"resignation_request_date"`
