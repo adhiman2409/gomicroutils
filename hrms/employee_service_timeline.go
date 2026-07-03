@@ -66,3 +66,17 @@ type DeputationRecord struct {
 	OrderedBy    string    `bson:"ordered_by"`
 	Remarks      string    `bson:"remarks"`
 }
+
+type EmploymentRecord struct {
+	EmployementStatus string    `bson:"employment_status"`
+	StartDate         time.Time `bson:"start_date"`
+	EndDate           time.Time `bson:"end_date"`
+	Remarks           string    `bson:"remarks"`
+}
+
+type ProjectRecord struct {
+	ProjectName string    `bson:"project_name"`
+	StartDate   time.Time `bson:"start_date"`
+	EndDate     time.Time `bson:"end_date"`
+	Remarks     string    `bson:"remarks"`
+}
