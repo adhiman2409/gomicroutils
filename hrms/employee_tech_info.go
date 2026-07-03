@@ -478,6 +478,7 @@ type SeparationDetails struct {
 	ReportingManagerName             string               `bson:"reporting_manager_name"`
 	ReportingManagerEmail            string               `bson:"reporting_manager_email"`
 	IsAcceptedByPrimaryApprover      bool                 `bson:"is_accepted_by_primary_approver"`
+	IsResignationRevokeEnabled       bool                 `bson:"is_resignation_revoke_enabled"`
 	PrimaryApproverAcceptanceDate    time.Time            `bson:"primary_approver_acceptance_date"`
 	RetentionRequestDate             time.Time            `bson:"resignation_request_date"`
 	EmployeeRetentionRemarks         string               `bson:"employee_retention_remarks"`
