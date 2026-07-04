@@ -51,10 +51,13 @@ const (
 	ResignationAccepted
 	ResignationRejected
 	ResignationRevoked
+	ServingNoticePeriod
+	ServingPIP
+	Exited
 )
 
 func (r ResignationState) String() string {
-	return [...]string{"RegularEmployment", "ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked"}[r]
+	return [...]string{"RegularEmployment", "ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked", "ServingNoticePeriod", "ServingPIP", "Exited"}[r]
 }
 
 func (r ResignationState) EnumIndex() int {
@@ -62,7 +65,7 @@ func (r ResignationState) EnumIndex() int {
 }
 
 func GetAllResignationState() []string {
-	return []string{"RegularEmployment", "ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked"}
+	return []string{"RegularEmployment", "ResignationSubmitted", "ResignationAccepted", "ResignationRejected", "ResignationRevoked", "ServingNoticePeriod", "ServingPIP", "Exited"}
 }
 
 func ResignationStateFromString(s string) ResignationState {
@@ -75,6 +78,12 @@ func ResignationStateFromString(s string) ResignationState {
 		return ResignationRejected
 	case "ResignationRevoked":
 		return ResignationRevoked
+	case "ServingNoticePeriod":
+		return ServingNoticePeriod
+	case "ServingPIP":
+		return ServingPIP
+	case "Exited":
+		return Exited
 	default:
 		return RegularEmployment
 	}
