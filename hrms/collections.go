@@ -243,6 +243,12 @@ const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
 
 const TENANT_LEAVES_CONFIG_COLLECTION = "tenant-leaves-config"
 
+const EMPLOYEE_LEAVE_REVERT_REQUEST_COLLECTION = "employee-leave-revert-request"
+
+func GetEmployeeLeaveRevertRequestCollection(client *mongo.Client, domain string) *mongo.Collection {
+	return client.Database(strings.ReplaceAll(domain, ".", "_")).Collection(EMPLOYEE_LEAVE_REVERT_REQUEST_COLLECTION)
+}
+
 func GetTenantLeavesConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
 	return db.Collection(TENANT_LEAVES_CONFIG_COLLECTION)

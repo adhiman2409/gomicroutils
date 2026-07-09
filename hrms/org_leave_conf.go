@@ -39,3 +39,28 @@ type OrgLeaveConf struct {
 	CreatedAt                          time.Time          `bson:"created_at"`
 	UpdatedAt                          time.Time          `bson:"updated_at"`
 }
+
+type LeaveRevertRequest struct {
+	ID              primitive.ObjectID `bson:"_id,omitempty"`
+	LeaveObjId      string             `bson:"leave_obj_id"`
+	LeaveHumanId    string             `bson:"leave_human_id"`
+	EmployeeId      string             `bson:"employee_id"`
+	EmployeeName    string             `bson:"employee_name"`
+	EmployeeEmail   string             `bson:"employee_email"`
+	LeaveType       string             `bson:"leave_type"`
+	LeaveStartDate  string             `bson:"leave_start_date"`
+	LeaveEndDate    string             `bson:"leave_end_date"`
+	AmountOfLeaves  float32            `bson:"amount_of_leaves"`
+	InitiatorId     string             `bson:"initiator_id"`
+	InitiatorName   string             `bson:"initiator_name"`
+	InitiatorRole   string             `bson:"initiator_role"`
+	ApproverId      string             `bson:"approver_id"`
+	ApproverName    string             `bson:"approver_name"`
+	ApproverEmail   string             `bson:"approver_email"`
+	Reason          string             `bson:"reason"`
+	Status          string             `bson:"status"`
+	DecisionRemarks string             `bson:"decision_remarks"`
+	CreatedAt       time.Time          `bson:"created_at"`
+	UpdatedAt       time.Time          `bson:"updated_at"`
+	DecidedAt       time.Time          `bson:"decided_at"`
+}
