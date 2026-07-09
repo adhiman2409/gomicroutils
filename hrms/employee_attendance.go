@@ -181,15 +181,17 @@ type DailyAttendanceObject struct {
 }
 
 type DailyCheckInStat struct {
-	CheckInTime    string  `bson:"check_in_time"`
-	CheckOutTime   string  `bson:"check_out_time"`
-	CheckInSource  string  `bson:"check_in_source"`
-	CheckOutSource string  `bson:"check_out_source"`
-	CheckInLat     float64 `bson:"check_in_lat"`
-	CheckInLng     float64 `bson:"check_in_lng"`
-	CheckOutLat    float64 `bson:"check_out_lat"`
-	CheckOutLng    float64 `bson:"check_out_lng"`
-	WorkingHours   float32 `bson:"working_hours"`
+	CheckInTime     string    `bson:"check_in_time"`
+	CheckInTimeUTC  time.Time `bson:"check_in_time_utc"`
+	CheckOutTime    string    `bson:"check_out_time"`
+	CheckOutTimeUTC time.Time `bson:"check_out_time_utc"`
+	CheckInSource   string    `bson:"check_in_source"`
+	CheckOutSource  string    `bson:"check_out_source"`
+	CheckInLat      float64   `bson:"check_in_lat"`
+	CheckInLng      float64   `bson:"check_in_lng"`
+	CheckOutLat     float64   `bson:"check_out_lat"`
+	CheckOutLng     float64   `bson:"check_out_lng"`
+	WorkingHours    float32   `bson:"working_hours"`
 }
 
 type DailyBreakStat struct {

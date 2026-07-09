@@ -241,6 +241,13 @@ const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
 
 const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
 
+const TENANT_LEAVES_CONFIG_COLLECTION = "tenant-leaves-config"
+
+func GetTenantLeavesConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(TENANT_LEAVES_CONFIG_COLLECTION)
+}
+
 func GetTicketApprovalsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	dbName := strings.Replace(domain, ".", "_", -1)
 	return client.Database(dbName).Collection(TICKET_COLLECTION_TICKET_APPROVALS)
