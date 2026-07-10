@@ -11,10 +11,12 @@ const (
 	TemporaryOnHold
 	NeedRevision
 	Cancelled
+	WaitingVerification
+	Verified
 )
 
 func (r SalaryStatus) String() string {
-	return [...]string{"Pending", "WaitingApproval", "Approved", "Processed", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled"}[r-1]
+	return [...]string{"Pending", "WaitingApproval", "Approved", "Processed", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled", "WaitingVerification", "Verified"}[r-1]
 }
 
 func (r SalaryStatus) EnumIndex() int {
@@ -22,7 +24,7 @@ func (r SalaryStatus) EnumIndex() int {
 }
 
 func GetAllSalaryStatus() []string {
-	return []string{"Pending", "WaitingApproval", "Approved", "Processed", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled"}
+	return []string{"Pending", "WaitingApproval", "Approved", "Processed", "Paid", "TemporaryOnHold", "NeedRevision", "Cancelled", "WaitingVerification", "Verified"}
 }
 
 func SalaryStatusFromString(s string) SalaryStatus {
@@ -41,6 +43,10 @@ func SalaryStatusFromString(s string) SalaryStatus {
 		return NeedRevision
 	case "Cancelled":
 		return Cancelled
+	case "WaitingVerification":
+		return WaitingVerification
+	case "Verified":
+		return Verified
 	default:
 		return Pending
 	}
