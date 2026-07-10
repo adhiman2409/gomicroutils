@@ -6,6 +6,17 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type SalaryProcessingConfig struct {
+	Id               primitive.ObjectID `bson:"_id"`
+	Country          string             `bson:"country"`
+	State            string             `bson:"state"`
+	VerifierId       string             `bson:"verifier_id"`
+	VerifierName     string             `bson:"verifier_name"`
+	ApproverId       string             `bson:"approver_id"`
+	ApproverName     string             `bson:"approver_name"`
+	DefaultTaxRegime string             `bson:"default_tax_regime"`
+}
+
 type SalaryProcessingRequest struct {
 	Id                                primitive.ObjectID            `bson:"_id"`
 	RequestId                         string                        `bson:"request_id"`
