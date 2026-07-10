@@ -68,3 +68,22 @@ type Expense struct {
 	CreatedAt               time.Time          `bson:"created_at"`
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }
+
+type TenantReimbursementConfig struct {
+	ApproverRules       ReimbursementApproverRules `bson:"approver_rules"`
+	Policy              ReimbursementPolicy        `bson:"policy"`
+	FinanceApproverId   string                     `bson:"finance_approver_id"`
+	FinanceApproverName string                     `bson:"finance_approver_name"`
+}
+
+type ReimbursementApproverRules struct {
+	FixedPrimaryEID    string `bson:"fixed_primary_eid"`
+	FixedPrimaryName   string `bson:"fixed_primary_name"`
+	FixedSecondaryEID  string `bson:"fixed_secondary_eid"`
+	FixedSecondaryName string `bson:"fixed_secondary_name"`
+}
+
+type ReimbursementPolicy struct {
+	BothApprovalThreshold float32 `bson:"both_approval_threshold"`
+	DisableBothApproval   bool    `bson:"disable_both_approval"`
+}

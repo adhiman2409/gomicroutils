@@ -251,6 +251,13 @@ const EMPLOYEE_COLLECTION_APP_PERMISSIONS = "employee-app-permissions"
 
 const TENANT_ATTENDANCE_CONFIG_COLLECTION = "tenant-attendance-config"
 
+const TENANT_REIMBURSEMENT_CONFIG_COLLECTION = "tenant-reimbursement-config"
+
+func GetTenantReimbursementConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(TENANT_REIMBURSEMENT_CONFIG_COLLECTION)
+}
+
 func GetTenantAttendanceConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(TENANT_ATTENDANCE_CONFIG_COLLECTION)
