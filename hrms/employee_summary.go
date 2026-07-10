@@ -52,3 +52,13 @@ type EmployeeSummary struct {
 	CreatedAt                         time.Time          `bson:"created_at"`
 	UpdatedAt                         time.Time          `bson:"updated_at"`
 }
+
+type EmployeeAppPermission struct {
+	EmployeeID                    string    `bson:"employee_id"`
+	EmployeeStatus                string    `bson:"employee_status"`
+	DeviceId                      string    `bson:"device_id"`
+	IsCameraPermissionAvailable   bool      `bson:"is_camera_permission_available"`
+	IsLocationPermissionAvailable bool      `bson:"is_location_permission_available"`
+	CreatedAt                     time.Time `bson:"created_at"`
+	UpdatedAt                     time.Time `bson:"updated_at"`
+}
