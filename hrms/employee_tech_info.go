@@ -514,3 +514,10 @@ type EmployeeTechInfoOld struct {
 	IsSeparationInfoLocked    bool               `bson:"is_separation_info_locked"`
 	IsProfileEditingLocked    bool               `bson:"is_profile_editing_locked"`
 }
+
+type TenantResignationConfig struct {
+	ID                primitive.ObjectID `bson:"_id"`
+	Domain            string             `bson:"domain,omitempty"`
+	PrimaryApproverId string             `bson:"primary_approver_id"`
+	UpdatedAt         time.Time          `bson:"updated_at"`
+}

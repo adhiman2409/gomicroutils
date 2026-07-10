@@ -245,6 +245,27 @@ const TENANT_LEAVES_CONFIG_COLLECTION = "tenant-leaves-config"
 
 const EMPLOYEE_LEAVE_REVERT_REQUEST_COLLECTION = "employee-leave-revert-request"
 
+const TENANT_RESIGNATION_CONFIG_COLLECTION = "tenant-resignation-config"
+
+const EMPLOYEE_COLLECTION_APP_PERMISSIONS = "employee-app-permissions"
+
+const TENANT_ATTENDANCE_CONFIG_COLLECTION = "tenant-attendance-config"
+
+func GetTenantAttendanceConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TENANT_ATTENDANCE_CONFIG_COLLECTION)
+}
+
+func GetEmployeeAppPermissionsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(EMPLOYEE_COLLECTION_APP_PERMISSIONS)
+}
+
+func GetTenantResignationConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TENANT_RESIGNATION_CONFIG_COLLECTION)
+}
+
 func GetEmployeeLeaveRevertRequestCollection(client *mongo.Client, domain string) *mongo.Collection {
 	return client.Database(strings.ReplaceAll(domain, ".", "_")).Collection(EMPLOYEE_LEAVE_REVERT_REQUEST_COLLECTION)
 }

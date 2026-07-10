@@ -206,3 +206,11 @@ type DailyBreakStat struct {
 	EndBreakLng    float64   `bson:"end_break_lng"`
 	DurationInMins int64     `bson:"duration_in_mins"`
 }
+
+type TenantAttendanceConfig struct {
+	ID                      primitive.ObjectID `bson:"_id"`
+	Domain                  string             `bson:"domain"`
+	RegularizationLimit     int                `bson:"regularization_limit"`
+	RegularizationManagerId string             `bson:"regularization_manager_id"`
+	UpdatedAt               time.Time          `bson:"updated_at"`
+}
