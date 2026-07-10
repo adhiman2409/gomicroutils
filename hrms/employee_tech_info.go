@@ -488,6 +488,7 @@ type SeparationDetails struct {
 	RetentionAcceptanceDate          time.Time            `bson:"retention_acceptance_date"`
 	ExitDate                         time.Time            `bson:"exit_date"`
 	SeparationDocuments              []SeparationDocument `bson:"separation_documents"`
+	HRSeparationDocuments            []SeparationDocument `bson:"hr_separation_documents"`
 }
 
 type EmployeeTechInfoOld struct {
