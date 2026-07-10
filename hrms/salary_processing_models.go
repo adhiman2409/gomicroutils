@@ -32,8 +32,12 @@ type SalaryProcessingRequest struct {
 	RequesterName                     string                        `bson:"requested_by_name"`
 	RequesterRemarks                  string                        `bson:"requester_remarks"`
 	RequestedAt                       time.Time                     `bson:"requested_at"`
-	ApproverId                        string                        `bson:"approver_id"`
 	RequestStatus                     string                        `bson:"request_status"`
+	VerifierId                        string                        `bson:"verifier_id"`
+	VerifierName                      string                        `bson:"verifier_name"`
+	VerifierRemarks                   string                        `bson:"verifier_remarks"`
+	VerifiedAt                        time.Time                     `bson:"verified_at"`
+	ApproverId                        string                        `bson:"approver_id"`
 	ApproverName                      string                        `bson:"approver_name"`
 	ApproverRemarks                   string                        `bson:"approver_remarks"`
 	ApprovedAt                        time.Time                     `bson:"approved_at"`
