@@ -516,8 +516,9 @@ type EmployeeTechInfoOld struct {
 }
 
 type TenantResignationConfig struct {
-	ID                primitive.ObjectID `bson:"_id"`
-	Domain            string             `bson:"domain,omitempty"`
-	PrimaryApproverId string             `bson:"primary_approver_id"`
-	UpdatedAt         time.Time          `bson:"updated_at"`
+	ID                        primitive.ObjectID `bson:"_id"`
+	Domain                    string             `bson:"domain,omitempty"`
+	PrimaryApproverId         string             `bson:"primary_approver_id"`
+	DefaultNoticePeriodInDays int                `bson:"default_notice_period_in_days"`
+	UpdatedAt                 time.Time          `bson:"updated_at"`
 }
