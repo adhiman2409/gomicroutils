@@ -486,6 +486,7 @@ type SeparationDetails struct {
 	HRRetentionRemarks               string               `bson:"hr_retention_remarks"`
 	IsRetentionAcceptedByHR          bool                 `bson:"is_retention_accepted_by_hr"`
 	RetentionAcceptanceDate          time.Time            `bson:"retention_acceptance_date"`
+	DefaultNoticePeriodInDays        int                  `bson:"default_notice_period_in_days"`
 	ExitDate                         time.Time            `bson:"exit_date"`
 	SeparationDocuments              []SeparationDocument `bson:"separation_documents"`
 	HRSeparationDocuments            []SeparationDocument `bson:"hr_separation_documents"`
