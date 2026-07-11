@@ -21,6 +21,8 @@ type SalaryProcessingRequest struct {
 	Id                                primitive.ObjectID            `bson:"_id"`
 	RequestId                         string                        `bson:"request_id"`
 	FinancialYear                     string                        `bson:"financial_year"`
+	Country                           string                        `bson:"country"`
+	State                             string                        `bson:"state"`
 	Month                             string                        `bson:"month"`
 	NumberOfDaysInMonth               int                           `bson:"number_of_days_in_month"`
 	NumberOfPayableDays               int                           `bson:"number_of_payable_days"`
@@ -48,10 +50,12 @@ type SalaryProcessingRequest struct {
 	VerifierName                      string                        `bson:"verifier_name"`
 	VerifierRemarks                   string                        `bson:"verifier_remarks"`
 	VerifiedAt                        time.Time                     `bson:"verified_at"`
+	IsVerified                        bool                          `bson:"is_verified"`
 	ApproverId                        string                        `bson:"approver_id"`
 	ApproverName                      string                        `bson:"approver_name"`
 	ApproverRemarks                   string                        `bson:"approver_remarks"`
 	ApprovedAt                        time.Time                     `bson:"approved_at"`
+	IsApproved                        bool                          `bson:"is_approved"`
 	PaidAt                            time.Time                     `bson:"paid_at"`
 	CreatedAt                         time.Time                     `bson:"created_at"`
 	CreatedBy                         string                        `bson:"created_by"`
