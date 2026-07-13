@@ -243,6 +243,7 @@ const MAILER_COLLECTION_MAIL_TEMPLATES = "mailer-mail-templates"
 const EMPLOYEE_DOCUMENT_OTP_COLLECTION = "employee-document-otp"
 
 const TENANT_LEAVES_CONFIG_COLLECTION = "tenant-leaves-config"
+const TENANT_WFH_CONFIG_COLLECTION = "tenant-wfh-config"
 
 const EMPLOYEE_LEAVE_REVERT_REQUEST_COLLECTION = "employee-leave-revert-request"
 
@@ -281,6 +282,11 @@ func GetEmployeeLeaveRevertRequestCollection(client *mongo.Client, domain string
 func GetTenantLeavesConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
 	return db.Collection(TENANT_LEAVES_CONFIG_COLLECTION)
+}
+
+func GetTenantWFHConfigCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.ReplaceAll(domain, ".", "_"))
+	return db.Collection(TENANT_WFH_CONFIG_COLLECTION)
 }
 
 func GetTicketApprovalsCollection(client *mongo.Client, domain string) *mongo.Collection {
