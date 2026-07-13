@@ -208,10 +208,11 @@ type DailyBreakStat struct {
 }
 
 type TenantAttendanceConfig struct {
-	ID                      primitive.ObjectID `bson:"_id"`
-	Domain                  string             `bson:"domain"`
-	RegularizationLimit     int                `bson:"regularization_limit"`
-	DefaultApproverRole     string             `bson:"default_approver_role"`
-	RegularizationManagerId string             `bson:"regularization_manager_id"`
-	UpdatedAt               time.Time          `bson:"updated_at"`
+	ID                        primitive.ObjectID `bson:"_id"`
+	Domain                    string             `bson:"domain"`
+	RegularizationLimit       int                `bson:"regularization_limit"`
+	DefaultApproverRole       string             `bson:"default_approver_role"`
+	RegularizationManagerId   string             `bson:"regularization_manager_id"`
+	RegularizationManagerName string             `bson:"regularization_manager_name"`
+	UpdatedAt                 time.Time          `bson:"updated_at"`
 }
