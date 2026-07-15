@@ -7,14 +7,15 @@ import (
 )
 
 type SalaryProcessingConfig struct {
-	Id               primitive.ObjectID `bson:"_id"`
-	Country          string             `bson:"country"`
-	State            string             `bson:"state"`
-	VerifierId       string             `bson:"verifier_id"`
-	VerifierName     string             `bson:"verifier_name"`
-	ApproverId       string             `bson:"approver_id"`
-	ApproverName     string             `bson:"approver_name"`
-	DefaultTaxRegime string             `bson:"default_tax_regime"`
+	Id                      primitive.ObjectID `bson:"_id"`
+	Country                 string             `bson:"country"`
+	State                   string             `bson:"state"`
+	VerifierId              string             `bson:"verifier_id"`
+	VerifierName            string             `bson:"verifier_name"`
+	ApproverId              string             `bson:"approver_id"`
+	ApproverName            string             `bson:"approver_name"`
+	DefaultTaxRegime        string             `bson:"default_tax_regime"`
+	FinancialYearStartMonth string             `bson:"financial_year_start_month"`
 }
 
 type SalaryProcessingRequest struct {
