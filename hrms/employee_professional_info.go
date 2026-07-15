@@ -62,6 +62,7 @@ type EmpProfessionalInfo struct {
 	DeputationTimeline                []DeputationRecord   `bson:"deputation_timeline"`
 	EmploymentTimeline                []EmploymentRecord   `bson:"employment_timeline"`
 	ProjectTimeline                   []ProjectRecord      `bson:"project_timeline"`
+	MohrePersonCode                   string               `bson:"mohre_person_code"`
 	CreatedBy                         string               `bson:"created_by"`
 	CreatedAt                         time.Time            `bson:"created_at"`
 	UpdatedAt                         time.Time            `bson:"updated_at"`
