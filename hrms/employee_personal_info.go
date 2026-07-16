@@ -57,6 +57,7 @@ type EmpPersonalInfo struct {
 	EmergencyNumberTwo   string             `bson:"emergency_number_two"`
 	PersonalEmail        string             `bson:"email_id"`
 	PAN                  string             `bson:"pan"`
+	UAN                  string             `bson:"uan"`
 	AadharNumber         string             `bson:"aadhar_number"`
 	PassportNumber       string             `bson:"passport_number"`
 	EmiratesIdNumber     string             `bson:"emirates_id_number,omitempty"`
