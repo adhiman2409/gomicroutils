@@ -70,20 +70,20 @@ type Expense struct {
 }
 
 type TenantReimbursementConfig struct {
-	ApproverRules       ReimbursementApproverRules `bson:"approver_rules"`
-	Policy              ReimbursementPolicy        `bson:"policy"`
-	FinanceApproverId   string                     `bson:"finance_approver_id"`
-	FinanceApproverName string                     `bson:"finance_approver_name"`
-}
-
-type ReimbursementApproverRules struct {
-	FixedPrimaryEID    string `bson:"fixed_primary_eid"`
-	FixedPrimaryName   string `bson:"fixed_primary_name"`
-	FixedSecondaryEID  string `bson:"fixed_secondary_eid"`
-	FixedSecondaryName string `bson:"fixed_secondary_name"`
-}
-
-type ReimbursementPolicy struct {
-	BothApprovalThreshold float32 `bson:"both_approval_threshold"`
-	DisableBothApproval   bool    `bson:"disable_both_approval"`
+	DefaultPrimaryApproverRole                   string  `bson:"default_approver_role"`
+	ForceBothApprovalsForAllReimbursements       bool    `bson:"force_both_approvals_for_all_reimbursements"`
+	DefaultSecondaryApproverRole                 string  `bson:"default_secondary_approver_role"`
+	ForceBothApprovalsForHighValueReimbursements bool    `bson:"force_both_approvals_for_high_value_reimbursements"`
+	HighValueReimbursementThreshold              float64 `bson:"high_value_reimbursement_threshold"`
+	DefaultPrimaryApproverEID                    string  `bson:"default_primary_eid"`
+	DefaultPrimaryApproverName                   string  `bson:"default_primary_name"`
+	DefaultPrimaryApproverEmail                  string  `bson:"default_primary_email"`
+	DefaultSecondaryApproverEID                  string  `bson:"default_secondary_eid"`
+	DefaultSecondaryApproverName                 string  `bson:"default_secondary_name"`
+	DefaultSecondaryApproverEmail                string  `bson:"default_secondary_email"`
+	HighValueReimbursementSecondaryApproverEID   string  `bson:"high_value_reimbursement_secondary_eid"`
+	HighValueReimbursementSecondaryApproverName  string  `bson:"high_value_reimbursement_secondary_name"`
+	HighValueReimbursementSecondaryApproverEmail string  `bson:"high_value_reimbursement_secondary_email"`
+	FinanceApproverId                            string  `bson:"finance_approver_id"`
+	FinanceApproverName                          string  `bson:"finance_approver_name"`
 }
