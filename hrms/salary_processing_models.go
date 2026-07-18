@@ -7,15 +7,37 @@ import (
 )
 
 type SalaryProcessingConfig struct {
-	Id                      primitive.ObjectID `bson:"_id"`
-	Country                 string             `bson:"country"`
-	State                   string             `bson:"state"`
-	VerifierId              string             `bson:"verifier_id"`
-	VerifierName            string             `bson:"verifier_name"`
-	ApproverId              string             `bson:"approver_id"`
-	ApproverName            string             `bson:"approver_name"`
-	DefaultTaxRegime        string             `bson:"default_tax_regime"`
-	FinancialYearStartMonth string             `bson:"financial_year_start_month"`
+	Id                            primitive.ObjectID            `bson:"_id"`
+	Country                       string                        `bson:"country"`
+	State                         string                        `bson:"state"`
+	VerifierId                    string                        `bson:"verifier_id"`
+	VerifierName                  string                        `bson:"verifier_name"`
+	ApproverId                    string                        `bson:"approver_id"`
+	ApproverName                  string                        `bson:"approver_name"`
+	DefaultTaxRegime              string                        `bson:"default_tax_regime"`
+	FinancialYearStartMonth       string                        `bson:"financial_year_start_month"`
+	BankPaymentSheetConfiguration BankPaymentSheetConfiguration `bson:"bank_payment_sheet_configuration"`
+}
+
+type BankPaymentSheetConfiguration struct {
+	BankName                  string `bson:"bank_name"`
+	BankBranch                string `bson:"bank_branch"`
+	CompanyName               string `bson:"company_name"`
+	AccountNumber             string `bson:"account_number"`
+	IFSC                      string `bson:"ifsc"`
+	RoutingNumber             string `bson:"routing_number"`
+	SwiftCode                 string `bson:"swift_code"`
+	IBAN                      string `bson:"iban"`
+	BankAddress               string `bson:"bank_address"`
+	EmployerID                string `bson:"employer_id"`
+	TradeLicense              string `bson:"trade_license"`
+	ReceiptNumber             string `bson:"receipt_number"`
+	GICode                    string `bson:"gi_code"`
+	SignatureURL              string `bson:"signature_url"`
+	CompanyStampURL           string `bson:"company_stamp_url"`
+	CompanyStampXCoordinate   int    `bson:"company_stamp_x_coordinate"`
+	CompanyStampYCoordinate   int    `bson:"company_stamp_y_coordinate"`
+	IsStampRequiredOnEachPage bool   `bson:"is_stamp_required_on_each_page"`
 }
 
 type SalaryProcessingRequest struct {
