@@ -35,8 +35,7 @@ type BankPaymentSheetConfiguration struct {
 	GICode                    string `bson:"gi_code"`
 	SignatureURL              string `bson:"signature_url"`
 	CompanyStampURL           string `bson:"company_stamp_url"`
-	CompanyStampXCoordinate   int    `bson:"company_stamp_x_coordinate"`
-	CompanyStampYCoordinate   int    `bson:"company_stamp_y_coordinate"`
+	CompanyStampPosition      string `bson:"company_stamp_position"`
 	IsStampRequiredOnEachPage bool   `bson:"is_stamp_required_on_each_page"`
 }
 
