@@ -27,9 +27,18 @@ type Organization struct {
 	Documents        []OrgDocument      `bson:"documents"`
 	UseGoogleAuth    bool               `bson:"use_google_auth"`
 	Website          string             `bson:"website"`
+	CustomFields     []OrgCustomField   `bson:"custom_fields"`
 	CreatedBy        string             `bson:"created_by"`
 	CreatedAt        time.Time          `bson:"created_at"`
 	UpdatedAt        time.Time          `bson:"updated_at"`
+}
+
+// OrgCustomField lets a user store arbitrary org attributes (e.g. GST number, PAN).
+// Key should be stored normalized (e.g. lowercase, slug form) by the service layer so
+// lookups via a "custom_fields.key" index stay consistent regardless of input casing.
+type OrgCustomField struct {
+	Key   string `bson:"key"`
+	Value string `bson:"value"`
 }
 
 type OrgDocument struct {
