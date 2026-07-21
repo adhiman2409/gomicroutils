@@ -516,26 +516,34 @@ type EmployeeTechInfoOld struct {
 	IsProfileEditingLocked    bool               `bson:"is_profile_editing_locked"`
 }
 
-type TenantResignationConfig struct {
-	Country                     string    `bson:"country,omitempty"`
-	State                       string    `bson:"state,omitempty"`
-	OfficeLabel                 string    `bson:"office_label,omitempty"`
-	PrimaryApproverId           string    `bson:"primary_approver_id"`
-	PrimaryApproverName         string    `bson:"primary_approver_name,omitempty"`
-	PrimaryApproverEmail        string    `bson:"primary_approver_email,omitempty"`
-	PrimaryApproverImgURL       string    `bson:"primary_approver_img_url,omitempty"`
-	DefaultNoticePeriodInDays   int       `bson:"default_notice_period_in_days,omitempty"`
-	NotifyReportingManager      bool      `bson:"notify_reporting_manager,omitempty"`
-	NotifyDepartmentHead        bool      `bson:"notify_department_head,omitempty"`
-	CustomNotificationEmailList []string  `bson:"custom_notification_email_list,omitempty"`
-	UpdatedAt                   time.Time `bson:"updated_at"`
-}
+// ResignationConfigLevel declares the scope a TenantResignationConfig doc applies at.
+// Multiple docs can coexist per tenant, one per configured scope; resolution picks the
+// most specific level whose location fields match an employee (office > city > state >
+// country > global).
+type ResignationConfigLevel string
 
-type OfficeWiseTenantResignationConfig struct {
-	ID                   primitive.ObjectID        `bson:"_id"`
-	Domain               string                    `bson:"domain,omitempty"`
-	IsStateLevelConfig   bool                      `bson:"is_state_level_config"` //default is false,
-	TotalOfficeLocations int                       `bson:"total_office_locations"`
-	OfficeConfigs        []TenantResignationConfig `bson:"office_configs"`
-	UpdatedAt            time.Time                 `bson:"updated_at"`
+const (
+	ResignationConfigLevelGlobal  ResignationConfigLevel = "global"
+	ResignationConfigLevelCountry ResignationConfigLevel = "country"
+	ResignationConfigLevelState   ResignationConfigLevel = "state"
+	ResignationConfigLevelCity    ResignationConfigLevel = "city"
+	ResignationConfigLevelOffice  ResignationConfigLevel = "office"
+)
+
+type TenantResignationConfig struct {
+	ID                          primitive.ObjectID     `bson:"_id"`
+	Level                       ResignationConfigLevel `bson:"level"`
+	Country                     string                 `bson:"country,omitempty"`
+	State                       string                 `bson:"state,omitempty"`
+	City                        string                 `bson:"city,omitempty"`
+	OfficeLabel                 string                 `bson:"office_label,omitempty"`
+	PrimaryApproverId           string                 `bson:"primary_approver_id"`
+	PrimaryApproverName         string                 `bson:"primary_approver_name,omitempty"`
+	PrimaryApproverEmail        string                 `bson:"primary_approver_email,omitempty"`
+	PrimaryApproverImgURL       string                 `bson:"primary_approver_img_url,omitempty"`
+	DefaultNoticePeriodInDays   int                    `bson:"default_notice_period_in_days,omitempty"`
+	NotifyReportingManager      bool                   `bson:"notify_reporting_manager,omitempty"`
+	NotifyDepartmentHead        bool                   `bson:"notify_department_head,omitempty"`
+	CustomNotificationEmailList []string               `bson:"custom_notification_email_list,omitempty"`
+	UpdatedAt                   time.Time              `bson:"updated_at"`
 }
