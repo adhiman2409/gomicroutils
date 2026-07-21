@@ -547,3 +547,14 @@ type TenantResignationConfig struct {
 	CustomNotificationEmailList []string               `bson:"custom_notification_email_list,omitempty"`
 	UpdatedAt                   time.Time              `bson:"updated_at"`
 }
+
+// GetAllConfigTypes returns all possible config levels in order of specificity, from most specific to least specific.
+func GetAllConfigTypes() []ResignationConfigLevel {
+	return []ResignationConfigLevel{
+		ResignationConfigLevelOffice,
+		ResignationConfigLevelCity,
+		ResignationConfigLevelState,
+		ResignationConfigLevelCountry,
+		ResignationConfigLevelGlobal,
+	}
+}
