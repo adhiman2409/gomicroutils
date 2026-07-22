@@ -60,6 +60,7 @@ type Expense struct {
 	ReimbursementPaid       bool               `bson:"reimbursement_paid"`
 	ReimbursementPaidAmount float32            `bson:"reimbursement_paid_amount"`
 	ReimbursementPaidOn     time.Time          `bson:"reimbursement_paid_on"`
+	IsMarkedManuallyAsPaid  bool               `bson:"is_marked_manually_as_paid"`
 	Remarks                 []RemarksInfo      `bson:"remarks"`
 	DocURL                  string             `bson:"doc_url"`
 	Country                 string             `bson:"country"`
