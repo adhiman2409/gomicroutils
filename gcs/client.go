@@ -30,3 +30,21 @@ func NewStorageConnection() *StorageConnection {
 		Client: storageClient,
 	}
 }
+
+func NewSafeStorageConnection() *StorageConnection {
+	credentialsJSON := os.Getenv("GCS_CREDENTIALS_JSON")
+	if credentialsJSON == "" {
+		log.Printf("failed to create gcs client error: GCS_CREDENTIALS_JSON env var is not set")
+		return nil
+	}
+
+	storageClient, err := storage.NewClient(context.Background(), option.WithCredentialsJSON([]byte(credentialsJSON)))
+	if err != nil {
+		log.Printf("failed to create gcs client error:%s", err.Error())
+		return nil
+	}
+
+	return &StorageConnection{
+		Client: storageClient,
+	}
+}
