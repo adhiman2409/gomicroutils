@@ -72,21 +72,34 @@ type Expense struct {
 	UpdatedAt               time.Time          `bson:"updated_at"`
 }
 
+// TenantReimbursementConfig is the Mongo representation of a tenant's
+// reimbursement config. Like TenantResignationConfig, multiple docs can
+// coexist per tenant in the "tenant-reimbursement-config" collection, one per
+// configured scope (Level + Country/State/City/OfficeLabel); resolution picks
+// the most specific level whose location fields match an employee (office >
+// city > state > country > global).
 type TenantReimbursementConfig struct {
-	DefaultPrimaryApproverRole                   string  `bson:"default_approver_role"`
-	ForceBothApprovalsForAllReimbursements       bool    `bson:"force_both_approvals_for_all_reimbursements"`
-	DefaultSecondaryApproverRole                 string  `bson:"default_secondary_approver_role"`
-	ForceBothApprovalsForHighValueReimbursements bool    `bson:"force_both_approvals_for_high_value_reimbursements"`
-	HighValueReimbursementThreshold              float64 `bson:"high_value_reimbursement_threshold"`
-	DefaultPrimaryApproverEID                    string  `bson:"default_primary_eid"`
-	DefaultPrimaryApproverName                   string  `bson:"default_primary_name"`
-	DefaultPrimaryApproverEmail                  string  `bson:"default_primary_email"`
-	DefaultSecondaryApproverEID                  string  `bson:"default_secondary_eid"`
-	DefaultSecondaryApproverName                 string  `bson:"default_secondary_name"`
-	DefaultSecondaryApproverEmail                string  `bson:"default_secondary_email"`
-	HighValueReimbursementSecondaryApproverEID   string  `bson:"high_value_reimbursement_secondary_eid"`
-	HighValueReimbursementSecondaryApproverName  string  `bson:"high_value_reimbursement_secondary_name"`
-	HighValueReimbursementSecondaryApproverEmail string  `bson:"high_value_reimbursement_secondary_email"`
-	FinanceApproverId                            string  `bson:"finance_approver_id"`
-	FinanceApproverName                          string  `bson:"finance_approver_name"`
+	ID                                           primitive.ObjectID      `bson:"_id"`
+	Level                                        OrganizationConfigLevel `bson:"level"`
+	Country                                      string                  `bson:"country,omitempty"`
+	State                                        string                  `bson:"state,omitempty"`
+	City                                         string                  `bson:"city,omitempty"`
+	OfficeLabel                                  string                  `bson:"office_label,omitempty"`
+	DefaultPrimaryApproverRole                   string                  `bson:"default_approver_role"`
+	ForceBothApprovalsForAllReimbursements       bool                    `bson:"force_both_approvals_for_all_reimbursements"`
+	DefaultSecondaryApproverRole                 string                  `bson:"default_secondary_approver_role"`
+	ForceBothApprovalsForHighValueReimbursements bool                    `bson:"force_both_approvals_for_high_value_reimbursements"`
+	HighValueReimbursementThreshold              float64                 `bson:"high_value_reimbursement_threshold"`
+	DefaultPrimaryApproverEID                    string                  `bson:"default_primary_eid"`
+	DefaultPrimaryApproverName                   string                  `bson:"default_primary_name"`
+	DefaultPrimaryApproverEmail                  string                  `bson:"default_primary_email"`
+	DefaultSecondaryApproverEID                  string                  `bson:"default_secondary_eid"`
+	DefaultSecondaryApproverName                 string                  `bson:"default_secondary_name"`
+	DefaultSecondaryApproverEmail                string                  `bson:"default_secondary_email"`
+	HighValueReimbursementSecondaryApproverEID   string                  `bson:"high_value_reimbursement_secondary_eid"`
+	HighValueReimbursementSecondaryApproverName  string                  `bson:"high_value_reimbursement_secondary_name"`
+	HighValueReimbursementSecondaryApproverEmail string                  `bson:"high_value_reimbursement_secondary_email"`
+	FinanceApproverId                            string                  `bson:"finance_approver_id"`
+	FinanceApproverName                          string                  `bson:"finance_approver_name"`
+	UpdatedAt                                    time.Time               `bson:"updated_at"`
 }

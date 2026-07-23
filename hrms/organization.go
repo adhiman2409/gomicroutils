@@ -118,4 +118,5 @@ type OrganizationConfig struct {
 	TenantCRMConfigLevel            OrganizationConfigLevel `bson:"tenant_crm_config"`
 	TenantAppraisalConfigLevel      OrganizationConfigLevel `bson:"tenant_appraisal_config"`
 	TenantTrainingConfigLevel       OrganizationConfigLevel `bson:"tenant_training_config"`
+	TenantReimbursementConfigLevel  OrganizationConfigLevel `bson:"tenant_reimbursement_config"`
 }

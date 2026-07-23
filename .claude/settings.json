@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gofmt -l -w adapters/database/tenant_config_seed.go adapters/database/tenant_config_db.go)",
+      "Bash(gofmt -l -w service/tenant_config_service.go port/leaves_db_port.go port/leaves_rest_port.go)",
+      "Bash(gofmt -l -w adapters/rest/tenant_config_adapter.go)",
+      "Bash(gofmt -l -w service/leaves_service.go)",
+      "Bash(gofmt -l -w .)",
+      "Bash(gofmt -l -w adapters/database/tenant_config_db.go adapters/database/tenant_config_seed.go application/app.go)",
+      "Bash(gofmt -l -w hrms/employee_reimbursement.go)",
+      "Bash(gofmt -l -w hrms/organization.go hrms/employee_reimbursement.go)",
+      "Bash(gofmt -l -w dto/tenant_config.go)"
+    ]
+  }
+}
