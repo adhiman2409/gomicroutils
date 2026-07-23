@@ -95,11 +95,6 @@ const (
 	OrganizationConfigLevelOffice  OrganizationConfigLevel = "office"
 )
 
-type OrganizationConfig struct {
-	ID                      primitive.ObjectID      `bson:"_id"`
-	TenantResignationConfig OrganizationConfigLevel `bson:"tenant_resignation_config"`
-}
-
 // GetAllConfigTypes returns all possible config levels in order of specificity, from most specific to least specific.
 func GetAllConfigTypes() []OrganizationConfigLevel {
 	return []OrganizationConfigLevel{
@@ -109,4 +104,18 @@ func GetAllConfigTypes() []OrganizationConfigLevel {
 		OrganizationConfigLevelCountry,
 		OrganizationConfigLevelGlobal,
 	}
+}
+
+type OrganizationConfig struct {
+	ID                              primitive.ObjectID      `bson:"_id"`
+	TenantResignationConfigLevel    OrganizationConfigLevel `bson:"tenant_resignation_config"`
+	TenantPayrollConfigLevel        OrganizationConfigLevel `bson:"tenant_payroll_config"`
+	TenantLeaveConfigLevel          OrganizationConfigLevel `bson:"tenant_leave_config"`
+	TenantAttendanceConfigLevel     OrganizationConfigLevel `bson:"tenant_attendance_config"`
+	TenantWorkFromHomeConfigLevel   OrganizationConfigLevel `bson:"tenant_work_from_home_config"`
+	TenantRegularizationConfigLevel OrganizationConfigLevel `bson:"tenant_regularization_config"`
+	TenantExpenseConfigLevel        OrganizationConfigLevel `bson:"tenant_expense_config"`
+	TenantCRMConfigLevel            OrganizationConfigLevel `bson:"tenant_crm_config"`
+	TenantAppraisalConfigLevel      OrganizationConfigLevel `bson:"tenant_appraisal_config"`
+	TenantTrainingConfigLevel       OrganizationConfigLevel `bson:"tenant_training_config"`
 }
