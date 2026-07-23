@@ -520,41 +520,20 @@ type EmployeeTechInfoOld struct {
 // Multiple docs can coexist per tenant, one per configured scope; resolution picks the
 // most specific level whose location fields match an employee (office > city > state >
 // country > global).
-type ResignationConfigLevel string
-
-const (
-	ResignationConfigLevelGlobal  ResignationConfigLevel = "global"
-	ResignationConfigLevelCountry ResignationConfigLevel = "country"
-	ResignationConfigLevelState   ResignationConfigLevel = "state"
-	ResignationConfigLevelCity    ResignationConfigLevel = "city"
-	ResignationConfigLevelOffice  ResignationConfigLevel = "office"
-)
-
 type TenantResignationConfig struct {
-	ID                          primitive.ObjectID     `bson:"_id"`
-	Level                       ResignationConfigLevel `bson:"level"`
-	Country                     string                 `bson:"country,omitempty"`
-	State                       string                 `bson:"state,omitempty"`
-	City                        string                 `bson:"city,omitempty"`
-	OfficeLabel                 string                 `bson:"office_label,omitempty"`
-	PrimaryApproverId           string                 `bson:"primary_approver_id"`
-	PrimaryApproverName         string                 `bson:"primary_approver_name,omitempty"`
-	PrimaryApproverEmail        string                 `bson:"primary_approver_email,omitempty"`
-	PrimaryApproverImgURL       string                 `bson:"primary_approver_img_url,omitempty"`
-	DefaultNoticePeriodInDays   int                    `bson:"default_notice_period_in_days,omitempty"`
-	NotifyReportingManager      bool                   `bson:"notify_reporting_manager,omitempty"`
-	NotifyDepartmentHead        bool                   `bson:"notify_department_head,omitempty"`
-	CustomNotificationEmailList []string               `bson:"custom_notification_email_list,omitempty"`
-	UpdatedAt                   time.Time              `bson:"updated_at"`
-}
-
-// GetAllConfigTypes returns all possible config levels in order of specificity, from most specific to least specific.
-func GetAllConfigTypes() []ResignationConfigLevel {
-	return []ResignationConfigLevel{
-		ResignationConfigLevelOffice,
-		ResignationConfigLevelCity,
-		ResignationConfigLevelState,
-		ResignationConfigLevelCountry,
-		ResignationConfigLevelGlobal,
-	}
+	ID                          primitive.ObjectID      `bson:"_id"`
+	Level                       OrganizationConfigLevel `bson:"level"`
+	Country                     string                  `bson:"country,omitempty"`
+	State                       string                  `bson:"state,omitempty"`
+	City                        string                  `bson:"city,omitempty"`
+	OfficeLabel                 string                  `bson:"office_label,omitempty"`
+	PrimaryApproverId           string                  `bson:"primary_approver_id"`
+	PrimaryApproverName         string                  `bson:"primary_approver_name,omitempty"`
+	PrimaryApproverEmail        string                  `bson:"primary_approver_email,omitempty"`
+	PrimaryApproverImgURL       string                  `bson:"primary_approver_img_url,omitempty"`
+	DefaultNoticePeriodInDays   int                     `bson:"default_notice_period_in_days,omitempty"`
+	NotifyReportingManager      bool                    `bson:"notify_reporting_manager,omitempty"`
+	NotifyDepartmentHead        bool                    `bson:"notify_department_head,omitempty"`
+	CustomNotificationEmailList []string                `bson:"custom_notification_email_list,omitempty"`
+	UpdatedAt                   time.Time               `bson:"updated_at"`
 }

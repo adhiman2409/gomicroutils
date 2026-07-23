@@ -84,3 +84,29 @@ type OrgAddress struct {
 	CreatedAt    time.Time          `bson:"created_at"`
 	UpdatedAt    time.Time          `bson:"updated_at"`
 }
+
+type OrganizationConfigLevel string
+
+const (
+	OrganizationConfigLevelGlobal  OrganizationConfigLevel = "global"
+	OrganizationConfigLevelCountry OrganizationConfigLevel = "country"
+	OrganizationConfigLevelState   OrganizationConfigLevel = "state"
+	OrganizationConfigLevelCity    OrganizationConfigLevel = "city"
+	OrganizationConfigLevelOffice  OrganizationConfigLevel = "office"
+)
+
+type OrganizationConfig struct {
+	ID                      primitive.ObjectID      `bson:"_id"`
+	TenantResignationConfig OrganizationConfigLevel `bson:"tenant_resignation_config"`
+}
+
+// GetAllConfigTypes returns all possible config levels in order of specificity, from most specific to least specific.
+func GetAllConfigTypes() []OrganizationConfigLevel {
+	return []OrganizationConfigLevel{
+		OrganizationConfigLevelOffice,
+		OrganizationConfigLevelCity,
+		OrganizationConfigLevelState,
+		OrganizationConfigLevelCountry,
+		OrganizationConfigLevelGlobal,
+	}
+}
