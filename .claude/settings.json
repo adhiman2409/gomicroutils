@@ -9,7 +9,19 @@
       "Bash(gofmt -l -w adapters/database/tenant_config_db.go adapters/database/tenant_config_seed.go application/app.go)",
       "Bash(gofmt -l -w hrms/employee_reimbursement.go)",
       "Bash(gofmt -l -w hrms/organization.go hrms/employee_reimbursement.go)",
-      "Bash(gofmt -l -w dto/tenant_config.go)"
+      "Bash(gofmt -l -w dto/tenant_config.go)",
+      "Bash(gofmt -l -w adapters/database/tenant_config_seed.go)",
+      "Bash(gofmt -l -w service/reimbursement_service.go)",
+      "Bash(brew list *)",
+      "Bash(brew --version)",
+      "Bash(CGO_CFLAGS=\"-I/opt/homebrew/Cellar/leptonica/1.86.0/include -I/opt/homebrew/include\" CGO_LDFLAGS=\"-L/opt/homebrew/lib\" go build ./service/...)",
+      "Bash(CGO_CFLAGS=\"-I/opt/homebrew/include\" go build -a ./service/...)",
+      "Bash(CGO_CPPFLAGS=\"-I/opt/homebrew/include\" go build -a ./service/...)",
+      "Bash(export CGO_CPPFLAGS=\"-I/opt/homebrew/include\")",
+      "Bash(export CGO_LDFLAGS=\"-L/opt/homebrew/lib\")",
+      "Bash(gofmt -l -w application/app.go)",
+      "Bash(gofmt -w hrms/employee_attendance.go)",
+      "Bash(gofmt -l hrms/employee_attendance.go)"
     ]
   }
 }
