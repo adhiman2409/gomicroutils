@@ -170,6 +170,7 @@ type EmployeeAttendance struct {
 	RegularizedAt                 time.Time          `bson:"regularized_at"`
 	RegularizedBy                 string             `bson:"regularized_by"`
 	Remarks                       string             `bson:"remarks"`
+	SystemCheckInOutRemarks       string             `bson:"system_check_in_out_remarks"`
 	Country                       string             `bson:"country"`
 	TimeZone                      string             `bson:"time_zone"`
 	CreatedAt                     int64              `bson:"createdAt"`
