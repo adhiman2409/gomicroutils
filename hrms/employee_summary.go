@@ -46,6 +46,9 @@ type EmployeeSummary struct {
 	MarkedReleavedOn                  time.Time          `bson:"marked_releaved_on"`
 	IsProfileEditingLocked            bool               `bson:"is_profile_editing_locked"`
 	Country                           string             `bson:"country"`
+	State                             string             `bson:"state"`
+	City                              string             `bson:"city"`
+	OfficeLabel                       string             `bson:"office_label"`
 	TimeZone                          string             `bson:"time_zone"`
 	RegexText                         string             `bson:"regex_text"`
 	CreatedBy                         string             `bson:"created_by"`

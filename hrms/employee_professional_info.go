@@ -46,6 +46,9 @@ type EmpProfessionalInfo struct {
 	SupervisorEmail                   string               `bson:"supervisor_email"`
 	IsProfessionalInfoLocked          bool                 `bson:"is_professional_info_locked"`
 	Country                           string               `bson:"country"`
+	State                             string               `bson:"state"`
+	City                              string               `bson:"city"`
+	OfficeLabel                       string               `bson:"office_label"`
 	TimeZone                          string               `bson:"time_zone"`
 	RegexText                         string               `bson:"regex_text"`
 	PIPOn                             time.Time            `bson:"pip_on"`

@@ -21,7 +21,11 @@
       "Bash(export CGO_LDFLAGS=\"-L/opt/homebrew/lib\")",
       "Bash(gofmt -l -w application/app.go)",
       "Bash(gofmt -w hrms/employee_attendance.go)",
-      "Bash(gofmt -l hrms/employee_attendance.go)"
+      "Bash(gofmt -l hrms/employee_attendance.go)",
+      "Bash(gofmt -w adapters/database/db_models.go)",
+      "Bash(gofmt -l adapters/database/db_models.go)",
+      "Bash(gofmt -l adapters/database/db_models.go adapters/database/tenant_config_seed.go adapters/database/database_indexes.go port/attendance_db_port.go port/attendance_rest_port.go service/tenant_config_helpers.go service/attendance_regularization_methods.go adapters/rest/attendance_adapter.go application/app.go)",
+      "Bash(git fetch *)"
     ]
   }
 }
