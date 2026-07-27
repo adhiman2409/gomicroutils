@@ -129,6 +129,7 @@ type EmployeeMonthlySalaryDetail struct {
 	EmployeeEmail                string                       `bson:"employee_email"`
 	Gender                       string                       `bson:"gender"`
 	EmployeeAdoptedTaxRegime     string                       `bson:"employee_adopted_tax_regime"`
+	AnnualFixedCTC               float64                      `bson:"annual_fixed_ctc"`
 	State                        string                       `bson:"state"`
 	Country                      string                       `bson:"country"`
 	PAN                          string                       `bson:"pan"`
@@ -142,7 +143,10 @@ type EmployeeMonthlySalaryDetail struct {
 	IFSC                         string                       `bson:"ifsc"`
 	IsSalaryOnHold               bool                         `bson:"is_salary_on_hold"`
 	IsShortWorkingDaysOrHours    bool                         `bson:"is_short_working_days_or_hours"`
+	TotalDaysInMonth             int                          `bson:"total_days_in_month"`
 	TotalWorkingDays             float32                      `bson:"total_working_days"`
+	TotalPayableDays             float32                      `bson:"total_payable_days"`
+	TotalUnpaidDays              float32                      `bson:"total_unpaid_days"`
 	ActualWorkingDays            float32                      `bson:"actual_working_days"`
 	RequiredWorkingHours         float32                      `bson:"required_working_hours"`
 	ActualWorkingHours           float32                      `bson:"actual_working_hours"`
