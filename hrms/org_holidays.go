@@ -11,6 +11,8 @@ type OrgHoliday struct {
 	Type        string             `bson:"type"`
 	WeekDay     string             `bson:"week_day"`
 	Description string             `bson:"description"`
+	OfficeLabel string             `bson:"office_label"`
+	City        string             `bson:"city"`
 	State       string             `bson:"state"`
 	Country     string             `bson:"country"`
 }
