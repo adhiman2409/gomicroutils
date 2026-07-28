@@ -110,6 +110,8 @@ type OrganizationConfig struct {
 	ID                              primitive.ObjectID      `bson:"_id"`
 	TenantResignationConfigLevel    OrganizationConfigLevel `bson:"tenant_resignation_config"`
 	TenantPayrollConfigLevel        OrganizationConfigLevel `bson:"tenant_payroll_config"`
+	TenantHolidayConfigLevel        OrganizationConfigLevel `bson:"tenant_holiday_config"`
+	TenantOnboardingConfigLevel     OrganizationConfigLevel `bson:"tenant_onboarding_config"`
 	TenantLeaveConfigLevel          OrganizationConfigLevel `bson:"tenant_leave_config"`
 	TenantAttendanceConfigLevel     OrganizationConfigLevel `bson:"tenant_attendance_config"`
 	TenantWorkFromHomeConfigLevel   OrganizationConfigLevel `bson:"tenant_work_from_home_config"`
