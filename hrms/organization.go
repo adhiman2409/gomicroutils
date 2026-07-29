@@ -68,21 +68,22 @@ type CompanyHeadsDoc struct {
 }
 
 type OrgAddress struct {
-	ID           primitive.ObjectID `bson:"_id,omitempty"`
-	Label        string             `bson:"label"`
-	Country      string             `bson:"country"`
-	State        string             `bson:"state"`
-	City         string             `bson:"city"`
-	AddressLine1 string             `bson:"address_line_1"`
-	AddressLine2 string             `bson:"address_line_2"`
-	Zipcode      string             `bson:"zipcode"`
-	Landmark     string             `bson:"landmark"`
-	Lattitude    float64            `bson:"latitude"`
-	Longitude    float64            `bson:"longitude"`
-	IsActive     bool               `bson:"is_active"`
-	CreatedBy    string             `bson:"created_by"`
-	CreatedAt    time.Time          `bson:"created_at"`
-	UpdatedAt    time.Time          `bson:"updated_at"`
+	ID                 primitive.ObjectID `bson:"_id,omitempty"`
+	Label              string             `bson:"label"`
+	Country            string             `bson:"country"`
+	State              string             `bson:"state"`
+	City               string             `bson:"city"`
+	AddressLine1       string             `bson:"address_line_1"`
+	AddressLine2       string             `bson:"address_line_2"`
+	Zipcode            string             `bson:"zipcode"`
+	Landmark           string             `bson:"landmark"`
+	Lattitude          float64            `bson:"latitude"`
+	Longitude          float64            `bson:"longitude"`
+	IsActive           bool               `bson:"is_active"`
+	IsRegisteredOffice bool               `bson:"is_registered_office"`
+	CreatedBy          string             `bson:"created_by"`
+	CreatedAt          time.Time          `bson:"created_at"`
+	UpdatedAt          time.Time          `bson:"updated_at"`
 }
 
 type OrganizationConfigLevel string
