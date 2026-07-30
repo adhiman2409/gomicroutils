@@ -26,36 +26,47 @@ type PermissionData struct {
 	PermissionStatus string `bson:"permission_status"`
 }
 
+type TicketConfigLocationOverride struct {
+	Level          OrganizationConfigLevel `bson:"level"`
+	Country        string                  `bson:"country,omitempty"`
+	State          string                  `bson:"state,omitempty"`
+	City           string                  `bson:"city,omitempty"`
+	OfficeLabel    string                  `bson:"office_label,omitempty"`
+	Resolvers      []EmployeeRef           `bson:"resolvers"`
+	DepartmentHead EmployeeRef             `bson:"department_head"`
+}
+
 type TicketConfig struct {
-	ID                            primitive.ObjectID      `bson:"_id"`
-	Level                         OrganizationConfigLevel `bson:"level"`
-	DepartmentName                string                  `bson:"department_name"`
-	PrimaryEmployeeId             string                  `bson:"primary_emp_id"`
-	PrimaryEmployeeName           string                  `bson:"primary_emp_name"`
-	PrimaryEmployeeEmail          string                  `bson:"primary_emp_email"`
-	SecondaryEmployeeId           string                  `bson:"secondary_emp_id"`
-	SecondaryEmployeeName         string                  `bson:"secondary_emp_name"`
-	SecondaryEmployeeEmail        string                  `bson:"secondary_emp_email"`
-	IsSecondaryActive             bool                    `bson:"is_secondary_active"`
-	Resolvers                     []EmployeeRef           `bson:"resolvers"`
-	Queries                       []Query                 `bson:"queries"`
-	TotalNumberOfTickets          int64                   `bson:"total_number_of_tickets"`
-	NumberOfOpenTickets           int64                   `bson:"number_of_open_tickets"`
-	NumberOfReopenTickets         int64                   `bson:"number_of_reopen_tickets"`
-	NumberOfClosedTickets         int64                   `bson:"number_of_closed_tickets"`
-	AverageTicketCloserTimeInDays int64                   `bson:"average_ticket_closer_time_in_days"`
-	NotifyNewTicketOnEmail        bool                    `bson:"notify_new_ticket_on_email"`
-	LockClosedTicketsAfterDays    int64                   `bson:"lock_closed_tickets_after_days"`
-	SendFeedbackReminders         bool                    `bson:"send_feedback_reminders"`
-	SendFeedbackReminderAfterDays int64                   `bson:"send_feedback_reminder_after_days"`
-	DepartmentHead                EmployeeRef             `bson:"department_head"`
-	Country                       string                  `bson:"country"`
-	State                         string                  `bson:"state"`
-	City                          string                  `bson:"city"`
-	OfficeLabel                   string                  `bson:"office_label"`
-	TimeZone                      string                  `bson:"time_zone"`
-	CreatedAt                     time.Time               `bson:"created_at"`
-	UpdatedAt                     time.Time               `bson:"updated_at"`
+	ID                            primitive.ObjectID             `bson:"_id"`
+	Level                         OrganizationConfigLevel        `bson:"level"`
+	DepartmentName                string                         `bson:"department_name"`
+	PrimaryEmployeeId             string                         `bson:"primary_emp_id"`
+	PrimaryEmployeeName           string                         `bson:"primary_emp_name"`
+	PrimaryEmployeeEmail          string                         `bson:"primary_emp_email"`
+	SecondaryEmployeeId           string                         `bson:"secondary_emp_id"`
+	SecondaryEmployeeName         string                         `bson:"secondary_emp_name"`
+	SecondaryEmployeeEmail        string                         `bson:"secondary_emp_email"`
+	IsSecondaryActive             bool                           `bson:"is_secondary_active"`
+	Resolvers                     []EmployeeRef                  `bson:"resolvers"`
+	Queries                       []Query                        `bson:"queries"`
+	TotalNumberOfTickets          int64                          `bson:"total_number_of_tickets"`
+	NumberOfOpenTickets           int64                          `bson:"number_of_open_tickets"`
+	NumberOfReopenTickets         int64                          `bson:"number_of_reopen_tickets"`
+	NumberOfClosedTickets         int64                          `bson:"number_of_closed_tickets"`
+	AverageTicketCloserTimeInDays int64                          `bson:"average_ticket_closer_time_in_days"`
+	NotifyNewTicketOnEmail        bool                           `bson:"notify_new_ticket_on_email"`
+	LockClosedTicketsAfterDays    int64                          `bson:"lock_closed_tickets_after_days"`
+	SendFeedbackReminders         bool                           `bson:"send_feedback_reminders"`
+	SendFeedbackReminderAfterDays int64                          `bson:"send_feedback_reminder_after_days"`
+	DepartmentHead                EmployeeRef                    `bson:"department_head"`
+	Country                       string                         `bson:"country"`
+	State                         string                         `bson:"state"`
+	City                          string                         `bson:"city"`
+	OfficeLabel                   string                         `bson:"office_label"`
+	LocationOverrides             []TicketConfigLocationOverride `bson:"location_overrides,omitempty"`
+	TimeZone                      string                         `bson:"time_zone"`
+	CreatedAt                     time.Time                      `bson:"created_at"`
+	UpdatedAt                     time.Time                      `bson:"updated_at"`
 }
 
 type Ticket struct {
@@ -105,6 +116,9 @@ type Ticket struct {
 	CurrentSupervisorResolverEmail string             `bson:"current_supervisor_resolver_email"`
 	IsLocked                       bool               `bson:"is_locked"`
 	Country                        string             `bson:"country"`
+	State                          string             `bson:"state,omitempty"`
+	City                           string             `bson:"city,omitempty"`
+	OfficeLabel                    string             `bson:"office_label,omitempty"`
 	TimeZone                       string             `bson:"time_zone"`
 	Timeline                       []Comment          `bson:"timeline"`
 	Watchers                       []EmployeeRef      `bson:"watchers"`
