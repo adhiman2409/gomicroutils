@@ -112,6 +112,7 @@ type OrganizationConfig struct {
 	TenantResignationConfigLevel    OrganizationConfigLevel `bson:"tenant_resignation_config"`
 	TenantPayrollConfigLevel        OrganizationConfigLevel `bson:"tenant_payroll_config"`
 	TenantHolidayConfigLevel        OrganizationConfigLevel `bson:"tenant_holiday_config"`
+	TenantHelpdeskConfigLevel       OrganizationConfigLevel `bson:"tenant_helpdesk_config"`
 	TenantOnboardingConfigLevel     OrganizationConfigLevel `bson:"tenant_onboarding_config"`
 	TenantLeaveConfigLevel          OrganizationConfigLevel `bson:"tenant_leave_config"`
 	TenantAttendanceConfigLevel     OrganizationConfigLevel `bson:"tenant_attendance_config"`
