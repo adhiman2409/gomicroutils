@@ -35,6 +35,10 @@ type TenantLeavesConfig struct {
 	BulkLeaveSecondaryApproverEID   string                  `bson:"bulk_leave_secondary_eid"`
 	BulkLeaveSecondaryApproverName  string                  `bson:"bulk_leave_secondary_name"`
 	BulkLeaveSecondaryApproverEmail string                  `bson:"bulk_leave_secondary_email"`
+	LeaveReversalApproverRole       string                  `bson:"leave_reversal_approver_role"`
+	LeaveReversalApproverEID        string                  `bson:"leave_reversal_eid"`
+	LeaveReversalApproverName       string                  `bson:"leave_reversal_name"`
+	LeaveReversalApproverEmail      string                  `bson:"leave_reversal_email"`
 	NotifyProjectHead               bool                    `bson:"notify_project_head"`
 	HRFyiRecipients                 []ConfigRecipient       `bson:"hr_fyi_recipients"`
 	UpdatedAt                       time.Time               `bson:"updated_at"`
