@@ -23,11 +23,21 @@ type RecurringMonthlyExpenseConfig struct {
 	EmployeeTypes []string `bson:"employee_types"`
 	// PayableToAllEmployeesOfSelectedTypes, when true, applies to every employee of the
 	// selected types. When false, only employees listed in EmployeeIds are eligible.
-	PayableToAllEmployeesOfSelectedTypes bool      `bson:"payable_to_all_employees_of_selected_types"`
-	EmployeeIds                          []string  `bson:"employee_ids,omitempty"`
-	IsActive                             bool      `bson:"is_active"`
-	Remarks                              string    `bson:"remarks,omitempty"`
-	CreatedBy                            string    `bson:"created_by"`
-	CreatedAt                            time.Time `bson:"created_at"`
-	UpdatedAt                            time.Time `bson:"updated_at"`
+	PayableToAllEmployeesOfSelectedTypes bool           `bson:"payable_to_all_employees_of_selected_types"`
+	EmployeeIds                          []EmployeeData `bson:"employee_ids,omitempty"`
+	IsActive                             bool           `bson:"is_active"`
+	Remarks                              string         `bson:"remarks,omitempty"`
+	CreatedBy                            string         `bson:"created_by"`
+	CreatedAt                            time.Time      `bson:"created_at"`
+	UpdatedAt                            time.Time      `bson:"updated_at"`
+}
+
+type EmployeeData struct {
+	EmployeeId           string  `bson:"employee_id"`
+	EmployeeName         string  `bson:"employee_name"`
+	EmployeeType         string  `bson:"employee_type"`
+	EmploymentStatus     string  `bson:"employment_status"`
+	MonthlyAmount        float64 `bson:"monthly_amount"`
+	IsPaymentOnHold      bool    `bson:"is_payment_on_hold"`
+	IsManuallyOverridden bool    `bson:"is_manually_overridden"`
 }
