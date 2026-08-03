@@ -168,6 +168,10 @@ func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, eid, fin
 	nd := GetUpdatedFinanceDomain(domain)
 	fileName := "payroll_" + month + "_" + year + ".xlsx"
 
+	if domain == "telkosh.unirms.com" {
+		fileName = "alfardan_salary_authorization_" + month + "_" + year + ".pdf"
+	}
+
 	filepathwithname := "PayrollSheets/" + financialYear + "/" + month + "/" + fileName
 
 	fmt.Println("filepathwithname ", filepathwithname)
