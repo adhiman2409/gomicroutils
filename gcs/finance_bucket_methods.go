@@ -189,6 +189,9 @@ func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, eid, fin
 	}
 
 	w.Header().Set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+	if domain == "telkosh.unirms.com" {
+		w.Header().Set("Content-Type", "application/pdf")
+	}
 	disposition := "attachment"
 	w.Header().Set("Content-Disposition", disposition+"; filename="+fileName)
 	w.Header().Set("Content-Length", size)
