@@ -357,6 +357,7 @@ type OneTimeMonthlyEarning struct {
 	Id        string  `bson:"id"`
 	IsTaxable bool    `bson:"is_taxable"`
 	Remarks   string  `bson:"remarks"`
+	MetaData  string  `bson:"meta_data"`
 }
 
 type OneTimeMonthlyDeduction struct {
@@ -366,6 +367,7 @@ type OneTimeMonthlyDeduction struct {
 	Amount    float64 `bson:"amount"`
 	IsTaxable bool    `bson:"is_taxable"`
 	Remarks   string  `bson:"remarks"`
+	MetaData  string  `bson:"meta_data"`
 }
 
 type OneTimeMonthlyTaxAdjustment struct {
@@ -373,6 +375,7 @@ type OneTimeMonthlyTaxAdjustment struct {
 	OldAmount float64 `bson:"old_amount"`
 	NewAmount float64 `bson:"new_amount"`
 	Remarks   string  `bson:"remarks"`
+	MetaData  string  `bson:"meta_data"`
 }
 
 type MonthlyPayrollAndTaxDetails struct {
