@@ -188,6 +188,7 @@ const PAYROLL_COLLECTION_ORG_SALARY_CONFIG_TEMPLATES = "payroll-organization-sal
 const PAYROLL_COLLECTION_EMP_SALARY_CONFIGS = "payroll-employee-salary_configs"
 const PAYROLL_COLLECTION_TAX_REGIMES = "payroll-tax-regimes"
 const PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS = "payroll-salary-processing-requests"
+const PAYROLL_COLLECTION_SALARY_PROCESSING_REQUEST_COUNTER = "payroll-salary-processing-request-counter"
 const PAYROLL_COLLECTION_SALARY_PROCESSING_CONFIG = "payroll-salary-processing-config"
 
 const PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER = "payroll-employee-payroll-master"
@@ -595,6 +596,11 @@ func GetPayrollEmployeePayrollMasterCollection(client *mongo.Client, domain stri
 func GetPayrollSalaryProcessingRequestsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYROLL_COLLECTION_SALARY_PROCESSING_REQUESTS)
+}
+
+func GetPayrollSalaryProcessingRequestCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_SALARY_PROCESSING_REQUEST_COUNTER)
 }
 
 func GetPayrollSalaryProcessingConfigCollection(client *mongo.Client, domain string) *mongo.Collection {

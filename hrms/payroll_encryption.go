@@ -45,7 +45,7 @@ var (
 		"_id", "employee_id", "financial_year", "assessment_year", "employment_status",
 	)
 	plaintextProcessingRequest = set(
-		"_id", "request_id", "month", "financial_year", "request_status",
+		"_id", "request_id", "request_count", "month", "financial_year", "request_status",
 		"approver_id", "verifier_id", "requested_by_id", "country", "state",
 	)
 )

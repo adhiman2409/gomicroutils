@@ -160,16 +160,16 @@ func (a *StorageConnection) GetSalarySlipsByEID(employeeId, domain string) ([]st
 
 }
 
-func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, eid, financialYear, month, year, domain string) error {
+func (a *StorageConnection) DownloadPayrollSheet(w http.ResponseWriter, eid, financialYear, month, year, domain string, requestCount int) error {
 	pid := os.Getenv("GOOGLE_PROJECT_ID")
 	clientCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
 	nd := GetUpdatedFinanceDomain(domain)
-	fileName := "payroll_" + month + "_" + year + ".xlsx"
+	fileName := fmt.Sprintf("payroll_%s_%s_req%d.xlsx", month, year, requestCount)
 
 	if domain == "telkosh.unirms.com" {
-		fileName = "alfardan_salary_authorization_" + month + "_" + year + ".pdf"
+		fileName = fmt.Sprintf("alfardan_salary_authorization_%s_%s_req%d.pdf", month, year, requestCount)
 	}
 
 	filepathwithname := "PayrollSheets/" + financialYear + "/" + month + "/" + fileName

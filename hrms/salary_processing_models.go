@@ -42,6 +42,7 @@ type BankPaymentSheetConfiguration struct {
 type SalaryProcessingRequest struct {
 	Id                                primitive.ObjectID            `bson:"_id"`
 	RequestId                         string                        `bson:"request_id"`
+	RequestCount                      int                           `bson:"request_count"`
 	FinancialYear                     string                        `bson:"financial_year"`
 	Country                           string                        `bson:"country"`
 	State                             string                        `bson:"state"`
