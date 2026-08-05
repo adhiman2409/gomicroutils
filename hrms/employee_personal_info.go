@@ -38,6 +38,13 @@ type FamilyInfo struct {
 	UpdateBy                 string `bson:"updated_by"`
 }
 
+type EmergencyContact struct {
+	ID          string `bson:"_id,omitempty"`
+	Name        string `bson:"name"`
+	Relation    string `bson:"relation"`
+	PhoneNumber string `bson:"phone_number"`
+}
+
 type EmpPersonalInfo struct {
 	ID                   primitive.ObjectID `bson:"_id"`
 	EmployeeId           string             `bson:"employee_id"`
@@ -67,6 +74,7 @@ type EmpPersonalInfo struct {
 	PermanentAddress     Address            `bson:"permanent_address"`
 	CommunicationAddress Address            `bson:"communication_address"`
 	FamilyInfo           []FamilyInfo       `bson:"family_info"`
+	EmergencyContacts    []EmergencyContact `bson:"emergency_contacts,omitempty"`
 	BothAddressSame      bool               `bson:"both_address_same"`
 	RegexText            string             `bson:"regex_text"`
 	IsPersonalInfoLocked bool               `bson:"is_personal_info_locked"`
