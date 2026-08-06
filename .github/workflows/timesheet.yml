@@ -19,4 +19,4 @@ jobs:
           claude-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           central-repo: rishabhpineswift/timesheet-data
           central-repo-token: ${{ secrets.TIMESHEET_REPO_TOKEN }}
-          project-name: primeage.life
+          project-name: unirms
