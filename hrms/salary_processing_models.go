@@ -118,6 +118,12 @@ type ReimbursementDetails struct {
 	Remarks             string  `bson:"remarks"`
 }
 
+type StateTimeline struct {
+	State     string    `bson:"state"`
+	Timestamp time.Time `bson:"timestamp"`
+	Remarks   string    `bson:"remarks"`
+}
+
 type EmployeeMonthlySalaryDetail struct {
 	EmployeeID                   string                       `bson:"employee_id"`
 	EmployeeName                 string                       `bson:"employee_name"`
@@ -167,4 +173,5 @@ type EmployeeMonthlySalaryDetail struct {
 	OneTimeMonthlyDeduction      []OneTimeMonthlyDeduction    `bson:"one_time_monthly_deductions"`
 	Remarks                      string                       `bson:"remarks"`
 	ApproverRemarks              string                       `bson:"approver_remarks"`
+	StateTimelines               []StateTimeline              `bson:"state_timelines"`
 }
