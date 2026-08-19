@@ -108,19 +108,20 @@ func GetAllConfigTypes() []OrganizationConfigLevel {
 }
 
 type OrganizationConfig struct {
-	ID                              primitive.ObjectID      `bson:"_id"`
-	TenantResignationConfigLevel    OrganizationConfigLevel `bson:"tenant_resignation_config"`
-	TenantPayrollConfigLevel        OrganizationConfigLevel `bson:"tenant_payroll_config"`
-	TenantHolidayConfigLevel        OrganizationConfigLevel `bson:"tenant_holiday_config"`
-	TenantHelpdeskConfigLevel       OrganizationConfigLevel `bson:"tenant_helpdesk_config"`
-	TenantOnboardingConfigLevel     OrganizationConfigLevel `bson:"tenant_onboarding_config"`
-	TenantLeaveConfigLevel          OrganizationConfigLevel `bson:"tenant_leave_config"`
-	TenantAttendanceConfigLevel     OrganizationConfigLevel `bson:"tenant_attendance_config"`
-	TenantWorkFromHomeConfigLevel   OrganizationConfigLevel `bson:"tenant_work_from_home_config"`
-	TenantRegularizationConfigLevel OrganizationConfigLevel `bson:"tenant_regularization_config"`
-	TenantExpenseConfigLevel        OrganizationConfigLevel `bson:"tenant_expense_config"`
-	TenantCRMConfigLevel            OrganizationConfigLevel `bson:"tenant_crm_config"`
-	TenantAppraisalConfigLevel      OrganizationConfigLevel `bson:"tenant_appraisal_config"`
-	TenantTrainingConfigLevel       OrganizationConfigLevel `bson:"tenant_training_config"`
-	TenantReimbursementConfigLevel  OrganizationConfigLevel `bson:"tenant_reimbursement_config"`
+	ID                                primitive.ObjectID      `bson:"_id"`
+	TenantResignationConfigLevel      OrganizationConfigLevel `bson:"tenant_resignation_config"`
+	TenantPayrollConfigLevel          OrganizationConfigLevel `bson:"tenant_payroll_config"`
+	TenantHolidayConfigLevel          OrganizationConfigLevel `bson:"tenant_holiday_config"`
+	TenantHelpdeskConfigLevel         OrganizationConfigLevel `bson:"tenant_helpdesk_config"`
+	TenantOnboardingConfigLevel       OrganizationConfigLevel `bson:"tenant_onboarding_config"`
+	TenantLeaveConfigLevel            OrganizationConfigLevel `bson:"tenant_leave_config"`
+	TenantAttendanceConfigLevel       OrganizationConfigLevel `bson:"tenant_attendance_config"`
+	TenantWorkFromHomeConfigLevel     OrganizationConfigLevel `bson:"tenant_work_from_home_config"`
+	TenantRegularizationConfigLevel   OrganizationConfigLevel `bson:"tenant_regularization_config"`
+	TenantExpenseConfigLevel          OrganizationConfigLevel `bson:"tenant_expense_config"`
+	TenantCRMConfigLevel              OrganizationConfigLevel `bson:"tenant_crm_config"`
+	TenantAppraisalConfigLevel        OrganizationConfigLevel `bson:"tenant_appraisal_config"`
+	TenantTrainingConfigLevel         OrganizationConfigLevel `bson:"tenant_training_config"`
+	TenantReimbursementConfigLevel    OrganizationConfigLevel `bson:"tenant_reimbursement_config"`
+	TenantDocumentVerifierConfigLevel OrganizationConfigLevel `bson:"tenant_document_verifier_config"`
 }
