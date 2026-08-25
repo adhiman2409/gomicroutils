@@ -135,6 +135,7 @@ type EmployeeAttendance struct {
 	YesterdayNightWorkingHours    float64            `bson:"yesterday_night_working_hours"`
 	TodayNightWorkingHours        float64            `bson:"today_night_working_hours"`
 	TodayMorningWorkingHours      float64            `bson:"today_morning_working_hours"`
+	TomorrowMorningWorkingHours   float64            `bson:"tomorrow_morning_working_hours"`
 	IsDelayedCheckIn              bool               `bson:"is_delayed_check_in"`
 	IsEarlyCheckOut               bool               `bson:"is_early_check_out"`
 	IsWorkFromHome                bool               `bson:"is_work_from_home"`
