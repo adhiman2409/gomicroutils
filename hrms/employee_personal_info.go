@@ -34,6 +34,8 @@ type FamilyInfo struct {
 	InsurancePolicyId        string `bson:"insurance_policy_id"`
 	InsuranceCardURL         string `bson:"insurance_card_url"`
 	InsuranceCardUpdateYear  string `bson:"insurance_card_update_year"`
+	FamilyMemberPhoneNumber  string `bson:"family_member_phone_number"`
+	IsEmergencyContact       bool   `bson:"is_emergency_contact"`
 	UpdateAt                 string `bson:"updated_at"`
 	UpdateBy                 string `bson:"updated_by"`
 }
