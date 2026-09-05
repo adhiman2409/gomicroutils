@@ -9,6 +9,7 @@ import (
 const TEMPLATE_COLLECTION_USERS = "template-users"
 
 const AUTH_COLLECTION_THIRD_PARTY_API_KEYS = "auth-third-party-api-keys"
+const AUTH_COLLECTION_SELF_REGISTRATION = "auth-self-registration"
 const AUTH_COLLECTION_ORG_SIDEBAR_CONFIG = "auth-org-sidebar-config"
 const AUTH_COLLECTION_EMPLOYEE_SIDEBAR_CONFIG = "auth-employee-sidebar-config"
 const AUTH_COLLECTION_MODULE_ACCESS_CONFIG = "auth-module-access-config"
@@ -831,6 +832,11 @@ func GetAuthModuleAccessConfigCollection(client *mongo.Client, domain string) *m
 func GetAuthDeviceShiftingAttemptsCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(AUTH_COLLECTION_DEVICE_SHIFTING_ATTEMPTS)
+}
+
+func GetAuthSelfRegistrationCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(AUTH_COLLECTION_SELF_REGISTRATION)
 }
 
 func GetOrgAttendanceConfCollection(client *mongo.Client, domain string) *mongo.Collection {
