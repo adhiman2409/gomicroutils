@@ -124,4 +124,5 @@ type OrganizationConfig struct {
 	TenantTrainingConfigLevel         OrganizationConfigLevel `bson:"tenant_training_config"`
 	TenantReimbursementConfigLevel    OrganizationConfigLevel `bson:"tenant_reimbursement_config"`
 	TenantDocumentVerifierConfigLevel OrganizationConfigLevel `bson:"tenant_document_verifier_config"`
+	TenantAssetRequestConfigLevel     OrganizationConfigLevel `bson:"tenant_asset_request_config"`
 }
