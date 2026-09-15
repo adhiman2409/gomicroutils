@@ -107,6 +107,7 @@ type ActivityReport struct {
 	ScreenshotInfos              []ScreenshotInfo   `bson:"screenshot_infos,omitempty"`
 	VideoInfos                   []VideoInfo        `bson:"video_infos,omitempty"`
 	LocationInfos                []LocationInfo     `bson:"location_infos,omitempty"`
+	USBDeviceInfos               []USBDeviceInfo    `bson:"usb_device_infos,omitempty"`
 }
 
 type CheckInOutInfo struct {
@@ -176,11 +177,12 @@ type SystemStatusInfo struct {
 
 // USBDeviceInfo represents USB device information
 type USBDeviceInfo struct {
-	VendorID    int    `bson:"vendor_id"`
-	ProductID   int    `bson:"product_id"`
-	VendorName  string `bson:"vendor_name"`
-	ProductName string `bson:"product_name"`
-	Action      string `bson:"action"` // "connected" or "disconnected"
+	Timestamp   time.Time `bson:"timestamp"`
+	VendorID    int       `bson:"vendor_id"`
+	ProductID   int       `bson:"product_id"`
+	VendorName  string    `bson:"vendor_name"`
+	ProductName string    `bson:"product_name"`
+	Action      string    `bson:"action"` // "connected" or "disconnected"
 }
 
 // LocationInfo represents device location
