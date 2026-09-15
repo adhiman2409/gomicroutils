@@ -39,6 +39,9 @@ type MonitoringConfig struct {
 	Domain                          string             `bson:"domain"`
 	FrontendURL                     string             `bson:"frontend_url"`
 	Department                      string             `bson:"department"`
+	Manager                         string             `bson:"manager"`
+	JoinDate                        time.Time          `bson:"join_date,omitempty"`
+	IsInactive                      bool               `bson:"is_inactive"`
 	Email                           string             `bson:"email"`
 	MonitoringEnabled               bool               `bson:"monitoring_enabled"`
 	IdleThreshold                   int                `bson:"idle_threshold"`
