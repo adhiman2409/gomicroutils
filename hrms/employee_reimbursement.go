@@ -53,6 +53,7 @@ type Expense struct {
 	IsApprovedByPrimary     bool               `bson:"is_approved_by_primary"`
 	SecondaryApproverId     string             `bson:"secondary_approver_id"`
 	SecondaryApproverName   string             `bson:"secondary_approver_name"`
+	IsApprovedBySecondary   bool               `bson:"is_approved_by_secondary"`
 	NeedBothApproval        bool               `bson:"need_both_approval"`
 	FinanceApproverId       string             `bson:"finance_approver_id"`
 	FinanceApproverName     string             `bson:"finance_approver_name"`
