@@ -82,7 +82,7 @@ func (a *StorageConnection) DownloadImage(w http.ResponseWriter, r *http.Request
 
 	reader, err := a.Client.Bucket(nd).UserProject(pid).Object(filePath).NewReader(clientCtx)
 	if err != nil {
-		fmt.Println("Error ", err.Error())
+		fmt.Println("Error ", err.Error(), "filePath:", filePath, "domain:", nd, "pid:", pid)
 		return err
 	}
 	defer reader.Close()
