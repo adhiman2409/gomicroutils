@@ -30,6 +30,7 @@ type Tenant struct {
 	DeviceId              string             `bson:"device_id"`
 	IsLoginLockedToDevice bool               `bson:"is_login_locked_to_device"`
 	CreatedBy             string             `bson:"created_by"`
+	CompanySize           string             `bson:"company_size"`
 	CreatedAt             time.Time          `bson:"created_at"`
 	UpdatedAt             time.Time          `bson:"updated_at"`
 }
