@@ -22,6 +22,11 @@ type TrainingCourse struct {
 	IsMandatory     bool           `bson:"is_mandatory" json:"is_mandatory"`
 	AssignmentRules AssignmentRule `bson:"assignment_rules,omitempty" json:"assignment_rules,omitempty"`
 
+	// SelfEnroll (optional trainings only): when true an employee may start the
+	// training immediately without manager approval. Missing/false means manager
+	// approval is required, so legacy documents keep their behavior.
+	SelfEnroll bool `bson:"self_enroll,omitempty" json:"self_enroll,omitempty"`
+
 	// Publishing
 	Status      string    `bson:"status" json:"status"` // draft/published/archived
 	PublishedBy string    `bson:"published_by,omitempty" json:"published_by,omitempty"`
@@ -37,11 +42,12 @@ type TrainingCourse struct {
 type TrainingMaterial struct {
 	SectionIndex    int       `bson:"section_index" json:"section_index"` // 0, 1, 2...
 	SectionTitle    string    `bson:"section_title" json:"section_title"`
-	MaterialType    string    `bson:"material_type" json:"material_type"` // ppt/doc/video
+	MaterialType    string    `bson:"material_type" json:"material_type"` // ppt/doc/video (video and ppt are progress-tracked)
 	FileName        string    `bson:"file_name" json:"file_name"`
 	FileURL         string    `bson:"file_url" json:"file_url"` // GCS path
 	FileSize        int64     `bson:"file_size" json:"file_size"`
 	DurationMinutes int       `bson:"duration_minutes,omitempty" json:"duration_minutes,omitempty"` // For videos
+	SlideCount      int       `bson:"slide_count,omitempty" json:"slide_count,omitempty"`           // For ppt; used to size the anti-cheat max jump
 	UploadedAt      time.Time `bson:"uploaded_at" json:"uploaded_at"`
 }
 
@@ -81,6 +87,12 @@ type TrainingEnrollment struct {
 	ManagerRemarks  string    `bson:"manager_remarks,omitempty" json:"manager_remarks,omitempty"`
 	ApprovedAt      time.Time `bson:"approved_at,omitempty" json:"approved_at,omitempty"`
 
+	// Assignment provenance (empty on legacy enrollments)
+	AssignedBy        string `bson:"assigned_by,omitempty" json:"assigned_by,omitempty"`               // employee id of the assigner
+	AssignedByName    string `bson:"assigned_by_name,omitempty" json:"assigned_by_name,omitempty"`     // display name of the assigner
+	AssignmentSource  string `bson:"assignment_source,omitempty" json:"assignment_source,omitempty"`   // auto/manager/team_lead/admin/self
+	AssignmentRemarks string `bson:"assignment_remarks,omitempty" json:"assignment_remarks,omitempty"` // assigner's note
+
 	// Progress Tracking
 	Status      string    `bson:"status" json:"status"` // assigned/in_progress/completed
 	StartedAt   time.Time `bson:"started_at,omitempty" json:"started_at,omitempty"`
@@ -101,12 +113,17 @@ type TrainingEnrollment struct {
 	UpdatedAt time.Time `bson:"updated_at" json:"updated_at"`
 }
 
-// VideoProgress tracks an employee's progress on a specific video section
+// VideoProgress tracks an employee's progress on a specific trackable section
+// (a video, or a ppt). The name is historical; it is kept so persisted data and
+// sibling services keep working. MaterialType is empty on legacy entries and
+// must be treated as "video".
 type VideoProgress struct {
-	SectionIndex    int       `bson:"section_index" json:"section_index"`
+	SectionIndex    int       `bson:"section_index" json:"section_index"` // matches TrainingMaterial.SectionIndex (not the array position)
 	SectionTitle    string    `bson:"section_title" json:"section_title"`
+	MaterialType    string    `bson:"material_type,omitempty" json:"material_type,omitempty"` // video/ppt
+	SlideCount      int       `bson:"slide_count,omitempty" json:"slide_count,omitempty"`     // ppt only
 	FileURL         string    `bson:"file_url" json:"file_url"`
-	WatchPercentage int       `bson:"watch_percentage" json:"watch_percentage"` // 0-100
+	WatchPercentage int       `bson:"watch_percentage" json:"watch_percentage"` // 0-100 (video watched / ppt slides viewed)
 	LastWatchedAt   time.Time `bson:"last_watched_at" json:"last_watched_at"`
 }
 
