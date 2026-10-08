@@ -116,6 +116,7 @@ type SeparationInfo struct {
 	ReportingManagerRetentionRemarks  string               `bson:"reporting_manager_retention_remarks"`
 	HRRetentionRemarks                string               `bson:"hr_retention_remarks"`
 	IsRetentionAcceptedByHR           bool                 `bson:"is_retention_accepted_by_hr"`
+	CanManagerComment                 bool                 `bson:"can_manager_comment"`
 	RetentionAcceptanceDate           string               `bson:"retention_acceptance_date"`
 	ExitDate                          string               `bson:"exit_date"`
 }
