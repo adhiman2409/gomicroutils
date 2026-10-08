@@ -116,9 +116,9 @@ type SeparationInfo struct {
 	ReportingManagerRetentionRemarks  string               `bson:"reporting_manager_retention_remarks"`
 	HRRetentionRemarks                string               `bson:"hr_retention_remarks"`
 	IsRetentionAcceptedByHR           bool                 `bson:"is_retention_accepted_by_hr"`
-	CanManagerComment                 bool                 `bson:"can_manager_comment"`
-	RetentionAcceptanceDate           string               `bson:"retention_acceptance_date"`
-	ExitDate                          string               `bson:"exit_date"`
+
+	RetentionAcceptanceDate string `bson:"retention_acceptance_date"`
+	ExitDate                string `bson:"exit_date"`
 }
 
 type SectionWiseQuestionAnswerSet struct {
@@ -488,6 +488,7 @@ type SeparationDetails struct {
 	IsRetentionAcceptedByHR          bool                 `bson:"is_retention_accepted_by_hr"`
 	RetentionAcceptanceDate          time.Time            `bson:"retention_acceptance_date"`
 	DefaultNoticePeriodInDays        int                  `bson:"default_notice_period_in_days"`
+	CanManagerComment                bool                 `bson:"can_manager_comment"`
 	ExitDate                         time.Time            `bson:"exit_date"`
 	SeparationDocuments              []SeparationDocument `bson:"separation_documents"`
 	HRSeparationDocuments            []SeparationDocument `bson:"hr_separation_documents"`
