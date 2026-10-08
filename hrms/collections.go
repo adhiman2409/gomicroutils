@@ -122,6 +122,12 @@ const TICKET_COLLECTION_TICKET_APPROVAL_COUNTERS = "ticket-ticket-approval-count
 const TRAINING_COLLECTION_TRAININGS = "training-trainings"
 const TRAINING_COLLECTION_ENROLLMENTS = "training-enrollments"
 const TRAINING_COLLECTION_COUNTER = "training-counter"
+const TRAINING_COLLECTION_ASSETS = "training-assets"
+const TRAINING_COLLECTION_INVITE_BATCHES = "training-invite-batches"
+const TRAINING_COLLECTION_QUIZZES = "training-quizzes"
+const TRAINING_COLLECTION_QUIZ_ATTEMPTS = "training-quiz-attempts"
+const TRAINING_COLLECTION_CERTIFICATES = "training-certificates"
+const TRAINING_COLLECTION_CERT_TEMPLATES = "training-cert-templates"
 
 const VOLUNTEER_COLLECTION_VOLUNTEER_COUNTER = "volunteer-volunteer-counter"
 const VOLUNTEER_COLLECTION_REQUESTS = "volunteer-requests"
@@ -1317,4 +1323,34 @@ func GetTrainingEnrollmentsCollection(client *mongo.Client, domain string) *mong
 func GetTrainingCounterCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(TRAINING_COLLECTION_COUNTER)
+}
+
+func GetTrainingAssetsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_ASSETS)
+}
+
+func GetTrainingInviteBatchesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_INVITE_BATCHES)
+}
+
+func GetTrainingQuizzesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_QUIZZES)
+}
+
+func GetTrainingQuizAttemptsCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_QUIZ_ATTEMPTS)
+}
+
+func GetTrainingCertificatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_CERTIFICATES)
+}
+
+func GetTrainingCertTemplatesCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(TRAINING_COLLECTION_CERT_TEMPLATES)
 }

@@ -36,6 +36,16 @@ type TrainingCourse struct {
 	CreatedBy string    `bson:"created_by" json:"created_by"`
 	CreatedAt time.Time `bson:"created_at" json:"created_at"`
 	UpdatedAt time.Time `bson:"updated_at" json:"updated_at"`
+
+	// Course builder (LMS). Empty Modules = legacy course that still uses Materials.
+	Modules               []TrainingModule `bson:"modules,omitempty" json:"modules,omitempty"`
+	CoverAssetId          string           `bson:"cover_asset_id,omitempty" json:"cover_asset_id,omitempty"`
+	Tags                  []string         `bson:"tags,omitempty" json:"tags,omitempty"`
+	Level                 string           `bson:"level,omitempty" json:"level,omitempty"` // beginner/intermediate/advanced
+	CertificateEnabled    bool             `bson:"certificate_enabled,omitempty" json:"certificate_enabled,omitempty"`
+	CertificateTemplateId string           `bson:"certificate_template_id,omitempty" json:"certificate_template_id,omitempty"`
+	CompletionRule        string           `bson:"completion_rule,omitempty" json:"completion_rule,omitempty"` // all_required (default)
+	Version               int              `bson:"version,omitempty" json:"version,omitempty"`                 // optimistic concurrency for builder writes
 }
 
 // TrainingMaterial represents a single material (PPT, Doc, or Video) in a training
@@ -111,6 +121,14 @@ type TrainingEnrollment struct {
 
 	CreatedAt time.Time `bson:"created_at" json:"created_at"`
 	UpdatedAt time.Time `bson:"updated_at" json:"updated_at"`
+
+	// LMS fields
+	LessonProgress []LessonProgress `bson:"lesson_progress,omitempty" json:"lesson_progress,omitempty"`
+	InviteBatchId  string           `bson:"invite_batch_id,omitempty" json:"invite_batch_id,omitempty"`
+	WorkLocation   string           `bson:"work_location,omitempty" json:"work_location,omitempty"` // snapshot at enrollment
+	EmployeeType   string           `bson:"employee_type,omitempty" json:"employee_type,omitempty"` // snapshot at enrollment
+	LastActivityAt time.Time        `bson:"last_activity_at,omitempty" json:"last_activity_at,omitempty"`
+	CertificateId  string           `bson:"certificate_id,omitempty" json:"certificate_id,omitempty"` // M2
 }
 
 // VideoProgress tracks an employee's progress on a specific trackable section
