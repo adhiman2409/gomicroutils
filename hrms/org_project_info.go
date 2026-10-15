@@ -86,6 +86,7 @@ type ProjectTeamMember struct {
 	ReportingManagerId         string    `bson:"reporting_manager_id"`
 	ReportingManagerName       string    `bson:"reporting_manager_name"`
 	ReportingManagerEmail      string    `bson:"reporting_manager_email"`
+	AllocationPercentage       float64   `bson:"allocation_percentage"`
 	IsBillable                 bool      `bson:"is_billable"`
 	IsRotationalShift          bool      `bson:"is_rotational_shift"`
 	IsRemoteWorking            bool      `bson:"is_remote_working"`
