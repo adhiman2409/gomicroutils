@@ -257,6 +257,10 @@ type PayrollSalaryConfig struct {
 	AnnualMedicalInsurancePremium            float32               `bson:"annual_medical_insurance_premium"`
 	UpdatedAt                                time.Time             `bson:"updated_at"`
 	CreatedAt                                time.Time             `bson:"created_at"`
+	IsEPFStatutorilyTriggered                bool                  `bson:"is_epf_statutorily_triggered"`
+	EPFTriggeredAt                           *time.Time            `bson:"epf_triggered_at,omitempty"`
+	IsESICStatutorilyTriggered               bool                  `bson:"is_esic_statutorily_triggered"`
+	ESICTriggeredAt                          *time.Time            `bson:"esic_triggered_at,omitempty"`
 }
 
 type ESICConfig struct {
@@ -272,6 +276,7 @@ type LWFConfig struct {
 	CityName                       string  `bson:"city_name"`
 	LWFEmployerMonthlyContribution float32 `bson:"lwf_employer_monthly_contribution"`
 	LWFEmployeeMonthlyContribution float32 `bson:"lwf_employee_monthly_contribution"`
+	Periodicity                    string  `bson:"periodicity"` // "monthly", "half_yearly", or "annual"
 }
 
 type EmployeeTaxSavingDeclaration struct {
@@ -287,6 +292,7 @@ type EmployeeTaxSavingDeclaration struct {
 	Section80DHealthInsuranceForSelf     float64 `bson:"section_80d_health_insurance_for_self"`
 	Section80DHealthInsuranceForFamily   float64 `bson:"section_80d_health_insurance_for_family"`
 	OtherDeductions                      float64 `bson:"other_deductions"`
+	ProofVerified                        bool    `bson:"proof_verified"`
 }
 
 type YearlyPayrollAndTaxDetails struct {
