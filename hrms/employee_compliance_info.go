@@ -23,12 +23,15 @@ type EmployeeComplianceInfo struct {
 
 // plaintextEmployeeComplianceInfo lists the top-level keys kept in the clear; every
 // other field is packed into the encrypted __enc blob by
-// marshalEncrypted/unmarshalEncrypted (payroll_encryption.go). ESICInsuranceNumber is
-// the only sensitive field on this struct, so it is deliberately left out of this
-// allowlist, mirroring how PAN/UAN/bank details are excluded from
+// marshalEncrypted/unmarshalEncrypted (payroll_encryption.go). ESICInsuranceNumber and
+// IsPersonWithDisability are sensitive personal data, so both are deliberately left out of
+// this allowlist, mirroring how PAN/UAN/bank details are excluded from
 // plaintextSalaryStructure/plaintextSalaryConfig for the other payroll structs.
+// (is_person_with_disability was plaintext up to v1.19.9-compliance-phase1.2; documents
+// written by those versions still decode, since unmarshalEncrypted merges top-level keys with
+// the blob, and are rewritten without the plaintext key on their next upsert.)
 var plaintextEmployeeComplianceInfo = set(
-	"_id", "employee_id", "aadhaar_linked", "is_person_with_disability", "updated_at",
+	"_id", "employee_id", "aadhaar_linked", "updated_at",
 )
 
 func (c EmployeeComplianceInfo) MarshalBSON() ([]byte, error) {
