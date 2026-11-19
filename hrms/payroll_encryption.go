@@ -48,6 +48,14 @@ var (
 		"_id", "request_id", "request_count", "month", "financial_year", "request_status",
 		"approver_id", "verifier_id", "requested_by_id", "country", "state",
 	)
+	// EmployeeTaxSavingDeclaration backs year-end tax declarations (Form 12BB-style
+	// inputs). Only the identity/filter keys stay plaintext; every reported financial
+	// figure (home loan interest, NPS/insurance contributions, 80C/80D claims, other
+	// deductions, income other than salary) is sensitive and is encrypted, same as
+	// PAN/UAN/bank details are excluded from the allowlists above.
+	plaintextTaxSavingDeclaration = set(
+		"_id", "employee_id", "employee_name", "financial_year", "opted_tax_regime", "proof_verified",
+	)
 )
 
 func set(keys ...string) map[string]bool {
@@ -246,4 +254,14 @@ func (r SalaryProcessingRequest) MarshalBSON() ([]byte, error) {
 func (r *SalaryProcessingRequest) UnmarshalBSON(data []byte) error {
 	type alias SalaryProcessingRequest
 	return unmarshalEncrypted(data, (*alias)(r))
+}
+
+func (d EmployeeTaxSavingDeclaration) MarshalBSON() ([]byte, error) {
+	type alias EmployeeTaxSavingDeclaration
+	return marshalEncrypted(alias(d), plaintextTaxSavingDeclaration)
+}
+
+func (d *EmployeeTaxSavingDeclaration) UnmarshalBSON(data []byte) error {
+	type alias EmployeeTaxSavingDeclaration
+	return unmarshalEncrypted(data, (*alias)(d))
 }

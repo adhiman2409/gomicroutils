@@ -195,6 +195,7 @@ const PAYROLL_COLLECTION_EMPLOYEE_PAYROLL_MASTER = "payroll-employee-payroll-mas
 const PAYROLL_COLLECTION_PAYROLL_ACCESS_CONTROL = "payroll-employee-payroll-access-control"
 const PAYROLL_COLLECTION_RECURRING_MONTHLY_EXPENSE_CONFIG = "payroll-recurring-monthly-expense-config"
 const PAYROLL_COLLECTION_EMPLOYEE_COMPLIANCE_INFO = "payroll-employee-compliance-info"
+const PAYROLL_COLLECTION_EMPLOYEE_TAX_SAVING_DECLARATION = "payroll-employee-tax-saving-declaration"
 
 const KYC_COLLECTION_COMPANY_INFO = "kyc-company-info"
 const KYC_COLLECTION_COMPANY_COUNTER = "kyc-company-counter"
@@ -597,6 +598,11 @@ func GetPayrollEmployeePayrollMasterCollection(client *mongo.Client, domain stri
 func GetEmployeeComplianceInfoCollection(client *mongo.Client, domain string) *mongo.Collection {
 	db := client.Database(strings.Replace(domain, ".", "_", -1))
 	return db.Collection(PAYROLL_COLLECTION_EMPLOYEE_COMPLIANCE_INFO)
+}
+
+func GetEmployeeTaxSavingDeclarationCollection(client *mongo.Client, domain string) *mongo.Collection {
+	db := client.Database(strings.Replace(domain, ".", "_", -1))
+	return db.Collection(PAYROLL_COLLECTION_EMPLOYEE_TAX_SAVING_DECLARATION)
 }
 
 func GetPayrollSalaryProcessingRequestsCollection(client *mongo.Client, domain string) *mongo.Collection {
