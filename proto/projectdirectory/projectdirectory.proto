@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+package projectdirectory;
+
+option go_package = "genproto/projectdirectory";
+
+// ProjectDirectory is served by kyc. It is how taskmgr reads projects,
+// teams and allocations, and creates internal projects (hub SS-3, UI-9).
+// Contract: UNIRMS_Project/docs/taskmgr/02-grpc-contract.md.
+//
+// Every call carries the tenant domain in metadata (package grpcauth), never
+// in these messages. Dates are YYYY-MM-DD in the tenant's time zone.
+service ProjectDirectory {
+    // Projects by id. Unknown ids are left out of the answer, not an error.
+    rpc GetProjects(GetProjectsRequest) returns (GetProjectsResponse) {}
+    // Projects the employee works on: team member (not released), head,
+    // coordinator, or a whole-org project. Active and non-default only,
+    // unless include_inactive is set.
+    rpc ListProjectsForEmployee(ListProjectsForEmployeeRequest) returns (GetProjectsResponse) {}
+    rpc GetTeam(GetTeamRequest) returns (Team) {}
+    // Dated allocation windows from kyc-project-allocations.
+    rpc GetAllocations(GetAllocationsRequest) returns (GetAllocationsResponse) {}
+    // Creates an internal project (project_type "Internal") in
+    // org-client-project-info with kyc's own allocation checks. It does not
+    // create a legacy task board. Idempotent per request_id.
+    rpc CreateInternalProject(CreateInternalProjectRequest) returns (CreateInternalProjectResponse) {}
+}
+
+message Person {
+    string employee_id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message Project {
+    string project_id = 1;
+    string project_name = 2;
+    string client_id = 3;
+    string client_name = 4;
+    string project_type = 5;  // "Internal" for internal projects
+    string status = 6;        // project_status as stored, e.g. "Active"
+    bool external = 7;        // is_external_project
+    bool whole_org = 8;       // is_whole_org_part_of_project
+    bool is_default = 9;
+    string department = 10;
+    string start_date = 11;
+    string end_date = 12;
+    Person head = 13;
+    Person coordinator = 14;
+}
+
+message GetProjectsRequest {
+    repeated string project_ids = 1;  // at most 200
+}
+
+message GetProjectsResponse {
+    repeated Project projects = 1;
+}
+
+message ListProjectsForEmployeeRequest {
+    string employee_id = 1;
+    bool include_inactive = 2;
+}
+
+message TeamMember {
+    string employee_id = 1;
+    string name = 2;
+    string email = 3;
+    string designation = 4;
+    string department = 5;
+    double allocation_percentage = 6;
+    bool released = 7;
+    string reporting_manager_id = 8;
+}
+
+message Team {
+    string project_id = 1;
+    Person head = 2;
+    Person coordinator = 3;
+    bool whole_org = 4;
+    repeated TeamMember members = 5;
+}
+
+message GetTeamRequest {
+    string project_id = 1;
+    bool include_released = 2;
+}
+
+message Allocation {
+    string employee_id = 1;
+    string project_id = 2;
+    double percentage = 3;
+    string from = 4;
+    string to = 5;            // empty: open-ended
+}
+
+// Windows overlapping [from, to] for the given employees, optionally on one
+// project. Empty employee_ids means every member of project_id.
+message GetAllocationsRequest {
+    repeated string employee_ids = 1;  // at most 200
+    string project_id = 2;
+    string from = 3;
+    string to = 4;
+}
+
+message GetAllocationsResponse {
+    repeated Allocation allocations = 1;
+}
+
+message InternalProjectMember {
+    string employee_id = 1;
+    double allocation_percentage = 2;
+    string from = 3;
+    string to = 4;            // empty: open-ended
+}
+
+message CreateInternalProjectRequest {
+    string request_id = 1;    // caller-chosen; a repeat returns the same project
+    string name = 2;
+    string department = 3;
+    string head_employee_id = 4;
+    repeated InternalProjectMember members = 5;
+    string created_by_employee_id = 6;
+    string description = 7;
+}
+
+message CreateInternalProjectResponse {
+    Project project = 1;
+    bool created = 2;         // false: request_id was seen before
+}

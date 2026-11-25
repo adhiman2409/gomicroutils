@@ -1,0 +1,193 @@
+syntax = "proto3";
+
+package taskmgrcompat;
+
+option go_package = "genproto/taskmgrcompat";
+
+// Compat is served by taskmgr. It is the only way other services read or
+// change Task Manager v1 data, and they call it only for tenants whose
+// taskmgr mode is v1 (hub DD1, T12, G-1, G-2, SS-7). A call for any other
+// tenant fails with FAILED_PRECONDITION.
+// Contract: UNIRMS_Project/docs/taskmgr/02-grpc-contract.md.
+//
+// Every call carries the tenant domain in metadata (package grpcauth), never
+// in these messages. Dates are YYYY-MM-DD in the tenant's time zone, instants
+// RFC 3339 in UTC. A task_id in a request may be a v1 key (ABC-12) or a
+// legacy task id kept by the migration.
+service Compat {
+    // attendance: replaces its direct reads and writes of kyc-project-task-states.
+    rpc ListPendingTasks(ListTasksRequest) returns (TaskPage) {}     // was GetPendingTasks
+    rpc ListEmployeeTasks(ListTasksRequest) returns (TaskPage) {}    // was GetEmployeeTasks / GetEmployeeTasksAll
+    rpc ListProjectTasks(ListTasksRequest) returns (TaskPage) {}     // was GetTasksByProjectId
+    rpc GetTaskEfforts(GetTaskEffortsRequest) returns (GetTaskEffortsResponse) {} // was GetTaskByProjectAndTaskId
+    // Sets the approved hours of one timesheet entry, identified by
+    // (employee_id, task, work_date). Setting the same value again changes
+    // nothing; hours = 0 removes the entry's hours. Replaces
+    // IncrementTaskActualEffort, which added on every call.
+    rpc SetApprovedHours(SetApprovedHoursRequest) returns (SetApprovedHoursResponse) {}
+
+    // employee and employee-rh-assign
+    rpc RenameEmployee(RenameEmployeeRequest) returns (Empty) {}
+    // Rewrites every field that holds the employee id (assignee, creator,
+    // reporter, comment author, mentions, activity, approved-hours entries).
+    rpc ChangeEmployeeId(ChangeEmployeeIdRequest) returns (ChangeEmployeeIdResponse) {}
+    rpc ListOpenTasks(ListTasksRequest) returns (TaskPage) {}        // responsibility report
+    rpc ReassignOpenTasks(ReassignOpenTasksRequest) returns (ReassignOpenTasksResponse) {}
+
+    // helpdesk. Idempotent per ticket_id: a repeat returns the same task.
+    rpc CreateTaskFromTicket(CreateTaskFromTicketRequest) returns (CreateTaskFromTicketResponse) {}
+
+    // kyc: hourly CalculateActualWorkedHours
+    rpc GetProjectHours(GetProjectHoursRequest) returns (GetProjectHoursResponse) {}
+}
+
+message Empty {}
+
+enum StateGroup {
+    STATE_GROUP_UNSPECIFIED = 0;
+    STATE_GROUP_BACKLOG = 1;
+    STATE_GROUP_UNSTARTED = 2;
+    STATE_GROUP_STARTED = 3;
+    STATE_GROUP_DONE = 4;
+    STATE_GROUP_CANCELLED = 5;
+}
+
+enum Priority {
+    PRIORITY_UNSPECIFIED = 0;
+    PRIORITY_URGENT = 1;
+    PRIORITY_HIGH = 2;
+    PRIORITY_MEDIUM = 3;
+    PRIORITY_LOW = 4;
+}
+
+message TaskRef {
+    string project_id = 1;
+    string task_id = 2;
+}
+
+message Task {
+    string task_id = 1;           // v1 key, e.g. ABC-12
+    string legacy_task_id = 2;    // set for migrated tasks
+    string project_id = 3;
+    string project_name = 4;
+    string client_name = 5;
+    string title = 6;
+    string state_id = 7;
+    string state_name = 8;
+    StateGroup state_group = 9;
+    repeated string assignee_ids = 10;
+    repeated string labels = 11;
+    string start_date = 12;
+    string due_date = 13;
+    double estimated_hours = 14;
+    double actual_hours = 15;     // sum of approved hours
+    Priority priority = 16;
+    string ticket_id = 17;
+    string created_by_name = 18;
+    string created_at = 19;
+    string updated_at = 20;
+}
+
+// One request shape for every task list. Which fields a method reads:
+//   ListPendingTasks:  employee_id. Open tasks (not done or cancelled) on the
+//                      employee's projects, assigned to them, or every open
+//                      task of a whole-org project.
+//   ListEmployeeTasks: employee_id, include_closed. Tasks assigned to them.
+//   ListProjectTasks:  employee_id, project_id. Open tasks of one project
+//                      assigned to them, or all open ones on a whole-org project.
+//   ListOpenTasks:     employee_id. Open tasks assigned to them, every project.
+message ListTasksRequest {
+    string employee_id = 1;
+    string project_id = 2;
+    bool include_closed = 3;      // also done and cancelled
+    int32 page_size = 4;          // default 200, at most 500
+    string page_token = 5;        // from the previous TaskPage
+}
+
+message TaskPage {
+    repeated Task tasks = 1;
+    string next_page_token = 2;   // empty: last page
+}
+
+message GetTaskEffortsRequest {
+    repeated TaskRef tasks = 1;   // at most 500
+}
+
+message TaskEffort {
+    TaskRef task = 1;             // as asked
+    string task_id = 2;           // the v1 key it resolved to
+    double estimated_hours = 3;
+    double actual_hours = 4;
+}
+
+message GetTaskEffortsResponse {
+    repeated TaskEffort efforts = 1;  // unknown tasks are left out
+}
+
+message SetApprovedHoursRequest {
+    string employee_id = 1;       // whose hours
+    string project_id = 2;
+    string task_id = 3;
+    string work_date = 4;
+    double hours = 5;             // 0 removes the entry
+    string approver_employee_id = 6;
+}
+
+message SetApprovedHoursResponse {
+    bool changed = 1;             // false: the entry already had these hours
+    double actual_hours = 2;      // the task's total after the call
+}
+
+message RenameEmployeeRequest {
+    string employee_id = 1;
+    string name = 2;
+}
+
+message ChangeEmployeeIdRequest {
+    string old_employee_id = 1;
+    string new_employee_id = 2;
+}
+
+message ChangeEmployeeIdResponse {
+    int64 documents_updated = 1;
+}
+
+message ReassignOpenTasksRequest {
+    string from_employee_id = 1;
+    string to_employee_id = 2;
+    repeated string project_ids = 3;  // empty: every project
+    string by_employee_id = 4;        // who asked, for the activity log
+}
+
+message ReassignOpenTasksResponse {
+    int64 tasks_reassigned = 1;
+}
+
+message CreateTaskFromTicketRequest {
+    string ticket_id = 1;
+    string project_id = 2;
+    string title = 3;
+    string description = 4;
+    repeated string assignee_ids = 5;
+    string due_date = 6;
+    Priority priority = 7;
+    string created_by_employee_id = 8;
+}
+
+message CreateTaskFromTicketResponse {
+    TaskRef task = 1;
+    bool created = 2;             // false: a task for this ticket already existed
+}
+
+message GetProjectHoursRequest {
+    repeated string project_ids = 1;  // at most 500
+}
+
+message ProjectHours {
+    string project_id = 1;
+    double actual_hours = 2;      // sum of approved hours on the project's tasks
+}
+
+message GetProjectHoursResponse {
+    repeated ProjectHours projects = 1;
+}

@@ -223,6 +223,10 @@ const KYC_COLLECTION_VENDOR_COUNTER = "kyc-vendor-counter"
 const KYC_COLLECTION_INVOICE_REQUESTS = "kyc-invoice-requests"
 const KYC_COLLECTION_INVOICE_REQUEST_COUNTER = "kyc-invoice-request-counter"
 const KYC_COLLECTION_PROJECT_TASK_STATES = "kyc-project-task-states"
+
+// MASTER_COLLECTION_TENANT_MODES is the shared tenant-mode registry in the
+// master database, one document per (domain, module). See package tenantmode.
+const MASTER_COLLECTION_TENANT_MODES = "tenant-modes"
 const KYC_COLLECTION_PROJECT_TASK_STATE_COUNTER = "kyc-project-task-state-counter"
 const KYC_COLLECTION_PROJECT_TASK_ID_COUNTER = "kyc-project-task-id-counter"
 
