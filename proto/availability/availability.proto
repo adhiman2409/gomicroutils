@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package availability;
+
+option go_package = "genproto/availability";
+
+// Availability is served by attendance. taskmgr uses it for sprint capacity
+// and the On Leave flags (design T10, T11).
+// Contract: UNIRMS_Project/docs/taskmgr/02-grpc-contract.md.
+//
+// Every call carries the tenant domain in metadata (package grpcauth), never
+// in these messages. Dates are YYYY-MM-DD in the tenant's time zone.
+service Availability {
+    // One entry per employee per day in [from, to], inclusive. At most 200
+    // employees and 93 days per call.
+    rpc GetAvailability(GetAvailabilityRequest) returns (GetAvailabilityResponse) {}
+}
+
+message GetAvailabilityRequest {
+    repeated string employee_ids = 1;
+    string from = 2;
+    string to = 3;
+}
+
+enum DayKind {
+    DAY_KIND_UNSPECIFIED = 0;
+    DAY_KIND_WORKING = 1;
+    DAY_KIND_WEEKLY_OFF = 2;
+    DAY_KIND_HOLIDAY = 3;
+    DAY_KIND_LEAVE = 4;            // approved full-day leave
+    DAY_KIND_HALF_DAY_LEAVE = 5;   // approved half-day leave
+    DAY_KIND_NOT_EMPLOYED = 6;     // before joining or after the last working day
+}
+
+message Day {
+    string date = 1;
+    DayKind kind = 2;
+    double working_hours = 3;      // hours expected that day; 0 unless working or half-day leave
+    string note = 4;               // holiday name or leave type
+}
+
+message EmployeeAvailability {
+    string employee_id = 1;
+    repeated Day days = 2;
+}
+
+message GetAvailabilityResponse {
+    // Unknown employee ids are left out, not an error.
+    repeated EmployeeAvailability employees = 1;
+}

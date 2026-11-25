@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package helpdeskticket;
+
+option go_package = "genproto/helpdeskticket";
+
+// HelpdeskTicket is served by helpdesk. taskmgr uses it to comment on the
+// ticket a task came from when the task moves (hub SS-8), instead of writing
+// the ticket-tickets collection itself.
+// Contract: UNIRMS_Project/docs/taskmgr/02-grpc-contract.md.
+//
+// Every call carries the tenant domain in metadata (package grpcauth), never
+// in these messages.
+service HelpdeskTicket {
+    // Appends a comment and sends helpdesk's usual mail and notification.
+    // Idempotent per request_id: a repeat adds nothing.
+    rpc AddTicketComment(AddTicketCommentRequest) returns (AddTicketCommentResponse) {}
+}
+
+message AddTicketCommentRequest {
+    string request_id = 1;        // caller-chosen, e.g. "<task key>:<activity id>"
+    string ticket_id = 2;
+    string user_id = 3;
+    string user_name = 4;
+    string message = 5;
+    repeated string attachment_urls = 6;
+}
+
+message AddTicketCommentResponse {
+    string ticket_id = 1;
+    bool added = 2;               // false: request_id was seen before
+}
