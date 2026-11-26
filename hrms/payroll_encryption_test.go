@@ -191,3 +191,33 @@ func bytesContains(haystack []byte, needle string) bool {
 	}
 	return false
 }
+
+func TestSalaryConfigEncryptsPFEstablishmentCode(t *testing.T) {
+	t.Setenv("ENCRYPTION_KEY", testKey)
+	cfg := PayrollSalaryConfig{
+		ID:                  primitive.NewObjectID(),
+		EmployeeType:        "permanent",
+		PayrollConfigName:   "permanent",
+		PFEstablishmentCode: "MHBAN1234567000",
+	}
+
+	stored := storedForm(t, cfg)
+	if _, ok := stored["pf_establishment_code"]; ok {
+		t.Error("pf_establishment_code must be stored inside the encrypted blob, not in clear")
+	}
+	if stored["payroll_config_name"] != "permanent" {
+		t.Errorf("payroll_config_name should stay plaintext, got %v", stored["payroll_config_name"])
+	}
+	raw, _ := bson.Marshal(cfg)
+	if bytesContains(raw, "MHBAN1234567000") {
+		t.Error("the establishment code leaked into the stored document")
+	}
+
+	var got PayrollSalaryConfig
+	if err := bson.Unmarshal(raw, &got); err != nil {
+		t.Fatalf("unmarshal: %v", err)
+	}
+	if got.PFEstablishmentCode != "MHBAN1234567000" {
+		t.Errorf("round trip: got %q", got.PFEstablishmentCode)
+	}
+}
