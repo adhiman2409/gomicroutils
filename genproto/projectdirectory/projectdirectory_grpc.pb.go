@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	ProjectDirectory_GetProjects_FullMethodName             = "/projectdirectory.ProjectDirectory/GetProjects"
 	ProjectDirectory_ListProjectsForEmployee_FullMethodName = "/projectdirectory.ProjectDirectory/ListProjectsForEmployee"
+	ProjectDirectory_ListAllProjects_FullMethodName         = "/projectdirectory.ProjectDirectory/ListAllProjects"
 	ProjectDirectory_GetTeam_FullMethodName                 = "/projectdirectory.ProjectDirectory/GetTeam"
 	ProjectDirectory_GetAllocations_FullMethodName          = "/projectdirectory.ProjectDirectory/GetAllocations"
 	ProjectDirectory_CreateInternalProject_FullMethodName   = "/projectdirectory.ProjectDirectory/CreateInternalProject"
@@ -36,6 +37,9 @@ type ProjectDirectoryClient interface {
 	// coordinator, or a whole-org project. Active and non-default only,
 	// unless include_inactive is set.
 	ListProjectsForEmployee(ctx context.Context, in *ListProjectsForEmployeeRequest, opts ...grpc.CallOption) (*GetProjectsResponse, error)
+	// Every project in the tenant, for org roles (HR, admin) who see all
+	// projects. Active and non-default only, unless include_inactive is set.
+	ListAllProjects(ctx context.Context, in *ListAllProjectsRequest, opts ...grpc.CallOption) (*GetProjectsResponse, error)
 	GetTeam(ctx context.Context, in *GetTeamRequest, opts ...grpc.CallOption) (*Team, error)
 	// Dated allocation windows from kyc-project-allocations.
 	GetAllocations(ctx context.Context, in *GetAllocationsRequest, opts ...grpc.CallOption) (*GetAllocationsResponse, error)
@@ -65,6 +69,15 @@ func (c *projectDirectoryClient) GetProjects(ctx context.Context, in *GetProject
 func (c *projectDirectoryClient) ListProjectsForEmployee(ctx context.Context, in *ListProjectsForEmployeeRequest, opts ...grpc.CallOption) (*GetProjectsResponse, error) {
 	out := new(GetProjectsResponse)
 	err := c.cc.Invoke(ctx, ProjectDirectory_ListProjectsForEmployee_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectDirectoryClient) ListAllProjects(ctx context.Context, in *ListAllProjectsRequest, opts ...grpc.CallOption) (*GetProjectsResponse, error) {
+	out := new(GetProjectsResponse)
+	err := c.cc.Invoke(ctx, ProjectDirectory_ListAllProjects_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,6 +121,9 @@ type ProjectDirectoryServer interface {
 	// coordinator, or a whole-org project. Active and non-default only,
 	// unless include_inactive is set.
 	ListProjectsForEmployee(context.Context, *ListProjectsForEmployeeRequest) (*GetProjectsResponse, error)
+	// Every project in the tenant, for org roles (HR, admin) who see all
+	// projects. Active and non-default only, unless include_inactive is set.
+	ListAllProjects(context.Context, *ListAllProjectsRequest) (*GetProjectsResponse, error)
 	GetTeam(context.Context, *GetTeamRequest) (*Team, error)
 	// Dated allocation windows from kyc-project-allocations.
 	GetAllocations(context.Context, *GetAllocationsRequest) (*GetAllocationsResponse, error)
@@ -127,6 +143,9 @@ func (UnimplementedProjectDirectoryServer) GetProjects(context.Context, *GetProj
 }
 func (UnimplementedProjectDirectoryServer) ListProjectsForEmployee(context.Context, *ListProjectsForEmployeeRequest) (*GetProjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListProjectsForEmployee not implemented")
+}
+func (UnimplementedProjectDirectoryServer) ListAllProjects(context.Context, *ListAllProjectsRequest) (*GetProjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAllProjects not implemented")
 }
 func (UnimplementedProjectDirectoryServer) GetTeam(context.Context, *GetTeamRequest) (*Team, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTeam not implemented")
@@ -182,6 +201,24 @@ func _ProjectDirectory_ListProjectsForEmployee_Handler(srv interface{}, ctx cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProjectDirectoryServer).ListProjectsForEmployee(ctx, req.(*ListProjectsForEmployeeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectDirectory_ListAllProjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAllProjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectDirectoryServer).ListAllProjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectDirectory_ListAllProjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectDirectoryServer).ListAllProjects(ctx, req.(*ListAllProjectsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -254,6 +291,10 @@ var ProjectDirectory_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListProjectsForEmployee",
 			Handler:    _ProjectDirectory_ListProjectsForEmployee_Handler,
+		},
+		{
+			MethodName: "ListAllProjects",
+			Handler:    _ProjectDirectory_ListAllProjects_Handler,
 		},
 		{
 			MethodName: "GetTeam",

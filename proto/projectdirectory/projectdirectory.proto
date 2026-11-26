@@ -17,6 +17,9 @@ service ProjectDirectory {
     // coordinator, or a whole-org project. Active and non-default only,
     // unless include_inactive is set.
     rpc ListProjectsForEmployee(ListProjectsForEmployeeRequest) returns (GetProjectsResponse) {}
+    // Every project in the tenant, for org roles (HR, admin) who see all
+    // projects. Active and non-default only, unless include_inactive is set.
+    rpc ListAllProjects(ListAllProjectsRequest) returns (GetProjectsResponse) {}
     rpc GetTeam(GetTeamRequest) returns (Team) {}
     // Dated allocation windows from kyc-project-allocations.
     rpc GetAllocations(GetAllocationsRequest) returns (GetAllocationsResponse) {}
@@ -60,6 +63,10 @@ message GetProjectsResponse {
 message ListProjectsForEmployeeRequest {
     string employee_id = 1;
     bool include_inactive = 2;
+}
+
+message ListAllProjectsRequest {
+    bool include_inactive = 1;
 }
 
 message TeamMember {
